@@ -1,0 +1,115 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.vanilla.portal.client.wizard.map.MapDataSetDialog.MyStyle">
+	
+		.panelContent {
+			height: 420px;
+			width: 690px;
+			overflow: auto;
+		}
+		
+		 .lblQuery, .lblLatitude, .lblLongitude, .lblIdZone, .lblParent, .lblType, .lblName {
+		    float: left;
+		    margin-left: 12px;
+		    margin-top: 10px;
+		    clear: both;
+		}
+		
+		.lblErrorLatitude, .lblErrorLongitude, .LblErrorIdZone, .lblErrorParent, .lblErrorType {
+			color: red;
+			margin-left: 10px;
+			margin-bottom: 20px;
+		}
+		
+		 .txaQuery, .lstLatitude, .lstLongitude, .lstIdZone, .lstParent, .lstType, .txbName {
+		    display: block;
+		    margin-left: 150px;
+		    margin-top: 10px;
+		    width: 250px;
+		}
+			
+		.btnQuery {
+			display:block;
+			margin-left: 100px;
+		    margin-top: 3px;
+		    margin-bottom: 30px;
+			color:black;
+			text-decoration:none;
+
+		}
+		
+		.disabled {
+		    background: #D3D3D3 !important;
+		    border: 0 none !important;
+		    color: #FFFFFF !important;
+		}
+		
+		.linePanel {
+			width: 100%;
+			margin-top: 10px;
+		}
+		
+		.inlineBlock {
+			display: inline-block;
+			margin-left: 12px;
+		}
+		
+		.imgEdit {
+			cursor: pointer;
+		}
+		
+		.markerLbl {
+			margin-left: 12px;
+			margin-top: 15px;
+			text-decoration: underline;
+		}
+		.imgMarker {
+			width: 16px;
+			height: 16px;
+		}	
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:Label ui:field="lblName" addStyleNames="{style.lblName}"/>
+		<g:TextBox ui:field="txbName" addStyleNames="{style.txbName}"/>	
+		
+		<g:Label ui:field="lblQuery" addStyleNames="{style.lblQuery}"/>
+		<g:TextArea ui:field="txaQuery" addStyleNames="{style.txaQuery}"/>
+		
+		<g:Button ui:field="btnQuery" addStyleNames="{style.btnQuery}"/>
+		
+		<g:Label ui:field="lblLatitude" addStyleNames="{style.lblLatitude}"/>
+		<g:ListBox ui:field="lstLatitude" addStyleNames="{style.lstLatitude}"/>
+		
+		<g:Label ui:field="lblLongitude" addStyleNames="{style.lblLongitude}"/>
+		<g:ListBox ui:field="lstLongitude" addStyleNames="{style.lstLongitude}"/>
+		
+		<g:Label ui:field="lblIdZone" addStyleNames="{style.lblIdZone}"/>
+		<g:ListBox ui:field="lstIdZone" addStyleNames="{style.lstIdZone}"/>	
+		
+		<g:Label ui:field="lblZoneLabel" addStyleNames="{style.lblIdZone}"/>
+		<g:ListBox ui:field="lstZoneLabel" addStyleNames="{style.lstIdZone}"/>	
+		
+		<g:Label ui:field="lblParent" addStyleNames="{style.lblParent}"/>
+		<g:ListBox ui:field="lstParent" addStyleNames="{style.lstParent}"/>	
+		
+		<g:Label ui:field="lblParentDs" addStyleNames="{style.lblParent}"/>
+		<g:ListBox ui:field="lstParentDs" addStyleNames="{style.lstParent}"/>	
+		
+		<g:Label ui:field="lblType" addStyleNames="{style.lblType}"/>
+		<g:ListBox ui:field="lstType" addStyleNames="{style.lstType}"/>
+		
+		<g:Label text="{label.markerSelection}" addStyleNames="{style.markerLbl}"></g:Label>
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label text="Marker" addStyleNames="{style.inlineBlock}"></g:Label>
+			<g:Image ui:field="displayMarker" addStyleNames="{style.inlineBlock}, {style.imgMarker}"></g:Image>
+			<g:Image ui:field="editMarker" resource="{commons.edit}" addStyleNames="{style.inlineBlock}, {style.imgEdit}"></g:Image>
+		</g:HTMLPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

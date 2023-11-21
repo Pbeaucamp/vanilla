@@ -1,0 +1,9 @@
+//READ ME
+
+You could encounter a problem to launch this editor by Double-Clicking it.
+The problem, probably, comes from the Environment Path variable of your computer.
+
+If this problem happend you can:
+- Open a Windows command prompt
+- Go to the folder where this editor is located (cd C:/[PathToEditor]/)
+- Type: java -jar VanillaPropertyEditor_V[Version].jar

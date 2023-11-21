@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.DirectoryItemDependance" table="rpy_dependancies">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="dirItemId" type="java.lang.Integer">
+                <column name="item_id"/>
+            </property>
+
+            <property name="dependantDirItemId" type="java.lang.Integer">
+                <column name="dependant_item_id"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

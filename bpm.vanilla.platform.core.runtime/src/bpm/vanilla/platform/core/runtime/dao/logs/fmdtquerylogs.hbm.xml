@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.FMDTQueryBean" table="fmdt_query_logs">
+            
+            <id name="id" type="long">
+                <column name="FQL_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="repositoryId" type="int">
+                <column name="FQL_REPOSITORY_ID"/>
+            </property>
+
+            <property name="directoryItemId" type="int">
+                <column name="FQL_DIRECTORY_ITEM_ID"/>
+            </property>
+              <property name="vanillaGroupId" type="int">
+                <column name="FQL_GROUP_ID"/>
+            </property>
+               <property name="fmdtQuery" type="text" >
+                <column name="FQL_FMDT_QUERY"/>
+            </property>
+             
+            <property name="effectiveQuery" type="text" >
+                <column name="FQL_EFFECTIVE_QUERY"/>
+            </property>
+            <property name="date" type="java.util.Date">
+               <column name="FQL_DATE"/>
+            </property>
+           
+            <property name="duration" type="long">
+                <column name="FQL_TIME"/>
+            </property>
+
+          <property name="weight" type="int">
+                <column name="FQL_QUERY_WEIGHT"/>
+            </property>
+          <property name="failureCause" type="text" >
+                <column name="FQL_FAILURE_CAUSE"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

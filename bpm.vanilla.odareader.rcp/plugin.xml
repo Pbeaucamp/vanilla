@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.oda.driver.reader.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.oda.driver.reader.Perspective"
+            id="bpm.oda.driver.reader.perspective"
+            name="Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.oda.driver.reader.impl.ui.OdaDatasExplorer"
+            id="bpm.oda.driver.reader.OdaDatasExplorer"
+            name="OdaDatasExplorer">
+      </view>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="bpm.oda.driver.reader.application"
+            name="Vanilla Reader">
+         <property
+               name="appName"
+               value="Vanilla Reader">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/application_form_magnify.png">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/Vanilla_Logo_3.4.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Vanilla Reader&#x0A;&#x0A;Version 3.4.0 GA&#x0A;&#x0A;Product of BPM-Conseil&#x0A;&#x0A;http://www.bpm-conseil.com/">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.oda.driver.reader.preferences.PreferencesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="bpm.oda.driver.reader.preferences.pages.VanillaPage"
+            id="bpm.oda.driver.reader.preferences.pages.VanillaPage"
+            name="Vanilla Server">
+      </page>
+   </extension>
+
+</plugin>

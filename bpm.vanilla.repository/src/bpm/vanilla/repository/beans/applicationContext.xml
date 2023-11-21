@@ -1,0 +1,253 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+ 
+
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	destroy-method="close">
+		<property name="driverClass" value="${bpm.vanilla.repository.database.driverClassName}" />
+		<property name="jdbcUrl" value="${bpm.vanilla.repository.database.jdbcUrl}" />
+		<property name="user" value="${bpm.vanilla.repository.database.userName}" />
+		<property name="password" value="${bpm.vanilla.repository.database.password}" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+	
+<!--
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="org.postgresql.Driver"/>
+			<property name="url" value="jdbc:postgresql://localhost:5432/repository"/>
+			<property name="username" value="biplatform"/>
+			<property name="password" value="biplatform"/>
+		</bean>
+-->
+	
+<!-- 
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
+		<property name="url" value="jdbc:derby://localhost:1527/../databases/repository"/>
+	</bean>
+-->
+ 
+
+
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/vanilla/repository/beans/directory/directory.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/directory/item/item.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/model/itemmodel.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/security/securedobject.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/security/secureddirectory.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/security/runnablegroup.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/annotations/comment.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/annotations/securedcomment.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/annotations/securedcommentobject.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/historique/reporthisto.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/historique/secuReporthisto.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/historique/historic.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/watchlist/watchlist.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/log/log.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/datasource/datasource.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/impact/ds_impact.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/impact/relational_impact_datasource.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/impact/di_dependant.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/versionning/lock.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/parameters/modelparameter.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/parameters/linkedparameter.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/security/securedlinked.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/directory/item/linkeddocument.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/datasprovider/datasprovider.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/datasprovider/itemdp.hbm.xml</value>
+			
+			
+				<value>bpm/vanilla/repository/beans/alert/alert.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/alert/condition.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/alert/subscriber.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/alert/action.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/alert/smtp.hbm.xml</value>
+				<value>bpm/vanilla/repository/beans/alert/event.hbm.xml</value>
+				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				 <prop key="hibernate.dialect">${bpm.vanilla.repository.database.dialect}</prop> 
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop> -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>	
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+				<prop key="hibernate.c3p0.minPoolSize">2</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">50</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop>
+				<prop key="hibernate.c3p0.max_statement">0</prop>  
+				<prop key="hibernate.c3p0.idle_test_period">30</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- Directory -->
+	<bean id="directoryDAO" class="bpm.vanilla.repository.beans.directory.DirectoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- Items -->
+	<bean id="itemDAO" class="bpm.vanilla.repository.beans.directory.item.ItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  SecuredObject -->
+	<bean id="securedObjectDAO" class="bpm.vanilla.repository.beans.security.SecuredObjectDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+		<!--  SecuredDirectory -->
+	<bean id="securedDirectoryDAO" class="bpm.vanilla.repository.beans.security.SecuredDirectoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  Comment -->
+	<bean id="commentDAO" class="bpm.vanilla.repository.beans.annotations.CommentDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  Historic Document -->
+	<bean id="historicDAO" class="bpm.vanilla.repository.beans.historique.HistoricDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  WatchList -->
+	<bean id="watchListDAO" class="bpm.vanilla.repository.beans.watchlist.WatchListDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  HistoReportGroup -->
+	<bean id="histoReportDAO" class="bpm.vanilla.repository.beans.historique.ReportHistoDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="securityHistoReportDAO" class="bpm.vanilla.repository.beans.historique.SecurityReportHistoDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  log -->
+	<bean id="logDAO" class="bpm.vanilla.repository.beans.log.LogDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	
+	<!--  datasourcce -->
+	<bean id="dataSourceDAO" class="bpm.vanilla.repository.beans.datasource.DataSourceDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  datasourcce  impact -->
+	<bean id="dataSourceImpactDAO" class="bpm.vanilla.repository.beans.impact.DataSourceImpactDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  dependancies-->
+	<bean id="directoryItemDependanceDAO" class="bpm.vanilla.repository.beans.impact.DirectoryItemDependanceDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+
+	<!--  versionning -->
+	<bean id="lockDAO" class="bpm.vanilla.repository.beans.versionning.LockDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+
+	<!--  Parameters Model-->
+	<bean id="parameterDAO" class="bpm.vanilla.repository.beans.parameters.ParameterDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="parameterManager" class="bpm.vanilla.repository.beans.parameters.ParameterManager">
+		<property name="parameterDao" ref="parameterDAO"/>
+	</bean>
+	
+	<!--  runnableGroup -->
+	<bean id="runnableGroupDAO" class="bpm.vanilla.repository.beans.security.RunnableGroupDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  Linked Documents -->
+	<bean id="linkedDocumentDAO" class="bpm.vanilla.repository.beans.directory.item.LinkedDocumentDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="securedLinkedDAO" class="bpm.vanilla.repository.beans.security.SecuredLinkedDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!-- DatasProvider -->
+	<bean id="datasProviderDAO" class="bpm.vanilla.repository.beans.datasprovider.DatasProviderDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="itemsDPDAO" class="bpm.vanilla.repository.beans.datasprovider.ItemsDPDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	
+	<!-- Alert -->
+	<bean id="alertDAO" class="bpm.vanilla.repository.beans.alert.AlertDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="conditionDAO" class="bpm.vanilla.repository.beans.alert.ConditionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="subscriberDAO" class="bpm.vanilla.repository.beans.alert.SubscriberDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="actionDAO" class="bpm.vanilla.repository.beans.alert.ActionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="smtpDAO" class="bpm.vanilla.repository.beans.alert.SmtpDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="eventDAO" class="bpm.vanilla.repository.beans.alert.EventDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="itemModelDAO" class="bpm.vanilla.repository.beans.model.ItemModelDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="relationalImpactDAO" class="bpm.vanilla.repository.beans.impact.RelationalImpactDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+</beans>

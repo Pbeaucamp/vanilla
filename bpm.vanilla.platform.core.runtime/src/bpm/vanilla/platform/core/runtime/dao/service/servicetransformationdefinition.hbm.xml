@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="bpm.vanilla.platform.core.beans.service.ServiceTransformationDefinition"
+		table="service_definition">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+
+		<property name="name" type="string">
+			<column name="name" />
+
+		</property>
+		<property name="xmlRoot" type="string">
+			<column name="xml_root" />
+		</property>
+		<property name="xmlRow" type="string">
+			<column name="xml_row" />
+		</property>
+
+		<list name="inputs" cascade="all">
+			<key>
+				<column name="definition_id" />
+			</key>
+			<index column="definition_index" />
+			<one-to-many
+				class="bpm.vanilla.platform.core.beans.service.ServiceInputData" />
+		</list>
+
+		<list name="outputs" cascade="all">
+			<key>
+				<column name="definition_id" />
+			</key>
+			<index column="definition_index2" />
+			<one-to-many
+				class="bpm.vanilla.platform.core.beans.service.ServiceOutputData" />
+		</list>
+		
+		<list name="returns" cascade="all">
+			<key>
+				<column name="definition_id" />
+			</key>
+			<index column="definition_index3" />
+			<one-to-many
+				class="bpm.vanilla.platform.core.beans.service.ServiceReturnData" />
+		</list>
+
+	</class>
+</hibernate-mapping>

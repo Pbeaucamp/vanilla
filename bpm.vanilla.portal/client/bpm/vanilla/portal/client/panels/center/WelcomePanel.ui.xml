@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.vanilla.portal.client.panels.center">
+	<ui:style>
+		.toolbarPanel {
+	
+		}
+		
+		.adminMessage {
+			padding: 50px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel">
+		<g:HTMLPanel ui:field="toolbarPanel"/>
+		<g:HTML ui:field="lblAdminMessage" addStyleNames="{style.adminMessage}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

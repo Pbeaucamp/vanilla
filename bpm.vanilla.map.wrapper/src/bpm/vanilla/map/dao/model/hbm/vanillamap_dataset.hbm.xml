@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.core.design.MapDataSet" table="MAPVANILLA_DATASET">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="dataset_name"/>
+            </property>
+
+            <property name="query" type="string">
+                <column name="query"/>
+            </property>
+
+            <property name="latitude" type="string">
+                <column name="latitude"/>
+            </property>
+
+            <property name="longitude" type="string">
+                <column name="longitude"/>
+            </property>
+
+            <property name="idZone" type="string">
+                <column name="id_zone"/>
+            </property>
+            
+            <property name="idDataSource" type="java.lang.Integer">
+                <column name="id_data_source"/>
+            </property>
+            
+            <property name="parent" type="string">
+                <column name="parent"/>
+            </property>
+            
+            <property name="type" type="string">
+                <column name="dataset_type"/>
+            </property>
+            
+            <property name="idMapVanilla" type="java.lang.Integer">
+                <column name="id_MapVanilla"/>
+            </property>
+            
+            <property name="markerUrl" type="string">
+                <column name="markerUrl"/>
+            </property>
+            
+            <property name="markerSizeMin" type="java.lang.Integer">
+                <column name="markerSizeMin" default="0"/>
+            </property>
+            
+            <property name="markerSizeMax" type="java.lang.Integer">
+                <column name="markerSizeMax" default="0"/>
+            </property>
+            
+            <property name="points" type="java.lang.Integer">
+                <column name="points" default="0"/>
+            </property>       
+            
+            <property name="zoneLabel" type="string">
+                <column name="zoneLabel"/>
+            </property> 
+                       
+            <property name="parentId" type="java.lang.Integer">
+                <column name="parentId"/>
+            </property>                 
+    </class>
+</hibernate-mapping>

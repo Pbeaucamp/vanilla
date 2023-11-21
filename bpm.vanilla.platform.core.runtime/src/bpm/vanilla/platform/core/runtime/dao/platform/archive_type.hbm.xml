@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.ArchiveType" table="archive_type">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="archive_name"/>
+            </property>
+
+            <property name="peremptionMonths" type="int">
+                <column name="peremption_months"/>
+            </property>
+            
+            <property name="retentionMonths" type="int">
+                <column name="retention_months"/>
+            </property>
+            
+            <property name="conservationMonths" type="int">
+                <column name="conservation_months"/>
+            </property>
+
+            <property name="savePath" type="string">
+                <column name="save_path"/>
+            </property>
+            
+            <property name="archive" type="boolean">
+                <column name="is_archive"/>
+            </property>
+            
+            <property name="type">
+          	    <column name="archive_type"/>
+            	<type name="org.hibernate.type.EnumType">
+            		<param name="enumClass">bpm.vanilla.platform.core.beans.ArchiveType$TypeArchive</param>
+            	</type>
+            </property>
+    </class>
+</hibernate-mapping>
+

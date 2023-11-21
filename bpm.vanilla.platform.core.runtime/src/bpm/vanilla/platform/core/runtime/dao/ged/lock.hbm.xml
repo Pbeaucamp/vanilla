@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.ged.Lock" table="ged_lock">
+            <id name="id" type="java.lang.Integer">
+                <column name="LK_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="userId" type="java.lang.Integer">
+                <column name="LK_USER_ID"/>
+            </property>
+            
+            <property name="lockDate" type="java.util.Date">
+                <column name="LK_DATE"/>
+            </property>
+            
+			<property name="docId" type="java.lang.Integer">
+                <column name="LK_DOC_ID"/>
+            </property>
+    </class>
+</hibernate-mapping>

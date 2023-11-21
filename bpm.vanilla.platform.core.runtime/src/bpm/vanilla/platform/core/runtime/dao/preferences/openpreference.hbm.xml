@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.OpenPreference" table="open_pref">
+            <id name="id" type="int">
+                <column name="OPEN_PREF_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="itemId" type="int">
+                <column name="OP_ITEM_ID"/>
+            </property>
+
+            <property name="itemName" type="string">
+                <column name="OP_ITEM_NAME"/>
+            </property>
+
+            <property name="userId" type="int">
+                <column name="OP_USER_ID"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>
+

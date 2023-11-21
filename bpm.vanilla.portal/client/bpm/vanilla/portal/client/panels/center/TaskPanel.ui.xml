@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.center.TaskPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.panelToolbar {
+			height: 40px;
+			width: 100%;
+		}
+	
+		.panelTask {
+			position: absolute;
+			top: 40px;
+			width: 100%;
+			bottom: 0px;
+		}
+		
+		.btnToolbar {
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 8px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="btnRefresh" resource="{commons.refresh_24}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelTask" addStyleNames="{style.panelTask}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

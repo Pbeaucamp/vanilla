@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <class name="bpm.vanilla.workplace.core.datasource.AbstractDatasource" table="rpy_relational_datasources">
+	    <id name="dbId" type="java.lang.Integer" column="dbId">
+	        <generator class="increment"/>
+	    </id>
+	    
+	    <discriminator column="datasource_type" type="string"/>
+	    
+    	<property name="id" type="string">
+            <column name="id"/>
+        </property>
+        
+        <property name="name" type="string">
+            <column name="ds_name"/>
+        </property>
+
+        <property name="extensionId" type="string">
+            <column name="extensionId"/>
+        </property>
+        
+        <property name="out" type="boolean">
+            <column name="out_type"/>
+        </property>
+        
+        <property name="itemId" type="int">
+            <column name="itemId"/>
+        </property>
+        
+        
+	    
+	    <subclass name="bpm.vanilla.workplace.core.datasource.ModelDatasourceFD" discriminator-value="fd">
+	        <join table="rpy_relational_datasources_fd">
+	            <key column="dbId"/>
+				<property name="modelRepositoryItemId" type="string">
+	                <column name="modelRepositoryItemId"/>
+	            </property>
+	            
+	            <property name="dictionaryRepositoryItemId" type="string">
+	                <column name="dictionaryRepositoryItemId"/>
+	            </property>
+	
+	        </join>
+	    </subclass>
+	    <subclass name="bpm.vanilla.workplace.core.datasource.ModelDatasourceJDBC" discriminator-value="jdbc">
+	        <join table="rpy_relational_datasources_jdbc">
+	            <key column="dbId"/>
+	            <property name="driver" type="string">
+	                <column name="driver"/>
+	            </property>
+	            
+	            <property name="fullUrl" type="string">
+	                <column name="fullUrl"/>
+	            </property>
+	            
+	            <property name="user" type="string">
+	                <column name="`user`"/>
+	            </property>
+	            
+	            <property name="password" type="string">
+	                <column name="password"/>
+	            </property>
+	            
+	            <property name="host" type="string">
+	                <column name="`host`"/>
+	            </property>
+	            
+	            <property name="port" type="string">
+	                <column name="port"/>
+	            </property>
+	            
+	            <property name="dbName" type="string">
+	                <column name="dbName"/>
+	            </property>
+	            
+	            <property name="fmUser" type="string">
+	                <column name="fmUser"/>
+	            </property>
+	            
+	            <property name="fmPassword" type="string">
+	                <column name="fmPassword"/>
+	            </property>
+	            
+	            <property name="useFullUrl" type="boolean">
+	                <column name="useFullUrl"/>
+	            </property>
+	            
+	            <property name="isPasswordEncrypted" type="boolean">
+	                <column name="isPasswordEncrypted"/>
+	            </property>	            	            	            	            	            	            	            	            	            	            	           
+		
+	        </join>
+	    </subclass>
+	    <subclass name="bpm.vanilla.workplace.core.datasource.ModelDatasourceRepository" discriminator-value="repository">
+	        <join table="rpy_relational_datasources_repository">
+	            <key column="dbId"/>
+	            <property name="user" type="string">
+	                <column name="`user`"/>
+	            </property>
+	            
+	            <property name="password" type="string">
+	                <column name="password"/>
+	            </property>
+	            
+	            <property name="repositoryUrl" type="string">
+	                <column name="repositoryUrl"/>
+	            </property>
+	            
+	            <property name="vanillaRuntimeUrl" type="string">
+	                <column name="vanillaRuntimeUrl"/>
+	            </property>
+	            
+	            <property name="dirId" type="string">
+	                <column name="dirId"/>
+	            </property>
+	            
+	            <property name="repositoryId" type="string">
+	                <column name="repositoryId"/>
+	            </property>
+	            
+	            <property name="groupName" type="string">
+	                <column name="groupName"/>
+	            </property>
+	            
+	            <property name="groupId" type="string">
+	                <column name="groupId"/>
+	            </property>
+	            
+	            <property name="connectionName" type="string">
+	                <column name="connectionName"/>
+	            </property>
+	            
+	            <property name="businessPackage" type="string">
+	                <column name="businessPackage"/>
+	            </property>
+	            
+	            <property name="businessModel" type="string">
+	                <column name="businessModel"/>
+	            </property>
+	            
+	            <property name="cubeName" type="string">
+	                <column name="cubeName"/>
+	            </property>	            
+		
+	        </join>
+	    </subclass>
+	</class>
+</hibernate-mapping>

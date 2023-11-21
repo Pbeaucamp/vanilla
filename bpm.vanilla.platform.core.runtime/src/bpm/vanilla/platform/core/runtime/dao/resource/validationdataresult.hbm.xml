@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.resources.ValidationDataResult" table="validation_data_result">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		
+		<property name="validationDate" type="java.util.Date">
+			<column name="validation_date"/>
+		</property>
+		
+        <property name="statut" column="type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.platform.core.beans.resources.ValidationDataResult$DataValidationResultStatut</param>
+			</type>
+		</property>
+		
+		<property name="contractId" type="java.lang.Integer">
+			<column name="contract_id"/>
+		</property>
+		
+		<property name="documentId" type="java.lang.Integer">
+			<column name="document_id"/>
+		</property>
+		
+		<property name="documentVersion" type="java.lang.Integer">
+			<column name="document_version"/>
+		</property>
+		
+		<property name="resourceId" type="string">
+			<column name="resource_id"/>
+		</property>
+		
+		<property name="message" type="string">
+			<column name="message"/>
+		</property>
+	</class>
+</hibernate-mapping>
+

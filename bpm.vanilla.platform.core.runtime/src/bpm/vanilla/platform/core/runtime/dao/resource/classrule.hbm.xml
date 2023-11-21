@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.resources.ClassRule" table="resource_class_rule">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		
+		<property name="name"/>
+		<property name="description" length="10000000"/>
+        <property name="mainClassIdentifiant"/>
+        <property name="parentPath"/>
+        <property name="type" column="type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.platform.core.beans.resources.ClassRule$TypeRule</param>
+			</type>
+		</property>
+        <property name="model" length="10000000"/>     
+		<property name="enabled" type="java.lang.Boolean">
+			<column name="enabled"/>
+		</property>
+	</class>
+</hibernate-mapping>
+

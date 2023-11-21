@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<module rename-to="VanillaPortail">
+	
+	<!-- Inherit the core Web Toolkit stuff.                  -->
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name="com.google.gwt.core.Core"/>
+	<inherits name="bpm.gwt.commons.Commons" />
+	<inherits name="bpm.gwt.workflow.commons.Commons" />
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+    <inherits name="bpm.vanilla.map.VanillaMap" />
+    <inherits name="bpm.update.manager.api.Commons" />
+    <inherits name="bpm.smart.core.SmartCore" />
+	<inherits name="bpm.fm.api.freeMetrics" />
+    <inherits name="bpm.vanillahub.core.VanillaHub" />
+	<inherits name="gwtupload.GWTUpload"/>
+	
+	<!-- Enable the keycloak library -->
+	<inherits name="org.realityforge.gwt.keycloak.Keycloak"/>
+	<!-- Enable the keycloak library -->
+	<inherits name="org.realityforge.gwt.keycloak.cache.TokenCache"/>
+  
+  	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
+  	
+	<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+  	 
+	<stylesheet src="biPortal.css"/>
+	
+	<!-- Specify the app entry point class. -->
+	<entry-point class="bpm.vanilla.portal.client.biPortal"/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+
+<!--	 French language, independent of country -->
+	<extend-property name="locale" values="fr"/>
+<!---->
+<!--	 Spanish language, independent of country -->
+<!-- 	<extend-property name="locale" values="es"/> -->
+<!--	-->
+<!--	 Simplified Chinese language, independent of country -->
+<!-- 	<extend-property name="locale" values="zh_CN"/> -->
+<!--	-->
+<!--	 Traditional Chinese language, independent of country -->
+<!-- 	<extend-property name="locale" values="zh_TW"/> -->
+<!--	-->
+<!--	 Thailand language, independent of country -->
+<!-- 	<extend-property name="locale" values="th_TH"/> -->
+<!--	-->
+<!--	 Netherland language, independent of country -->
+<!-- 	<extend-property name="locale" values="nl_NL"/> -->
+<!--	-->
+<!--	 Hindi language, independent of country -->
+<!-- 	<extend-property name="locale" values="hi_IN"/> -->
+<!--	-->
+<!--	 Portuguese language, independent of country -->
+<!-- 	<extend-property name="locale" values="pt"/> -->
+<!--	-->
+<!-- 	<extend-property name="locale" values="it"/>
+	<extend-property name="locale" values="ms_MY"/> -->
+<!-- 	<extend-property name="locale" values="ja_JP"/> -->
+<!-- 	<extend-property name="locale" values="ru_RU"/> -->
+<!-- 	<extend-property name="locale" values="pl_PL"/> -->
+
+	<extend-property name="locale" values="ara"/>
+	<extend-property name="locale" values="vi"/>
+
+	<source path='client'/>
+	<source path='shared'/>
+	<public path='pub'/>
+</module>

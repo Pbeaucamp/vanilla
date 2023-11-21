@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.platform.core.config
+Bundle-SymbolicName: bpm.vanilla.platform.core.config;singleton:=true
+Bundle-Version: 6.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.log4j,
+ org.apache.log4j.xml
+Export-Package: bpm.vanilla.platform.core.config
+Require-Bundle: bpm.vanilla.external.jars;bundle-version="5.0.0"

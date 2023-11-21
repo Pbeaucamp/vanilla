@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.RepositoryDirectory" table="rpy_directory" >
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="parentId" type="int">
+                <column name="parent_id"/>
+            </property>
+
+            <property name="dateCreation" type="date">
+                <column name="creation_date"/>
+            </property>
+
+            <property name="dateDeletion" type="date">
+                <column name="delete_date"/>
+            </property>
+
+            <property name="ownerId" type="int">
+                <column name="owner_id"/>
+            </property>
+
+            <property name="deletedBy" type="int">
+                <column name="deleted_by"/>
+            </property>
+
+            <property name="name" type="string">
+                <column name="directory_name"/>
+            </property>
+            
+            <property name="comment" type="string">
+                <column name="`comment`"/>
+            </property>
+
+            <property name="visible" type="boolean">
+                <column name="is_visible" not-null="true" default="true"/>
+            </property>
+            
+            <property name="showed" type="boolean">
+                <column name="is_showed" not-null="true" default="true"/>
+            </property>
+            
+            <property name="perso" type="boolean" >
+                <column name="is_perso" not-null="true" default="false"/>
+            </property>
+    </class>
+</hibernate-mapping>

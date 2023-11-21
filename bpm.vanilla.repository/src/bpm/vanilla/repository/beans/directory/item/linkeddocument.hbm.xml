@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.LinkedDocument" table="rpy_linked_documents">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="itemId" type="java.lang.Integer">
+                <column name="item_id"/>
+            </property>
+
+            <property name="name" type="string">
+                <column name="linked_document_name"/>
+            </property>
+
+           <property name="format" type="string">
+                <column name="format"/>
+            </property>
+            
+            <property name="relativePath" type="string">
+                <column name="relative_path"/>
+            </property>
+            
+            <property name="version" type="java.lang.Integer">
+                <column name="version"/>
+            </property>
+            
+             <property name="active" type="boolean">
+                <column name="active"/>
+            </property>
+            
+             <property name="comment" type="string">
+                <column name="`comment`"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

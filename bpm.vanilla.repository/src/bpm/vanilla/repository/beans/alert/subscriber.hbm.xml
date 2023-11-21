@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.alerts.Subscriber" table="rpy_alert_subscriber">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="alertId" type="int">
+                <column name="alert_id"/>
+            </property>
+            
+            <property name="userId" type="int">
+                <column name="user_id"/>
+            </property>
+            
+            <property name="groupId" type="int">
+                <column name="group_id"/>
+            </property>
+            
+            <property name="userName" type="string">
+                <column name="user_name"/>
+            </property>
+            
+            <property name="userMail" type="string">
+                <column name="user_mail"/>
+            </property>
+              
+    </class>
+</hibernate-mapping>

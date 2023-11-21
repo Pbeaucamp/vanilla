@@ -1,0 +1,473 @@
+body, table td, select {
+	font-family: Arial;	
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/*-------------Birt Viewer -------------*/
+.gwt-reportFrame{
+	width: 100%;
+	height: 60%;
+}
+
+.gwt-panelListParam{
+	padding-left: 10px;
+	width: 100%;
+}
+
+.gwt-parameterListBox{
+	padding-left: 10px;
+	width: 100%;
+	height: 100px;
+}
+
+.gwt-reportFrame{
+	background-color: white;
+	width: 1100px;
+	height: 500px;
+	z-index: 500;
+}
+
+.gwt-reportPanel{
+	background-color: white;
+	z-index: 1;
+}
+
+/*New Version*/
+.gwt-PopupPanel {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none !important;
+    border-radius: 10px;
+    padding: 0 !important;
+    z-index: 2 !important;
+}
+
+.gwt-DialogBox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5) !important;
+    min-height: 100% !important;
+    width: 100% !important;
+}
+.gwt-DialogBox .dialogTop td, .gwt-DialogBox .dialogMiddle td, .gwt-DialogBox .dialogBottom td {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.gwt-DialogBox .Caption {
+    display: none;
+}
+
+/*CSS Custom Dialog*/
+.custom-dialog-mainPanel {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.custom-dialog-min {
+    top: 100px;
+}
+
+.custom-dialog-max {
+    top: 3px !important;
+    left: 3px !important;
+    width: 99% !important;
+    height: 98% !important;
+}
+
+.custom-dialog-panelButton {
+    position: absolute;
+	right: 10px;
+	bottom: 10px;
+    height: 50px;
+}
+
+.custom-dialog-contentPanel {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+	top: 0px;
+}
+
+.custom-dialog-contentPanel-no-button {
+	bottom: 0px !important;
+}
+
+.custom-dialog-button {
+	background: none repeat scroll 0 0 #444444 !important;
+	border: 1px solid #555555 !important;
+	color: #FFFFFF;
+	cursor: pointer;
+	height: 40px;
+	margin-top: 5px;
+	margin-left: 15px;
+	width: 150px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+}
+
+.custom-dialog-button:HOVER {
+	background: none repeat scroll 0 0 #EAEAEA !important;
+	color: #000000;
+}
+
+.custom-dialog-glass {
+	background-color: #000000;
+	opacity: 0.3;
+	z-index: 1;
+}
+
+.custom-dialog-zIndex {
+	z-index: 2 !important;
+}
+
+.custom-dialog-glass-zIndex {
+	background-color: #000000;
+	opacity: 0.3;
+	z-index: 2;
+}
+
+.gwt-Frame {
+    border: 0 none;
+    height: 100%;
+    width: 100%;
+}
+
+.dateBoxPopup {
+	z-index: 2;
+}
+
+/******************/
+/* DateBox Styles */
+/******************/
+
+.gwt-DatePicker {
+	border: 1px solid #ccc;
+	border-top:1px solid #999;
+	cursor: default;
+}
+
+.gwt-DatePicker td,
+.datePickerMonthSelector td:focus {
+	outline: none;
+}
+
+.datePickerMonthSelector td:focus {
+	outline: none;
+}
+
+.datePickerDays {
+	width: 100%;
+	background: white;
+}
+
+.datePickerDay,
+.datePickerWeekdayLabel,
+.datePickerWeekendLabel {
+	font-size: 85%;
+	text-align: center;
+	padding: 4px;
+	outline: none;
+	font-weight:bold;
+	color:#333;
+	border-right: 1px solid #EDEDED;
+	border-bottom: 1px solid #EDEDED;
+}
+
+.datePickerWeekdayLabel,
+.datePickerWeekendLabel {
+	background: #fff;
+	padding: 0px 4px 2px;
+	cursor: default;
+	color:#666;
+	font-size:70%;
+	font-weight:normal;
+}
+
+.datePickerDay {
+	padding: 4px 7px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.datePickerDayIsWeekend {
+	background: #f7f7f7;
+}
+
+.datePickerDayIsFiller {
+	color: #999;
+	font-weight:normal;
+}
+
+.datePickerDayIsValue {
+	background: #d7dfe8;
+}
+
+.datePickerDayIsDisabled {
+	color: #AAAAAA;
+	font-style: italic;
+}
+
+.datePickerDayIsHighlighted {
+	background: #F0E68C;
+}
+
+.datePickerDayIsValueAndHighlighted {
+	background: #d7dfe8;
+}
+
+
+
+.datePickerMonthSelector {
+	width: 100%;
+	padding: 1px 0 5px 0;
+	background: #fff;
+}
+
+.datePickerPreviousButton,
+.datePickerNextButton,
+.datePickerPreviousYearButton,
+.datePickerNextYearButton {
+	font-size: 120%;
+	line-height: 1em;
+	color: #3a6aad;
+	cursor: hand;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0px 4px;
+	outline: none;
+}
+
+td.datePickerMonth,
+td.datePickerYear {
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-size: 100%;
+	font-weight: bold;
+	color: #333;
+}
+
+.gwt-DateBox {
+	padding: 5px 4px;
+	border: 1px solid #ccc;
+	border-top: 1px solid #999;
+	font-size: 100%;
+}
+
+.gwt-DateBox input {
+	width: 8em;
+}
+
+.dateBoxFormatError {
+	background: #ffcccc;
+}
+
+.dateBoxPopup {
+	z-index: 3;
+}
+
+/******************/
+/* TimeBox Styles */
+/******************/
+.customToggle {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    opacity: 1;
+    padding: 0;
+    cursor: pointer;
+}
+
+.timePickerReadOnly,.timePickerReadOnlySmall {
+	font-weight: bold;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	color: black;
+	background-color: #F2F2F2;
+	padding: 6px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(top, #E0E0E0, #E6E6E6, #8F8F8F);
+	background-image: -moz-linear-gradient(top, #E0E0E0, #E6E6E6, #8F8F8F);
+	background-image: -ms-linear-gradient(top, #E0E0E0, #E6E6E6, #8F8F8F);
+	background-image: -o-linear-gradient(top, #E0E0E0, #E6E6E6, #8F8F8F);
+	background-image: linear-gradient(top, #E0E0E0, #E6E6E6, #8F8F8F);
+	border: 1px solid #535353;
+	-webkit-box-shadow: 0px 1px 0px 0px black;
+	-moz-box-shadow: 0px 1px 0px 0px black;
+	box-shadow: 0px 1px 0px 0px black;
+}
+
+.timePickerReadOnly {
+	font-size: 18px;
+}
+
+.timePickerReadOnlySmall {
+	font-size: 12px;
+}
+
+.timePicker {
+	display: inline-block;
+	padding: 2px 5px 0px;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 3px 4px -2px #333333 inset;
+	-webkit-box-shadow: 0 3px 4px -2px #333333 inset;
+	box-shadow: 0 3px 4px -2px #333333 inset;
+	border: 1px solid #222222;
+	background-color: white;
+}
+
+.timePickerEntry,.timePickerEntrySmall {
+	font-weight: bold;
+	display: inline-block;
+	text-decoration: none;
+	border: none;
+	background-color: transparent;
+}
+
+.timePickerEntry {
+	font-size: 18px;
+}
+
+.timePickerEntrySmall {
+	font-size: 12px;
+}
+
+.gwt-TreeItem {
+    display: block !important;
+}
+
+.ol-popup {
+	position: absolute;
+	background-color: white;
+	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #cccccc;
+	bottom: 12px;
+	left: -50px;
+	min-width: 280px;
+}
+
+.ol-popup:after,.ol-popup:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.ol-popup:after {
+	border-top-color: white;
+	border-width: 10px;
+	left: 48px;
+	margin-left: -10px;
+}
+
+.ol-popup:before {
+	border-top-color: #cccccc;
+	border-width: 11px;
+	left: 48px;
+	margin-left: -11px;
+}
+
+.ol-popup-closer {
+	text-decoration: none;
+	position: absolute;
+	top: 2px;
+	right: 8px;
+}
+
+.ol-popup-closer:after {
+	content: "X";
+}
+
+.display-cities {
+	top: 65px;
+	left: .5em;
+}
+
+.display-countries {
+	top: 95px;
+	left: .5em;
+}
+
+.reset {
+	top: 125px;
+	left: .5em;
+}
+
+.legend {
+	top: 600px;
+	left: .5em;
+}
+
+.ol-touch .display-cities .display-countries .reset .legend {
+	top: 80px;
+}
+
+
+
+
+
+
+.flex {		
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexOne {
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexOneTwo {
+	-webkit-box-flex: 2;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 2;         /* OLD - Firefox 19- */
+	-webkit-flex: 2;          /* Chrome */
+	-ms-flex: 2;              /* IE 10 */
+	flex: 2;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexColumn {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	flex-flow: column;
+}
+
+.relative {
+	position: relative;
+}
+
+.fusionChart span>svg>text>tspan{
+    display:none;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.runtime.dao.preferences.UserRunConfigurationBean" table="user_run_config">
+            <id name="id" type="int">
+                <column name="userrun_id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="runId" type="int">
+                <column name="userrun_runid"/>
+            </property>
+
+            <property name="runName" type="string">
+                <column name="userrun_runname"/>
+            </property>
+
+            <property name="userId" type="int">
+                <column name="userrun_userid"/>
+            </property>
+            
+            <property name="repId" type="int">
+                <column name="userrun_repid"/>
+            </property>
+            
+            <property name="itemId" type="int">
+                <column name="userrun_itemid"/>
+            </property>
+            
+            <property name="paramName" type="string">
+                <column name="userrun_paramname"/>
+            </property>
+            
+            <property name="paramValue" type="string">
+                <column name="userrun_paramvalue"/>
+            </property>
+            
+            <property name="description" type="string">
+                <column name="userrun_description"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>
+

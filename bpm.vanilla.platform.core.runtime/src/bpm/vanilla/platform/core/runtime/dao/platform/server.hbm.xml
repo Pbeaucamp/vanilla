@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.Server" table="vanilla_servers">
+            <id name="id" type="java.lang.Integer">
+                <column name="SERVER_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="SERVER_NAME"/>
+            </property>
+
+            <property name="description" type="string">
+                <column name="SERVER_DESCRIPTION"/>
+            </property>
+
+            <property name="url" type="string">
+                <column name="SERVER_URL"/>
+            </property>
+
+            <property name="type" type="int">
+                <column name="SERVER_TYPE"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

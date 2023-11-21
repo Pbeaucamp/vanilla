@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.vanilla.portal.client.widget.custom.ItemThumbnailPanel.MyStyle">
+		.itemPanel {
+	    	border: 1px solid #D3D3D3;
+    		float: left;
+    		margin: 10px;
+		}
+	
+		.imgItem {
+			padding: 10px;
+			background-position: center !important;
+		}
+		
+		.lblItem {
+	    	background: none repeat scroll 0 0 #D3D3D3;
+    		padding: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.itemPanel}">
+		<g:Image ui:field="imgItem"/>
+		<g:Label ui:field="lblItem" addStyleNames="{style.lblItem}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

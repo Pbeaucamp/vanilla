@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.GroupProjection" table="rpy_groupprojection">
+            <id name="id" type="int">
+                <column name="GP_ID" />
+                <generator class="increment"/>
+            </id>
+
+            <property name="groupId" type="int">
+                <column name="GP_GROUP_ID"/>
+            </property>
+
+			<property name="fasdId" type="int">
+                <column name="GP_FASD_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

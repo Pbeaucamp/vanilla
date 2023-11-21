@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.Address" table="ADDRESS">
+            <id name="id" type="java.lang.Integer">
+                <column name="AD_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="label" type="java.lang.String">
+                <column name="AD_Label"/>
+            </property>
+
+            <property name="addressType" type="java.lang.String">
+                <column name="AD_Address_Type"/>
+            </property>
+
+            <property name="street1" type="java.lang.String">
+                <column name="AD_Street1"/>
+            </property>
+
+            <property name="street2" type="java.lang.String">
+                <column name="AD_Street2"/>
+            </property>
+
+            <property name="zipCode" type="java.lang.Integer">
+                <column name="AD_ZipCode"/>
+            </property>
+
+            <property name="INSEECode" type="java.lang.Integer">
+                <column name="AD_INSEECode"/>
+            </property>
+
+            <property name="city" type="java.lang.String">
+                <column name="AD_City"/>
+            </property>
+
+            <property name="country" type="java.lang.String">
+                <column name="AD_Country"/>
+            </property>
+
+            <property name="bloc" type="java.lang.String">
+                <column name="AD_Bloc"/>
+            </property>
+
+            <property name="arrondissement" type="java.lang.String">
+                <column name="AD_Arrondissement"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

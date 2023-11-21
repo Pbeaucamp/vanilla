@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.openlayers.impl.OpenLayersMapObjectProperty" table="OPEN_LAYERS_MAP_OBJECT_PROPERTY">
+            <id name="id" type="java.lang.Integer">
+                <column name="OLMOP_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="openLayersMapObjectId" type="java.lang.Integer">
+                <column name="OLMOP_OLMOID"/>
+            </property>
+
+            <property name="name" type="java.lang.String">
+                <column name="OLMOP_NAME"/>
+            </property>
+            
+            <property name="value" type="java.lang.String">
+                <column name="OLMOP_VALUE"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,180 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='commonsLabel' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.center.ItemInformationPanel.MyStyle">
+		.mainPanel {
+		}
+		
+		.topPanel {
+    	    border-bottom: 1px solid #8B8B8B;
+		    display: inline-block;
+		    width: 100%;
+		}
+		
+		.itemName {
+   		    display: inline-block;
+		    margin: 10px;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    width: 190px;
+		}
+	
+		.titleSection {
+		    background: #D2F3C7;
+		    line-height: 25px;
+		    text-align: center;
+		    vertical-align: middle;
+		}
+		
+		.panelImg {
+			background-position: center !important;
+			width: 100% !important;
+			text-align: center;
+		}
+		
+		.imgItem {
+			padding: 0px 20px;
+		}
+	
+		.labels {
+	    	color: #888888;
+    		margin-left: 20px;
+		}
+	
+		.info {
+    		margin-left: 20px;
+   		    color: #484848;
+		}
+		
+		.panelMainTool {
+			text-align: center;
+		}
+		
+		.panelTool {
+			display: inline-block;
+			margin: 8px auto 5px;
+		}
+		
+		.imgToolbar {
+			height: 20px !important;
+			width: 20px !important;
+		    background-position: center !important;
+		    background-color: #2F2F2F !important;
+		    border: medium none;
+		    box-shadow: 0 0 5px rgba(50, 50, 50, 0.75);
+		    padding: 5px;
+			cursor: pointer;
+		}
+		
+		.imgToolbar:HOVER {
+			background-color: #3B99CB !important;
+		}
+		
+		.btnFloatRight {
+			float: right;
+			display: inline-block;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.topPanel}">
+			<g:Label ui:field="txtItemName" addStyleNames="{style.itemName}"/>
+			<g:Image ui:field="btnComment" resource="{commons.viewer_comment}" title="{commonsLabel.Comments}" addStyleNames="{style.btnToolbar},{style.btnFloatRight}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelMainTool}">
+			<g:HTMLPanel addStyleNames="{style.panelTool}">
+		        <g:Image ui:field="btnRun" title="{label.Run}" resource="{resources.item_run}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnView" title="{label.View}" resource="{resources.runAppliBig}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnHistory" title="{label.History}" resource="{resources.historique}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnRunFaWeb" title="{commonsLabel.OpenInAnalysis}" resource="{resources.item_open_fa_web}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnBirtViewer" title="{label.BirtViewer}" resource="{resources.birtviewer}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnProperties" title="{label.Properties}" resource="{resources.item_properties}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnDelete" title="{label.Delete}" resource="{resources.item_delete}" styleName="{style.imgToolbar}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<div class="{style.panelImg}">
+			<g:Image ui:field="imgItem" />
+		</div>
+		<g:HTMLPanel addStyleNames="{style.panelMainTool}">
+			<g:HTMLPanel addStyleNames="{style.panelTool}">
+	        	<g:Image ui:field="btnSubscribe" title="{label.SubscribeToItem}" resource="{resources.subscribe}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnAddWatchlist" title="{label.AddToMyWatchList}" resource="{resources.item_watchlist}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnRemoveWatchlist" title="{label.RemoveToMyWatchList}" resource="{resources.removeWatchlistBig}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnAddOnOpen" title="{label.OnOpen}" resource="{resources.item_on_open}" styleName="{style.imgToolbar}"/>
+	        	<g:Image ui:field="btnRemoveOnOpen" title="{label.RemoveFromOnStartup}" resource="{resources.RemoveOnOpen}" styleName="{style.imgToolbar}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		
+		<g:Label ui:field="lblGeneralInformations" text="{label.GeneralInfo}" addStyleNames="{style.titleSection}"/>
+
+		<table>
+			<tr>
+				<td>
+					<g:Label addStyleNames="{style.labels}" text="{label.Name}" />
+				</td>
+				<td>
+					<g:Label ui:field="txtInfoName" addStyleNames="{style.info}" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<g:Label addStyleNames="{style.labels}" text="{label.CreationDate}" />
+				</td>
+				<td>
+					<g:Label ui:field="txtInfoCreationDate" addStyleNames="{style.info}" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<g:Label addStyleNames="{style.labels}" text="{label.LastUpdateDate}" />
+				</td>
+				<td>
+					<g:Label ui:field="txtModificationDate" addStyleNames="{style.info}" />
+				</td>
+			</tr>
+			
+<!-- 			<tr> -->
+<!-- 				<td> -->
+<!-- 					<g:Label addStyleNames="{style.labels}" text="{label.Type}" /> -->
+<!-- 				</td> -->
+<!-- 				<td> -->
+<!-- 					<g:Label ui:field="txtType" addStyleNames="{style.info}" /> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			
+<!-- 			<tr> -->
+<!-- 				<td> -->
+<!-- 					<g:Label addStyleNames="{style.labels}" text="{label.SubType}" /> -->
+<!-- 				</td> -->
+<!-- 				<td> -->
+<!-- 					<g:Label ui:field="txtSubtype" addStyleNames="{style.info}" /> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 

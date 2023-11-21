@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.Variable" table="va_variables">
+            <id name="id" type="java.lang.Integer">
+                <column name="VAR_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="VAR_NAME"/>
+            </property>
+            
+            <property name="value" type="string">
+                <column name="VAR_VALUE"/>
+            </property>
+            
+            <property name="type" type="java.lang.Integer">
+                <column name="VAR_TYPE"/>
+            </property>
+            
+             <property name="scope" type="java.lang.Integer">
+                <column name="VAR_SCOPE"/>
+            </property>
+            
+            <property name="source" type="string">
+                <column name="VAR_SOURCE"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

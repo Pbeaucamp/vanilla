@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='labels' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.link {
+			color: #265301;
+			cursor: pointer;
+		    margin-bottom: 8px;
+		    margin-top: 12px;
+		    text-decoration: underline;
+		    width: 158px;
+		}
+		
+		.link:hover {   
+			color: #008CBA;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="link">
+		<g:Label ui:field="lblItem" addStyleNames="{style.link}"/>
+	</g:FocusPanel>
+</ui:UiBinder> 

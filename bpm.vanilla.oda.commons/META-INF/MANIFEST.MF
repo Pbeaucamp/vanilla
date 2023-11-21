@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.oda.commons
+Bundle-SymbolicName: bpm.vanilla.oda.commons;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.vanilla.oda.commons.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.vanilla.platform.core;bundle-version="4.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.vanilla.oda.commons,
+ bpm.vanilla.oda.commons.nls,
+ bpm.vanilla.oda.commons.trees,
+ bpm.vanilla.oda.commons.ui.icons,
+ bpm.vanilla.security.preferences
+Bundle-Vendor: BPM-Conseil

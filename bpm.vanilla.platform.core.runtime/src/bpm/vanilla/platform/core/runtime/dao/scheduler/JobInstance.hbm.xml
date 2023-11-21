@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.scheduler.JobInstance" table="scheduler_jobinstance">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment"/>
+		</id>
+
+		<property name="jobId" type="int">
+			<column name="job_id"/>
+		</property>
+
+		<property name="resultType" type="int">
+			<column name="resultType"/>
+		</property>
+
+		<property name="message" type="string">
+			<column name="message" length="10000000"/>
+		</property>
+
+		<property name="startDate" type="java.util.Date">
+			<column name="date_start"/>
+		</property>
+
+		<property name="endDate" type="java.util.Date">
+			<column name="date_end"/>
+		</property>
+	</class>
+</hibernate-mapping>

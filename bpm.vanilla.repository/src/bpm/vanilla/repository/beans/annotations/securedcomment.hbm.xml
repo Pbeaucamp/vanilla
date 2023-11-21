@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.SecuredComment" table="rpy_secured_annotations">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="groupId" type="java.lang.Integer">
+                <column name="group_id"/>
+            </property>
+
+            <property name="commentId" type="java.lang.Integer">
+                <column name="comment_id"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

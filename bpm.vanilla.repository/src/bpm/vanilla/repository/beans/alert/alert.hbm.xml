@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.alerts.Alert" table="rpy_alert_definition">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="alert_name"/>
+            </property>
+            
+            <property name="dataProviderId" type="int">
+                <column name="dataprovider_id"/>
+            </property>
+            
+            <property name="operator" type="string">
+                <column name="operator"/>
+            </property>
+            
+            <property name="description" type="string">
+                <column name="description"/>
+            </property>
+            
+            <property name="state" type="int">
+                <column name="state"/>
+            </property>
+            
+            <property name="typeAction" type="int">
+                <column name="type_action"/>
+            </property>
+            
+            <property name="eventId" type="int">
+                <column name="event_id"/>
+            </property>
+            
+            
+    </class>
+</hibernate-mapping>

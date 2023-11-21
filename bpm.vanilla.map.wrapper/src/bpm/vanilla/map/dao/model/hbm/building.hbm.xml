@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.Building" table="BUILDING">
+            <id name="id" type="java.lang.Integer">
+                <column name="BU_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="addressId" type="java.lang.Integer">
+                <column name="BU_Address_ID"/>
+            </property>
+
+            <property name="label" type="java.lang.String">
+                <column name="BU_Label"/>
+            </property>
+
+            <property name="type" type="java.lang.String">
+                <column name="BU_Type"/>
+            </property>
+
+            <property name="latitude" type="java.lang.Double">
+                <column name="BU_Latitude"/>
+            </property>
+
+            <property name="longitude" type="java.lang.Double">
+                <column name="BU_Longitude"/>
+            </property>
+
+            <property name="altitude" type="java.lang.Double">
+                <column name="BU_Altitude"/>
+            </property>
+
+            <property name="surface" type="java.lang.Double">
+                <column name="BU_Surface"/>
+            </property>
+
+            <property name="sizeX" type="java.lang.Double">
+                <column name="BU_SizeX"/>
+            </property>
+
+            <property name="sizeY" type="java.lang.Double">
+                <column name="BU_SizeY"/>
+            </property>
+
+            <property name="nbFloors" type="java.lang.Integer">
+                <column name="BU_NbFloors"/>
+            </property>
+
+            <property name="imageId" type="java.lang.Integer">
+                <column name="BU_Image_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

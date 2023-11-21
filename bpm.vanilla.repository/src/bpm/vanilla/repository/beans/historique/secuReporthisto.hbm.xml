@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.repository.beans.historique.SecurityReportHisto" table="sec_histo_report">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="directoryItemId" type="int">
+                <column name="item_id"/>
+            </property>
+
+            <property name="groupId" type="int">
+                <column name="group_id"/>
+            </property>
+            
+            
+
+            
+    </class>
+</hibernate-mapping>

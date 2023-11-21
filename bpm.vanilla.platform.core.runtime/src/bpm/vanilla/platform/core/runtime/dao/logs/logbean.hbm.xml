@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.LogBean" table="vanilla_logs">
+            <id name="id" type="long">
+                <column name="LOGS_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="date" type="java.util.Date">
+               <column name="LOG_DATE" />
+            </property>
+            
+            <property name="objectType" type="java.lang.String">
+              <column name="LOG_OBJECT_TYPE" /> 
+            </property>
+            
+            <property name="repositoryUrl" type="java.lang.String">
+            	<column name="LOG_REPOSITORY_ID" />   
+            </property>
+            
+            <property name="directoryItemId" type="long">
+               <column name="LOG_DIRECTORY_ITEM_ID" />
+            </property>
+            <property name="stepName" type="java.lang.String">
+               <column name="LOG_STEP_NAME" />
+            </property>
+            <property name="message" type="java.lang.String">
+               <column name="LOG_MESSAGE" />
+            </property>
+            <property name="levelInfo" type="java.lang.String">
+               <column name="LOG_LEVEL" />
+            </property>
+            
+             <property name="runningInstanceId" type="long">
+               <column name="LOGS_RUNNING_INSTANCE_ID" />
+            </property>
+            
+             <property name="stepClassName" type="java.lang.String">
+               <column name="LOG_STEP_CLASS" />
+            </property>
+            
+            <property name="runtimeInstanceUrl" type="java.lang.String">
+               <column name="LOGS_RUNNING_SERVER_URL" />
+            </property>
+            
+            
+            
+    </class>
+</hibernate-mapping>

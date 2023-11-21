@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="bpm.vanilla.platform.core.beans.Widgets" table="Widgets">
+			
+			<id name="widgetId" type="int">
+                <column name="WIDGETID"/>
+				 <generator class="increment"/>
+            </id>
+            
+             <property name="widgetUrl" type="string">
+                <column name="WIDGETURL" />
+            </property>
+            
+             <property name="positionX" type="int">
+                <column name="POSITIONX" />
+            </property>
+            
+            <property name="positionY" type="int">
+                <column name="POSITIONY" />
+            </property>
+            
+            <property name="width" type="int">
+                <column name="WIDTH" />
+            </property>
+            
+            <property name="height" type="int">
+                <column name="HEIGHT" />
+            </property>
+            
+            <property name="user" type="int">
+                <column name="USERID" />
+            </property>
+	</class>
+</hibernate-mapping>

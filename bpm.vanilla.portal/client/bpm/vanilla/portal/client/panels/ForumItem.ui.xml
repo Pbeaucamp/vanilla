@@ -1,0 +1,172 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.ForumItem.MyStyle">
+		.mainPanel {
+			position: relative;
+			margin: 10px;
+			box-shadow: 0 0 2px #222222;
+		}
+		
+		.panelToolbar {
+			height: 40px;
+			width: 100%;
+			position: relative;
+			background-color: #aaa
+		}
+		
+		.panelContent {
+			display: block;
+			position: relative;
+		}
+		
+		.panelLeft {
+			position: absolute;
+			width : 150px;
+			left: 0;
+			background-color: #ddd;
+			display: block;
+			min-height: 500px;
+		}
+		
+		.panelRight {
+			position: absolute;
+			left: 150px;
+			right: 0;
+			top: 0;
+			min-height: 200px;
+			display: block;
+			padding-left: 5px;
+		}
+		
+		.btnToolbar {
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 8px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.drop {
+    		float:right;
+		}
+		
+		.lbl {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 10px;
+			margin-top: 12px;
+		}
+		
+		.imgItem {
+			margin: 11px;
+		}
+		
+		.btnLaunch {
+			position:absolute;
+			top: 11px;
+			right: 11px;
+			height: 16px!important;
+			width: 16px!important;
+			background-size: cover!important;
+		}
+		
+		.btnLaunch:HOVER {
+			background-color: white!important;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444;
+			border: 1px solid #555555;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			width: 30%;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			padding: 0 !important;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA;
+			color: #000000;
+		}
+		
+		.btnValid {
+		    margin-right: 5px;
+		}
+		
+		.commentTxt {
+		    height: 150px;
+		    margin-bottom: 10px;
+		    margin-top: 10px;
+			margin-right: 10px;
+		    width: 68%;
+		    resize: none;
+		    display: inline-block;
+		}
+		
+		.gridGroupCommentsPanel {
+		    margin-bottom: 15px;	
+		}
+		
+		.panelGroup {
+		   width: 30%;
+		   display: inline-block;
+		   max-height: 150px;
+		   vertical-align: top;
+		   margin-top: 10px;
+		}
+		
+		.popup {
+			bottom: 60px !important;
+			left: 100px !important;
+			right: 100px !important;
+			top: 20px !important;
+			box-shadow : 0px 0 12px 1px #696969;
+			overflow: auto!important;
+			z-index: 1;
+			background-color: white;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+	
+		<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Label ui:field="lblName" addStyleNames="{style.lbl}"/>
+			<g:Image ui:field="btnExpend" resource="{resources.ic_arrow_drop_down_black_36dp}" title="{label.Expend}" addStyleNames="{style.btnToolbar} {style.drop}"/>
+			<g:Image ui:field="btnCollapse" resource="{resources.ic_arrow_drop_up_black_36dp}" title="{label.Collapse}" addStyleNames="{style.btnToolbar} {style.drop}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelContent" addStyleNames="{style.panelContent}">
+			<g:HTMLPanel ui:field="panelLeft" addStyleNames="{style.panelLeft}">
+				<g:Image ui:field="imgItem" addStyleNames="{style.imgItem}"/>
+				<g:Image ui:field="btnLaunch" resource="{commons.ic_launch_black_24dp}" title="{label.Launch}" addStyleNames="{style.btnLaunch}"/>
+				<g:Label ui:field="lblDate" addStyleNames="{style.lbl}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelRight" addStyleNames="{style.panelRight}">
+				<g:HTMLPanel ui:field="panelComments">
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<g:TextArea ui:field="txtComment" addStyleNames="{style.commentTxt}"/>
+					<g:SimplePanel ui:field="panelGroup" addStyleNames="{style.panelGroup}"/>
+					<g:Button ui:field="btnNewCom" addStyleNames="{style.btn},{style.btnValid}"/>	
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

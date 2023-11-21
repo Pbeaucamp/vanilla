@@ -1,0 +1,8 @@
+{
+	"realm": "databfc",
+	"auth-server-url": "https://databfc-keycloak.data4citizen.com/",
+	"ssl-required": "external",
+	"resource": "vanilla",
+	"public-client": true,
+	"confidential-port": 0
+}

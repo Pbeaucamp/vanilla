@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.fusionmap.impl.FusionMapObject" table="FUSION_MAP_OBJECT">
+            <id name="id" type="long">
+                <column name="FMO_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="description" type="java.lang.String">
+                <column name="FMO_DESCRIPTION"/>
+            </property>
+
+            <property name="name" type="java.lang.String">
+                <column name="FMO_NAME"/>
+            </property>
+
+            <property name="swfFileName" type="java.lang.String">
+                <column name="FMO_SWF_FILE_NAME"/>
+            </property>
+
+          	<property name="type" type="java.lang.String">
+                <column name="FMO_TYPE"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

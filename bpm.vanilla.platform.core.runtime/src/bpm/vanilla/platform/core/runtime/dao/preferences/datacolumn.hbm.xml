@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.data.DataColumn"
+		table="datacolumn">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+
+		<property name="idDataset" type="int">
+			<column name="idDataset" />
+		</property>
+		
+		<property name="columnName" type="string">
+			<column name="columnName" />
+		</property>
+		
+		<property name="columnTypeName" type="string">
+			<column name="columnTypeName" />
+		</property>
+
+		<property name="columnType" type="int">
+			<column name="columnType" />
+		</property>
+
+		<property name="columnLabel" type="string">
+			<column name="columnLabel"/>
+		</property>
+		
+		<property name="typesXml" type="string">
+			<column name="typesXml"  length="500000"/>
+		</property>
+		
+		<property name="ft">
+			<column name="ft"/>
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.platform.core.beans.data.DataColumn$FunctionalType</param>
+			</type>
+		</property>
+		
+		<property name="customDataType">
+			<column name="customDataType"/>
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.platform.core.beans.data.DataType</param>
+			</type>
+		</property>
+
+	</class>
+</hibernate-mapping>
+

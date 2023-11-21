@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.BiwLogs" table="biw_logs">
+            
+            <id name="id" type="int">
+                <column name="LOGS_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="repositoryID" type="string">
+                <column name="LOG_REPOSITORY_ID"/>
+            </property>
+
+            <property name="directoryItem" type="string">
+                <column name="LOG_DIRECTORY_ITEM_ID"/>
+            </property>
+            
+            <property name="runid" type="int">
+                <column name="LOG_RUN_ID"/>
+            </property>
+            
+            <property name="runstart" type="java.util.Date">
+                <column name="LOG_STARTRUN_DATE"/>
+            </property>
+
+            <property name="processID" type="string">
+                <column name="LOG_PROCESS_ID"/>
+            </property>
+            
+            <property name="activityID" type="string">
+                <column name="LOG_ACTIVITY_ID"/>
+            </property>
+
+            <property name="startDate" type="java.util.Date">
+                <column name="LOG_START_DATE"/>
+            </property>
+
+            <property name="stopDate" type="java.util.Date">
+                <column name="LOG_STOP_DATE"/>
+            </property>
+            
+            <property name="difference" type="int">
+                <column name="LOG_TIME_DIFFERENCE"/>
+            </property>
+            
+           
+            
+            
+    </class>
+</hibernate-mapping>

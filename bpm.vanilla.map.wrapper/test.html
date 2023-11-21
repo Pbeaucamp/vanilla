@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="menu.js">
+
+</script>
+<link rel="stylesheet" type="text/css" href="menu.css" />
+</head>
+<body>
+<script type="text/javascript">
+var menu = new Menu("menu", // handle for the Menu for internal Usage 
+		"containerA", 		// containerId for the menu
+		false,
+		3,					// number of items to render at the same time
+							// an array containing the datas to draw
+		new Array("Spain", "USA", "Canada", "Austria", "Australia", "UK", "Germany", "Philipina"),
+							// fonction to execute on selection
+		"alert(menu.currentValue);", 
+		400);				// width for the menu
+</script>
+	<div id="containerA">
+		<script type="text/javascript">
+			
+			menu.render();
+		
+		</script>
+	</div>
+	
+</body>
+</html>

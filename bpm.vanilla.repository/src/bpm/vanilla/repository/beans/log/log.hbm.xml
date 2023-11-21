@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.RepositoryLog" table="rpy_log">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="appName" type="string">
+                <column name="app_name"/>
+            </property>
+
+            <property name="function" type="string">
+                <column name="`function`"/>
+            </property>
+
+      
+			<property name="operation" type="string">
+                <column name="operation"/>
+            </property>
+
+            <property name="objectId" type="int">
+                <column name="item_id"/>
+            </property>
+      
+            <property name="userId" type="int">
+                <column name="LOG_USER_ID"/>
+            </property>
+            
+             <property name="clientIp" type="string">
+                <column name="client_id"/>
+            </property>
+            
+            <property name="serverIp" type="string">
+                <column name="server_ip"/>
+            </property>
+            
+             <property name="groupId" type="java.lang.Integer">
+                <column name="group_id"/>
+            </property>
+            
+            <property name="time" type="java.util.Date">
+                <column name="log_time"/>
+            </property>
+            
+            <property name="delay" type="long">
+                <column name="delay"/>
+            </property>
+            
+            <property name="query" type="string">
+                <column name="query"/>
+            </property>
+            
+            <property name="outputType" type="string">
+                <column name="output_type"/>
+            </property>
+            
+            <property name="xml" type="string">
+                <column name="`xml`"/>
+            </property>
+            
+            <property name="userDefined1" type="string">
+                <column name="user_defined_1"/>
+            </property>
+            
+            <property name="userDefined2" type="string">
+                <column name="user_defined_2"/>
+            </property>
+            
+            <property name="userDefined3" type="string">
+                <column name="user_defined_3"/>
+            </property>
+    </class>
+</hibernate-mapping>

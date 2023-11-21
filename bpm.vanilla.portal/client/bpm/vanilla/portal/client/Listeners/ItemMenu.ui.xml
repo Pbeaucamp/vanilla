@@ -1,0 +1,65 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.panel {
+			margin: 5px;
+		    border: 1px solid #778899;
+			color: #484848;
+			padding: 10px 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.menuBar {
+			
+		}
+		
+		.labelType {
+			border-bottom: 1px solid #484848;
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelTypeEnd {
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelType:HOVER, .labelTypeEnd:HOVER {
+			background: #484848;
+			color: #fff;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelMenu" addStyleNames="{style.panel}">
+		<g:MenuBar ui:field="menuBar" vertical='true' styleName="{style.menuBar}">
+	        <g:MenuItem ui:field="btnRun" text="{label.Run}" styleName="{style.labelType}"/>
+	        <g:MenuItem ui:field="btnAccessRequest" text="{label.RequestAccess_AskForAccess}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnView" text="{label.View}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnHistory" text="{label.History}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnRunFaWeb" text="{commons.OpenInAnalysis}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnBirtViewer" text="{label.BirtViewer}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnProperties" text="{label.Properties}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnDelete" text="{label.Delete}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnSubscribe" text="{label.SubscribeToItem}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="btnPublicUrl" text="{commons.PublicUrl}" styleName="{style.labelType}"/>
+        	<g:MenuItem ui:field="subMenu" text="{label.OtherOptions}" styleName="{style.labelTypeEnd}">
+				<g:MenuBar ui:field="subMenuBar" vertical='true' styleName="{style.menuBar}">
+        			<g:MenuItem ui:field="btnValidation" text="{label.CommentaryValidation}" styleName="{style.labelType}"/>
+        			<g:MenuItem ui:field="btnDisco" text="{label.Disconnected}" styleName="{style.labelType}"/>
+		        	<g:MenuItem ui:field="btnRemoveWatchlist" text="{label.RemoveToMyWatchList}" styleName="{style.labelType}"/>
+		        	<g:MenuItem ui:field="btnAddWatchlist" text="{label.AddToMyWatchList}" styleName="{style.labelType}"/>
+		        	<g:MenuItem ui:field="btnRemoveOnOpen" text="{label.RemoveFromOnStartup}" styleName="{style.labelTypeEnd}"/>
+		        	<g:MenuItem ui:field="btnAddOnOpen" text="{label.OnOpen}" styleName="{style.labelTypeEnd}"/>
+				</g:MenuBar>
+        	</g:MenuItem>
+    	</g:MenuBar>
+	</g:HTMLPanel>
+</ui:UiBinder> 

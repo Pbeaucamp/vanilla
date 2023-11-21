@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.alerts.Event" table="rpy_alert_event">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="typeEvent" type="int">
+                <column name="type_event"/>
+            </property>
+            
+            <property name="subtypeEvent" type="int">
+                <column name="subtype_event"/>
+            </property>
+            
+            <property name="name" type="string">
+                <column name="event_name"/>
+            </property>
+            
+            <property name="description" type="string">
+                <column name="description"/>
+            </property>
+            
+            <property name="directoryItemId" type="int">
+                <column name="item_id"/>
+            </property>
+            
+            <property name="repositoryId" type="int">
+                <column name="repository_id"/>
+            </property>
+              
+    </class>
+</hibernate-mapping>

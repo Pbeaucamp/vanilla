@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.Role" table="rpy_roles">
+            <id name="id" type="java.lang.Integer">
+                <column name="RO_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="RO_NAME"/>
+            </property>
+
+            <property name="comment" type="string">
+                <column name="RO_COMMENT"/>
+            </property>
+
+            <property name="creation" type="date">
+                <column name="RO_CREATION_DATE"/>
+            </property>
+            
+            <property name="image" type="string">
+                <column name="RO_IMAGE"/>
+            </property>
+            
+            <property name="type" type="string">
+                <column name="RO_TYPE"/>
+            </property>
+            
+            <property name="custom1" type="string">
+                <column name="RO_CUSTOM_1"/>
+            </property>
+            
+            <property name="grants" type="string">
+                <column name="RO_GRANTS"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

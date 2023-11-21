@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<class name="bpm.vanilla.platform.core.beans.WidgetsGroups" table="WidgetsGroups">
+	
+		<id name="idWidgetGroup" type="int">
+                <column name="IDWIDGETGROUP"/>
+				 <generator class="increment"/>
+        </id>
+        
+        <property name="widgetId" type="int">
+       		<column name="WIDGETID"/>
+        </property>    
+        
+        <property name="idGroup" type="int">
+       		<column name="IDGROUP"/>
+        </property> 
+        
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.ged.DocumentVersion" table="ged_document_version">
+            <id name="id" type="java.lang.Integer">
+                <column name="DOC_VERSION_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="documentId" type="java.lang.Integer">
+                <column name="DOC_ID"/>
+            </property>
+            
+           <property name="documentPath" type="string">
+                <column name="DOC_REL_PATH"/>
+            </property>
+           
+          	<property name="version" type="java.lang.Integer">
+                <column name="DOC_VERSION"/>
+            </property>
+            
+            <property name="modificationDate" type="java.util.Date">
+                <column name="DOC_MODIFICATION_DATE"/>
+            </property>
+            
+			<property name="modifiedBy" type="java.lang.Integer">
+                <column name="DOC_MODIFIED_BY"/>
+            </property>
+
+			<property name="isIndexed" type="java.lang.Integer">
+				<column name="DOC_IS_INDEXED"></column>
+			</property>
+			
+			<property name="isValidated" type="java.lang.Integer">
+				<column name="DOC_IS_VALIDATED"></column>
+			</property>
+			
+			<property name="summary" type="string">
+                <column name="DOC_SUMMARY"/>
+            </property>
+            
+            <property name="peremptionDate" type="java.util.Date">
+            	<column name="DOC_PEREMPTION_DATE"/>
+            </property>
+            
+            <property name="status">
+          	    <column name="DOC_STATUS"/>
+            	<type name="org.hibernate.type.EnumType">
+            		<param name="enumClass">bpm.vanilla.platform.core.beans.ged.DocumentVersion$DocumentStatus</param>
+            	</type>
+            </property>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.Image" table="IMAGES">
+            <id name="id" type="java.lang.Integer">
+                <column name="IM_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="imageItemId" type="java.lang.Integer">
+                <column name="IM_Image_Item_ID"/>
+            </property>
+
+            <property name="imageRepositoryId" type="java.lang.Integer">
+                <column name="IM_Image_Repository_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

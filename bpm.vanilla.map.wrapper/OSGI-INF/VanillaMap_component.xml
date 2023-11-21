@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="desactivate" name="bpm.vanilla.map.wrapper">
+   <implementation class="bpm.vanilla.map.wrapper.VanillaMapComponent"/>
+   <reference bind="bindLoggingService" cardinality="1..1" interface="bpm.vanilla.platform.logging.IVanillaLoggerService" name="IVanillaLoggerService" policy="dynamic" unbind="unbindLoggingService"/>
+   <reference bind="bindHttpService" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="dynamic" unbind="unbindHttpService"/>
+</scr:component>

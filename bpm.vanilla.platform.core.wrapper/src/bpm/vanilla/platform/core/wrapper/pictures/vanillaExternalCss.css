@@ -1,0 +1,37 @@
+.centre {
+	margin: auto;
+	padding:20px;
+	width: 1000px;
+	color:#59C2F3;
+}
+.entete {
+	background: url("../images/vanilla_webapps_welcome_portail.png") no-repeat scroll 10px 10px / 365px auto rgba(0, 0, 0, 0);	
+	font-size: 50px;
+	
+	padding: 35px 0px 0px 130px;
+	min-height: 115px;
+	text-align: right;
+	vertical-align: middle;
+	border: solid #59C2F3;
+	border-width:0px 0px 2px 0px;
+	font-family: palatino;
+	font-weight: bold;
+	font-size: 50px;
+	color:#59C2F3;
+}
+
+.entete p, label {
+	display: block;
+    padding-left: 100px;
+}
+
+.component-title {
+	font-family: palatino;
+	font-weight: bold;
+	font-size: 25px;
+	color:#59C2F3;
+}
+.error {
+	font-family: palatino;
+	color:#FF0000;
+}

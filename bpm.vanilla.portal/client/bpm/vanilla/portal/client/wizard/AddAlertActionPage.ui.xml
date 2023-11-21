@@ -1,0 +1,68 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.vanilla.portal.client.wizard.AddAlertActionPage.MyStyle">
+	
+		.panelContent {
+			height: 400px;
+			width: 700px;
+		}
+		
+		.lbl {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    width: 90%;
+		}
+		
+		.lst {
+			width: 93%;
+		}
+		
+		.txtWidth {
+			width: 95%;
+		}
+		
+		.txtMetadata {
+			width: 75%;
+			display: inline-block;
+			
+		}
+		.btnMetadata {
+			display: inline;
+		    font-size: 2em;
+		    margin: 0;
+		    vertical-align: sub;
+		    width: 20%;
+		}
+		
+		.txtWidth textarea{
+			max-width: 98%;
+			height: 100px;
+		}
+		
+		.panelGrid{
+			position: relative;
+			width: 100%;
+			height: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:Label addStyleNames="{style.lbl}" text="{label.Actions}"/>
+		<g:ListBox ui:field="lstActions" addStyleNames="{style.lst}"/>
+		<g:HTMLPanel ui:field="panelMail">
+			<c:LabelTextBox ui:field="txtSubject" placeHolder="{label.Subject}" addStyleNames="{style.txtWidth}"/>
+			<c:LabelTextArea ui:field="txtContent" placeHolder="{label.Content}" addStyleNames="{style.txtWidth}"/>
+			<g:SimplePanel ui:field="gridSubscribers" addStyleNames="{style.panelGrid}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelRep">
+			<c:LabelTextBox ui:field="txtItem" placeHolder="{label.Repository}" addStyleNames="{style.txtMetadata}"/>
+			<g:Button ui:field="btnBrowseRep" addStyleNames="{style.btnMetadata}">...</g:Button>
+			<g:HTMLPanel ui:field="panelParameters"/>
+		</g:HTMLPanel>
+		<g:Label addStyleNames="{style.lbl}" text="{label.State}"/>
+		<g:ListBox ui:field="lstState" addStyleNames="{style.lst}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

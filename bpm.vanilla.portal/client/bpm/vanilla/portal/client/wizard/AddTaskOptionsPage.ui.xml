@@ -1,0 +1,103 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+    xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+    
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants'/>
+    
+	<ui:style type="bpm.vanilla.portal.client.wizard.AddTaskOptionsPage.MyStyle">
+		.pageOptions {
+		    position: relative;
+			height: 350px;
+			width: 690px;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+			width: 98%;
+		}
+		
+		.lblBeginDate {
+		    display: inline-block;
+		    margin: 22px 10px 10px 15px;
+		    vertical-align: top;
+		}
+		
+		.boxBeginDate {
+		    display: inline-block;
+		    margin-top: 12px;
+		    vertical-align: top;
+		    width: 196px;
+		}
+		
+		.boxBeginTime {
+		    display: inline-block;
+		    margin-left: 15px;
+		    margin-top: 15px;
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+	        width: 98%;
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.check {
+		    display: inline-flex;
+		    height: 20px;
+    		margin: 22px 8px 10px;
+		}
+		
+		.check label {
+		    margin-left: 4px;
+    		margin-top: 2px;
+		}
+		
+		.checkRepeat {
+    		width: 400px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.pageOptions}">
+		<g:Label ui:field="lblBeginDate" text="{label.BeginDate}" addStyleNames="{style.lblBeginDate}"/>
+		<dp:DateBox ui:field="dateBoxBegin" addStyleNames="{style.txt},{style.boxBeginDate}"/>
+		<my:TimeBox ui:field="timeStart" addStyleNames="{style.boxBeginTime}"/>
+		
+		<g:CheckBox ui:field="checkRepeat" text="{label.Repeat}" addStyleNames="{style.check},{style.checkRepeat}"/>
+		<g:ListBox ui:field="lstPeriod" addStyleNames="{style.lst}"/>
+		<my:TextHolderBox ui:field="txtInterval" placeHolder="{label.Interval}" addStyleNames="{style.txt}"/>
+		<g:Label ui:field="lblIntervalError" addStyleNames="{style.error}"/>
+		
+		<g:CheckBox ui:field="checkStopDate" text="{label.HasStopDate}" addStyleNames="{style.check}"/>
+		<dp:DateBox ui:field="dateBoxStop" addStyleNames="{style.txt},{style.boxBeginDate}"/>
+		<my:TimeBox ui:field="timeStop" addStyleNames="{style.boxBeginTime}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

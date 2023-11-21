@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+ 
+	 
+ 
+ 
+  <!-- 
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+		<property name="driverClassName" value="${bpm.vanilla.norparena.database.driverClassName}"/>
+		<property name="url" value="${bpm.vanilla.norparena.database.jdbcUrl}"/>
+		<property name="username" value="${bpm.vanilla.norparena.database.userName}"/>
+		<property name="password" value="${bpm.vanilla.norparena.database.password}"/>
+	</bean>
+  -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${bpm.vanilla.norparena.database.driverClassName}" />
+		<property name="jdbcUrl" value="${bpm.vanilla.norparena.database.jdbcUrl}" />
+		<property name="user" value="${bpm.vanilla.norparena.database.userName}" />
+		<property name="password" value="${bpm.vanilla.norparena.database.password}" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+
+ 
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+		<list>
+			<value>bpm/vanilla/map/dao/model/hbm/address.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/addressrelation.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/addresszone.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/building.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/buildingfloor.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/cell.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/fusionmapobject.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/fusionmapspecification.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/image.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/kmlobject.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/kmlspecification.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/mapsdefinition.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/mapdefinitionrelation.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/mapserver.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/addressmapdefinitionrelation.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/openlayersmapobject.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/openlayersmapobjectproperty.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/openlayersmapspecificationentities.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/zoneterritoiremapping.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/opengismapentity.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/opengismapobject.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/opengisshapefiledatasource.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/opengiscoordinate.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/vanillamap.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/vanillamap_dataset.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/vanillamap_datasource.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/vanillamap_datasource_kml.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/vanillamap_datasource_wfs.hbm.xml</value>
+			<value>bpm/vanilla/map/dao/model/hbm/zonemetadatamapping.hbm.xml</value>
+			
+		</list>
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${bpm.vanilla.norparena.database.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+		
+	</bean>
+
+
+	<!-- beans, POJO, DAO, Service --> 
+	 	
+	<bean id="mapDefinitionManager" class="bpm.vanilla.map.dao.managers.DatabaseMapDefinitionService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="kmlFileRegistry" class="bpm.vanilla.map.dao.kml.KmlFileRegistry">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="kmlFolderLocation" value="${bpm.vanilla.norparena.kmlFilesLocation}"/>
+	</bean>
+
+	<bean id="fusionMapRegistry" class="bpm.vanilla.map.dao.fusionmap.FusionMapRegistry">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="mapFolderLocation" value="${bpm.vanilla.norparena.fusionMapFilesLocation}"/>
+	</bean>
+	
+	<bean id="openGisDAO" class="bpm.vanilla.map.dao.opengis.OpenGisMapDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="shapeFileLocation" value="${bpm.vanilla.norparena.shapeFileLocation}"/>
+	</bean>
+	 
+</beans>

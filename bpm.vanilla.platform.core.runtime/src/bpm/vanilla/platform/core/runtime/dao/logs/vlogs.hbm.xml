@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.VanillaLogs" table="vlogs">
+            
+            <id name="id" type="int">
+                <column name="vlog_id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="level" type="string">
+                <column name="vlog_level"/>
+            </property>
+
+            <property name="application" type="string">
+                <column name="vlog_application"/>
+            </property>
+            
+            <property name="operation" type="string">
+                <column name="vlog_operation"/>
+            </property>
+            
+            <property name="delay" type="long">
+                <column name="vlog_delay"/>
+            </property>
+            
+            <property name="repositoryId" type="int">
+                <column name="vlog_repository_id"/>
+            </property>
+            
+            <property name="directoryItemId" type="int">
+                <column name="vlog_directory_item_id"/>
+            </property>
+            
+            <property name="date" type="java.util.Date">
+                <column name="vlog_date"/>
+            </property>
+            
+            <property name="clientIp" type="string">
+                <column name="vlog_client_ip"/>
+            </property>
+            
+            <property name="userId" type="int">
+                <column name="vlog_client_user_id"/>
+            </property>
+            
+            <property name="groupId" type="int">
+                <column name="vlog_client_group_id"/>
+            </property>
+            
+            <property name="message" type="string">
+                <column name="vlog_message"/>
+            </property>
+            
+            <property name="objectType" type="string">
+                <column name="vlog_object_type"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

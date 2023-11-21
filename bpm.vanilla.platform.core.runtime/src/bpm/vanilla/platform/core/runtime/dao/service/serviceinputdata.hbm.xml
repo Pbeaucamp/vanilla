@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.service.ServiceInputData" table="service_input">
+            <id name="id" type="int">
+                <column name="id" />
+                <generator class="increment"/>
+            </id>
+            
+            <property name="name" type="string">
+                <column name="name"/>
+            </property>
+
+			<many-to-one name="definition" class="bpm.vanilla.platform.core.beans.service.ServiceTransformationDefinition">
+            	<column name="definition_id"/>
+            </many-to-one>
+			
+    </class>
+</hibernate-mapping>

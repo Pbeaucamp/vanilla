@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.Repository" table="repositories">
+            <id name="id" type="int">
+                <column name="REP_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="REP_NAME"/>
+            </property>
+
+            <property name="url" type="string" access="field">
+                <column name="REP_URL"/>
+            </property>
+
+            <property name="societe" type="string">
+                <column name="REP_SOC"/>
+            </property>
+            
+            <property name="key" type="string">
+                <column name="REP_SETUP_KEY"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>
+

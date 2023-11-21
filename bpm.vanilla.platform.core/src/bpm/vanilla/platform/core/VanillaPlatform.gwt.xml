@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <source path="" includes="IObjectIdentifier.java"/>
+    <source path="" includes="ManageAction.java"/>
+	<source path="beans"/>
+	<source path="repository"/>
+</module>

@@ -1,0 +1,67 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.center.SearchManagerPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.btnLeft {
+		    left: 5px;
+		    position: absolute;
+		    top: 200px;
+		}
+		
+		.panelContent {
+		    position: absolute;
+		    top: 0;
+			bottom: 0;
+		    left: 70px;
+		    right: 70px;
+		    overflow: hidden;
+		}
+		
+		.panelSearch {
+			height: 100%;
+		    left: 0;
+		    position: absolute;
+		    width: 100%;
+		    -webkit-transition: left 1s ease;
+			-moz-transition: left 1s ease;
+			-ms-transition: left 1s ease;
+			-o-transition: left 1s ease;
+			transition: left 1s ease;
+		}
+		
+		.panelResult {
+			height: 100%;
+		    left: 0;
+		    position: absolute;
+		    width: 100%;
+		    -webkit-transition: left 1s ease;
+			-moz-transition: left 1s ease;
+			-ms-transition: left 1s ease;
+			-o-transition: left 1s ease;
+			transition: left 1s ease;
+		}
+		
+		.btnRight {
+		    position: absolute;
+		    right: 5px;
+		    top: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:Image ui:field="btnLeft" resource="{resources.arrow_left}" title="{label.Search}" addStyleNames="{style.btnLeft}"/>
+		<g:HTMLPanel addStyleNames="{style.panelContent}">
+			<g:SimplePanel ui:field="panelSearch" addStyleNames="{style.panelSearch}"/>
+			<g:SimplePanel ui:field="panelResult" addStyleNames="{style.panelResult}"/>
+		</g:HTMLPanel>
+		<g:Image ui:field="btnRight" resource="{resources.arrow_right}" title="{label.Result}" addStyleNames="{style.btnRight}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

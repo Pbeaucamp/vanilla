@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.RepositoryItem" table="rpy_repository_item">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="directoryId" type="int">
+                <column name="directory_id"/>
+            </property>
+
+            <property name="type" type="int">
+                <column name="type"/>
+            </property>
+
+            <property name="subtype" type="int">
+                <column name="subtype"/>
+            </property>
+
+            <property name="itemName" type="string">
+                <column name="item_name"/>
+            </property>
+
+            <property name="comment" type="string">
+                <column name="`comment`"/>
+            </property>
+
+            <property name="dateCreation" type="date">
+                <column name="date_creation"/>
+            </property>
+
+            <property name="dateModification" type="date">
+                <column name="date_modification"/>
+            </property>
+
+            <property name="dateDeletion" type="date">
+                <column name="date_deletion"/>
+            </property>
+
+            <property name="ownerId" type="int">
+                <column name="owner_id"/>
+            </property>
+
+            <property name="modifiedBy" type="int">
+                <column name="modified_by"/>
+            </property>
+
+            <property name="deletedBy" type="int">
+                <column name="deleted_by"/>
+            </property>
+
+            <property name="lockId" type="int">
+                <column name="lock_id"/>
+            </property>
+
+            <property name="formattingVariableId" type="int">
+                <column name="formatting_variable_id"/>
+            </property>
+
+            <property name="display" type="boolean">
+                <column name="is_display" not-null="true" default="true"/>
+            </property>
+
+            <property name="visible" type="boolean">
+                <column name="is_visible" not-null="true" default="true"/>
+            </property>
+
+            <property name="createEntry" type="boolean">
+                <column name="create_entry" not-null="true" default="true"/>
+            </property>
+
+            <property name="on" type="boolean">
+                <column name="is_on" not-null="true" default="true"/>
+            </property>
+
+            <property name="availableGed" type="boolean">
+                <column name="is_available_ged" not-null="true" default="true"/>
+            </property>
+
+            <property name="realtimeGed" type="boolean">
+                <column name="is_realtime_ged" not-null="true" default="false"/>
+            </property>
+
+            <property name="androidSupported" type="boolean">
+                <column name="is_android_supported" not-null="true" default="false"/>
+            </property>
+
+            <property name="internalVersion" type="string">
+                <column name="internal_version"/>
+            </property>
+
+            <property name="publicVersion" type="string">
+                <column name="public_version"/>
+            </property>
+
+            <property name="modelType" type="string">
+                <column name="model_type"/>
+            </property>
+
+            <property name="runtimeUrl" type="string">
+                <column name="runtime_url"/>
+            </property>
+
+            <property name="defaultFormat" type="string">
+                <column name="default_format"/>
+            </property>
+
+            <property name="nbMaxHisto" type="int">
+                <column name="nb_max_histo"/>
+            </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.platform.logging
+Bundle-SymbolicName: bpm.vanilla.platform.logging
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.vanilla.platform.logging

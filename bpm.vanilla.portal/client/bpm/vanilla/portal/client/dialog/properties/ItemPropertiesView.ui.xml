@@ -1,0 +1,113 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.txtBoxWidth {
+			width: 95%;
+		}
+		
+		.label {
+			position: absolute;
+			left: 15px;
+		}
+		
+		.text {
+		    left: 135px;
+		    position: absolute;
+	        width: 75%;
+		}
+		
+		.lblItemName {
+		    top: 15px;
+		}
+		
+		.txtItemName {
+		    top: 11px;
+		}
+		
+		.lblItemId {
+		    top: 45px;
+		}
+		
+		.txtItemId {
+		    top: 41px;
+		}
+		
+		.lblItemType {
+		    top: 75px;
+		}
+		
+		.txtItemType {
+		    top: 71px;
+		}
+		
+		.lblCreatedBy {
+		    top: 105px;
+		}
+		
+		.txtCreatedBy {
+		    top: 101px;
+		}
+		
+		.lblCreatedDate {
+		    top: 135px;
+		}
+		
+		.txtCreatedDate {
+		    top: 131px;
+		}
+		
+		.lblLastModDate {
+		    top: 165px;
+		}
+		
+		.txtLastModDate {
+		    top: 161px;
+		}
+		
+		.lblListArchiveTypes {
+			top: 195px;
+		}
+		
+		.lstArchiveTypes {
+			top: 195px;
+		}
+		
+		.lstArchiveTypesText {
+		    left: 135px;
+		    position: absolute;
+	        width: 76%;
+		}
+		
+		.btnArchive {
+			left: 30px;
+			position: absolute;
+		}
+		
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblItemName" addStyleNames="{style.label},{style.lblItemName}"/>
+		<g:TextBox ui:field="txtItemName" addStyleNames="{style.text},{style.txtItemName}"/>
+		
+		<g:Label ui:field="lblItemId" addStyleNames="{style.label},{style.lblItemId}"/>
+		<g:TextBox ui:field="txtItemId" addStyleNames="{style.text},{style.txtItemId}"/>
+		
+		<g:Label ui:field="lblItemType" addStyleNames="{style.label},{style.lblItemType}"/>
+		<g:TextBox ui:field="txtItemType" addStyleNames="{style.text},{style.txtItemType}"/>
+		
+		<g:Label ui:field="lblCreatedBy" addStyleNames="{style.label},{style.lblCreatedBy}"/>
+		<g:TextBox ui:field="txtCreatedBy" addStyleNames="{style.text},{style.txtCreatedBy}"/>
+		
+		<g:Label ui:field="lblCreatedDate" addStyleNames="{style.label},{style.lblCreatedDate}"/>
+		<g:TextBox ui:field="txtCreatedDate" addStyleNames="{style.text},{style.txtCreatedDate}"/>
+		
+		<g:Label ui:field="lblLastModDate" addStyleNames="{style.label},{style.lblLastModDate}"/>
+		<g:TextBox ui:field="txtLastModDate" addStyleNames="{style.text},{style.txtLastModDate}"/>
+		
+		<g:Label ui:field="lblListArchiveTypes" addStyleNames="{style.label},{style.lblListArchiveTypes}"/>
+		<g:ListBox ui:field="lstArchiveTypes" addStyleNames="{style.lstArchiveTypesText},{style.lstArchiveTypes}"/>
+		
+		<g:Button ui:field="btnArchive" text="Appliquer aux enfants" addStyleNames="{style.btnArchive}"></g:Button>
+	</g:HTMLPanel>
+</ui:UiBinder> 

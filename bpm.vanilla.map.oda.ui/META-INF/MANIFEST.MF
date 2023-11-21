@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.map.oda.ui
+Bundle-SymbolicName: bpm.vanilla.map.oda.ui;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.vanilla.map.oda.ui.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui;bundle-version="3.2.2",
+ bpm.vanilla.map.oda.runtime;bundle-version="1.0.0",
+ org.eclipse.ui;bundle-version="3.5.2",
+ bpm.vanilla.map.core;bundle-version="1.0.2",
+ bpm.vanilla.map.remote;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: BPM-Conseil

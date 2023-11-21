@@ -1,0 +1,398 @@
+/**
+ * This CSS File represent the Default Theme for Vanilla
+ * You can modify it, however you need to respect the name for each class
+ *
+ * To add a logo for your theme, you need to create a folder in the css folder which has
+ * the same name as your theme css file and put it your logo with the name logo.png
+ */
+
+/*9B0B77
+  EAD5E6
+*/
+
+/*
+ * All the body
+ * (use it especially for background)
+ */
+.bodyBackground {
+	background: white;
+}
+
+/*
+ * Head menu
+ * (use it especially for background)
+ */
+.headMenu {
+	background: #EAD5E6;
+}
+
+/*
+ * Head of a non selected Tab
+ * (use it especially for background and border left, top and right)
+ */
+.headTabNoSelected {
+	background: #EAD5E6 ! important;
+	border-left-color: #9B0B77 ! important;
+	border-right-color: #9B0B77 ! important;
+	border-top-color: #9B0B77 ! important;
+}
+
+/*
+ * Head of a selected Tab
+ * (use it especially for background and border left, top and right)
+ */
+.headTabSelected {
+	background: #9B0B77 ! important;
+}
+
+/*
+ * Button that represent a tab
+ * (use it especially for background color in hover)
+ */
+.btnTab:Hover {
+    background-color: #9B0B77;
+}
+	
+/*
+ * Button that represent a selected tab
+ * (use it especially for background color)
+ */
+.btnSelectedTab {
+    background-color: #EAD5E6 !important;
+}
+
+/*
+ * Content of a tab with the toolbar included
+ * (use it especially for border color)
+ */
+.panelContentContainer {
+	border-color: #9B0B77 ! important;
+}
+
+/*
+ * Content of a tab with the toolbar included, at a lower level of class panelContentContainer above
+ * (use it especially for border color)
+ */
+.tab {
+	border-color: #9B0B77 ! important;
+}
+
+/*
+ * Toolbar of a tab
+ * (use it especially for background color)
+ */
+.tabToolbar {
+	background: #EAD5E6 !important;
+}
+
+/*
+ * Content of a tab without the toolbar
+ * (use it especially for background)
+ */
+.tabContent {
+	background: white;
+}
+
+/*
+ * Non selected row for a DataGrid
+ * (use it especially for background)
+ */
+.dataGridOddRow {
+	background: #EAD5E6;
+}
+
+/*
+ * Non selected row cell for a DataGrid
+ * (use it especially for border)
+ */
+.dataGridOddRowCell {
+	border: 2px solid #EAD5E6;
+}
+
+/*
+ * Selected row for a DataGrid
+ * (use it especially for background and text color)
+ */
+.dataGridSelectedRow {
+	background: #9B0B77 ! important;
+	color: white ! important;
+	height: auto ! important;
+	overflow: auto ! important;
+}
+
+/*
+ * Selected row cell for a DataGrid
+ * (use it especially for border. for more consistency use the same color as dataGridSelectedRow)
+ */
+.dataGridSelectedRowCell {
+	border: 2px solid #9B0B77 ! important;
+}
+
+/*
+ * Datagrid header
+ * (used for white-space to put header on multiple lines)
+ */
+.dataGridHeader {
+	border-bottom: 2px solid #6f7277;
+	padding: 3px 15px;
+	text-align: left;
+	color: #4b4a4a;
+	text-shadow: #ddf 1px 1px 0;
+	overflow: hidden;
+	white-space: normal;
+}
+
+/*
+ * Selected item for Table
+ * (use it especially for background color)
+ */
+.focusItemTableBackground {
+	background-color: #9B0B77;
+}
+
+/*
+ * StackPanel (which is on the left) header
+ * (use it especially for background with a gradient for a better look)
+ 9B0B77
+  EAD5E6
+ */
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader {
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#EAD5E6),
+		to(#FFFFFF)
+	) ! important;
+
+	background: -webkit-linear-gradient(
+		top,
+		#EAD5E6,
+		#FFFFFF
+	) ! important;
+
+	background: -moz-linear-gradient(
+		top,
+		#EAD5E6,
+		#FFFFFF
+	) ! important;
+
+	background: -o-linear-gradient(
+		top,
+		#EAD5E6,
+		#FFFFFF
+	) ! important;
+
+	background: linear-gradient(
+		top,
+		#EAD5E6,
+		#FFFFFF
+	) ! important;
+}
+
+/*
+ * StackPanel (which is on the left) header: HOVER
+ * (use it especially for background with a gradient for a better look)
+ */
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader-hovering {
+		/* Navigateurs r�cents */
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#9B0B77),
+		to(#FFFFFF)
+	) ! important;
+	
+	background: -webkit-linear-gradient(
+		top,
+		#9B0B77,
+		#FFFFFF
+	) ! important;
+	
+	background: -moz-linear-gradient(
+		top,
+		#9B0B77,
+		#FFFFFF
+	) ! important;
+	
+	background: -o-linear-gradient(
+		top,
+		#9B0B77,
+		#FFFFFF
+	) ! important;
+	
+	background: linear-gradient(
+		top,
+		#9B0B77,
+		#FFFFFF
+	) ! important�;
+}
+
+/*
+ * Selected tree item
+ * (use it especially for background color)
+ */
+.treeItemSelected {
+	background-color: #EAD5E6;
+}
+
+/*
+ * Dialog text border used in the About and the Thanks Dialog
+ * (use it especially for border color for the text)
+ */
+.aboutDialogTextBorder {
+	border-color: #628CD5 ! important;
+}
+
+/*
+ * Common for Dialog Top Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogTopLeft {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Caption (title)
+ * (use it especially for border color)
+ */
+.gwt-DialogBox .Caption {
+	border-color: #628CD5 ! important;
+}
+
+/*
+ * Common for Dialog Top Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogTopRight {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Middle Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogMiddleLeft {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Middle Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogMiddleRight {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomLeft {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Center
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomCenter {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomRight {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Popup Panel
+ * (use it especially for border color)
+ */
+.gwt-PopupPanel {
+	border-color: #EAD5E6 ! important;
+}
+
+/*
+ * Common for Popup Panel Selected Item
+ * (use it especially for background color)
+ */
+.gwt-MenuBar .gwt-MenuItem-selected {
+	background: #EAD5E6 ! important;
+}
+
+.welcomeTitle {
+    font-size: 30px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/*
+ * Right toolbar
+ * (use it especially for background)
+ */
+.rightToolbar {
+	background: #EAD5E6;
+}
+
+/*
+ * Icon Toolbar
+ * (use it especially for managing cursor type)
+ */
+.iconCursor {
+	cursor: pointer;
+}
+
+/*
+ * Bottom Panel
+ * (use it especially for managing background color)
+ */
+.bottom {
+	background: #EAD5E6;
+}
+
+/*
+ * Popup Panel
+ * (use it especially for managing background color)
+ */
+.popupPanel {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Navigation Panel
+ * (use it especially for managing background color)
+ */
+.navigationToolbar {
+	background: #EAD5E6 ! important;
+}
+
+/*
+ * Panel User
+ * (use it especially for managing text color)
+ */
+.panelUser {
+	color: #9B0B77;
+}
+
+/*
+ * Panel User Bottom
+ * (use it especially for managing background color)
+ */
+.panelUserBottom {
+	background-color: #9B0B77;
+}
+
+/*
+ * Comment Border
+ * (use it especially for managing border color)
+ */
+.commentBorder {
+	border-color: #EAD5E6 ! important;
+}
+
+.btnSelectedBackground {
+	background-color: #9B0B77 !important;
+}

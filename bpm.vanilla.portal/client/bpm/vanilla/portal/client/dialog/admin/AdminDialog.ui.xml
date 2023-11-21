@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style  type="bpm.vanilla.portal.client.dialog.admin.AdminDialog.MyStyle">
+		.gridGroup {
+			
+		}
+		
+		.margins {
+		    margin: 5px;
+		}
+		
+		.fileUpload {
+			margin-left: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:CaptionPanel ui:field="captionText" addStyleNames="{style.margins}">
+			<g:HTMLPanel ui:field="panelPersonalizable">
+				<g:ListBox ui:field="listGroups"/>
+			</g:HTMLPanel>
+		</g:CaptionPanel>
+		<g:CaptionPanel ui:field="captionShowAllRepository" addStyleNames="{style.margins}">
+			<g:CheckBox ui:field="checkAllRepository"/>
+		</g:CaptionPanel>
+		<g:CaptionPanel ui:field="captionLogo" addStyleNames="{style.margins}">
+			<g:FormPanel ui:field="formPanel">
+				<g:FileUpload ui:field="fileUpload" name="file" addStyleNames="{style.fileUpload}"/>
+			</g:FormPanel>
+		</g:CaptionPanel>
+		<g:SimplePanel ui:field="panelGroups"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

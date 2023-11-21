@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.map.remote
+Bundle-SymbolicName: bpm.vanilla.map.remote
+Bundle-Version: 5.0.0
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: bpm.vanilla.map.core,
+ bpm.vanilla.platform.xstream;bundle-version="4.0.0",
+ org.apache.commons.codec,
+ bpm.vanilla.external.jars;bundle-version="1.0.0"
+Bundle-ClassPath: .
+Export-Package: bpm.vanilla.map.remote.core.design.fusionmap.impl,
+ bpm.vanilla.map.remote.core.design.impl,
+ bpm.vanilla.map.remote.core.design.kml.impl
+Bundle-Vendor: BPM-Conseil

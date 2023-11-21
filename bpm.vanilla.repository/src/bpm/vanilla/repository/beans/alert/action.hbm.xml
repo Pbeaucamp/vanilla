@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.alerts.Action" table="rpy_alert_action">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="alertId" type="int">
+                <column name="alert_id"/>
+            </property>
+            
+            <property name="directoryItemId" type="int">
+                <column name="item_id"/>
+            </property>
+            
+            <property name="repositoryId" type="int">
+                <column name="repository_id"/>
+            </property>
+            
+            <property name="smtpHost" type="string">
+                <column name="smtp_host"/>
+            </property>
+            
+            <property name="smtpLogin" type="string">
+                <column name="smtp_login"/>
+            </property>
+            
+            <property name="smtpPassword" type="string">
+                <column name="smtp_password"/>
+            </property>
+            
+            <property name="subject" type="string">
+                <column name="mail_subject"/>
+            </property>
+            
+            <property name="content" type="string">
+                <column name="mail_content"/>
+            </property>            
+            
+    </class>
+</hibernate-mapping>

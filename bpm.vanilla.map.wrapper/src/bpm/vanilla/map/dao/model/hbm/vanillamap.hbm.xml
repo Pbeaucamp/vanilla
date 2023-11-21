@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.core.design.MapVanilla" table="MAPVANILLA">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="mapVanilla_name"/>
+            </property>
+
+            <property name="description" type="string">
+                <column name="description"/>
+            </property>
+            
+            <property name="type" type="string">
+                <column name="map_type"/>
+            </property>
+
+            <property name="zoom" type="java.lang.Integer">
+                <column name="zoom"/>
+            </property>
+
+            <property name="originLat" type="java.lang.Double">
+                <column name="originLat"/>
+            </property>
+
+            <property name="originLong" type="java.lang.Double">
+                <column name="originLong"/>
+            </property>
+
+            <property name="boundLeft" type="java.lang.Double">
+                <column name="boundLeft"/>
+            </property>
+
+            <property name="boundBottom" type="java.lang.Double">
+                <column name="boundBottom"/>
+            </property>
+
+            <property name="boundRight" type="java.lang.Double">
+                <column name="boundRight"/>
+            </property>
+
+            <property name="boundTop" type="java.lang.Double">
+                <column name="boundTop"/>
+            </property>
+
+            <property name="projection" type="string">
+                <column name="projection"/>
+            </property>
+            
+            <!-- <property name="idDataSet" type="java.lang.Integer">
+                <column name="id_data_set"/>
+            </property> -->
+    </class>
+</hibernate-mapping>

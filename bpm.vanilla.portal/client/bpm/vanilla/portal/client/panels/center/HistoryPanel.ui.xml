@@ -1,0 +1,128 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.center.HistoryPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.panelToolbar {
+			height: 40px;
+			width: 100%;
+		}
+	
+		.panelContent {
+			position: absolute;
+			top: 70px;
+			width: 100%;
+			bottom: 30px;
+		}
+	
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			bottom: 0px;
+		}
+		
+		.btnToolbar {
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 8px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.pager {
+			margin: auto;
+		}
+		
+		.lbl {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 10px;
+			margin-top: 12px;
+		}
+		
+		.dateBox {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 5px;
+			margin-top: 9px;
+		}
+	
+		.panelSearch {
+			width: 100%;
+			height: 30px;
+			background: #E6E6E6;
+		}
+		
+		.txtSearch {
+		    margin-left: 12px;
+		    margin-top: 4px;
+		    width: 220px;
+		    vertical-align: top;
+		}
+		
+		.btnClear {
+			margin-top: 7px;
+			cursor: pointer;
+		}
+		
+		.btnClear:HOVER {
+			background-color: #444444 !important;
+		}
+		
+		.btnSearch {
+			background: none repeat scroll 0 0 #444444;
+			border: 1px solid #555555;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 20px;
+			width: 100px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			vertical-align: top;
+			margin-top: 5px;
+		}
+		
+		.btnSearch:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA;
+			color: #000000;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="btnRefresh" resource="{commons.refresh_24}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+			<g:Label text="{label.From}" addStyleNames="{style.lbl}"/>
+			<dp:DateBox ui:field="dateBoxFrom" styleName="{style.dateBox}"/>
+			<g:Label text="{label.To}" addStyleNames="{style.lbl}"/>
+			<dp:DateBox ui:field="dateBoxTo" styleName="{style.dateBox}"/>
+			<g:Image ui:field="btnSearchDate" resource="{commons.viewer_report_run}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+	    <g:HTMLPanel ui:field="panelSearch" addStyleNames="{style.panelSearch}">
+	    	<g:TextBox ui:field="txtSearch" addStyleNames="{style.txtSearch}"/>
+			<g:Image ui:field="btnClear" resource="{resources.ic_dialog_close}" title="{label.Clear}" addStyleNames="{style.btnClear}"/>
+	    	<g:Button ui:field="btnSearch" text="{label.Search}" styleName="{style.btnSearch}"/>
+	    </g:HTMLPanel>
+		<g:SimplePanel ui:field="panelContent" addStyleNames="{style.panelContent}"/>
+		<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

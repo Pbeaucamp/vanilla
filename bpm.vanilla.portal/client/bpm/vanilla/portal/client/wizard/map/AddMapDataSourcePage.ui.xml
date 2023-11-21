@@ -1,0 +1,85 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+		xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+		<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.vanilla.portal.client.wizard.map.AddMapDataSourcePage.MyStyle">
+	
+		.panelContent {
+			height: 350px;
+			width: 690px;
+		}
+		
+		.lblNomDataSource, .lblUrl, .lblDriver, .lblLogin, .lblMdp {
+		    float: left;
+		    margin-left: 12px;
+		    margin-top: 5px;
+		    margin-right: 10px;
+		}
+		
+		.lstDataSource, .txtNomDataSource, .txtUrl, .txtLogin, .txtMdp {
+		    display: block;
+		    margin-left: 100px;
+		    margin-top: 5px;
+		    width: 300px;
+		}
+		
+		.lblDataSource {
+			font-weight: bold;
+			float: left;
+		    margin-left: 12px;
+		    margin-top: 5px;
+		    margin-right: 10px;
+		}
+		
+		.lblNewDataSource {
+			margin-top: 20px;
+			margin-bottom: 10px;
+		    margin-left: 12px;
+		    margin-right: 10px;
+		    font-weight: bold;
+
+		}
+		
+		.lstDriver {
+			display: block;
+		    margin-left: 100px;
+		    margin-top: 5px;
+		    width: 306px;
+
+		}
+		.defaultWidth {
+			width: 95%;
+		}
+	
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HTMLPanel ui:field="sqlPanel" addStyleNames="{style.panelContent}">
+			<g:Label ui:field="lblDataSource" addStyleNames="{style.lblDataSource}"/>
+			<g:ListBox ui:field="lstDataSource" addStyleNames="{style.lstDataSource}"/>
+			
+			<g:Label ui:field="lblNewDataSource" addStyleNames="{style.lblNewDataSource}"/>
+			
+			<g:Label ui:field="lblNomDataSource" addStyleNames="{style.lblNomDataSource}"/>
+			<g:TextBox ui:field="txtNomDataSource" addStyleNames="{style.txtNomDataSource}"/>
+			<g:Label ui:field="lblUrl" addStyleNames="{style.lblUrl}"/>
+			<g:TextBox ui:field="txtUrl" addStyleNames="{style.txtUrl}"/>
+			<g:Label ui:field="lblDriver" addStyleNames="{style.lblDriver}"/>
+			<g:ListBox ui:field="lstDriver" addStyleNames="{style.lstDriver}"/>	
+			<g:Label ui:field="lblLogin" addStyleNames="{style.lblLogin}"/>
+			<g:TextBox ui:field="txtLogin" addStyleNames="{style.txtLogin}"/>
+			<g:Label ui:field="lblMdp" addStyleNames="{style.lblMdp}"/>
+			<g:PasswordTextBox ui:field="txtMdp" addStyleNames="{style.txtMdp}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="kmlPanel" addStyleNames="{style.panelContent}">
+			<c:ListBoxWithButton ui:field="supplierListBox" label="{label.SelectSupplier}" addStyleNames="{style.defaultWidth}"/>
+			<c:ListBoxWithButton ui:field="contractListBox" label="{label.SelectContract}" addStyleNames="{style.defaultWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="wfsPanel" addStyleNames="{style.panelContent}">
+			<c:LabelTextBox ui:field="txtWfsUrl" label="WFS Url" addStyleNames="{style.defaultWidth}"/>
+			<c:LabelTextBox ui:field="txtLayer" label="Nom couche" addStyleNames="{style.defaultWidth}"/>
+			<c:LabelTextBox ui:field="txtField" label="Champ mapping" addStyleNames="{style.defaultWidth}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

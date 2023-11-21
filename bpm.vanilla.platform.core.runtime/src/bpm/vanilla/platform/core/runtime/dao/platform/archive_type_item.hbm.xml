@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.ArchiveTypeItem" table="archive_type_item">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="archiveTypeId" type="int">
+                <column name="archive_type_id"/>
+            </property>
+
+            <property name="itemId" type="int">
+                <column name="item_id"/>
+            </property>
+            
+            <property name="repositoryId" type="int">
+                <column name="repository_id"/>
+            </property>
+            
+            <property name="directory" type="boolean">
+                <column name="is_directory"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>
+

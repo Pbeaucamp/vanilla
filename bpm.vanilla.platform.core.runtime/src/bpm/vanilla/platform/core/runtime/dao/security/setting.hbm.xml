@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.Setting" table="settings">
+		<id name="id" type="java.lang.Integer">
+		    <column name="SE_ID" />
+		    <generator class="increment"/>
+		</id>
+		
+		<property name="type" type="int">
+		    <column name="SE_TYPE"/>
+		</property>
+
+		<property name="value" type="string">
+		    <column name="SE_VALUE" length="10000000"/>
+		</property>
+	</class>
+</hibernate-mapping>

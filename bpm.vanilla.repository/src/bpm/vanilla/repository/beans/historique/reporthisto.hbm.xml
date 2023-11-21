@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.repository.beans.historique.ReportHisto" table="rpy_histo_report">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="directoryItemId" type="int">
+                <column name="item_id"/>
+            </property>
+
+            <property name="gedDocId" type="int">
+                <column name="ged_doc_id"/>
+            </property>
+            
+            <property name="creation" type="java.util.Date">
+                <column name="creation_date"/>
+            </property>
+            
+            <property name="grpId" type="int">
+                <column name="group_id"/>
+            </property>
+ 			<property name="userId" type="int" not-null="true" >
+                <column name="user_id"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

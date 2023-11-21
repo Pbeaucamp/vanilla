@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 300px;
+		    margin-top: 7px;
+		}
+	
+		.textBox {
+			height: 100px;
+			width: 300px;
+			margin-top: 7px;
+		}
+		
+		.tbl {
+			margin: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">	
+		<g:VerticalPanel addStyleNames="{style.tbl}">
+			<g:Label ui:field="lblRequestInfo" addStyleNames="{style.lbl}"/>
+			<g:Label ui:field="lblRequestInfoMsg" addStyleNames="{style.lbl}"/>
+			<g:TextArea ui:field="txtRequestInfoMsg" addStyleNames="{style.textBox}"/>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

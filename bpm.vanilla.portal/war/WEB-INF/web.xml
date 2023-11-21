@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app id="portal0">
+
+	<!-- GWT servlets -->
+
+	<servlet>
+		<servlet-name>ReportingService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ReportingServiceImpl</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SecurityService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.SecurityServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>BiPortalService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.BiPortalServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AdminService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.AdminServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>HistoryService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.HistoryServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ActionsService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.ActionsServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PerFormsService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.PerFormsServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GedService</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.GedServiceImpl</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>IndexFile</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ged.servlets.IndexFile</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ImageUserServlet</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.servlets.ImageUserServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LogoPersoServlet</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.servlets.LogoPersoServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>CommentAddServlet</servlet-name>
+		<servlet-class>bpm.vanilla.portal.server.servlets.CommentAddServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PreviewFile</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ged.servlets.PreviewFile</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PreviewReport</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.report.PreviewReportServlet</servlet-class>
+	</servlet>
+	
+	<servlet>  
+		<servlet-name>AccessRequestService</servlet-name>  
+		<servlet-class>bpm.vanilla.portal.server.AccessRequestServiceImpl</servlet-class>  
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ReportingService</servlet-name>
+		<url-pattern>/VanillaPortail/ReportingService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SecurityService</servlet-name>
+		<url-pattern>/VanillaPortail/SecurityService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BiPortalService</servlet-name>
+		<url-pattern>/VanillaPortail/BiPortalService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AdminService</servlet-name>
+		<url-pattern>/VanillaPortail/AdminService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>HistoryService</servlet-name>
+		<url-pattern>/VanillaPortail/HistoryService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ActionsService</servlet-name>
+		<url-pattern>/VanillaPortail/ActionsService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PerFormsService</servlet-name>
+		<url-pattern>/VanillaPortail/PerFormsService</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>GedService</servlet-name>
+		<url-pattern>/VanillaPortail/GedService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>IndexFile</servlet-name>
+		<url-pattern>/VanillaPortail/IndexFile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ImageUserServlet</servlet-name>
+		<url-pattern>/VanillaPortail/ImageUserServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LogoPersoServlet</servlet-name>
+		<url-pattern>/VanillaPortail/LogoPersoServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CommentAddServlet</servlet-name>
+		<url-pattern>/VanillaPortail/CommentAddServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PreviewFile</servlet-name>
+		<url-pattern>/VanillaPortail/PreviewFile</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PreviewReport</servlet-name>
+		<url-pattern>/PreviewReport</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>  
+		<servlet-name>AccessRequestService</servlet-name>  
+		<url-pattern>/VanillaPortail/AccessRequestService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+  	<servlet>    
+		<servlet-name>loginService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>loginService</servlet-name>    
+		<url-pattern>/VanillaPortail/loginService</url-pattern>  
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/VanillaPortail/commonService</url-pattern>  
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>fmdtService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>fmdtService</servlet-name>    
+		<url-pattern>/VanillaPortail/fmdtService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.DownloadStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<url-pattern>/DownloadStreamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>viewStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.ViewStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewStreamServlet</servlet-name>    
+		<url-pattern>/ViewStreamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>PreviewDocumentServlet</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.PreviewDocumentServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>PreviewDocumentServlet</servlet-name>  
+		<url-pattern>/PreviewDocumentServlet</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>workflowsService</servlet-name>    
+		<servlet-class>bpm.gwt.workflow.commons.server.WorkflowsServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>workflowsService</servlet-name>    
+		<url-pattern>/VanillaPortail/workflowsService</url-pattern>  
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>biPortal.html</welcome-file>
+	</welcome-file-list>
+</web-app>

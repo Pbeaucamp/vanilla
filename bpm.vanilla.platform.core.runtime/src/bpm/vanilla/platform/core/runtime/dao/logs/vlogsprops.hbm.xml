@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.VanillaLogsProps" table="vlogs_props">
+            
+            <id name="id" type="int">
+                <column name="vlogs_prop_id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="vlogId" type="int">
+                <column name="vlogs_prop_vlog_id"/>
+            </property>
+
+            <property name="name" type="string">
+                <column name="vlogs_prop_name"/>
+            </property>
+            
+            <property name="value" type="string">
+                <column name="vlogs_prop_value"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

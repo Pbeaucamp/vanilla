@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.designer.ui.common
+Bundle-SymbolicName: bpm.vanilla.designer.ui.common;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.vanilla.designer.ui.common.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.core.runtime,
+ bpm.vanilla.platform.core;bundle-version="1.0.0",
+ org.eclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: bpm.vanilla.designer.ui.common,
+ bpm.vanilla.designer.ui.common.dialogs,
+ bpm.vanilla.designer.ui.common.preferences

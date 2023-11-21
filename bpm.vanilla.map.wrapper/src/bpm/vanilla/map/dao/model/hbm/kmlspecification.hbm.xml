@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.kml.impl.KmlSpecificationEntity" table="KML_SPECIFICATION_ENTITIES">
+            <id name="id" type="java.lang.Integer">
+                <column name="KSE_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="kmlObjectId" type="java.lang.Integer">
+                <column name="KSE_Kml_Object_ID"/>
+            </property>
+
+            <property name="placemarkId" type="java.lang.String">
+                <column name="KSE_Placemark_ID"/>
+            </property>	
+
+            <property name="placemarkType" type="java.lang.String">
+                <column name="KSE_Placemark_Type"/>
+            </property>			
+    </class>
+</hibernate-mapping>

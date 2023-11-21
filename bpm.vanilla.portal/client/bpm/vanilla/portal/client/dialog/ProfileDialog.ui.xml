@@ -1,0 +1,89 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.vanilla.portal.client.dialog.ProfileDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+		}
+	
+		.lblEmpty {
+			font-size: small;
+			color: red;
+		    margin-left: 5px;
+	    	margin-top: 15px;
+		}
+		
+		.fileUpload {
+			margin-left: 10px;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.65em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 5px 5px 8px;
+	        width: 97%;
+		}
+		
+		.txt:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.panelImg {
+		    margin: auto;
+		    text-align: center;
+		    width: 50%;
+		}
+		
+		.image {
+			height: 50px !important;
+			cursor: pointer;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+		    margin: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelImg}">
+			<g:Image ui:field="imgUser" />
+			<g:FormPanel ui:field="formPanel">
+				<g:FileUpload ui:field="fileUpload" name="file" addStyleNames="{style.fileUpload}"/>
+			</g:FormPanel>
+		</g:HTMLPanel>
+		<my:TextHolderBox ui:field="txtName" addStyleNames="{style.txt}" placeHolder="{label.Name}"/>
+		<my:TextHolderBox ui:field="txtSurname" addStyleNames="{style.txt}" placeHolder="{label.Surname}"/>
+		<my:TextHolderBox ui:field="txtPrivateEmail" addStyleNames="{style.txt}" placeHolder="{label.PersonnalMail}"/>
+		<my:TextHolderBox ui:field="txtBusinessEmail" addStyleNames="{style.txt}" placeHolder="{label.BusinessMail}"/>
+		<my:TextHolderBox ui:field="txtPhone" addStyleNames="{style.txt}" placeHolder="{label.Phone}"/>
+		<my:TextHolderBox ui:field="txtCellular" addStyleNames="{style.txt}" placeHolder="{label.Cellular}"/>
+		
+		<my:CustomCheckbox ui:field="cbWidgets" text="{label.SwitchToWidget}"></my:CustomCheckbox>
+		
+		<g:Label text="{label.LeaveEmpty}" addStyleNames="{style.lblEmpty}"/>
+		<my:TextHolderBox ui:field="txtOldPassword" addStyleNames="{style.txt}" placeHolder="{label.Password}" password="true"/>
+		<my:TextHolderBox ui:field="txtNewPassword" addStyleNames="{style.txt}" placeHolder="{label.PasswordNew}" password="true"/>
+		<my:TextHolderBox ui:field="txtConfirmNewPassword" addStyleNames="{style.txt}" placeHolder="{label.PasswordConfirm}" password="true"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

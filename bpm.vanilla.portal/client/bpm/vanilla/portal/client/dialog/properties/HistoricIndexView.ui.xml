@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelDocManager {
+		    height: 154px;
+		    left: 10px;
+		    position: absolute;
+		    top: 10px;
+		    right: 10px;
+		}
+		
+		.panelHistoric {
+		    height: 164px;
+		    left: 10px;
+		    position: absolute;
+		    top: 184px;
+		    right: 10px;
+		}
+		
+		.checkAvailableGed {
+		    position: absolute;
+		    top: 22px;
+		}
+		
+		.checkRealtime {
+		    position: absolute;
+    		top: 50px;
+		}
+		
+		.checkCreateEntry {
+    	    position: absolute;
+    		top: 78px;
+		}
+		
+		.btnLoadGroups {
+		    height: 40px;
+		    left: 250px;
+		    position: absolute;
+		    top: 170px;
+		    width: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:CaptionPanel ui:field="panelDocManager" addStyleNames="{style.panelDocManager}">
+			<g:HTMLPanel>
+				<g:CheckBox ui:field="checkAvailableGed" addStyleNames="{style.checkAvailableGed}"/>
+				<g:CheckBox ui:field="checkRealtime" addStyleNames="{style.checkRealtime}"/>
+				<g:CheckBox ui:field="checkCreateEntry" addStyleNames="{style.checkCreateEntry}"/>
+			</g:HTMLPanel>
+		</g:CaptionPanel>
+		<g:CaptionPanel ui:field="panelHistoric" addStyleNames="{style.panelHistoric}"/>
+		<g:Button ui:field="btnLoadGroups" addStyleNames="{style.btnLoadGroups}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

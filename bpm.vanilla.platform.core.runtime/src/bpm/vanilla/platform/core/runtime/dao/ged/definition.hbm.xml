@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.ged.Definition" table="ged_field_definition">
+            <id name="id" type="java.lang.Integer">
+                <column name="DEF_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="DEF_NAME"/>
+            </property>
+            
+           <property name="stored" type="string">
+                <column name="DEF_STORED"/>
+            </property>
+           
+          	<property name="analyzed" type="string">
+                <column name="DEF_ANALYZED"/>
+            </property>
+			
+			<property name="boostLvl" type="java.lang.Float">
+                <column name="DEF_BOOST_LVL"/>
+            </property>
+            
+            <property name="system" type="string">
+                <column name="DEF_IS_SYSTEM"/>
+            </property>
+			
+			<property name="required" type="string">
+                <column name="DEF_IS_REQUIRED"/>
+            </property>
+            
+            <property name="multiple" type="string">
+                <column name="DEF_IS_MULTIPLE"/>
+            </property>
+            
+            <property name="custom" type="string">
+                <column name="DEF_IS_CUSTOM"/>
+            </property>
+            
+
+    </class>
+</hibernate-mapping>

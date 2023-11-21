@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.VanillaVersion" table="vanilla_versions">
+            <id name="id" type="java.lang.Long">
+                <column name="VERS_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="versionName" type="string">
+                <column name="VERS_NAME"/>
+            </property>
+
+            <property name="minorVersion" type="string">
+                <column name="VERS_MINOR"/>
+            </property>
+
+            <property name="majorVersion" type="string">
+                <column name="VERS_MAJOR"/>
+            </property>
+ 
+    </class>
+</hibernate-mapping>

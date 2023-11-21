@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.UOlapQueryBean" table="uolap_query_logs">
+            
+            <id name="id" type="long">
+                <column name="UQL_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="repositoryId" type="int">
+                <column name="UQL_REPOSITORY_ID"/>
+            </property>
+
+            <property name="directoryItemId" type="int">
+                <column name="UQL_DIRECTORY_ITEM_ID"/>
+            </property>
+              <property name="vanillaGroupId" type="int">
+                <column name="UQL_GROUP_ID"/>
+            </property>
+               <property name="mdxQuery" type="string" length="60000">
+                <column name="UQL_MDX"/>
+            </property>
+             
+                <property name="executionDate" type="java.util.Date">
+                <column name="UQL_DATE"/>
+            </property>
+           
+            <property name="executionTime" type="long">
+                <column name="UQL_TIME"/>
+            </property>
+
+          
+            
+    </class>
+</hibernate-mapping>

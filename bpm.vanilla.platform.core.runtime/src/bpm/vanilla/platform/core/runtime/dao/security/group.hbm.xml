@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.Group" table="rpy_groups">
+            <id name="id" type="java.lang.Integer">
+                <column name="GR_ID" />
+                <generator class="increment"/>
+            </id>
+
+            <property name="name" type="string">
+                <column name="GR_NAME"/>
+            </property>
+
+
+			<property name="comment" type="string">
+                <column name="GR_COMMENT"/>
+            </property>
+
+                        
+            <property name="creation" type="date">
+                <column name="GR_CREATION_DATE"/>
+            </property>
+            
+            <property name="image" type="string">
+                <column name="GR_IMAGE"/>
+            </property>
+            
+            <property name="custom1" type="string">
+                <column name="GR_CUSTOM_1" length="10000000"/>
+            </property>
+            
+            <property name="parentId" type="java.lang.Integer">
+                <column name="GR_PARENT_ID"/>
+            </property>
+            
+            <property name="maxSupportedWeightFmdt" type="java.lang.Integer">
+                <column name="GR_FMDT_MAX_WEIGHT"/>
+            </property>
+    </class>
+</hibernate-mapping>

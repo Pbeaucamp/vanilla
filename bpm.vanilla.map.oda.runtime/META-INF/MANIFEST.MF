@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.map.oda.runtime
+Bundle-SymbolicName: bpm.vanilla.map.oda.runtime; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-ClassPath: .,
+ src
+Bundle-Vendor: BPM-Conseil
+Bundle-Localization: plugin
+Export-Package: bpm.vanilla.map.oda.runtime.impl;version="1.0.0.qualifier"
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda;bundle-version="[3.2.0,4.0.0)",
+ org.eclipse.datatools.connectivity.oda.profile;bundle-version="[3.2.0,4.0.0)",
+ bpm.vanilla.map.core;bundle-version="1.0.2",
+ bpm.vanilla.map.remote;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

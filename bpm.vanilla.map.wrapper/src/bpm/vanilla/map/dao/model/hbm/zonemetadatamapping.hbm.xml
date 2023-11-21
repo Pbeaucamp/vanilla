@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.core.design.ZoneMetadataMapping" table="ZONEMETADATAMAPPING">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="metadataId" type="java.lang.Integer">
+                <column name="metadata_id"/>
+            </property>
+
+            <property name="datasetId" type="java.lang.Integer">
+                <column name="dataset_id"/>
+            </property>
+            
+            <property name="datastreamName" type="string">
+                <column name="datastream_name"/>
+            </property>
+            
+            <property name="zoneId" type="string">
+                <column name="zone_id"/>
+            </property>
+
+            <property name="metadataElementId" type="string">
+                <column name="metadata_element_id"/>
+            </property>
+    </class>
+</hibernate-mapping>

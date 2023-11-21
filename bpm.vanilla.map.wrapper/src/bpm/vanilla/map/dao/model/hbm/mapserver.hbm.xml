@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.core.design.MapServer" table="MAPSERVER">   
+       <id name="id" type="java.lang.Integer">
+           <column name="id" />
+            <generator class="increment"/>
+       </id>
+
+       <property name="name" type="string">
+           <column name="name"/>
+       </property>
+
+       <property name="url" type="string">
+           <column name="url"/>
+       </property>
+       
+		<property name="type">
+			<column name="type"/>
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.map.core.design.MapServer$TypeServer</param>
+			</type>
+		</property>
+    </class>
+</hibernate-mapping>

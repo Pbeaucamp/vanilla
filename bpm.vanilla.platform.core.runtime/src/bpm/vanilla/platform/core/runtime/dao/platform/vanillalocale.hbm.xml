@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.VanillaLocale" table="vanilla_locale">
+			<id name="id" type="java.lang.Integer">
+                <column name="LOCALE_ID" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="name" type="string">
+                <column name="LOCALE_NAME"/>
+            </property>
+
+            <property name="localeValue" type="string">
+                <column name="LOCALE_VALUE"/>
+            </property>
+            
+            <property name="localeOrder" type="int">
+                <column name="LOCALE_ORDER"/>
+            </property>
+    </class>
+</hibernate-mapping>

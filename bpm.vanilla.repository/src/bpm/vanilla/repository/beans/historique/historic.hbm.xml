@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.repository.beans.historique.Historic" table="rpy_historique">
+            <id name="Id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="type" type="string">
+                <column name="type"/>
+            </property>
+
+            <property name="userId" type="java.lang.Integer">
+                <column name="user_id"/>
+            </property>
+
+            <property name="modelId" type="java.lang.Integer">
+                <column name="model_id"/>
+            </property>
+
+           <property name="directoryItemId" type="java.lang.Integer">
+                <column name="item_id"/>
+            </property>
+
+           <property name="dateHistoric" type="timestamp">
+                <column name="date_histo"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

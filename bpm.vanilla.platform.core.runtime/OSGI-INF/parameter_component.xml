@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" immediate="true" name="bpm.vanilla.platform.core.runtime.vanillaParameterComponent">
+   <implementation class="bpm.vanilla.platform.core.runtime.components.VanillaParameterComponentImpl"/>
+   
+   <reference bind="bind" cardinality="1..1" 
+   		interface="bpm.vanilla.platform.logging.IVanillaLoggerService" 
+   		name="IVanillaLoggerService" policy="dynamic" unbind="unbind"/>
+   		
+   <reference bind="bind" cardinality="1..1" 
+   		interface="bpm.vanilla.platform.core.runtime.dao.IVanillaDaoComponent" 
+   		name="IVanillaDaoComponent" policy="dynamic" unbind="unbind"/>
+   
+   <reference bind="bind" cardinality="1..1" 
+   		interface="bpm.vanilla.platform.core.IRepositoryManager" 
+   		name="IRepositoryManager" policy="dynamic" unbind="unbind"/>
+   
+   <reference bind="bind" cardinality="1..1" 
+   		interface="bpm.vanilla.platform.core.IVanillaSecurityManager" 
+   		name="IVanillaSecurityManager" policy="dynamic" unbind="unbind"/>
+   
+   <service>
+      <provide interface="bpm.vanilla.platform.core.components.VanillaParameterComponent"/>
+   </service>
+</scr:component>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.ZoneTerritoryMapping" table="ZONE_TERRITOIRE_MAPPING">
+            <id name="id" type="java.lang.Integer">
+                <column name="ZTM_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="mapZoneId" type="java.lang.Integer">
+                <column name="ZTM_map_zone_id"/>
+            </property>
+
+            <property name="territoryId" type="java.lang.Integer">
+                <column name="ZTM_territoire_id"/>
+            </property>
+            
+            <property name="mapId" type="java.lang.Integer">
+                <column name="ZTM_map_id"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

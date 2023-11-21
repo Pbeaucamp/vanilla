@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.ged.GedDocument" table="ged_document">
+            <id name="id" type="java.lang.Integer">
+                <column name="DOC_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="DOC_NAME"/>
+            </property>
+            
+            <property name="creationDate" type="timestamp">
+                <column name="DOC_CREATION_DATE"/>
+            </property>
+
+			<property name="createdBy" type="java.lang.Integer">
+                <column name="DOC_CREATED_BY"/>
+            </property>
+
+			<property name="directoryId" type="java.lang.Integer">
+				<column name="DOC_DIRECTORY_ID"></column>
+			</property>
+			
+			<property name="mdmAttached" type="boolean">
+                <column name="is_mdm_attached" not-null="true" default="false"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

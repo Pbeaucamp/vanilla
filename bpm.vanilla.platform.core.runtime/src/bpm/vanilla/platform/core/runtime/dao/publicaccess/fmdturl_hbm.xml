@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.FmdtUrl" table="fmdt_url">
+            <id name="id" type="int">
+                <column name="FU_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="itemId" type="java.lang.Integer">
+                <column name="FU_ITEM_ID"/>
+            </property>
+            
+            <property name="repositoryId" type="java.lang.Integer">
+                <column name="FU_REPOSITORY_ID"/>
+            </property>
+                        
+            <property name="groupName" type="string">
+                <column name="FU_GROUP_NAME"/>
+            </property>
+
+			<property name="modelName" type="string">
+                <column name="FU_MODEL_NAME"/>
+            </property>
+            
+            <property name="packageName" type="string">
+                <column name="FU_PACKAGE_NAME"/>
+            </property>
+
+            <property name="description" type="string">
+                <column name="FU_DESCRIPTION"/>
+            </property>
+            
+            <property name="user" type="string">
+                <column name="FU_USER"/>
+            </property>
+            
+            <property name="password" type="string">
+                <column name="FU_PASSWORD"/>
+            </property>
+            
+            <property name="name" type="string">
+                <column name="FU_PUBLIC_NAME"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.fusionmap.impl.FusionMapSpecificationEntity" table="FUSION_MAP_SPECIFICATION_ENTITIES">
+            <id name="id" type="long">
+                <column name="FMSE_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="fusionMapObjectId" type="long">
+                <column name="FMSE_FMO_ID"/>
+            </property>
+
+            <property name="fusionMapInternalId" type="java.lang.String">
+                <column name="FMSE_SWF_INTERNAL_ID"/>
+            </property>
+
+            <property name="fusionMapLongName" type="java.lang.String">
+                <column name="FMSE_LONG_NAME"/>
+            </property>
+
+           <property name="fusionMapShortName" type="java.lang.String">
+                <column name="FMSE_SHORT_NAME"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

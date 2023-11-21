@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.Cell" table="CELL">
+            <id name="id" type="java.lang.Integer">
+                <column name="CE_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="buildingId" type="java.lang.Integer">
+                <column name="CE_Building_ID"/>
+            </property>
+
+            <property name="floorId" type="java.lang.Integer">
+                <column name="CE_Floor_ID"/>
+            </property>
+
+            <property name="label" type="java.lang.String">
+                <column name="CE_Label"/>
+            </property>
+            
+            <property name="positionX" type="java.lang.Double">
+                <column name="CE_PositionX"/>
+            </property>
+            
+            <property name="positionY" type="java.lang.Double">
+                <column name="CE_PositionY"/>
+            </property>
+            
+            <property name="surface" type="java.lang.Double">
+                <column name="CE_Surface"/>
+            </property>
+
+            <property name="imageId" type="java.lang.Integer">
+                <column name="CE_Image_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

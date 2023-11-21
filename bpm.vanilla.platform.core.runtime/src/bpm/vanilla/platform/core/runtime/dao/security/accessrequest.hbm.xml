@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	
+    <class name="bpm.vanilla.platform.core.beans.AccessRequest" table="AccessRequest">
+    
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="repositoryId" type="java.lang.Integer">
+                <column name="repositoryId"/>
+            </property>
+			<property name="itemId" type="java.lang.Integer">
+                <column name="itemId"/>
+            </property>            
+            
+            <property name="groupId" type="java.lang.Integer">
+                <column name="groupId"/>
+            </property>
+            <property name="userId" type="java.lang.Integer">
+                <column name="userId"/>
+            </property>            
+            
+            <property name="requestDate" type="java.util.Date">
+                <column name="requestDate"/>
+            </property>                  
+            <property name="requestInfo" type="java.lang.String">
+                <column name="requestInfo"/>
+            </property>         
+            <property name="requestUserId" type="java.lang.Integer">
+                <column name="requestUserId"/>
+            </property>    
+
+			<property name="requestOpId" type="java.lang.Integer">
+                <column name="requestOpId"/>
+            </property>
+            
+            <property name="answerDate" type="java.util.Date">
+                <column name="answerDate"/>
+            </property>               
+            <property name="answerInfo" type="java.lang.String">
+                <column name="answerInfo"/>
+            </property>             
+			<property name="answerOpId" type="java.lang.Integer">
+                <column name="answerOpId"/>
+            </property>
+			<property name="answerUserId" type="java.lang.Integer">
+                <column name="answerUserId"/>
+            </property>       
+            
+			<property name="userUpdated" type="java.lang.Boolean">
+                <column name="userUpdated"/>
+            </property>          
+			<property name="adminUpdated" type="java.lang.Boolean">
+                <column name="adminUpdated"/>
+            </property>   
+	</class>
+</hibernate-mapping>

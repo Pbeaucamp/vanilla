@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.ILinkedParameter" table="rpy_linked_parameters">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="internalParameterPosition" type="int">
+                <column name="parameter_position"/>
+            </property>
+
+      
+			<property name="providedParameterId" type="java.lang.Integer">
+                <column name="provided_parameter_id"/>
+            </property>
+            
+            <property name="providerParameterId" type="java.lang.Integer">
+                <column name="provider_parameter_id"/>
+            </property>
+            
+            
+            
+    </class>
+</hibernate-mapping>

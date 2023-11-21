@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.SecurityLog" table="security_log">
+		<id name="id" type="java.lang.Integer">
+		    <column name="SL_ID" />
+		    <generator class="increment"/>
+		</id>
+		
+		<property name="type" type="int">
+		    <column name="SL_TYPE"/>
+		</property>
+		
+		<property name="userId" type="int">
+		    <column name="SL_USER_ID"/>
+		</property>
+		
+		<property name="groupId" type="int">
+		    <column name="SL_GROUP_ID"/>
+		</property>
+		
+		<property name="clientIp" type="string">
+		    <column name="SL_CLIENT_IP"/>
+		</property>
+		            
+		<property name="date" type="java.util.Date">
+		    <column name="GR_CREATION_DATE"/>
+		</property>
+    </class>
+</hibernate-mapping>

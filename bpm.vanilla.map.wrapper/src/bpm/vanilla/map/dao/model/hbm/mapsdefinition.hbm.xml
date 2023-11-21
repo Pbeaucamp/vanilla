@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.model.impl.MapDefinition" table="MAPS_DEFINITION">
+            <id name="id" type="java.lang.Integer">
+                <column name="MD_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="label" type="java.lang.String">
+                <column name="MD_Label"/>
+            </property>
+
+            <property name="description" type="java.lang.String">
+                <column name="MD_Description"/>
+            </property>
+
+            <property name="mapType" type="java.lang.String">
+                <column name="MD_Map_Type"/>
+            </property>
+
+            <property name="kmlObjectId" type="java.lang.Integer">
+                <column name="MD_Kml_Object_ID"/>
+            </property>
+
+            <property name="fusionMapObjectId" type="long">
+                <column name="MD_Fusion_Map_Object_ID"/>
+            </property>
+            
+            <property name="openLayersObjectId" type="java.lang.Integer">
+                <column name="MD_Open_Layers_Object_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

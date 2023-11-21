@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="desactivate" immediate="true" name="bpm.vanilla.platform.core.cluster.ClusterRegistrerProvider">
+   <implementation class="bpm.vanilla.platform.core.cluster.ClusterRegistrer"/>
+   <service>
+      <provide interface="bpm.vanilla.platform.core.IVanillaComponentListenerService"/>
+   </service>
+   <reference bind="bind" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="dynamic" unbind="unbind"/>
+</scr:component>

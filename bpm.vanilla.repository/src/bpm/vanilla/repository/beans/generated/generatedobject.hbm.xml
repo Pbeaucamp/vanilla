@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.birep.hibernate.generated.GeneratedObject" table="rpy_generated_objects">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="groupId" type="java.lang.Integer">
+                <column name="group_id"/>
+            </property>
+
+            <property name="directoryItemId" type="java.lang.Integer">
+                <column name="item_id"/>
+            </property>
+
+            <property name="path" type="string">
+                <column name="file_path"/>
+            </property>
+
+         
+            
+    </class>
+</hibernate-mapping>

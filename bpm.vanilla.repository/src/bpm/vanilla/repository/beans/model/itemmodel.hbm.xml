@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.repository.beans.model.ItemModel" table="rpy_item_model">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="itemId" type="int">
+                <column name="item_id"/>
+            </property>
+
+            <property name="version" type="int">
+                <column name="version"/>
+            </property>
+      
+			<property name="creationDate" type="date">
+                <column name="creation_date"/>
+            </property>
+
+            <property name="xml" type="string">
+                <column name="`xml`" length="10000000"/>
+            </property>
+            
+            <property name="userId" type="int">
+                <column name="user_id"/>
+            </property>
+    </class>
+</hibernate-mapping>

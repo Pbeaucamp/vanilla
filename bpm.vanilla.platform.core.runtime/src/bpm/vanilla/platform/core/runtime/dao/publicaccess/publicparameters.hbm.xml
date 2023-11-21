@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.PublicParameter" table="vanilla_public_parameters">
+            <id name="id" type="java.lang.Integer">
+                <column name="PP_ID" />
+                <generator class="increment"/>
+            </id>
+            
+            <property name="publicUrlId" type="java.lang.Integer">
+                <column name="PP_PU_ID"/>
+            </property>
+            
+            <property name="parameterName" type="string">
+                <column name="PP_PARAMETER_NAME"/>
+            </property>
+            
+            <property name="parameterValue" type="string">
+                <column name="PP_PARAMETER_VALUE"/>
+            </property>
+
+            
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.alerts.Condition" table="rpy_alert_condition">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="leftOperand" type="string">
+                <column name="left_op"/>
+            </property>
+
+            <property name="rightOperand" type="string">
+                <column name="right_op"/>
+            </property>
+
+			<property name="operator" type="string">
+                <column name="operator"/>
+            </property>
+            
+            <property name="message" type="string">
+                <column name="message"/>
+            </property>
+            
+            <property name="alertId" type="int">
+                <column name="alert_id"/>
+            </property>
+    </class>
+</hibernate-mapping>

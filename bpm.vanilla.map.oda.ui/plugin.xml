@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            icon="noicon"
+            id="bpm.vanilla.map.oda.runtime"
+            name="Vanilla FusionMap DataSource"
+            profile="bpm.vanilla.map.oda.runtime">
+      </newWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.vanilla.map.oda.datasource.PropertyPage"
+            id="bpm.vanilla.map.oda.runtime"
+            name="Vanilla FusionMap  Datasource"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="bpm.vanilla.map.oda.runtime">
+         </filter>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.vanilla.map.oda.runtime">
+         <newDataSourceWizard
+               includesProgressMonitor="false"
+               pageClass="bpm.vanilla.map.oda.ui.datasource.DataSourcePage"
+               pageTitle="FusionMap Selection"
+               windowTitle="Vanilla FusionMap DataSource">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            supportsOutParameters="false"
+            supportsInParameters="true"
+            initialPageId="bpm.vanilla.map.oda.ui.dataset.page1"
+            id="bpm.vanilla.map.oda.runtime.dataSet">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="DataSetPage">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="DataSet"
+               icon="icons/datasetpage.ico"
+               wizardPageClass="bpm.vanilla.map.oda.ui.dataset.FusionMapDataSetPage"
+               path="/"
+               id="bpm.vanilla.map.oda.ui.dataset.page1">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+</plugin>

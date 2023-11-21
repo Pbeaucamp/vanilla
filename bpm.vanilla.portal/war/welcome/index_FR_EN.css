@@ -1,0 +1,6 @@
+#conteneur.en :lang(fr) {
+  display: none;
+}
+#conteneur.fr :lang(en) {
+  display: none;
+}

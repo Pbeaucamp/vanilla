@@ -1,0 +1,379 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- use the vanilla configuration from the Systemp property bpm.vanilla.configurationFile -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+	</bean> 
+
+<!-- Definition de la source de donnees -->	
+        <bean id="dataSource"
+                class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                        <property name="driverClass" value="${bpm.vanilla.database.driverClassName}"/>
+                        <property name="jdbcUrl" value="${bpm.vanilla.database.jdbcUrl}"/>
+                        <property name="user" value="${bpm.vanilla.database.userName}"/>
+                        <property name="password" value="${bpm.vanilla.database.password}"/>
+                        <property name="acquireRetryAttempts" value="10"></property>
+                        <property name="preferredTestQuery" value="SELECT 1"></property>
+                        <property name="testConnectionOnCheckin" value="true"></property>
+                        <property name="testConnectionOnCheckout" value="false"></property>
+                        <property name="maxIdleTime" value="50"></property>
+                        <property name="maxConnectionAge" value="300"></property>
+                        <property name="idleConnectionTestPeriod" value="30"></property>
+                </bean>
+
+<!--
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/vanilla" />
+		<property name="user" value="biplatform" />
+		<property name="password" value="biplatform" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+-->
+	<!-- <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/vanilla"/>
+		<property name="username" value="biplatform"/>
+		<property name="password" value="biplatform"/>
+	</bean>
+-->
+<!--
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="org.postgresql.Driver"/>
+			<property name="url" value="jdbc:postgresql://localhost:5432/vanilla"/>
+			<property name="username" value="biplatform"/>
+			<property name="password" value="biplatform"/>
+		</bean>
+		-->
+<!-- 
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
+		<property name="url" value="jdbc:derby://localhost:1527/../databases/repository"/>
+	</bean>
+-->
+ 
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/logbean.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/biwlogs.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/vlogs.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/vlogsprops.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/uolapquerylogs.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/logs/fmdtquerylogs.hbm.xml</value>
+					
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/repository.hbm.xml</value>
+				<!-- <value>bpm/vanilla/platform/core/runtime/dao/platform/server.hbm.xml</value> -->
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/vanillasetup.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/vanilla_version.hbm.xml</value>
+				
+				<!-- 
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/session.hbm.xml</value>	
+				 -->
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/variable.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/vanillalocale.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/archive_type.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/platform/archive_type_item.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/openpreference.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/datasource.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/dataset.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/userrunconfiguration.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/datacolumn.hbm.xml</value>
+				<!-- 
+				<value>bpm/vanilla/platform/core/runtime/dao/preferences/lookpreference.hbm.xml</value>
+				 -->		
+						
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/publicaccess/publicurl.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/publicaccess/publicparameters.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/publicaccess/fmdturl_hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/security/user.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/userrep.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/group.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/role.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/rolegroup.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/usergroup.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/unitedolap/uolapquerypreload.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/groupprojection.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/security/accessrequest.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/securitylog.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/setting.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/security/passwordbackup.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/security/autologin.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/document.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/documentversion.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/security.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/category.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/doccat.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/definition.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/storedfield.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/ged/lock.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/massreport/massreportstate.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/massreport/massreportref.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/widgets/Widgets.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/widgets/WidgetsGroup.hbm.xml</value>
+				<value>bpm/vanilla/platform/core/runtime/dao/widgets/WidgetPosition.hbm.xml</value>
+				
+				<value>bpm/vanilla/platform/core/runtime/dao/scheduler/job.hbm.xml</value> 
+      			<value>bpm/vanilla/platform/core/runtime/dao/scheduler/JobInstance.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/service/serviceinputdata.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/service/serviceoutputdata.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/service/servicereturndata.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/service/servicetransformationdefinition.hbm.xml</value>
+        		
+        		<value>bpm/vanilla/platform/core/runtime/dao/resource/classrule.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/resource/resourcewrapper.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/resource/validationdataresult.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/resource/validationruleresult.hbm.xml</value>
+        		<value>bpm/vanilla/platform/core/runtime/dao/resource/validationschemaresult.hbm.xml</value>
+			</list>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>bpm.vanilla.platform.core.beans.resources.D4C</value>
+				<value>bpm.vanilla.platform.core.beans.resources.D4CItemVisualization</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${bpm.vanilla.database.dialect}</prop>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.IngresDialect</prop>-->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>-->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			    <prop key="hibernate.connection.release_mode">on_close</prop>
+			    <prop key="hibernate.c3p0.acquire_increment">1</prop>
+			    <prop key="hibernate.c3p0.minPoolSize">2</prop>
+			    <prop key="hibernate.c3p0.maxPoolSize">50</prop>
+			    <prop key="hibernate.c3p0.timeout">1800</prop>
+			    <prop key="hibernate.c3p0.max_statement">0</prop>  
+			    <prop key="hibernate.c3p0.idle_test_period">30</prop>	    
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--  Security -->
+	<bean id="userDAO" class="bpm.vanilla.platform.core.runtime.dao.security.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="userRepDAO" class="bpm.vanilla.platform.core.runtime.dao.security.UserRepDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="groupDAO" class="bpm.vanilla.platform.core.runtime.dao.security.GroupDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="roleDAO" class="bpm.vanilla.platform.core.runtime.dao.security.RoleDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="roleGroupDAO" class="bpm.vanilla.platform.core.runtime.dao.security.RoleGroupDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="userGroupDAO" class="bpm.vanilla.platform.core.runtime.dao.security.UserGroupDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+		<bean id="groupProjectionDAO" class="bpm.vanilla.platform.core.runtime.dao.security.GroupProjectionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="accessRequestDAO" class="bpm.vanilla.platform.core.runtime.dao.security.AccessRequestDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="WidgetsDAO" class="bpm.vanilla.platform.core.runtime.dao.widgets.WidgetsLogsDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="WidgetsGroupDAO" class="bpm.vanilla.platform.core.runtime.dao.widgets.WidgetsGroupDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="WidgetPositionDAO" class="bpm.vanilla.platform.core.runtime.dao.widgets.WidgetPositionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="securityLogDAO" class="bpm.vanilla.platform.core.runtime.dao.security.SecurityLogDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="settingsDAO" class="bpm.vanilla.platform.core.runtime.dao.security.SettingsDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  PublicAccess -->
+	<bean id="fmdtUrlDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.publicaccess.FmdtUrlDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="publicUrlDAO" class="bpm.vanilla.platform.core.runtime.dao.publicaccess.PublicUrlDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="publicParameterDAO" class="bpm.vanilla.platform.core.runtime.dao.publicaccess.PublicParameterDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--  Preferences -->
+	<bean id="openPreferenceDAO" class="bpm.vanilla.platform.core.runtime.dao.preferences.OpenPreferenceDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="userRunConfigurationDao" class="bpm.vanilla.platform.core.runtime.dao.preferences.UserRunConfigurationDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+ 	
+	
+	
+	
+	<!--  Platform Dao -->
+	<bean id="variableDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.VariableDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="sessionDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.SessionDAO">
+		<!-- <property name="sessionFactory" ref="sessionFactory"/> -->
+	</bean>
+	<bean id="serverDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.ServerDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="repositoryDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.RepositoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="vanillaSetupDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.VanillaSetupDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="vanillaVersionDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.VanillaVersionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="vanillaLocaleDAO" class="bpm.vanilla.platform.core.runtime.dao.platform.VanillaLocaleDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!--  Logs DAO -->
+	<bean id="biwLogsDAO" class="bpm.vanilla.platform.core.runtime.dao.logs.BiwLogsDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="logDAO" class="bpm.vanilla.platform.core.runtime.dao.logs.LogDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="vanillaLogsDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.logs.VanillaLogsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vanillaLogsPropsDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.logs.VanillaLogsPropsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="uolapQueryLogDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.logs.UolapQueriesLoggerDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmdtQueryLogDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.logs.FmdtQueriesLoggerDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- MASSREPROT -->
+	<bean id="massReportDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.massreport.MassReportMonitorDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="unitedOlapPreloadDAO"
+		class="bpm.vanilla.platform.core.runtime.dao.unitedolap.UnitedOlapPreloadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- Historic DAO -->
+	
+	<bean id="histoDocumentDao" class="bpm.vanilla.platform.core.runtime.dao.ged.DocumentDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="histoDocumentVersionDao" class="bpm.vanilla.platform.core.runtime.dao.ged.DocumentVersionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="histoSecurityDao" class="bpm.vanilla.platform.core.runtime.dao.ged.SecurityDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- Ged DAO -->
+	<bean id="gedCategoryDao" class="bpm.vanilla.platform.core.runtime.dao.ged.CategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="gedDocCatDao" class="bpm.vanilla.platform.core.runtime.dao.ged.DocCatDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<bean id="gedDefinitionDao" class="bpm.vanilla.platform.core.runtime.dao.ged.DefinitionDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="gedStoredFieldDao" class="bpm.vanilla.platform.core.runtime.dao.ged.StoredFieldDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- -scheduler dao -->
+	
+	<bean id="jobDAO" class="bpm.vanilla.platform.core.runtime.dao.scheduler.JobDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+  
+    <bean id="jobInstanceDAO" class="bpm.vanilla.platform.core.runtime.dao.scheduler.JobInstanceDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean> 
+	
+	<bean id="vanillaWebServiceDAO" class="bpm.vanilla.platform.core.runtime.dao.service.VanillaWebServiceDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="resourceDao" class="bpm.vanilla.platform.core.runtime.dao.resource.ResourceDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="externalDao" class="bpm.vanilla.platform.core.runtime.dao.external.ExternalDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="globalDao" class="bpm.vanilla.platform.core.runtime.dao.GlobalDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>
+	

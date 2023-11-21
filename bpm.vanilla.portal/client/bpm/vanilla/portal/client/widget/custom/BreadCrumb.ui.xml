@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.bread {
+			color: #484848;
+			padding: 10px;
+			text-align: center;
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		
+		.bread:hover {
+			cursor: pointer;
+			color: #fff;
+		}
+		
+		.con {
+			height: 25px;
+		}				
+		
+	</ui:style>
+	<g:HTMLPanel styleName="{style.con}">
+		<g:Label ui:field="lblElem" styleName="{style.bread}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

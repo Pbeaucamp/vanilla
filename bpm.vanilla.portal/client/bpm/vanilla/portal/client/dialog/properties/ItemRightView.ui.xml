@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelAvailable {
+		    height: 164px;
+		    left: 5px;
+		    position: absolute;
+		    top: 5px;
+		    width: 322px;
+		}
+		
+		.panelExecutable {
+		    height: 164px;
+		    left: 349px;
+		    position: absolute;
+		    top: 5px;
+		    width: 322px;
+		}
+		
+		.panelCommentable {
+		    height: 164px;
+		    left: 5px;
+		    position: absolute;
+		    top: 187px;
+		    width: 322px;
+		}
+		
+		.panelSecurity {
+		    height: 164px;
+		    left: 349px;
+		    position: absolute;
+		    top: 187px;
+		    width: 322px;
+		}
+		
+		.btnLoadGroups {
+		    height: 40px;
+		    left: 250px;
+		    position: absolute;
+		    top: 170px;
+		    width: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:CaptionPanel ui:field="panelAvailable" addStyleNames="{style.panelAvailable}"/>
+		<g:CaptionPanel ui:field="panelExecutable" addStyleNames="{style.panelExecutable}"/>
+		<g:CaptionPanel ui:field="panelCommentable" addStyleNames="{style.panelCommentable}"/>
+		<g:CaptionPanel ui:field="panelSecurity" addStyleNames="{style.panelSecurity}"/>
+		<g:Button ui:field="btnLoadGroups" addStyleNames="{style.btnLoadGroups}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

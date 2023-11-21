@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.data.Dataset"
+		table="dataset">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+
+		<property name="name" type="string">
+			<column name="dataset_name" />
+		</property>
+
+		<property name="datasourceId" type="int">
+			<column name="datasource_id" />
+		</property>
+
+		<property name="request" type="string">
+			<column name="dataset_request" length="10000000"/>
+		</property>
+		
+		<property name="isRPackaged" type="java.lang.Boolean">
+			<column name="dataset_bPackaged"/>
+		</property>
+		
+		<property name="RPackages" type="string">
+			<column name="dataset_RPackages"/>
+		</property>
+		
+		<property name="idAuthor" type="int">
+			<column name="id_author" />
+		</property>
+		
+		<property name="isRLoaded" type="java.lang.Boolean">
+			<column name="dataset_bRLoaded" default="false"/>
+		</property>
+
+	</class>
+</hibernate-mapping>
+

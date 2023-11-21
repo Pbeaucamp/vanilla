@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.SecuredObject" table="sec_object_secured">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                <generator class="increment"/>
+            </id>
+
+            <property name="directoryItemId" type="java.lang.Integer">
+                <column name="item_id"/>
+            </property>
+
+
+			<property name="groupId" type="java.lang.Integer">
+                <column name="group_id"/>
+            </property>
+            
+    </class>
+</hibernate-mapping>

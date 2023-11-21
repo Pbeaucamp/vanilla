@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.map.core.design.MapDatasourceKML" table="MAPVANILLA_DATASOURCE_KML">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+            <property name="nomDataSource" type="string">
+                <column name="data_source_name"/>
+            </property>
+
+            <property name="contractId" type="java.lang.Integer">
+                <column name="contract_id"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

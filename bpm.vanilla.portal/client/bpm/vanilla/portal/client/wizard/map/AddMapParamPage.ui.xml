@@ -1,0 +1,104 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.vanilla.portal.client.wizard.map.AddMapParamPage.MyStyle">
+	
+	
+		.panelContent {
+			height: 350px;
+			width: 690px;
+		}
+		
+		.lblZoom, .lblOriginLat, .lblOriginLong, .lblBoundLeft, .lblBoundBottom, .lblBoundRight, .lblBoundTop, .lblProjection {
+		   float: left;
+    	   margin-left: 12px;
+    	   margin-right: 10px;
+    	   margin-top: 5px;
+		}
+		
+		.txtZoom, .txtOriginLat, .txtOriginLong, .txtBoundLeft, .txtBoundBottom, .txtBoundRight, .txtBoundTop, .txtProjection {
+		    display: block;
+		    margin-left:  130px;
+		    margin-top: 10px;
+   		    width: 75%;
+		}
+		
+		.lblError {
+			color: red;
+			margin-left: 300px;
+			margin-top: -20px;
+			float: left;
+		}
+		
+		.linePanel {
+			width: 100%;
+		}
+		
+		.titleLabel {
+			margin: 5px;
+    		text-decoration: underline;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+	
+		<g:Label text="{label.zoomDesc}" addStyleNames="{style.titleLabel}"></g:Label>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblZoom" text="{label.MapZoom}" addStyleNames="{style.lblZoom}"/>
+			<g:IntegerBox ui:field="txtZoom" addStyleNames="{style.txtZoom}"/>
+		</g:HTMLPanel>
+		
+		<g:Label text="{label.originDesc}" addStyleNames="{style.titleLabel}"></g:Label>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblOriginLat" text="{label.MapOriginLat}" addStyleNames="{style.lblOriginLat}"/>
+			<g:TextBox ui:field="txtOriginLat" addStyleNames="{style.txtOriginLat}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblOriginLong" text="{label.MapOriginLong}" addStyleNames="{style.lblOriginLong}"/>
+			<g:TextBox ui:field="txtOriginLong" addStyleNames="{style.txtOriginLong}"/>
+		</g:HTMLPanel>
+		
+		<g:Label text="{label.boundDesc}" addStyleNames="{style.titleLabel}"></g:Label>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblBoundLeft" text="{label.MapBoundLeft}" addStyleNames="{style.lblBoundLeft}"/>
+			<g:TextBox ui:field="txtBoundLeft" addStyleNames="{style.txtBoundLeft}"/>	
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblBoundBottom" text="{label.MapBoundBottom}" addStyleNames="{style.lblBoundBottom}"/>
+			<g:TextBox ui:field="txtBoundBottom" addStyleNames="{style.txtBoundBottom}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblBoundRight" text="{label.MapBoundRight}" addStyleNames="{style.lblBoundRight}"/>
+			<g:TextBox ui:field="txtBoundRight" addStyleNames="{style.txtBoundRight}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblBoundTop" text="{label.MapBoundTop}" addStyleNames="{style.lblBoundTop}"/>
+			<g:TextBox ui:field="txtBoundTop" addStyleNames="{style.txtBoundTop}"/>
+		</g:HTMLPanel>
+		
+		<g:Label text="{label.projectionDesc}" addStyleNames="{style.titleLabel}"></g:Label>
+		
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<g:Label ui:field="lblProjection" text="{label.MapProjection}" addStyleNames="{style.lblProjection}"/>
+			<g:TextBox ui:field="txtProjection" addStyleNames="{style.txtProjection}"/>
+		</g:HTMLPanel>
+		
+		<!-- <g:Label ui:field="lblErrorOriginLat" addStyleNames="{style.lblError}"/>
+		<g:Label ui:field="lblErrorOriginLong" addStyleNames="{style.lblError}"/>
+		<g:Label ui:field="lblErrorBoundLeft" addStyleNames="{style.lblError}"/>
+		<g:Label ui:field="lblErrorBoundBottom" addStyleNames="{style.lblError}"/>
+		<g:Label ui:field="lblErrorBoundRight" addStyleNames="{style.lblError}"/>
+		<g:Label ui:field="lblErrorBoundTop" addStyleNames="{style.lblError}"/> -->
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

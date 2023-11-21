@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.beans.VanillaSetup" table="vanilla_setup">
+            <id name="id" type="int">
+                <column name="ID_VAN" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="authentification" type="boolean">
+                <column name="AUTH_VAN"/>
+            </property>
+
+            <property name="birtViewerPath" type="string">
+                <column name="BVPATH_VAN"/>
+            </property>
+
+            <property name="freeAnalysisServer" type="string">
+                <column name="ANALYSIS_VAN"/>
+            </property>
+            
+            <property name="freeDashboardServer" type="string">
+                <column name="DASH_VAN"/>
+            </property>
+
+            <property name="freeWebReportServer" type="string">
+                <column name="WEBREP_VAN"/>
+            </property>
+
+            <property name="freeMetricsServer" type="string">
+                <column name="METRICS_VAN"/>
+            </property>
+            
+            <property name="fasdWebServer" type="string">
+                <column name="FASD_VAN"/>
+            </property>
+
+            <property name="birtViewer" type="string">
+                <column name="BIRT_VAN"/>
+            </property>
+            
+            <property name="workbook" type="string">
+                <column name="WORK_VAN"/>
+            </property>
+
+            <property name="securityServer" type="string">
+                <column name="PREF_VAN"/>
+            </property>
+
+            <property name="schedulerServer" type="string">
+                <column name="SCHED_VAN"/>
+            </property>
+            
+            <property name="vanillaServer" type="string">
+                <column name="VANILLA_SERV"/>
+            </property>
+            
+            <property name="path" type="string">
+                <column name="PATH_VAN"/>
+            </property>
+            
+            <property name="orbeonPath" type="string">
+                <column name="ORB_PATH"/>
+            </property>
+            
+            <property name="orbeonUrl" type="string">
+                <column name="ORB_URL"/>
+            </property>
+             <property name="gatewayServerUrl" type="string">
+                <column name="GATEWAY_SERVER_URL"/>
+            </property>
+            
+            <property name="reportingServerUrl" type="string">
+                <column name="REPORTING_SERVER_URL"/>
+            </property>
+            
+            <property name="fmdtServerUrl" type="string">
+                <column name="FMDT_SERVER_URL"/>
+            </property>
+            
+             <property name="googleKey" type="string">
+                <column name="GOOGLE_KEY"/>
+            </property>
+            
+            <property name="reportEngine" type="string">
+                <column name="REPORT_ENGINE"/>
+            </property>
+            
+            <property name="vanillaFiles" type="string">
+                <column name="VANILLA_FILES"/>
+            </property>
+            
+            <property name="vanillaRuntimeServersUrl" type="string">
+                <column name="VANILLA_RUNTIME_SERVERS_URL"/>
+            </property>
+            
+            <property name="portalLanguage" type="int">
+                <column name="PORTAL_LANGUAGE"/>
+            </property>
+            
+            
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="desactivate" immediate="true" name="bpm.vanilla.platform.core.wrapper.vanillaCore">
+   <implementation class="bpm.vanilla.platform.core.wrapper.VanillaCoreWrapper"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.logging.IVanillaLoggerService" name="IVanillaLoggerService" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IExternalAccessibilityManager" name="IExternalAccessibilityManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IPreferencesManager" name="IPreferencesManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IRepositoryManager" name="IRepositoryManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaLoggingManager" name="IVanillaLoggingManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaSecurityManager" name="IVanillaSecurityManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaSystemManager" name="IVanillaSystemManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IUnitedOlapPreloadManager" name="IUnitedOlapPreloadManager" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaComponentListenerService" name="IVanillaComponentListenerService" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.components.VanillaParameterComponent" name="VanillaParameterComponent" policy="dynamic"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaAccessRequestManager" name="IVanillaAccessRequestManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.components.ReportHistoricComponent" name="ReportHistoricComponent" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.components.IGedComponent" name="IGedComponent" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IMassReportMonitor" name="IMassReportMonitor" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.ISchedulerManager" name="ISchedulerManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaWebServiceComponent" name="IVanillaWebServiceComponent" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.ICommentService" name="ICommentService" policy="dynamic" unbind="unbind"/>  
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IExcelManager" name="IExcelManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IImageManager" name="IImageManager" policy="static" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IArchiveManager" name="IArchiveManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IResourceManager" name="IResourceManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IGlobalManager" name="IGlobalManager" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IExternalManager" name="IExternalManager" policy="dynamic" unbind="unbind"/>
+   </scr:component>
+   
+
+

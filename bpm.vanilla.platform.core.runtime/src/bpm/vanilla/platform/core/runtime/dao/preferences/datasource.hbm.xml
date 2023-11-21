@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.vanilla.platform.core.beans.data.Datasource"
+		table="datasource">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+
+		<property name="name" type="string">
+			<column name="datasource_name" />
+		</property>
+
+		<property name="type" column="datasource_type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">bpm.vanilla.platform.core.beans.data.DatasourceType</param>
+				<param name="type">12</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
+
+		<property name="model" type="string">
+			<column name="datasource_model" length="60000" />
+		</property>
+		
+		<property name="idAuthor" type="int">
+			<column name="id_author" />
+		</property>
+
+	</class>
+</hibernate-mapping>
+

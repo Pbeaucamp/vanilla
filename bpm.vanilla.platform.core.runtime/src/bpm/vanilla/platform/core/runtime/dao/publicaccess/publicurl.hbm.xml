@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.PublicUrl" table="vanilla_public_url">
+            <id name="id" type="java.lang.Integer">
+                <column name="PU_ID" />
+                <generator class="increment"/>
+            </id>
+            
+            <property name="publicKey" type="string">
+                <column name="PU_KEY"/>
+            </property>
+
+            <property name="groupId" type="java.lang.Integer">
+                <column name="PU_GROUP_ID"/>
+            </property>
+            
+            <property name="userId" type="java.lang.Integer">
+                <column name="PU_USER_ID"/>
+            </property>
+            
+            <property name="itemId" type="java.lang.Integer">
+                <column name="PU_ITEM_ID"/>
+            </property>
+             
+            <property name="repositoryId" type="java.lang.Integer">
+                <column name="PU_REPOSITORY_ID"/>
+            </property>
+                        
+            <property name="creationDate" type="timestamp">
+                <column name="PU_CREATION_DATE"/>
+            </property>
+            
+            <property name="endDate" type="timestamp">
+                <column name="PU_END_DATE"/>
+            </property>
+            
+            <property name="active" type="java.lang.Integer">
+                <column name="PU_ACTIVE"/>
+            </property>
+            
+            <property name="deleted" type="java.lang.Integer">
+                <column name="PU_DELETED"/>
+            </property>
+            
+            <property name="outputFormat" type="string">
+                <column name="PU_OUTPUT_FORMAT"/>
+            </property>
+            
+            <property name="datasourceId" type="java.lang.Integer">
+                <column name="PU_DATASOURCE_ID"/>
+            </property>
+            
+             <property name="typeUrl" column="typeUrl">
+				<type name="org.hibernate.type.EnumType">
+					<param name="enumClass">bpm.vanilla.platform.core.beans.PublicUrl$TypeURL</param>
+				</type>
+			</property>
+            
+    </class>
+</hibernate-mapping>

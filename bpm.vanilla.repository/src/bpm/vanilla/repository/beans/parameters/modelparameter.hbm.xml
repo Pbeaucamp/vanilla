@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.repository.Parameter" table="rpy_parameter">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="directoryItemId" type="int">
+                <column name="item_id" />
+            </property>
+
+      
+			<property name="name" type="java.lang.String">
+                <column name="parameter_name"/>
+            </property>
+            
+            <property name="instanceName" type="java.lang.String">
+                <column name="instance_name"/>
+            </property>
+            
+            
+            <property name="dataProviderId" type="java.lang.Integer">
+                <column name="dataprovider_id" default="0"/>
+            </property>
+            
+             <property name="dataProviderName" type="java.lang.String">
+                <column name="dataprovider_name" />
+            </property>
+            
+            <property name="valueColumnIndex" type="java.lang.Integer">
+                <column name="value_column_index" default="0"/>
+            </property>
+            
+            
+             <property name="labelColumnIndex" type="java.lang.Integer">
+                <column name="label_column_index" default="0"/>
+            </property>
+
+ 			<property name="allowMultipleValues" type="boolean">
+                <column name="PRM_DATAPROVIDER_MULTIPLE_VALUES" default="false"/>
+            </property>
+            
+ 			<property name="valueColumnName" type="java.lang.String">
+                <column name="value_column_name" not-null="true"/>
+            </property>
+            
+            
+             <property name="labelColumnName" type="java.lang.String">
+                <column name="label_column_name" not-null="true"/>
+            </property>
+            
+            <property name="defaultValue" type="java.lang.String">
+                <column name="default_value" not-null="false"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

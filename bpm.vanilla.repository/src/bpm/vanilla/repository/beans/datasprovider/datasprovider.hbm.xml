@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="bpm.vanilla.platform.core.repository.DatasProvider" table="rpy_datas_provider">
+            <id name="id" type="int">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="name" type="string">
+                <column name="dataprovider_name"/>
+            </property>
+            
+            
+            <property name="description" type="string">
+                <column name="description"/>
+            </property>
+
+            <property name="creationDate" type="timestamp">
+                <column name="creation_date"/>
+            </property>
+            
+			<property name="modificationDate" type="timestamp">
+                <column name="modification_date"/>
+            </property>
+            
+            <property name="fieldDefinitionName" type="string">
+                <column name="field_definition_name"/>
+            </property>
+
+            <property name="xml" type="string">
+                <column name="`xml`" length="10000000"/>
+            </property>
+    </class>
+</hibernate-mapping>

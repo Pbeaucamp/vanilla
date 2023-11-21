@@ -1,0 +1,232 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.vanilla.portal.client.panels.UserPanel.MyStyle">
+		.mainPanel {
+			width: 500px;
+			background-color: white;
+			-webkit-border-bottom-right-radius: 10px;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+			-moz-border-radius-bottomleft: 10px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		
+		.panelTop {
+			padding: 20px;
+		}
+		
+		.panelBottom {
+			text-align: center;
+			padding: 20px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			-webkit-border-bottom-right-radius: 10px;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+			-moz-border-radius-bottomleft: 10px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		
+		.imgUser {
+			height: 80px !important;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+			border-radius: 50px;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+		}
+		
+		.panelTopUser {
+			margin-left: 20px;
+			display: inline-block;
+			vertical-align: top;"
+		}
+		
+		.lblFullName {
+			font-weight: bold;
+			font-size: 14px;
+			margin-bottom: 5px;
+			margin-top: 10px;
+		}
+		
+		.lblEmail {
+	
+		}
+		
+		.imgAbout {
+			display: inline-block;
+		    height: 50px !important;
+		    margin-left: 10px;
+		    vertical-align: middle;
+		}
+		
+		.panelLblInfo {
+			display: inline-block;
+    		vertical-align: middle;
+    		margin-left: 20px;
+		}
+		
+		.aboutMe {
+			text-align: center;
+			font-size: 18px;
+			color:#fff;
+			margin-bottom:25px;
+		}
+		
+		.maj {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.lblNumMaj {
+			background: none repeat scroll 0 0 #E23923;
+    		border-radius: 5px;
+    		color: #FFFFFF;
+    		font-size: 0.8em;
+    		font-weight: bold;
+    		padding: 3px;
+    		position: absolute;
+    		right: 0;
+    		top: -5px;
+		}
+		
+		.btnBottom {
+			border-radius: 32px;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 25px !important;
+			width: 25px !important;
+			padding: 10px;
+			background-position: center !important;
+			background-color: #9E9393 !important;
+			margin-left: 3px;
+			margin-right: 3px;
+		}
+		
+		.btnBottom:HOVER {
+			background-color: black !important;
+		}
+		
+		.panelInfo {
+			padding: 20px;
+		}
+
+		.glass {
+			background-color: #000000;
+			opacity: 0.3;
+		}
+		
+		.connectedAklabox {
+		    border: 1px solid #555555 !important;
+		    color: #FFFFFF;
+		    cursor: pointer;
+		    display: block;
+		    height: 40px;
+		    margin-left: 25%;
+		    margin-top: 20px;
+		    transition: all 1s ease 0s;
+		    width: 50%;
+		    display: inline-block;
+		}
+		
+		.noConnectedAklabox {
+		    background: none repeat scroll 0 0 #444444 !important;
+		    border: 1px solid #555555 !important;
+		    color: white;
+		    cursor: pointer;
+		    display: block;
+		    height: 40px;
+		    margin-left: 25%;
+		    margin-top: 20px;
+		    transition: all 1s ease 0s;
+		    width: 50%;
+		    display: inline-block;
+		}
+		
+		.noConfigurationAklabox {
+		    background: none repeat scroll 0 0 ligthgray !important;
+		    border: 1px solid #555555 !important;
+		    color: black;
+		    display: block;
+		    height: 40px;
+		    margin-left: 25%;
+		    margin-top: 20px;
+		    transition: all 1s ease 0s;
+		    width: 50%;
+		    display: inline-block;
+		}
+
+		.connectedAklabox:HOVER, .noConnectedAklabox:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.btnAkla {
+			cursor: pointer;
+			display: inline-block;
+		    margin: 30px 2px 0;
+		    vertical-align: top;
+		    width: 16px !important;
+		    height: 16px !important;
+		    padding: 2px;
+		    background-position: center !important;
+		    border-radius: 10px;
+		}
+		
+		.btnAkla:HOVER {
+			background-color: #9E9393 !important;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="rootPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelTop}">
+			<g:Image ui:field="imgUser" />
+			<g:HTMLPanel addStyleNames="{style.panelTopUser}">
+				<g:Label ui:field="lblFullName" styleName="{style.lblFullName}"/>
+				<g:Label ui:field="lblEmail" styleName="{style.lblEmail}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelUser" addStyleNames="{style.panelInfo}">
+			<g:Image ui:field="imgAbout"/>
+			<g:HTMLPanel addStyleNames="{style.panelLblInfo}">
+		        <g:Label ui:field="lblName"/>
+		        <g:Label ui:field="lblUserEmail"/>
+		        <g:Label ui:field="lblRepository"/>
+		        <g:Label ui:field="lblGroup"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Button ui:field="btnAklabox"/>
+				<g:Image ui:field="btnEditAklabox" title="{label.EditProfil}" resource="{commons.edit}" styleName="{style.btnAkla}"/>
+				<g:Image ui:field="btnDisconnectAklabox" title="{label.LogOut}" resource="{commons.disco}" styleName="{style.btnAkla}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelBottom" addStyleNames="{style.panelBottom}">
+			<g:HTMLPanel addStyleNames="{style.aboutMe}">
+	            <g:Label ui:field="lblAboutMe" text="{label.AboutMe}"/>
+	        </g:HTMLPanel>
+	        <g:Image ui:field="btnEdit" title="{label.EditProfil}" resource="{resources.edit_w}" styleName="{style.btnBottom}"/>
+	        <g:Image ui:field="btnGroup" title="{label.SelectGroups}" resource="{resources.users_v2_32}" styleName="{style.btnBottom}"/>
+	        <g:Image ui:field="btnTheme" title="{label.SelectTheme}" resource="{resources.css_v2_32}" styleName="{style.btnBottom}"/>
+	        <g:Image ui:field="btnAdmin" title="{label.AdminView}" resource="{resources.parameter_w}" styleName="{style.btnBottom}"/>
+	        <!-- <g:HTMLPanel addStyleNames="{style.maj}">
+	            <g:Label ui:field="lblNumMaj" styleName="{style.lblNumMaj}"/>
+	            <g:Image ui:field="btnMaj" resource="{resources.maj_w}" styleName="{style.btnBottom}"/>
+	        </g:HTMLPanel> -->
+	        <g:Image ui:field="btnLogout" title="{label.LogOut}" resource="{resources.logout_w}" styleName="{style.btnBottom}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

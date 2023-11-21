@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.ged.Security" table="ged_security">
+            <id name="id" type="java.lang.Integer">
+                <column name="SEC_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="documentId" type="java.lang.Integer">
+                <column name="SEC_DOC_ID"/>
+            </property>
+            
+			<property name="groupId" type="java.lang.Integer">
+                <column name="SEC_GROUP_ID"/>
+            </property>
+            
+            <property name="repositoryId" type="java.lang.Integer">
+                <column name="SEC_REPOSITORY_ID"/>
+            </property>
+            
+            <property name="userId" type="java.lang.Integer">
+                <column name="SEC_USER_ID"/>
+            </property>
+            <property name="isAvailable" type="int" >
+                <column name="SEC_AVAILABLE" not-null="true" default="1"/>
+            </property>
+    </class>
+</hibernate-mapping>

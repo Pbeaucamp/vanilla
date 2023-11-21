@@ -1,0 +1,241 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanilla.portal.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.vanilla.portal.client.images.PortalImage' />
+	<ui:style type="bpm.vanilla.portal.client.panels.center.RepositoryContentPanel.MyStyle">
+		.repositoryPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.flexTable {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.flexTable tr {
+		    display: inline-block;
+	    	vertical-align: top;
+		}
+		
+		.flexTable td {
+		    padding: 5px;
+		}
+		
+		.flexBread {
+			height: 25px;
+			border-bottom: 1px solid #8B8B8B;
+		}
+		
+		.flexBreadcrumb {
+			overflow: hidden;
+			height: 25px;
+		}
+		
+		.navigationPanel {
+			height: 100%;
+			position: absolute;
+			left: 0px;
+			right: 250px;
+		}
+		
+		.contentPanel {
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			top: 57px;
+			bottom: 0px;
+			overflow: auto;
+		}
+		
+		.infoPanel {
+		    border-left: 1px solid #D3D3D3;
+		    height: 100%;
+		    overflow: auto;
+		    position: absolute;
+		    right: 0;
+		    width: 250px;
+		}
+
+		.flexBreadcrumb div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.flexBreadcrumb div div:first-child {
+			padding-left: 0 !important;
+		}
+		
+		.flexBreadcrumb div{
+			text-decoration: none;
+			outline: none;
+			display: block;
+			float: left;
+			font-size: 12px;
+			line-height: 25px;
+			color: white;
+			padding: 0 10px 0 46px;
+			background: #666;
+			background: linear-gradient(#666, #333);
+			position: relative;
+		}
+		
+		.flexBreadcrumb div:first-child:before {
+			left: 14px;
+		}
+		
+		.flexBreadcrumb div:last-child {
+			border-radius: 0 5px 5px 0;
+			padding-right: 20px;
+		}
+		
+		/*hover/active styles*/
+		.flexBreadcrumb div:hover, .flexBreadcrumb div:hover div{
+			background: #333;
+			background: linear-gradient(#333, #000);
+		}
+		
+		.flexBreadcrumb div:hover:after {
+			background: #333;
+			background: linear-gradient(135deg, #333, #000);
+		}
+		
+		/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+		.flexBreadcrumb div:after {
+			content: '';
+			position: absolute;
+			top: 0; 
+			right: -10px; /*half of square's length*/
+			/*same dimension as the line-height of .flexBreadcrumb div */
+			width: 25px; 
+			height: 25px;
+			/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+			length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+			if diagonal required = 1; length = 1/1.414 = 0.707*/
+			-webkit-transform: scale(0.707) rotate(45deg);
+			-moz-transform: scale(0.707) rotate(45deg);
+			transform: scale(0.707) rotate(45deg);
+			/*we need to prevent the arrows from getting buried under the next link*/
+			z-index: 1;
+			/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+			background: #666;
+			background: linear-gradient(135deg, #666, #333);
+			/*stylish arrow design using box shadow*/
+			box-shadow: 
+				2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+				3px -3px 0 2px rgba(255, 255, 255, 0.1);
+			/*
+				5px - for rounded arrows and 
+				50px - to prevent hover glitches on the border created using shadows*/
+			border-radius: 0 5px 0 50px;
+		}
+		
+		/*we dont need an arrow after the last link*/
+		.flexBreadcrumb div div:after {
+			content: none !important;
+		}
+
+		.dataGridToolbar {
+			width: 100%;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			border: 1px solid #ddd;
+			border-left: none;
+			border-right: none;
+    		border-color: #808080;
+    		height: 30px;
+		}
+
+		.dataGridToolbar button {
+			border: none;
+			padding: 0;
+			margin: 0;
+			border: none;
+			border-radius: 0px;
+			padding: 5px;
+			color: #484848;
+			-webkit-transition: 0.3s all !important;
+			-moz-transition: 0.3s all !important;
+			-oz-transition: 0.3s all !important;
+			transition: 0.3s all !important;
+			background: none;
+			text-align: left;
+		}
+		
+		.panelView {
+			width: 5% !important;
+			height: 30px !important;
+			vertical-align: top;
+			background-position: center !important;
+		    display: inline-block;
+		    text-align: center;
+		}
+		
+		.panelView:HOVER {
+			background-color: #484848 !important;
+			border: none !important;
+			cursor: pointer;
+		}
+		
+		.btnView {
+    		padding: 4px 0;
+		}
+		
+		.btnSelected {
+			background-color: #484848 !important;
+			border: none !important;
+			cursor: pointer;
+		}
+		
+		.btnName {
+			width: 42%;
+			height: 30px;
+		}
+		
+		.btnComment {
+			width: 31%;
+			height: 30px;
+		}
+		
+		.btnDate {
+			width: 20%;
+			height: 30px;
+		}
+
+		.dataGridToolbar button:active {
+			border: none;
+		}
+
+		.dataGridToolbar button:HOVER, .dataGrid button:focus {
+			background: #484848;
+			color: white;
+			border: none !important;
+		}
+		
+		.focusItem {
+			border: 4px solid #3B99CB !important;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.repositoryPanel}">
+		<g:HTMLPanel addStyleNames="{style.navigationPanel}">
+			<g:FlowPanel ui:field="panelFilePath" styleName="{style.flexBreadcrumb}" />
+			<g:HTMLPanel ui:field="dataGridToolbar" styleName="{style.dataGridToolbar}">
+				<div class="{style.panelView}">
+					<g:Image ui:field="btnDisplay" resource="{resources.ic_content_btnView}" addStyleNames="{style.btnView}" />
+				</div><g:Button ui:field="btnName" addStyleNames="{style.btnName}" text="{label.Name}" />
+				<g:Button ui:field="btnComment" addStyleNames="{style.btnComment}" text="{label.Comment}" />
+				<g:Button ui:field="btnDate" addStyleNames="{style.btnDate}" text="{label.CreationDate}" />
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="contentPanel" addStyleNames="{style.contentPanel}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="infoPanel" addStyleNames="{style.infoPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 
