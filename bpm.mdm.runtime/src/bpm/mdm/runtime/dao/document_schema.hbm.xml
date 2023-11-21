@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.resources.DocumentSchema" table="mdm_document_schema">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="increment"/>
+		</id>
+		
+		<property name="contractId" type="java.lang.Integer">
+		    <column name="coontract_id"/>
+		</property>
+
+		<property name="schema" type="string">
+		    <column name="validation_schema"/>
+		</property>
+    </class>
+</hibernate-mapping>

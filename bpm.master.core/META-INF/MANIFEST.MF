@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.master.core
+Bundle-SymbolicName: bpm.master.core
+Bundle-Version: 1.0.0
+Require-Bundle: bpm.vanilla.external.jars;bundle-version="5.0.0",
+ bpm.vanilla.platform.hibernate;bundle-version="5.0.0",
+ bpm.vanilla.platform.core.config;bundle-version="6.0.0",
+ bpm.document.management.core;bundle-version="16.0.0"
+Export-Package: bpm.master.core,
+ bpm.master.core.model,
+ bpm.master.core.remote
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

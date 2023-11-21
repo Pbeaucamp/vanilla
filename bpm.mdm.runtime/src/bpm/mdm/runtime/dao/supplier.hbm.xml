@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.mdm.model.supplier.Supplier" table="mdm_supplier">
+            <id name="id" type="java.lang.Integer">
+                <column name="ID" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="name" type="string">
+                <column name="SUPPLIER_NAME"/>
+            </property>
+
+			<property name="externalId" type="string">
+                <column name="EXTERNAL_ID"/>
+            </property>
+            
+            <property name="externalSource" type="string">
+                <column name="EXTERNAL_SOURCE"/>
+            </property>
+            
+			<list name="contracts" cascade="all-delete-orphan" lazy="false">
+				<key column="id"></key>
+				<list-index column="contract_index"/>
+				<one-to-many class="bpm.mdm.model.supplier.Contract"/>
+			</list>
+    </class>
+</hibernate-mapping>

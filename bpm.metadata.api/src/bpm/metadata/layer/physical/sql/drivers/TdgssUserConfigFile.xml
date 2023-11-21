@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+
+<!-- TDGSS User Configuration File -->
+
+<!-- This file consists of five sections:
+        Header
+        LegalValues
+        Algorithms
+        GlobalQops
+        Mechanisms
+-->
+
+<TdgssConfigFile>
+
+    <Header
+        Version="1"
+        ConfigFileType="User">
+    </Header>
+
+    <!-- Mechanisms Section: This section puts it all together; what
+         mechanisms are available and what QOPs each supports. -->
+
+    <Mechanisms>
+
+        <!-- One entry for each supported mechanism goes here -->
+
+
+        <!-- Teradata Method 1 -->
+        <!-- This mechanism is required to support clients prior to
+             TTU 8.0.  Previous clients use a different message 
+             format and therefore require a separate mechanism.
+
+             It should not have the attribute DefaultMechanism="no"
+             since DBSV2 6.0 will not offer TD1 to TTU 8.0 clients.
+        -->
+        <Mechanism Name="TD1">
+
+            <MechanismProperties
+                AuthenticationSupported="no"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="10"
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"
+                />
+
+        </Mechanism>
+
+
+        <!-- Teradata Method 2 (uses AES) -->
+
+        <Mechanism Name="TD2">
+
+            <MechanismProperties
+                AuthenticationSupported="no"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="20"
+                DefaultMechanism="no"
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"
+
+                VerifyDHKey="no"
+DHKeyP="E4BE0A78F54C4A0B17E7E9249A78BCC08868C17281D8463C880937853E73DDC787E41580A8AFE2594D984C9E0814C590790354ECCD1BE8EA85961E5E0974B32EFE178335F061E80189B4BDAA20F67B47"
+DHKeyG="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005"
+                />
+
+        </Mechanism>
+
+
+        <!-- SSPI: Kerberos Compatability -->
+        <!-- This mechanism is required to support clients prior to
+             TTU 8.0.  Previous clients use a different message 
+             format and therefore require a separate mechanism.
+
+             It should not have the attribute DefaultMechanism="no"
+             since DBSV2 6.0 will not offer KRB5C to TTU 8.0 clients.
+        -->
+        <Mechanism Name="KRB5C">
+
+            <MechanismProperties
+                AuthenticationSupported="yes"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="30"
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"
+                />
+
+        </Mechanism>
+
+
+        <!-- SSPI: Kerberos -->
+
+        <Mechanism Name="KRB5">
+
+            <MechanismProperties
+                AuthenticationSupported="yes"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="40"
+                DefaultMechanism="no"
+
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"
+                
+                />
+
+        </Mechanism>
+
+
+        <!-- SSPI: NTLM Compatability -->
+        <!-- This mechanism is required to support clients prior to
+             TTU 8.0.  Previous clients use a different message 
+             format and therefore require a separate mechanism.
+
+             It should not have the attribute DefaultMechanism="no"
+             since DBSV2 6.0 will not offer NTLMC to TTU 8.0 clients.
+        -->
+
+        <Mechanism Name="NTLMC">
+
+            <MechanismProperties
+                AuthenticationSupported="yes"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="50"
+
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"            
+                />
+
+        </Mechanism>
+
+
+        <!-- SSPI: NTLM -->
+        <Mechanism Name="NTLM">
+
+            <MechanismProperties
+                AuthenticationSupported="yes"
+                AuthorizationSupported="no"
+
+                MechanismEnabled="yes"
+                MechanismRank="60"
+                DefaultMechanism="no"
+
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"                
+                />
+
+        </Mechanism>
+
+        <!-- LDAPv3 -->
+
+        <Mechanism Name="ldap">
+
+            <MechanismProperties
+                AuthenticationSupported="yes"
+                AuthorizationSupported="yes"
+
+                MechanismEnabled="yes"
+                MechanismRank="70"
+                DefaultMechanism="no"
+
+                
+                DelegateCredentials="no"
+                MutualAuthentication="yes"
+                ReplayDetection="yes"
+                OutOfSequenceDetection="yes"
+                ConfidentialityDesired="yes"
+                IntegrityDesired="yes"
+                AnonymousAuthentication="no"              
+                DesiredContextTime=""
+                DesiredCredentialTime=""
+                CredentialUsage="0"
+                
+                VerifyDHKey="no"
+DHKeyP="E4BE0A78F54C4A0B17E7E9249A78BCC08868C17281D8463C880937853E73DDC787E41580A8AFE2594D984C9E0814C590790354ECCD1BE8EA85961E5E0974B32EFE178335F061E80189B4BDAA20F67B47"
+DHKeyG="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005"
+
+                LdapServerName=""
+                LdapServerPort="389"
+                LdapServerRealm=""
+                LdapSystemFQDN=""
+                LdapBaseFQDN=""
+                />
+
+        </Mechanism>
+
+    </Mechanisms>
+
+</TdgssConfigFile>

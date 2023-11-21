@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!--
+migrated into ES
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.gedmanager.perspective.HistoricManager"
+            icon="src/bpm/es/gedmanager/icons/history32.png"
+            id="bpm.es.gedmanager.perspective.historicmanager"
+            name="%perspective.historic.name">
+         <description>
+            %perspective.historic.description
+         </description>
+      </perspective>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.gedmanager.perspective.GedManager"
+            icon="src/bpm/es/gedmanager/icons/ged32.png"
+            id="bpm.es.gedmanager.perspective.gedmanager"
+            name="%perspective.ged.name">
+         <description>
+            %perspective.ged.description
+         </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.es.gedmanager.views.GeneralView"
+            icon="src/bpm/es/gedmanager/icons/ged16.png"
+            id="bpm.es.gedmanager.views.generalview"
+            name="%view.ged.name"
+            restorable="true">
+      </view> 
+       <!--  
+        migrated into ES      
+      <view
+            class="bpm.es.gedmanager.views.TreeReports"
+            id="bpm.es.gedmanager.views.treereports"
+            name="%view.report.name"
+            restorable="true">
+      </view>
+     
+     
+      <view
+            class="bpm.es.gedmanager.views.SecurityManager"
+            id="bpm.es.gedmanager.views.securitymanager"
+            name="%view.security.name"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.es.gedmanager.views.IndexationProvider"
+            id="bpm.es.gedmanager.views.indexationprovider"
+            name=""
+            restorable="true">
+      </view>
+   -->
+   </extension>
+
+</plugin>

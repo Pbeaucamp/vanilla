@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.mdm.runtime.dao.SupplierSecurity" table="mdm_security_supplier">
+            <id name="id" type="java.lang.Integer">
+                <column name="ID" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="groupId" type="java.lang.Integer">
+                <column name="GROUP_ID"/>
+            </property>
+
+			<property name="supplierId" type="java.lang.Integer">
+                <column name="SUPPLIER_ID"/>
+            </property>
+
+    </class>
+</hibernate-mapping>

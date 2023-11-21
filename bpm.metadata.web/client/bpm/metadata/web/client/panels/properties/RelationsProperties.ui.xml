@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.metadata.web.client.panels">
+	
+	<ui:style>
+	
+	</ui:style>
+	<c:TableRelationCreationPanel ui:field="relationCreationPanel"/>
+</ui:UiBinder> 

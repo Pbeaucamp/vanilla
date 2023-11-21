@@ -1,0 +1,114 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	
+	<ui:style type="bpm.metadata.web.client.panels.ColumnPropertiesPanel.MyStyle">
+		.mainPanel {
+		    height: 99%;
+		    position: relative;
+		    width: 100%;
+		}
+		
+		.btnImage {
+			cursor: pointer;
+		    height: 16px !important;
+		    padding: 7px;
+		    width: 16px !important;
+			background-position: center !important;			
+		}
+		
+		.btnImage:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	
+		.txtWidth {
+			width: 100%;
+		}
+		
+		.panelType {
+		    border-bottom: 1px solid;
+		    height: 150px;
+		    width: 100%;
+		}
+		
+		.panelResources {
+		    bottom: 0;
+		    position: absolute;
+		    top: 250px;
+		    width: 100%;
+		}
+		
+		.panelGrid {
+		    height: 100%;
+	    	width: 100%;
+		}
+		
+		.panelBtnType {
+			width: 250px;
+			display: inline-block;
+		}
+		
+		.lstBehavior {
+			width: 250px;
+			display: inline-block;
+		}
+		
+		.btnType {
+		    display: block;
+		    margin: 4px 15px;
+		    width: 100%;	
+		}
+		
+		.label {
+		    color: #3B99CB;
+		    margin-left: 18px;
+		}
+		
+		.lblType {
+		    width: 70px;
+		    margin-top: 5px;
+		    display: inline-block;
+		    vertical-align: top;
+		}
+		
+		.lblLst {
+    		margin-top: 5px;
+		}
+		
+		.panelBehavior {
+		    display: inline-block;
+		    vertical-align: top;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<c:LabelTextBox ui:field="txtName" placeHolder="{label.Name}" addStyleNames="{style.txtWidth}"/>
+		<g:HTMLPanel addStyleNames="{style.panelType}">
+			<g:Label text="{label.Type}" addStyleNames="{style.label},{style.lblType}"/>
+			<div class="{style.panelBtnType}">
+				<g:RadioButton ui:field="btnUndefined" name="type" text="{label.Undefined}" value="true" addStyleNames="{style.btnType}"/>
+				<g:RadioButton ui:field="btnDimension" name="type" text="{label.Dimension}" addStyleNames="{style.btnType}"/>
+				<g:RadioButton ui:field="btnMeasure" name="type" text="{label.Measure}" addStyleNames="{style.btnType}"/>
+				<g:RadioButton ui:field="btnProperty" name="type" text="{label.Property}" addStyleNames="{style.btnType}"/>
+			</div>
+			<div class="{style.panelBehavior}">
+				<g:Label text="{label.MeasureBehavior}" addStyleNames="{style.label},{style.lblLst}"/>
+				<c:CustomListBox ui:field="lstMeasureBehavior" addStyleNames="{style.lstBehavior}"/>
+			</div>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Image ui:field="btnAdd" resource="{resources.add_16}" title="{label.AddResource}" addStyleNames="{style.btnImage}"/>
+			<g:Image ui:field="btnEdit" resource="{resources.edit_24}" title="{label.EditResource}" addStyleNames="{style.btnImage}"/>
+			<g:Image ui:field="btnRemove" resource="{resources.delete_24}" title="{label.RemoveResource}" addStyleNames="{style.btnImage}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelResources" addStyleNames="{style.panelResources}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

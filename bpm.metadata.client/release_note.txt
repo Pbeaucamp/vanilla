@@ -1,0 +1,3 @@
+Since FreeMetaData V.1.51.2 the Security Url Provider in PreferencesPages
+must be defined with the url : http://ip:port/Preferences 
+instead of http://ip:port/FA/SecurityProvider as it was in earlier versions.

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.norparena.ui.menu.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.norparena.ui.menu.perspectives.PerspectiveFactory1"
+            icon="src/bpm/norparena/ui/menu/icons/Vanillacup.png"
+            id="bpm.norparena.ui.menu.WelcomePerspective"
+            name="%perspective.welcome.name">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.norparena.ui.menu.views.WelcomeView"
+            icon="src/bpm/norparena/ui/menu/icons/Vanillacup.png"
+            id="bpm.norparena.ui.menu.views.WelcomeView"
+            name="%view.norparena.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+   		 id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="bpm.norparena.rcp.application"
+            name="Norparena">
+         <property
+               name="appName"
+               value="Norparena">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/vanilla_about.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Norparena&#x0A;&#x0A;Version 8&#x0A;&#x0A;Product of BPM-Conseil&#x0A;&#x0A;&#x0A;http://www.bpm-conseil.com/">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/norparena_16.gif,icons/norparena_32.png,icons/norparena_48.png,icons/norparena_64.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.norparena.ui.menu.client.preferences.Initializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="bpm.norparena.rcp.splashHandlers.InteractiveSplashHandler"
+            id="bpm.norparena.rcp.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="bpm.norparena.rcp.product"
+            splashId="bpm.norparena.rcp.splashHandlers.interactive">
+      </splashHandlerProductBinding>
+   </extension>
+
+</plugin>

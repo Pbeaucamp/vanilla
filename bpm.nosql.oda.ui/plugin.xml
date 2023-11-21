@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="bpm.nosql.oda.runtime"
+            name="Vanilla NoSql MongoDb Datasource"
+            profile="bpm.nosql.oda.runtime">
+      </newWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePropertiesPage"
+            id="bpm.nosql.oda.runtime"
+            name="MONGODB DATASOURCE PROPERTIES"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="bpm.nosql.oda.runtime">
+         </filter>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.nosql.oda.runtime">
+         <newDataSourceWizard
+               includesProgressMonitor="true"
+               pageClass="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePage"
+               windowTitle="Vanilla NoSql MongoDb Datasource">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            id="bpm.nosql.oda.runtime.dataSet"
+            supportsInParameters="true"
+            supportsOutParameters="false">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="Vanilla NoSql MongoDb Dataset">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="Vanilla NoSql MongoDb Dataset"
+               id="bpm.nosql.oda.runtime.dataSet"
+               wizardPageClass="bpm.nosql.oda.ui.impl.NOSQLDataSetWizardPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="bpm.nosql.oda.runtime.cassandra"
+            name="Vanilla NoSql Cassandra NOSQL DATASOURCE"
+            profile="bpm.nosql.oda.runtime.cassandra">
+      </newWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePropertiesPage"
+            id="bpm.nosql.oda.runtime.cassandra"
+            name="CASSANDRA DATASOURCE PROPERTIES"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="bpm.nosql.oda.runtime.cassandra">
+         </filter>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.nosql.oda.runtime.cassandra">
+         <newDataSourceWizard
+               includesProgressMonitor="true"
+               pageClass="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePage"
+               windowTitle="Vanilla NoSql Cassandra Datasource">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            id="bpm.nosql.oda.runtime.cassandra.dataSet"
+            supportsInParameters="true"
+            supportsOutParameters="false">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="Vanilla NoSql Cassandra Dataset">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="Vanilla NoSql Cassandra Dataset"
+               id="bpm.nosql.oda.runtime.cassandra.dataSet"
+               wizardPageClass="bpm.nosql.oda.ui.cassandra.impl.CassandraDataSetWizardPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="bpm.nosql.oda.runtime.hbase"
+            name="Vanilla NoSql HBASE DATASOURCE"
+            profile="bpm.nosql.oda.runtime.hbase">
+      </newWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePropertiesPage"
+            id="bpm.nosql.oda.runtime.hbase"
+            name="HBASE DATASOURCE PROPERTIES"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="bpm.nosql.oda.runtime.hbase">
+         </filter>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.nosql.oda.runtime.hbase">
+         <newDataSourceWizard
+               includesProgressMonitor="true"
+               pageClass="bpm.nosql.oda.ui.impl.datasource.NOSQLDataSourcePage"
+               windowTitle="Vanilla NoSql Hbase Datasource">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            id="bpm.nosql.oda.runtime.hbase.dataSet"
+            supportsInParameters="true"
+            supportsOutParameters="false">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="Vanilla NoSql Hbase Dataset"></dataSetWizard>
+         <dataSetPage
+               displayName="Vanilla NoSql Hbase Dataset"
+               id="bpm.nosql.oda.runtime.hbase.dataSet"
+               wizardPageClass="bpm.nosql.oda.ui.hbase.impl.HbaseDataSetWizardPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.nosql.oda.runtime.drill">
+         <newDataSourceWizard
+               includesProgressMonitor="true"
+               pageClass="bpm.nosql.oda.ui.impl.DrillDatasourcePage"
+               windowTitle="Vanilla NoSql Drill Datasource">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            id="bpm.nosql.oda.runtime.drill.dataset"
+            supportsInParameters="true"
+            supportsOutParameters="false">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="Vanilla NoSql Drill Dataset"></dataSetWizard>
+         <dataSetPage
+               displayName="Vanilla NoSql Drill Dataset"
+               id="bpm.nosql.oda.runtime.drill.dataset"
+               wizardPageClass="bpm.nosql.oda.ui.impl.DrillDatasetPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+
+</plugin>

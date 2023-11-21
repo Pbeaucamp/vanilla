@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.metadata.client.security.perspectives.SecurityPerspective"
+            id="bpm.metadata.client.security.SecurityPerspective"
+            name="Model Security">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.metadata.client.security.SecurityView"
+            id="bpm.metadata.client.security.SecurityView"
+            name="Security"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.metadata.client.security.actionSet"
+            label="Sample Action Set"
+            visible="true">
+         <menu
+               id="perspectivesMenu"
+               label="Sample &amp;Menu">
+            <separator
+                  name="perspectivesGroup">
+            </separator>
+         </menu>
+         <action
+               class="bpm.metadata.client.security.actions.ActionOpenDesignMode"
+               icon="src/bpm/metadata/client/security/icons/fmdt.png"
+               id="bpm.metadata.client.security.actions.ActionOpenDesignMode"
+               label="Model Design"
+               toolbarPath="perspectivesGroup"
+               tooltip="Model Design">
+         </action>
+         <action
+               class="bpm.metadata.client.security.actions.ActionOpenSecurityMode"
+               icon="src/bpm/metadata/client/security/icons/lock.png"
+               id="bpm.metadata.client.security.actions.ActionOpenSecurityMode"
+               label="Model Security"
+               toolbarPath="perspectivesGroup"
+               tooltip="Model Security">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>

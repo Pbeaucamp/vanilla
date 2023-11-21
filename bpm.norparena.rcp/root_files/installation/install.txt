@@ -1,0 +1,4 @@
+To use Norparena you will need to different databases.
+The scripts are provided within this folder. Those databases may have been 
+created when you installed the VanillaPlatform.
+A vanilla Platform should be running.

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.model.converter
+Bundle-SymbolicName: bpm.model.converter;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.model.converter.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.core.runtime,
+ bpm.dwhdesigner.api;bundle-version="3.4.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: bpm.model.converter,
+ bpm.model.converter.core,
+ bpm.model.converter.core.impl

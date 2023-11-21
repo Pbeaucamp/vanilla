@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.6.1//EN"
+  "file:///E:/BPM/SDK/gwt-2.6.1/gwt-module.dtd">
+<module rename-to='Metadata'>
+	<!-- Inherit the core Web Toolkit stuff.                        -->
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name="com.google.gwt.core.Core"/>
+	
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+	<inherits name="bpm.gwt.commons.Commons" />
+    <inherits name="bpm.update.manager.api.Commons" />
+	<inherits name="gwtupload.GWTUpload"/>
+	<inherits name="bpm.vanilla.map.VanillaMap" />
+
+	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+
+	<entry-point class='bpm.metadata.web.client.Metadata'/>
+
+	<stylesheet src="../metadata.css"/>
+	
+	<source path='client'/>
+	<source path='shared'/>
+</module>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.platform.core.beans.resources.ContractIntegrationInformations" table="mdm_integration_process">
+            <id name="id" type="java.lang.Integer">
+                <column name="id" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="contractId" type="java.lang.Integer">
+                <column name="contract_id"/>
+            </property>
+            
+            <property name="type">
+          	    <column name="type"/>
+            	<type name="org.hibernate.type.EnumType">
+            		<param name="enumClass">bpm.vanilla.platform.core.beans.resources.ContractType</param>
+            	</type>
+            </property>
+            
+            <property name="nameService" type="string">
+                <column name="name_service"/>
+            </property>
+            
+            <property name="item" type="string">
+                <column name="item"/>
+            </property>
+            
+            <property name="outputName" type="string">
+                <column name="output_name"/>
+            </property>
+            
+            <property name="hubId" type="java.lang.Integer">
+                <column name="hub_id"/>
+            </property>
+            
+            <property name="hubName" type="string">
+                <column name="hub_name"/>
+            </property>
+            
+            <property name="etlId" type="java.lang.Integer">
+                <column name="etl_id"/>
+            </property>
+            
+            <property name="etlName" type="string">
+                <column name="etl_name"/>
+            </property>
+
+            <property name="targetOrganisation" type="string">
+                <column name="d4c_org"/>
+            </property>
+            
+            <property name="targetDatasetName" type="string">
+                <column name="d4c_dataset_name"/>
+            </property>
+            
+            <property name="sourceOrganisation" type="string">
+                <column name="d4c_source_org"/>
+            </property>
+    </class>
+</hibernate-mapping>

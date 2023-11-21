@@ -1,0 +1,56 @@
+package bpm.norparena.ui.menu.icons;
+
+public final class Icons {
+	public static final String VANILLA_CUP = "Vanillacup.png"; //$NON-NLS-1$
+	public static final String FOLDER = "folder.png"; //$NON-NLS-1$
+	public static final String DEFAULT = "object.png"; //$NON-NLS-1$
+	public static final String XACTION = "xaction.png"; //$NON-NLS-1$
+	public static final String JASPER_RUN = "jasper_run.png"; //$NON-NLS-1$
+	public static final String JASPER_STOP = "jasper_stop.png"; //$NON-NLS-1$
+	public static final String BIRT_RUN = "birt_run.png"; //$NON-NLS-1$
+	public static final String BIRT_STOP = "birt_stop.png"; //$NON-NLS-1$
+	public static final String FASD_RUN = "cube_run.png"; //$NON-NLS-1$
+	public static final String FASD_STOP = "cube_stop.png"; //$NON-NLS-1$
+	public static final String FAV = "view.png"; //$NON-NLS-1$
+	public static final String FD_DEPLOYED_RUN = "fd_deployed_run.png"; //$NON-NLS-1$
+	public static final String FD_DEPLOYED_STOP = "fd_deployed_stop.png"; //$NON-NLS-1$
+	public static final String FMDT_RUN = "fmdt_run.png"; //$NON-NLS-1$
+	public static final String FMDT_STOP = "fmdt_stop.png"; //$NON-NLS-1$
+	public static final String FWR_RUN = "fwr_run.png"; //$NON-NLS-1$
+	public static final String FWR_STOP = "fwr_stop.png"; //$NON-NLS-1$
+	public static final String DICO = "dictionary.png"; //$NON-NLS-1$
+	public static final String BIW = "biw.gif"; //$NON-NLS-1$
+	public static final String MD = "md.png"; //$NON-NLS-1$
+	public static final String DOC = "doc.png"; //$NON-NLS-1$
+	public static final String LINK = "link.png"; //$NON-NLS-1$
+	public static final String PACKAGE = "disconnect.png"; //$NON-NLS-1$
+	public static final String GTW_RUN = "gtw_16_start.png"; //$NON-NLS-1$
+	public static final String GTW_STOP = "gtw_16_stop.png"; //$NON-NLS-1$
+	public static final String LONG_LOAD = "long_load.png"; //$NON-NLS-1$
+	public static final String STOP_LONG_LOAD = "stop_long_load.png"; //$NON-NLS-1$
+	public static final String FILTER = "filter.png"; //$NON-NLS-1$
+	public static final String ADD = "add.png"; //$NON-NLS-1$
+	public static final String DEL = "del.png"; //$NON-NLS-1$
+	public static final String EDIT = "edit.png"; //$NON-NLS-1$
+	public static final String REFRESH = "refresh.png"; //$NON-NLS-1$
+	public static final String LOCK = "lock.png"; //$NON-NLS-1$
+	public static final String UNLOCK = "unlock.png"; //$NON-NLS-1$
+	public static final String DOCUMENTS = "adddoc_16.png"; //$NON-NLS-1$
+	public static final String ADD_LINK = "link_add.png"; //$NON-NLS-1$
+	public static final String BIRT = "birt.png"; //$NON-NLS-1$
+	public static final String JASPER = "jasper.png"; //$NON-NLS-1$
+	public static final String ORBEON = "orbeon_16.png"; //$NON-NLS-1$
+	public static final String START = "start.png"; //$NON-NLS-1$
+	public static final String STOP = "stop.png"; //$NON-NLS-1$
+	public static final String ADRESSABLE = "AddAdressable.gif"; //$NON-NLS-1$
+	public static final String UNADRESSABLE = "UnAdressable.gif"; //$NON-NLS-1$
+	public static final String ADD_FILTRE = "AddFiltre.gif"; //$NON-NLS-1$
+	public static final String DEL_FILTRE = "DelFiltre.gif"; //$NON-NLS-1$
+	public static final String SEARCH_REPLACE = "text_replace.png"; //$NON-NLS-1$
+	public static final String USER = "user.png"; //$NON-NLS-1$
+	public static final String GROUP = "group.png"; //$NON-NLS-1$
+	public static final String TEMP_GED = "ged_temporary.png"; //$NON-NLS-1$
+	public static final String GED_ENTRY = "ged16.png"; //$NON-NLS-1$
+	public static final String REPORTS_GROUP = "reports_group_16.png"; //$NON-NLS-1$
+	public static final String KPI_THEME = "kpi_theme_16.png"; //$NON-NLS-1$
+}

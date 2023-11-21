@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:c="urn:import:bpm.metadata.web.client.panels">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.contentPanel {
+		    height: 500px;
+		    width: 1000px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:LabelTextBoxWithButton ui:field="txtD4C" label="{labels.D4CServer}" enabled="false"/>
+		<my:LabelTextBox ui:field="txtOrganisation" placeHolder="{labels.Organization}"/>
+		<c:DatasourcePanel ui:field="datasourcePanel" addStyleNames="{style.contentPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

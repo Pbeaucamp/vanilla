@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	
+	<ui:style type="bpm.metadata.web.client.panels.properties.TableProperties.MyStyle">
+		.contentPanel {
+		    height: 100%;
+		    width: 100%;
+		}
+	
+		.txtWidth {
+			width: 100%;
+		}
+		
+		.btn {
+		    margin: 20px;
+	    	width: 200px;
+		}
+		
+		.data {
+		    bottom: 30px;
+		    position: absolute;
+		    top: 230px;
+		    width: 100%;
+		}
+		
+		.panelBtn {
+			text-align: center;
+		}
+		
+		.panelPager {
+		    bottom: 0;
+		    position: absolute;
+		    width: 100%;
+		}
+		
+		.pager {
+			margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<c:LabelTextBox ui:field="txtName" placeHolder="{label.Name}" addStyleNames="{style.txtWidth}"/>
+		<c:LabelTextBox ui:field="txtLimit" text="100" placeHolder="{label.Limit}" addStyleNames="{style.txtWidth}"/>
+		<div class="{style.panelBtn}">
+			<c:CustomButton ui:field="btnLoadData" text="{label.LoadData}" addStyleNames="{style.btn}"/>
+		</div>
+		<g:SimplePanel ui:field="panelData" addStyleNames="{style.data}"/>
+		<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

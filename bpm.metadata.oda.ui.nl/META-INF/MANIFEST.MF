@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.metadata.birt.oda.ui.nl1
+Bundle-SymbolicName: bpm.metadata.birt.oda.ui.nl1
+Bundle-Version: 5.0.0
+Fragment-Host: bpm.metadata.oda.ui;bundle-version="1.0.0"
+Bundle-Vendor: Bpm-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

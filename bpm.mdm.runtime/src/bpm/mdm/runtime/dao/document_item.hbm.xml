@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.mdm.model.supplier.DocumentItem" table="mdm_document_item">
+		<id name="id" type="java.lang.Integer">
+			<column name="doc_item_id" />
+			<generator class="increment"/>
+		</id>
+		
+		<property name="contractId" type="java.lang.Integer">
+		    <column name="CONTRACT_ID"/>
+		</property>
+
+		<property name="itemId" type="java.lang.Integer">
+		    <column name="ITEM_ID"/>
+		</property>
+
+		<property name="input" type="boolean">
+		    <column name="IS_INPUT" not-null="true" default="false"/>
+		</property>
+    </class>
+</hibernate-mapping>

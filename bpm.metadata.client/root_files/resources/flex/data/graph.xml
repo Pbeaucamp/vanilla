@@ -1,0 +1,50 @@
+<Graph>
+<Node desc="" id="0" name="orderfact">
+<Item name="ORDERNUMBER"/>
+<Item name="ORDERLINENUMBER"/>
+<Item name="STATUS"/>
+<Item name="MONTH_ID"/>
+<Item name="YEAR_ID"/>
+<Item name="REQUIREDDATE"/>
+<Item name="TIME_ID"/>
+<Item name="PRODUCTCODE"/>
+<Item name="ORDERDATE"/>
+<Item name="TOTALPRICE"/>
+<Item name="QTR_ID"/>
+<Item name="CUSTOMERNUMBER"/>
+<Item name="QUANTITYORDERED"/>
+<Item name="PRICEEACH"/>
+<Item name="SHIPPEDDATE"/>
+<Item name="COMMENTS"/>
+</Node>
+<Node desc="" id="1" name="customers">
+<Item name="CONTACTFIRSTNAME"/>
+<Item name="STATE"/>
+<Item name="COUNTRY_ID"/>
+<Item name="PHONE"/>
+<Item name="CREDITLIMIT"/>
+<Item name="CONTACTLASTNAME"/>
+<Item name="CUSTOMERNUMBER"/>
+<Item name="CUSTOMERNAME"/>
+<Item name="COUNTRY"/>
+<Item name="CITY"/>
+<Item name="ADDRESSLINE2"/>
+<Item name="ADDRESSLINE1"/>
+<Item name="SALESREPEMPLOYEENUMBER"/>
+<Item name="POSTALCODE"/>
+</Node>
+<Node desc="" id="2" name="products">
+<Item name="QUANTITYINSTOCK"/>
+<Item name="PRODUCTCODE"/>
+<Item name="PRODUCTDESCRIPTION"/>
+<Item name="PRODUCTLINE"/>
+<Item name="PRODUCTNAME"/>
+<Item name="PRODUCTSCALE"/>
+<Item name="BUYPRICE"/>
+<Item name="PRODUCTVENDOR"/>
+<Item name="MSRP"/>
+</Node>
+<Edge fromID="0" toID="0"/>
+<Edge fromID="0" toID="1"/>
+<Edge fromID="0" toID="2"/>
+</Graph>

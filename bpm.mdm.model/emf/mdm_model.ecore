@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
+    nsURI="http://mdm_model/1.0" nsPrefix="mdm_model">
+  <eClassifiers xsi:type="ecore:EClass" name="Rule" abstract="true" interface="true">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
+        eType="#//Rule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullAllowed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity">
+    <eOperations name="getAttributesId" upperBound="-1" eType="#//Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Attribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mapper" abstract="true" interface="true">
+    <eOperations name="getAttribute" eType="#//Attribute">
+      <eParameters name="dataSourceField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="mapAttributeWithField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="attribute" eType="#//Attribute"/>
+      <eParameters name="dataSourceField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="getDataSourceField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eParameters name="attribute" eType="#//Attribute"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Synchronizer" eSuperTypes="#//Mapper">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataSourceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategies" upperBound="-1"
+        eType="#//Strategy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" upperBound="-1"
+        eType="#//AttributeToIntegerMap" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Strategy" abstract="true" interface="true">
+    <eOperations name="apply" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eParameters name="Object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataType">
+    <eLiterals name="String"/>
+    <eLiterals name="Long" value="1"/>
+    <eLiterals name="Double" value="2"/>
+    <eLiterals name="Date" value="3"/>
+    <eLiterals name="Boolean" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eOperations name="getDataSource" eType="#//DataSet">
+      <eParameters name="dataSourceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
+        eType="#//Entity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synchronizers" upperBound="-1"
+        eType="#//Synchronizer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataSources" upperBound="-1"
+        eType="#//DataSet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DataSet" instanceClassName="org.eclipse.datatools.connectivity.oda.design.DataSetDesign"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeToIntegerMap" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Exception" instanceClassName="java.lang.Exception"
+      serializable="false"/>
+  <eSubpackages name="rules" nsURI="http://rules/mdm_model/1.0" nsPrefix="rules">
+    <eClassifiers xsi:type="ecore:EClass" name="RangeRule" eSuperTypes="#//Rule">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This interface is used to restrict a range of values for numerical attributes."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SetValueRule" eSuperTypes="#//Rule">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This Rule is to use for Attributes that must belong to an Enumeration."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="authorizedValues" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PatternRule" abstract="true" eSuperTypes="#//Rule">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NumericPatternRule" eSuperTypes="#//rules/PatternRule"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DatePatternRule" eSuperTypes="#//rules/PatternRule"/>
+    <eClassifiers xsi:type="ecore:EClass" name="RegexPatterRule" eSuperTypes="#//rules/PatternRule"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EntityLinkRule" eSuperTypes="#//Rule">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="linkedAttribute" eType="#//Attribute"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="strategies" nsURI="http://strategies/mdm_model/1.0" nsPrefix="strategies">
+    <eClassifiers xsi:type="ecore:EClass" name="DefaultStrategy" eSuperTypes="#//Strategy"/>
+  </eSubpackages>
+  <eSubpackages name="runtime" nsURI="http://runtime/mdm_model/1.0" nsPrefix="runtime">
+    <eClassifiers xsi:type="ecore:EClass" name="Row">
+      <eOperations name="getValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+        <eParameters name="attribute" eType="#//Attribute"/>
+      </eOperations>
+      <eOperations name="setValue">
+        <eParameters name="attribute" eType="#//Attribute"/>
+        <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SynchroPerformer">
+      <eOperations name="performDiff" eType="#//runtime/DiffResult">
+        <eParameters name="synchronizer" eType="#//Synchronizer"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DiffResult">
+      <eOperations name="getState" eType="#//runtime/RowState">
+        <eParameters name="row" eType="#//runtime/Row"/>
+      </eOperations>
+      <eOperations name="addRow">
+        <eParameters name="row" eType="#//runtime/Row"/>
+        <eParameters name="state" eType="#//runtime/RowState"/>
+        <eParameters name="insatisfiedRules" upperBound="-1" eType="#//Rule"/>
+        <eParameters name="originalRow" eType="#//runtime/Row"/>
+      </eOperations>
+      <eOperations name="getRows" upperBound="-1" eType="#//runtime/Row"/>
+      <eOperations name="getOriginalRow" eType="#//runtime/Row">
+        <eParameters name="row" eType="#//runtime/Row"/>
+      </eOperations>
+      <eOperations name="getNewNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getUpdateNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getDiscardNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getReadNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="incrementRead"/>
+      <eOperations name="getUnsatisfiedRules" upperBound="-1" eType="#//Rule">
+        <eParameters name="row" eType="#//runtime/Row"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="RowState">
+      <eLiterals name="new"/>
+      <eLiterals name="discard" value="1"/>
+      <eLiterals name="update" value="2"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

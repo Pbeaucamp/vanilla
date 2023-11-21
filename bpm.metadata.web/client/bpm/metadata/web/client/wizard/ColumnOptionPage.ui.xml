@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.contentPanel {
+		    height: 550px;
+	    	width: 1000px;
+		}
+		
+		.panelLeft {
+   		    display: inline-block;
+		    height: 100%;
+		    vertical-align: top;
+		    width: 370px;
+		}
+		
+		.panelRight {
+		    display: inline-block;
+		    height: 100%;
+		    overflow: auto;
+		    vertical-align: top;
+		    width: 626px;
+		}
+		
+		.panelTree {
+			background: #F2F2F2;
+    		height: 93%;
+		    overflow: auto;
+		    width: 100%;
+		}
+		
+		.label {
+		    border-bottom: 1px solid #000000;
+	    	padding: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelLeft}">
+			<g:Label text="{label.LogicalTables}" addStyleNames="{style.label}"/>
+			<g:SimplePanel ui:field="panelLogicalTables" addStyleNames="{style.panelTree}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelProperties" addStyleNames="{style.panelRight}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.mdm.model.supplier.Contract" table="mdm_contract">
+            <id name="id" type="java.lang.Integer">
+                <column name="contract_id" />
+                 <generator class="increment"/>
+            </id>
+            
+            <property name="name" type="string">
+                <column name="CONTRACT_NAME"/>
+            </property>
+
+			<property name="externalId" type="string">
+                <column name="EXTERNAL_ID"/>
+            </property>
+            
+            <property name="externalSource" type="string">
+                <column name="EXTERNAL_SOURCE"/>
+            </property>
+            
+			<property name="docId" type="java.lang.Integer">
+                <column name="DOC_ID"/>
+            </property>
+            
+			<property name="datasourceId" type="java.lang.Integer">
+                <column name="DATASOURCE_ID"/>
+            </property>
+            
+			<property name="datasetId" type="java.lang.Integer">
+                <column name="DATASET_ID"/>
+            </property>
+            
+			<property name="versionId" type="java.lang.Integer">
+                <column name="VERSION_ID"/>
+            </property>
+            
+            <property name="creationDate" type="java.util.Date">
+                <column name="CREATION_DATE"/>
+            </property>
+            
+			<property name="userId" type="java.lang.Integer">
+                <column name="USER_ID"/>
+            </property>
+            
+            <many-to-one name="parent" class="bpm.mdm.model.supplier.Supplier">
+            	<column name="parent_id"></column>
+            </many-to-one>
+            
+			<property name="directoryId" type="java.lang.Integer">
+                <column name="directory_id"/>
+            </property>
+            
+            <property name="type">
+          	    <column name="type"/>
+            	<type name="org.hibernate.type.EnumType">
+            		<param name="enumClass">bpm.vanilla.platform.core.beans.resources.ContractType</param>
+            	</type>
+            </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.metadata.client.security
+Bundle-SymbolicName: bpm.metadata.client.security;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.metadata.client.security.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms;bundle-version="3.4.1",
+ bpm.metadata.client;bundle-version="4.4.0",
+ bpm.metadata.api;bundle-version="4.4.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

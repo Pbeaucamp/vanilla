@@ -1,0 +1,71 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- use the vanilla configuration from the Systemp property bpm.vanilla.configurationFile -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+	</bean> 
+
+<!-- Definition de la source de donnees -->	
+        <bean id="dataSource"
+                class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                        <property name="driverClass" value="${bpm.mdm.database.driverClassName}"/>
+                        <property name="jdbcUrl" value="${bpm.mdm.database.jdbcUrl}"/>
+                        <property name="user" value="${bpm.mdm.database.userName}"/>
+                        <property name="password" value="${bpm.mdm.database.password}"/>
+                        <property name="acquireRetryAttempts" value="10"></property>
+                        <property name="preferredTestQuery" value="SELECT 1"></property>
+                        <property name="testConnectionOnCheckin" value="true"></property>
+                        <property name="testConnectionOnCheckout" value="false"></property>
+                        <property name="maxIdleTime" value="50"></property>
+                        <property name="idleConnectionTestPeriod" value="30"></property>
+                </bean>
+ 
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/mdm/runtime/dao/supplier.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/contract.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/supplier_security.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/document_item.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/mdm_directory.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/mdm_integration_process.hbm.xml</value>
+				<value>bpm/mdm/runtime/dao/document_schema.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${bpm.mdm.database.dialect}</prop>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.IngresDialect</prop>-->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>-->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			    <prop key="hibernate.connection.release_mode">on_close</prop>
+			    <prop key="hibernate.c3p0.acquire_increment">1</prop>
+			    <prop key="hibernate.c3p0.minPoolSize">2</prop>
+			    <prop key="hibernate.c3p0.maxPoolSize">50</prop>
+			    <prop key="hibernate.c3p0.timeout">1800</prop>
+			    <prop key="hibernate.c3p0.max_statement">0</prop>  
+			    <prop key="hibernate.c3p0.idle_test_period">30</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="mdmDAO" class="bpm.mdm.runtime.dao.MdmDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+</beans>
+	

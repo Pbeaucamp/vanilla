@@ -1,0 +1,111 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.metadata.web.client.images.MetadataImage' />
+	
+	<ui:style type="bpm.metadata.web.client.panels.MetadataPanel.MyStyle">
+		.mainPanel {
+	    	height: 100%;
+    		width: 100%;
+		}
+		
+		.panelStructure {
+		    bottom: 10px;
+		    left: 10px;
+		    position: absolute;
+		    top: 0;
+		}
+		
+		.panelContent {
+			background: #E6E6E6;
+		    border-radius: 3px;
+		    box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		    display: inline-block;
+		    overflow: hidden;
+	        left: 0px;
+		    overflow: hidden;
+		    padding: 10px;
+		    position: absolute;
+		    right: 0px;
+		    top: 70px;
+		    bottom: 0px;
+		}
+		
+		.panelPropertiesParent {
+		    background: #E6E6E6;
+		    border-radius: 3px 3px 3px 3px;
+		    box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		    display: inline-block;
+		    padding: 10px;
+		    vertical-align: top;
+		    position: absolute;
+		    bottom: 10px;
+		    top: 10px;
+		    right: 10px;
+		}
+		
+		.panelSplitter {
+		    width: 10px;
+		    position: absolute;
+		    left: -10px;
+		    height: 100%;
+		    top: 0px;
+		    background: white;
+		}
+		
+		.panelProperties {
+		    background: none repeat scroll 0 0 #FAFAFA;
+    		border: 1px solid #DDDDDD;
+    		position: relative;
+		}
+		
+		.splitter {
+			background: url("images/splitPanelThumb.png") no-repeat scroll center center;
+		    cursor: col-resize;
+	    	height: 100%;
+    		width: 100%;
+		}
+		
+		.toolbarPanel {
+		    background: none repeat scroll 0 0 #D0E4F6;
+		    border-radius: 3px;
+		    box-shadow: 0 0 1px #696969 inset;
+		    height: 50px;
+		    left: 0px;
+		    position: absolute;
+		    right: 0px;
+		    top: 10px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelStructure" addStyleNames="{style.panelStructure}">
+			<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+				<g:Image ui:field="btnSave" resource="{resources.ic_save_black_18dp}" title="{label.Save}" addStyleNames="{style.btnToolbar}"/>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelTree" addStyleNames="{style.panelContent}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelPropertiesParent" addStyleNames="{style.panelPropertiesParent}">
+			<g:SimplePanel ui:field="panelSplitter" addStyleNames="{style.panelSplitter}"/>
+			<g:SimplePanel ui:field="panelPropertiesContent" addStyleNames="{style.mainPanel},{style.panelProperties}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

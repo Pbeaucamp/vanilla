@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="bpm.metadata.client.category.tools"
+            id="bpm.metadata.client.birtreport.command.GenerateFwr"
+            name="Create WebReport Model">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="bpm.metadata.client.birtreport.command.GenerateFwr"
+            commandId="bpm.metadata.client.birtreport.command.GenerateFwr">
+         <enabledWhen>
+            <and>
+               <with
+                     variable="bpm.repository.ui.connected">
+                  <equals
+                        value="enabled">
+                  </equals>
+               </with>
+               <with
+                     variable="bpm.repository.ui.imported">
+                  <equals
+                        value="enabled">
+                  </equals>
+               </with>
+            </and>
+         </enabledWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:window?after=bpm.metadata.client.separator1">
+         <command
+               commandId="bpm.metadata.client.birtreport.command.GenerateFwr"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="bpm.metadata.client.birtreport.command.GenerateFwr"
+            icon="src/bpm/metadata/ui/birtreport/icons/fwr.png">
+      </image>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="bpm.metadata.ui.birtreport.wizards.BirtReportWizard"
+            id="bpm.metadata.ui.birtreport.BirtReportWizard"
+            name="BirtReportWizard">
+      </wizard>
+   </extension>
+-->
+</plugin>

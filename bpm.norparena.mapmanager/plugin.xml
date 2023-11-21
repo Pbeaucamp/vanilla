@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.norparena.mapmanager.perspectives.MapManagerPerspective"
+            icon="src/bpm/norparena/mapmanager/icons/homepage.png"
+            id="bpm.norparena.mapmanager.perspectives.MapManagerPerspective"
+            name="%perspective.map.name">
+            <description>
+               %perspective.map.description
+            </description>
+      </perspective>
+      <perspective
+            class="bpm.norparena.mapmanager.fusionmap.FusionMapPerspective"
+            icon="src/bpm/norparena/mapmanager/icons/vanilla_maps_32.png"
+            id="bpm.norparena.mapmanager.fusionmap.FusionMapPerspectivee"
+            name="%perspective.flashmap.name">
+            <description>
+               %perspective.flashmap.description
+            </description>
+      </perspective>
+      <perspective
+            class="bpm.norparena.mapmanager.openlayers.OpenLayersMapPerspective"
+            icon="src/bpm/norparena/mapmanager/icons/openlayers_maps_32.png"
+            id="bpm.norparena.mapmanager.openlayers.OpenLayersMapPerspective"
+            name="%perspective.openmap.name">
+            <description>
+               %perspective.openmap.description
+            </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.norparena.mapmanager.views.MapView"
+            id="bpm.norparena.mapmanager.views.MapView"
+            name="%view.map.name"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.norparena.mapmanager.fusionmap.ViewFusionMap"
+            id="bpm.norparena.mapmanager.fusionmap.ViewFusionMap"
+            name="%view.flashmap.name"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.norparena.mapmanager.openlayers.OpenLayersMapView"
+            id="bpm.norparena.mapmanager.openlayers.OpenLayersMapView"
+            name="%view.openmap.name"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

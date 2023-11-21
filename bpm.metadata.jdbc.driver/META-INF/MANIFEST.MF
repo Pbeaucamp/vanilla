@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.metadata.jdbc.driver
+Bundle-SymbolicName: bpm.metadata.jdbc.driver
+Bundle-Version: 5.0.0
+Export-Package: bpm.metadata.jdbc.driver,
+ bpm.metadata.jdbc.driver.remote
+Bundle-ActivationPolicy: lazy
+Import-Package: bpm.metadata.layer.business,
+ bpm.vanilla.platform.core.beans,
+ bpm.vanilla.platform.core.remote
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

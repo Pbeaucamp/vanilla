@@ -1,0 +1,54 @@
+
+1.51
+Frédéric Paillette
+*****************************************************************************
+Plug UI
+
+Dans le fichier connectionComposite.java :
+ ligne 103 "Password", remplacé par Activator.getResourceString("ConnectionComposite.Password")
+ ligne 203, ajout du vidage des combo businessModel, businessPackage et connectionsName
+ ligne 275, ajout de la sélection automatique dans le combo businessModel
+ ligne 282, ajout de la capture de l'exception FileNotFoundException (absence du dossier resources à la racine de BIRT)
+ ligne 342, ajout de la sélection automatique dans le combo businessPackage
+
+Dans le fichier FmdtDataSetPage.java :
+ ligne 653 "Error", remplacé par Activator.getResourceString("FmdtDataSetPage.Error")
+ ligne 657 "Error", remplacé par Activator.getResourceString("FmdtDataSetPage.Error")
+
+Dans le fichier DialogSave.java :
+ ligne  85 ajout d'une ligne: file.setForeground(new Color(null, 255, 255, 255));
+ ligne 158 "Error", remplacé par Activator.getResourceString("DialogSave.25")
+ ligne 292 IDialogConstants.CANCEL_LABEL, remplacé par Activator.getResourceString("DialogSave.28")
+
+Dans le fichier DialogImport.java :
+ ligne 139 ajout de la ligne: fileOutput.setForeground(new Color(null, 255, 255, 255));
+ ligne 216 "DialogImport.9", remplacé par "DialogImport.3"
+ ligne 229 IDialogConstants.CANCEL_LABEL, remplacé par Activator.getResourceString("DialogImport.9")
+
+Dans le fichier RepositoryPreferencePage :
+  ligne 28, ajout de la ligne suivante :
+	this.setDescription(Messages.getString("RepositoryPreferencePage.Description"));
+
+  ligne 64, ajout de 2 paramètres permettant de trier les TreeView et les listView
+
+Dans le fichier messages.properties du paquet bpm.metadata.birt.oda.ui.preferences : 
+  Traduction des 3 labels existants, ajout de 3 clés (description et tris)
+
+Dans le fichier messages.properties du paquet bpm.metadata.birt.oda.ui.nls : 
+  Correction de quelques traductions et ajout de certaines clés
+
+Rempacement du fichier plugin.properties par les fichiers plugin_fr_FR.properties et plugin_en_US.properties
+Modification du fichier plugin.xml (onglet overview et extension pour tenir compte des traductions)
+
+*****************************************************************************
+Plug UI NLS
+
+  Ajout d'une arborescence preferences
+  Ajout du fichier messages_fr_FR.properties dans preferences
+  Ajout de la constante ConnectionComposite.Password dans message_fr_Fr.properties
+
+*****************************************************************************
+Plug RUNTIME
+
+  Rempacement du fichier plugin.properties par les fichiers plugin_fr_FR.properties et plugin_en_US.properties
+  Modification du fichier plugin.xml (onglet overview et extension pour tenir compte des traductions)

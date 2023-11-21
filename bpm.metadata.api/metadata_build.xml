@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="bpm.metadata.api_">
+<property name="version" value="2.2.3"/>
+    <target name="build">
+    	<!-- Ce fichier ant permet de mettre à jour toutes les version de metadata
+    	présent dans votre workspace.
+    	
+    	Tout d'abord copiez le fichier ant-contrib-0.6.jar dans un dossier choisi
+    	du répertoire éclipse. Vous pourrez le trouver ici : 
+    	http://sourceforge.net/projects/ant-contrib/files/
+    	
+    	Changez ensuite l'attribut location ci-dessous :
+    	
+    	Pour chaque fichier ant il est nécessaire de préciser le numéro de la nouvelle
+    	version voulue en le tapant dans l'attribut value de property
+    	 
+    	ATTENTION CETTE ETAPE DOIT ETRE IMPERATIVEMENT EFFECTUEE ! 
+    	 -->
+    	
+    	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    	  <classpath>
+    	    <!-- Le chemin complet est obligatoire pour faire fonctionner l'extension contrib-->
+    	  	<pathelement location="${basedir}\ant_libs\ant-contrib-0.6.jar"/>
+    	  </classpath>
+    	</taskdef>
+    	<!-- 
+    	Tout d'abord il faut compiler le projet, pour cela le delete vide le dossier
+    	bin pour recevoir le nouveau fichiers compilés
+    	-->
+    	<delete>
+    		<fileset dir="${basedir}/bin">
+    			<include name="*" />
+    		</fileset>
+    	</delete>
+    	
+    	<!--Ensuite on compile le projet : décommentez éventuellement les lignes 
+    	ci dessous-->
+ 
+    	<javac destdir="${basedir}/bin">
+    		<src path="${basedir}/src" />
+    	</javac>
+    	<!--On crée ensuite le nouveau fichier .jar le code delete est juste là pour 
+    	supprimer l'éventuel fichier déjà présent (overwrite).-->
+    	
+		<delete file="${basedir}/${ant.project.name}${version}.jar" />
+    	<jar destfile="${basedir}/${ant.project.name}${version}.jar">
+    			<fileset dir="${basedir}/bin" excludes="**META-INF/"/>
+    	</jar>
+    	<!-- Afin de supprimer toutes les anciennes versions je crée un dossier
+    	temporaire qui recevra le nouveau fichier jar-->
+
+    	<mkdir dir="${basedir}/../temp"/>
+    	<copy todir="${basedir}/../temp" file="${basedir}/${ant.project.name}${version}.jar"/>
+    	
+		<!--Ici on récupère une liste de fichier qui seront supprimés c'est à dire :
+		Tous les jar comporant le nom du projet en excluant impérativement
+		le dossier temporaire temp-->
+    	
+    	<fileset dir="${basedir}/../" id="meta">	
+			<exclude name="temp/**"/>
+			<exclude name=".metadata/**"/>
+			<exclude name="**/plugins"/>
+			<include name="**/${ant.project.name}*.jar"/>
+		</fileset>
+    	
+		<!--On crée ensuite une variable test qui récupérera les chemins des fichiers précédemment
+		trouvés (ex: c:/metadata.jar c:/workspace/metadata.jar ...) et les concatène en les séparant 
+		par des virgules (ex: c:/metadata.jar,c:/workspace/metadata.jar,... )-->
+    	
+		<pathconvert property="test" refid= "meta" pathsep="," />
+		<echo>${test}</echo>
+    	
+    	<!-- voici enfin le passage le plus important et qui nécessite l'extension contrib :
+    	On boucle passant dans le paramètre file la variable trouvé dans test en parsant à la virgule soit :
+    	tour1 : c:/metadata.jar - file 
+    	tour2 : c:/workspace/metadata.jar - file
+    	Et on supprime donc chaque fichier trouvés pour les remplacer par
+    	le nouveau jar situé dans /temp
+    	--> 
+    	 
+    	<for list="${test}" param="file">
+    		<sequential>
+				<delete file="@{file}" />
+				<copy overwrite='true' file='${basedir}/../temp/${ant.project.name}${version}.jar'  todir='@{file}/../'/>    				
+			</sequential>
+    	</for>
+    	<!-- et enfin on supprimer le dossier temporaire -->
+    	<delete dir="${basedir}/../temp"/>
+    </target>
+</project>

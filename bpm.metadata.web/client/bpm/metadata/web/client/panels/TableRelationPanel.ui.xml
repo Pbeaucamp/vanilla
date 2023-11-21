@@ -1,0 +1,76 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	
+	<ui:style>
+	    .leftSide {
+		    display: inline-block;
+	    	width: 49%;
+	    	vertical-align: top;
+		}
+		
+		.rightSide {
+		    display: inline-block;
+		    width: 50%;
+	    	vertical-align: top;
+		}
+		
+		.panelLeftButton {
+			text-align: center;
+		    display: inline-block;
+	    	width: 49%;
+	    	vertical-align: top;
+		}
+		
+		.panelRightButton {
+			text-align: center;
+		    display: inline-block;
+		    width: 50%;
+	    	vertical-align: top;
+		}
+		
+		.btnAdd {
+			margin: auto;
+			width: 150px;
+		}
+		
+		.btnDelete {
+			margin: auto;
+			width: 150px;
+		}
+		
+		.panelRelation {
+			width: 100%;
+		}
+		
+		.checkMargin {
+		    display: block;
+		    margin: 10px 15px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:SimplePanel ui:field="panelGridLeft" addStyleNames="{style.leftSide}"/>
+		<g:SimplePanel ui:field="panelGridRight" addStyleNames="{style.rightSide}"/>
+		
+		<div class="{style.leftSide}">
+			<g:CheckBox ui:field="checkLeftOuter" text="{label.LeftOuter}" addStyleNames="{style.checkMargin}"/>
+		</div>
+		<div class="{style.rightSide}">
+			<g:CheckBox ui:field="checkRightOuter" text="{label.RightOuter}" addStyleNames="{style.checkMargin}"/>
+		</div>
+		
+		<g:HTMLPanel>
+			<div class="{style.panelLeftButton}">
+				<g:Button ui:field="btnAdd" text="{label.Add}" addStyleNames="{style.btnAdd}"/>
+			</div>
+			<div class="{style.panelRightButton}">
+				<g:Button ui:field="btnDelete" text="{label.Delete}" addStyleNames="{style.btnDelete}"/>
+			</div>
+			
+			<g:SimplePanel ui:field="panelRelation" addStyleNames="{style.panelRelation}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

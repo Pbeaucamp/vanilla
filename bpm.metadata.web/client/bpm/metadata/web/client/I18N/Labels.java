@@ -1,0 +1,70 @@
+package bpm.metadata.web.client.I18N;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.Constants;
+
+public interface Labels extends Constants {
+
+	public static Labels lblCnst = (Labels) GWT.create(Labels.class);
+
+	String TitleApplication();
+	String Copyright();
+	String NewMetadata();
+	String OpenMetadata();
+	String CreateMetadata();
+	String Add();
+	String AddAsFactTable();
+	String AddAsDimensionTable();
+	String AddAll();
+	String Delete();
+	String DeleteAll();
+	String NoColumn();
+	String AddOnlyTableWithoutRelations();
+	String LeftOuter();
+	String RightOuter();
+	String NoJoinRelation();
+	String TableRelations();
+	String LeftColumns();
+	String RightColumns();
+	String Relations();
+	String PhysicalTables();
+	String LogicalTables();
+	String NoRelation();
+	String Save();
+	String MetadataSavedSuccess();
+	String MetadataUpdatedSuccess();
+	String MyMetadata();
+	String Name();
+	String Description();
+	String NoProperties();
+	String LoadData();
+	String NoData();
+	String Limit();
+	String SaveNewMetadata();
+	String UpdateExistingMetadata();
+	String AddResource();
+	String EditResource();
+	String RemoveResource();
+	String Properties();
+	String Data();
+	String Undefined();
+	String Dimension();
+	String Measure();
+	String Property();
+	String Sum();
+	String Count();
+	String Average();
+	String Min();
+	String Max();
+	String NoResource();
+	String Resources();
+	String Filter();
+	String Prompt();
+	String AddFilter();
+	String AddPrompt();
+	String MeasureBehavior();
+	String Type();
+	String BeCareful();
+	String MetadataLooseFunctions();
+	String NewMetadataD4C();
+}

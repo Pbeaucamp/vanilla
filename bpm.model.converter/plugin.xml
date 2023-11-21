@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="bpm.model.converter" name="Vanilla Model Converter" schema="schema/bpm.model/bpm.model.converter.exsd"/>
+
+</plugin>

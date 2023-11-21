@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.metadata.web.client.panels">
+	
+	<ui:with field='label' type='bpm.metadata.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.panelContent {
+	    	height: 100%;
+		    position: relative;
+		    width: 100%;
+	    }
+	    
+		.leftSide {
+		    display: inline-block;
+	    	width: 49%;
+	    	vertical-align: top;
+	    	height: 100%;
+	    	border-right: 1px solid #D3D3D3;
+		}
+		
+		.rightSide {
+		    display: inline-block;
+		    width: 50%;
+	    	vertical-align: top;
+	    	height: 100%;
+		}
+		
+		.marginTop {
+			margin-top: 20px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<div class="{style.leftSide}">
+			<g:HTMLPanel ui:field="panelTablesRelations" addStyleNames="{style.marginTop}"/>
+		</div>
+		<div class="{style.rightSide}">
+			<g:SimplePanel ui:field="panelRelationDefinitionContent" addStyleNames="{style.marginTop}"/>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

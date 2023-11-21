@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="bpm.model.converter">
+      <bpm.model.converter.impl
+            converterClass="bpm.metadata.client.dwh.importer.converters.DwhMetaDataConverter"
+            description="Convert a DwhView into a FreeMetaData Model"
+            name="bpm.metadata.client.dwh.importer.DwhMetaDataConverter"
+            targetModelClass="bpm.metadata.MetaData">
+      </bpm.model.converter.impl>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="bpm.metadata.client.dwh.importer.wizard.DwwhViewImportWizard"
+            id="bpm.metadata.client.dwh.importer.wizards.DwhToFmdtWizard"
+            name="Create MetaData From DwhView">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.metadata.client.dwh.importer.Importers"
+            label="Importer"
+            visible="true">
+         <action
+               class="bpm.metadata.client.dwh.importer.actions.LaunchWizardAction"
+               id="bpm.metadata.client.dwh.importer.actions.LaunchWizardAction"
+               label="Create Metadata Model From Dwh View"
+               menubarPath="file/bpm.metadata.client.dwh.importer.menu/conversionMenu"
+               style="push">
+         </action>
+         <menu
+               id="bpm.metadata.client.dwh.importer.menu"
+               label="Conversion From"
+               path="file/importermenu">
+            <separator
+                  name="conversionMenu">
+            </separator>
+         </menu>
+      </actionSet>
+   </extension>
+
+</plugin>

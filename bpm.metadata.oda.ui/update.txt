@@ -1,0 +1,21 @@
+=================================================
+03/11/09 LCA
+ - fix linux problem on file locations
+
+
+=================================================
+18/02/09 LCA
+ - order on businesspackage's Tables
+ 
+20/02/09 LCA
+ - UTF-8 when pushing BIRT on repository
+ 
+ Version 1.31.21
+ =================================================
+ 
+ 1.43.2
+ 29/05/09 LCA
+  - bug fixed groups where not well applyed on DataSource to chosse Models
+  =================================================
+  1.60
+  support Report Parameter on Prompt
