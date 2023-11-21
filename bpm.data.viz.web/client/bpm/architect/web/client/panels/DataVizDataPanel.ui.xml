@@ -1,0 +1,130 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:o="urn:import:com.sun.org.apache.xpath.internal.operations">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='commonResources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.architect.web.client.panels.DataVizDataPanel.MyStyle">
+		.mainPanel {
+			height: 100%;
+			width: 100%;
+			
+			position: relative;
+			bottom: 10px;
+			box-shadow: 1px 5px 5px 0 #9B9B9B;
+			image: 50px;
+		}
+		
+		.contentPanel {
+			position: absolute;
+			width: 100%;
+			top: 52px;
+			bottom: 0px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			background: none repeat scroll 0 0 #FAFAFA;
+		}
+	
+		.gridPanel {
+			position: absolute;
+			width: 100%;
+			top: 0px;
+			bottom: 40px;
+		}
+		
+		.pagerPanel {
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			height: 30px;
+		}
+		
+		.pager {
+			margin: auto;
+		}
+		
+		.btn {
+			background-color: lightgray;
+			border: 1px solid #D3D3D3;
+			border-radius: 5px 5px 5px 5px;
+			cursor: pointer;
+			display: inline-block;
+			height: 40px !important;
+			line-height: 40px;
+			margin-right: 3px;
+			text-align: center;
+			vertical-align: bottom;
+			width: 130px;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #D0E4F6;
+		}
+		
+		.btnSelected {
+			background: none repeat scroll 0 0 #D0E4F6;
+		}
+		
+		.text {
+			display: inline-block;
+			vertical-align: top;
+			white-space: nowrap;
+			overflow: hidden !important;
+			text-overflow: ellipsis;
+		}
+		
+		.tabsPanel {
+			height: 40px;
+			overflow: hidden;
+			position: absolute;
+			top: 10px;
+			width: 100%;
+		}
+		
+		.imgTabs {
+		    height: 24px;
+		    width: 24px;
+		    margin-top: 8px;
+		    margin-right: 7px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		
+		<g:HTMLPanel ui:field="tabsPanel" addStyleNames="{style.tabsPanel}">
+			<g:FocusPanel ui:field="btnData" addStyleNames="{style.btn},{style.btnSelected}">
+				<g:HTMLPanel>
+					<g:Image resource="{commonResources.lk_wb_metadata_38}" addStyleNames="{style.imgTabs}"/>
+					<g:Label text="{labels.Data}" addStyleNames="{style.text}" />
+				</g:HTMLPanel>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnVisualization" addStyleNames="{style.btn}">
+				<g:HTMLPanel>
+					<g:Image resource="{commonResources.metadataexplorer_cube}" addStyleNames="{style.imgTabs}"/>
+					<g:Label text="{labels.Visualisation}" addStyleNames="{style.text}" />
+				</g:HTMLPanel>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnCarte" addStyleNames="{style.btn}">
+				<g:HTMLPanel>
+					<g:Image resource="{commonResources.map}" addStyleNames="{style.imgTabs}"/>
+					<g:Label text="{labels.Map}" addStyleNames="{style.text}" />
+				</g:HTMLPanel>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnStat" addStyleNames="{style.btn}">
+				<g:HTMLPanel>
+					<g:Image resource="{commonResources.ic_stepped_area}" addStyleNames="{style.imgTabs}"/>
+					<g:Label text="{labels.Statistics}" addStyleNames="{style.text}" />
+				</g:HTMLPanel>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnAnalyze" addStyleNames="{style.btn}">
+				<g:HTMLPanel>
+					<g:Image resource="{commonResources.ic_stacked}" addStyleNames="{style.imgTabs}"/>
+					<g:Label text="{labels.Analyze}" addStyleNames="{style.text}" />
+				</g:HTMLPanel>
+			</g:FocusPanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

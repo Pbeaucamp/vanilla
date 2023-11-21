@@ -1,0 +1,72 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	<ui:style type="bpm.architect.web.client.dialogs.TypesDialog.MyStyle">
+	.mainPanel {
+		height: 500px;
+		width: 680px;
+	}
+	
+	.columns {
+		width: 50px;
+		height: 50px;
+	}
+	
+	.panelContent {
+		height: 250px;
+		left: 10px;
+		position: relative;
+		top: 10px;
+		width: 650px;
+	}
+	
+	.label {
+		color: #3B99CB;
+		margin-left: 18px;
+		margin-top: 5px;
+		position: relative;
+		bottom: 130px;
+	}
+	
+	.lblCol {
+		color: #3B99CB;
+		margin-left: 18px;
+		margin-top: 5px;
+	}
+	
+	.verticalPanel {
+		bottom: 75px;
+		position: absolute;
+		right: 30px;
+	}
+	
+	.btnBottom {
+		background: none repeat scroll 0 0 #444444 !important;
+		border: 1px solid #555555 !important;
+		color: #FFFFFF;
+		cursor: pointer;
+		height: 40px;
+		width: 150px;
+		-webkit-transition: all 1s;
+		-moz-transition: all 1s;
+		transition: all 1s;
+		float: right;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 8px;
+		transition: all 1s;
+	}
+	
+	.btnBottom:HOVER {
+		background: none repeat scroll 0 0 #EAEAEA !important;
+		color: #000000;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<g:VerticalPanel ui:field="verticalPanel">
+			<g:Label ui:field="txtCol" text="Select Columns"
+				addStyleNames="{style.lblCol}" />
+			<g:SimplePanel ui:field="panelContent" addStyleNames="{style.panelContent}" />
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

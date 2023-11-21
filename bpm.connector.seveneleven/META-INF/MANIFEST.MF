@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Connector SevenEleven
+Bundle-SymbolicName: bpm.connector.seveneleven
+Bundle-Version: 1.1.02
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .,
+ libs/mysql-connector-java-5.1.7-bin.jar
+Require-Bundle: bpm.vanilla.platform.hibernate;bundle-version="5.0.0",
+ bpm.vanilla.external.jars;bundle-version="6.4.0",
+ bpm.vanillahub.core;bundle-version="2.0.2"
+Export-Package: bpm.connector.seveneleven,
+ bpm.connector.seveneleven.db,
+ bpm.connector.seveneleven.model

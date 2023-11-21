@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.reportitemUI">
+      <model
+            extensionName="OsmMapItem">
+      </model>
+      <palette
+            icon="icons/vanilla_gmaps_16.png">
+      </palette>
+      <editor
+            canResize="true"
+            menuLabel="OSM Map"
+            showInDesigner="true"
+            showInMasterPage="true">
+      </editor>
+      <outline
+            icon="icons/vanilla_gmaps_16.png">
+      </outline>
+      <builder
+            class="bpm.birt.osm.ui.reportitem.OsmMapBuilder">
+      </builder>
+      <reportItemImageUI
+            class="bpm.birt.osm.ui.reportitem.OsmMapImageUi">
+      </reportItemImageUI>
+   </extension>
+
+</plugin>

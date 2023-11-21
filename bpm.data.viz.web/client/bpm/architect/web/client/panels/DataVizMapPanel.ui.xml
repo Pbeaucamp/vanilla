@@ -1,0 +1,180 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='commonResources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style type="bpm.architect.web.client.panels.DataVizMapPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	
+		.important {
+			display: inline-block;
+			height: 100%;
+			width: 81%;
+		}
+		
+		.leftPanel {
+			display: inline-block;
+			height: 100%;
+			width: 19%;
+		    position: relative;
+    		vertical-align: top;
+    		overflow: hidden;
+		}
+		
+		.filter {
+			position: absolute;
+			top: 50px;
+			bottom: 0px;
+			width: 100%;
+			border-left: 1px solid black;
+			overflow: auto;
+			overflow-x: hidden;
+		}
+		
+		.filterLbl {
+			/* border: 1px solid #000000; */
+			display: inline-block;
+			padding-right: 2px;
+			/* border-right: 0px;*/
+			width: 130px;
+			overflow: hidden;
+			vertical-align: top;
+		}
+		
+		.filterLblCount {
+			/*  background-color: #E0E0E0;*/ /* border: 1px solid #000000;*/
+			display: inline-block;
+			padding-left: 2px;
+			width: 30px;
+		}
+		
+		.subItems {
+			position: relative;
+		}
+		.subItems:hover {
+			background-color: #ddd;
+		}
+		
+		.link {
+			cursor: pointer;
+		}
+		
+		.clear {
+			position: relative;
+			right: 22px;
+			margin: 15px;
+		}
+		
+		.suggestbox {
+			border-radius: 5px;
+			height: 25px;
+			width: 175px;
+			margin-top: 20px;
+			font-size: 20px;
+		}
+		
+		.filterTree {
+			
+		}
+		
+		.simplePanel {
+			background: none repeat scroll 0 0 #D0E4F6;
+			border-radius: 3px 3px 3px 3px;
+			box-shadow: 0 0 1px #696969 inset;
+			margin-bottom: 20px;
+			padding: 15px;
+			position: relative;
+			top: 10px;
+		}
+		
+		.toolbar {
+			height: 50px;
+			width: 100%;
+			position: relative;
+			border-bottom: 1px solid black;
+			border-left: 1px solid black;
+		}
+		
+		.save {
+		    cursor: pointer;
+		    height: 24px !important;
+		    padding: 13px;
+		    width: 24px !important;
+		}
+		
+		.btnRefresh {
+		    border-left: 1px solid #000000;
+		    height: 24px !important;
+		    padding: 13px;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 24px !important;
+		}
+		
+		.btnLayers {
+			position: absolute;
+			top: 0px;
+			right: 52px;
+			padding: 16px;
+			border-left: 1px solid black;
+		}
+		
+		.save:HOVER, .btnLayers:HOVER, .btnRefresh:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+			cursor: pointer;
+		}
+		
+		.expendItems:hover {
+			cursor: pointer;
+			background-color: #ddd;
+		}
+		.expendItems {
+			color: #318ed6;
+		}
+		
+		.disjNeg {
+			color: #3baff7;
+		}
+		.disjNeg:hover:before {
+			content: "-";
+		    position: absolute;
+		    top: 0;
+		    margin-left: -10px;
+		}
+		.disjPos:hover:before {
+			content: "+";
+		    position: absolute;
+		    top: 0;
+		    margin-left: -10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		
+		<g:HTMLPanel ui:field="mapContent" addStyleNames="{style.important}">
+		</g:HTMLPanel><div class="{style.leftPanel}">
+			<g:HTMLPanel addStyleNames="{style.toolbar}">
+				<g:Image ui:field="btnSaveMap" resource="{commonResources.save}" title="{labels.SaveMap}" addStyleNames="{style.save}" />
+				<g:FocusPanel ui:field="btnLayers" >
+					<g:Label text="{labels.Layers}" addStyleNames="{style.btnLayers}" />
+				</g:FocusPanel>
+				<g:Image ui:field="btnRefresh" resource="{commonResources.refresh_24}" title="{labels.Refresh}" addStyleNames="{style.btnRefresh}" />
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="filter" addStyleNames="{style.filter}" />
+		</div>
+		
+		<g:HTMLPanel ui:field="panelPopup" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

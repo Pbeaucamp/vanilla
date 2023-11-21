@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	<ui:style>
+		.mainPanel {
+			width: 600px;
+		}
+		.chkBox {
+			color: #3B99CB;
+    		margin-left: 18px;
+    		margin-top: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:CheckBox ui:field="btnCol" text="{labels.Oncolumn}" addStyleNames="{style.chkBox}"/>
+		<my:ListBoxWithButton ui:field="lstColumn" label="{labels.Column}"/>
+		<g:CheckBox ui:field="btnColNew" text="Ajouter nouvelle colonne" addStyleNames="{style.chkBox}"/>
+		<my:LabelTextBox ui:field="txtColName" placeHolder="{labels.ColumnNewName}"/>
+		<g:SimplePanel ui:field="rulePanel"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

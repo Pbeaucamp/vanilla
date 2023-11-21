@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style>
+		.inline {
+			display: inline-block;
+		    font-size: 16px;
+		    line-height: normal;
+		    margin-left: 5px;
+		    margin-top: 5px;
+		    overflow: hidden !important;
+		    text-overflow: ellipsis;
+		    vertical-align: top;
+		    white-space: nowrap;
+		    width: calc(100% - 120px);
+		}	
+		.rule {
+			color: brown;
+		}
+		.on {
+			color: gray;
+		}
+		.column {
+			color: black;
+		}
+		.mainPanel {
+			padding: 3px;
+			border-bottom: 1px solid #D3D3D3;
+		}
+		.inlineblock {
+			display: inline-block;
+		}
+		.imgDelete {
+			float: right;
+			cursor: pointer;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:Image resource="{commons.ic_decline_black_27dp}" ui:field="imgDelete" addStyleNames="{style.inlineblock} {style.imgDelete}"/>
+		<g:Image resource="{commons.edit_24}" ui:field="imgEdit" addStyleNames="{style.inlineblock} {style.imgDelete}"/>
+		<g:Label ui:field="lblRule" addStyleNames="{style.inline} {style.rule}"></g:Label>
+		<g:Label ui:field="lblOn" addStyleNames="{style.inline} {style.on}"></g:Label>
+		<g:Label ui:field="lblRowCol" addStyleNames="{style.inline} {style.column}"></g:Label>
+	</g:HTMLPanel>
+</ui:UiBinder> 

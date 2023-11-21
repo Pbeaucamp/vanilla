@@ -1,0 +1,253 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type="bpm.architect.web.client.images.Images" />
+	<ui:with field='label' type="bpm.architect.web.client.I18N.Labels" />
+	
+	<ui:style type="bpm.architect.web.client.panels.DataVizVisualPanel.MyStyle">
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	.mainPanel {
+		height: 100%;
+		width: 100%;
+	}
+	.gridPanel {
+		position: absolute;
+		right: 0px;
+		left: 0px;
+		top: 0px;
+		bottom: 40px;
+		margin-top: 5px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	.gridView {
+		width: 2000px;
+		height: 2000px;
+		overflow: hidden;
+		position: absolute;
+	}
+	.panelContent {
+		background: #E6E6E6;
+		border-radius: 3px;
+		box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		display: inline-block;
+		overflow: hidden;
+		padding: 10px;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		left: 10px;
+	}
+	
+	.panelPropertiesParent {
+		background: #E6E6E6;
+		border-radius: 3px 3px 3px 3px;
+		box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		display: inline-block;
+		padding: 10px;
+		vertical-align: top;
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		z-index: 3;
+	}
+	
+	.panelPropertiesContent {
+		bottom: 0;
+		position: absolute;
+		top: 40px;
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.panelProperties {
+		background: none repeat scroll 0 0 #FAFAFA;
+		border: 1px solid #DDDDDD;
+		position: relative;
+	}
+	.lblToolbar {
+		color: #5F5F5F;
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		text-shadow: 0 1px 0 #FFFFFF;
+	}
+	.toolbar {
+		-moz-border-bottom-colors: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		background-color: #FFFFFF;
+		background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);
+		background-repeat: repeat-x;
+		border-color: -moz-use-text-color -moz-use-text-color #DADADA;
+		border-image: none;
+		border-radius: 3px 3px 0 0;
+		border-style: none none solid;
+		border-width: medium medium 1px;
+		box-shadow: 0 1px 0 #FFFFFF;
+		margin: 0;
+		padding: 10px;
+		position: relative;
+	}
+	.panelSplitter {
+		height: 10px;
+		position: absolute;
+		top: -10px;
+		width: 100%;
+		left: 0px;
+		background: white;
+	}
+	.splitter {
+		background: url("images/splitPanelThumb.png") no-repeat scroll center
+			center;
+		cursor: row-resize;
+		height: 100%;
+		width: 100%;
+	}
+	.panel {
+		position: absolute;
+		z-index: 2;
+		right: 35px;
+		top: 160px;
+		width: 30px;
+	}
+	
+	.zoomBtn {
+		width: 30px;
+		height: 30px;
+		background: #000;
+		text-align: center;
+		line-height: 1;
+		color: #FFF;
+		margin-top: 5px;
+		cursor: pointer;
+		opacity: 0.5;
+		font-size: 22px;
+	}
+	
+	.zoomBtn:HOVER {
+		opacity: 1;
+		color: #999;
+	}
+	.btnLeft {
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+		margin-right: 20px;
+	}
+	
+	.btnRight {
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+	}
+	
+	.btnTop {
+		width: 25px;
+		height: 25px;
+		margin: auto;
+		cursor: pointer;
+	}
+	
+	.btnBelow {
+		width: 25px;
+		height: 25px;
+		margin: auto;
+		cursor: pointer;
+	}
+	.center {
+		text-align: center;
+	}
+	
+	.movePanel {
+		position: absolute;
+		z-index: 2;
+		right: 0;
+		top: 75px;
+		width: 100px;
+		text-align: center;
+	}
+	.refresh {
+		cursor: pointer;
+		height: 36px !important;
+		width: 36px !important;
+		background-position: center !important;
+		margin-top: 10px;
+		margin-left: 10px;
+		-webkit-transition-duration: 0.8s;
+		-moz-transition-duration: 0.8s;
+		-ms-transition-duration: 0.8s;
+		transition-duration: 0.8s;
+		-webkit-transition-property: -webkit-transform;
+		-moz-transition-property: -moz-transform;
+		-ms-transition-property: -ms-transform;
+		transition-property: transform;
+	}
+	
+	.refresh:HOVER {
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+	}
+	
+	.refreshPanel {
+		position: absolute;
+		z-index: 2;
+		right: 0;
+		top: 10px;
+		width: 100px;
+		text-align: center;
+	}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
+			widget names. The ui:field attribute binds an element to a field in the owner 
+			class. See the GWT docs on UI Binder for more details. -->
+		
+		<g:HTMLPanel ui:field="gridPanel" addStyleNames="{style.gridPanel}" />
+		
+		<g:FocusPanel ui:field="panelDrop">
+			<g:HTMLPanel ui:field="panelGrid" addStyleNames="{style.panelContent}"/>
+		</g:FocusPanel>
+		
+		<g:HTMLPanel ui:field="panelPropertiesParent"
+			addStyleNames="{style.panelPropertiesParent}">
+			<g:SimplePanel ui:field="panelSplitter" addStyleNames="{style.panelSplitter}" />
+			<g:HTMLPanel addStyleNames="{style.mainPanel},{style.panelProperties}">
+				<g:HTMLPanel addStyleNames="{style.toolbar}">
+					<g:Label text="{label.Properties}" addStyleNames="{style.lblToolbar}" />
+				</g:HTMLPanel>
+				<g:SimplePanel ui:field="panelProperties"
+					addStyleNames="{style.panelPropertiesContent}" />
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.panel}">
+			<g:Button ui:field="btnZoomMax" text="+" addStyleNames="{style.zoomBtn}" />
+			<g:Button ui:field="btnZoomMin" text="-" addStyleNames="{style.zoomBtn}" />
+		</g:HTMLPanel>
+
+		<g:HTMLPanel addStyleNames="{style.movePanel}">
+			<g:Image ui:field="btnTop" resource="{resources.up_arrow}"
+				addStyleNames="{style.btnTop}" />
+			<g:HTMLPanel addStyleNames="{style.center}">
+				<g:Image ui:field="btnLeft" resource="{resources.left_arrow}"
+					addStyleNames="{style.btnLeft} inline" />
+				<g:Image ui:field="btnRight" resource="{resources.right_arrow}"
+					addStyleNames="{style.btnRight} inline" />
+			</g:HTMLPanel>
+			<g:Image ui:field="btnBelow" resource="{resources.down_arrow}"
+				addStyleNames="{style.btnBelow}" />
+		</g:HTMLPanel>
+
+		<g:HTMLPanel addStyleNames="{style.refreshPanel}">
+			<g:Image ui:field="btnRefresh" resource="{resources.ic_autorenew_black_18dp}"
+				title="{label.Refresh}" addStyleNames="{style.refresh}" />
+		</g:HTMLPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

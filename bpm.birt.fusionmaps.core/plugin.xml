@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.model.reportItemModel">
+      <reportItem
+            class="bpm.birt.fusionmaps.core.reportitem.FusionmapsItemFactory"
+            extensionName="VanillaMaps">
+         <property
+               defaultDisplayName="Javascript URL"
+               defaultValue="http://localhost:7171/VanillaRuntime"
+               name="VanillaRuntimeURL"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="Swf URL"
+               name="SWFURL"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="Map ID"
+               defaultValue="MapID1"
+               name="MapID"
+               type="string">
+         </property>
+         <property
+               defaultValue="500"
+               name="MapWidth"
+               type="integer">
+         </property>
+         <property
+               defaultValue="500"
+               name="MapHeight"
+               type="integer">
+         </property>
+         <property
+               defaultDisplayName="Map XML Data"
+               defaultValue="&lt;root&gt;&lt;map&gt;&lt;/map&gt;&lt;/root&gt;"
+               name="MapDataXML"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="List Map Xml"
+               defaultValue="&lt;root&gt;&lt;/root&gt;"
+               name="ListMapXML"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="Custom Properties"
+               defaultValue="&lt;root&gt;&lt;/root&gt;"
+               name="CustomProperties"
+               type="string">
+         </property>
+      </reportItem>
+   </extension>
+   <extension
+         point="org.eclipse.birt.report.engine.reportitemPresentation">
+      <reportItem
+            class="bpm.birt.fusionmaps.core.reportitem.FusionmapsPresentationImpl"
+            name="VanillaMaps">
+      </reportItem>
+   </extension>
+
+</plugin>

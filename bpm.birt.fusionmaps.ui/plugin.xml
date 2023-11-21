@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.reportitemUI">
+      <model
+            extensionName="VanillaMaps">
+      </model>
+      <palette
+            icon="icons/vanilla_maps_16.png">
+      </palette>
+      <editor
+            canResize="false"
+            menuLabel="Vanilla Maps"
+            showInDesigner="true"
+            showInMasterPage="true">
+      </editor>
+      <outline
+            icon="icons/vanilla_maps_16.png">
+      </outline>
+      <builder
+            class="bpm.birt.fusionmaps.ui.builder.FusionmapsBuilder">
+      </builder>
+      <reportItemImageUI
+            class="bpm.birt.fusionmaps.ui.reportitem.FusionmapsImageUI">
+      </reportItemImageUI>
+   </extension>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.elementAdapters">
+      <adaptable
+            class="org.eclipse.birt.report.model.api.ExtendedItemHandle">
+         <adapter
+               factory="bpm.birt.fusionmaps.ui.generator.FusionmapsPageGeneratorFactory"
+               id="ReportDesign.AttributeView.FusionmapsPageGenerator"
+               singleton="false"
+               type="org.eclipse.birt.report.designer.ui.views.IPageGenerator">
+            <enablement>
+               <test
+                     forcePluginActivation="true"
+                     property="ExtendItemHandle.extensionName"
+                     value="VanillaMaps">
+               </test>
+            </enablement>
+         </adapter>
+      </adaptable>
+   </extension>
+
+</plugin>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="bpm.connector.seveneleven.model"/>
+
+       <!--  DataSource connection -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${tsbn.database.driverClassName}" />
+		<property name="jdbcUrl" value="${tsbn.database.jdbcUrl}" />
+		<property name="user" value="${tsbn.database.userName}" />
+		<property name="password" value="${tsbn.database.password}" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+
+       <!-- Hibernate SessionFactory -->
+       <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+           <property name="dataSource" ref="dataSource"></property>
+           <property name="annotatedClasses">
+               <list>
+				<value>bpm.connector.seveneleven.model.Adjustment</value>
+				<value>bpm.connector.seveneleven.model.Attribute</value>
+				<value>bpm.connector.seveneleven.model.CreditCard</value>
+				<value>bpm.connector.seveneleven.model.EftAccount</value>
+				<value>bpm.connector.seveneleven.model.GiftCard</value>
+				<value>bpm.connector.seveneleven.model.GiftCertificate</value>
+				<value>bpm.connector.seveneleven.model.Payment</value>
+				<value>bpm.connector.seveneleven.model.Payment.PaymentGatewayResponseList</value>
+				<value>bpm.connector.seveneleven.model.PaymentGatewayResponse</value>
+				<value>bpm.connector.seveneleven.model.PaymentGatewayResponse.AttributeList</value>
+				<value>bpm.connector.seveneleven.model.Price</value>
+				<value>bpm.connector.seveneleven.model.Promo</value>
+				<value>bpm.connector.seveneleven.model.Quantity</value>
+				<value>bpm.connector.seveneleven.model.ReturnAdjustment</value>
+				<value>bpm.connector.seveneleven.model.ReturnItem</value>
+				<value>bpm.connector.seveneleven.model.ReturnItemResponse</value>
+				<value>bpm.connector.seveneleven.model.Returns</value>
+				<value>bpm.connector.seveneleven.model.Returns.ReturnItemList</value>
+				<value>bpm.connector.seveneleven.model.Returns.AdjustmentList</value>
+				<value>bpm.connector.seveneleven.model.Sales</value>
+				<value>bpm.connector.seveneleven.model.Sales.SalesItemList</value>
+				<value>bpm.connector.seveneleven.model.Sales.AdjustmentList</value>
+				<value>bpm.connector.seveneleven.model.Sales.PaymentList</value>
+				<value>bpm.connector.seveneleven.model.Sales.PromoCodeList</value>
+				<value>bpm.connector.seveneleven.model.SalesItem</value>
+				<value>bpm.connector.seveneleven.model.SalesItem.AdjustmentList</value>
+				<value>bpm.connector.seveneleven.model.TransactionList</value>
+				<value>bpm.connector.seveneleven.model.TransactionList.SalesList</value>
+				<value>bpm.connector.seveneleven.model.TransactionList.ReturnList</value>
+               </list>
+           </property>
+           <property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${tsbn.database.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.generate_statistics">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+       			<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+
+				<prop key="hibernate.order_inserts">true</prop>
+				<prop key="hibernate.order_updates">true</prop>
+           </props>
+           </property>
+       </bean>
+
+
+
+       <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+           <property name="sessionFactory" ref="sessionFactory"></property>
+       </bean>
+
+       <context:annotation-config/>
+
+	<bean id="connectorDao" class="bpm.connector.seveneleven.db.ConnectorDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

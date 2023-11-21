@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.reportitemUI">
+      <model
+            extensionName="VanillaCharts">
+      </model>
+      <editor
+            canResize="false"
+            menuLabel="Vanilla Charts"
+            showInDesigner="true"
+            showInMasterPage="true">
+      </editor>
+      <reportItemImageUI
+            class="bpm.birt.fusioncharts.ui.reportitem.FusionchartsImageUI">
+      </reportItemImageUI>
+      <palette
+            icon="icons/vanilla_charts_16.png">
+      </palette>
+      <outline
+            icon="icons/vanilla_charts_16.png">
+      </outline>
+      <builder
+            class="bpm.birt.fusioncharts.ui.builder.FusionmapsBuilder">
+      </builder>
+   </extension>
+
+</plugin>

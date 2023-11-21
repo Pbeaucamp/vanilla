@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.csv.oda.runtime
+Bundle-SymbolicName: bpm.csv.oda.runtime; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-ClassPath: .,
+ src
+Bundle-Activator: bpm.csv.oda.runtime.Activator
+Bundle-Localization: plugin
+Export-Package: bpm.csv.oda.runtime.datas,
+ bpm.csv.oda.runtime.impl
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda,
+ org.eclipse.datatools.connectivity.oda.profile,
+ bpm.vanilla.platform.core;bundle-version="1.0.0",
+ bpm.vanilla.platform.core.remote;bundle-version="1.0.0",
+ bpm.vanilla.external.jars;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.log4j
+Bundle-Vendor: BPM-Conseil

@@ -1,0 +1,118 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	
+	<ui:style type="bpm.architect.web.client.dialogs.ReportsDialog.MyStyle">
+		.mainPanel {
+			width: 750px;
+			height: 600px;
+			position: relative;
+		}
+		
+		.imgCell {
+	
+		}
+		
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 50px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.gridPanel {
+			position: absolute;
+			top: 50px;
+			height: 200px;
+			width: 100%;
+		}
+		
+		.itemPanel {
+			border-top: 1px solid lightgrey;
+			position: absolute;
+			top: 250px;
+			bottom: 0px;
+			width: 100%;
+			overflow: hidden;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.defaultWidth {
+			width: 98%;
+		}
+		
+		.panelBtnLoad {
+			text-align: center;
+		}
+		
+		.btnLoad {
+		
+		}
+		
+		.lblInformation {
+		    padding: 20px;
+    		font-weight: bold;
+		}
+		
+		.lstParam {
+	
+		}
+		
+		.panelParameters {
+			height: 225px;
+			overflow: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnAdd" resource="{resources.ic_add_black_24dp}" title="{label.AddLinkedItem}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelContent" addStyleNames="{style.gridPanel}"/>
+		<g:HTMLPanel ui:field="panelItem" addStyleNames="{style.itemPanel}">
+			<c:LabelTextBox ui:field="txtCustomName" placeHolder="{label.CustomName}"/>
+			<div class="{style.panelBtnLoad} {style.defaultWidth}">
+				<g:Button ui:field="btnLoadParameters" text="{label.LoadParameters}" addStyleNames="{style.btnLoad}"/>
+			</div>
+			<g:HTMLPanel ui:field="panelParameters" addStyleNames="{style.panelParameters}">
+				<g:Label text="{label.PleaseLoadParameters}" addStyleNames="{style.lblInformation}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

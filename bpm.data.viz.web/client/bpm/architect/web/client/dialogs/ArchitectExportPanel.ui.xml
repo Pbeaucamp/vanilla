@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<p:ListBoxWithButton ui:field="lstSupp" label="Fournisseur" width="98%"/>
+		<p:ListBoxWithButton ui:field="lstCont" label="Contrat" width="98%"/>
+		<p:ListBoxWithButton ui:field="lstFormat" label="Format" width="98%"/>
+		<!-- <p:LabelTextBox ui:field="txtName" placeHolder="Nom"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

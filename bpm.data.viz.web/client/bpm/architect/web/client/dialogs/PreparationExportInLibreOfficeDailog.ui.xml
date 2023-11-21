@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.panelLst {
+			width: 350px;
+		}
+			
+		.panelRule {
+			width: 600px;
+			height: 500px;
+		}
+		
+		.mainPanel {
+		
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelLst}">
+			<p:ListBoxWithButton ui:field="supplierListBox" label="Selectionner le supplier" width="98%"/>
+			<p:ListBoxWithButton ui:field="contractListBox" label="Selectionner le contract" width="98%"/>		
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

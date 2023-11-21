@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<my:LabelTextArea ui:field="txtCalc" placeHolder="{labels.CalcFormula}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

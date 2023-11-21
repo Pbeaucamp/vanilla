@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.model.reportItemModel">
+      <reportItem
+            class="bpm.birt.fusioncharts.core.reportitem.FusionchartsItemFactory"
+            extendsFrom="ExtendedItem"
+            extensionName="VanillaCharts"
+            hasStyle="true">
+         <property
+               defaultDisplayName="Xml Property"
+               defaultValue="&lt;FlashChart&gt;&lt;/FlashChart&gt;"
+               name="XmlProperty"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="Vanilla Runtime Url"
+               defaultValue="http://localhost:7171/VanillaRuntime"
+               name="VanillaRuntimeUrl"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="Custom Properties"
+               defaultValue="&lt;root&gt;&lt;/root&gt;"
+               name="CustomProperties"
+               type="string">
+         </property>
+      </reportItem>
+   </extension>
+   <extension
+         point="org.eclipse.birt.report.engine.reportitemPresentation">
+      <reportItem
+            class="bpm.birt.fusioncharts.core.reportitem.FusionchartsPresentationImpl"
+            name="VanillaCharts">
+      </reportItem>
+   </extension>
+
+</plugin>

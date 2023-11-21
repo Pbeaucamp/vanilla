@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.SimpleLayout"/>
+	</appender>
+	
+	
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+
+      <param name="File" value="/logs/bpm.birt.fusionmaps.core.log"/>
+      <param name="Append" value="true"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+         <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+      </layout>
+   </appender>
+	
+	
+	 
+	 <logger name="bpm.birt.fusionmaps.core">
+	     <level value="DEBUG"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 
+
+
+  
+
+  
+</log4j:configuration>

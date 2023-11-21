@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.swf.wrapper
+Bundle-SymbolicName: bpm.swf.wrapper;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: bpm.vanilla.platform.logging,
+ javax.servlet,
+ javax.servlet.http,
+ org.osgi.framework,
+ org.osgi.service.component;version="1.1.0",
+ org.osgi.service.http
+Bundle-ClassPath: .
+Service-Component: OSGI-INF/swfchart_component.xml
+Require-Bundle: org.eclipse.core.runtime

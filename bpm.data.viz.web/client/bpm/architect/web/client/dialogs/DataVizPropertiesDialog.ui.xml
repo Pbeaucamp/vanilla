@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	<ui:with field="commonLabels" type="bpm.gwt.commons.client.I18N.LabelsConstants"/>
+	<ui:with field='commonResources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.mainPanel {
+			width: 600px;
+		}
+		
+		.btn {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 24px !important;
+		    margin-left: 0;
+		    margin-top: 30px;
+		    width: 24px !important;
+		    padding: 6px;
+		}
+		
+		.btn:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.flex {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		}
+		
+		.flexOne {
+			-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 1;         /* OLD - Firefox 19- */
+			-webkit-flex: 1;          /* Chrome */
+			-ms-flex: 1;              /* IE 10 */
+			flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}"/>
+		<my:LabelTextBox ui:field="txtDesc" placeHolder="{labels.Description}"/>
+	
+		<div class="{style.flex}">
+			<my:ListBoxWithButton ui:field="lstDatasource" label="Datasource" addStyleNames="{style.flexOne}"/>
+			<g:Image ui:field="btnRefresh" title="{commonLabels.RunGateway}" resource="{commonResources.viewer_report_run}" visible="false" addStyleNames="{style.btn}"/>
+		</div>
+		<my:ListBoxWithButton ui:field="lstDataset" label="Dataset"/>
+		
+		<my:ListBoxWithButton ui:field="lstVanillaMaps" label="{labels.VanillaMaps}"/>
+		<my:ListBoxWithButton ui:field="lstMapDatasets" label="{labels.MapDatasets}"/>
+		
+		<my:ListBoxWithButton ui:field="lstDataPrep" label="Reprendre trame"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

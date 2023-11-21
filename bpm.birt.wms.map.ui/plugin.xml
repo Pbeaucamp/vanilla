@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.reportitemUI">
+      <model
+            extensionName="WMSMapItem">
+      </model>
+      <palette
+            icon="icons/wms_16.png">
+      </palette>
+      <editor
+            canResize="false"
+            menuLabel="WMS Map"
+            showInDesigner="true"
+            showInMasterPage="true">
+      </editor>
+      <outline
+            icon="icons/wms_16.png">
+      </outline>
+      <reportItemImageUI
+            class="bpm.birt.wms.map.ui.reportitem.WMSMapImageUI">
+      </reportItemImageUI>
+      <builder
+            class="bpm.birt.wms.map.ui.reportitem.WMSMapBuilder">
+      </builder>
+   </extension>
+
+</plugin>

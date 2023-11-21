@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="bpm.data.viz.runtime">
+   <implementation class="bpm.data.viz.runtime.DataVizComponent"/>
+   <service>
+      <provide interface="bpm.data.viz.core.IDataVizComponent"/>
+   </service>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.logging.IVanillaLoggerService" name="IVanillaLoggerService" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.core.IVanillaComponentListenerService" name="IVanillaComponentListenerService" policy="dynamic" unbind="unbind"/>
+</scr:component>

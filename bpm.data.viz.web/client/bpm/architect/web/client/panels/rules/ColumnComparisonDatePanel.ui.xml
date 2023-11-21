@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom"
+    xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.lbl {
+	    	margin: 35px 10px 10px;
+		}
+	
+		.margin {
+	    	margin-left: 10px;
+		}
+		
+		.lstColumns {
+			width: 215px;
+		}
+	
+		.lst {
+			width: 150px;
+		}
+		
+		.txt {
+			width: 200px;
+		    margin-top: 18px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label text="{labels.DefinitionRuleColumnComparison}" addStyleNames="{style.lbl}"/>
+		<g:HTMLPanel>
+			<p:ListBoxWithButton ui:field="lstColumns" addStyleNames="inline, vertical, {style.margin}, {style.lstColumns}"/>
+			<p:ListBoxWithButton ui:field="lstOperators" addStyleNames="inline, vertical, {style.lst}"/>
+			<dp:DateBox ui:field="dateBoxValue" addStyleNames="inline, vertical, {style.txt}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

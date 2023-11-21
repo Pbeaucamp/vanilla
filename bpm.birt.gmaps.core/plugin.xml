@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.model.reportItemModel">
+      <reportItem
+            class="bpm.birt.gmaps.core.reportitem.GooglemapsItemFactory"
+            extendsFrom="ExtendedItem"
+            extensionName="VanillaGMaps">
+         <property
+               defaultDisplayName="GMap ID"
+               defaultValue="GMapID1"
+               name="GMapID"
+               type="string">
+         </property>
+         <property
+               defaultValue="500"
+               name="GMapWidth"
+               type="integer">
+         </property>
+         <property
+               defaultValue="500"
+               name="GMapHeight"
+               type="integer">
+         </property>
+         <property
+               defaultDisplayName="GMap Column Value"
+               name="GMapColumnValue"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="GMap Column Latitude"
+               name="GMapColumnLatitude"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="GMap Column Longitude"
+               name="GMapColumnLongitude"
+               type="string">
+         </property>
+         <property
+               defaultDisplayName="GMapColumnLabel"
+               name="GMapColumnLabel"
+               type="string">
+         </property>
+      </reportItem>
+   </extension>
+   <extension
+         point="org.eclipse.birt.report.engine.reportitemPresentation">
+      <reportItem
+            class="bpm.birt.gmaps.core.reportitem.GooglemapsPresentationImpl"
+            name="VanillaGMaps">
+      </reportItem>
+   </extension>
+
+</plugin>

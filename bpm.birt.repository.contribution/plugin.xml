@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.metadata.birt.oda.ui.actionSetSaveToRepository"
+            label="Save To Bpm Repository"
+            visible="true">
+         <menu
+               id="Vanilla"
+               label="Vanilla">
+            <separator
+                  name="bpm.metadata.birt.oda.ui.separator">
+            </separator>
+         </menu>
+         <action
+               class="bpm.metadata.birt.contribution.actions.ActionLoad"
+               icon="src/bpm/metadata/birt/contribution/icons/import.png"
+               id="bpm.metadata.birt.contribution.actions.actionLoad"
+               label="Load Report From Repository"
+               menubarPath="Vanilla/import"
+               toolbarPath="import"
+               tooltip="Load Report From Repository">
+         </action>
+         <action
+               class="bpm.metadata.birt.contribution.actions.ActionSave"
+               icon="src/bpm/metadata/birt/contribution/icons/export1.png"
+               id="bpm.metadata.birt.contribution.actions.actionSave"
+               label="Save Report To Repository"
+               menubarPath="Vanilla/load"
+               toolbarPath="load"
+               tooltip="Save Report To Repository">
+         </action>
+         <action
+               class="bpm.metadata.birt.contribution.actions.ActionUpdate"
+               icon="src/bpm/metadata/birt/contribution/icons/refresh.png"
+               id="bpm.metadata.birt.contribution.actions.actionUpdate"
+               label="Update Report"
+               menubarPath="Vanilla/update"
+               toolbarPath="update"
+               tooltip="Update Report">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="bpm.metadata.birt.contribution.preferences.VanillaItemsPreferencePage"
+            id="bpm.metadata.birt.contribution.preferences.VanillaItemsPreferencePage"
+            name="Vanilla Items Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.metadata.birt.contribution.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

@@ -1,0 +1,121 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels'/>
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	
+	<ui:style type="bpm.architect.web.client.panels.RulesPanel.MyStyle">
+		.panelLst {
+	    	width: 405px;
+		}
+		
+		.panelTree {
+		    bottom: 0;
+		    left: 5px;
+		    position: absolute;
+		    top: 85px;
+		    width: 400px;
+   		    background: #E6E6E6;
+		    border-radius: 3px 3px 3px 3px;
+		    box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		    display: inline-block;
+		    overflow: auto;
+		}
+		
+		.panelContent {
+	    	border-left: 1px solid #D3D3D3;
+		    left: 415px;
+		    position: absolute;
+		    right: 0;
+		    height: 100%;
+		    top: 0px;
+		}
+		
+		.toolbarPanel {
+		    background: none repeat scroll 0 0 #D0E4F6;
+		    border-radius: 3px;
+		    box-shadow: 0 0 1px #696969 inset;
+		    height: 50px;
+		    left: 10px;
+		    position: absolute;
+		    right: 10px;
+		    top: 10px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.panelGrid {
+		    bottom: 30px;
+		    position: absolute;
+		    top: 85px;
+		    width: 100%;
+		}
+	
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			bottom: 0px;
+		    left: 0px;
+		    right: 0px;
+	        overflow: hidden;
+		}
+		
+		.pager {
+			margin: auto;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.imgDoc img{
+			max-width: 65px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelLst}">
+			<p:ListBoxWithButton ui:field="lstClasses" label="{labels.AvailableClasses}" width="98%"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:SimplePanel ui:field="panelTree" addStyleNames="{style.panelTree}"/>
+			<g:HTMLPanel addStyleNames="{style.panelContent}">
+				<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+					<g:Image ui:field="btnAddRule" resource="{resources.ic_add_black_24dp}" title="{labels.CreateRule}" addStyleNames="{style.btnToolbar}"/>
+				</g:HTMLPanel>
+				<g:SimplePanel ui:field="gridPanel" addStyleNames="{style.panelGrid}"/>
+				<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

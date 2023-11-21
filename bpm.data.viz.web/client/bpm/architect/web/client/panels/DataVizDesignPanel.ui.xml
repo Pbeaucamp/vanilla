@@ -1,0 +1,107 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:pan="urn:import:bpm.gwt.commons.client.panels">
+	
+	<ui:with field='label' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	<ui:with field='commonResources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='commonLabels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.architect.web.client.panels.DataVizDesignPanel.MyStyle">
+		.mainPanel {
+	    	height: 100%;
+    		width: 100%;
+		}
+		.contentPanel {
+		    background: none repeat scroll 0 0 #FAFAFA;
+    		position: relative;
+		}
+		.panelConsult {
+		    background: #E6E6E6;
+		    border-radius: 3px 3px 3px 3px;
+		    bottom: 10px;
+		    box-shadow: 0 1px 1px #CACACA, 0 1px 1px #696969 inset;
+		    display: inline-block;
+		    left: 10px;
+		    overflow: hidden;
+		    padding: 10px;
+		    position: absolute;
+		    right: 10px;
+		    top: 70px;
+		    vertical-align: top;
+		}
+		.toolbarPanel {
+		    background: none repeat scroll 0 0 #D0E4F6;
+		    border-radius: 3px;
+		    box-shadow: 0 0 1px #696969 inset;
+		    height: 50px;
+		    left: 10px;
+		    position: absolute;
+		    right: 10px;
+		    top: 10px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		.btnSelected{
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		.btnToolbarUndoRedo {
+			cursor: pointer;
+			height: 30px !important;
+			width: 30px !important;
+			background-position: center !important;
+			padding: 10px;
+		}
+		.btnToolbarUndoRedo:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel},{style.contentPanel}">
+	
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnSave" resource="{commonResources.update}" title="{label.Save}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnProps" resource="{commonResources.lk_wb_report_64}" title="{label.Properties}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnDatasource" resource="{commonResources.lk_wb_metadata_38}" title="{label.Datasources}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnMapServer" resource="{commonResources.map}" title="{commonLabels.MapServers}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnExport" resource="{commonResources.ic_launch_black_24dp}" title="{label.Export}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnExportLibreOffice" resource="{commonResources.libreoffice}" title="{label.ExportLibreOffice}" addStyleNames="{style.btnToolbar}"/> 
+			<!-- <g:Image ui:field="btnWorkflow" resource="{commonResources.workflow}" title="Workflow" addStyleNames="{style.btnToolbar}"/> -->
+			
+			<g:Image ui:field="btnUndo" resource="{commonResources.undo_24}" title="Undo" addStyleNames="{style.btnToolbarUndoRedo}"/>
+			<g:Image ui:field="btnRedo" resource="{commonResources.redo_24}" title="Redo" addStyleNames="{style.btnToolbarUndoRedo}"/>
+			
+			<g:Image ui:field="btnTyper" resource="{commonResources.typography}" title="Typer" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnOptions" resource="{resources.ic_settings_applications_black_24dp}" title="{commonLabels.ColumnsOptions}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnReports" resource="{commonResources.reports_group_128}" title="Rapports" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelConsult}">
+			<pan:CollapsePanel ui:field="collapsePanel"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

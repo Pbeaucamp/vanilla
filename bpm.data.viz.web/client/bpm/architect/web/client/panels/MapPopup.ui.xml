@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.pagination .change {
+			color: black;
+			float: left;
+			padding: 0px 16px;
+			text-decoration: none;
+			transition: background-color .3s;
+			font-size: 23px;
+		}
+		
+		.change {
+			display: inline-block;
+		}
+		
+		.pager {
+			float: left;
+			padding: 6px 16px;
+			text-decoration: none;
+			transition: background-color .3s;
+			background-color: dodgerblue;
+			color: white;
+			display: inline-block;
+		}
+		
+		.change:hover {
+			background-color: #ddd;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="popup">
+		<g:HTMLPanel ui:field="popupContent" />
+		<g:HTMLPanel ui:field="popupCloser" />
+		<g:HTMLPanel ui:field="pagination" addStyleNames="{style.pagination}">
+			<g:HTMLPanel ui:field="previous" addStyleNames="{style.change}" />
+			<g:HTMLPanel ui:field="pager" addStyleNames="{style.pager}" />
+			<g:HTMLPanel ui:field="next" addStyleNames="{style.change}" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

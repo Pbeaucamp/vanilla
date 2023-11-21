@@ -1,0 +1,89 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:tree="urn:import:bpm.gwt.commons.client.tree">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+
+	<ui:style type="bpm.architect.web.client.dialogs.ContractDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+		}
+		
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 50px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.panelGrid {
+			position: relative;
+			height: 250px;
+			margin-top: 10px;
+		}
+		
+		.gridPanel {
+			position: absolute;
+			top: 50px;
+			bottom: 0px;
+			width: 100%;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.selectedBackground {
+			background-color: #BCD1F5 !important;
+		}
+		
+		.selectedBackground td {
+			border: 2px solid #BCD1F5 !important;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}"/>
+		<my:LabelTextBox ui:field="txtExternalSource" placeHolder="{labels.ExternalSource}"/>
+		<my:LabelTextBox ui:field="txtExternalIdentifier" placeHolder="{labels.ExternalIdentifier}"/>
+
+		<g:HTMLPanel ui:field="panelSupplier" addStyleNames="{style.panelGrid}">
+			<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+				<g:Image ui:field="btnAdd" resource="{resources.ic_add_black_24dp}" title="{labels.AddLinkedItem}" addStyleNames="{style.btnToolbar}"/>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelContent" addStyleNames="{style.gridPanel}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.model.reportItemModel">
+      <reportItem
+            class="bpm.birt.osm.core.reportitem.OsmReportItemFactory"
+            extendsFrom="ExtendedItem"
+            extensionName="OsmMapItem"
+            hasStyle="true"
+            isNameRequired="false">
+         <property
+               canInherit="true"
+               defaultDisplayName="Vanilla Url"
+               defaultValue="http://localhost:7171/VanillaRuntime"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="VanillaUrl"
+               type="string">
+         </property>
+         <property
+               canInherit="true"
+               defaultDisplayName="Vanilla Login"
+               defaultValue="system"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="VanillaLogin"
+               type="string">
+         </property>
+         <property
+               canInherit="true"
+               defaultDisplayName="Vanilla Password"
+               defaultValue="system"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="VanillaPassword"
+               type="string">
+         </property>
+         <property
+               canInherit="true"
+               defaultValue="-1"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="MapId"
+               type="integer">
+         </property>
+         <property
+               canInherit="true"
+               defaultDisplayName="Serie List"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="true"
+               name="SerieList"
+               type="list">
+         </property>
+         <property
+               canInherit="true"
+               defaultDisplayName="Zone Column"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="ZoneColumn"
+               type="string">
+         </property>
+         <property
+               canInherit="true"
+               defaultDisplayName="ValueColumn"
+               hasOwnModel="true"
+               isEncryptable="false"
+               isList="false"
+               name="ValueColumn"
+               type="string">
+         </property>
+      </reportItem>
+   </extension>
+   <extension
+         point="org.eclipse.birt.report.engine.reportitemPresentation">
+      <reportItem
+            class="bpm.birt.osm.core.reportitem.OsmPresentationImpl"
+            name="OsmMapItem">
+      </reportItem>
+   </extension>
+</plugin>

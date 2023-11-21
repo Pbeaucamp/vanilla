@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.birt.wms.map.core
+Bundle-SymbolicName: bpm.birt.wms.map.core;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.birt.wms.map.core.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.birt.report.model,
+ org.eclipse.birt.core,
+ org.eclipse.birt.report.engine,
+ org.eclipse.birt.data
+Bundle-ActivationPolicy: lazy
+Export-Package: bpm.birt.wms.map.core,
+ bpm.birt.wms.map.core.reportitem
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
