@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.android.vanilla.core
+Bundle-SymbolicName: bpm.android.vanilla.core
+Bundle-Version: 5.0.1
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.android.vanilla.core,
+ bpm.android.vanilla.core.beans,
+ bpm.android.vanilla.core.beans.cube,
+ bpm.android.vanilla.core.beans.metadata,
+ bpm.android.vanilla.core.beans.report,
+ bpm.android.vanilla.core.xstream
+Bundle-ClassPath: libs/dom4j-1.6.1.jar,
+ .
+Require-Bundle: bpm.fwr.api

@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:my="urn:import:bpm.architect.web.client.panels.rules">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.lbl {
+	    	margin: 35px 10px 10px;
+		}
+		
+		.lst {
+			width: 560px;
+		}
+		
+		.lstHalf {
+			width: 265px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:DefinitionRulePanel ui:field="panelDefinition"/>
+		<g:Label text="{labels.DefinitionRuleListeDBComparison}" addStyleNames="{style.lbl}"/>
+	
+		<c:ListBoxWithButton ui:field="lstOperators" addStyleNames="inline, vertical, {style.lst}"/>
+		<c:ListBoxWithButton ui:field="lstDatasources" label="{labels.Datasources}" btnText="..." addStyleNames="{style.lst}"/>
+		<c:ListBoxWithButton ui:field="lstDatasets" label="{labels.Datasets}" addStyleNames="inline, vertical, {style.lstHalf}"/>
+		<c:ListBoxWithButton ui:field="lstColumns" label="{labels.Columns}" addStyleNames="inline, vertical, {style.lstHalf}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

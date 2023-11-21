@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:tree="urn:import:bpm.gwt.commons.client.tree">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	<ui:with field="commons" type="bpm.gwt.commons.client.I18N.LabelsConstants"/>
+
+	<ui:style>
+		.mainPanel {
+			width: 600px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}"/>
+		<my:LabelTextBox ui:field="txtURL" placeHolder="{commons.Url}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

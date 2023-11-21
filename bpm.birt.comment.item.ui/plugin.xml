@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.6"?>
+<plugin>
+   <extension
+         point="org.eclipse.birt.report.designer.ui.reportitemUI">
+      <model
+            extensionName="Comment">
+      </model>
+      <editor
+            canResize="true"
+            menuLabel="Comment"
+            showInDesigner="true"
+            showInMasterPage="true">
+      </editor>
+      <palette
+            icon="icons/comment_16.png">
+      </palette>
+      <outline
+            icon="icons/comment_16.png">
+      </outline>
+      <builder
+            class="bpm.birt.comment.item.ui.builder.CommentItemBuilder">
+      </builder>
+      <reportItemImageUI
+            class="bpm.birt.comment.item.ui.reportitem.CommentItemImageUI">
+      </reportItemImageUI>
+   </extension>
+
+</plugin>

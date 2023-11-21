@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:c="urn:import:bpm.architect.web.client.panels.rules">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.lstBig {
+			width: 350px;
+		}
+	
+		.lst {
+			width: 150px;
+		}
+		
+		.lbl {
+	    	margin: 35px 10px 10px;
+		}
+		
+		.panelGrid {
+	        display: inline-block;
+		    height: 170px;
+		    margin-top: 5px;
+		    width: 445px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<c:DefinitionRulePanel ui:field="panelDefinition"/>
+		<g:Label text="{labels.DefinitionRuleColumnOperation}" addStyleNames="{style.lbl}"/>
+			<p:ListBoxWithButton ui:field="lstOperators" addStyleNames="{style.lstBig}"/>
+			<p:ListBoxWithButton ui:field="lstOperatorsOperation" label="{labels.OperatorOperation}" addStyleNames="inline, vertical, {style.lst}"/>
+		<g:SimplePanel ui:field="gridPanel" addStyleNames="inline, vertical, {style.panelGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

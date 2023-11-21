@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	
+	<ui:style>
+		.error {
+			color: red;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:LabelTextBox ui:field="txtOrganization" label="{labels.Data4CitizenOrganization}"/>
+		<my:LabelTextBox ui:field="txtDataset" label="{labels.DatasetName}"/>
+		<my:ListBoxWithButton ui:field="lstContractType" label="{labels.ContractType}"/>
+		<my:LabelTextBox ui:field="txtNameService" label="{labels.ServiceNameCleanMessage}"/>
+		<my:LabelTextBox ui:field="txtItem" label="{labels.LimeSurveyId}"/>
+		<my:LabelTextBox ui:field="txtOuputName" label="{labels.OutputName}"/>
+		<g:Label ui:field="lblError" visible="false" addStyleNames="{style.error}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

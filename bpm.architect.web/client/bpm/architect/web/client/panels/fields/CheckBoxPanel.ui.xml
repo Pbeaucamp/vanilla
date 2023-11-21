@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.mainPanel {
+    		width: 100%;
+		}
+		.contentPanel {
+		    background: none repeat scroll 0 0 #FAFAFA;
+    		position: relative;
+    		-moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		    border-radius: 3px 3px 3px 3px;
+		    padding: 5px;
+		    border: 1px solid #D3D3D3;
+		}
+		.linePanel {
+			width: 100%;
+		}
+		.txt {
+			display: inline-block;
+			width: 50%;
+			-moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+		.title {
+	  	    text-align: center;
+	  	    width: 50%;
+	  	    margin: auto;
+		}
+		.inlineblock {
+			display: inline-block;
+		}
+		.imgDelete {
+			float: right;
+			cursor: pointer;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel},{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:CheckBox ui:field="chkMandatory" text="Mandatory" addStyleNames="{style.inlineblock}"/>
+			<g:Image resource="{commons.ic_decline_black_27dp}" ui:field="imgDelete" addStyleNames="{style.inlineblock} {style.imgDelete}"/>
+		</g:HTMLPanel>
+		<my:ListBoxWithButton ui:field="lstTypes" addStyleNames="{style.title}"/>
+		<g:HTMLPanel addStyleNames="{style.linePanel}">
+			<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}" addStyleNames="{style.txt}"/><my:LabelTextBox ui:field="txtLabel" placeHolder="Label" addStyleNames="{style.txt}"/>
+			<my:LabelTextBox ui:field="txtCol" placeHolder="Column" addStyleNames="{style.txt}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,78 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:c="urn:import:bpm.architect.web.client.panels.rules">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	
+	<ui:style>
+		.lbl {
+	    	margin: 35px 10px 10px;
+		}
+	
+		.margin {
+	    	margin-left: 10px;
+		}
+		
+		.lstColumns {
+			width: 215px;
+		}
+	
+		.lst {
+			width: 150px;
+		}
+		
+		.txt {
+			width: 200px;
+		}
+		
+		.radio {
+		    display: block;
+    		margin-top: 10px;
+		}
+
+		.operationPanel {
+			width: 100%;
+			height: 200px;
+			overflow: auto;
+		}
+		
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 28px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:18px !important;
+			width: 18px !important;
+			background-position: center !important;
+			padding: 5px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<c:DefinitionRulePanel ui:field="panelDefinition"/>
+		<g:Label text="{labels.DefinitionRuleColumnComparison}" addStyleNames="{style.lbl}"/>
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnAdd" resource="{resources.ic_add_black_24dp}" title="{labels.AddComparison}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="operationPanel" addStyleNames="inline, vertical, {style.operationPanel}"/>
+		<g:HTMLPanel>
+			<g:RadioButton ui:field="radioNull" name="radioCondition" text="{labels.IfConditionIsMetColumnMustNotBeEmpty}" value="true" addStyleNames="{style.radio}"/>
+			<g:RadioButton ui:field="radioEqualTo" name="radioCondition" text="{labels.IfConditionIsMetColumnMustBeEqualTo}" addStyleNames="{style.radio}"/>
+			<p:LabelTextBox ui:field="txtMainValue" addStyleNames="inline, vertical, {style.txt}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

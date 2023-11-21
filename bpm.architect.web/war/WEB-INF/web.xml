@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+	
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/architect/loginService</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/architect/commonService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PreviewReport</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.report.PreviewReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PreviewReport</servlet-name>
+		<url-pattern>/PreviewReport</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReportingService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ReportingServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportingService</servlet-name>
+		<url-pattern>/architect/ReportingService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>workflowsService</servlet-name>    
+		<servlet-class>bpm.gwt.workflow.commons.server.WorkflowsServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>workflowsService</servlet-name>    
+		<url-pattern>/architect/workflowsService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>architectServlet</servlet-name>
+		<servlet-class>bpm.architect.web.server.ArchitectServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>architectServlet</servlet-name>
+		<url-pattern>/architect/architect</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>bpm.architect.web.server.servlets.UploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>ArchitectUploadServlet.gupld</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>fmdtService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>fmdtService</servlet-name>    
+		<url-pattern>/architect/fmdtService</url-pattern>  
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>schemaUploadServlet</servlet-name>
+		<servlet-class>bpm.architect.web.server.servlets.SchemaUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>schemaUploadServlet</servlet-name>
+		<url-pattern>SchemaUploadServlet.gupld</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<!-- max size of the upload request -->
+		<param-name>maxSize</param-name>
+		<param-value>200145728</param-value>
+	</context-param>
+	<context-param>
+		<!-- Useful in development mode to slow down the uploads in fast networks.
+			Put the number of milliseconds to sleep in each block received in the server.
+			false or 0, means don't use slow uploads  -->
+		<param-name>slowUploads</param-name>
+		<param-value>0</param-value>
+	</context-param>
+  
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>architect.html</welcome-file>
+	</welcome-file-list>
+</web-app>

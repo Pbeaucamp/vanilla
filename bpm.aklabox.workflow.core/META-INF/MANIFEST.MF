@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.aklabox.workflow.core
+Bundle-SymbolicName: bpm.aklabox.workflow.core
+Bundle-Version: 15.2.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.aklabox.workflow.core,
+ bpm.aklabox.workflow.core.model,
+ bpm.aklabox.workflow.core.model.activities,
+ bpm.aklabox.workflow.core.model.resources,
+ bpm.aklabox.workflow.core.xstream
+Require-Bundle: bpm.vanilla.platform.hibernate;bundle-version="4.2.2"
+Import-Package: bpm.document.management.core.model,
+ bpm.studio.jdbc.management.config,
+ bpm.studio.jdbc.management.model

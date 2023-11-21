@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.android.vanilla.core
+Bundle-SymbolicName: bpm.android.vanilla.remote
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: bpm.android.vanilla.core,
+ bpm.fwr.api
+Bundle-ClassPath: .,
+ libs/xstream-1.4.11.1.jar

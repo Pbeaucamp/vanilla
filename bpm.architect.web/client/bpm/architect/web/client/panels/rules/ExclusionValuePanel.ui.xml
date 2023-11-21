@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.mainPanel {
+	    	display: flex;
+		}
+		
+		.chk {
+		    display: inline-block;
+		    margin-left: 11px;
+		    margin-top: 22px;
+	        flex: 0 1 auto;
+		}
+		
+		.txt {
+		    flex: 1 1 auto;
+    		margin-left: 12px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:CheckBox ui:field="chkExclusion" text="{labels.ExcludeDefaultValue}" addStyleNames="{style.chk}"/>
+		<p:LabelTextBox ui:field="txtDefaultValue" addStyleNames="inline, vertical, {style.txt}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

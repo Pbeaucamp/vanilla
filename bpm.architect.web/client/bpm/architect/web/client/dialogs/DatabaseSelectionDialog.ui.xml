@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.architect.web.client.images.Images' />
+	
+	<ui:style>
+		.mainPanel {
+			width: 450px;
+			height: 210px;
+			position: relative;
+		}
+		
+		.lbl {
+		    margin: 20px;
+	    	text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:Label text="{labels.OnlyJdbcDatasource}" addStyleNames="{style.lbl}"/>
+	
+		<c:ListBoxWithButton ui:field="lstDatasources" label="{labels.Datasources}" btnText="..."/>
+		<c:ListBoxWithButton ui:field="lstDatasets" label="{labels.Datasets}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

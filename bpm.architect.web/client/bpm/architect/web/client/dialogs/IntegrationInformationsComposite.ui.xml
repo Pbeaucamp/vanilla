@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:my2="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	<ui:with field='commonLabels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.panelBtnGenerate {
+			text-align: center;
+    		margin-top: 100px;
+		}
+		
+		.btnGenerateProcess {
+	
+		}
+		
+		.btn {
+	    	margin: 25px 8px 8px 8px;
+		    padding: 5px;
+		    height: 32px;
+		}
+		
+		.btnDelete {
+			width: 225px;
+		    height: 25px;
+		    margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelBtnGenerate" addStyleNames="{style.panelBtnGenerate}">
+			<g:Button ui:field="btnGenerateProcess" text="{labels.GenerateIntegrationProcess}" addStyleNames="{style.btnGenerateProcess}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelInfos" visible="false">
+			<div class="flex">
+				<my:LabelTextBox ui:field="txtSource" label="{commonLabels.Datasource}" enabled="false" addStyleNames="flexOne"/>
+				<my2:Button ui:field="btnOpenSource" title="{labels.OpenDatasource}" resource="{resources.ic_launch_black_24dp}" addStyleNames="{style.btn}"/>
+			</div>
+			<div class="flex">
+				<my:LabelTextBox ui:field="txtHub" label="{labels.LinkedHub}" enabled="false" addStyleNames="flexOne"/>
+				<my2:Button ui:field="btnPlayHub" title="{labels.LaunchHub}" resource="{resources.ic_play_arrow_black_18dp}" visible="false" addStyleNames="{style.btn}"/>
+				<my2:Button ui:field="btnOpenHub" title="{labels.OpenHub}" resource="{resources.ic_launch_black_24dp}" addStyleNames="{style.btn}"/>
+			</div>
+			<div class="flex">
+				<my:LabelTextBox ui:field="txtEtl" label="{labels.LinkedETL}" enabled="false" addStyleNames="flexOne"/>
+				<my2:Button ui:field="btnLaunchEtl" title="{labels.LaunchEtl}" resource="{resources.ic_play_arrow_black_18dp}" addStyleNames="{style.btn}"/>
+			</div>
+			<div class="flex">
+				<my:LabelTextBox ui:field="txtDataset" label="{commonLabels.Dataset}" enabled="false" addStyleNames="flexOne"/>
+				<my2:Button ui:field="btnLaunchDataset" title="{labels.OpenDataset}" resource="{resources.ic_launch_black_24dp}" addStyleNames="{style.btn}"/>
+			</div>
+			<div>
+				<my2:Button ui:field="btnDeleteIntegration" text="{labels.DeleteIntegrationProcess}" addStyleNames="{style.btnDelete}"/>
+			</div>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,47 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:c="urn:import:bpm.architect.web.client.panels.rules">
+	
+	<ui:with field='labels' type='bpm.architect.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.lbl {
+	    	margin: 35px 10px 10px;
+		}
+		
+		.margin {
+	    	margin-left: 34px;
+		}
+	
+		.lst {
+			width: 150px;
+		}
+		
+		.txt {
+			width: 200px;
+		}
+		
+		.chk {
+		    display: inline-block;
+		    margin-left: 11px;
+		    margin-top: 22px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<c:DefinitionRulePanel ui:field="panelDefinition"/>
+		<g:Label text="{labels.DefinitionRuleValueComparison}" addStyleNames="{style.lbl}"/>
+		<g:HTMLPanel>
+			<p:ListBoxWithButton ui:field="lstFirstOperator" addStyleNames="inline, vertical, {style.margin}, {style.lst}"/>
+			<p:LabelTextBox ui:field="txtFirstValue" addStyleNames="inline, vertical, {style.txt}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:CheckBox ui:field="chkLastValue" addStyleNames="{style.chk}"/>
+			<p:ListBoxWithButton ui:field="lstLastOperator" addStyleNames="inline, vertical, {style.lst}"/>
+			<p:LabelTextBox ui:field="txtLastValue" addStyleNames="inline, vertical, {style.txt}"/>
+		</g:HTMLPanel>
+		<g:Label ui:field="lblIn" text="{labels.SeparateValuesWithSemicolon}" addStyleNames="{style.lbl}"/>
+		<c:ExclusionValuePanel ui:field="panelExclusion"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

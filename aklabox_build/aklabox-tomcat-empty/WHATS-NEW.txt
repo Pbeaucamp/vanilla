@@ -1,0 +1,18 @@
+What's new in this version
+
+Version 30/06/2017
+
+Features
+- 
+
+Bug fixes
+
+- Archive management (now correctly displayed)
+- Logo change for Enterprise Administration
+- Type of document can now be deleted without breaking the plateform
+- Create a document from model
+- Copy a document
+- Bottom text speed slower
+- Model of document are now only limited to text file
+- Copyright now set to 2013-2016
+- Correction concernant la délégation

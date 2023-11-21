@@ -1,0 +1,134 @@
+<project default="platform_aklabox">
+
+	<property name="base" location="C:/BPM/eclipse/eclipse-rcp-kepler-SR1-win32_PACK" />
+	<property name="baseLocation" location="${base}/eclipse" />
+	<property name="myworkspace" value="C:/BPM/workspaces/workspace_aklabox" />
+	<property name="destinationDirectory" value="C:/BPM/BUILD/Script"></property>
+	<property name="softBuildDirectory" location="C:/BPM/BUILD/Script/Softs"></property>
+	<property name="gwtsdk" value="C:/BPM/SDK/gwt-2.5.1" />
+	<property name="gwtsdknew" value="C:/BPM/SDK/gwt-2.6.1" />
+	<property name="tempBuildDirectory" value="C:/BPM/BUILD/Script/Temp"></property>
+	<tstamp>
+		<format property="TODAY" pattern="yyyyMMdd"  locale="en,UK" />
+	</tstamp>
+	
+	<property name="tomcatEmpty" value="${myworkspace}/aklabox_build/aklabox-tomcat-empty"></property>
+	<property name="tomcatName" value="aklabox-tomcat-${TODAY}"></property>
+
+	<property name="eclipse.pdebuild.templates" location="${baseLocation}/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/templates" />
+	<property name="eclipse.pdebuild.scripts" location="${baseLocation}/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/scripts" />
+
+	<property name="genericTargets" location="${eclipse.pdebuild.scripts}/genericTargets.xml" />
+	<property name="runtimePluginList" value="bpm.aklabox.workflow.core,bpm.aklabox.workflow.remote,bpm.aklabox.workflow.runtime,bpm.connection.manager,bpm.document.management.core,bpm.document.management.remote,bpm.document.management.runtime,bpm.document.management.manager.core,bpm.document.management.manager.remote,bpm.document.management.manager.runtime,bpm.log4j.fragment,bpm.studio.expressions.core,bpm.studio.jdbc.management,bpm.vanilla.external.jars,bpm.vanilla.platform.core.components.impl,bpm.vanilla.platform.core,bpm.vanilla.platform.core.remote,bpm.vanilla.platform.core.config,bpm.vanilla.platform.hibernate,bpm.vanilla.platform.logging,bpm.vanilla.platform.logging.log4j,bpm.vanilla.platform.xstream,org.eclipse.equinox.http.helper" />
+	
+	<target name="platform_aklabox">
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		
+		<mkdir dir="${tempBuildDirectory}/${tomcatName}"/>
+		
+		<copy todir="${tempBuildDirectory}/${tomcatName}"> 
+			<fileset dir="${tomcatEmpty}" includes="**"/> 
+		</copy>
+
+		<ant antfile="buildAklaboxPlatform.xml" dir="../aklabox_build" target="runtime"></ant>
+ 		<ant antfile="buildAklaboxPlatform.xml" dir="../aklabox_build" target="webapps"></ant>
+<!-- 		<antcall target="webapps" /> -->
+<!-- 		<antcall target="runtime" /> -->
+		
+<!-- 		<zip basedir="${tempBuildDirectory}/${tomcatName}" destfile="${destinationDirectory}/${tomcatName}.zip" /> -->
+		<zip destfile="${destinationDirectory}/${tomcatName}.zip">
+			<zipfileset dir="${tempBuildDirectory}">
+				<include name="${tomcatName}/**/**" />
+			</zipfileset>
+		</zip>
+	</target>
+
+	<target name="webapps">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build"></ant>
+	</target>
+
+	<target name="Aklabox">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="AklaboxOnly"></ant>
+	</target>
+
+	<target name="Aklad">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="AkladOnly"></ant>
+	</target>
+
+	<target name="Aklademat">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="AkladematOnly"></ant>
+	</target>
+
+	<target name="Aklaflow">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="AklaflowOnly"></ant>
+	</target>
+
+	<target name="AklaboxManager">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="AklaboxManagerOnly"></ant>
+	</target>
+
+	<target name="VanillaHub">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+
+		<ant antfile="buildAllAklaboxWebapps.xml" dir="../webapps_build" target="VanillaHubOnly"></ant>
+	</target>
+
+	<target name="runtime">
+
+		<property name="buildArea" location="${tempBuildDirectory}" />
+		<property name="builder" location="${myworkspace}/aklabox_build/AklaboxRuntime/build.properties" />
+		<property name="elementPath" location="${myworkspace}/bpm.aklabox.runtime.feature" />
+		<property name="builderDirectory" location="${myworkspace}/aklabox_build/AklaboxRuntime" />
+		<property name="buildDirectory"	location="${tempBuildDirectory}" />
+		<property name="buildProperties" location="${myworkspace}/aklabox_build/AklaboxRuntime/build.properties" />
+		<property file="${buildProperties}" />
+		<available property="customTargets" file="${builderDirectory}/customTargets.xml" value="${builderDirectory}/customTargets.xml" />
+		<property name="customTargets" location="${eclipse.pdebuild.templates}/headless-build/customTargets.xml" />
+		<property name="pluginPath" location="${myworkspace}" />
+
+		<ant antfile="build.xml" dir="${myworkspace}/aklabox_build/AklaboxRuntime"></ant>
+	</target>
+</project>

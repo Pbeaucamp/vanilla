@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:tree="urn:import:bpm.gwt.commons.client.tree">
+	
+	<ui:with field="labels" type="bpm.architect.web.client.I18N.Labels"/>
+
+	<ui:style type="bpm.architect.web.client.dialogs.SupplierDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+		}
+		
+		.btnHover:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.disabled {
+			opacity: 0.5;
+		    filter: literal("alpha(opacity=50)");
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}"/>
+		<my:LabelTextBox ui:field="txtExternalSource" placeHolder="{labels.ExternalSource}"/>
+		<my:LabelTextBox ui:field="txtExternalIdentifier" placeHolder="{labels.ExternalIdentifier}"/>
+
+		<g:SimplePanel ui:field="panelGroups"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

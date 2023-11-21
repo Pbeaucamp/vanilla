@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.document.management.manager.remote
+Bundle-SymbolicName: bpm.aklabox.workflow.remote
+Bundle-Version: 15.2.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: bpm.vanilla.platform.xstream;bundle-version="4.2.0",
+ org.apache.commons.codec;bundle-version="1.4.0",
+ bpm.aklabox.workflow.core;bundle-version="1.0.0"
+Import-Package: bpm.document.management.core.model,
+ com.thoughtworks.xstream
+Export-Package: bpm.aklabox.workflow.remote
+Bundle-ActivationPolicy: lazy

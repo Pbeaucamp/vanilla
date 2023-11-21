@@ -1,0 +1,3 @@
+[submodule "vanilla_build/docker/vanilla-docker-deployement"]
+	path = vanilla_build/docker/vanilla-docker-deployement
+	url = https://gitlab.bpm-conseil.com/bpm-pub/vanilla-docker-deployement
