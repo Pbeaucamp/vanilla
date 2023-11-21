@@ -1,0 +1,103 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:u="urn:import:bpm.gwt.commons.client.panels.upload">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='images' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.datasource.DatasourceArchitectPage.MyStyle">
+		.contentPanel {
+			width: 700px;
+			height: 450px;
+			overflow: auto;
+		}
+		
+		.panelButton {
+			height: 50px;
+			min-width: 350px;
+		}
+		
+		.btnBottom {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 150px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btnBottom:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.btn {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 24px !important;
+		    margin-left: 0;
+		    margin-top: 30px;
+		    width: 24px !important;
+		    padding: 6px;
+		}
+		
+		.btn:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.defaultWidth {
+			width: 95%;
+		}
+		.chkcontract {
+			width: 95%;
+			display: block;
+		}
+		
+		.flex {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		}
+		
+		.flexOne {
+			-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 1;         /* OLD - Firefox 19- */
+			-webkit-flex: 1;          /* Chrome */
+			-ms-flex: 1;              /* IE 10 */
+			flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<c:CustomCheckbox ui:field="chkOtherRepository" text="{label.ConnectToAnotherRepository}" addStyleNames="{style.defaultWidth}"/>
+		<c:LabelTextBox ui:field="txtUrl" placeHolder="{label.Url}" addStyleNames="{style.defaultWidth}"/>
+		<c:LabelTextBox ui:field="txtLogin" placeHolder="{label.Login}" addStyleNames="{style.defaultWidth}"/>
+		<c:LabelTextBox ui:field="txtPass" placeHolder="{label.Password}" password="true" addStyleNames="{style.defaultWidth}"/>
+		<g:SimplePanel ui:field="panelButton" addStyleNames="{style.panelButton}, {style.defaultWidth}">
+			<g:Button ui:field="btnLoadSuppliers" text="{label.LoadSuppliers}" addStyleNames="{style.btnBottom}"/>
+		</g:SimplePanel>
+		<c:CustomCheckbox ui:field="chkNewSupContract" text="{label.NewSupplierContrat}" addStyleNames="{style.chkcontract}"/>
+		<c:ListBoxWithButton ui:field="supplierListBox" label="{label.SelectSupplier}" addStyleNames="{style.defaultWidth}"/>
+		<div class="{style.flex} {style.defaultWidth}">
+			<c:ListBoxWithButton ui:field="contractListBox" label="{label.SelectContract}" addStyleNames="{style.flexOne}"/>
+			<g:Image ui:field="btnRefresh" title="{label.RunGateway}" resource="{images.viewer_report_run}" visible="false" addStyleNames="{style.btn}"/>
+		</div>
+		<u:FileUploadWidget ui:field="uploadPanel" visible="false"/>
+		<c:LabelTextBox ui:field="txtSeparator" placeHolder="{label.Separator}" addStyleNames="{style.defaultWidth}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

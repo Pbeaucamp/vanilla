@@ -1,0 +1,111 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:s="urn:import:bpm.gwt.aklabox.commons.client.utils">
+	<ui:with field='label' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		.imageUpload{
+			width: 55%;
+		}
+		.cellPanel{
+			width: 44%;
+			vertical-align: top;
+			height: 450px;
+			overflow: auto;
+		}
+		.txtName{
+			width: 77% !important;
+			margin-bottom: 0px !important;
+		}
+		.btnAdd{
+			width: 19%;
+		}
+		.btnPanel{
+			text-align: right;
+		}
+		.lstBox{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.btnRegularButton {
+			background: none repeat scroll 0 0 #444 !important;
+			color: #FFF !important;
+			border: 1px solid #555 !important;
+			height: 30px !important;
+			margin-top: 10px !important;
+			padding: 5px;
+			margin-bottom: 10px !important;
+		}
+		
+		.btnRegularButton:hover {
+			color: #777 !important;
+		}
+		
+		.btnBlueButton {
+			background: #4086fa;
+			color: #fff;
+			height: 30px !important;
+			padding: 5px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		
+		.regularTextBox {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			width: 90% !important;
+			padding: 5px !important;
+			border-radius: 0px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+		}
+		
+		.leftPanel {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			width: 90%;
+		}
+		
+		.rightPanel {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			width: 10%;
+		}
+		
+		.imgForm {
+			width: 100%;
+			height: auto;
+			max-height: 300px;
+			top: 0;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel">
+		<g:HTMLPanel  ui:field="celLFieldPanel">
+			<g:HTMLPanel ui:field="leftPanel" addStyleNames="{style.leftPanel}">
+				<s:AklaTextBox ui:field="txtCellName" placeholder="{label.CellName}" addStyleNames="inline {style.txtName}"/>
+				<g:Button ui:field="btnAddCell" text="{label.AddCell}" addStyleNames="inline {style.btnBlueButton} {style.btnAdd}"/>
+				<g:ListBox ui:field="lstForms" addStyleNames="{style.regularTextBox} {style.lstBox} {style.btnAdd}" />
+			</g:HTMLPanel><!-- 
+			 --><g:HTMLPanel ui:field="rightPanel" addStyleNames="{style.rightPanel}">
+				<g:SimplePanel ui:field="imgForm"  addStyleNames="{style.imgForm}"/>
+			</g:HTMLPanel>
+			
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<s:FileUploadInterface ui:field="imageUpload" addStyleNames="inline {style.imageUpload}"/>
+			<g:HTMLPanel ui:field="cellPanel" addStyleNames="inline {style.cellPanel}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.btnPanel}">
+			<g:Button ui:field="btnCancel" text="{label.Cancel}" addStyleNames="inline {style.btnRegularButton}"/>
+			<g:Button ui:field="btnUpdate" text="{label.Update}" addStyleNames="inline {style.btnRegularButton}"/>
+			<g:Button ui:field="btnSave" text="{label.Save}" addStyleNames="inline {style.btnRegularButton}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

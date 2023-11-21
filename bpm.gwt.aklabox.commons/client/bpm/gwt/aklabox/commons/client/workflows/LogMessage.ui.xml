@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.message {
+			font-size: 1em;
+			padding: 5px;
+			cursor: pointer;
+		}
+
+		.logIcon {
+			padding-right: 5px;
+			width: 27px;
+			height: 27px;
+		}
+
+		.logError {
+			color: #D63C39;
+		}
+	
+		.logWarning {
+			color: #8a6d3b;
+		}
+
+		.logInfo {
+			color: #31708f;
+		}
+
+		.logSuccess {
+			color: #3c763d;
+		}
+
+		.logError:hover {
+			background: rgb(255, 163, 181);
+		}
+
+		.logWarning:hover {
+			background: rgb(255, 200, 100);
+		}
+
+		.logInfo:hover {
+			background: rgb(100, 230, 255);
+		}
+
+		.logSuccess:hover {
+			background: #dff0d8;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:FocusPanel ui:field="logMessage" />
+		<g:HTMLPanel ui:field="logError" addStyleNames="{style.logError} {style.message}">
+		    <g:Image url="images/ic_exclamation.png" addStyleNames="inline {style.logIcon}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="logWarning" addStyleNames="{style.logWarning} {style.message}">
+		    <g:Image url="images/ic_warning.png" addStyleNames="inline {style.logIcon}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="logInfo" addStyleNames="{style.logInfo} {style.message}">
+		    <g:Image url="images/ic_info.png" addStyleNames="inline {style.logIcon}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="logSuccess" addStyleNames="{style.logSuccess} {style.message}">
+		    <g:Image url="images/ic_okay.png" addStyleNames="inline {style.logIcon}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

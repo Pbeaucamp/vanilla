@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		.contentPanel {
+			width: 1200px;
+			height: 700px;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}" ui:field="mainPanel">
+	
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

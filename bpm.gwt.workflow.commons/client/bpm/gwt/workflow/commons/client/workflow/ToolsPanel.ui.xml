@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.panels">
+	
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:with field='resource' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style>
+		.mainPanel {
+			bottom: 10px;
+		    position: absolute;
+		    top: 10px;
+		    width: 295px;
+		}
+	</ui:style>
+	<my:NavigationPanel ui:field="navigationPanel" addStyleNames="{style.mainPanel}"/>
+</ui:UiBinder> 

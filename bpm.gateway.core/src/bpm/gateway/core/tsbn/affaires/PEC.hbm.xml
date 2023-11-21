@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.PEC" table="AFF_PEC">
+        <id name="idPec" type="java.lang.String" access="field">
+            <column name="IDPEC" />
+            <generator class="assigned" />
+        </id>
+        <list name="acte" inverse="false" table="ACTE" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDPEC" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.ACTE" />
+        </list>
+        <list name="diag" inverse="false" table="DIAG" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDPEC" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.DIAG" />
+        </list>
+        <list name="tra" inverse="false" table="TRA" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDPEC" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.TRA" />
+        </list>
+        <property name="idpat" type="java.lang.String">
+            <column name="IDPAT" />
+        </property>
+        <property name="catpec" type="java.lang.String" access="field">
+            <column name="CATPEC" />
+        </property>
+        <property name="datdeb" type="java.util.Date">
+            <column name="DATDEB" />
+        </property>
+        <property name="datfin" type="java.util.Date">
+            <column name="DATFIN" />
+        </property>
+        <property name="datdebmed" type="java.util.Date">
+            <column name="DATDEBMED" />
+        </property>
+        <property name="datfinmed" type="java.util.Date">
+            <column name="DATFINMED" />
+        </property>
+        <property name="flgmed" type="java.lang.String" access="field">
+            <column name="FLGMED" />
+        </property>
+        <property name="flgtra" type="java.lang.String" access="field">
+            <column name="FLGTRA" />
+        </property>
+        <property name="motnontra" type="java.lang.String" access="field">
+            <column name="MOTNONTRA" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.referentiels.VILLE" table="REF_VILLE">
+		<id type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment"/>
+        </id>
+        <list name="secteur" inverse="false" table="SECTEUR" lazy="false" cascade="save-update">
+            <key>
+            	<column name="VILLE_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.referentiels.SECTEUR" />
+        </list>
+        <property name="insee" type="java.lang.String" access="field">
+            <column name="INSEE" />
+        </property>
+        <property name="cp" type="java.lang.String" access="field">
+            <column name="CP" />
+        </property>
+        <property name="libelle" type="java.lang.String" access="field">
+            <column name="LIBELLE" />
+        </property>
+        <property name="dep" type="java.lang.String" access="field">
+            <column name="DEP" />
+        </property>
+        <property name="region" type="java.lang.String" access="field">
+            <column name="REGION" />
+        </property>
+    </class>
+</hibernate-mapping>

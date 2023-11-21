@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.PHA" table="AFF_PHA">
+        <id name="idPha" type="java.lang.String" access="field">
+            <column name="IDPHA" />
+            <generator class="assigned" />
+        </id>
+        <list name="act" inverse="false" table="ACT" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDPHA" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.ACT" />
+        </list>
+        <property name="idagt" type="java.lang.String" access="field">
+            <column name="IDAGT" />
+        </property>
+        <property name="datdeb" type="java.util.Date">
+            <column name="DATDEB" />
+        </property>
+        <property name="datfin" type="java.util.Date">
+            <column name="DATFIN" />
+        </property>
+        <property name="typpha" type="java.lang.String" access="field">
+            <column name="TYPPHA" />
+        </property>
+        <property name="ctx" type="java.lang.String" access="field">
+            <column name="CTX" />
+        </property>
+    </class>
+</hibernate-mapping>

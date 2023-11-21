@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.toolbar.Toolbar.MyStyle">
+		
+		.absoluteStyle {
+			position: absolute;
+		}
+		
+		.pointer {
+			cursor: pointer;
+		}
+		
+		.toolbarOpacity {
+			opacity: 0.8;
+		}
+		
+		.toolbarOpacity:HOVER {
+			opacity: 1; 
+		}
+		
+		.separator {
+			width: 1px;
+			border-left: 1px inset;
+			position: absolute;
+		}
+		
+		.hidePanelToolbar {
+			background: #E8EEF7;
+			background: -webkit-gradient(linear, 0 0, 0 100%, from(#d1dff0), to(#d2e1f0));
+			background: -moz-linear-gradient(#d1dff0, #d2e1f0);
+			background: -o-linear-gradient(#d1dff0, #d2e1f0);
+			background: linear-gradient(#d1dff0, #d2e1f0);
+			
+			position: absolute;
+			
+			z-index: 1;
+			
+			top: 0px;
+		}
+	</ui:style>
+	<g:AbsolutePanel ui:field="toolbarPanel"/>
+</ui:UiBinder> 

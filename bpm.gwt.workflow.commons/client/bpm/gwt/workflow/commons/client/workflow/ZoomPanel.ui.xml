@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panel{
+			position: absolute;
+			z-index: 2;
+			right: 35px;
+			top: 160px;
+			width: 30px;
+		}
+		
+		.zoomBtn {
+			width: 30px;
+			height: 30px;
+			background: #000;
+			text-align: center;
+			line-height: 1;
+			color: #FFF;
+			margin-top: 5px;
+			cursor: pointer;
+			opacity: 0.5;
+			font-size: 22px;
+		}
+		
+		.zoomBtn:HOVER {
+			opacity: 1;
+			color: #999;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Button ui:field="btnZoomMax" text="+" addStyleNames="{style.zoomBtn}" />
+		<g:Button ui:field="btnZoomMin" text="-" addStyleNames="{style.zoomBtn}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

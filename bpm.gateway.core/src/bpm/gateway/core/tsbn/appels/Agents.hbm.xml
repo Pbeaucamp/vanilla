@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 17, 2014 10:24:17 AM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.Agents" table="APP_AGENTS">
+        <id name="idAgent" type="java.lang.String">
+            <column name="IDAGENT" />
+            <generator class="assigned" />
+        </id>
+        <list name="agtStruct" inverse="true" table="AGTSTRUCT" lazy="false" cascade="save-update,merge">
+            <key>
+                <column name="IDAGENT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.AgtStruct" />
+        </list>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="nomNaissance" type="java.lang.String">
+            <column name="NOMNAISSANCE" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="prenom" />
+        </property>
+        <property name="typPro" type="java.lang.String">
+            <column name="TYPPRO" />
+        </property>
+        <property name="catPro" type="java.lang.String">
+            <column name="CATPRO" />
+        </property>
+    </class>
+</hibernate-mapping>

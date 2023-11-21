@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="VanillaKpiMap" default="build" basedir=".">
+
+	<property name="appversion" value="1.0.0" />
+
+	<!-- extension contrib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="../webapps_build/lib/ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
+
+
+	<!-- Arguments to gwtc and devmode targets -->
+	<property name="gwt.args" value="" />
+
+	<!-- Configure path to GWT SDK -->
+	<property name="gwt.sdk" location="${gwtsdknew}" />
+
+	<property name="jarlist" value="bpm.connection.manager,bpm.document.management.core,bpm.document.management.remote,bpm.fasd.api,bpm.fm.api,bpm.studio.jdbc.management,bpm.vanilla.platform.core,bpm.gwt.commons,bpm.vanilla.platform.core.config,bpm.vanilla.platform.core.remote,bpm.vanilla.map.core,bpm.vanilla.map.remote,bpm.update.manager.api,bpm.smart.core">
+	</property>
+
+	<path id="project.class.path">
+		<pathelement location="war/WEB-INF/classes" />
+		<pathelement location="${gwt.sdk}/gwt-user.jar" />
+		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
+		<!-- Add any additional non-server libs (such as JUnit) -->
+		<fileset dir="war/WEB-INF/lib" includes="**/*.jar" />
+	</path>
+
+	<target name="libs" description="Copy libs to WEB-INF/lib">
+		<mkdir dir="war/WEB-INF/lib" />
+		<copy todir="war/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet.jar" />
+		<copy todir="war/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet-deps.jar" />
+
+		<!-- Compile bpm jars to be synchro -->
+		<mkdir dir="tempjar" />
+		<for list="${jarlist}" param="jarfolder">
+			<sequential>
+
+				<!-- Find the jar version -->
+				<loadproperties srcfile="../@{jarfolder}/META-INF/MANIFEST.MF">
+				</loadproperties>
+
+				<!-- compile the project -->
+
+				<property name="elementPath" value="${myWorkspace}/@{jarfolder}" />
+				<property name="topLevelElementId" value="${Bundle-SymbolicName}" />
+				<property name="buildId" value="${Bundle-SymbolicName}" />
+				<property name="buildLabel" value="${buildType}.${buildId}" />
+
+				<propertyregex property="topLevelElementId" input="${Bundle-SymbolicName}" override="true" regexp=";.*" replace="">
+				</propertyregex>
+				<propertyregex property="buildId" override="true" input="${Bundle-SymbolicName}" regexp=";.*" replace="">
+				</propertyregex>
+
+				<antcall target="compileClass">
+				</antcall>
+
+				<if>
+					<equals arg1="@{jarfolder}" arg2="bpm.gwt.commons" />
+					<then>
+						<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+							<fileset dir="../bpm.gwt.commons/client"></fileset>
+							<fileset dir="../bpm.gwt.commons/shared"></fileset>
+							<fileset dir="../bpm.gwt.commons/server"></fileset>
+						</jar>
+					</then>
+					<else>
+						<if>
+							<equals arg1="@{jarfolder}" arg2="bpm.vanilla.platform.core" />
+							<then>
+								<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+									<fileset dir="../bpm.vanilla.platform.core/src"></fileset>
+								</jar>
+							</then>
+							<else>
+								<if>
+									<equals arg1="@{jarfolder}" arg2="bpm.document.management.core" />
+									<then>
+										<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+											<fileset dir="../bpm.document.management.core/src"></fileset>
+										</jar>
+									</then>
+									<else>
+										<if>
+											<equals arg1="@{jarfolder}" arg2="bpm.update.manager.api" />
+											<then>
+												<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+													<fileset dir="../bpm.update.manager.api/src"></fileset>
+												</jar>
+											</then>
+											<else>
+												<if>
+													<equals arg1="@{jarfolder}" arg2="bpm.smart.core" />
+													<then>
+														<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+															<fileset dir="../bpm.smart.core/src"></fileset>
+														</jar>
+													</then>
+													<else>
+														<if>
+															<equals arg1="@{jarfolder}" arg2="bpm.fm.api" />
+															<then>
+																<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+																	<fileset dir="../bpm.fm.api/src"></fileset>
+																</jar>
+															</then>
+															<else>
+																<if>
+																	<equals arg1="@{jarfolder}" arg2="bpm.vanilla.map.core" />
+																	<then>
+																		<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+																			<fileset dir="../bpm.vanilla.map.core/src"></fileset>
+																		</jar>
+																	</then>
+																	<else>
+																		<jar destfile="tempjar/@{jarfolder}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+																		</jar>
+																	</else>
+																</if>
+															</else>
+														</if>
+													</else>
+												</if>
+											</else>
+										</if>
+									</else>
+								</if>
+							</else>
+						</if>
+					</else>
+				</if>
+	
+				<var name="elementPath" unset="true" />
+				<var name="buildId" unset="true" />
+				<var name="topLevelElementId" unset="true" />
+				<var name="buildLabel" unset="true" />
+				<var name="Bundle-Version" unset="true" />
+				<var name="Bundle-SymbolicName" unset="true" />
+
+			</sequential>
+		</for>
+
+		<delete dir="../webapps_build/build">
+		</delete>
+
+		<!-- copy the needed jar in this webapps -->
+		<copy todir="war/WEB-INF/lib">
+			<fileset dir="tempjar">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="javac" depends="libs" description="Compile java source to bytecode">
+		<mkdir dir="war/WEB-INF/classes" />
+		<javac srcdir="src" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes" source="1.7" target="1.7" nowarn="true" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copy todir="war/WEB-INF/classes">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="gwtc" depends="javac"
+		description="GWT compile to JavaScript (production mode)">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="src" />
+				<path refid="project.class.path" />
+				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
+				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
+			</classpath>
+			<jvmarg value="-Xmx764M" />
+			<arg line="-war" />
+			<arg value="war" />
+			<arg line="-deploy" />
+			<arg value="${tempBuildDirectory}/deploys" />
+			<arg line="-style" />
+			<arg value="OBF" />
+			<arg line="${gwt.args}" />
+			<arg value="bpm.map.viewer.web.Bpm_map_viewer_web" />
+		</java>
+	</target>
+
+	<target name="build" depends="gwtc" description="Build this project" />
+
+	<target name="warOnly" depends="build" description="Create a war file a put in directly in destination directory">
+		<zip destfile="${destinationDirectory}/VanillaKpiMap.zip" basedir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**" />
+	</target>
+
+	<target name="war" depends="build" description="Create a war file">
+		<copy todir="${tempBuildDirectory}/${tomcatName}/webapps/VanillaKpiMap">
+			<fileset dir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**"></fileset>
+		</copy>
+		<!--<zip destfile="${builddirectory}/vanilla.war" basedir="war" excludes="Ressources/**,resources/**" />-->
+	</target>
+
+	<target name="clean" description="Cleans this project">
+		<!-- delete the temp dirs and jars -->
+		<delete dir="tempjar">
+		</delete>
+		<delete>
+			<fileset dir="war/WEB-INF/lib" includes="bpm.**" />
+		</delete>
+
+	</target>
+
+	<target name="compileClass">
+		<trycatch>
+			<try>
+				<ant antfile="${eclipse.pdebuild.scripts}/build.xml" />
+			</try>
+			<catch>
+				<echo>In &lt;catch&gt;.</echo>
+			</catch>
+			<finally />
+		</trycatch>
+	</target>
+
+</project>

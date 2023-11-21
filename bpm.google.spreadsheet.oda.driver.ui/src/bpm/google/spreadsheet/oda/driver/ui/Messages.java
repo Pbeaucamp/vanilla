@@ -1,0 +1,120 @@
+package bpm.google.spreadsheet.oda.driver.ui;
+
+import org.eclipse.osgi.util.NLS;
+
+public class Messages extends NLS {
+	private static final String BUNDLE_NAME = "bpm.google.spreadsheet.oda.driver.ui.messages"; //$NON-NLS-1$
+	public static String CustomDataSetWizardPage_0;
+	public static String CustomDataSetWizardPage_2;
+	public static String EditGoogleDataSource_1;
+	public static String EditGoogleDataSource_10;
+	public static String EditGoogleDataSource_11;
+	public static String EditGoogleDataSource_12;
+	public static String EditGoogleDataSource_13;
+	public static String EditGoogleDataSource_14;
+	public static String EditGoogleDataSource_15;
+	public static String EditGoogleDataSource_16;
+	public static String EditGoogleDataSource_2;
+	public static String EditGoogleDataSource_3;
+	public static String EditGoogleDataSource_4;
+	public static String EditGoogleDataSource_5;
+	public static String EditGoogleDataSource_6;
+	public static String EditGoogleDataSource_7;
+	public static String EditGoogleDataSource_8;
+	public static String EditGoogleDataSource_9;
+	public static String GoogleOdaDataSetPage_0;
+	public static String GoogleOdaDataSetPage_1;
+	public static String GoogleOdaDataSetPage_10;
+	public static String GoogleOdaDataSetPage_11;
+	public static String GoogleOdaDataSetPage_12;
+	public static String GoogleOdaDataSetPage_13;
+	public static String GoogleOdaDataSetPage_14;
+	public static String GoogleOdaDataSetPage_15;
+	public static String GoogleOdaDataSetPage_16;
+	public static String GoogleOdaDataSetPage_17;
+	public static String GoogleOdaDataSetPage_18;
+	public static String GoogleOdaDataSetPage_19;
+	public static String GoogleOdaDataSetPage_2;
+	public static String GoogleOdaDataSetPage_20;
+	public static String GoogleOdaDataSetPage_21;
+	public static String GoogleOdaDataSetPage_22;
+	public static String GoogleOdaDataSetPage_23;
+	public static String GoogleOdaDataSetPage_24;
+	public static String GoogleOdaDataSetPage_3;
+	public static String GoogleOdaDataSetPage_4;
+	public static String GoogleOdaDataSetPage_5;
+	public static String GoogleOdaDataSetPage_6;
+	public static String GoogleOdaDataSetPage_7;
+	public static String GoogleOdaDataSetPage_8;
+	public static String GoogleOdaDataSetPage_9;
+	public static String GoogleOdaFilterPage_0;
+	public static String GoogleOdaFilterPage_1;
+	public static String GoogleOdaFilterPage_10;
+	public static String GoogleOdaFilterPage_11;
+	public static String GoogleOdaFilterPage_12;
+	public static String GoogleOdaFilterPage_13;
+	public static String GoogleOdaFilterPage_14;
+	public static String GoogleOdaFilterPage_15;
+	public static String GoogleOdaFilterPage_16;
+	public static String GoogleOdaFilterPage_17;
+	public static String GoogleOdaFilterPage_18;
+	public static String GoogleOdaFilterPage_2;
+	public static String GoogleOdaFilterPage_20;
+	public static String GoogleOdaFilterPage_21;
+	public static String GoogleOdaFilterPage_3;
+	public static String GoogleOdaFilterPage_30;
+	public static String GoogleOdaFilterPage_31;
+	public static String GoogleOdaFilterPage_34;
+	public static String GoogleOdaFilterPage_38;
+	public static String GoogleOdaFilterPage_39;
+	public static String GoogleOdaFilterPage_4;
+	public static String GoogleOdaFilterPage_40;
+	public static String GoogleOdaFilterPage_41;
+	public static String GoogleOdaFilterPage_46;
+	public static String GoogleOdaFilterPage_47;
+	public static String GoogleOdaFilterPage_48;
+	public static String GoogleOdaFilterPage_49;
+	public static String GoogleOdaFilterPage_5;
+	public static String GoogleOdaFilterPage_50;
+	public static String GoogleOdaFilterPage_51;
+	public static String GoogleOdaFilterPage_52;
+	public static String GoogleOdaFilterPage_53;
+	public static String GoogleOdaFilterPage_54;
+	public static String GoogleOdaFilterPage_55;
+	public static String GoogleOdaFilterPage_56;
+	public static String GoogleOdaFilterPage_57;
+	public static String GoogleOdaFilterPage_58;
+	public static String GoogleOdaFilterPage_59;
+	public static String GoogleOdaFilterPage_6;
+	public static String GoogleOdaFilterPage_60;
+	public static String GoogleOdaFilterPage_61;
+	public static String GoogleOdaFilterPage_62;
+	public static String GoogleOdaFilterPage_64;
+	public static String GoogleOdaFilterPage_65;
+	public static String GoogleOdaFilterPage_7;
+	public static String GoogleOdaFilterPage_8;
+	public static String GoogleOdaFilterPage_9;
+	public static String GoogleSpreadDataSourcePage_1;
+	public static String GoogleSpreadDataSourcePage_10;
+	public static String GoogleSpreadDataSourcePage_11;
+	public static String GoogleSpreadDataSourcePage_12;
+	public static String GoogleSpreadDataSourcePage_13;
+	public static String GoogleSpreadDataSourcePage_14;
+	public static String GoogleSpreadDataSourcePage_15;
+	public static String GoogleSpreadDataSourcePage_16;
+	public static String GoogleSpreadDataSourcePage_2;
+	public static String GoogleSpreadDataSourcePage_3;
+	public static String GoogleSpreadDataSourcePage_4;
+	public static String GoogleSpreadDataSourcePage_5;
+	public static String GoogleSpreadDataSourcePage_6;
+	public static String GoogleSpreadDataSourcePage_7;
+	public static String GoogleSpreadDataSourcePage_8;
+	public static String GoogleSpreadDataSourcePage_9;
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+	}
+
+	private Messages() {
+	}
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		@external success, error;
+		.error{
+		background: rgb(255, 244, 244);
+		color: rgb(204, 80, 80);
+		padding: 10px;
+		border-radius: 9px;
+		-webkit-border-radius: 9px;
+		-moz-border-radius: 9px;
+		border: 1px solid rgb(255, 236, 236);
+		}
+		.success{
+		background: rgb(246, 255, 244);
+		color: rgb(124, 184, 116);
+		padding: 10px;
+		border-radius: 9px;
+		-webkit-border-radius: 9px;
+		-moz-border-radius: 9px;
+		border: 1px solid rgb(228, 255, 229);
+		}
+		.messagePanel{
+		width: 85%;
+		margin: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblMessage" addStyleNames="{style.messagePanel}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

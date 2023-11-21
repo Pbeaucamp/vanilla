@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		.itemName {
+			width: 87%;
+			display: inline-block;
+		}
+		.btnBrowse {
+			width: 10%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:LabelTextBox ui:field="lbl" addStyleNames="{style.itemName}"/>
+		<my:CustomButton ui:field="btn" text="..." addStyleNames="{style.btnBrowse}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

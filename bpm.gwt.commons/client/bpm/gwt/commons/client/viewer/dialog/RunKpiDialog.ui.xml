@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:style>
+		.mainPanel {
+	    	text-align: center;
+		}
+		
+		.dp {
+	    	display: inline-block;
+		}
+	
+		.lstJump {
+		    height: 20px;
+		    margin: 10px 0;
+		    padding-top: 1px;
+		    text-align: center;
+		    width: 250px;
+		}
+		
+		.boxBeginTime {
+		    display: inline-block;
+		    margin-left: 15px;
+		    margin-top: 75px;
+		    vertical-align: top;
+		}
+	</ui:style>
+
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:ListBox ui:field="lstJumpToYear" addStyleNames="{style.lstJump}"/>
+		<dp:DatePicker ui:field="dateSelectionPicker" addStyleNames="{style.dp}"/>
+		<my:TimeBox ui:field="timeBox" addStyleNames="{style.boxBeginTime}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

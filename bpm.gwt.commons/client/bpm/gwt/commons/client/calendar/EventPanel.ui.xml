@@ -1,0 +1,49 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.commons.client.calendar.EventPanel.MyStyle">
+		.panelEvent {
+			height: 20px;
+			line-height: 20px;
+			margin-top: 1px;
+		}
+		
+		.firstEvent {
+			margin-left: 5px;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+		}
+		
+		.lastEvent {
+			margin-right: 5px;
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+		}
+		
+		.lbl {
+	    	margin-left: 5px;
+		    white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		}
+		
+		.btn {
+			width: 20px;
+    		height: 20px;
+			cursor: pointer;
+		}
+
+		.event {
+			background-color: #44B8AE;
+			color: white;
+		    height: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelEvent" addStyleNames="{style.panelEvent}, flex, {style.event}">
+		<g:Label ui:field="lblEvent" visible="false" addStyleNames="{style.lbl}, flexOne"/>
+<!-- 		<g:Image ui:field="btnView" title="{labels.VisualiserLEvenement}" resource="{resources.voir_24dp}" visible="false" addStyleNames="{style.btn}"/> -->
+<!-- 		<g:Image ui:field="btnEdit" title="{labels.ModifierLEvenement}" resource="{resources.editer_24dp}" visible="false" addStyleNames="{style.btn}"/> -->
+<!-- 		<g:Image ui:field="btnDelete" title="{labels.SupprimerLEvenement}" resource="{resources.supprimer_24dp}" visible="false" addStyleNames="{style.btn}"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

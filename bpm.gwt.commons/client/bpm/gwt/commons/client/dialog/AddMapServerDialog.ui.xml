@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.dialog.AddMapServerDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+		}
+		
+		.overflow {
+			overflow: auto;
+		}
+		
+		.grid {
+			height: 250px;
+		}
+		
+		.maxHeight {
+			height: 525px;
+		}
+		
+		.panelBtn {
+			text-align: center;
+		}
+		
+		.btn {
+			margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" label="{labels.ServerName}"/>
+		<my:LabelTextBox ui:field="txtUrl" label="{labels.Url}"/>
+		<my:ListBoxWithButton ui:field="lstTypes" label="{labels.TypeServer}" />
+		<g:HTMLPanel ui:field="panelArcgis" addStyleNames="{style.grid}">
+			<div class="{style.panelBtn}">
+				<g:Button ui:field="btnLoadArcgis" text="{labels.LoadServices}" addStyleNames="{style.btn}"/>
+			</div>
+			<p:GridPanel ui:field="grid" addStyleNames="relative"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

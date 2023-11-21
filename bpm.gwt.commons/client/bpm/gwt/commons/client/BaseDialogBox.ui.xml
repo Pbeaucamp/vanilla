@@ -1,0 +1,73 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.dialog {
+			background: none repeat scroll 0 0 #FFFFFF !important;
+		    border: 5px solid #3B99CB;
+		    border-radius: 5px;
+		    margin: 0 auto;
+		    overflow: hidden;
+		    position: absolute;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			z-index: 1
+		}
+		
+		.panelTop {
+			background: none repeat scroll 0 0 #3B99CB;
+		    height: 30px;
+		    width: 100%;
+		    text-align: center;
+			display: inline-block;
+		}
+		
+		.partBtnTop {
+			float: right;
+		}
+		
+		.btnTop {
+			margin-right: 2px;
+			padding: 3px;
+			height: 19px !important;
+			width: 19px !important;
+			background-position: center !important;
+			cursor: pointer;	
+		}
+	
+		.btnTop:HOVER {
+			background-color: #20709B !important;
+		}
+		
+		.title {
+			color: white;
+    		display: inline-block;
+    		margin-top: 4px;	
+		}
+		
+		.contentPanel {
+			bottom: 60px;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 30px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="dialog" addStyleNames="{style.dialog}">
+		<g:HTMLPanel ui:field="panelTop" addStyleNames="{style.panelTop}">
+			<g:Label ui:field="lblTitle" addStyleNames="{style.title}"/>
+			<g:HTMLPanel addStyleNames="{style.partBtnTop}">
+				<g:Image ui:field="btnReduce" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_restore}" title="{label.Reduce}"/>
+				<g:Image ui:field="btnMax" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_maximize}" title="{label.Maximize}"/>
+				<g:Image ui:field="btnClose" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_close}" title="{label.Close}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}"/>
+		<g:HTMLPanel ui:field="panelButton"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field="labels" type="bpm.gwt.commons.client.I18N.LabelsConstants"/>
+	<ui:with field="resources" type="bpm.gwt.commons.client.images.CommonImages"/>
+	
+	<ui:style>
+		.alertBox {
+		    color:#555;
+		    border-radius:10px;
+		    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+		    padding:10px 10px 10px 25px;
+		    margin:10px;
+		    background:rgba(255,255,255,0.8);
+		    position: absolute;
+		    right: 50px;
+		    top: 25px;
+		    border: 1px solid #D3D3D3;
+		}
+		
+		.close {
+			float: right;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.alertBox}">
+		<g:Image ui:field="btnClose" resource="{resources.close_tab}" addStyleNames="{style.close}"/>
+		<g:SimplePanel ui:field="panelContent">
+			<g:HTML ui:field="txt"/>
+		</g:SimplePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

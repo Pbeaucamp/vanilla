@@ -1,0 +1,145 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.CocktailNavigationItem.MyStyle">
+		.item {
+		    height: 50px;
+		    line-height: 50px;
+		    overflow: hidden;
+		    width: 100%;
+			position: relative;
+			
+			display: inline-block;
+		
+			overflow: hidden;
+		
+			border-width: 0;
+			outline: none;
+			
+			transition: background-color .3s;
+			cursor: pointer;
+		}
+		
+		.item:hover, .item:focus {
+		}
+		
+		.item > * {
+			position: relative;
+		}
+		
+		.item span {
+			display: block;
+			padding: 12px 24px;
+		}
+		
+		.item:before {
+			content: "";
+			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			
+			display: block;
+			width: 0;
+			padding-top: 0;
+			  
+			border-radius: 100%;
+			
+			background-color: rgba(236, 240, 241, .3);
+			
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		
+		.item:active:before {
+			width: 120%;
+			padding-top: 120%;
+			
+			transition: width .2s ease-out, padding-top .2s ease-out;
+		}
+		
+		.lbl {
+		    display: inline-block;
+		    vertical-align: top;
+		    color: #FFFFFF;
+    		font-size: 16px;
+    		word-wrap: break-word;
+    		z-index: 5;
+		}
+		
+		.img {
+		    display: inline-block;
+			height: 40px;
+		    vertical-align: middle;
+		    width: auto;
+		    z-index: 5;
+		}
+		
+		.selected {
+			font-weight: bold;
+		}
+		
+		.background{
+			z-index: 2;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			opacity: 0.8;
+			background: none;
+			transition: all 1s ease;
+		}
+		
+		.blue {
+			background-color: #389AEE;
+		}
+		
+		.green {
+			background-color: #3bce3d;
+		}
+		
+		.closePanel{
+			height: 50px;
+			width: 35px;
+			position: absolute;
+			top: 0;
+			right: -35px;
+			background-color: rgba(100, 100, 100, 0.7);
+			cursor: pointer;
+		}
+		
+		.imgClose {
+		    display: inline-block;
+		    height: auto;
+		    max-height: 50px;
+		    max-width: 35px;
+		    position: relative;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    vertical-align: middle;
+		    width: auto;
+		    z-index: 5;
+		}
+		
+		.focus {
+		    position: relative;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focus" addStyleNames="{style.focus}">
+		<g:HTMLPanel>
+			<g:HTMLPanel ui:field="item" addStyleNames="{style.item}">
+				<g:Label ui:field="lbl" addStyleNames="{style.lbl}"/>
+				<g:Image ui:field="img" addStyleNames="{style.img}"/>
+				<g:SimplePanel ui:field="background" addStyleNames="{style.background}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="closePanel" addStyleNames="{style.closePanel}">
+				<g:Image ui:field="imgClose" resource="{resources.ic_delete_white}" addStyleNames="{style.imgClose}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

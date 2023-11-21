@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.map.viewer.web.client.wizard.AddMapComponentsPage.MyStyle">
+	
+		.panelContent {
+			height: 350px;
+			width: 720px;
+		}
+		
+		.panelColonne {
+			height: 100%;
+			width: 255px;
+			float: left;
+		}
+		
+		.leftColonne {
+			overflow: auto;
+			position: relative;
+			height: 100%;
+			width: 209px;
+			float: left;
+			border-right : solid 1px;
+		}
+		
+		.lblName {
+		    float: left;
+		    margin-left: 12px;
+		    margin-top: 5px;
+		}
+		
+		.txtName {
+		    display: block;
+		    margin-left: 50px;
+		    margin-top: 3px;
+		}
+
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:HTMLPanel addStyleNames="{style.leftColonne}">
+			<g:Label ui:field="lblName" addStyleNames="{style.lblName}"/>
+			<g:TextBox ui:field="txtName" addStyleNames="{style.txtName}"/>
+			<g:Tree ui:field="treeObs"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelAxis" addStyleNames="{style.panelColonne}"/>
+		<g:SimplePanel ui:field="panelMetrics" addStyleNames="{style.panelColonne}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

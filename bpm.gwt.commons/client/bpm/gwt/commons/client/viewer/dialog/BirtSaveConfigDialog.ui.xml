@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.mainPanel {
+			margin: 10px;
+		}
+	
+		.lblGed {
+		    margin-right: 15px;
+    		margin-top: 10px;
+   		    width: 70px;
+		}
+		
+		.txtGed {
+			margin-top: 8px;
+			width: 200px;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.mainPanel}">
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblConfigName" addStyleNames="{style.lblGed}"/>
+			<g:TextBox ui:field="configName" addStyleNames="{style.txtGed}"/>
+		</g:HorizontalPanel>
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblConfigDescription" addStyleNames="{style.lblGed}"/>
+			<g:TextBox ui:field="configDescription" addStyleNames="{style.txtGed}"/>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

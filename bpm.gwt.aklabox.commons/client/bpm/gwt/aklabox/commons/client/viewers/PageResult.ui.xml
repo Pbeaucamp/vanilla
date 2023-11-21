@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:style>
+		@external lblPageNumber, selected;
+		.important {
+			font-weight: bold;
+		}
+		.pagePreview{
+			border: 1px solid #999999;
+    		display: inline-block;
+    		margin: 2px;
+    		width: 70px;
+    		position: relative;
+		}
+		.pagePreview img{
+			height: 90px;
+			display: block;
+			width: 70px;
+		}
+		.lblPageNumber{
+			background: #999;
+			color: #000;	
+			text-align: center;
+		}
+		.selected{
+			background: #3B99CB;
+			color: #000;	
+			text-align: center;
+		}
+		.pagePreview:hover {
+			cursor: pointer;
+		}
+		
+		.pagePreview:hover .lblPageNumber{
+			background: #3B99CB;
+		}
+
+		.pagePreview .lblPageNumber{
+			background: #999;
+		}
+		.blueStar{
+			width: 20px !important;
+			height: auto !important;
+			position: absolute;
+			right: 0px;
+			bottom: 20px;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.pagePreview}">
+		<g:Image url="" ui:field="imgPage"/>
+		<g:Image resource="{img.ic_blue_star}" ui:field="blueStar" addStyleNames="{style.blueStar}"/>
+		<g:Label ui:field="lblPageNumber" styleName="{style.lblPageNumber}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

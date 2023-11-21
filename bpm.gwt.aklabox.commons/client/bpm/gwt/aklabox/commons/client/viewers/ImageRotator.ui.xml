@@ -1,0 +1,59 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<!-- <ui:with field='resources' type='bpm.aklabox.lad.web.client.resources.ImageIcons' />
+	<ui:with field='i18n' type='bpm.aklabox.lad.web.client.i18n.LabelConstants' /> -->
+	
+	<ui:style>
+		.rotateLeft, .rotateRight {
+			display: inline-block;
+			vertical-align: middle;
+			width: 30px;
+			height: 30px;
+			background: transparent;
+			border: none;
+			padding: 5px;
+		}
+		
+		.rotateLeft:hover, .rotateRight:hover {
+			cursor: pointer;
+			opacity: 0.5;
+			translation: 1s all;
+			-webkit-translation: 1s all;
+			-moz-translation: 1s all;
+		}
+		
+		.lblBackground {
+			font-size: 1.2em;
+			color: #FFF;
+			width: inherit;
+			margin: auto;
+			padding: 10px;
+			background: rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+		}
+		
+		.panel {
+			background: #3e3e3e;
+		}
+		
+		.zoomButtons {
+			background-size: 20px 20px !important;
+			height: 20px !important;
+			width: 20px !important;
+			margin-top: 7%;
+			opacity: 0.5;
+		}
+		
+		.zoomButtons:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="{style.panel}">
+		<!-- <g:Image ui:field="rotateLeft" title="{i18n.RotateClockwise}" resource="{resources.ic_rotate_left}" addStyleNames="{style.rotateLeft}"/>
+		<g:Image ui:field="rotateRight" title="{i18n.RotateConterclockwise}" resource="{resources.ic_rotate_right}" addStyleNames="{style.rotateRight}"/>
+		<g:SimplePanel ui:field="sliderPanel" /> -->
+<!-- 		<g:SimplePanel ui:field="sliderLuminosityPanel" /> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

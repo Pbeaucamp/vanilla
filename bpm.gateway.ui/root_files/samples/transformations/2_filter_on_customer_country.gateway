@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>83</positionX>
+    <positionY>134</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output France</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>597</positionX>
+    <positionY>16</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\2_filter_on_customer_country\france.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fileOutputXML>
+    <name>XML Output Canada</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>857</positionX>
+    <positionY>162</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\2_filter_on_customer_country\canada.xml</definition>
+    <rootTag>Row</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fileOutputXML>
+    <name>XML Output Philippines</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>613</positionX>
+    <positionY>354</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\2_filter_on_customer_country\philippes.xml</definition>
+    <rootTag>Row</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fileOutputXML>
+    <name>XML Output Trash</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>262</positionX>
+    <positionY>363</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\2_filter_on_customer_country\trash.xml</definition>
+    <rootTag>Row</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName></temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <filter>
+    <name>Filtre Pays</name>
+    <description></description>
+    <positionX>434</positionX>
+    <positionY>168</positionY>
+    <exclusive>true</exclusive>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new Filter</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <condition>
+      <elementName>XLS Input Customers::COUNTRY</elementName>
+      <operator>=</operator>
+      <value>France</value>
+      <logical>0</logical>
+      <outputRef>XML Output France</outputRef>
+    </condition>
+    <condition>
+      <elementName>XLS Input Customers::COUNTRY</elementName>
+      <operator>=</operator>
+      <value>Canada</value>
+      <logical>0</logical>
+      <outputRef>XML Output Canada</outputRef>
+    </condition>
+    <condition>
+      <elementName>XLS Input Customers::COUNTRY</elementName>
+      <operator>=</operator>
+      <value>Philippines</value>
+      <logical>0</logical>
+      <outputRef>XML Output Philippines</outputRef>
+    </condition>
+    <trashRef>XML Output Trash</trashRef>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </filter>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Filtre Pays</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>XML Output France</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>XML Output Canada</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>XML Output Philippines</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>XML Output Trash</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

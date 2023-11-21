@@ -1,0 +1,77 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:w="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='images' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.custom.v2.GridPanel.MyStyle">
+		.panelAction {
+	    	min-height: 30px;
+		}
+	
+		.lblAction {
+		    margin-left: 15px;
+	    	margin-top: 5px;
+	    	font-weight: bold;
+		}
+		
+		.panelButtonAction {
+			position: absolute;
+		    right: 5px;
+		}
+		
+		.btnAction {
+			margin-left: 15px;
+		}
+		
+		.panelGrid {
+			top: 30px;
+		    bottom: 30px;
+		    position: absolute;
+		    left: 10px;
+		    right: 10px;
+		}
+	
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			bottom: 0px;
+			width: 100%;
+	        overflow: hidden;
+	        text-align: center;
+		}
+		
+		.txtPageSize {
+		    margin-left: 15px;
+		    width: 30px;
+		    padding: 2px 2px;
+		    margin-top: 2px;
+		    text-align: right;
+		}
+		
+		.lblPageSize {
+			margin-top: 4px;
+		    margin-left: 3px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="full">
+		<g:HTMLPanel ui:field="panelAction" addStyleNames="{style.panelAction}, relative">
+			<div>
+				<w:Button ui:field="btnFilter" text="{labels.Filter}" resource="{images.check_24}" height="25" imageSize="24" visible="false" addStyleNames="{style.btnAction}, inline"/>
+				<g:Label ui:field="lblAction" addStyleNames="{style.lblAction}, inline, vertical"/>
+				<g:HTMLPanel ui:field="panelButtonAction" addStyleNames="{style.panelButtonAction}, inline, vertical"/>
+			</div>
+			<g:SimplePanel ui:field="panelActionWidget" visible="false" addStyleNames="{style.lblAction}, inline, vertical"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelGridContent" addStyleNames="{style.panelGrid}">
+			<g:SimplePanel ui:field="panelGrid" addStyleNames="full, relative"/>
+		</g:SimplePanel>
+		<g:HTMLPanel ui:field="panelBottom" addStyleNames="{style.panelPager}">
+			<g:SimplePanel ui:field="panelPager" addStyleNames="inline, vertical"/>
+			<g:TextBox ui:field="txtPageSize" addStyleNames="{style.txtPageSize}, inline, vertical"/>
+			<g:Label text="{labels.lines}" addStyleNames="{style.lblPageSize}, inline, vertical"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

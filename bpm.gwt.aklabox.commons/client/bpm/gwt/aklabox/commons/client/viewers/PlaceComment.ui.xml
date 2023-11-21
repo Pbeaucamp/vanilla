@@ -1,0 +1,204 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:h="urn:import:bpm.gwt.aklabox.commons.client.utils"
+	 xmlns:dp="urn:import:com.google.gwt.user.datepicker.client" >
+
+	<ui:style>
+	
+	.previewPanel,.informationPanel,previewPanelZoom {
+		height: 100%;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+	
+	.previewPanel {
+		width: 100%;
+		background: #3e3e3e;
+	}
+	
+	.preview {
+		overflow: auto;
+		padding: 10px 0;
+		width: 100%;
+		max-height : 550px;
+		margin: 10px auto 0;
+		text-align: center;
+	}
+	
+	.preview:hover .zoom {
+		display: inline-block;
+	}
+	
+	.preview:hover {
+		cursor: pointer;
+	}
+	
+	.preview embed {
+		height: 200px !important;
+	}
+	
+	.previewPanelZoom {
+		width: 100%;
+		background: #3e3e3e;
+		float: left;
+	}
+	
+	.previewZoom {
+		padding: 10px 0;
+		text-align: center;
+		width: 100%;
+	}
+	
+	.zoom {
+		background: none repeat scroll 0 0 #999;
+		position: absolute;
+		display: none;
+		width: 50px !important;
+		z-index: 1;
+		left: 40%;
+		border-radius: 100%;
+		-webkit-border-radius: 100%;
+		-moz-border-radius: 100%;
+		opacity: 0.5;
+		top: 50%;
+	}
+	
+	.nextOfficeNavigation,.prevOfficeNavigation {
+		height: 100%;
+		right: 0;
+		position: absolute;
+		top: 0;
+		width: 10%;
+	}
+	
+	.prevOfficeNavigation {
+		left: 0;
+	}
+	
+	.nextOfficeNavigation:hover .btnNext {
+		opacity: 1;
+	}
+	
+	.prevOfficeNavigation:hover .btnPrev {
+		opacity: 1;
+	}
+	
+	.btnNext,.btnPrev {
+		background: url("webapps/aklabox_files/images/ic_view_next.png")
+			no-repeat center;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 15%;
+		opacity: 0;
+		border: none;
+	}
+	
+	.btnPrev {
+		background: url("webapps/aklabox_files/images/ic_view_next.png")
+			no-repeat center;
+		background-size: 100% 15%;
+		transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+	}
+	
+	.searchPanel{
+		text-align: left;
+		position: fixed;
+	}
+	.txtSearchDoc{
+		width: 200px !important;
+		font-size: 1em !important;
+		padding: 5px !important;
+		margin-left: 30px !important;
+		display: inline-block !important; 
+	}
+	.iconSearch{
+		width: 30px;
+		height: auto;
+	}
+	
+	.mainPreview {
+		width: 100%;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+	
+	.imageSettings {
+		width: 100%;
+		background: #fff;
+		min-height: 150px;
+		overflow: auto;
+		clear: both;
+		text-align: center;
+	}
+	
+	.pagePanelPreview {
+		width: 100%;
+		background: #fff;
+		max-height: 240px;
+		height: 100%;
+		overflow: auto;
+		clear: both;
+	}
+	
+	
+	
+	.important {
+		font-weight: bold;
+	}
+	
+	.prev {
+		background: url(" webapps/ aklabox_files/ images/ ic_iew arrows.png ")
+			no-repeat scroll 0 0;
+		height: 30px;
+		width: 30px;
+		border: none;
+	}
+	
+	.next {
+		background: url("webapps/aklabox_files/images/ic_arrows.png") no-repeat
+			scroll -30px 0;
+		height: 30px;
+		width: 30px;
+		border: none;
+	}
+	
+	
+	
+	.pagePreview {
+		border: 1px solid #999999;
+		display: inline-block;
+		height: 90px;
+		margin: 2px;
+		width: 70px;
+	}
+	
+	.pagePreview img {
+		height: 90px;
+		width: 70px;
+	}
+	
+
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="previewPanel" styleName="{style.previewPanel}">
+			<g:HTMLPanel ui:field="preview" styleName="{style.preview}">
+				<div style="position: relative;">
+					<!-- <g:Image url="webapps/aklabox_files/images/ic_zoom.png" styleName="{style.zoom}" ui:field="btnZoom" /> -->
+					
+					<!-- <g:HTMLPanel ui:field="searchDocContent" addStyleNames="{style.searchPanel}">
+						<h:AklaTextBox ui:field="txtSearchDoc" addStyleNames="{css.aklaboxcss.txtBoxOrig} {style.txtSearchDoc} inline"/>
+						<g:Image ui:field="btnSearchOCRResult" resource="{img.ic_search}" addStyleNames="{style.iconSearch} inline" title="{i18n.Search}"/>
+					</g:HTMLPanel> -->
+					<g:Image ui:field="imgPreview" styleName="{style.mainPreview}" />
+				</div>
+			</g:HTMLPanel>
+			<!-- <g:HTMLPanel ui:field="imageSettings" styleName="{style.imageSettings}" /> -->
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="pagePreview" styleName="{style.pagePanelPreview}">
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

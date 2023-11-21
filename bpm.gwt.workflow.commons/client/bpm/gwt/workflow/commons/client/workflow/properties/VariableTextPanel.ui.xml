@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:u="urn:import:bpm.gwt.workflow.commons.client.utils">
+	
+	<ui:style type="bpm.gwt.workflow.commons.client.workflow.properties.VariableTextPanel.MyStyle">
+		.label {    
+			color: #3B99CB;
+		    margin-left: 18px;
+	    	margin-top: 5px;
+		}
+		
+		.txt {	
+            width: 98%;
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.warning {
+		    color: #FE9A2E;
+	    	margin-left: 20px;
+		}
+		
+		.success {
+		    color: #64FE2E;
+	    	margin-left: 20px;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="label" addStyleNames="{style.label}"/>
+		<u:VariableTextHolderBox ui:field="txtValue" addStyleNames="{style.txt}"/>
+		<g:Label ui:field="txtError" addStyleNames="{style.error}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

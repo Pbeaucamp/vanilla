@@ -1,0 +1,78 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='label' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+
+	<ui:style type="bpm.gwt.aklabox.commons.client.login.ConnexionPanel.MyStyle">
+		.loginPanel {
+			position: absolute;
+			width: 30%;
+			top: 50%;
+			left: 50%;
+			margin-left: -240px;
+			margin-top: -220px;
+		}
+		
+		.logo {
+			width: 70% !important;
+			height: auto !important;
+			background-size: 100% auto !important;
+			background-position: center !important;
+			margin: 0 auto;
+			display: block;
+		}
+		
+		.right {
+			text-align: right !important;
+		}
+		
+		.formPanel {
+			margin-bottom: 5px;
+		}
+		
+		.txtUser {
+			background-color: #F7F8F8;
+			border: 1px solid #CCCCCC;
+			box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.2) inset;
+			color: #888888;
+			font-size: 15px;
+			margin-top: 5px !important;
+			padding: 10px;
+			transition: all 0.5s ease 0s;
+			width: 95%;
+			height: 40px;
+		}
+		
+		.panelForm {
+			margin: auto;
+			width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.loginPanel}">
+		<g:HTMLPanel ui:field="mainPanel" addStyleNames="ui piled segment form">
+			<div class="ui two column grid">
+				<div class="column">
+					<g:Image ui:field="imgPlatformLogo" styleName="{style.logo}" />
+				</div>
+				<g:HTMLPanel ui:field="localePanel" addStyleNames="column {style.right}" />
+			</div>
+			<g:HTMLPanel addStyleNames="field">
+				<g:Label ui:field="lblMessage" addStyleNames="ui error message" />
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="formPanel" addStyleNames="{style.formPanel}" />
+			<div class="field">
+				<div class="ui two column grid">
+					<div class="column">
+						<g:CheckBox text="{label.RememberMe}" ui:field="cbRememberMe" addStyleNames="ui checkbox" />
+					</div>
+					<div class="column">
+						<g:Button addStyleNames="ui button blue fluid small" ui:field="btnLogin" text="{label.Login}" />
+					</div>
+				</div>
+			</div>
+			<g:HTMLPanel ui:field="generateLicensePanel" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

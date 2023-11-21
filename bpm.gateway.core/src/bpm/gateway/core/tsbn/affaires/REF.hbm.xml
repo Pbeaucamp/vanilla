@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.REF" table="AFF_REF">
+        <id type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <list name="pat" inverse="false" table="PAT" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.PAT" />
+        </list>
+        <list name="cim10" inverse="false" table="CIM10" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.CIM10" />
+        </list>
+        <list name="obs" inverse="false" table="OBS" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.OBS" />
+        </list>
+        <list name="vec" inverse="false" table="VEC" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.VEC" />
+        </list>
+        <list name="equ" inverse="false" table="EQU" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.EQU" />
+        </list>
+        <list name="etab" inverse="false" table="ETAB" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.ETAB" />
+        </list>
+        <list name="struct" inverse="false" table="STRUCT" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.STRUCT" />
+        </list>
+        <list name="agt" inverse="false" table="AGT" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.AGT" />
+        </list>
+        <list name="moyext" inverse="false" table="MOYEXT" lazy="false" cascade="save-update">
+            <key>
+            	<column name="REF_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.MOYEXT" />
+        </list>
+    </class>
+</hibernate-mapping>

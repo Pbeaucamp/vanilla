@@ -1,0 +1,302 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style
+		type="bpm.gwt.commons.client.viewer.fmdtdriller.DesignerPanel.MyStyle">
+		.columnsList {
+			left: 10px;
+			right: 10px;
+			top: 10px;
+			bottom: 10px;
+			display: inline-block;
+			width: 300px;
+			height: 100%;
+			vertical-align: top;
+			overflow: auto;
+		}
+		
+		.buttonlayout {
+			border: 1px solid gray;
+			padding: 3px;
+			overflow: auto;
+			position: absolute;
+			width: 42px;
+			left: 307px;
+			bottom: 10px;
+			top: 16px;
+			vertical-align: top;
+		}
+		
+		.dataBuilder {
+			border: 1px solid gray;
+			width: 100%;
+			height: 50%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.buttonlayout {
+			border: 1px solid gray;
+			padding: 3px;
+		}
+		
+		.btnRequestBuilder {
+			cursor: pointer;
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+		}
+		
+		.btnRequestDisabled {
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+		}
+		
+		.dockPanel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.requestValue {
+			display: inline-block;
+			position: absolute;
+			bottom: 30px;
+			top: 8px;
+			vertical-align: top;
+			padding-bottom: 4px;
+		}
+		
+		.panelValue {
+			display: inline-block;
+			position: absolute;
+			right: 10px;
+			left: 356px;
+			bottom: 10px;
+			top: 8px;
+			padding-top: 8px;
+			padding-left: 10px;
+			padding-right: 10px;
+			vertical-align: top;
+			padding-bottom: 4px;
+		}
+		
+		.btnRequestBuilder:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.hover {
+			cursor: pointer;
+		}
+		
+		.hover:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.checkbox {
+			width: 40px;
+		}
+		
+		.dockPanel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.requestValue {
+			display: inline-block;
+			/* position: absolute; */
+			bottom: 30px;
+			top: 8px;
+			right: 10px;
+			left: 10px;
+			padding-bottom: 4px;
+		}
+		
+		.panelValue {
+			display: inline-block;
+			position: absolute;
+			right: 10px;
+			left: 356px;
+			bottom: 0px;
+			top: 8px;
+			padding-top: 8px;
+			padding-left: 10px;
+			padding-right: 10px;
+			vertical-align: top;
+			padding-bottom: 4px;
+		}
+		
+		.panelValuedef2 {
+			left: 406px !important;
+		}
+		
+		.checkbox {
+			width: 40px;
+		}
+		
+		.txtbox {
+			margin-left: 5px;
+			width: 150px;
+		}
+		
+		.panelsub {
+			bottom: 0px;
+			position: absolute;
+		}
+		
+		.doublebuttonlayout {
+			position: absolute;
+			left: 307px;
+			bottom: 0;
+			top: 16px;
+			vertical-align: top;
+		}
+		
+		.buttonlayout1 {
+			border: 1px solid gray;
+			padding: 3px;
+			overflow: auto;
+			width: 42px;
+			height: 100%;
+			vertical-align: top;
+			display: inline-block;
+		}
+		
+		.panelsub {
+			bottom: 0px;
+			position: absolute;
+		}
+		
+		.marginleft {
+			margin-left: 2px;
+		}
+		
+		.searchPanel {
+			display: inline-block;
+			margin: 2px;
+			margin-bottom: 5px;
+		}
+		
+		.txtSearch {
+			width: 230px;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 5px;
+		}
+		
+		.btnSearch {
+			display: inline-block;
+			cursor: pointer;
+			vertical-align: top;
+			margin-left: 5px;
+		}
+		
+		.panelColumn {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.panelTree {
+			position: absolute;
+			right: 0px;
+			left: 0px;
+			top: 25px;
+			overflow: auto;
+		}
+		
+		.panelDescription {
+			position: absolute;
+			right: 0px;
+			left: 0px;
+			bottom: 0px;
+		    border-right: 1px solid #D3D3D3;
+	        overflow: hidden;
+		}
+		
+		.colUndefined {
+	
+		}
+		
+		.colDimension {
+			color: green;
+		}
+		
+		.colMeasure {
+			color: blue;
+		}
+		
+		.colProperty {
+	
+		}
+	</ui:style>
+
+	<g:HTMLPanel ui:field="dockPanel" addStyleNames="{style.dockPanel}">
+			
+
+		<g:SimplePanel addStyleNames="{style.columnsList}">
+			<g:HTMLPanel addStyleNames="{style.panelColumn}">
+				<g:HTMLPanel addStyleNames="{style.searchPanel}" >
+					<g:TextBox ui:field="txtSearch" addStyleNames="{style.txtSearch}"/>
+					<g:Image ui:field="btnSearch" resource="{resources.tab_new}" addStyleNames="{style.btnSearch}"></g:Image>
+				</g:HTMLPanel>
+				<g:SimplePanel ui:field="panelTree" addStyleNames="{style.panelTree}"/>
+				<g:SimplePanel ui:field="panelDescription" addStyleNames="{style.panelDescription}"/>
+			</g:HTMLPanel>
+		</g:SimplePanel>
+
+		<g:HTMLPanel ui:field="panelButtons" addStyleNames="{style.buttonlayout}">
+			<g:Image ui:field="btnAdd" resource="{resources.add_16}" title="{label.Add}" addStyleNames="{style.btnRequestDisabled}" />
+			<g:Image ui:field="btnRemove" resource="{resources.delete_24}" title="{label.RemoveField}" addStyleNames="{style.btnRequestDisabled}" />
+			<g:Image ui:field="btnUp" resource="{resources.ic_up}" title="{label.Ordinal}" addStyleNames="{style.btnRequestDisabled}" />
+			<g:Image ui:field="btnDown" resource="{resources.ic_down}" title="{label.Ordinal}" addStyleNames="{style.btnRequestDisabled}" />
+			<g:Image ui:field="btnCreateComputed" resource="{resources.calculatrice_activer_24}" title="{label.ComputedField}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnCreateComplex" resource="{resources.filtre_24}" title="{label.ComplexFilter}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnCreateSql" resource="{resources.filtre_24}" title="{label.SqlFilter}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnCreatePrompt" resource="{resources.prompt_24}" title="{label.PromptFilter}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnEdit" resource="{resources.ic_create_black_36dp}" title="{label.Edit}" addStyleNames="{style.btnRequestDisabled}" />
+			<g:Image ui:field="btnViewQuery" title="{label.ViewQuery}" resource="{resources.ic_description_black_36dp}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnClear" title="{label.ClearFields}" resource="{resources.ic_sync_black_24dp}" addStyleNames="{style.btnRequestBuilder}" />
+			<g:Image ui:field="btnClearResources" title="{label.ClearResources}" resource="{resources.ic_clear_resources_24dp}" addStyleNames="{style.btnRequestBuilder}" />
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="doublePanelButton" addStyleNames="{style.doublebuttonlayout}">
+			<g:HTMLPanel ui:field="panelButtons1" addStyleNames="{style.buttonlayout1}">
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelButtons2"
+				addStyleNames="{style.buttonlayout1} {style.marginleft}">
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelValue" addStyleNames="{style.panelValue}">
+			<g:HTMLPanel addStyleNames="{style.requestValue}">
+				<g:SimplePanel ui:field="panelData" addStyleNames="{style.dataBuilder}" />
+				<g:SimplePanel ui:field="panelResources"
+					addStyleNames="{style.dataBuilder}" />
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.panelsub}">
+				<g:CheckBox ui:field="checkboxDistinct" text="{label.Distinct}"
+					addStyleNames="{style.checkbox}" />
+				<g:CheckBox ui:field="checkboxLimit" text="{label.Limit}"
+					addStyleNames="{style.checkbox}" />
+				<g:TextBox ui:field="txtLimit" addStyleNames="{style.txtbox}" />
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

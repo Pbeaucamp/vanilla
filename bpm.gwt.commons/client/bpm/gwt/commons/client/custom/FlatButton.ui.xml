@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.flat {
+		    -moz-user-select: none;
+		    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    border-radius: 3px 3px 3px 3px;
+		    cursor: pointer;
+		    display: inline-block;
+		    font: inherit;
+		    margin: 0 0.29em;
+		    min-width: 5.14em;
+		    outline-width: 0;
+		    padding: 0.7em 0.57em;
+		    position: relative;
+		    text-align: center;
+		    text-transform: uppercase;
+		}
+	</ui:style>
+	<g:Button addStyleNames="{style.flat}"/>
+</ui:UiBinder> 

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.CIM10" table="AFF_CIM10">
+        <id name="idCim10" type="java.lang.String" access="field">
+            <column name="IDCIM10" />
+            <generator class="assigned" />
+        </id>
+        <property name="cim10COD" type="java.lang.String" access="field">
+            <column name="CIM10COD" />
+        </property>
+        <property name="cim10LIB" type="java.lang.String" access="field">
+            <column name="CIM10LIB" />
+        </property>
+        <property name="seccod" type="java.lang.String" access="field">
+            <column name="SECCOD" />
+        </property>
+        <property name="seclib" type="java.lang.String" access="field">
+            <column name="SECLIB" />
+        </property>
+        <property name="chpcod" type="java.lang.String" access="field">
+            <column name="CHPCOD" />
+        </property>
+        <property name="chplib" type="java.lang.String" access="field">
+            <column name="CHPLIB" />
+        </property>
+    </class>
+</hibernate-mapping>

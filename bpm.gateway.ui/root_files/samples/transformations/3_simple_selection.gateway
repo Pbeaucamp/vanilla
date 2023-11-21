@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>44</positionX>
+    <positionY>113</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output Customers Address</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>556</positionX>
+    <positionY>27</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\3_simple_selection\customer_address.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fileOutputXML>
+    <name>XML Output Customers Finances</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>558</positionX>
+    <positionY>215</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\3_simple_selection\customer_financial.xml</definition>
+    <rootTag>Row</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName></temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <selectionTransformation>
+    <name>Selection Addresse</name>
+    <description></description>
+    <positionX>256</positionX>
+    <positionY>26</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>::CUSTOMERNUMBER</selectedNames>
+    <selectedNames>::CUSTOMERNAME</selectedNames>
+    <selectedNames>::CONTACTLASTNAME</selectedNames>
+    <selectedNames>::CONTACTFIRSTNAME</selectedNames>
+    <selectedNames>::PHONE</selectedNames>
+    <selectedNames>::ADDRESSLINE1</selectedNames>
+    <selectedNames>::ADDRESSLINE2</selectedNames>
+    <selectedNames>::CITY</selectedNames>
+    <selectedNames>::STATE</selectedNames>
+    <selectedNames>::POSTALCODE</selectedNames>
+    <selectedNames>::COUNTRY</selectedNames>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+  </selectionTransformation>
+  <selectionTransformation>
+    <name>Selection Finances</name>
+    <description></description>
+    <positionX>267</positionX>
+    <positionY>216</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>::CUSTOMERNUMBER</selectedNames>
+    <selectedNames>::CUSTOMERNAME</selectedNames>
+    <selectedNames>::SALESREPEMPLOYEENUMBER</selectedNames>
+    <selectedNames>::CREDITLIMIT</selectedNames>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </selectionTransformation>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Selection Addresse</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Selection Finances</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection Addresse</from>
+    <to>XML Output Customers Address</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection Finances</from>
+    <to>XML Output Customers Finances</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.mainPanel {
+			min-width: 580px;
+		}
+	
+		.radioButton {
+		    display: inline-block;
+		    margin: 10px;
+		    width: 95%;
+		    vertical-align: top;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 98%;
+		}
+		
+		.txtArea {
+	        min-width: 98%;
+	        max-width: 98%;
+		}
+		
+		.txt:FOCUS, txtArea:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.lbl {
+			color: red;
+			font-size: 10px;
+			width: 95%;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:RadioButton ui:field="btnExisting" name="choice" value="true" text="{label.UseExistingDataset}" addStyleNames="{style.radioButton}"/>
+		<my:ListBoxWithButton ui:field="lstPackages" label="{label.Dataset}"/>
+		<my:ListBoxWithButton ui:field="lstResources" label="{label.Resource}"/>
+		<my:TextHolderBox ui:field="txtResourceNameFromDataset" placeHolder="{label.ResourceName}" enabled="false" addStyleNames="{style.txt}"/>
+		<g:RadioButton ui:field="btnNew" name="choice" text="{label.CreateNewDataset}" addStyleNames="{style.radioButton}"/>
+		<my:TextHolderBox ui:field="txtName" placeHolder="{label.Name}" addStyleNames="{style.txt}"/>
+		<g:Label text="{label.NameDatasetLimitation}" addStyleNames="{style.lbl}"/>
+		<my:TextAreaHolderBox ui:field="txtDescription" placeHolder="{label.Description}" addStyleNames="{style.txt},{style.txtArea}"/>
+		<my:TextHolderBox ui:field="txtResourceNameFromNew" placeHolder="{label.ResourceName}" enabled="false" addStyleNames="{style.txt}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

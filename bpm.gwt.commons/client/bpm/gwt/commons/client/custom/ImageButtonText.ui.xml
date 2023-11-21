@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.custom.ImageButtonText.MyStyle">
+		.button {
+            cursor: pointer;
+            height: 16px;
+            padding: 5px;
+            display: inline-block;
+            vertical-align: middle;
+            border-style: solid;
+    		border-width: 1px;
+    		border-color: #888;
+        }
+        .buttondisabled {
+			background: none repeat scroll 0 0 #D3D3D3;
+		    color: #808080;
+			box-shadow: 0 0 0 rgba(0, 0, 0, .6);
+		    cursor: default;
+            height: 16px;
+            padding: 5px;
+            display: inline-block;
+            vertical-align: middle;
+            border-style: solid;
+    		border-width: 1px;
+    		border-color: #888;
+		}
+		.buttondisabled:hover {
+			background: none repeat scroll 0 0 #D3D3D3;
+		}
+        .image {
+            float : left;
+			margin-right: 5px;
+			height: 16px;
+			width: 16px;
+        }
+        .label {
+            float: right;
+        }
+	</ui:style>
+	<g:HTMLPanel ui:field="focus" addStyleNames="btn">
+		<g:Image ui:field="img"/>
+		<g:Label ui:field="text" addStyleNames="{style.label}"/>
+	</g:HTMLPanel>
+</ui:UiBinder>

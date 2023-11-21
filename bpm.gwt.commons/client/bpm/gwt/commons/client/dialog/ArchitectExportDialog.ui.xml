@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<p:LabelTextBox ui:field="lblName" label="{labels.Name}" width="98%"/>
+		<p:ListBoxWithButton ui:field="lstSuppliers" label="{labels.Supplier}" width="98%"/>
+		<p:ListBoxWithButton ui:field="lstContracts" label="{labels.Contract}" width="98%"/>
+		<p:ListBoxWithButton ui:field="lstFormats" label="{labels.Format}" width="98%" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

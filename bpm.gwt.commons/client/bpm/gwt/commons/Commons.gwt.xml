@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<inherits name='com.google.gwt.user.User' />
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+	<inherits name="bpm.document.management.core.VDMCore" />
+	<inherits name="bpm.smart.core.SmartCore" />
+    <inherits name="bpm.update.manager.api.Commons" />
+    <inherits name="bpm.workflow.commons.Workflow" />
+    <inherits name="bpm.fm.api.freeMetrics" />
+	<inherits name="bpm.mdm.model.Architect"/>
+	<inherits name="bpm.fwr.api.FwrApi" />
+	
+	<!-- Enable the keycloak library -->
+	<inherits name="org.realityforge.gwt.keycloak.Keycloak"/>
+	<!-- Enable the keycloak library -->
+	<inherits name="org.realityforge.gwt.keycloak.cache.TokenCache"/>
+  
+	<inherits name="com.google.gwt.http.HTTP" />
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name="com.google.gwt.json.JSON" />
+
+	<inherits name='org.moxieapps.gwt.uploader.Uploader'/>
+
+	<extend-property name="locale" values="fr"/>
+	<extend-property name="locale" values="ara"/>
+	<extend-property name="locale" values="vi"/>
+  
+	<source path='client'/>
+	<source path='shared'/>
+	
+<!-- 	<script src="bpm.fd.jsp.wrapper/js/vanillaRFunctions.js"> -->
+<!-- </script> -->
+
+</module>

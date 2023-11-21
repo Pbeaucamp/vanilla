@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.datasource.DatasourceSocialPage.MyStyle">
+	
+		.lbl {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		}
+	
+	
+		.contentPanel {
+			width: 640px;
+			height: 400px;
+		}
+		
+		.lst {
+			width: 95%;
+		}
+		
+		.txt input{
+			width: 95%;
+		}
+		
+		.txtmin input{
+			width: 85%;
+			display: inline-block;
+		}
+		
+		.customPanel {
+			position: relative;
+			
+		}
+		
+		.inline{
+			vertical-align: middle;
+			display: inline-block;
+		}
+		
+		.icCalendar{
+			cursor: pointer;
+		    float: right;
+		    height: 30px;
+		    margin: -50px 5px 5px;
+		    padding: 10px;
+		    transition: all 1s ease 0s;
+		    width: 30px;
+		}
+		
+		.icCalendar:hover{
+			opacity: 0.5;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblSocial" addStyleNames="{style.lbl}" text="{label.SocialNetworks}"/>
+			<g:ListBox ui:field="lstSocial" addStyleNames="{style.lst}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label ui:field="lblFunction" addStyleNames="{style.lbl}" text="{label.Function}"/>
+			<g:ListBox ui:field="lstFunction" addStyleNames="{style.lst}"/>
+			<g:HTMLPanel ui:field="customPanel" addStyleNames="{style.customPanel}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

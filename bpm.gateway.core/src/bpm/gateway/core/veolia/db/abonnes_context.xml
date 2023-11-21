@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+ 		<context:component-scan base-package="bpm.gateway.core.veolia.abonnes"/>
+
+        <!-- Use @Transaction annotations for managing transactions  -->    
+<!--         <tx:annotation-driven transaction-manager="transactionManager"/> -->
+
+	  	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+		</bean> 
+
+        <!--  DataSource connection -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			destroy-method="close">
+			<property name="driverClass" value="${veolia.database.driverClassName}" />
+			<property name="jdbcUrl" value="${veolia.database.jdbcUrl}" />
+			<property name="user" value="${veolia.database.userName}" />
+			<property name="password" value="${veolia.database.password}" />
+			<property name="acquireRetryAttempts" value="10"></property>
+			<property name="preferredTestQuery" value="SELECT 1"></property>
+			<property name="testConnectionOnCheckin" value="true"></property>
+			<property name="testConnectionOnCheckout" value="false"></property>
+			<property name="maxIdleTime" value="50"></property>
+			<property name="idleConnectionTestPeriod" value="30"></property>
+		</bean>
+
+        <!-- Hibernate SessionFactory -->
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="annotatedClasses">
+                <list>
+				<value>bpm.gateway.core.veolia.abonnes.TypeContratAep</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeContratAbt</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeContratAc</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeAbonne</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeFacture</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeLigneFacture</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeBranchement</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypePointFourniture</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeCompteur</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeReleve</value>
+				<value>bpm.gateway.core.veolia.abonnes.TypeIntervention</value>
+				<value>bpm.gateway.core.veolia.LogXML</value>
+				<value>bpm.gateway.core.veolia.LogInsertXML</value>
+				<value>bpm.gateway.core.veolia.DateChargement</value>
+                </list>
+            </property>
+            <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${veolia.database.dialect}</prop>
+				<prop key="hibernate.generate_statistics">false</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<!-- <prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.max_fetch_depth">4</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+            </props>
+            </property>
+        </bean>
+
+
+
+        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+
+        <context:annotation-config/>
+
+		<!-- Directory -->
+		<bean id="abonneDAO" class="bpm.gateway.core.veolia.abonnes.AbonnesDAO">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+	</beans>

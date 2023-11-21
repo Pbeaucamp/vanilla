@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style>
+		.panel{
+			position: absolute;
+			z-index: 2;
+			right: 0;
+			top: 75px;
+			width: 100px;
+			text-align: center;
+		}
+
+		.btnLeft{
+			width: 25px;
+			height: 25px;
+			cursor: pointer;
+			margin-right: 20px;
+		}
+		
+		.btnRight{
+			width: 25px;
+			height: 25px;
+			cursor: pointer;
+		}
+		
+		.btnTop{
+			width: 25px;
+			height: 25px;
+			margin: auto;
+			cursor: pointer;
+		}
+		
+		.btnBelow{
+			width: 25px;
+			height: 25px;
+			margin: auto;
+			cursor: pointer;
+		}
+		
+		.center {
+			text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Image ui:field="btnTop" resource="{resources.up_arrow}" addStyleNames="{style.btnTop}" />
+		<g:HTMLPanel addStyleNames="{style.center}">
+			<g:Image ui:field="btnLeft" resource="{resources.left_arrow}" addStyleNames="{style.btnLeft} inline" />
+			<g:Image ui:field="btnRight" resource="{resources.right_arrow}" addStyleNames="{style.btnRight} inline" />
+		</g:HTMLPanel>
+		<g:Image ui:field="btnBelow" resource="{resources.down_arrow}" addStyleNames="{style.btnBelow}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

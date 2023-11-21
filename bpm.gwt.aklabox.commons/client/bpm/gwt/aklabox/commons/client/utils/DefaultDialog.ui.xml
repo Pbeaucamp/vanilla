@@ -1,0 +1,85 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.utils.DefaultDialog.MyStyle">
+
+		.important {
+		font-weight: bold;
+		}
+
+		.defaultDialog{
+		border: 5px solid #3B99CB;
+		border-radius: 10px 10px 10px 10px;
+		left: 15%;
+		position: absolute;
+		margin: 0 auto;
+		width: 70%;
+		background: #fff !important;
+		overflow: hidden;
+		z-index: 101;
+		}
+	
+	
+		.header{
+		width: 100%;
+		height: 30px;
+		background: #3b99cb;
+		}
+
+		.btnClose,.btnMaximize,.btnRestore{
+		height: 25px;
+		width: 25px;
+		float: right;
+		border: none;
+		margin-right: 5px;
+		cursor: pointer;
+		}
+
+		.title{
+		padding: 3px 3px 3px 20px;
+		color: #fff;
+		float: left;
+		}
+		.content{
+		padding: 35px;
+		}
+		
+		.maximize {
+			background: none repeat scroll 0 0 #fff;
+			border-radius: 10px 10px 10px 10px;
+			left: 0 !important;
+			position: absolute;
+			top: 0 !important;
+			margin-top: 0 !important;
+			margin-left: 0 !important;
+			width: 99% !important;
+			border: 5px solid rgb(59, 153, 203);
+			overflow: hidden;
+			min-height: 98.2% !important;
+			z-index: 101;
+		}
+		
+		.defaultDialog {
+			border: 5px solid #3B99CB;
+			border-radius: 10px 10px 10px 10px;
+			left: 15%;
+			position: absolute;
+			margin: 0 auto;
+			width: 70%;
+			background: #fff !important;
+			overflow: hidden;
+			z-index: 101;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="dialog" styleName="{style.defaultDialog}">
+		<g:HTMLPanel ui:field="defaultDialogHeaderPanel"
+			styleName="{style.header}">
+			<g:Label ui:field="lblTitle" addStyleNames="{style.title}" />
+			<g:Image resource="{resources.ic_dialog_close}" ui:field="btnClose" styleName="{style.btnClose}" />
+			<g:Image resource="{resources.ic_dialog_maximize}" ui:field="btnMaximize" styleName="{style.btnMaximize}" />
+			<g:Image resource="{resources.ic_dialog_restore}" ui:field="btnRestore" styleName="{style.btnRestore}" />
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="content" addStyleNames="{style.content}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

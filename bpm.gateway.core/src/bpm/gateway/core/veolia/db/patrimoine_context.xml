@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+ 		<context:component-scan base-package="bpm.gateway.core.veolia.patrimoine"/>
+
+        <!-- Use @Transaction annotations for managing transactions  -->    
+<!--         <tx:annotation-driven transaction-manager="transactionManager"/> -->
+
+	  	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+		</bean> 
+
+        <!--  DataSource connection -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			destroy-method="close">
+			<property name="driverClass" value="${veolia.database.driverClassName}" />
+			<property name="jdbcUrl" value="${veolia.database.jdbcUrl}" />
+			<property name="user" value="${veolia.database.userName}" />
+			<property name="password" value="${veolia.database.password}" />
+			<property name="acquireRetryAttempts" value="10"></property>
+			<property name="preferredTestQuery" value="SELECT 1"></property>
+			<property name="testConnectionOnCheckin" value="true"></property>
+			<property name="testConnectionOnCheckout" value="false"></property>
+			<property name="maxIdleTime" value="50"></property>
+			<property name="idleConnectionTestPeriod" value="30"></property>
+		</bean>
+
+        <!-- Hibernate SessionFactory -->
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="annotatedClasses">
+                <list>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeComposant</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAerotherme</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAgitateur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAntiIntrusion</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAppareilLevage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementArmoireElectrique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAspirateurBoues</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAuscultationBarrage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementAutomate</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBacRetention</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBallon</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBenne</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBoiteBoue</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBouteilleChlore</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementBuselure</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCaillebotis</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCanalComptage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCapteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCellulePosteHT</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCentraleHydraulique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCentrifugeuse</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementChariotElevateur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementChlorometre</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementClapet</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCloture</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCollecteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementColonneForage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementColonneMontante</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementComptage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCompteurElectrique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCondensateur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementConvoyeurTransporteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementCrepine</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementDemarreurElectrique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementDeshumidificateur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementDestructeurOzone</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementDisconnecteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementEchangeurChaleur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementEchelle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementElectrodeReference</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementEnregistreur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementEspaceVert</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementExtracteurAir</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementFenetre</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementFiltreFerme</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementFiltreY</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGardeCorps</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGenerateurUV</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGrappin</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGroupeAir</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGroupeDosage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGroupeElectrogene</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGroupeMalaxeur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementGroupeRefroidissement</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementHerse</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementHydrocyclone</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementHydroejecteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementLiaisonElectrique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementMasseAnodique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementMaterielLaboratoire</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementMelangeurStatique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementMembraneUF</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementModuleLamellaire</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementMoteurElectriqueManoeuvre</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementOnduleur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementOuvragesEvacuationBarrage</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementOzoneur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPointPrelevement</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPompe</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPontRacleur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPortail</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPorte</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPorteSectionnelle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPortillon</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPrefiltre</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPreleveurEchantillonneur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPrelocalisateur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementPresseBoue</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementProtectionIncendie</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementReacteur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementRetournementTerres</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementSecheurAir</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementSilo</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementSocle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementSoupape</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementStabilisateurEcoulement</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementStationTeletransmission</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementSystemeDiffusion</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTransformateurHT</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTransformateurRedresseur</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTrappeAcces</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTubeCrepine</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTurbineHydroelectrique</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementTuyauterie</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVanne</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVanneRegulation</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVariateurVitesse</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVentouse</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVerin</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVidange</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVisTransfert</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeEquipementVoirie</value>
+				<value>bpm.gateway.core.veolia.patrimoine.TypeIntervention</value>
+				<value>bpm.gateway.core.veolia.LogXML</value>
+				<value>bpm.gateway.core.veolia.LogInsertXML</value>
+				<value>bpm.gateway.core.veolia.DateChargement</value>
+
+				<value>bpm.gateway.core.veolia.patrimoine.xls.Contrat</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageBar</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageBas</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageCap</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageCar</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageCpt</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageLag</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageLog</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvragePba</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvragePca</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvragePre</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageRst</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageSocle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageStp</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.OuvrageUsi</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.Site</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteCar</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteChl</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteCla</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteCpt</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteEle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteEsv</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteFil</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteGci</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteHyd</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteMin</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteOxy</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UnitePom</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteRec</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteReg</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteSec</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteSet</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteSocle</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteSpe</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteTlg</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteTrt</value>
+				<value>bpm.gateway.core.veolia.patrimoine.xls.UniteUlt</value>
+                </list>
+            </property>
+            <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${veolia.database.dialect}</prop>
+				<prop key="hibernate.generate_statistics">false</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- <prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.max_fetch_depth">4</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+            </props>
+            </property>
+        </bean>
+
+        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+
+        <context:annotation-config/>
+
+		<!-- Directory -->
+		<bean id="patrimoineDAO" class="bpm.gateway.core.veolia.patrimoine.PatrimoineDAO">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+	</beans>

@@ -1,0 +1,88 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.utils.FileUploadInterface.MyStyle">
+	.dropPanel {
+		width: 30%;
+		background: #FBFBFB;
+		text-align: center;
+		font-size: 1.8em;
+		margin: auto;
+		height: 220px;
+		border-radius: 100%;
+		-webkit-border-radius: 100%;
+		-moz-border-radius: 100%;
+		box-sizing: border-box;
+		color: #D9D9D9;
+		transition: 1s all;
+		-webkit-transition: 1s all;
+		-moz-transition: 1s all;
+		margin-top: 10%;
+		margin-bottom: 10%;
+	}
+	.panel{
+		border: 1px solid #e9e9e9;
+	}
+	.img{
+		margin-top: 10%;
+		margin-bottom: 10%;
+	}
+	.btnScan{
+		width: 22%;
+		margin: auto;
+		display: block;
+		font-size: 1.3em;
+	}
+	
+	.btnRed {
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		background-color: #D14836;
+		background-image: -webkit-linear-gradient(top, #DD4B39, #D14836);
+		background-image: -moz-linear-gradient(top, #dd4b39, #d14836);
+		background-image: -ms-linear-gradient(top, #dd4b39, #d14836);
+		background-image: -o-linear-gradient(top, #dd4b39, #d14836);
+		background-image: linear-gradient(top, #dd4b39, #d14836);
+		border: 1px solid rgba(0, 0, 0, 0);
+		color: #FFF;
+		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+		padding: 10px;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-mox-box-sizing: border-box;
+	}
+	
+	.imageCropZoom {
+		width: 100% !important;
+		height: 450px !important;
+		overflow: auto;
+	}
+	
+	.btnUploader {
+		width: 20%;
+		margin: auto;
+		text-align: center;
+		margin-top: 5%;
+		font-size: 1.2em;
+		color: #FFF;
+		background: #4086FA;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		border-top: 1px solid #E9E9E9;
+		cursor: pointer;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="{style.panel}">
+		<g:FocusPanel ui:field="dropPanel" addStyleNames="{style.dropPanel}">
+			<g:HTMLPanel>
+				<g:Image resource="{resources.ic_drop}" addStyleNames="inline {style.img}" />
+				<g:Label text="{label.DropFileHere}" addStyleNames="inline" />
+			</g:HTMLPanel>
+		</g:FocusPanel>
+		<g:HTMLPanel ui:field="uploaderPanel" />
+		<g:Button text="{label.Scan}" ui:field="btnScan" addStyleNames="{style.btnRed} {style.btnScan}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

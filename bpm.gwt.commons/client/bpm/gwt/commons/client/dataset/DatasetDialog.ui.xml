@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.dataset.DatasetDialog.MyStyle">
+	
+		.panel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.toolbar {
+			height: 40px;
+			width: 100%;
+			background-color: #c4ece7;
+		}
+
+		.gridPanel {
+			position: absolute;
+			width: 100%;
+			top: 40px;
+			bottom: 0px;
+		}
+		
+		.grid {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 32px !important;
+			width: 32px !important;
+			background-position: center !important;
+			margin: 4px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		.contentPanel {
+			width: 700px;
+			height: 420px;
+		}
+	</ui:style>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			<g:HTMLPanel addStyleNames="{style.panel}">
+				<g:HTMLPanel addStyleNames="{style.toolbar}">
+					<g:Image ui:field="imgAdd" resource="{resources.add_24}" title="{label.Add}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgEdit" resource="{resources.edit_24}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgDelete" resource="{resources.delete_24}" title="{label.ButtonDelete}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgRefresh" resource="{resources.refresh_24}" title="{label.ButtonRefresh}" addStyleNames="{style.btnToolbar}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel ui:field="gridPanel" addStyleNames="{style.gridPanel}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+</ui:UiBinder> 

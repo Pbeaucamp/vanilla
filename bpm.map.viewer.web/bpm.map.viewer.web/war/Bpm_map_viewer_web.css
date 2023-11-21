@@ -1,0 +1,395 @@
+/** Add css rules here for your application. */
+/*---Login part---*/
+.loginPanel {
+	margin:0 auto;
+	margin-top: 150px;
+	width: 500px;
+	height: 300px;
+	padding: 20px;
+	border: 5px groove;
+}
+
+.loginPanel-title {
+	text-align: center;
+	font-size: 15px;	
+	margin: 12px auto 12px auto;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.loginPanel-label {
+	font-size: 13px;
+	width: 120px;
+	margin: auto;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.loginPanel-textbox {
+	width: 150px;
+	margin: auto;
+}
+
+.loginPanel-formline {
+	margin: auto;
+}
+
+.imageButton {
+	display: block;
+	margin: auto;	
+	cursor: pointer;
+}
+
+body, table td, select {
+	font-family: Arial;	
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #FEFEFE !important;
+}
+
+a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/** Example rules used by the template application (remove for your app) */
+/*********** COLOR PICKER ****************/
+.agilar-colorpicker {
+	margin: 2px;
+}
+
+.agilar-colorpicker-colorPreview {
+	border: 1px solid #000000;
+	background-color: #ff9999;
+	width: 16px;
+	height: 16px;
+    margin: 6px 4px 4px;
+}
+
+.agilar-colorpicker-text {
+	width: 225px;
+	margin: 4px;
+}
+
+.agilar-colorpicker-popup {
+	background-color: white;
+	border: 1px solid black;
+	z-index:10;
+}
+
+.agilar-colorpicker-popup-colorPanel {
+	border: 1px solid #000000;
+	width: 40px;
+	height: 20px;
+	margin: 4px;
+}
+
+.agilar-colorpicker-popup-text {
+	border: 1px solid #000000;
+	width: 55px;
+	margin: 4px;
+}
+
+.agilar-colorpicker-popup-palette {
+	width: 100px;
+	height: 100px;
+	margin: 4px;
+}
+
+.agilar-colorpicker-popup-hueselector {
+	width: 20px;
+	height: 100px;
+	margin: 4px;
+}
+
+.agilar-colorpicker-popup-hueselector-selected {
+	border: solid 1px #000000;
+	padding: 1px;
+}
+
+.agilar-colorpicker-popup-palette-selected {
+	border: solid 1px #000000;
+	padding: 1px;
+}
+
+.agilar-colorpicker-popup-link {
+	cursor: pointer;
+	cursor: hand;
+	text-decoration: underline;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+ svg> text> tspan {
+	visibility: hidden;
+} 
+
+
+.gwt-PopupPanel {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none !important;
+    border-radius: 10px;
+    padding: 0 !important;
+    z-index: 2 !important;
+}
+
+.gwt-DialogBox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5) !important;
+    min-height: 100% !important;
+    width: 100% !important;
+}
+
+.gwt-DialogBox .dialogTop td, .gwt-DialogBox .dialogMiddle td, .gwt-DialogBox .dialogBottom td {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.gwt-DialogBox .Caption {
+    display: none;
+}
+
+.gwt-SuggestBox { 
+	height: 26px;
+	width: 300px;
+}
+.gwt-SuggestBoxPopup { 
+ 
+}
+.gwt-SuggestBoxPopup .item { 
+   
+}
+.gwt-SuggestBoxPopup .item-selected { 
+   background-color: #69CAE8 !important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopLeft { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopLeftInner { 
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupTopCenter { 
+   background: none!important; 
+}
+.gwt-SuggestBoxPopup .suggestPopupTopCenterInner { 
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupTopRight {
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopRightInner {
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleLeft { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleLeftInner { 
+  
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleCenter { 
+   -moz-box-shadow: 0px 0px 10px 1px #656565;
+	-webkit-box-shadow: 0px 0px 10px 1px #656565;
+	-o-box-shadow: 0px 0px 10px 1px #656565;
+	box-shadow: 0px 0px 10px 1px #656565;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleCenterInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleRight { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleRightInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomLeft {
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomLeftInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomCenter {
+   background: none!important;
+ }
+.gwt-SuggestBoxPopup .suggestPopupBottomCenterInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomRight { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomRightInner { 
+   
+}
+
+
+.customDialogTopButton { 
+   	//height: 17px !important;
+    //padding: 4px;
+    //width: 17px !important;
+}
+
+
+
+
+.gwt-DatePicker {
+	border: 1px solid #399d93;
+    cursor: default;
+}
+
+.datePickerMonthSelector {
+	background: none repeat scroll 0 0 #399d93 !important;
+    width: 100%;
+}
+
+.datePickerWeekdayLabel, .datePickerWeekendLabel {
+	background: none repeat scroll 0 0 #399d93 !important;
+    cursor: default;
+    padding: 0 4px 2px;
+    color: white !important;
+}
+
+.datePickerPreviousButton, .datePickerNextButton {
+    color: white !important;
+    cursor: pointer;
+    font-size: 120%;
+    line-height: 1em;
+    padding: 0 4px;
+}
+
+
+td.datePickerMonth {
+    color: white !important;
+    font-size: 70%;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  filter: alpha(opacity=0);
+  opacity: 0;
+
+  line-break: auto;
+}
+.tooltip.in {
+  filter: alpha(opacity=90);
+  opacity: .9;
+}
+.tooltip.top {
+  padding: 5px 0;
+  margin-top: -3px;
+  height: auto;
+}
+.tooltip.right {
+  padding: 0 5px;
+  margin-left: 3px;
+}
+.tooltip.bottom {
+  padding: 5px 0;
+  margin-top: 3px;
+}
+.tooltip.left {
+  padding: 0 5px;
+  margin-left: -3px;
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 4px;
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000;
+}
+.tooltip.top-left .tooltip-arrow {
+  right: 5px;
+  bottom: 0;
+  margin-bottom: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000;
+}
+.tooltip.top-right .tooltip-arrow {
+  bottom: 0;
+  left: 5px;
+  margin-bottom: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000;
+}
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #000;
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #000;
+}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000;
+}
+.tooltip.bottom-left .tooltip-arrow {
+  top: 0;
+  right: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000;
+}
+.tooltip.bottom-right .tooltip-arrow {
+  top: 0;
+  left: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+       -o-transition: opacity .15s linear;
+          transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1;
+}

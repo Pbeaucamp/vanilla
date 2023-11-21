@@ -1,0 +1,90 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.commons.client.viewer.fmdtdriller.dialog.SqlFilterDialog.MyStyle">
+	
+		.lbl {
+			float: left;
+			margin-left: 1px;
+			width: 120px;
+		    margin-top: 10px;
+		}
+	
+		.marginTop {
+			margin-top: 10px;
+		}
+
+		.lstSize {
+			width: 173px;
+		}
+
+		.txtNameSize {
+			width: 167px;
+		}
+		.contentPanel {
+			width: 600px;
+			height: 300px;
+		}
+		
+		.valueSize{
+			width: 287px;
+			margin-left: 1px;
+			background-position: center !important;		
+		}
+		
+		.columnsTree{
+				float: left;
+				margin-left:10px;
+				overflow: auto;
+				width: 245px;
+				height: 95%;
+		}
+		
+		.dockPanel {
+	 		width: 100%;
+	 		height: 100%;
+	 	}
+				
+	</ui:style>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<!--  
+			<g:HTMLPanel>
+				<g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.Name}"/>
+				<g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}, {style.txtNameSize}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblValue" addStyleNames="{style.lbl}" text="{label.Value}"/>			
+			</g:HTMLPanel>		
+			<g:HTMLPanel>
+				<g:TextBox ui:field="txtValue" addStyleNames="{style.marginTop},{style.valueSize}"/>
+			</g:HTMLPanel>
+			-->
+			
+			<g:DockLayoutPanel ui:field="dockPanel" addStyleNames="{style.dockPanel}">								
+				<g:west size="260">
+					<g:SimplePanel ui:field="panelColumn" addStyleNames="{style.marginTop}, {style.columnsTree}"/>				
+				</g:west>
+					
+				<g:east size="330">
+					<g:HTMLPanel >
+						<g:HTMLPanel>
+							<g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.Name}"/>
+							<g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}, {style.txtNameSize}"/>
+						</g:HTMLPanel>
+						<g:HTMLPanel>
+							<g:Label ui:field="lblField" addStyleNames="{style.lbl}" text="{label.Field}"/>
+							<g:TextBox ui:field="txtField" addStyleNames="{style.marginTop}, {style.txtNameSize}"/>
+						</g:HTMLPanel>
+						<g:HTMLPanel>
+							<g:Label ui:field="lblValue" addStyleNames="{style.lbl}" text="{label.Value}"/>			
+						</g:HTMLPanel>		
+						<g:HTMLPanel>
+							<g:TextBox ui:field="txtValue" addStyleNames="{style.marginTop},{style.valueSize}"/>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+				</g:east>
+			</g:DockLayoutPanel>
+			
+		</g:HTMLPanel>
+</ui:UiBinder> 

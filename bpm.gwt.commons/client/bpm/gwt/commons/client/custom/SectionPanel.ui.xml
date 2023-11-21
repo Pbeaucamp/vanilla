@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelContent {
+	    	margin-top: 20px;
+		}
+	
+		.title {
+		    border-bottom-color: -moz-use-text-color;
+		    border-bottom-style: solid;
+		    font-size: 22px;
+		    margin-left: 25px;
+		    margin-top: 20px;
+		    padding-bottom: 5px;
+		    width: 90%;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelContent">
+		<g:Label ui:field="lblTitle" addStyleNames="{style.title}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

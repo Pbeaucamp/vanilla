@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		.panel {
+			margin: 5px;
+		    border: 1px solid #778899;
+			color: #484848;
+			padding: 10px 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.labelType {
+			border-bottom: 1px solid #484848;
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelTypeEnd {
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelType:HOVER, .labelTypeEnd:HOVER {
+			background: #484848;
+			color: #fff;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelMenu" styleName="{style.panel}">
+		<g:Label ui:field="btnClassicView" text="{label.ClassicView}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnMinimal" text="{label.MinimalView}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnFullView" text="{label.FullScreenView}" styleName="{style.labelTypeEnd}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.commons.client.popup.FormatPopup.MyStyle">
+		.panel {
+			margin: 5px;
+		    border: 1px solid #778899;
+			color: #484848;
+			padding: 10px 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.labelType {
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelTypeEnd {
+			border-top: 1px solid #484848;
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelType:HOVER, .labelTypeEnd:HOVER {
+			background: #484848;
+			color: #fff;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelMenu" styleName="{style.panel}"/>
+</ui:UiBinder> 

@@ -1,0 +1,668 @@
+<Root>
+    <Row>
+        <CUSTOMERNAME>Australian Collectors, Co.</CUSTOMERNAME>
+        <CITY>Melbourne</CITY>
+        <STATE>Victoria</STATE>
+        <COUNTRY>Australia</COUNTRY>
+        <CREDITLIMIT>117300.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Baane Mini Imports</CUSTOMERNAME>
+        <CITY>Stavern</CITY>
+        <STATE></STATE>
+        <COUNTRY>Norway</COUNTRY>
+        <CREDITLIMIT>81700.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Havel &amp; Zbyszek Co</CUSTOMERNAME>
+        <CITY>Warszawa</CITY>
+        <STATE></STATE>
+        <COUNTRY>Poland</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Blauer See Auto, Co.</CUSTOMERNAME>
+        <CITY>Frankfurt</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>59700.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Euro+ Shopping Channel</CUSTOMERNAME>
+        <CITY>Madrid</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>227600.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Volvo Model Replicas, Co</CUSTOMERNAME>
+        <CITY>Luleu00e5</CITY>
+        <STATE></STATE>
+        <COUNTRY>Sweden</COUNTRY>
+        <CREDITLIMIT>53100.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Danish Wholesale Imports</CUSTOMERNAME>
+        <CITY>Kobenhavn</CITY>
+        <STATE></STATE>
+        <COUNTRY>Denmark</COUNTRY>
+        <CREDITLIMIT>83400.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Dragon Souveniers, Ltd.</CUSTOMERNAME>
+        <CITY>Singapore</CITY>
+        <STATE></STATE>
+        <COUNTRY>Singapore</COUNTRY>
+        <CREDITLIMIT>103800.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Handji Gifts&amp; Co</CUSTOMERNAME>
+        <CITY>Singapore</CITY>
+        <STATE></STATE>
+        <COUNTRY>Singapore</COUNTRY>
+        <CREDITLIMIT>97900.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Herkku Gifts</CUSTOMERNAME>
+        <CITY>Bergen</CITY>
+        <STATE></STATE>
+        <COUNTRY>Norway</COUNTRY>
+        <CREDITLIMIT>96800.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Porto Imports Co.</CUSTOMERNAME>
+        <CITY>Lisboa</CITY>
+        <STATE></STATE>
+        <COUNTRY>Portugal</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Osaka Souveniers Co.</CUSTOMERNAME>
+        <CITY>Osaka</CITY>
+        <STATE>Osaka</STATE>
+        <COUNTRY>Japan</COUNTRY>
+        <CREDITLIMIT>81200.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Toys of Finland, Co.</CUSTOMERNAME>
+        <CITY>Helsinki</CITY>
+        <STATE></STATE>
+        <COUNTRY>Finland</COUNTRY>
+        <CREDITLIMIT>96500.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>AV Stores, Co.</CUSTOMERNAME>
+        <CITY>Manchester</CITY>
+        <STATE></STATE>
+        <COUNTRY>UK</COUNTRY>
+        <CREDITLIMIT>136800.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Clover Collections, Co.</CUSTOMERNAME>
+        <CITY>Dublin</CITY>
+        <STATE></STATE>
+        <COUNTRY>Ireland</COUNTRY>
+        <CREDITLIMIT>69400.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>UK Collectables, Ltd.</CUSTOMERNAME>
+        <CITY>Liverpool</CITY>
+        <STATE></STATE>
+        <COUNTRY>UK</COUNTRY>
+        <CREDITLIMIT>92700.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Canadian Gift Exchange Network</CUSTOMERNAME>
+        <CITY>Vancouver</CITY>
+        <STATE>BC</STATE>
+        <COUNTRY>Canada</COUNTRY>
+        <CREDITLIMIT>90300.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Asian Shopping Network, Co</CUSTOMERNAME>
+        <CITY>Singapore</CITY>
+        <STATE></STATE>
+        <COUNTRY>Singapore</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>King Kong Collectables, Co.</CUSTOMERNAME>
+        <CITY>Central Hong Kong</CITY>
+        <STATE></STATE>
+        <COUNTRY>Hong Kong</COUNTRY>
+        <CREDITLIMIT>58600.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Enaco Distributors</CUSTOMERNAME>
+        <CITY>Barcelona</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>60300.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Natu00fcrlich Autos</CUSTOMERNAME>
+        <CITY>Cunewalde</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Heintze Collectables</CUSTOMERNAME>
+        <CITY>u00c5rhus</CITY>
+        <STATE></STATE>
+        <COUNTRY>Denmark</COUNTRY>
+        <CREDITLIMIT>120800.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Quu00e9bec Home Shopping Network</CUSTOMERNAME>
+        <CITY>Montru00e9al</CITY>
+        <STATE>Quu00e9bec</STATE>
+        <COUNTRY>Canada</COUNTRY>
+        <CREDITLIMIT>48700.0</CREDITLIMIT>
+        <credit-type>level_1</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>ANG Resellers</CUSTOMERNAME>
+        <CITY>Madrid</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>giftsbymail.co.uk</CUSTOMERNAME>
+        <CITY>Cowes</CITY>
+        <STATE>Isle of Wight</STATE>
+        <COUNTRY>UK</COUNTRY>
+        <CREDITLIMIT>93900.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Messner Shopping Network</CUSTOMERNAME>
+        <CITY>Frankfurt</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Amica Models &amp; Co.</CUSTOMERNAME>
+        <CITY>Torino</CITY>
+        <STATE></STATE>
+        <COUNTRY>Italy</COUNTRY>
+        <CREDITLIMIT>113000.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Toms Spezialitu00e4ten, Ltd</CUSTOMERNAME>
+        <CITY>Ku00f6ln</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>120400.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Royal Canadian Collectables, Ltd.</CUSTOMERNAME>
+        <CITY>Tsawassen</CITY>
+        <STATE>BC</STATE>
+        <COUNTRY>Canada</COUNTRY>
+        <CREDITLIMIT>89600.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Franken Gifts, Co</CUSTOMERNAME>
+        <CITY>Mu00fcnchen</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Anna's Decorations, Ltd</CUSTOMERNAME>
+        <CITY>North Sydney</CITY>
+        <STATE>NSW</STATE>
+        <COUNTRY>Australia</COUNTRY>
+        <CREDITLIMIT>107800.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Rovelli Gifts</CUSTOMERNAME>
+        <CITY>Bergamo</CITY>
+        <STATE></STATE>
+        <COUNTRY>Italy</COUNTRY>
+        <CREDITLIMIT>119600.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Souveniers And Things Co.</CUSTOMERNAME>
+        <CITY>Chatswood</CITY>
+        <STATE>NSW</STATE>
+        <COUNTRY>Australia</COUNTRY>
+        <CREDITLIMIT>93300.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>BG&amp;E Collectables</CUSTOMERNAME>
+        <CITY>Fribourg</CITY>
+        <STATE></STATE>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Vida Sport, Ltd</CUSTOMERNAME>
+        <CITY>Genu00e8ve</CITY>
+        <STATE></STATE>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CREDITLIMIT>141300.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Norway Gifts By Mail, Co.</CUSTOMERNAME>
+        <CITY>Oslo</CITY>
+        <STATE></STATE>
+        <COUNTRY>Norway</COUNTRY>
+        <CREDITLIMIT>95100.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Schuyler Imports</CUSTOMERNAME>
+        <CITY>Amsterdam</CITY>
+        <STATE></STATE>
+        <COUNTRY>Netherlands</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Der Hund Imports</CUSTOMERNAME>
+        <CITY>Berlin</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Oulu Toy Supplies, Inc.</CUSTOMERNAME>
+        <CITY>Oulu</CITY>
+        <STATE></STATE>
+        <COUNTRY>Finland</COUNTRY>
+        <CREDITLIMIT>90500.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Petit Auto</CUSTOMERNAME>
+        <CITY>Bruxelles</CITY>
+        <STATE></STATE>
+        <COUNTRY>Belgium</COUNTRY>
+        <CREDITLIMIT>79900.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Down Under Souveniers, Inc</CUSTOMERNAME>
+        <CITY>Auckland</CITY>
+        <STATE></STATE>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CREDITLIMIT>88000.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Stylish Desk Decors, Co.</CUSTOMERNAME>
+        <CITY>London</CITY>
+        <STATE></STATE>
+        <COUNTRY>UK</COUNTRY>
+        <CREDITLIMIT>77000.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Australian Gift Network, Co</CUSTOMERNAME>
+        <CITY>South Brisbane</CITY>
+        <STATE>Queensland</STATE>
+        <COUNTRY>Australia</COUNTRY>
+        <CREDITLIMIT>51600.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Suominen Souveniers</CUSTOMERNAME>
+        <CITY>Espoo</CITY>
+        <STATE></STATE>
+        <COUNTRY>Finland</COUNTRY>
+        <CREDITLIMIT>98800.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Cramer Spezialitu00e4ten, Ltd</CUSTOMERNAME>
+        <CITY>Brandenburg</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>CAF Imports</CUSTOMERNAME>
+        <CITY>Madrid</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>59600.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Asian Treasures, Inc.</CUSTOMERNAME>
+        <CITY>Cork</CITY>
+        <STATE>Co. Cork</STATE>
+        <COUNTRY>Ireland</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>SAR Distributors, Co</CUSTOMERNAME>
+        <CITY>Chempet</CITY>
+        <STATE></STATE>
+        <COUNTRY>South Africa</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>GiftsForHim.com</CUSTOMERNAME>
+        <CITY>Auckland</CITY>
+        <STATE></STATE>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CREDITLIMIT>77700.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Kommission Auto</CUSTOMERNAME>
+        <CITY>Mu00fcnster</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Lisboa Souveniers, Inc</CUSTOMERNAME>
+        <CITY>Lisboa</CITY>
+        <STATE></STATE>
+        <COUNTRY>Portugal</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Precious Collectables</CUSTOMERNAME>
+        <CITY>Bern</CITY>
+        <STATE></STATE>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Royale Belge</CUSTOMERNAME>
+        <CITY>Charleroi</CITY>
+        <STATE></STATE>
+        <COUNTRY>Belgium</COUNTRY>
+        <CREDITLIMIT>23500.0</CREDITLIMIT>
+        <credit-type>level_1</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Salzburg Collectables</CUSTOMERNAME>
+        <CITY>Salzburg</CITY>
+        <STATE></STATE>
+        <COUNTRY>Austria</COUNTRY>
+        <CREDITLIMIT>71700.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Cruz &amp; Sons Co.</CUSTOMERNAME>
+        <CITY>Makati City</CITY>
+        <STATE></STATE>
+        <COUNTRY>Philippines</COUNTRY>
+        <CREDITLIMIT>81500.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>L'ordine Souveniers</CUSTOMERNAME>
+        <CITY>Reggio Emilia</CITY>
+        <STATE></STATE>
+        <COUNTRY>Italy</COUNTRY>
+        <CREDITLIMIT>121400.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Tokyo Collectables, Ltd</CUSTOMERNAME>
+        <CITY>Minato-ku</CITY>
+        <STATE>Tokyo</STATE>
+        <COUNTRY>Japan</COUNTRY>
+        <CREDITLIMIT>94400.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Stuttgart Collectable Exchange</CUSTOMERNAME>
+        <CITY>Stuttgart</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Extreme Desk Decorations, Ltd</CUSTOMERNAME>
+        <CITY>Wellington</CITY>
+        <STATE></STATE>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CREDITLIMIT>86800.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Bavarian Collectables Imports, Co.</CUSTOMERNAME>
+        <CITY>Munich</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>77000.0</CREDITLIMIT>
+        <credit-type>level_3</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Feuer Online Stores, Inc</CUSTOMERNAME>
+        <CITY>Leipzig</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Scandinavian Gift Ideas</CUSTOMERNAME>
+        <CITY>Bru00e4cke</CITY>
+        <STATE></STATE>
+        <COUNTRY>Sweden</COUNTRY>
+        <CREDITLIMIT>116400.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Mini Auto Werke</CUSTOMERNAME>
+        <CITY>Graz</CITY>
+        <STATE></STATE>
+        <COUNTRY>Austria</COUNTRY>
+        <CREDITLIMIT>45300.0</CREDITLIMIT>
+        <credit-type>level_1</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Corrida Auto Replicas, Ltd</CUSTOMERNAME>
+        <CITY>Madrid</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>104600.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Warburg Exchange</CUSTOMERNAME>
+        <CITY>Aachen</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Anton Designs, Ltd.</CUSTOMERNAME>
+        <CITY>Madrid</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Australian Collectables, Ltd</CUSTOMERNAME>
+        <CITY>Glen Waverly</CITY>
+        <STATE>Victoria</STATE>
+        <COUNTRY>Australia</COUNTRY>
+        <CREDITLIMIT>60300.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Frau da Collezione</CUSTOMERNAME>
+        <CITY>Milan</CITY>
+        <STATE></STATE>
+        <COUNTRY>Italy</COUNTRY>
+        <CREDITLIMIT>34800.0</CREDITLIMIT>
+        <credit-type>level_1</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Mit Vergnu00fcgen &amp; Co.</CUSTOMERNAME>
+        <CITY>Mannheim</CITY>
+        <STATE></STATE>
+        <COUNTRY>Germany</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Kremlin Collectables, Co.</CUSTOMERNAME>
+        <CITY>Saint Petersburg</CITY>
+        <STATE></STATE>
+        <COUNTRY>Russia</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Raanan Stores, Inc</CUSTOMERNAME>
+        <CITY>Herzlia</CITY>
+        <STATE></STATE>
+        <COUNTRY>Israel</COUNTRY>
+        <CREDITLIMIT>0.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Iberia Gift Imports, Corp.</CUSTOMERNAME>
+        <CITY>Sevilla</CITY>
+        <STATE></STATE>
+        <COUNTRY>Spain</COUNTRY>
+        <CREDITLIMIT>65700.0</CREDITLIMIT>
+        <credit-type>level_2</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Double Decker Gift Stores, Ltd</CUSTOMERNAME>
+        <CITY>London</CITY>
+        <STATE></STATE>
+        <COUNTRY>UK</COUNTRY>
+        <CREDITLIMIT>43300.0</CREDITLIMIT>
+        <credit-type>level_1</credit-type>
+    </Row>
+
+    <Row>
+        <CUSTOMERNAME>Kelly's Gift Shop</CUSTOMERNAME>
+        <CITY>Auckland</CITY>
+        <STATE></STATE>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CREDITLIMIT>110000.0</CREDITLIMIT>
+        <credit-type>NA</credit-type>
+    </Row>
+
+</Root>

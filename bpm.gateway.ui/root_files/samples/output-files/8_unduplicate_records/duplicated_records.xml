@@ -1,0 +1,137 @@
+<Root>
+    <Row>
+        <CITY>Nantes</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>NYC</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Singapore</CITY>
+        <COUNTRY>Singapore</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>NYC</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Brickhaven</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Singapore</CITY>
+        <COUNTRY>Singapore</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Madrid</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Frankfurt</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Paris</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Cambridge</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>San Francisco</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Madrid</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Auckland</CITY>
+        <COUNTRY>New Zealand</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Lisboa</CITY>
+        <COUNTRY>Portugal</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Brickhaven</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Paris</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>NYC</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Glendale</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>New Haven</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>NYC</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Madrid</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>New Bedford</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Madrid</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Philadelphia</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>London</CITY>
+        <COUNTRY>UK</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Boston</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Auckland</CITY>
+        <COUNTRY>New Zealand</COUNTRY>
+    </Row>
+
+</Root>

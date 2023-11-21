@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.inlinedatas.oda.driver.ui
+Bundle-SymbolicName: bpm.inlinedatas.oda.driver.ui; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.inlinedatas.oda.driver.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui,
+ bpm.inlinedatas.oda.driver.runtime,
+ org.eclipse.ui.forms
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ jars/org.eclipse.nebula.widgets.datechooser_1.0.0.HEAD.jar,
+ jars/org.eclipse.nebula.widgets.formattedtext_1.0.0.HEAD.jar,
+ jars/org.eclipse.nebula.widgets.pgroup_1.0.0.HEAD.jar,
+ jars/org.eclipse.nebula.widgets.pshelf_1.0.0.HEAD.jar
+Bundle-Vendor: BPM-Conseil

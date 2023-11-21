@@ -1,0 +1,141 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:w="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field="labels" type="bpm.gwt.commons.client.I18N.LabelsConstants"/>
+	
+	<ui:style>
+		.mainPanel {
+			overflow: auto;
+		}
+		
+		.lstMonths {
+			
+		}
+		
+		.panelMonth {
+			width: 100%;
+		}
+		
+		.padding {
+			padding-left: 15px;
+		}
+		
+		.btnMonth {
+		    font-size: 24px;
+		    font-weight: 400;
+		    opacity: .54;
+		    white-space: nowrap;
+		    line-height: 15px;
+		    padding: 10px 7px;
+		    cursor: pointer;
+		    border-radius: 20px;
+		}
+		
+		.btnMonth:HOVER {
+		    opacity: 1;
+		    background-color: rgba(0, 0, 0, 0.1) !important;
+		}
+		
+		.lblMonth {
+		    font-size: 14px;
+		    font-weight: 400;
+		    opacity: .54;
+		    white-space: nowrap;
+		    line-height: 23px;
+		    padding: 3px;
+		}
+	
+		.day {
+			background: #779999;
+			color: white;
+			padding: 6px;
+			margin-right: 3px;
+			box-sizing: border-box;
+		}
+		
+		.width {
+			width: 16%;
+		}
+		
+		.panelLegend{
+			width: 100%;
+		}
+		
+		.contentPanel {
+			height: 140px;
+			width: 16%;
+			background-color: white;
+		}
+		
+		.widthFull {
+	
+		}
+		
+		.contentHeight {
+		    height: 140px;
+		}
+		
+		.marginLeft {
+			margin-left: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}, full">
+		<g:HTMLPanel ui:field="panelYearSelection" addStyleNames="{style.panelMonth}, inline">
+			<div class="{style.padding}">
+				<div class="inline">
+					<w:YearListBox ui:field="lstYears" label="{labels.YearSelection}" labelWidth="100" listWidth="200" addStyleNames="inline"/>
+				</div>
+				<g:Label ui:field="btnBefore" text="{labels.Inferior}" addStyleNames="{style.btnMonth}, inline"/>
+				<g:Label ui:field="btnAfter" text="{labels.Superior}" addStyleNames="{style.btnMonth}, inline"/>
+			</div>
+		</g:HTMLPanel>
+		<div class="{style.widthFull}">
+			<div class="{style.width} inline padding {style.marginLeft}">
+				<g:Label text="{labels.January}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.February}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.March}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.April}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.May}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.June}" addStyleNames="{style.day}"/>
+			</div>
+		</div>
+		<div class="{style.widthFull} {style.contentHeight} flex">
+			<g:SimplePanel ui:field="contentJan" addStyleNames="{style.contentPanel},{style.marginLeft}"/>
+			<g:SimplePanel ui:field="contentFeb" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentMar" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentApr" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentMay" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentJune" addStyleNames="{style.contentPanel}"/>
+		</div>
+		<div class="{style.widthFull}">
+			<div class="{style.width} inline padding {style.marginLeft}">
+				<g:Label text="{labels.July}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.August}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.September}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.October}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.November}" addStyleNames="{style.day}"/>
+			</div><div class="{style.width} inline">
+				<g:Label text="{labels.December}" addStyleNames="{style.day}"/>
+			</div>
+		</div>
+		<div class="{style.widthFull} {style.contentHeight} flex">
+			<g:SimplePanel ui:field="contentJul" addStyleNames="{style.contentPanel},{style.marginLeft}"/>
+			<g:SimplePanel ui:field="contentAug" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentSep" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentOct" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentNov" addStyleNames="{style.contentPanel}"/>
+			<g:SimplePanel ui:field="contentDec" addStyleNames="{style.contentPanel}"/>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

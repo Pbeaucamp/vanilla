@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:46 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.Referentiels" table="APP_REFERENTIELS">
+    	<id type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <list name="filesAppels" inverse="false" table="FILESAPPELS" lazy="false" cascade="save-update">
+            <key></key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.FilesAppels" />
+        </list>
+        <list name="structures" inverse="false" table="STRUCTURES" lazy="false" cascade="save-update">
+            <key></key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.Structures" />
+        </list>
+        <list name="agents" inverse="false" table="AGENTS" lazy="false" cascade="save-update">
+            <key></key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.Agents" />
+        </list>
+        <list name="secteurs" inverse="false" table="SECTEURS" lazy="false" cascade="save-update">
+            <key></key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.Secteurs" />
+        </list>
+    </class>
+</hibernate-mapping>

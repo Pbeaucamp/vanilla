@@ -1,0 +1,260 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:s="urn:import:bpm.gwt.aklabox.commons.client.utils">
+	
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.forms.aklabox.FormDisplayPanel.MyStyle">
+		.imgLogo {
+			border-radius: 100%;
+			-moz-border-radius: 100%;
+			-webkit-border-radius: 100%;
+			width: 100px;
+			height: auto;
+		}
+		
+		.titlePanel {
+			width: 20%;	
+			padding: 20px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		
+		.panel {
+			min-height: 400px;
+			/*overflow: auto;*/
+			position: relative;
+			overflow-x: hidden; 
+		}
+		
+		.title {
+			font-size: 2em;
+		}
+		
+		.header {
+			width: 100%;
+			margin: auto;
+			padding: 10px;
+			text-align: center;
+			background: rgba(255,255,255,0.5);
+			border-bottom: 1px solid #e9e9e9;
+		}
+		
+		.sideBar {
+			right: -300px;
+			width: 300px;
+			position: absolute;
+			top: 0px;
+			transition: 1s all;
+			-webkit-transition: 1s all;
+			-moz-transition: 1s all;
+			padding: 10px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			background: #fff;
+			
+		}
+		
+		.sideBarFixed {
+			position: fixed;
+			top: 0;
+		}
+		
+		.btnAdd {
+			width: 100px;
+			position: absolute;
+			right: 300px;
+			height: 45px!important;
+			float : right;
+		}
+		
+		.btnSave {
+			margin-top: 10px;
+		}
+		
+		.fieldTitle {
+			background: rgba(255,255,255,0.5);
+		}
+		
+		
+		
+		.btnAddExtension {
+			width: 100px;
+			display: inline-block !important;
+		}
+		
+		.txtExt {
+		    width: 100px !important;
+   			display: inline-block !important;
+		}
+		
+		.btnAddExt {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.defaultFormPanel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			padding: 10px;
+			background: #fff;
+			height: 600px;
+		}
+		
+		.ligne {
+			display: inline-block !important;
+			width: 40% !important;
+			padding: 5px !important;
+		}
+		
+		.margin {
+			margin-top: 5px;
+		}
+		
+		.btnSaveValue {
+			width: 40%;
+			margin: auto;
+			display: block;
+			float: none;
+			margin-bottom: 30px;
+			background: #444444 !important;
+			color : #fff!important;
+		}
+
+		.btnSaveValue:hover {
+			color: #000 !important;
+			background: #eaeaea !important;
+		}
+
+		.txt {
+		    background: none repeat scroll 0 0 #FFFFFF !important;
+	    	box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			-webkit-border-radius: 0px !important;
+			width: 100%;
+			margin-left: 0px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			margin-top: 10px;
+			display: block;
+			padding: 0px;
+			padding: 10px;
+		}
+		
+		.fullBackground{
+		  	-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: fixed;
+		}
+		
+		.btnBlue:hover {
+			background: #A34C4C !important;
+		}
+		
+		.btnBlue {
+			width: 100%;
+			height: 30px;
+			border: none;
+			color: #D8F3FE;
+			float: right;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-mox-box-sizing: border-box;
+		}
+		
+	.txtBoxOrig {
+		background: #fff !important;
+		box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		border-radius: 0px !important;
+		-moz-border-radius: 0px !important;
+		-webkit-border-radius: 0px !important;
+		width: 100% !important;
+		margin-left: 0px !important;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		margin-top: 10px !important;
+		display: block !important;
+		padding: 0px;
+		padding: 10px !important;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="bgPanel" addStyleNames="{style.panel}">
+		<!-- <g:HTMLPanel addStyleNames="{style.header}">
+			<g:Image resource="{img.ic_form}" ui:field="imgLogo" addStyleNames="{style.imgLogo} inline"/>
+				<g:HTMLPanel addStyleNames="inline {style.titlePanel}">
+					<g:Label ui:field="lblTitle" addStyleNames="{style.title}"/>
+					<g:Label ui:field="lblDescription"/>
+				</g:HTMLPanel>
+		</g:HTMLPanel> -->
+		
+		<g:HTMLPanel ui:field="fieldPanel" addStyleNames="{style.fieldTitle}"/>
+		<g:Button text="{i18n.Save}" ui:field="btnSaveValue" addStyleNames="{style.btnSaveValue}" />
+		<!-- <g:HTMLPanel ui:field="defaultFormPanel" addStyleNames="{style.defaultFormPanel}">
+			<g:HTMLPanel addStyleNames="inline">
+				<h3><g:Label text="Default Form Extensions"  /></h3>
+				<g:Label text="By default if theres no declared extension, all file extensions will be accepted. Declare extension to specify which will accepted on this form"/>
+			</g:HTMLPanel>
+			<g:Label text="Extensions" />
+			<s:AklaTextBox ui:field="txtExtensions" placeholder="{i18n.FieldLabel}" addStyleNames="{style.txtBoxOrig} {style.txtExt}"/>
+			<g:Image title="{i18n.Add}" ui:field="btnAddExtension" resource="{img.ic_validate}" addStyleNames="{style.btnAddExt}"/>
+			<g:HTMLPanel ui:field="extensionPanel"/>
+			<g:Button text="Update Extensions" ui:field="btnUpdateForm" addStyleNames="{style.btnBlue}"/>
+		</g:HTMLPanel> -->
+		<g:HTMLPanel ui:field="sideBar" addStyleNames="{style.sideBar}">
+				<g:Button ui:field="btnAddField" text="Ajouter champ" addStyleNames=" {style.btnAdd}"/>
+				<h3>Ajout d'un nouveau champ</h3>
+				<s:AklaTextBox ui:field="txtFieldLabel" placeholder="{i18n.FieldLabel}" addStyleNames="{style.txtBoxOrig}"/>
+				
+				<s:AklaTextArea ui:field="txtFieldHelper" placeholder="{i18n.FieldHelper}" addStyleNames="{style.txtBoxOrig}"/>
+				
+				<g:Label text="{i18n.FieldType}" />
+				<g:ListBox ui:field="lstFieldType" addStyleNames="{style.txtBoxOrig}"/>
+				
+				<g:HTMLPanel ui:field="customField">
+					<g:SimplePanel ui:field="lstLov"/>
+					<g:ListBox ui:field="lstAddress" />
+				</g:HTMLPanel>
+				
+				
+				
+				<g:CheckBox ui:field="isRequired" text="{i18n.MakeThisFieldRequired}"/>
+				
+				<s:AklaTextBox ui:field="txtRegex" placeholder="{i18n.RegexEmptyIfNotUsed}" addStyleNames="{style.txt}"/>
+				
+				<g:HTMLPanel ui:field="thresholdPanel" addStyleNames="{style.margin}">
+					<g:HTMLPanel>
+						<g:Label text="{i18n.ThresholdMax}" addStyleNames="{style.ligne}" />
+						<s:AklaTextBox ui:field="txtThresholdMin" addStyleNames="{style.txtBoxOrig} {style.ligne}"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<g:Label text="{i18n.ThresholdMin}" addStyleNames="{style.ligne}" />
+						<s:AklaTextBox ui:field="txtThresholdMax" addStyleNames="{style.txtBoxOrig} {style.ligne}"/>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+				
+				<g:HTMLPanel ui:field="typeTaskPanel" addStyleNames="{style.margin}">
+						<g:Label text="{i18n.CalendarType}" addStyleNames="{style.ligne}" />
+						<g:ListBox ui:field="lstTypeTask"></g:ListBox>
+				</g:HTMLPanel>
+				
+				<g:Button text="{i18n.Save}" ui:field="btnSave" addStyleNames=" {style.btnSave}"/>
+				<!-- <g:Button text="{i18n.addFieldsFromPDF}" ui:field="btnAddFieldsFromPDF" addStyleNames=" {style.btnSave}"/> -->
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

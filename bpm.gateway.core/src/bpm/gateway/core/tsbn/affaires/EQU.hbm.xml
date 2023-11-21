@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.EQU" table="AFF_EQU">
+        <id name="idEqu" type="java.lang.String" access="field">
+            <column name="IDEQU" />
+            <generator class="assigned" />
+        </id>
+        <property name="equlab" type="java.lang.String" access="field">
+            <column name="EQULAB" />
+        </property>
+        
+        <property name="idmoytsp" type="java.lang.String">
+            <column name="IDMOYTSP" />
+        </property>
+        
+        <property name="idmoymed" type="java.lang.String">
+            <column name="IDMOYMED" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.serverNotReadyPanel {	
+			background-color: white;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			bottom: 0px;
+			right: 0px;
+			position: absolute;
+			z-index: 4;
+		}
+		
+		.lblTitle {
+		    margin: auto;
+		    width: 500px;
+		    font-size: xx-large;
+		    margin-top: 50px;
+		}
+		
+		.lblMessage {
+			margin: auto;
+		    width: 500px;
+		    font-size: x-large;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.serverNotReadyPanel}">
+		<g:Label text="{label.ServerIsNotReady}" addStyleNames="{style.lblTitle}" />
+		<g:Label text="{label.ThePageWillAutomaticallyRefreshWhenTheServerIsReady}" addStyleNames="{style.lblMessage}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

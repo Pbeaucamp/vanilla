@@ -1,0 +1,19 @@
+<conversionMapping>
+	<name>XLS_to_MySQL</name>
+	<type>
+		<name>NUMBER</name>
+		<macthing>DOUBLE</macthing>
+	</type>
+	
+	<type>
+		<name>STRING</name>
+		<macthing>TEXT</macthing>
+	</type>
+	
+	<type>
+		<name>DATE</name>
+		<macthing>DATE</macthing>
+	</type>
+	
+	
+</conversionMapping>

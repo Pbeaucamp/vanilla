@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            name="%newwizard.name"
+            icon="icons/new_oda_dswiz.ico"
+            profile="%oda.data.source.id"
+            description="%newwizard.description"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="%oda.data.source.id">
+      </newWizard>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.ui.connectionProfileImage">
+      <profileImage
+            icon="icons/profile.gif"
+            profileID="%oda.data.source.id">
+      </profileImage>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.google.table.oda.driver.ui.impl.datasource.GoogleTableDataSourceProperties"
+            id="%oda.data.source.id"
+            name="%profile.propertypage.name"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.datatools.connectivity.IConnectionProfile">
+            </instanceof>
+         </enabledWhen>
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="%oda.data.source.id">
+         </filter>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="%oda.data.source.id">
+         <newDataSourceWizard
+               pageClass="bpm.google.table.oda.driver.ui.impl.datasource.GoogleTableDataSourcePage"
+               includesProgressMonitor="false"
+               pageTitle="G-Mail Account Connection"
+               windowTitle="DataSource from Google Table">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            supportsOutParameters="false"
+            supportsInParameters="true"
+            initialPageId="bpm.google.table.oda.driver.runtime.dataSet.page1"
+            id="bpm.google.table.oda.driver.runtime.dataSet">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="%wizard.data.set.window.title">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="ODA Google DataSet"
+               icon="icons/datasetpage.ico"
+               wizardPageClass="bpm.google.table.oda.driver.ui.impl.dataset.GoogleTableDatasetPage"
+               path="/"
+               id="bpm.google.table.oda.driver.runtime.dataSet.page1">
+         </dataSetPage>
+         <dataSetPage
+               displayName="Oda Google Table Filter"
+               id="Filter Oda Google Table Driver"
+               wizardPageClass="bpm.google.table.oda.driver.ui.impl.dataset.GoogleTableFilterPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+
+</plugin>

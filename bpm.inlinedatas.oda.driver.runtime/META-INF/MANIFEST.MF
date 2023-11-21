@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.inlinedatas.oda.driver.runtime
+Bundle-SymbolicName: bpm.inlinedatas.oda.driver.runtime; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.inlinedatas.oda.driver.runtime.Activator
+Bundle-Localization: plugin
+Export-Package: bpm.inlinedatas.oda.driver.runtime,
+ bpm.inlinedatas.oda.driver.runtime.impl,
+ bpm.inlinedatas.oda.driver.runtime.structureProperties
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda,
+ org.eclipse.datatools.connectivity.oda.profile
+Bundle-Vendor: BPM-Conseil

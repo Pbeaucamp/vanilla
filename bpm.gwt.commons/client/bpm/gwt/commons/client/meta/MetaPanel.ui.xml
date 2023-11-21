@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.commons.client.meta.MetaPanel.MyStyle">
+		.mainPanel {
+			display: flex;
+		}
+		
+		.fixed {
+			width: 60%;
+		}
+		
+		.flexItem {
+			flex-grow: 1;
+		    margin-top: 17px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}"/>
+</ui:UiBinder> 

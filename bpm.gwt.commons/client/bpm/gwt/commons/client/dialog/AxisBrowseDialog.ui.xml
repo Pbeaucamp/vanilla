@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.dialog.AxisBrowseDialog.MyStyle">
+	
+		.tree {
+			width: 300px;
+			margin: 10px;
+			overflow: auto;
+			height: 380px;	
+			float: left;
+		}
+		.content {
+			width: 310px;
+			height: 520px;
+		}
+	
+	
+	.item div img{
+		height: 18px!important;
+		width: 18px!important;
+		background-size : cover!important;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<g:Tree ui:field="axisTree" addStyleNames="{style.tree}"></g:Tree>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,49 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resource' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style type="bpm.gwt.workflow.commons.client.workflow.ToolBox.MyStyle">
+		.tool {
+		    border-bottom: 1px solid lightgray;
+		    cursor: move;
+		}
+		
+		.tool:HOVER {
+			background: none repeat scroll 0 0 lightgray;
+		}
+		
+		.imgTool {
+	    	margin: 3px 10px;
+		}
+		
+		.lblTool {
+	        display: inline-block;
+		    line-height: normal;
+		    vertical-align: top;
+	        width: literal("calc(100% - 120px)");
+			width: literal("-moz-calc(100% - 120px)");
+			width: literal("-webkit-calc(100% - 120px)");
+			width: literal("-o-calc(100% - 120px)");
+			white-space: nowrap;
+	   		overflow:hidden !important;
+	   		text-overflow: ellipsis;
+   		    margin-left: 5px;
+    		margin-top: 16px;
+   		    font-size: 16px;
+		}
+		
+		.imgMove {
+	    	margin: 10px;
+	    	display: inline-block;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="tool">
+		<g:HTMLPanel addStyleNames="{style.tool}">
+			<g:Image ui:field="imgTool"/>
+			<g:Label ui:field="lblTool" addStyleNames="{style.lblTool}"/>
+			<g:Image resource="{resource.ic_open_with_black_18dp}" addStyleNames="{style.imgMove}"/>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

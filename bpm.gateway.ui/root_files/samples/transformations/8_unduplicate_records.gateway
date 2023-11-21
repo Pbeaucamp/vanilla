@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>46</positionX>
+    <positionY>46</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output single value</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>934</positionX>
+    <positionY>48</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\8_unduplicate_records\single_records.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CITY</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+  </fileOutputXML>
+  <selectionTransformation>
+    <name>Selection Country, City</name>
+    <description></description>
+    <positionX>323</positionX>
+    <positionY>48</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>::CITY</selectedNames>
+    <selectedNames>::COUNTRY</selectedNames>
+    <fields>
+      <fieldName>CITY</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+  </selectionTransformation>
+  <unduplicateRows>
+    <name>Unduplicate Country, City</name>
+    <description></description>
+    <positionX>600</positionX>
+    <positionY>50</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new UnduplicateRows</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <trashRef>XML Output duplicate records</trashRef>
+    <fields>
+      <fieldName>CITY</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+    <testedFieldName>Selection Country, City::CITY</testedFieldName>
+    <testedFieldName>Selection Country, City::COUNTRY</testedFieldName>
+  </unduplicateRows>
+  <fileOutputXML>
+    <name>XML Output duplicate records</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>604</positionX>
+    <positionY>237</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\8_unduplicate_records\duplicated_records.xml</definition>
+    <rootTag>Row</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>_1_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CITY</fieldName>
+      <fieldName>COUNTRY</fieldName>
+    </fields>
+  </fileOutputXML>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Selection Country, City</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection Country, City</from>
+    <to>Unduplicate Country, City</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Unduplicate Country, City</from>
+    <to>XML Output single value</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Unduplicate Country, City</from>
+    <to>XML Output duplicate records</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

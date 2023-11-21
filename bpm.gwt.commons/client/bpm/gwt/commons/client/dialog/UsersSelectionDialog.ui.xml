@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages'/>
+	
+	<ui:style type="bpm.gwt.commons.client.dialog.UsersSelectionDialog.MyStyle">
+		.toolbar {
+	
+		}
+	
+		.btnToolbar {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 20px !important;
+		    padding: 5px;
+		    width: 20px !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.datagridPanel {
+		    display: inline-block;
+		    height: 250px;
+		    margin-top: 5px;
+		    vertical-align: top;
+		    width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<p:GridPanel ui:field="grid" addStyleNames="{style.datagridPanel}, relative"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:17 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.AgtWrs" table="APP_AGTWRS">
+    	<id type="java.lang.Integer">
+            <column name="AGT_WRS_ID" />
+            <generator class="increment"/>
+        </id>
+		<list name="agtSta" inverse="false" table="AGTSTA" lazy="false" cascade="save-update">
+            <key>
+                <column name="AGT_WRS_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.AgtSta" />
+        </list>
+        <property name="idStruct" type="java.lang.String">
+            <column name="IDSTRUCT" />
+        </property>
+        <property name="idAgent" type="java.lang.String">
+            <column name="IDAGENT" />
+        </property>
+        <property name="tpsTot" type="java.lang.String">
+            <column name="TPSTOT" />
+        </property>
+        <property name="datDeb" type="java.util.Date">
+            <column name="DATEDEBUT" />
+        </property>
+        <property name="datFin" type="java.util.Date">
+            <column name="DATEFIN" />
+        </property>
+        <property name="agtFct" type="java.lang.String">
+            <column name="AGTFCT" />
+        </property>
+    </class>
+</hibernate-mapping>

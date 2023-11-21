@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:17 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.AppTrsf" table="APP_APPTRSF">
+		<id name="id" type="int">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <property name="idAgent" type="java.lang.String">
+            <column name="IDAGENT" />
+        </property>
+        <property name="idStructTgt" type="java.lang.String">
+            <column name="IDSTRUCTTGT" />
+        </property>
+        <property name="idStructDec" type="java.lang.String">
+            <column name="IDSTRUCTDEC" />
+        </property>
+        <property name="idAgentDec" type="java.lang.String">
+            <column name="IDAGENTDEC" />
+        </property>
+        <property name="modTsf" type="java.lang.String">
+            <column name="MODTSF" />
+        </property>
+        <property name="tba" type="float">
+            <column name="TBA" />
+        </property>
+        <property name="tna" type="java.lang.Float">
+            <column name="TNA" />
+        </property>
+        <property name="durDec" type="java.lang.Float">
+            <column name="DURDEC" />
+        </property>
+        <property name="appOri" type="java.lang.String">
+            <column name="APPORI" />
+        </property>
+    </class>
+</hibernate-mapping>

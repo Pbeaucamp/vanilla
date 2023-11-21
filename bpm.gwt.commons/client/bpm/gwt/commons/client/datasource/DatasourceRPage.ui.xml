@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+	
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		    color: rgba(0, 0, 0, 0.7);
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+			width: 240px;
+		}
+		.marginTopLst {
+			margin-top: 7px;
+			width: 246px;
+		}
+		.contentPanel {
+			width: 640px;
+			height: 240px;
+		}
+		.lblNote {
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    font-style: italic;
+		    margin: 5px;
+		    padding: 5px;
+    		border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+    		color: rgba(0, 0, 0, 0.7);
+		}
+		
+		.txtWidth {
+			width: 98%;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblPackage" addStyleNames="{style.lbl}" text="{label.RPackages}"/>
+			<g:ListBox ui:field="lstPackage" addStyleNames="{style.txtWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label ui:field="lblDataset" addStyleNames="{style.lbl}" text="{label.RDatasets}"/>
+			<g:ListBox ui:field="lstDataset" addStyleNames="{style.txtWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="notePanel">
+			<g:Label ui:field="lblNote" addStyleNames="{style.lblNote}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

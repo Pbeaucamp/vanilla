@@ -1,0 +1,75 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.upload.FileUploadManagerPopup.MyStyle">
+		.popup {
+		    overflow: visible;
+		}
+	
+		.mainPanel {
+		    background: none repeat scroll 0 0 #FFFFFF;
+		    width: 320px;
+		}
+		
+		.mainPanelAbsolute {
+		    bottom: 0px;
+		    position: absolute;
+		    right: 50px;
+		}
+	
+		.toolbar {
+		    background: none repeat scroll 0 0 #323232;
+		    height: 40px;
+		    line-height: 40px;
+		}
+		
+		.lblToolbar {
+		    color: #FFFFFF;
+		    display: inline-block;
+		    font-weight: bold;
+		    margin-left: 20px;
+		    vertical-align: top;
+		}
+		
+		.btnPanel {
+		    float: right;
+		    display: inline-block;
+		    vertical-align: top;
+	        height: 100%;
+		}
+		
+		.btnToolbar {
+		    border-radius: 25px 25px 25px 25px;
+		    cursor: pointer;
+		    height: 20px;
+		    margin-top: 3px;
+		    padding: 7px;
+		    width: 20px;
+		}
+		
+		.btnToolbar:HOVER {
+		    background: none repeat scroll 0 0 #202020;
+		}
+	
+		.contentPanel {
+			max-height: 250px;
+			overflow: auto;
+			width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelTopBar" addStyleNames="{style.toolbar}">
+			<g:Label ui:field="lblTitle" text="{i18n.NewDocuments}" addStyleNames="{style.lblToolbar}"/>
+			<g:HTMLPanel addStyleNames="{style.btnPanel}">
+				<g:Image ui:field="btnOptions" resource="{resources.ic_open_white}" addStyleNames="{style.btnToolbar}"/>
+<!-- 				<g:Image ui:field="btnReduce" resource="{resources.expand_arrow_16}" addStyleNames="{style.btnToolbar}"/> -->
+				<g:Image ui:field="btnClose" resource="{resources.delete_16}" addStyleNames="{style.btnToolbar}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

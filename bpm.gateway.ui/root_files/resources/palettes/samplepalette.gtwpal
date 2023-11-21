@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayPalette name="samplepalette">
+  <groups name="Vanilla">
+    <transformations label="FD Form Input" class="bpm.gateway.core.transformations.vanilla.FreedashFormInput">Datas are coming from a FreeDashboard Form</transformations>
+    <transformations label="FMDT Input" class="bpm.gateway.core.transformations.inputs.FMDTInput">Create an input stream based on FMDT query</transformations>
+    <transformations label="Freemetrics KPI Output" class="bpm.gateway.core.transformations.freemetrics.KPIOutput">Create Freemetrics KPI values</transformations>
+    <transformations label="Vanilla AssociateGroupRole" class="bpm.gateway.core.transformations.vanilla.VanillaRoleGroupAssocaition">Affect Roles to Groups</transformations>
+    <transformations label="Vanilla Group Creation" class="bpm.gateway.core.transformations.vanilla.VanillaCreateGroup">Create Vanilla Groups.</transformations>
+    <transformations label="Vanilla User/Group" class="bpm.gateway.core.transformations.vanilla.VanillaGroupUser">Create one Vanilla Group and user per row and affect the user in the group in the platform.</transformations>
+    <transformations label="Vanilla User/Group Ldap Synchro" class="bpm.gateway.core.transformations.vanilla.VanillaLdapSynchro">Synchronise the User/Group vanilla with a LDAP server</transformations>
+    <transformations label="Vanilla User Creation" class="bpm.gateway.core.transformations.vanilla.VanillaCreateUser">Create Vanilla Users.</transformations>
+	<transformations label="Vanilla GoogleAnalytics" class="bpm.gateway.core.transformations.vanilla.VanillaAnalyticsGoogle">Manage Google Analytics Data.</transformations>
+  </groups>
+  <groups name="FileInputs">
+    <transformations label="CSV Input" class="bpm.gateway.core.transformations.inputs.FileInputCSV">Create an input stream based on a CSV file</transformations>
+    <transformations label="KML Input" class="bpm.gateway.core.transformations.kml.KMLInput">Extract spatial informations form a KML File</transformations>
+    <transformations label="XLS Input" class="bpm.gateway.core.transformations.inputs.FileInputXLS">Create an input stream based on an XLS file</transformations>
+    <transformations label="VCL Input" class="bpm.gateway.core.transformations.inputs.FileInputVCL">Create an input stream based on a file with variable columns lengths</transformations>
+    <transformations label="XML Input" class="bpm.gateway.core.transformations.inputs.FileInputXML">Create an input stream based on an XML file</transformations>
+  </groups>
+  <groups name="FileOuputs">
+    <transformations label="VCL Output" class="bpm.gateway.core.transformations.outputs.FileOutputVCL">Create an Text File with specified columns lengths.</transformations>
+    <transformations label="XML Output" class="bpm.gateway.core.transformations.outputs.FileOutputXML">Create an XML File</transformations>
+    <transformations label="XLS Output" class="bpm.gateway.core.transformations.outputs.FileOutputXLS">Create an XLS File</transformations>
+    <transformations label="CSV Output" class="bpm.gateway.core.transformations.outputs.FileOutputCSV">CSV File</transformations>
+    <transformations label="KML Output" class="bpm.gateway.core.transformations.kml.KMLOutput">Generate a KML File from spatial datas</transformations>
+  </groups>
+  <groups name="Merging">
+    <transformations label="Cartesian Product" class="bpm.gateway.core.transformations.CartesianProduct">Cartesian Product</transformations>
+    <transformations label="Lookup" class="bpm.gateway.core.transformations.Lookup">Lookup</transformations>
+    <transformations label="Merge Streams" class="bpm.gateway.core.transformations.MergeStreams">Merge multiple Streams. The streams must have the same number of columns.</transformations>
+    <transformations label="SimpleMapper" class="bpm.gateway.core.transformations.SimpleMappingTransformation">SimpleMapping</transformations>
+    <transformations label="SQLLookup" class="bpm.gateway.core.transformations.SqlLookup">SQLLookup</transformations>
+  </groups>
+  <groups name="Filtering">
+    <transformations label="Denormalize" class="bpm.gateway.core.transformations.normalisation.Denormalisation">Denormalize a stream</transformations>
+    <transformations label="Dimension" class="bpm.gateway.core.transformations.Normalize">Create a hierarchy from one input stream.</transformations>
+    <transformations label="Filter" class="bpm.gateway.core.transformations.Filter">Filter</transformations>
+  </groups>
+</gatewayPalette>

@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.NavigationItem.MyStyle">
+		.item {
+		    height: 50px;
+		    line-height: 50px;
+		    overflow: hidden;
+		    width: 100%;
+			position: relative;
+			
+			display: inline-block;
+		
+			overflow: hidden;
+		
+			border-width: 0;
+			outline: none;
+			
+			transition: background-color .3s;
+			cursor: pointer;
+		}
+		
+		.item:hover, .item:focus {
+		}
+		
+		.item > * {
+			position: relative;
+		}
+		
+		.item span {
+			display: block;
+			padding: 12px 24px;
+		}
+		
+		.item:before {
+			content: "";
+			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			
+			display: block;
+			width: 0;
+			padding-top: 0;
+			  
+			border-radius: 100%;
+			
+			background-color: rgba(236, 240, 241, .3);
+			
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		
+		.item:active:before {
+			width: 120%;
+			padding-top: 120%;
+			
+			transition: width .2s ease-out, padding-top .2s ease-out;
+		}
+		
+		.lbl {
+		    display: inline-block;
+		    vertical-align: top;
+		    color: #FFFFFF;
+    		font-size: 16px;
+		}
+		
+		.img {
+		    display: inline-block;
+			height: 32px;
+		    vertical-align: top;
+		}
+		
+		.selected {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focus">
+		<g:HTMLPanel ui:field="item" addStyleNames="{style.item}">
+			<g:Label ui:field="lbl" addStyleNames="{style.lbl}"/><g:Image ui:field="img" addStyleNames="{style.img}"/>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

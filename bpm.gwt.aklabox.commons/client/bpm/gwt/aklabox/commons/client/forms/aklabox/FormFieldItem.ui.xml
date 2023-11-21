@@ -1,0 +1,216 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+		xmlns:g="urn:import:com.google.gwt.user.client.ui"
+		xmlns:dp="urn:import:com.google.gwt.user.datepicker.client" >
+		<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+		<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+	.panel{
+		width: 90%;
+		margin: auto;
+		margin-bottom:20px;
+		position: relative;
+	}
+	.desc{
+		font-style: italic;
+		color: #555;
+		overflow: hidden;
+    	text-overflow: ellipsis;
+	}
+	.title{
+		font-weight: bold;	
+		/*float: left;
+		width: 235px;*/
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: inline-block;
+		vertical-align: middle;
+    	width: 25%;
+	}
+	.item{
+		/*margin-top: 10px;
+		margin-bottom: 10px;*/
+	}
+	.hiding {
+		display: none!important;
+	}
+	
+	.txtBoxOrig {
+		background: #fff !important;
+		box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		border-radius: 0px !important;
+		-moz-border-radius: 0px !important;
+		-webkit-border-radius: 0px !important;
+		/*width: 320px !important;*/
+		margin: 0px !important;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		/*margin-top: 10px !important;*/
+		display: block !important;
+		padding: 0px !important;
+		//max-width: literal("calc(100% - 250px)");
+	}
+	
+	.threshold{
+		width: 80px !important;
+		display: inline-block !important;
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	.value{
+		width:200px !important;;
+		display: inline-block !important;
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	.lbl{
+		width:6px;
+
+		margin-right: 7px;
+		display: inline-block !important;
+	}
+	.noMargin {
+		margin-top: 0px !important;
+	}
+	.btnAdd {
+		height: 24px;
+	}
+	
+	.marginTop {
+		margin-top: 10px;
+	}	
+	.trash {
+		display: inline-block;
+    	position: relative;
+    	vertical-align: middle;
+	}
+	.resizeNone {
+		resize: none;
+	}
+	.lblFileName {
+		float: left;
+		width: 160px;
+		line-height: 25px;
+	}
+	.btnFile {
+		width: 115px;
+		line-height: 15px;
+	}
+	.btnClear {
+	    position: relative;
+	    display: inline-block;
+	    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: medium none;
+	    color: #FF0000;
+	    text-decoration: underline;
+	    width: 70px;
+	}
+	.selectToPdf{
+		visibility:hidden;
+		float:left;
+	}
+	
+	..btnBlue:hover{
+	background: #A34C4C !important;
+}
+
+.btnBlue {
+	width: 100%;
+	height: 30px;
+	border: none;
+	color: #D8F3FE;
+	float: right;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-mox-box-sizing: border-box;
+}
+
+.column {
+	display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 25%;
+}
+
+.cbCol{
+	display: inline-block;
+	vertical-align: middle;
+	width: 49%;	
+}
+.lstCol{
+	display: inline-block!important;
+	vertical-align: middle;
+	width: 50%!important;
+}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:RadioButton ui:field="selectToPdf" ui:name="selectedtopdf" addStyleNames="{style.selectToPdf}"/>
+		<g:Label ui:field="lblLabel" addStyleNames="{style.title}"/>
+		<g:HTMLPanel ui:field="typePanel"  addStyleNames="{style.column}">
+			<g:TextBox ui:field="txtBox" addStyleNames="{style.txtBoxOrig} {style.item}"/>
+			
+			<g:HTMLPanel ui:field="booleanPanel" addStyleNames="{style.item}">
+				<g:RadioButton name="option" text="True"/>
+				<g:RadioButton name="option" text="false"/>
+			</g:HTMLPanel>
+			<g:HorizontalPanel ui:field="lstPanel">
+				<g:ListBox ui:field="lstBox"  addStyleNames="{style.txtBoxOrig} {style.item} {style.noMargin}"/>
+				<g:Button ui:field="btnAddLst" text="..." addStyleNames="{style.btnAdd}"></g:Button>
+			</g:HorizontalPanel>
+			<dp:DateBox ui:field="dpBox"  addStyleNames="{style.txtBoxOrig} {style.item}"/>
+			<g:HTMLPanel ui:field="userPanel">
+				<g:Label text="Responsible" addStyleNames="{style.title}" />
+				<g:ListBox ui:field="lstUser"  addStyleNames="{style.txtBoxOrig}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="addressField">
+				
+				<!-- <g:Label text="{i18n.CountryCode}"/>
+				<g:TextBox ui:field="txtCountryCode" text="FR" addStyleNames="{style.txtBoxOrig}"/> -->
+				
+				<g:Label text="{i18n.Country}" addStyleNames="{style.title}" />
+				<g:ListBox ui:field="lstCountry"  addStyleNames="{style.txtBoxOrig}"/>
+				
+				<g:Label text="Region" addStyleNames="{style.title},{style.marginTop}"/>
+				<g:ListBox ui:field="lstRegion" addStyleNames="{style.txtBoxOrig}"/>
+				
+				<g:Label text="{i18n.City}" addStyleNames="{style.title},{style.marginTop}"/>
+				<g:ListBox ui:field="lstCity" addStyleNames="{style.txtBoxOrig}"/>
+				
+				<g:Label text="Adresse" addStyleNames="{style.title},{style.marginTop}"/>
+				<g:TextArea ui:field="txtLineOne" addStyleNames="{style.txtBoxOrig}, {style.resizeNone}"/>
+				
+				<g:Button text="{i18n.Save}" ui:field="btnSave" addStyleNames="{style.btnBlue}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="thresholdPanel" addStyleNames="{style.item}">
+				<g:TextBox ui:field="txtMin" addStyleNames="{style.txtBoxOrig} {style.threshold}"/>
+				<g:Label  ui:field="sup" text="&lt;" addStyleNames="{style.lbl}"/>
+				<g:TextBox ui:field="txtValue" addStyleNames="{style.txtBoxOrig} {style.value}"/>
+				<g:Label text="&lt;" addStyleNames="{style.lbl}"/>
+				<g:TextBox ui:field="txtMax" addStyleNames="{style.txtBoxOrig} {style.threshold}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="uploadPanel">
+				<g:Label ui:field="lblFileName" text="{i18n.NoFileSelected}" addStyleNames="{style.lblFileName}"/>
+				<g:Button ui:field="btnClear" text="{i18n.Clear}" addStyleNames="{style.btnClear}"></g:Button>
+				<g:Button ui:field="btnImport" text="{i18n.UploadFile2}" addStyleNames="{style.btnFile}"></g:Button>
+				
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:Label ui:field="lblHelper" addStyleNames="{style.desc}, {style.hiding}, {style.column}"/>
+		<g:HTMLPanel ui:field="sourcePanel" addStyleNames="{style.column}">
+			<g:ListBox ui:field="lstCol"  addStyleNames="{style.txtBoxOrig} {style.lstCol}"/>
+			<g:CheckBox ui:field="cbColKey" text="{i18n.IsKeyField}"  addStyleNames="{style.cbCol}"/>
+ 		</g:HTMLPanel>
+ 		<g:HTMLPanel ui:field="displayPanel" addStyleNames="{style.column}">
+			<g:CheckBox ui:field="cbDisplay" text="{i18n.DisplayField}"  addStyleNames="{style.cbCol}"/>
+ 		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="trashPanel" addStyleNames="{style.trash}">
+			<g:Image ui:field="btnDelete" resource="{img.ic_trash}" />
+ 		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

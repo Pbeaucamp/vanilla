@@ -1,0 +1,143 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.dialog.BaseDialogBox.MyStyle">
+		.dialog {
+			background: none repeat scroll 0 0 #FFFFFF !important;
+		    border: 5px solid #3B99CB;
+		    border-radius: 5px;
+		    margin: 0 auto;
+		    overflow: hidden;
+		    position: absolute;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			z-index: 2;
+		}
+		
+		.focusPanel {
+			background: none repeat scroll 0 0 #3B99CB;
+		}
+		
+		.panelTop {
+		    height: 30px;
+		    width: 100%;
+		    text-align: center;
+		}
+		
+		.partBtnTop {
+			float: right;
+		}
+		
+		.btnTop {
+			margin-right: 2px;
+			padding: 3px;
+			height: 19px !important;
+			width: 19px !important;
+			background-position: center !important;
+			cursor: pointer;	
+		}
+	
+		.btnTop:HOVER {
+			background-color: #20709B;
+		}
+		
+		.title {
+			color: white;
+    		display: inline-block;
+    		margin-top: 4px;	
+		}
+
+		.customDialogZIndex {
+			z-index: 3 !important;
+		}
+
+		.customDialogGlassZIndex {
+			background-color: #000000;
+			opacity: 0.3;
+			z-index: 2;
+		}
+		
+		.mainPanel {
+			overflow: auto;
+		}
+		
+		.panelButton {
+			height: 50px;
+			min-width: 350px;
+		}
+		
+		.btnBottom {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 150px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btnBottom:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.customDialogMax {
+		    top: 3px !important;
+		    left: 3px !important;
+		    width: 99% !important;
+		    height: 98% !important;
+		}
+		
+		.maxMainPanel {
+		    width: 99%;
+		    height: 98%;
+		}
+		
+		.maxContentPanelWithButtons {
+		    bottom: 60px;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 30px;
+		}
+		
+		.maxContentPanelNoButton {
+		    bottom: 0;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 30px;
+		}
+		
+		.maxBottomPanel {
+		    bottom: 0;
+		    position: absolute;
+		    right: 0;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="dialog" addStyleNames="{style.dialog}">
+		<g:FocusPanel ui:field="panelTop" addStyleNames="{style.focusPanel}">
+			<g:HTMLPanel addStyleNames="{style.panelTop}">
+				<g:Label ui:field="lblTitle" addStyleNames="{style.title}"/>
+				<g:HTMLPanel addStyleNames="{style.partBtnTop}">
+					<g:Image ui:field="btnReduce" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_restore}" title="{label.Reduce}"/>
+					<g:Image ui:field="btnMax" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_maximize}" title="{label.Maximize}"/>
+					<g:Image ui:field="btnClose" addStyleNames="{style.btnTop}" resource="{resources.ic_dialog_close}" title="{label.Close}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.mainPanel}"/>
+		<g:HTMLPanel ui:field="panelButton"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

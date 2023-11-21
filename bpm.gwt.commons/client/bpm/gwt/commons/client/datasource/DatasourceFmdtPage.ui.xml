@@ -1,0 +1,127 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+	
+		.panelConnection {
+			display: block;
+		    margin-right: 250px;
+		    padding: 15px;
+		    position: relative;
+		}
+		.btnConnection {
+			height: 80px;
+		    margin: 25px;
+		    position: absolute;
+		    right: 0;
+		    top: 80px;
+		    width: 200px;
+		}
+		.panelGroupRepo {
+			display: inline-block;
+		    padding: 15px;
+		    position: relative;
+		    width: 320px;
+		    float: left;
+		}
+		.panelMetadata{
+			display: inline-block;
+		    padding: 15px;
+		    position: relative;
+		    width: 320px;
+		}
+	
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		    color: rgba(0, 0, 0, 0.7);
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+			width: 240px;
+		}
+		.marginTopLst {
+			margin-top: 7px;
+			width: 246px;
+		}
+		.contentPanel {
+			width: 700px;
+			height: 470px;
+		}
+		.txtWidth {
+			width: 98%;
+		}
+		.btnWidth {
+			display: block;
+		}
+		.txtMetadata {
+			width: 75%;
+		}
+		.btnMetadata {
+			display: inline;
+		    font-size: 2em;
+		    margin: 0;
+		    vertical-align: sub;
+		    width: 20%;
+		}
+		.box{
+			color: rgba(0, 0, 0, 0.7);
+		    display: block;
+  			font-size: 1.1em;
+		    margin: 5px 1%;
+		    width: 98%;
+		}
+	</ui:style>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			<g:HTMLPanel addStyleNames="{style.panelConnection}">
+				<g:HTMLPanel>
+					<g:CheckBox ui:field="chkUrl" text="{label.DefaultConnection}" addStyleNames="{style.box}"/>
+					<c:TextHolderBox ui:field="txtUrl" placeHolder="{label.Url}" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<!-- <g:Label ui:field="lblUser" addStyleNames="{style.lbl}" text="{label.Login}"/> -->
+					<!-- <g:TextBox ui:field="txtUser" addStyleNames="{style.marginTop}"/> -->
+					<c:TextHolderBox ui:field="txtUser" placeHolder="{label.Login}" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<!-- <g:Label ui:field="lblPass" addStyleNames="{style.lbl}" text="{label.Password}"/> -->
+					<!-- <g:PasswordTextBox ui:field="txtPass" addStyleNames="{style.marginTop}"/> -->
+					<c:TextHolderBox ui:field="txtPass" password="true" placeHolder="{label.Password}" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:Button ui:field="btnLogin" text="Load Groups/Repositories" addStyleNames="{style.btnWidth},{style.btnConnection}"></g:Button>
+			
+			<g:HTMLPanel addStyleNames="{style.panelGroupRepo}">
+				<g:HTMLPanel>
+					<g:Label ui:field="lblRepository" addStyleNames="{style.lbl}" text="{label.Repository}"/>
+					<g:ListBox ui:field="lstRepository" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<g:Label ui:field="lblGroup" addStyleNames="{style.lbl}" text="{label.Group}"/>
+					<g:ListBox ui:field="lstGroup" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel  addStyleNames="{style.panelMetadata}">
+				<g:HTMLPanel>
+					<!-- <g:Label addStyleNames="{style.lbl}" text="{label.Metadata}"></g:Label> -->
+					<!-- <g:TextBox ui:field="txtItem" addStyleNames="{style.marginTop}"></g:TextBox> -->
+					<c:TextHolderBox ui:field="txtItem" placeHolder="{label.Metadata}" addStyleNames="{style.txtMetadata}"/>
+					<g:Button ui:field="btnBrowseRep" addStyleNames="{style.btnMetadata}">...</g:Button>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<g:Label ui:field="lblModel" addStyleNames="{style.lbl}" text="Business model"/>
+					<g:ListBox ui:field="lstModel" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<g:Label ui:field="lblPackage" addStyleNames="{style.lbl}" text="Business Package"/>
+					<g:ListBox ui:field="lstPackage" addStyleNames="{style.txtWidth}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+</ui:UiBinder> 

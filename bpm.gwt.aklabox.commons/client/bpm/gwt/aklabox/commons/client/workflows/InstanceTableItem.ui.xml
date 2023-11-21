@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='image' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+
+	<ui:style>
+		.tableRow{
+			width: 10.26% !important;
+			text-align: center;
+		}
+		.tableRowCheck{
+			width: 4% !important;
+			text-align: center;
+		}
+		.first{
+			text-align: left!important;
+		}
+		.first .icon{
+			margin-left: 10px;
+    		margin-right: 10px;
+		}
+		.icon{
+			margin-left: 10px;
+			cursor: pointer;
+		    height: auto;
+		    width: 30px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="tableColumn">
+	   	<g:HTMLPanel addStyleNames="inline {style.tableRowCheck}">
+	    	<g:CheckBox title="{i18n.Select}" ui:field="cbSelect" />
+	    </g:HTMLPanel><g:HTMLPanel addStyleNames="inline {style.tableRow} {style.first}">
+	       	<g:Image ui:field="imgWorkflow" addStyleNames="inline icon {style.icon}"/>
+	       	<g:Label ui:field="lblName" addStyleNames="inline"/>
+	   	</g:HTMLPanel><g:Label ui:field="lblStatus" addStyleNames="inline {style.tableRow}">
+	   	</g:Label><g:Label ui:field="lblVersionNumber" addStyleNames="inline {style.tableRow}">
+	   	</g:Label><g:Label ui:field="lblUser" addStyleNames="inline {style.tableRow}">
+		</g:Label><g:Label ui:field="lblInstanceDate" addStyleNames="inline {style.tableRow}">
+		</g:Label><g:HTML ui:field="lblCurrentActivity" addStyleNames="inline {style.tableRow}">
+	   	</g:HTML><g:HTML ui:field="lblCurrentAssignedUser" addStyleNames="inline {style.tableRow}">
+		</g:HTML><g:Label ui:field="lblActivityTime" addStyleNames="inline {style.tableRow}">
+	   	</g:Label><g:HTMLPanel ui:field="actionPanel" addStyleNames="inline {style.tableRow}">
+	  	 	<g:Image ui:field="btnRestart" title="{i18n.Restart}" url="webapps/aklabox_files/images/ic_restart.png" addStyleNames="inline icon {style.icon}"/>
+	   		<g:Image ui:field="btnStart" title="{i18n.Start}" url="webapps/aklabox_files/images/ic_start.png" addStyleNames="inline icon {style.icon}"/>
+	   		<g:Image ui:field="btnStop" title="{i18n.Stop}" url="webapps/aklabox_files/images/ic_finish.png" addStyleNames="inline icon {style.icon}"/>
+	   		<g:Image ui:field="btnStandBy" title="{i18n.StandBy}" url="webapps/aklabox_files/images/ic_stand_by.png" addStyleNames="inline icon {style.icon}" />
+	   		<g:Image ui:field="btnView" title="{i18n.View}" resource="{image.ic_eye}" addStyleNames="inline icon {style.icon}" />
+	   	</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

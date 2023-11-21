@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.listdata.oda.driver.ui
+Bundle-SymbolicName: bpm.vanilla.listdata.oda.driver.ui; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.vanilla.listdata.oda.driver.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui;bundle-version="[3.2.0,4.0.0)",
+ bpm.vanilla.listdata.oda.driver,
+ bpm.vanilla.platform.core.remote;bundle-version="1.0.12",
+ bpm.vanilla.platform.core;bundle-version="4.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: BPM-Conseil

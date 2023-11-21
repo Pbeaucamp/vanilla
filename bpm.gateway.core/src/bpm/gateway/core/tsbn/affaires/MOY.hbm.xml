@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.MOY" table="AFF_MOY">
+        <id name="idMoy" type="java.lang.String" access="field">
+            <column name="IDMOY" />
+            <generator class="assigned" />
+        </id>
+        <property name="codinseedep" type="java.lang.String" access="field">
+            <column name="CODINSEEDEP" />
+        </property>
+        <property name="typlieudep" type="java.lang.String" access="field">
+            <column name="TYPLIEUDEP" />
+        </property>
+        <property name="catlieudep" type="java.lang.String" access="field">
+            <column name="CATLIEUDEP" />
+        </property>
+        <property name="coodepx" type="java.math.BigDecimal" access="field">
+            <column name="COODEPX" />
+        </property>
+        <property name="coodepy" type="java.math.BigDecimal" access="field">
+            <column name="COODEPY" />
+        </property>
+        <property name="codinseedest" type="java.lang.String" access="field">
+            <column name="CODINSEEDEST" />
+        </property>
+        <property name="typlieudest" type="java.lang.String" access="field">
+            <column name="TYPLIEUDEST" />
+        </property>
+        <property name="catlieudest" type="java.lang.String" access="field">
+            <column name="CATLIEUDEST" />
+        </property>
+        <property name="coodestx" type="java.math.BigDecimal" access="field">
+            <column name="COODESTX" />
+        </property>
+        <property name="coodesty" type="java.math.BigDecimal" access="field">
+            <column name="COODESTY" />
+        </property>
+        <property name="codinseebase" type="java.lang.String" access="field">
+            <column name="CODINSEEBASE" />
+        </property>
+        <property name="typlieubase" type="java.lang.String" access="field">
+            <column name="TYPLIEUBASE" />
+        </property>
+        <property name="catlieubase" type="java.lang.String" access="field">
+            <column name="CATLIEUBASE" />
+        </property>
+        <property name="coobasex" type="java.math.BigDecimal" access="field">
+            <column name="COOBASEX" />
+        </property>
+        <property name="coobasey" type="java.math.BigDecimal" access="field">
+            <column name="COOBASEY" />
+        </property>
+        <property name="typgar" type="java.lang.String" access="field">
+            <column name="TYPGAR" />
+        </property>
+        <property name="garde" type="java.lang.String" access="field">
+            <column name="GARDE" />
+        </property>
+        <property name="flgaccept" type="java.lang.String" access="field">
+            <column name="FLGACCEPT" />
+        </property>
+        <property name="motrefus" type="java.lang.String" access="field">
+            <column name="MOTREFUS" />
+        </property>
+        <property name="typmoy" type="java.lang.String" access="field">
+            <column name="TYPMOY" />
+        </property>
+        <property name="moteng" type="java.lang.String" access="field">
+            <column name="MOTENG" />
+        </property>
+        <property name="motengadd" type="java.lang.String" access="field">
+            <column name="MOTENGADD" />
+        </property>
+        <property name="dataccept" type="java.util.Date">
+            <column name="DATACCEPT" />
+        </property>
+        <property name="dattx" type="java.util.Date">
+            <column name="DATTX" />
+        </property>
+        <property name="datdep" type="java.util.Date">
+            <column name="DATDEP" />
+        </property>
+        <property name="datarr" type="java.util.Date">
+            <column name="DATARR" />
+        </property>
+        <property name="datbil" type="java.util.Date">
+            <column name="DATBIL" />
+        </property>
+        <property name="datrtb" type="java.util.Date">
+            <column name="DATRTB" />
+        </property>
+        <property name="datdis" type="java.util.Date">
+            <column name="DATDIS" />
+        </property>
+        <property name="idEqu" type="java.lang.String">
+            <column name="IDEQU" />
+        </property>
+        <property name="equlab" type="java.lang.String" access="field">
+            <column name="EQULAB" />
+        </property>
+        <property name="idvec" type="java.lang.String">
+            <column name="IDVEC" />
+        </property>
+        <property name="idagt" type="java.lang.String">
+            <column name="IDAGT" />
+        </property>
+        <property name="idbase" type="java.lang.String">
+            <column name="IDBASE" />
+        </property>
+        <property name="flgmedtrt" type="java.lang.String" access="field">
+            <column name="FLGMEDTRT" />
+        </property>
+        <property name="moyext" type="java.lang.String" access="field">
+            <column name="MOYEXT" />
+        </property>
+        <property name="idagtcre" type="java.lang.String">
+            <column name="IDAGTCRE" />
+        </property>
+    </class>
+</hibernate-mapping>

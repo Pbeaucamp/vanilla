@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Geojson Creator
+Bundle-SymbolicName: bpm.geojson.creator
+Bundle-Version: 0.0.2
+Bundle-ClassPath: creator.jar,
+ libs/jackson-core-2.9.6.jar,
+ libs/commons-cli-1.4.jar,
+ libs/commons-csv-1.2.jar
+Export-Package: bpm.geojson.creator,
+ com.fasterxml.jackson.core,
+ com.fasterxml.jackson.core.async,
+ com.fasterxml.jackson.core.base,
+ com.fasterxml.jackson.core.filter,
+ com.fasterxml.jackson.core.format,
+ com.fasterxml.jackson.core.io,
+ com.fasterxml.jackson.core.json,
+ com.fasterxml.jackson.core.json.async,
+ com.fasterxml.jackson.core.sym,
+ com.fasterxml.jackson.core.type,
+ com.fasterxml.jackson.core.util,
+ org.apache.commons.cli
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

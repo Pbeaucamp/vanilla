@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.DECREF" table="AFF_DECREF">
+		<id name="id" type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <property name="iddec" type="java.lang.String">
+            <column name="IDDEC" />
+        </property>
+    </class>
+</hibernate-mapping>

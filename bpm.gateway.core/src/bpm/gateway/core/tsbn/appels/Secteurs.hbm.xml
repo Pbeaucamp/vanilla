@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:54 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.Secteurs" table="APP_SECTEURS">
+        <id name="idSecteur" type="java.lang.String">
+            <column name="IDSECTEUR" />
+            <generator class="assigned" />
+        </id>
+        <list name="communes" inverse="false" table="COMMUNES" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDSECTEUR" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.Communes" />
+        </list>
+        <property name="libSecteur" type="java.lang.String">
+            <column name="LIBSECTEUR" />
+        </property>
+        <property name="idSecteurPere" type="java.lang.String">
+            <column name="IDSECTEURPERE" />
+        </property>
+        <property name="typSec" type="java.lang.String">
+            <column name="TYPSEC" />
+        </property>
+        <property name="typDec" type="java.lang.String">
+            <column name="TYPDEC" />
+        </property>
+    </class>
+</hibernate-mapping>

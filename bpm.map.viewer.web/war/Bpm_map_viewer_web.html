@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
+    <link type="text/css" rel="stylesheet" href="Bpm_map_viewer_web.css">
+
+    <!--                                           -->
+    <!-- Any title is fine                         -->
+    <!--                                           -->
+    <title>Map Viewer</title>
+    <link rel="icon" type="image/png" href="VanillaKpiMap.ico" />
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript" src="bpm_map_viewer_web/bpm_map_viewer_web.nocache.js"></script>
+    <link type="text/css" rel="stylesheet" id="themeCssElement"> 
+    <link type="text/css" rel="stylesheet" id="loginCss"> 
+    <link type="text/css" rel="stylesheet" id="segmentCss"> 
+    <link type="text/css" rel="stylesheet" id="olCss">
+	
+	<script type="text/javascript" src="js/keycloak.js"></script>
+  </head>
+
+  <!--                                           -->
+  <!-- The body can have arbitrary html, or      -->
+  <!-- you can leave the body empty if you want  -->
+  <!-- to create a completely dynamic UI.        -->
+  <!--                                           -->
+  <body>
+
+    <!-- OPTIONAL: include this if you want history support -->
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+    
+    <!--add loading indicator while the app is being loaded-->
+		<div id="Login"></div>
+		<div id="loading"></div>
+		
+		<form id="login-form" style="display:none" action="javascript:window.doSubmitForm();">
+		    <input type="text" tabindex="0" name="username" id="login-username">
+		    <input type="password" tabindex="0" name="password" id="login-password">
+		    <input style="position: absolute; left: -9999px; width: 1px; height: 1px;" type="submit">
+		</form>
+    
+  </body>
+</html>

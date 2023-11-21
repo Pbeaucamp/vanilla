@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.gateway.ui.nl1
+Bundle-SymbolicName: bpm.gateway.ui.nl1
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Fragment-Host: bpm.gateway.ui;bundle-version="3.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

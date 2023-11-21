@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:h="urn:import:bpm.gwt.aklabox.commons.client.utils"
+	 xmlns:dp="urn:import:com.google.gwt.user.datepicker.client" >
+	<ui:style>
+	
+		.panelPreview {
+		    height: 100%;
+		    overflow-x: hidden;
+		    overflow-y: auto;
+		    max-height: 500px;
+		    position: relative;
+		    width: 100%;
+		}
+	
+		.hoverPanel{
+			top:0;
+		    height: 100%;
+		    left: 50%;
+		    position: absolute;
+		    transform: translateX(-50%);
+		    width: 99%;
+		    max-width: 800px;
+		    cursor: pointer;
+		}
+
+		.mainPreview {
+			width: 99%;
+			vertical-align: middle;
+			background-color:#fff;
+			max-width: 800px;
+		}
+
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelPreview}">
+			<g:Image ui:field="imgPreview" styleName="{style.mainPreview}" />
+			<g:HTMLPanel ui:field="hoverPanel" styleName="{style.hoverPanel}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

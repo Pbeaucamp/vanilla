@@ -1,0 +1,62 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom"
+    xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+    
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.commons.client.wizard.PublicUrlDefinitionPage.MyStyle">
+	
+		.panelContent {
+			height: 350px;
+			width: 690px;
+		}
+		
+		.lbl {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    width: 90%;
+		}
+		
+		.lst {
+			width: 96%;
+		}
+		
+		.txtWidth {
+			width: 98%;
+		}
+		
+		.txtWidth textarea{
+			max-width: 98%;
+			height: 100px;
+		}
+		
+		.label {
+		    margin-left: 22px;
+			margin-top: 10px;
+		}
+		
+		.boxBeginDate {
+	        display: inline-block;
+		    margin-left: 10px;
+		    margin-top: 18px;
+		    vertical-align: top;
+		    width: 196px;
+		}
+		
+		.boxBeginTime {
+		    display: inline-block;
+		    margin-left: 15px;
+		    margin-top: 15px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<c:ListBoxWithButton ui:field="lstGroups" label="{labels.Group}" addStyleNames="{style.lst}"/>
+		<c:ListBoxWithButton ui:field="lstFormats" label="{labels.Format}" addStyleNames="{style.lst}"/>
+		
+		<g:Label text="{labels.ExpirationDate}" addStyleNames="{style.label}"/>
+		<dp:DateBox ui:field="dateBoxStop" addStyleNames="{style.boxBeginDate}"/>
+		<c:TimeBox ui:field="timeStop" addStyleNames="{style.boxBeginTime}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

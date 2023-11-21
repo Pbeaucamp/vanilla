@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:17 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.DwhApp" table="APP_DWHAPP">
+    	<id type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <one-to-one name="referentiels" class="bpm.gateway.core.tsbn.appels.Referentiels" cascade="save-update"></one-to-one>
+        <list name="appel" inverse="false" table="APPEL" lazy="false" cascade="save-update">
+            <key>
+                <column name="DWH_APP" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.Appel" />
+        </list>
+        <list name="agtWrs" inverse="false" table="AGTWRS" lazy="false" cascade="save-update">
+            <key>
+                <column name="DWH_APP" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.appels.AgtWrs" />
+        </list>
+    </class>
+</hibernate-mapping>

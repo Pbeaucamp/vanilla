@@ -1,0 +1,220 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.panels.TopToolbar.MyStyle">
+		.lblWelcome {
+			font-size: 14px;
+		}
+		
+		.styleImg {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.styleImgMinimal {
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			background-position: center !important;
+		}
+		
+		.styleImgWebapps {
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 40px !important;
+			width: 40px !important;
+			padding: 10px;
+			background-position: center !important;
+		}
+		
+		.styleImgWebapps:HOVER, .btnSelected, .styleImgMinimal:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}			
+
+		.styleImgButton {
+			border-radius: 32px;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+			
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 30px !important;
+			width: 30px !important;
+			background-position: center !important;
+			margin-top: 7px;
+			margin-left: 5px;
+			padding: 10px;
+		}
+
+		.styleImgButton:HOVER {
+			background-color: white !important;
+		}
+		
+		.panelBtn {
+    		margin: 2px auto auto;
+		}
+		
+		.btnPanel {
+			width: 100%;
+			z-index: 1;
+		}
+		
+		.toolbar {
+			width: 100%;
+			height: 60px;
+			display: inline-block;
+			vertical-align: top;
+			-webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+			-moz-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+			box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+		}
+
+		.imgLoggedUser {
+			height: 50px !important;
+		    margin-left: 5px;
+			cursor: pointer;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+		}
+
+		.imgLoggedUser:hover{
+			border-radius: 50px;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+			opacity: 0.8;
+		}
+		
+		.panelImgRight {
+			float: right;
+		    margin-right: 15px;
+		}
+		
+		.imgLoggedUser.title {
+			position: absolute;
+			width: 100px;
+			height: 20px;
+			line-height: 20px;
+			padding: 10px;
+			font-size: 14px;
+			text-align: center;
+			color: rgb(113, 157, 171);
+			background: rgb(255, 255, 255);
+			border: 4px solid rgb(255, 255, 255);
+			border-radius: 5px;
+			text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+			box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
+		}
+
+		.imgLoggedUser.tooltip:after {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-width: 10px;
+			border-style: solid;
+			border-color: transparent transparent #FFFFFF transparent;
+			top: 10px;
+			left: 50px;
+		}
+		
+		.lblLoggedAs {
+			margin-top : 2px;
+		}
+		
+		.separator {
+			border: 1px solid gray;
+		    display: inline-block;
+		    height: 44px;
+		    margin-top: 7px;
+		    vertical-align: top;
+		    width: 0;
+		}
+		
+		.imgWebApps {
+			display: inline-block;
+		}
+		
+		.imgLogo {
+			margin: auto;
+			height: 60px;
+		}
+		
+		.txtTitleWebapp {
+		    display: inline-block;
+		    font-size: x-large;
+		    left: 28%;
+		    position: absolute;
+		    vertical-align: top;
+		}
+		
+		.txtTitleSmall {
+		    font-size: inherit;
+		    font-weight: bold;
+		    margin-top: 2px;
+		}
+
+		.maj {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.lblNumMaj {
+		    background: none repeat scroll 0 0 #E23923;
+		    border-radius: 25px 25px 25px 25px;
+		    color: #FFFFFF;
+		    font-size: 0.8em;
+		    font-weight: bold;
+		    height: 10px;
+		    line-height: 10px;
+		    padding: 3px;
+		    position: absolute;
+		    right: 0;
+		    text-align: center;
+		    top: 40px;
+    		width: 10px;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="toolbar" addStyleNames="{style.toolbar}">
+		<g:Image ui:field="imgView" resource="{commons.ic_menu_view}" title="{label.Views}" addStyleNames="{style.styleImgWebapps}"/>
+		<g:HTMLPanel ui:field="separator" addStyleNames="{style.separator}"/>
+		<g:HTMLPanel ui:field="panelBtn" addStyleNames="{style.imgWebApps}" />
+		<g:Image ui:field="imgLogo"/>
+	
+		<g:Image ui:field="imgWebapp" addStyleNames="{style.txtTitleWebapp}"/>
+		<g:Label ui:field="txtTitleWebapp" addStyleNames="{style.txtTitleWebapp},{style.txtTitleSmall}">Vanilla</g:Label>
+		
+		<g:HTMLPanel ui:field="panelFullInfo" addStyleNames="{style.panelImgRight}"><g:HTMLPanel visible="false" addStyleNames="{style.maj}">
+            	<g:Label ui:field="lblNumMaj" text="0" styleName="{style.lblNumMaj}"/>
+	            <g:Image ui:field="btnMaj" resource="{commons.ic_autorenew_black_18dp}" addStyleNames="{style.styleImgButton}"/>
+	        </g:HTMLPanel>
+			<g:Image ui:field="imgUser" title="{label.SeeProfile}" addStyleNames="{style.imgLoggedUser}"/>
+			<g:Image resource="{commons.ic_menu_help}" title="{label.About}" ui:field="imgAbout" addStyleNames="{style.styleImgButton}"/>
+			<g:Image resource="{commons.logout}" title="{label.LogOut}" ui:field="imgOut" addStyleNames="{style.styleImgButton}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelMinimalInfo" addStyleNames="{style.panelImgRight}">
+			<g:HTML ui:field="lblLoggedAs" addStyleNames="{style.lblLoggedAs}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

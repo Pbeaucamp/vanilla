@@ -1,0 +1,88 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.aklabox.commons.client.customs">
+	
+	<ui:with field='labels' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.UsersSelectionPanel.MyStyle">
+		.mainPanel {
+		    height: 100%;
+		    overflow: auto;
+		    position: relative;
+		    width: 100%;
+		}
+		
+		.panelFilter {
+	    	margin-top: 2px;
+		}
+		
+		.toolbar {
+			height: 62px;
+			width: 100%;
+			overflow: hidden;
+		}
+		
+		.txtFilter {
+			width: 300px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		
+		.btnFilter {
+		    display: inline-block;
+		    margin-left: 5px;
+		    margin-top: 12px;
+		    vertical-align: top;
+		    width: 150px;
+			background: none repeat scroll 0 0 #444444;
+			color: #000000;
+			font-weight: bold;
+			transition: none;
+		}
+		
+		.btnFilter:HOVER {
+			background: none repeat scroll 0 0 #888888;
+		}
+		
+		.panelGrid {
+			position: absolute;
+			top: 62px;
+			bottom: 0px;
+			width: 100%;
+		}
+		
+		.grid {
+		    margin: auto;
+		    overflow: hidden;
+		    position: relative;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbar" addStyleNames="{style.toolbar}">
+			<g:HTMLPanel ui:field="panelFilter" addStyleNames="{style.panelFilter}">
+				<my:LabelTextBox ui:field="txtFilter" addStyleNames="{style.txtFilter}"/>
+				<g:Button ui:field="btnFilter" text="{labels.Filter}" addStyleNames="{style.btnFilter}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.panelGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

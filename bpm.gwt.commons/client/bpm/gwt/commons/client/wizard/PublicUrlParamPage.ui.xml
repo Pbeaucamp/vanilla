@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelParams {
+			height: 350px;
+			width: 690px;
+			overflow: auto;
+		}
+	</ui:style>
+	<g:SimplePanel ui:field="panelParameters" addStyleNames="{style.panelParams}"/>
+</ui:UiBinder> 

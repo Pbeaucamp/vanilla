@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelDetail {
+			background-color: #E6E6E6;
+			height: 100%;
+		}
+		
+		.txtStep {
+			width: 800px;
+			background-color: #E6E6E6;
+			height: 450px;
+			padding: 10px;
+			font-family : monospace;
+			overflow: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelDetail" addStyleNames="{style.panelDetail}">
+		<g:HTML ui:field="txtStep" addStyleNames="{style.txtStep}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

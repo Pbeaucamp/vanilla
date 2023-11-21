@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:style>
+		.lblCellField{
+			width: 12%;
+			padding: 10px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		.lblCellFieldName{
+			width: 22%;
+			padding: 10px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		.lblCellRemove{
+			width: 7%;
+			color: #4680fa;
+			cursor: pointer;
+		}
+		.lstBox{
+			vertical-align: middle;
+    		width: 12% !important;
+		}
+		.regularTextBox {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			width: 90%;
+			padding: 5px !important;
+			border-radius: 0px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Image resource="{img.ic_cell}" addStyleNames="inline"/>
+		<g:Label ui:field="lblCellName" addStyleNames="inline {style.lblCellFieldName}"/>
+		<g:Label ui:field="lblCellXAxis" addStyleNames="inline {style.lblCellField}"/>
+		<g:Label ui:field="lblCellYAxis" addStyleNames="inline {style.lblCellField}"/>
+		<g:Label ui:field="lblCellWidth" addStyleNames="inline {style.lblCellField}"/>
+		<g:Label ui:field="lblCellHeight" addStyleNames="inline {style.lblCellField}"/>
+		<g:Label text="x" ui:field="btnRemove" addStyleNames="inline {style.lblCellField} {style.lblCellRemove}"/>
+		<g:ListBox ui:field="lstFormFields" addStyleNames="{style.regularTextBox} {style.lblCellField} {style.lstBox}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

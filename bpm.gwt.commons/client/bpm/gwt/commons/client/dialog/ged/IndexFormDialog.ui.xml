@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.dialog.ged.IndexFormDialog.MyStyle">
+		.formPanel {
+			width: 445px;
+		}
+		
+		.txtTitle {
+			width: 275px;
+		}
+		
+		.txtArea {
+			width: 275px;
+			height: 100px;
+			resize: none;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:FormPanel ui:field="formPanel" addStyleNames="{style.formPanel}">
+		</g:FormPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

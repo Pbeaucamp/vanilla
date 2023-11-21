@@ -1,0 +1,93 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.NavigationItem.MyStyle">
+		.breackcrumbItem {
+			display: inline-block;
+			vertical-align: middle;
+			text-decoration: none;
+			outline: none;
+			display: block;
+			float: left;
+			font-size: 12px;
+			line-height: 25px;
+			color: white;
+			padding: 0 10px 0 46px;
+			background: #666;
+			background: linear-gradient(#666, #333);
+			position: relative;
+			cursor: pointer;
+		}
+		
+		.breackcrumbItem:first-child {
+			padding-left: 46px;
+			border-radius: 5px 0 0 5px;
+		}
+		
+		.breackcrumbItem:first-child:before {
+			left: 14px;
+		}
+		
+		.breackcrumbItem:last-child {
+			border-radius: 0 5px 5px 0;
+			padding-right: 20px;
+		}
+		
+		.breackcrumbItem:after {
+			content: '';
+			position: absolute;
+			top: 0; 
+			right: -10px;
+			width: 25px; 
+			height: 25px;
+			-webkit-transform: scale(0.707) rotate(45deg);
+			-moz-transform: scale(0.707) rotate(45deg);
+			transform: scale(0.707) rotate(45deg);
+			background: #666;
+			background: linear-gradient(135deg, #666, #333);
+			box-shadow: 2px -2px 0 2px rgba(0, 0, 0, 0.4), 3px -3px 0 2px rgba(255, 255, 255, 0.1);
+			border-radius: 0 5px 0 50px;
+			z-index: 1;
+		}
+		
+		/*hover/active styles*/
+		.breackcrumbItem:hover, .breackcrumbItem:hover div{
+			background: #333;
+			background: linear-gradient(#333, #000);
+		}
+		
+		.breackcrumbItem:hover:after {
+			background: #333;
+			background: linear-gradient(135deg, #333, #000);
+		}
+		
+		.breackcrumbItemLabel:first-child {
+			padding-left: 0 !important;
+		}
+		
+		.breackcrumbItemLabel:after {
+			content: none !important;
+		}
+
+		.lbl {
+		    display: inline-block;
+		    vertical-align: top;
+		    color: #FFFFFF;
+    		font-size: 16px;
+		}
+		
+		.img {
+		    display: inline-block;
+			height: 32px;
+		    vertical-align: top;
+		}
+		
+		.selected {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focus" addStyleNames="{style.breackcrumbItem}">
+		<g:Label ui:field="lbl" addStyleNames="{style.breackcrumbItemLabel},{style.lbl}"/>
+	</g:FocusPanel>
+</ui:UiBinder> 

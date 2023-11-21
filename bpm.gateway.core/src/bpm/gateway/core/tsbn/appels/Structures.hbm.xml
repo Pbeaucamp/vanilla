@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:12:01 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.Structures" table="APP_STRUCTURES">
+        <id name="idStruct" type="java.lang.String">
+            <column name="IDSTRUCT" />
+            <generator class="assigned" />
+        </id>
+        <property name="region" type="java.lang.String">
+            <column name="REGION" />
+        </property>
+        <property name="c15" type="java.lang.String">
+            <column name="C15" />
+        </property>
+        <property name="structLab" type="java.lang.String">
+            <column name="STRUCTLAB" />
+        </property>
+        <property name="com" type="java.lang.String">
+            <column name="COM" />
+        </property>
+        <property name="comLab" type="java.lang.String">
+            <column name="COMLAB" />
+        </property>
+        <property name="typStruct" type="java.lang.String">
+            <column name="TYPSTRUCT" />
+        </property>
+        <property name="ctxExt" type="java.lang.String">
+            <column name="CTXEXT" />
+        </property>
+        <property name="ctxAlt" type="java.lang.String">
+            <column name="CTXALT" />
+        </property>
+        <property name="fctExt" type="java.lang.String">
+            <column name="FCTEXT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	
+	<inherits name="org.moxieapps.gwt.uploader.Uploader" />
+	<inherits name='com.google.code.gwt.crop.GWTCropper'/> 
+	<inherits name='com.google.gwt.widgetideas.WidgetIdeas' />
+	<inherits name='com.google.gwt.libideas.LibIdeas' />
+  	<inherits name="com.bramosystems.oss.player.core.CorePlayerProvider" />
+
+	<inherits name="bpm.document.management.core.VDMCore" />
+	<inherits name="bpm.aklabox.workflow.core.AklaflowCore" />
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+
+	<extend-property name="locale" values="fr"/>
+  
+	<source path='client'/>
+	<source path='shared'/>
+</module>

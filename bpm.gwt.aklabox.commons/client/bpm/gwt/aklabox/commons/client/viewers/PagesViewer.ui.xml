@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+
+	<ui:style type="bpm.gwt.aklabox.commons.client.viewers.PagesViewer.MyStyle">
+		.hpanel{
+		    height: 100%;
+		    overflow: auto;
+		    width: 100%;
+		}
+		
+		.vpanel{
+			position: absolute;
+			height: 100%;
+			width: 75px;
+			top: 0;
+			left:0;
+			overflow: auto;
+		}
+		
+		.vpanel>div{
+			display: block;
+		}
+		
+		.hpanel>div{
+			display: inline-block;
+		}
+		
+		.pagePanelPreview {
+			width: 100%;
+			background: #fff;
+			text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel">
+		<g:HTMLPanel ui:field="pagePreview" styleName="{style.pagePanelPreview}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,92 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.aklabox.commons.client.panels">
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.CocktailValidationPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 700px;
+			position: relative;
+			background-color: #ddd;
+		}
+		
+		.navigationPanel {
+		    bottom: 0px;
+		    overflow: visible;
+		    position: absolute;
+		    top: 0;
+			-webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+			-moz-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+			box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.42);
+			background: #333;
+			z-index: 40!important;
+		}
+		
+		.contentPanel {
+		    background: none repeat scroll 0 0 #FFFFFF;
+		    bottom: 60px;
+		    left: 50px;
+		    position: absolute;
+		    right: 0;
+		    top: 0px;
+		}
+		
+		.panelSideBySide {
+			display: inline-block;
+			width: 50%;
+			height: 100%;
+			position: relative;
+		    vertical-align: top;
+		}
+		.btnPanel {
+		    bottom: 10px;
+		    position: absolute;
+		    right: 10px;
+		}
+		
+		.btnBottom {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 150px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btnBottom:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.panelValidate {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+    		padding: 10px;
+		}
+		
+		.frame{
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:NavigationMenuPanel ui:field="navigationPanel" addStyleNames="{style.navigationPanel}"/>
+		<g:HTMLPanel ui:field="panelContent" addStyleNames="{style.contentPanel}">
+			<g:SimplePanel ui:field="panelViewer" addStyleNames="{style.panelSideBySide}"/><!-- 
+		 --><g:SimplePanel ui:field="panelValidate" addStyleNames="{style.panelSideBySide} {style.panelValidate}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.btnPanel}">
+			<g:Button ui:field="btnApply" text="{i18n.Apply}" addStyleNames="{style.btnBottom}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

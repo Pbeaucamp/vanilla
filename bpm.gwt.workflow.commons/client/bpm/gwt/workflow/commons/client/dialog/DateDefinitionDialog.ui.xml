@@ -1,0 +1,134 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+    xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field='labelCommon' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	
+	<ui:style>
+		.mainPanel {
+			width: 450px;
+		}
+	
+		.lblBeginDate {
+		    display: inline-block;
+		    margin: 22px 10px 10px 15px;
+		    vertical-align: top;
+	        width: 70px;
+		}
+		
+		.boxBeginDate {
+		    display: inline-block;
+		    margin-top: 0px !important;
+		    vertical-align: top;
+		    width: 196px;
+		}
+		
+		.boxBeginTime {
+		    display: inline-block;
+		    margin-left: 8px;
+		    margin-top: 3px;
+		}
+		
+		.panelRadio {
+			text-align: center;
+		}
+	
+		.radio {
+			display: inline-block;
+			margin: 10px;
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 6px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+	        width: 55%;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 8px 0 5px 1%;
+		}
+		
+		.txtDateFormat {
+	    	width: 93%;
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.lblHelpDateFormat {
+			font-size: 10px;
+			margin: 5px;
+		}
+		
+		.panelDate {
+		    display: inline-block;
+		    vertical-align: top;
+		    width: 350px;
+		}
+		
+		.radioToday {
+		    display: inline-block;
+		    margin: 10px 0;
+		    vertical-align: top;
+		    width: 330px;
+		}
+		
+		.radioToday label {
+	    	margin-left: 10px;
+    		vertical-align: top;
+		}
+		
+		.radioDefineDate {
+		    display: inline-block;
+		    margin: 10px 0;
+		    vertical-align: top;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:Label ui:field="lblBeginDate" text="{labelCommon.StartDate}" addStyleNames="{style.lblBeginDate}"/>
+		
+		<g:HTMLPanel addStyleNames="{style.panelDate}">
+			<g:RadioButton name="dateChoice" ui:field="radioToday" text="{labelCommon.CurrentDate}" addStyleNames="{style.radioToday}" value="true"/>
+			
+			<g:RadioButton name="dateChoice" ui:field="radioDefineDate" addStyleNames="{style.radioDefineDate}"/>
+			<dp:DateBox ui:field="dateBoxBegin" addStyleNames="{style.txt},{style.boxBeginDate}"/>
+			<my:TimeBox ui:field="timeStart" addStyleNames="{style.boxBeginTime}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.panelRadio}">
+			<g:RadioButton name="radioChoice" ui:field="radioWithdraw" text="{labelCommon.Widthdraw}" addStyleNames="{style.radio}"/>
+			<g:RadioButton name="radioChoice" ui:field="radioAdd" text="{labelCommon.Adding}" addStyleNames="{style.radio}"/>
+		</g:HTMLPanel>
+		
+		<my:TextHolderBox ui:field="txtValue" text="0" placeHolder="{labelCommon.Interval}" addStyleNames="{style.txt}"/>
+		<g:ListBox ui:field="lstType" addStyleNames="{style.lst}"/>
+		<g:Label ui:field="lblIntervalError" addStyleNames="{style.error}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

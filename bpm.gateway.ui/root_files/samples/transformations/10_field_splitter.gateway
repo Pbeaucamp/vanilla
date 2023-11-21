@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>46</positionX>
+    <positionY>46</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output Customers with Split</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>637</positionX>
+    <positionY>41</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\10_field_splitter\customer_with_split.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fieldSpliter>
+    <name>Customer_Splitted</name>
+    <description></description>
+    <positionX>351</positionX>
+    <positionY>44</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FieldSplitter</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <split>
+      <splitSequence>&amp;</splitSequence>
+      <streamElementIndex>1</streamElementIndex>
+    </split>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fieldSpliter>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Customer_Splitted</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Customer_Splitted</from>
+    <to>XML Output Customers with Split</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

@@ -1,0 +1,100 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.comment.CommentPanel.MyStyle">
+		.ovalThoughtBorder {
+			position: absolute;
+			padding: 15px 0px 15px 15px;
+			margin: 1em auto 80px;
+			border: 3px solid gray;
+			color: #333;
+			background: white;
+			border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			
+		    right: 55px;
+		    top: 150px;
+		
+			background: #E8EEF7;
+			background: -webkit-gradient(linear, 0 0, 0 100%, from(#E8EEF7), to(#FFFFFF));
+			background: -moz-linear-gradient(#E8EEF7, #FFFFFF);
+			background: -o-linear-gradient(#E8EEF7, #FFFFFF);
+			background: linear-gradient(#E8EEF7, #FFFFFF);
+		}
+		
+		.ovalThoughtBorder::before {
+			content: "";
+			position: absolute;
+			z-index: 10;
+			top: -30px;
+			right: 60px;
+			width: 30px;
+			height: 30px;
+			border: 3px solid gray;
+			background: white;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+			border-radius: 50px;
+			display: block;
+		}
+		
+		.ovalThoughtBorder::after {
+			content: "";
+			position: absolute;
+			z-index: 10;
+			top: -30px;
+			right: 35px;
+			width: 15px;
+			height: 15px;
+			border: 2px solid gray;
+			background: white;
+			-webkit-border-radius: 25px;
+			-moz-border-radius: 25px;
+			border-radius: 25px;
+			display: block;
+		}
+		
+		.commentBtn {
+			border: 1px solid #DDD;
+			color: #999;
+			cursor: text;
+			padding: 2px 7px;
+			margin-right: 24px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			margin-top: 10px;
+			margin-bottom: 15px;
+			width: 283px;
+		}
+		
+		.fakePanel {
+			margin: 10px 5px;
+		}
+		
+		.fakeList {
+			width: 80%;
+		}
+		
+		.imgAddFake {
+			margin-left: 3px;
+		}
+		
+		.imgDelFake {
+			margin-left: 3px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="scrollPanel">
+		<!-- <g:HTMLPanel addStyleNames="{style.fakePanel}">
+			<g:ListBox ui:field="fakeList" addStyleNames="{style.fakeList}" />
+			<g:Image ui:field="imgAdd" resource="{resources.add_12}" addStyleNames="{style.imgAddFake}"/>
+			<g:Image ui:field="imgDel" resource="{resources.close}" addStyleNames="{style.imgDelFake}"/>
+		</g:HTMLPanel> -->
+		<g:HTMLPanel ui:field="mainPanel"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

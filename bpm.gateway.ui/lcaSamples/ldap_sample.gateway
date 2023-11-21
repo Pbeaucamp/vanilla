@@ -1,0 +1,214 @@
+
+<gatewayDocument>
+  <name>gateway.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2010-03-08</creationDate>
+  <lastModificationDate>2010-03-08</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName></projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <ldapServer>
+      <ldapConnection>
+        <name>dddd</name>
+        <description></description>
+        <host>192.168.1.46</host>
+        <port>10389</port>
+        <base>ou=system</base>
+        <userDn>uid=admin,ou=system</userDn>
+        <password>toto</password>
+      </ldapConnection>
+      <name>dddd</name>
+      <description></description>
+    </ldapServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <ldapInput>
+    <name>new LdapInput</name>
+    <description></description>
+    <positionX>126</positionX>
+    <positionY>61</positionY>
+    <serverRef>dddd</serverRef>
+    <definition>ou=groups</definition>
+    <attributeMappings>
+      <attributeMapping>
+        <fieldName>objectClass</fieldName>
+        <attributeName>objectClass</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>uniqueMember</fieldName>
+        <attributeName>uniqueMember</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>cn</fieldName>
+        <attributeName>cn</attributeName>
+      </attributeMapping>
+    </attributeMappings>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new LdapInput</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </ldapInput>
+  <ldapMultipleMembers>
+    <name>new LdapMultipleMembers</name>
+    <description></description>
+    <positionX>603</positionX>
+    <positionY>59</positionY>
+    <serverRef>dddd</serverRef>
+    <definition>cn={$cn}, ou=groups</definition>
+    <attributeName>cn</attributeName>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new LdapMultipleMembers</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </ldapMultipleMembers>
+  <ldapInput>
+    <name>new LdapInput_1</name>
+    <description></description>
+    <positionX>126</positionX>
+    <positionY>201</positionY>
+    <serverRef>dddd</serverRef>
+    <definition>{$fuck}</definition>
+    <attributeMappings>
+      <attributeMapping>
+        <fieldName>mail</fieldName>
+        <attributeName>mail</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>userpassword</fieldName>
+        <attributeName>userpassword</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>uid</fieldName>
+        <attributeName>uid</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>objectClass</fieldName>
+        <attributeName>objectClass</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>businesscategory</fieldName>
+        <attributeName>businesscategory</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>sn</fieldName>
+        <attributeName>sn</attributeName>
+      </attributeMapping>
+      <attributeMapping>
+        <fieldName>cn</fieldName>
+        <attributeName>cn</attributeName>
+      </attributeMapping>
+    </attributeMappings>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new LdapInput_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </ldapInput>
+  <unduplicateRows>
+    <name>new UnduplicateRows</name>
+    <description></description>
+    <positionX>603</positionX>
+    <positionY>201</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new UnduplicateRows</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <fields>
+      <fieldName>mail</fieldName>
+      <fieldName>userpassword</fieldName>
+      <fieldName>uid</fieldName>
+      <fieldName>objectClass</fieldName>
+      <fieldName>businesscategory</fieldName>
+      <fieldName>sn</fieldName>
+      <fieldName>cn</fieldName>
+    </fields>
+    <testedField>0</testedField>
+    <testedField>1</testedField>
+    <testedField>2</testedField>
+  </unduplicateRows>
+  <fileOutputCSV>
+    <name>new FileOutputCSV</name>
+    <description></description>
+    <positionX>600</positionX>
+    <positionY>316</positionY>
+    <delete>true</delete>
+    <definition>C:\developpement\export\BiGateway\BiGateway\samples\out</definition>
+    <separator>;</separator>
+    <append>false</append>
+    <containsHeaders>true</containsHeaders>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputCSV</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <fields>
+      <fieldName>mail</fieldName>
+      <fieldName>userpassword</fieldName>
+      <fieldName>uid</fieldName>
+      <fieldName>objectClass</fieldName>
+      <fieldName>businesscategory</fieldName>
+      <fieldName>sn</fieldName>
+      <fieldName>cn</fieldName>
+    </fields>
+  </fileOutputCSV>
+  <calculation>
+    <name>new Calculation</name>
+    <description></description>
+    <positionX>742</positionX>
+    <positionY>135</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new Calculation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <script>
+      <name>fuck</name>
+      <expression>{$cn}</expression>
+      <type>0</type>
+    </script>
+  </calculation>
+  <link>
+    <from>new LdapInput</from>
+    <to>new LdapMultipleMembers</to>
+  </link>
+  <link>
+    <from>new LdapMultipleMembers</from>
+    <to>new Calculation</to>
+  </link>
+  <link>
+    <from>new LdapInput_1</from>
+    <to>new UnduplicateRows</to>
+  </link>
+  <link>
+    <from>new UnduplicateRows</from>
+    <to>new FileOutputCSV</to>
+  </link>
+  <link>
+    <from>new Calculation</from>
+    <to>new LdapInput_1</to>
+  </link>
+  <annote>
+    <positionX>10</positionX>
+    <positionY>5</positionY>
+    <width>285</width>
+    <height>50</height>
+    <content>Extract All nodes from the LDAP node : ou=groups</content>
+    <typeNote>0</typeNote>
+  </annote>
+  <annote>
+    <positionX>326</positionX>
+    <positionY>2</positionY>
+    <width>768</width>
+    <height>50</height>
+    <content>create a row per uniquemember attribute from the node cn={$cn}, ou=groups ({$cn} is replaced by each incoming row value's for its cn field</content>
+    <typeNote>0</typeNote>
+  </annote>
+  <annote>
+    <positionX>30</positionX>
+    <positionY>275</positionY>
+    <width>280</width>
+    <height>50</height>
+    <content>extract all child from the node {$uniquemember}</content>
+    <typeNote>0</typeNote>
+  </annote>
+  <annote>
+    <positionX>377</positionX>
+    <positionY>409</positionY>
+    <width>713</width>
+    <height>50</height>
+    <content>create a new User for each row (if a user with the same name exists, a warning message will appear and this user won't be inserted</content>
+    <typeNote>0</typeNote>
+  </annote>
+</gatewayDocument>

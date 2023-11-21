@@ -1,0 +1,102 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- use the vanilla configuration from the Systemp property bpm.vanilla.configurationFile -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+	</bean> 
+
+<!-- Definition de la source de donnees -->	
+        <bean id="dataSource"
+                class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                        <property name="driverClass" value="${tsbn.database.driverClassName}"/>
+                        <property name="jdbcUrl" value="${tsbn.database.jdbcUrl}"/>
+                        <property name="user" value="${tsbn.database.userName}"/>
+                        <property name="password" value="${tsbn.database.password}"/>
+                        <property name="acquireRetryAttempts" value="10"></property>
+                        <property name="preferredTestQuery" value="SELECT 1"></property>
+                        <property name="testConnectionOnCheckin" value="true"></property>
+                        <property name="testConnectionOnCheckout" value="false"></property>
+                        <property name="maxIdleTime" value="50"></property>
+                        <property name="idleConnectionTestPeriod" value="30"></property>
+                </bean>
+
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/gateway/core/tsbn/affaires/ACT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/ACTE.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/AFF.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/AGT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/AGTSTRUCT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/CIM10.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/DEC.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/DECREF.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/DIAG.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/DwhAff.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/EPI.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/EPIAPP.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/EPIOBS.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/EQU.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/ETAB.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/ETABREF.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/ETABTRA.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/MOY.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/MOYEXT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/MOYREF.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/OBS.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/PAT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/PEC.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/PECOBS.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/PHA.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/REF.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/STRUCT.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/TRA.hbm.xml</value>
+				<value>bpm/gateway/core/tsbn/affaires/VEC.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${tsbn.database.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			    <prop key="hibernate.connection.release_mode">on_close</prop>
+			    <prop key="hibernate.c3p0.acquire_increment">1</prop>
+			    <prop key="hibernate.c3p0.minPoolSize">2</prop>
+			    <prop key="hibernate.c3p0.maxPoolSize">50</prop>
+			    <prop key="hibernate.c3p0.timeout">1800</prop>
+			    <prop key="hibernate.c3p0.max_statement">0</prop>  
+			    <prop key="hibernate.c3p0.idle_test_period">30</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="dwhAffDAO" class="bpm.gateway.core.tsbn.affaires.DwhAffDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- Definition du service avec ses caracteristiques transactionnelles -->
+	<bean id="newsManager"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="target" ref="vanillaSetupManager"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>
+	

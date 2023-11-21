@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.views.VanillaView"
+            id="bpm.vanilla.server.client.ui.clustering.menu.views.VanillaView"
+            name="VanillaConnection"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ViewTransfertCache"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ViewTransfertCache"
+            name="CacheTransfert"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ManagementView"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ManagementView"
+            name="Query Management View"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.views.fmdt.FmdtLogsView"
+            id="bpm.vanilla.server.client.ui.clustering.menu.views.fmdt.FmdtLogsView"
+            name="Fmdt Logged Queries "
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ViewCacheDisk"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.views.ViewCacheDisk"
+            name="CacheDisk"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.stress.StressView"
+            id="bpm.vanilla.server.client.ui.clustering.menu.stress.StressView"
+            name="Cluster Profiling"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.purgehisto.ViewReportHistoric"
+            id="bpm.vanilla.server.client.ui.clustering.menu.purgehisto.ViewReportHistoric"
+            name="ReportHistoric"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.vanilla.server.client.ui.clustering.menu.views.massreport.MassReportView"
+            id="bpm.vanilla.server.client.ui.clustering.menu.views.massreport.MassReportView"
+            name="Mass Reporting"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.perspectives.PerspectiveMenu"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/house.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.perspectives.PerspectiveMenu"
+            name="Welcome">
+      </perspective>
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.CacheTransfertPerspective"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/cache_transfert.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.CacheTransfertPerspective"
+            name="Cache Transfert">
+      </perspective>
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.ManagementPerspective"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/queryMdxManagement.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.ManagementPerspective"
+            name="Mdx Query Management">
+      </perspective>
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.perspectives.PerspectiveFmdtLogs"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/fmdt_input-32.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.perspectives.PerspectiveFmdtLogs"
+            name="FreeMetaData Queries">
+      </perspective>
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.CachePerspective"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/cache.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.uolap.perspectives.CachePerspective"
+            name="Uolap Cache">
+      </perspective>
+      <perspective
+            class="bpm.vanilla.server.client.ui.clustering.menu.stress.ProfilingPerspective"
+            icon="src/bpm/vanilla/server/client/ui/clustering/menu/icons/clanbomber.png"
+            id="bpm.vanilla.server.client.ui.clustering.menu.stress.ProfilingPerspective"
+            name="Cluster Profiling">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.vanilla.server.client.ui.clustering.menu.preferences.VsaPreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

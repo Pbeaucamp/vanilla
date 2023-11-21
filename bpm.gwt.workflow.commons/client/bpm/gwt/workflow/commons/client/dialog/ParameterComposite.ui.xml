@@ -1,0 +1,71 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	<ui:with field='labelCommon' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:style>
+		.lblQuestion {
+		    margin: 0 10px;
+    		padding: 5px 0;
+		}
+		
+		.txtValue {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 5px 5px 8px;
+	        width: 85%;
+	        display: inline-block;
+		}
+		
+		.txtValue:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.lstLovs {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 8px;
+	        display: inline-block;
+	        vertical-align: top;
+	        width: 85%;
+	        display: inline-block;
+		}
+		
+		.radioBtn {
+		    display: inline-block;
+		    margin-top: 17px;
+		    vertical-align: top;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblQuestion" addStyleNames="{style.lblQuestion}"/>
+		<g:RadioButton ui:field="radioTxt" name="radioTxtOrList" value="true" addStyleNames="{style.radioBtn}"/>
+		<g:Label ui:field="lblRange" text="{labelCommon.EnterVectorValuesSeparatedbySemiColon}" addStyleNames="{style.lblQuestion}"/>
+		<my:TextHolderBox ui:field="txtValue" addStyleNames="{style.txtValue}"/>
+		<my:CustomListBox ui:field="lstValue" addStyleNames="{style.txtValue}"/>
+		<g:RadioButton ui:field="radioLst" name="radioTxtOrList" addStyleNames="{style.radioBtn}"/>
+		<g:ListBox ui:field="lstLovs" addStyleNames="{style.lstLovs}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

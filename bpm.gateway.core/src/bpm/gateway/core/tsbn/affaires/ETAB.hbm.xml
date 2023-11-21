@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.ETAB" table="AFF_ETAB">
+        <id name="idEtab" type="java.lang.String" access="field">
+            <column name="IDETAB" />
+            <generator class="assigned" />
+        </id>
+        <property name="umcod" type="java.lang.String" access="field">
+            <column name="UMCOD" />
+        </property>
+        <property name="umnom" type="java.lang.String" access="field">
+            <column name="UMNOM" />
+        </property>
+        <property name="umtyp" type="java.lang.String" access="field">
+            <column name="UMTYP" />
+        </property>
+        <property name="umspe" type="java.lang.String" access="field">
+            <column name="UMSPE" />
+        </property>
+        <property name="srvcod" type="java.lang.String" access="field">
+            <column name="SRVCOD" />
+        </property>
+        <property name="srvnom" type="java.lang.String" access="field">
+            <column name="SRVNOM" />
+        </property>
+        <property name="srvspe" type="java.lang.String" access="field">
+            <column name="SRVSPE" />
+        </property>
+        <property name="sitcod" type="java.lang.String" access="field">
+            <column name="SITCOD" />
+        </property>
+        <property name="sitlib" type="java.lang.String" access="field">
+            <column name="SITLIB" />
+        </property>
+        <property name="enttyp" type="java.lang.String" access="field">
+            <column name="ENTTYP" />
+        </property>
+        <property name="entcod" type="java.lang.String" access="field">
+            <column name="ENTCOD" />
+        </property>
+        <property name="entlib" type="java.lang.String" access="field">
+            <column name="ENTLIB" />
+        </property>
+        <property name="codinsee" type="java.lang.String" access="field">
+            <column name="CODINSEE" />
+        </property>
+    </class>
+</hibernate-mapping>

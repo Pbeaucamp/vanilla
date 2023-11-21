@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.panels.FileUploadPanel.MyStyle">
+		.uploader {
+			
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 525px;
+	        cursor: pointer;
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.warning {
+		    color: #FE9A2E;
+	    	margin-left: 20px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:SimplePanel ui:field="panelUploader" />
+		<c:LabelTextBox ui:field="txtFile" placeHolder="{labels.FilePath}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

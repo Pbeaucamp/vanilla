@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.TRA" table="AFF_TRA">
+        <id name="idTra" type="java.lang.String" access="field">
+            <column name="IDTRA" />
+            <generator class="assigned" />
+        </id>
+        <list name="etabtra" inverse="false" table="ETABTRA" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDTRA" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.ETABTRA" />
+        </list>
+        <property name="idrnk" type="java.lang.Short" access="field">
+            <column name="IDRNK" />
+        </property>
+        <property name="idmoy" type="java.lang.String">
+            <column name="IDMOY" />
+        </property>
+        <property name="idequ" type="java.lang.String">
+            <column name="IDEQU" />
+        </property>
+        <property name="idmoymed" type="java.lang.String">
+            <column name="IDMOYMED" />
+        </property>
+        <property name="idequmed" type="java.lang.String">
+            <column name="IDEQUMED" />
+        </property>
+        <property name="idetabdep" type="java.lang.String">
+            <column name="IDETABDEP" />
+        </property>
+        <property name="idetabdest" type="java.lang.String">
+            <column name="IDETABDEST" />
+        </property>
+        <property name="codinseedep" type="java.lang.String" access="field">
+            <column name="CODINSEEDEP" />
+        </property>
+        <property name="catlieudep" type="java.lang.String" access="field">
+            <column name="CATLIEUDEP" />
+        </property>
+        <property name="typlieudep" type="java.lang.String" access="field">
+            <column name="TYPLIEUDEP" />
+        </property>
+        <property name="coodepx" type="java.math.BigDecimal" access="field">
+            <column name="COODEPX" />
+        </property>
+        <property name="coodepy" type="java.math.BigDecimal" access="field">
+            <column name="COODEPY" />
+        </property>
+        <property name="codinseedest" type="java.lang.String" access="field">
+            <column name="CODINSEEDEST" />
+        </property>
+        <property name="catlieudest" type="java.lang.String" access="field">
+            <column name="CATLIEUDEST" />
+        </property>
+        <property name="typlieudest" type="java.lang.String" access="field">
+            <column name="TYPLIEUDEST" />
+        </property>
+        <property name="coodestx" type="java.math.BigDecimal" access="field">
+            <column name="COODESTX" />
+        </property>
+        <property name="coodesty" type="java.math.BigDecimal" access="field">
+            <column name="COODESTY" />
+        </property>
+        <property name="datdep" type="java.util.Date">
+            <column name="DATDEP" />
+        </property>
+        <property name="datarr" type="java.util.Date">
+            <column name="DATARR" />
+        </property>
+        <property name="flgmed" type="java.lang.String" access="field">
+            <column name="FLGMED" />
+        </property>
+    </class>
+</hibernate-mapping>

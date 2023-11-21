@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.gateway.ui.palette.customizer.actionSet"
+            label="Palette Customization"
+            visible="true">
+         <menu
+               id="bpm.gateway.ui.palette.customizer.menu"
+               label="Custom">
+            <separator
+                  name="customPalette">
+            </separator>
+         </menu>
+         <action
+               class="bpm.gateway.ui.palette.customizer.actions.PaletteCustomization"
+               icon="src/bpm/gateway/ui/palette/customizer/icons/palette_16.png"
+               id="bpm.gateway.ui.palette.customizer.actions.PaletteCustomization"
+               label="CreatePalette"
+               menubarPath="additions/customPalette"
+               toolbarPath="customPalette">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="bpm.gateway.ui.palette.customizer.wizard.loader.PaletteLoaderWizard"
+            id="bpm.gateway.ui.palette.customizer.wizard.loader.PaletteLoaderWizard"
+            name="Load Palette Layout">
+      </wizard>
+   </extension>
+
+</plugin>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.OBS" table="AFF_OBS">
+        <id name="idobs" type="java.lang.String" access="field">
+            <column name="IDOBS" />
+            <generator class="assigned" />
+        </id>
+        <property name="idobspere" type="java.lang.String">
+            <column name="IDOBSPERE" />
+        </property>
+        <property name="idcim10" type="java.lang.String">
+            <column name="IDCIM10" />
+        </property>
+        <property name="obslib" type="java.lang.String" access="field">
+            <column name="OBSLIB" />
+        </property>
+        <property name="obscat" type="java.lang.String" access="field">
+            <column name="OBSCAT" />
+        </property>
+    </class>
+</hibernate-mapping>

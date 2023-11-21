@@ -1,0 +1,90 @@
+<conversionMapping>
+	<name>Postgres_to_MySQL</name>
+	<type>
+		<name>smallint</name>
+		<macthing>TINYINT</macthing>
+	</type>
+	
+	<type>
+		<name>smallint</name>
+		<macthing>SMALLINT</macthing>
+	</type>
+	
+	<type>
+		<name>integer</name>
+		<macthing>MEDIUMINT</macthing>
+	</type>
+	
+	<type>
+		<name>integer</name>
+		<macthing>INT</macthing>
+	</type>
+	
+	<type>
+		<name>bigint</name>
+		<macthing>BIGINT</macthing>
+	</type>
+	
+	<type>
+		<name>decimal</name>
+		<macthing>DECIMAL</macthing>
+	</type>
+	
+	<type>
+		<name>numeric</name>
+		<macthing>NUMERIC</macthing>
+	</type>
+	
+	<type>
+		<name>real</name>
+		<macthing>REAL</macthing>
+	</type>
+	
+	
+	<type>
+		<name>double precision</name>
+		<macthing>DOUBLE PRECISION</macthing>
+	</type>
+	
+	
+	
+	
+	
+	<type>
+		<name>time</name>
+		<macthing>DATETIME</macthing>
+	</type>
+	
+	<type>
+		<name>date</name>
+		<macthing>DATE</macthing>
+	</type>
+	
+	<type>
+		<name>timestamp</name>
+		<macthing>TIMESTAMP</macthing>
+	</type>
+	
+	<type>
+		<name>time</name>
+		<macthing>TIME</macthing>
+	</type>
+	
+	
+	
+	<type>
+		<name>char</name>
+		<macthing>CHAR</macthing>
+	</type>
+	
+	<type>
+		<name>varchar</name>
+		<macthing>VARCHAR</macthing>
+	</type>
+	
+	<type>
+		<name>text</name>
+		<macthing>TEXT</macthing>
+	</type>
+
+</conversionMapping>

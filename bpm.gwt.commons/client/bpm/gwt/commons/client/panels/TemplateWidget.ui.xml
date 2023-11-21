@@ -1,0 +1,59 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.panels.TemplateWidget.MyStyle">
+		.mainPanel {
+		    margin: 10px;
+		    padding: 15px;
+		    width: 44%;
+		    display: inline-block;
+		}
+		
+		.contentPanel {
+		    height: 100%;
+    		width: 100%;
+			position: relative;
+		}
+		
+		.mainPanel:HOVER, .selected {
+			background: none repeat scroll 0 0 #D0E4F6;
+		}
+		
+		.imgPanel {
+			width: 100%;
+			height: 200px;
+			border: 1px solid black;
+			background: white;
+		}
+		
+		.img {
+			width: 100%;
+			height: 100%;
+		}
+	
+		.delete {
+		    position: absolute;
+		    right: -12px;
+		    top: -10px;
+		    cursor: pointer;
+		}
+		
+		.lbl {
+		    font-size: 15px;
+		    padding: 5px;
+		    width: 100%;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focus" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.contentPanel}">
+			<g:SimplePanel addStyleNames="{style.imgPanel}">
+				<g:Image ui:field="img" addStyleNames="{style.img}"/>
+			</g:SimplePanel>
+			<g:Image ui:field="btnDelete" resource="{resources.delete_24}" addStyleNames="{style.delete}"/>
+			<g:Label ui:field="lbl" addStyleNames="{style.lbl}"/>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

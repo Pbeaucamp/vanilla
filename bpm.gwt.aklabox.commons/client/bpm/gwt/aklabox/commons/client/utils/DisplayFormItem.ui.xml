@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='img'
+		type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+
+	<ui:style>
+		.firstField, .secondField, .thirdField{
+			width: 29%;
+		}
+		.cellInfo, 	.cellInfoField{
+			width: 47%;
+		}
+		.areaOcrResult{
+			width: 100%;
+		}
+		.titleField{
+			font-weight: bold;
+		}
+		.panel{
+			padding: 20px 0px 20px 0px;
+		}
+		.image{
+			width: 90%;
+			height: auto;
+			margin: auto;
+			display: block;
+		}
+		.save{
+			width: 50px;
+			height: 50px;
+			vertical-align: middle;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="{style.panel}">
+		<g:HTMLPanel addStyleNames="inline {style.firstField}">
+			<g:Image ui:field="imgCellInfo"  addStyleNames="{style.image}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="inline {style.secondField}">
+			<g:HTMLPanel addStyleNames="inline {style.cellInfoField}">
+				<g:Label text="{i18n.CellName}: " addStyleNames="{style.titleField}"/>
+				<g:Label text="{i18n.Point}: " addStyleNames="{style.titleField}"/>
+				<g:Label text="{i18n.Size}: " addStyleNames="{style.titleField}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="inline {style.cellInfo}">
+				<g:Label ui:field="lblCellName"/>
+				<g:Label ui:field="lblCellPoint"/>
+				<g:Label ui:field="lblCellSize"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="inline {style.thirdField}">
+			<g:Label text="{i18n.OcrResult}: " addStyleNames="{style.titleField}"/>
+			<g:TextArea ui:field="areaOcrResult" addStyleNames="{style.areaOcrResult}"/>
+		</g:HTMLPanel>
+		<g:Image ui:field="btnSave" resource="{img.ic_save_check}" addStyleNames="{style.save}" title="{i18n.SaveModification}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.gwt.commons.client.viewer.fmdtdriller.dialog.FilterValueDialog.MyStyle">
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+		}
+
+		.lstSize {
+			width: 173px;
+		}
+
+		.txtNameSize {
+			width: 167px;
+		}
+		.contentPanel {
+			width: 300px;
+			height: 150px;
+		}
+		
+	</ui:style>	
+	
+		<g:HTMLPanel>
+				<g:Label ui:field="lblValue" addStyleNames="{style.lbl}" text="{label.Value}"/>
+				<g:TextBox ui:field="txtValue" addStyleNames="{style.marginTop}, {style.txtNameSize}"/>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

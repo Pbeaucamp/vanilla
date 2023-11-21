@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+         point="bpm.model.converter">
+      <bpm.model.converter.impl
+            converterClass="bpm.gateway.ui.dwh.importer.converters.DwhGatewayConnectionConverter"
+            description="Convert a DwhView into a Database Connection"
+            name="bpm.gateway.ui.dwh.importer.converters.DwhGatewayConnectionConverter"
+            targetModelClass="bpm.gateway.core.server.database.dwhview.DwhDbConnection">
+      </bpm.model.converter.impl>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="bpm.gateway.ui.dwh.importer.wizard.DwwhViewImportWizard"
+            id="bpm.gateway.ui.dwh.importer.wizards.DwhToFmdtWizard"
+            name="Create Database Connection From DwhView">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.gateway.ui.dwh.importer.Importers"
+            label="Importer"
+            visible="true">
+         <action
+               class="bpm.gateway.ui.dwh.importer.actions.LaunchWizardAction"
+               id="bpm.gateway.ui.dwh.importer.actions.LaunchWizardAction"
+               label="Create DatabaseServer From Dwh View"
+               menubarPath="file/bpm.gateway.ui.dwh.importer.menu/conversionMenu"
+               style="push">
+         </action>
+         <menu
+               id="bpm.gateway.ui.dwh.importer.menu"
+               label="Conversion From"
+               path="file/importermenu">
+            <separator
+                  name="conversionMenu">
+            </separator>
+         </menu>
+      </actionSet>
+   </extension>
+
+
+</plugin>

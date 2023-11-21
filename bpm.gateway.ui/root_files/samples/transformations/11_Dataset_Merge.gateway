@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>83</positionX>
+    <positionY>134</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <filter>
+    <name>Filtre Pays</name>
+    <description></description>
+    <positionX>411</positionX>
+    <positionY>179</positionY>
+    <exclusive>true</exclusive>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new Filter</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <condition>
+      <elementName>XLS Input Customers::COUNTRY</elementName>
+      <operator>=</operator>
+      <value>France</value>
+      <logical>0</logical>
+      <outputRef>Selection France</outputRef>
+    </condition>
+    <condition>
+      <elementName>XLS Input Customers::COUNTRY</elementName>
+      <operator>=</operator>
+      <value>Canada</value>
+      <logical>0</logical>
+      <outputRef>Selection Canada</outputRef>
+    </condition>
+    <trashRef>Section Autres</trashRef>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </filter>
+  <selectionTransformation>
+    <name>Section Autres</name>
+    <description></description>
+    <positionX>573</positionX>
+    <positionY>29</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>XLS Input Customers::CUSTOMERNUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CUSTOMERNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTLASTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTFIRSTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::PHONE</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE1</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE2</selectedNames>
+    <selectedNames>XLS Input Customers::CITY</selectedNames>
+    <selectedNames>XLS Input Customers::STATE</selectedNames>
+    <selectedNames>XLS Input Customers::POSTALCODE</selectedNames>
+    <selectedNames>XLS Input Customers::COUNTRY</selectedNames>
+    <selectedNames>XLS Input Customers::SALESREPEMPLOYEENUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CREDITLIMIT</selectedNames>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </selectionTransformation>
+  <selectionTransformation>
+    <name>Selection France</name>
+    <description></description>
+    <positionX>670</positionX>
+    <positionY>178</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>XLS Input Customers::CUSTOMERNUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CUSTOMERNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTLASTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTFIRSTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::PHONE</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE1</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE2</selectedNames>
+    <selectedNames>XLS Input Customers::CITY</selectedNames>
+    <selectedNames>XLS Input Customers::STATE</selectedNames>
+    <selectedNames>XLS Input Customers::POSTALCODE</selectedNames>
+    <selectedNames>XLS Input Customers::COUNTRY</selectedNames>
+    <selectedNames>XLS Input Customers::SALESREPEMPLOYEENUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CREDITLIMIT</selectedNames>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </selectionTransformation>
+  <selectionTransformation>
+    <name>Selection Canada</name>
+    <description></description>
+    <positionX>386</positionX>
+    <positionY>373</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>XLS Input Customers::CUSTOMERNUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CUSTOMERNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTLASTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::CONTACTFIRSTNAME</selectedNames>
+    <selectedNames>XLS Input Customers::PHONE</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE1</selectedNames>
+    <selectedNames>XLS Input Customers::ADDRESSLINE2</selectedNames>
+    <selectedNames>XLS Input Customers::CITY</selectedNames>
+    <selectedNames>XLS Input Customers::STATE</selectedNames>
+    <selectedNames>XLS Input Customers::POSTALCODE</selectedNames>
+    <selectedNames>XLS Input Customers::COUNTRY</selectedNames>
+    <selectedNames>XLS Input Customers::SALESREPEMPLOYEENUMBER</selectedNames>
+    <selectedNames>XLS Input Customers::CREDITLIMIT</selectedNames>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </selectionTransformation>
+  <mergeStreams>
+    <name>MergeStreams France Canada</name>
+    <description></description>
+    <positionX>629</positionX>
+    <positionY>375</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new MergeStreams</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </mergeStreams>
+  <fileOutputXML>
+    <name>xml Output France Canada</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>1049</positionX>
+    <positionY>372</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}samples\output-files\11_merge_dataset\customer_france_canada.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>Filtre Pays</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>Selection France</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>Selection Canada</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Filtre Pays</from>
+    <to>Section Autres</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection France</from>
+    <to>MergeStreams France Canada</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection Canada</from>
+    <to>MergeStreams France Canada</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>MergeStreams France Canada</from>
+    <to>xml Output France Canada</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

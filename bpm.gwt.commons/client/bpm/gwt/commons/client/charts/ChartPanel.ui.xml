@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:chart="urn:import:bpm.gwt.commons.client.charts">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.txtAxeX {
+	    	margin-left: 5px;
+		}
+		
+		.lstAxeX {
+	    	margin-top: 15px;
+		}
+		
+		.panelSeries {
+			width: 100%;
+			height: 200px;
+			overflow: auto;
+			background-color: #f2f2f2;
+			padding: 5px;
+		}
+		
+		.btn {
+			margin: 5px;
+		}
+		
+		.panelChart {
+			width: 100%;
+			top: 200px;
+			bottom: 0px;
+			position: absolute;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="relative, flex">
+			<div class="flexOne">
+				<c:LabelTextBox ui:field="txtTitle" placeHolder="{labels.Title}"/>
+				<c:ListBoxWithButton ui:field="lstChartTypes"/>
+				<div class="flex">
+					<c:LabelTextBox ui:field="txtAxeX" placeHolder="{labels.AxeXName}" addStyleNames="{style.txtAxeX}"/>
+					<c:ListBoxWithButton ui:field="lstAxeX" addStyleNames="{style.lstAxeX}, flexOne"/>
+				</div>
+			</div>
+			<g:HTMLPanel ui:field="panelSeries" addStyleNames="flexOneTwo, {style.panelSeries}">
+				<c:ImageButtonText ui:field="btnAddSerie" text="{labels.AddASerie}" resource="{resources.add_12}" addStyleNames="{style.btn}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<chart:ChartRenderPanel ui:field="panelChart" addStyleNames="{style.panelChart}, flexOne"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

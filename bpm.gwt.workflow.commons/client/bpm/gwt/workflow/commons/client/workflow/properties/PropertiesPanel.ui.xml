@@ -1,0 +1,301 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:with field='resources' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style type="bpm.gwt.workflow.commons.client.workflow.properties.PropertiesPanel.MyStyle">
+		.mainPanel {
+		    overflow: auto;
+		    height: 100%;
+		    width: 100%;
+		    min-width: 700px;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 98%;
+		}
+		
+		.txtArea {
+	        min-width: literal("calc(98% - 50px)");
+			min-width: literal("-moz-calc(98% - 50px)");
+			min-width: literal("-webkit-calc(98% - 50px)");
+			min-width: literal("-o-calc(98% - 50px)");
+	        max-width: literal("calc(98% - 50px)");
+			max-width: literal("-moz-calc(98% - 50px)");
+			max-width: literal("-webkit-calc(98% - 50px)");
+			max-width: literal("-o-calc(98% - 50px)");
+		}
+		
+		.txt:FOCUS, txtArea:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+		}
+		
+		.lstWithoutRefresh {
+			width: 98%;
+		}
+		
+		.lstWithRefresh {
+	        width: literal("calc(98% - 50px)");
+			width: literal("-moz-calc(98% - 50px)");
+			width: literal("-webkit-calc(98% - 50px)");
+			width: literal("-o-calc(98% - 50px)");
+		}
+		
+		.check {
+		    display: inline-flex;
+		    margin: 8px;
+		    width: 80%;
+		}
+		
+		.refresh {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+		    margin-top: 10px;
+    		margin-left: 10px;
+			
+			-webkit-transition-duration: 0.8s;
+		    -moz-transition-duration: 0.8s;
+		    -ms-transition-duration: 0.8s;
+		    transition-duration: 0.8s;
+     
+		    -webkit-transition-property: -webkit-transform;
+		    -moz-transition-property: -moz-transform;
+		    -ms-transition-property: -ms-transform;
+		    transition-property: transform;
+		}
+
+		.validNoMargin {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+		    margin-top: 5px;
+    		margin-left: 10px;
+    		vertical-align: top;
+			
+			-webkit-transition-duration: 0.8s;
+		    -moz-transition-duration: 0.8s;
+		    -ms-transition-duration: 0.8s;
+		    transition-duration: 0.8s;
+     
+		    -webkit-transition-property: -webkit-transform;
+		    -moz-transition-property: -moz-transform;
+		    -ms-transition-property: -ms-transform;
+		    transition-property: transform;
+		}
+		
+		.valid {
+		    cursor: pointer;
+		    height: 36px !important;
+		    width: 36px !important;
+	    	background-position: center !important;
+		    margin-top: 30px;
+		    margin-left: 5px;
+		    vertical-align: top;
+		    
+		    -webkit-transition-duration: 0.8s;
+		    -moz-transition-duration: 0.8s;
+		    -ms-transition-duration: 0.8s;
+		    transition-duration: 0.8s;
+     
+		    -webkit-transition-property: -webkit-transform;
+		    -moz-transition-property: -moz-transform;
+		    -ms-transition-property: -ms-transform;
+		    transition-property: transform;
+		}
+		
+		.refresh:HOVER {
+			-webkit-transform:rotate(360deg);
+		    -moz-transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+		    -o-transform:rotate(360deg);
+		}
+		
+		.valid:HOVER {
+		    -moz-transform: scale(1.4);
+			-ms-transform: scale(1.4);
+		    -webkit-transform: scale(1.4);
+		    transform: scale(1.4);
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.warning {
+		    color: #FE9A2E;
+	    	margin-left: 20px;
+		}
+		
+		.success {
+		    color: #64FE2E;
+	    	margin-left: 20px;
+		}
+		
+		.panelVariables {
+			display: inline-block;
+			width: 15%;
+			border-right: 1px solid lightgray;
+		}
+		
+		.panelVariablesDialog {
+			display: inline-block;
+			width: 170px;
+			border-right: 1px solid lightgray;
+		}
+		
+		.panelContentWithoutVariable {
+			display: inline-block;
+			vertical-align: top;
+			width: 100%;
+		}
+		
+		.panelContentWithVariableDialog {
+			display: inline-block;
+			vertical-align: top;
+			width: 525px;
+		}
+		
+		.panelContentWithVariable {
+			display: inline-block;
+			vertical-align: top;
+			width: 80%;
+		}
+		
+		.toolbarPanel {
+		    text-align: center;
+		}
+		
+		.variables {
+			overflow: auto;
+			height: 350px;
+		}
+		
+		.tabPanel {
+			width: 100%;
+			display: inline-block;
+			border-right: 1px solid lightgray;
+		}
+		
+		.tabButtonLeft {
+	    	border-right: 1px solid #D3D3D3;
+		}
+		
+		.tabButton {
+			width: 49.4%;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			display: inline-block;
+			cursor: pointer;
+		}
+		
+		.simplePanel {
+		    border-top: 2px solid #000000;
+	        margin-top: 10px;
+		}
+		
+		.simplePanelSize {
+		    height: 225px;
+		    overflow: auto;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 60%;
+			
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.panelForButton {
+			text-align: center;
+		}
+		
+		.lblHelp {
+			font-size: 10px;
+			margin: 5px;
+		}
+		
+		.lblListDisplay {
+	    	margin-left: 25px;
+		}
+		
+		.browsePanel {
+			width: 100%;
+			display: inline-block;
+		}
+		
+		.browseTextBox {
+			width: 94%!important;
+			display: inline-block;
+		}
+		
+		.browseButton {
+			margin-left: 10px;
+			display: inline-block;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelVariablesParent">
+			<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+				<g:Image ui:field="btnRefresh" resource="{resources.ic_autorenew_black_18dp}" title="{label.Refresh}" addStyleNames="{style.refresh}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.tabPanel}">
+				<g:Label ui:field="tabVariables" text="{label.Variables}" addStyleNames="{style.tabButton},{style.tabButtonLeft}">
+				</g:Label><g:Label ui:field="tabParameters" text="{label.Parameters}"  addStyleNames="{style.tabButton}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelVariables" addStyleNames="{style.variables}"/>
+		</g:HTMLPanel><g:HTMLPanel ui:field="panelContent"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

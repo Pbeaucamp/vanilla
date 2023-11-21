@@ -1,0 +1,572 @@
+<Root>
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Allentown</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>UK</COUNTRY>
+        <CITY>Liverpool</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Italy</COUNTRY>
+        <CITY>Torino</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Finland</COUNTRY>
+        <CITY>Espoo</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Singapore</COUNTRY>
+        <CITY>Singapore</CITY>
+        <CUSTOMERNAME>3</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Nashua</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Australia</COUNTRY>
+        <CITY>Glen Waverly</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Paris</CITY>
+        <CUSTOMERNAME>3</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Hong Kong</COUNTRY>
+        <CITY>Central Hong Kong</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>White Plains</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Canada</COUNTRY>
+        <CITY>Tsawassen</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Leipzig</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Burbank</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Ireland</COUNTRY>
+        <CITY>Dublin</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>San Diego</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Australia</COUNTRY>
+        <CITY>Chatswood</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>New Bedford</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Brickhaven</CITY>
+        <CUSTOMERNAME>3</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Los Angeles</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Philadelphia</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Lyon</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Italy</COUNTRY>
+        <CITY>Reggio Emilia</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Cambridge</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Las Vegas</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Canada</COUNTRY>
+        <CITY>Montru00e9al</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Lille</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Austria</COUNTRY>
+        <CITY>Salzburg</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Belgium</COUNTRY>
+        <CITY>Charleroi</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Stuttgart</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>UK</COUNTRY>
+        <CITY>London</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>UK</COUNTRY>
+        <CITY>Manchester</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Berlin</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Mu00fcnchen</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Netherlands</COUNTRY>
+        <CITY>Amsterdam</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Finland</COUNTRY>
+        <CITY>Helsinki</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>San Rafael</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Australia</COUNTRY>
+        <CITY>North Sydney</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Japan</COUNTRY>
+        <CITY>Minato-ku</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Australia</COUNTRY>
+        <CITY>South Brisbane</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Portugal</COUNTRY>
+        <CITY>Lisboa</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Spain</COUNTRY>
+        <CITY>Sevilla</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>San Francisco</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Russia</COUNTRY>
+        <CITY>Saint Petersburg</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Norway</COUNTRY>
+        <CITY>Stavern</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Finland</COUNTRY>
+        <CITY>Oulu</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Boston</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Ireland</COUNTRY>
+        <CITY>Cork</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Burlingame</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Spain</COUNTRY>
+        <CITY>Barcelona</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Bridgewater</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Brisbane</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CITY>Auckland</CITY>
+        <CUSTOMERNAME>3</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Israel</COUNTRY>
+        <CITY>Herzlia</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Nantes</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Glendale</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>San Jose</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Belgium</COUNTRY>
+        <CITY>Bruxelles</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CITY>Bern</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>New Haven</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Denmark</COUNTRY>
+        <CITY>Kobenhavn</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Norway</COUNTRY>
+        <CITY>Oslo</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Sweden</COUNTRY>
+        <CITY>Bru00e4cke</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>New Zealand</COUNTRY>
+        <CITY>Wellington</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Spain</COUNTRY>
+        <CITY>Madrid</CITY>
+        <CUSTOMERNAME>5</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Italy</COUNTRY>
+        <CITY>Milan</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Aachen</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Brandenburg</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Austria</COUNTRY>
+        <CITY>Graz</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Strasbourg</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Mannheim</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Frankfurt</CITY>
+        <CUSTOMERNAME>2</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Newark</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Reims</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CITY>Genu00e8ve</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Poland</COUNTRY>
+        <CITY>Warszawa</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Norway</COUNTRY>
+        <CITY>Bergen</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Munich</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Mu00fcnster</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Toulouse</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Cunewalde</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>UK</COUNTRY>
+        <CITY>Cowes</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Switzerland</COUNTRY>
+        <CITY>Fribourg</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Philippines</COUNTRY>
+        <CITY>Makati City</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>NYC</CITY>
+        <CUSTOMERNAME>5</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Japan</COUNTRY>
+        <CITY>Osaka</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Versailles</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Italy</COUNTRY>
+        <CITY>Bergamo</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Denmark</COUNTRY>
+        <CITY>u00c5rhus</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Australia</COUNTRY>
+        <CITY>Melbourne</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>France</COUNTRY>
+        <CITY>Marseille</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>USA</COUNTRY>
+        <CITY>Pasadena</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Canada</COUNTRY>
+        <CITY>Vancouver</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>South Africa</COUNTRY>
+        <CITY>Chempet</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Sweden</COUNTRY>
+        <CITY>Luleu00e5</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+    <Row>
+        <COUNTRY>Germany</COUNTRY>
+        <CITY>Ku00f6ln</CITY>
+        <CUSTOMERNAME>1</CUSTOMERNAME>
+    </Row>
+
+</Root>

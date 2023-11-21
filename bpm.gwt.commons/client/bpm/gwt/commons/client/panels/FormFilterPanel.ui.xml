@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	<ui:style>
+		.element {
+			width: 49%;
+			display: inline-block;
+			-moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		    vertical-align: top;
+		}
+		.panel {
+    		-moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		    border-radius: 3px 3px 3px 3px;
+		    padding: 2px;
+		    border: 1px solid #D3D3D3;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<my:ListBoxWithButton ui:field="lstCol" label="Column" addStyleNames="{style.element}"/>
+		<my:LabelTextBox ui:field="txtValue" placeHolder="Value" addStyleNames="{style.element}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

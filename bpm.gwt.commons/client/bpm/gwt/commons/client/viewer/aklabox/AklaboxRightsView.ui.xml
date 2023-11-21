@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.viewer.aklabox.AklaboxRightsView.MyStyle">
+		.img {
+			margin-left: 60px;
+			margin-top: 15px;
+		}
+		
+		.radioBtn {
+		    display: inline-block;
+		    margin-left: 10px;
+		    margin-top: 20px;
+		    vertical-align: top;
+		}
+		
+		.subRadioBtn {
+		    display: block;
+		    margin-left: 150px;
+		    margin-top: 10px;
+		}
+		
+		.panelGrid {
+		    border: 1px solid #D3D3D3;
+		    height: 200px;
+		    margin-left: 5%;
+		    margin-top: 10px;
+		    width: 90%;
+		}
+		
+		.datagrid {
+			width: 100%;
+			height: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Image resource="{resources.private_icon}" addStyleNames="{style.img}"/>
+			<g:RadioButton ui:field="btnPrivate" ui:name="typeShare" text="{label.SharePrivate}" addStyleNames="{style.radioBtn}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Image resource="{resources.shared_icon}" addStyleNames="{style.img}"/>
+			<g:RadioButton ui:field="btnShared" ui:name="typeShare" text="{label.ShareShared}" addStyleNames="{style.radioBtn}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelShareOptions">
+			<g:RadioButton ui:field="btnPublic" ui:name="share" text="{label.SharePublic}" addStyleNames="{style.subRadioBtn}"/>
+			<g:RadioButton ui:field="btnUsersShare" ui:name="share" text="{label.ShareUser}" addStyleNames="{style.subRadioBtn}"/>
+			<g:RadioButton ui:field="btnGroupsShare" ui:name="share" text="{label.ShareGroup}" addStyleNames="{style.subRadioBtn}"/>
+		</g:HTMLPanel>
+
+		<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.panelGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,116 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:with field='lbl' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.workflows.WorkflowViewPanel.MyStyle">
+	
+		.panel{
+			width: 100%;
+		}
+
+		.mainPanel {
+			width: 100%;
+			height: 400px;
+		}
+		
+		.mainPanelExpand {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.redBackground {
+			background-color: #dd7575 !important;
+		}
+		
+		.redBackground td {
+			border: 2px solid #dd7575 !important;
+		}
+		
+		.greenBackground {
+			background-color: #92db7b !important;
+		}
+		
+		.greenBackground td {
+			border: 2px solid #92db7b !important;
+		}
+		
+		.blueBackground {
+			background-color: #6DC5F4 !important;
+		}
+		
+		.blueBackground td {
+			border: 2px solid #6DC5F4 !important;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.rowGrid {
+		    height: 70px;
+		}
+		
+		.workflowPanel {
+		    height: 80px;
+		    margin: 10px 10px 30px 10px;
+		    box-shadow: 0 0 5px #777;
+		    display: flex;
+		    align-items: center;
+		}
+		
+		.openBackground {
+			background-color: #4ca6ff;
+		}
+		.finishBackground {
+			background-color: #3de118;
+		}
+		.suspendBackground {
+			background-color: #e1a618;
+		}
+		.archivedBackground {
+			background-color: grey;
+		}
+		
+		.lblStatus {
+			color: #FFFFFF;
+		    display: inline-block;
+		    font-size: 1.4em;
+		    text-align: center;
+		    width: 50%;
+		}
+		.lblFStatus {
+			color: #FFFFFF;
+		    display: inline-block;
+		    font-size: 1.4em;
+		    text-align: right;
+		    width: 25%;
+		}
+		.imgFStatus {
+			height: auto;
+		    width: 15%;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:HTMLPanel ui:field="workflowStatus" addStyleNames="{style.workflowPanel}">
+			<g:Label ui:field="lblStatus"  addStyleNames="{style.lblStatus}"/>
+			<g:Label ui:field="lblFolderStatus"  addStyleNames="{style.lblFStatus}"/>
+			<g:Image ui:field="imgFolderStatus"  addStyleNames="{style.imgFStatus}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.mainPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

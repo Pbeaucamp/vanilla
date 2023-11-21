@@ -1,0 +1,160 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:s="urn:import:bpm.gwt.aklabox.commons.client.utils">
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+
+	<ui:style>
+		.tableHeader{
+			text-align:center;
+			width: 10.26% !important;/*width: 15.38% !important;*/
+			padding-left: 0!important;
+		}
+		.tableHeaderCheck{
+			text-align:center;
+			width: 4% !important;
+			padding-left: 0!important;
+		}
+		.lstBox{
+			width: 200px !important;
+		}
+		.txtBox{
+			margin: 0px !important;
+		}
+		.filterPanel{
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		    background-color: #F9F9F9;
+		    display: inline-block;
+		    height: 70px;
+		    padding-bottom: 10px;
+		    padding-left: 20px;
+		    padding-top: 20px;
+		    vertical-align: middle;
+		    width: 50%;
+		}
+		.date{
+			padding: 5px;
+			background: #fff;
+			color: #777;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.titleWrapper{
+			height: 15%;
+			width: 97.3%;
+		}
+		.newBg{
+			background: rgba(0, 0, 0, 0.1);
+			vertical-align: top;
+			display: inline-block;
+			overflow: auto;
+			border-radius: 3px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			box-shadow: 0 1px 1px rgba(202, 202, 202, 1), 0 1px 1px rgba(105, 105, 105, 1) inset;
+			-webkit-box-shadow: 0 1px 1px rgba(202, 202, 202, 1), 0 1px 1px rgba(105, 105, 105, 1) inset;
+			-moz-box-shadow: 0 1px 1px rgba(202, 202, 202, 1), 0 1px 1px rgba(105, 105, 105, 1) inset;
+			margin: 10px 5px 10px 10px;
+			padding: 10px;
+			overflow: hidden;
+		}
+		.pageTitle{
+			font-size: 12px;
+			padding: 9px 35px 8px 35px;
+			background: #56a4ce url(webapps/aklabox_files/imagesNew/progress_overlay.png);
+			background: url(webapps/aklabox_files/imagesNew/progress_overlay.png), -webkit-linear-gradient(top, #56a4ce 0%,#3485ae 100%);
+			font-weight: bold;
+			color: #fff;
+			text-align: center;
+			border-radius: 2px;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			display: block;
+			text-shadow: 0 -1px 1px #646464;
+			box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 1px 1px #2c2c2c;
+			-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 1px 1px #2c2c2c;
+			-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 1px 1px #2c2c2c;
+		}
+		
+		.icon{
+			margin-left: 10px;
+			cursor: pointer;
+		    height: auto;
+		    width: 30px;
+		}
+		.inline{
+			display: inline-block;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel">
+	    <div class="{style.titleWrapper} {style.newBg}">
+	    	<g:HTMLPanel ui:field="titleInstanceTable" addStyleNames="{style.pageTitle}">
+				 <g:Label ui:field="lblPageTitle" text="{i18n.AklaBoxWorkFlow}" />
+			</g:HTMLPanel>
+	    </div>
+	   <div style="padding: 0 1em;">
+		
+	    <g:HTMLPanel ui:field="filterPanel" addStyleNames="{style.filterPanel}">
+	        <g:Label text="{i18n.FilterBy}" addStyleNames="inline"/>
+	        <g:ListBox ui:field="lstFilter" addStyleNames="inline regularTextBox {style.lstBox}">
+	            <!-- <item>Instance</item>
+	            <item>Status</item>
+	            <item>Version Number</item>
+	            <item>User</item>
+	            <item>Creation Date</item>
+	            <item>Current Assigned User</item> -->
+	        </g:ListBox>
+	        
+	        <g:HTMLPanel ui:field="filterWidgetPanel" addStyleNames="inline">
+		        <s:AklaTextBox ui:field="txtFilter" placeholder="Filter" addStyleNames="regularTextBox {style.lstBox} {style.txtBox}"/>
+		        <g:HTMLPanel ui:field="datePanel" addStyleNames="inline">
+		            <g:Label text="{i18n.From}" addStyleNames="inline"/>
+		            <g:Image ui:field="btnDateFrom" url="webapps/aklabox_files/images/ic_date.png" addStyleNames="inline icon"/>
+		            <g:Label ui:field="lblDateFrom" addStyleNames="inline {style.date}" />
+		            <g:Label text="{i18n.To}" addStyleNames="inline" />
+		            <g:Image ui:field="btnDateTo" url="webapps/aklabox_files/images/ic_date.png" addStyleNames="inline icon"/>
+		        	<g:Label ui:field="lblDateTo" addStyleNames="inline {style.date}" />
+		        </g:HTMLPanel>
+		        <g:ListBox ui:field="lstFilterStatus" addStyleNames="regularTextBox {style.lstBox}">
+		              <!--   <item>Running</item>
+		                <item>Stopped</item>
+		                <item>Stand By</item>
+		                <item>Finish</item> -->
+		         </g:ListBox>
+		         <g:ListBox ui:field="lstFilterType" addStyleNames="regularTextBox {style.lstBox}"/>
+		    </g:HTMLPanel>
+		    
+	        <g:Image url="webapps/aklabox_files/images/ic_filter.png" ui:field="btnFilter" addStyleNames="{style.icon} inline"/>
+		    
+	    </g:HTMLPanel><!-- 
+	 --><g:HTMLPanel ui:field="actionPanel" addStyleNames="{style.filterPanel}">
+	       
+			<g:Label text="{i18n.ActOnSelectedInstance}" addStyleNames="inline"/>
+			<g:ListBox ui:field="lstAction" addStyleNames="inline regularTextBox {style.lstBox}"></g:ListBox>
+			<g:HTMLPanel ui:field="actionWidgetPanel" addStyleNames="{style.inline}">
+		        <g:ListBox ui:field="lstDelegation" addStyleNames="regularTextBox {style.lstBox}"></g:ListBox>
+		        
+		    </g:HTMLPanel>
+			<g:Image resource="{img.validate}" ui:field="btnAct" addStyleNames="{style.icon} inline"/>
+		    
+	    </g:HTMLPanel>
+	    <g:HTMLPanel ui:field="sortPanel">
+		    <g:HTMLPanel addStyleNames="inline tableHeader {style.tableHeaderCheck}">
+		    	<g:CheckBox title="{i18n.SelectAll}" ui:field="cbAll" />
+		    </g:HTMLPanel><g:Label text="{i18n.Instance}" ui:field="filterInstance" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.Status}"  ui:field="filterStatus" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.VersionNumber}" ui:field="filterVersionNumber" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.Creator}" ui:field="filterUser" addStyleNames="inline tableHeader {style.tableHeader}">   
+		    </g:Label><g:Label text="{i18n.InstanceDate}" ui:field="filterInstanceDate" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.CurrentActivity}" ui:field="filterCurrentActivity" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.CurrentAssignedUser}" ui:field="filterCurrentAssignedUser" addStyleNames="inline tableHeader {style.tableHeader}">   
+		    </g:Label><g:Label text="{i18n.ActivityTime}" ui:field="filterActivityTime" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label><g:Label text="{i18n.Actions}" ui:field="filterActions" addStyleNames="inline tableHeader {style.tableHeader}">
+		    </g:Label>
+		</g:HTMLPanel>
+	    <g:HTMLPanel ui:field="tableContentPanel" addStyleNames="tableContent"/>	        
+	   </div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.vanilla.server.client.rcp.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="VanillaServerUiProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="bpm.hypervision.client.rcp.application"
+            name="Vanilla Hypervision">
+         <property
+               name="appName"
+               value="Vanilla Hypervision">
+         </property>
+         <property
+               name="aboutText"
+               value="Vanilla HyperVision&#x0A;&#x0A;Version 8&#x0A;&#x0A;Product of BPM-Conseil&#x0A;&#x0A;http://www.bpm-conseil.com/">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/vanilla_about.gif">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/vsa16.png,icons/vsa32.png,icons/vsa48.png">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="bpm.hypervision.client.rcp.splashHandlers.InteractiveSplashHandler"
+            id="bpm.hypervision.client.rcp.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="bpm.hypervision.client.rcp.VanillaServerUiProduct"
+            splashId="bpm.hypervision.client.rcp.splashHandlers.interactive">
+      </splashHandlerProductBinding>
+   </extension>
+
+</plugin>

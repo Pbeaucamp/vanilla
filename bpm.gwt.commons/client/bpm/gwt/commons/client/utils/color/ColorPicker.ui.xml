@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.utils.color"
+	xmlns:custom="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.panel {
+			margin: 5px;
+		    border: 1px solid #778899;
+			padding: 10px 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			background: white;
+		}
+		
+		.btn {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+		<my:SaturationLightnessPickerPanel ui:field="slPicker"/>
+		<my:HuePickerPanel ui:field="huePicker"/>
+		<custom:CustomButton ui:field="btnOk" text="{label.Ok}" addStyleNames="{style.btn}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

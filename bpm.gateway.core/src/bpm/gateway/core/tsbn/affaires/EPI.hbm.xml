@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.EPI" table="AFF_EPI">
+        <id name="idEpi" type="java.lang.String" access="field">
+            <column name="IDEPI" />
+            <generator class="assigned" />
+        </id>
+        <list name="pha" inverse="false" table="PHA" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDEPI" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.PHA" />
+        </list>
+        <list name="dec" inverse="false" table="DEC" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDEPI" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.DEC" />
+        </list>
+        <list name="pec" inverse="false" table="PEC" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDEPI" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.PEC" />
+        </list>
+        <list name="epiapp" inverse="false" table="EPIAPP" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDEPI" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.EPIAPP" />
+        </list>
+        <property name="codinsee" type="java.lang.String" access="field">
+            <column name="CODINSEE" />
+        </property>
+        <property name="catlieu" type="java.lang.String" access="field">
+            <column name="CATLIEU" />
+        </property>
+        <property name="typlieu" type="java.lang.String" access="field">
+            <column name="TYPLIEU" />
+        </property>
+        <property name="idetab" type="java.lang.String" access="field">
+            <column name="IDETAB" />
+        </property>
+        <property name="coox" type="java.math.BigDecimal" access="field">
+            <column name="COOX" />
+        </property>
+        <property name="cooy" type="java.math.BigDecimal" access="field">
+            <column name="COOY" />
+        </property>
+        <property name="datdeb" type="java.util.Date">
+            <column name="DATDEB" />
+        </property>
+        <property name="datfin" type="java.util.Date">
+            <column name="DATFIN" />
+        </property>
+        <property name="motrec" type="java.lang.String" access="field">
+            <column name="MOTREC" />
+        </property>
+        <property name="gra" type="java.lang.String" access="field">
+            <column name="GRA" />
+        </property>
+        <property name="cat" type="java.lang.String" access="field">
+            <column name="CAT" />
+        </property>
+        <property name="agtcre" type="java.lang.String" access="field">
+            <column name="AGTCRE" />
+        </property>
+        <property name="appcre" type="java.lang.String" access="field">
+            <column name="APPCRE" />
+        </property>
+    </class>
+</hibernate-mapping>

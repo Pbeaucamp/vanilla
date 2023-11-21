@@ -1,0 +1,113 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.dialog.CreateETLAxeDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+			height: 450px;
+			position: relative;
+			overflow-x: hidden;
+		}
+		
+		.imgCell {
+	
+		}
+		
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 50px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.lblETL {
+		}
+		
+		.lstArchitect {
+		}
+		
+		.txtFolder {
+			width: 75%;
+			display: inline-block;
+		}
+		
+		.btnChooseFolder {
+			display: inline;
+		    font-size: 2em;
+		    margin: 0;
+		    vertical-align: sub;
+		    width: 20%;
+		}
+		
+		.txtSeparator {
+		}
+		
+		.defaultWidth {
+			width: 98%;
+		}
+		
+		.panelBtnLoad {
+			text-align: center;
+		}
+		
+		.btnLoad {
+		
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<c:ListBoxWithButton ui:field="lstTypeDatasouce" label="{label.Datasource}" addStyleNames="{style.lstArchitect},{style.defaultWidth}"/>
+		<g:HTMLPanel ui:field="panelArchitect">
+			<c:ListBoxWithButton ui:field="lstSuppliers" label="{label.SelectSupplier}" addStyleNames="{style.lstArchitect},{style.defaultWidth}"/>
+			<c:ListBoxWithButton ui:field="lstContracts" label="{label.SelectContract}" addStyleNames="{style.lstArchitect},{style.defaultWidth}"/>
+			<c:LabelTextBox ui:field="txtSeparator" placeHolder="{label.Separator}" addStyleNames="{style.txtSeparator},{style.defaultWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelMetadata" visible="false">
+			<c:RepositoryItemButton ui:field="btnMetadata"/>
+			<c:ListBoxWithButton ui:field="lstQuery" label="{label.SelectContract}" addStyleNames="{style.lstArchitect},{style.defaultWidth}"/>
+		</g:HTMLPanel>
+		<div class="{style.panelBtnLoad} {style.defaultWidth}">
+			<g:Button ui:field="btnLoadColumns" text="{label.LoadColumns}" addStyleNames="{style.btnLoad}"/>
+		</div>
+		
+		<g:HTMLPanel ui:field="panelMapping"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

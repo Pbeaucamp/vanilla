@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.DwhAff" table="AFF_DWHAFF">
+        <id type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <one-to-one name="ref" class="bpm.gateway.core.tsbn.affaires.REF" cascade="save-update"></one-to-one>
+        <list name="aff" inverse="false" table="AFF" lazy="false" cascade="save-update">
+            <key>
+                <column name="DWH_AFF" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.AFF" />
+        </list>
+    </class>
+</hibernate-mapping>

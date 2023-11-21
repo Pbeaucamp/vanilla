@@ -1,0 +1,5 @@
+ - Publish FASD on Repository
+ - open ES select publiched cube and note its DirectoryIetmId from the content view
+ - Open olap.gateway in a Text editor and replace <directoryItemId>53</directoryItemId> with the new Id
+ - save olap.gateway
+ - open olap.gateway with BIG

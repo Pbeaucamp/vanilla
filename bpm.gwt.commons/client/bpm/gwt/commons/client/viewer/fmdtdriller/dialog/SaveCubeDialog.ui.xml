@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.commons.client.viewer.fmdtdriller.dialog.SaveCubeDialog.MyStyle">
+	.treePanel {
+		background: lightgray;
+		margin: 10px;
+		height: 340px;
+		width: 320px;
+		display: inline-block;
+	}
+	
+	.tree {
+		height: 340px;
+	}
+	
+	.mainPanel {
+		position: relative;
+		display: inline-block;
+		margin-left: 10px;
+		margin-bottom: 20px;
+	}
+	
+	.mainPanel tr {
+		line-height: 30px;
+	}
+	
+	.lbl {
+		margin: 3px;
+		margin-left: 10px;
+	}
+	
+	.txt {
+		margin-left: 10px;
+		width: 300px;
+	}
+	
+	.lst {
+		margin-left: 10px;
+		width: 300px;
+	}
+	
+	</ui:style>
+	<g:HTMLPanel >
+		<g:SimplePanel ui:field="treePanel" addStyleNames="{style.treePanel}" />
+		<g:HTMLPanel addStyleNames="{style.mainPanel}">
+			<g:Label text="{label.Name}" addStyleNames="{style.lbl}" />
+			<g:TextBox ui:field="txtName" addStyleNames="{style.txt}" />
+			<g:Label text="{label.Description}" addStyleNames="{style.lbl}" />
+			<g:TextBox ui:field="txtDesc" addStyleNames="{style.txt}" />
+			<g:Label text="{label.Group}" addStyleNames="{style.lbl}" />
+			<g:ListBox ui:field="lstGroups" addStyleNames="{style.lst}" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

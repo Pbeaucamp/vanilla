@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='common' type='bpm.gwt.workflow.commons.client.images.Images' />
+	<ui:with field='label' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	
+	<ui:style>
+		.lblAction {
+	       display: inline-block;
+		    font-weight: bold;
+		    margin: 8px 12px 3px;
+		    vertical-align: top;
+		    width: 75px;
+		}
+		
+		.btnToolbar {
+		    cursor: pointer;
+		    display: inline-block;
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		}
+		
+		.btnToolbar:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel">
+		<g:Label text="{label.FtpActions}" addStyleNames="{style.lblAction}"/>
+		<g:Image ui:field="btnAdd" resource="{common.ic_add_box_black_18dp}" title="{label.AddAction}" addStyleNames="{style.btnToolbar}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

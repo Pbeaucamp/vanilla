@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.lblMessage {
+			margin: 10px;
+		}
+	
+		.frame {
+			width: 540px;
+			height: 165px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Frame ui:field="frame" addStyleNames="{style.frame}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.es.dndserver.Application">
+         </run>
+      </application>
+   </extension>
+      <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.es.dndserver.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.dndserver.Perspective"
+            icon="src/bpm/es/dndserver/icons/dndo32.png"
+            id="bpm.es.dndserver.perspective"
+            name="BI Object Migration">
+            <description>Export and Import BI Objects to other Repositories</description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="bpm.es.dndserver.views.View"
+            icon="src/bpm/es/dndserver/icons/dndo16.png"
+            id="bpm.es.dndserver.view"
+            name="BI Object Migration">
+      </view>
+   </extension>
+
+</plugin>

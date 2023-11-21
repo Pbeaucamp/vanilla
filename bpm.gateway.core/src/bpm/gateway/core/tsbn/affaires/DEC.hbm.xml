@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.DEC" table="AFF_DECI">
+        <id name="idDec" type="java.lang.String" access="field">
+            <column name="IDDEC" />
+            <generator class="assigned" />
+        </id>
+        <list name="moy" inverse="false" table="MOY" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDDEC" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.MOY" />
+        </list>
+        <property name="idagtcre" type="java.lang.String">
+            <column name="IDAGTCRE" />
+        </property>
+        <property name="fctAgtCre" type="java.lang.String">
+            <column name="FCTAGTCRE" />
+        </property>
+        <property name="idagtann" type="java.lang.String">
+            <column name="IDAGTANN" />
+        </property>
+        <property name="datdec" type="java.util.Date">
+            <column name="DATDEC" />
+        </property>
+        <property name="typdec" type="java.lang.String" access="field">
+            <column name="TYPDEC" />
+        </property>
+        <property name="datann" type="java.util.Date">
+            <column name="DATANN" />
+        </property>
+        <property name="motann" type="java.lang.String" access="field">
+            <column name="MOTANN" />
+        </property>
+    </class>
+</hibernate-mapping>

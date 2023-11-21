@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.contentPanel {
+			width: 700px;
+			height: 500px;
+			display: flex;
+		}
+		.buttonPanel {
+			width: 40px;
+			height: 100%;
+			display: inline-block;
+			background: none repeat scroll 0 0 #CCCCCC;
+		}
+		.buttonPanel img {
+			margin:auto;
+			margin-top: 120px;
+			cursor: pointer;
+			display: block;
+		}
+		.sidePanel {
+			width: 330px;
+			height: 100%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.titles {
+			background: none repeat scroll 0 0 #CCCCCC;
+		    font-size: 16px;
+		    height: 40px;
+		    line-height: 34px;
+		    text-align: center;
+		    width: 100%;
+		}
+		.gridPanel {
+			width: 330px;
+			height: 450px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}" ui:field="mainPanel">
+	
+		<g:HTMLPanel addStyleNames="{style.sidePanel}">
+			<g:Label text="{label.AvailableColumns}" addStyleNames="{style.titles}"></g:Label>
+			<g:SimplePanel ui:field="availableGridPanel" addStyleNames="{style.gridPanel}"></g:SimplePanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.buttonPanel}">
+			<g:Image ui:field="addColumns" resource="{resources.add_24}" title="{label.Add}"></g:Image>
+			<g:Image ui:field="removeColumns" resource="{resources.delete_24}" title="{label.RemoveField}"></g:Image>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.sidePanel}">
+			<g:Label text="{label.SelectedColumns}" addStyleNames="{style.titles}"></g:Label>
+			<g:SimplePanel ui:field="selectedGridPanel" addStyleNames="{style.gridPanel}"></g:SimplePanel>
+		</g:HTMLPanel>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

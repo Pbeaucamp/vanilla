@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.panels.StackHeader.MyStyle">
+		.toolbar {
+			height: 40px;
+		    overflow: hidden;
+		    border-top: 1px solid #D3D3D3;
+		}
+		
+		.toolbarPanel {
+			border-radius: 3px 3px 0px 0px;
+		    box-shadow: 0 0 1px #696969 inset;
+		    height: 50px;
+		    text-align: center;
+		}
+		
+		.btnToolbar {
+		    height: 30px !important;
+		    width: 30px !important;
+		    padding: 10px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.alignRight {
+			float: right;
+		}
+		
+		.txtTitle {
+		    display: inline-block;
+		    font-size: 17px;
+		    line-height: 50px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel  ui:field="toolbarPanel" styleName="{style.toolbarPanel}">
+			<g:Label ui:field="txtTitle" addStyleNames="{style.txtTitle}"/>
+			<g:Image ui:field="imgCollapse" title="{label.Collapse}" resource="{commons.ic_btn_sidebar_right_expand}" addStyleNames="{style.btnToolbar},{style.alignRight}"/>		
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

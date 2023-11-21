@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.viewer.fmdtdriller.dialog.DisplayRowDialog.MyStyle">		
+	.contentPanel {
+		width: 600px;
+		height: 400px;
+	}
+	
+	.contentGrill {
+		width: 550px;
+		height:350px;
+		margin:25px;
+		overflow:auto;	
+	}
+	
+	.columnName{
+		font-weight: bold;
+	}
+	
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:SimplePanel ui:field="dataRowField" addStyleNames="{style.contentGrill}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

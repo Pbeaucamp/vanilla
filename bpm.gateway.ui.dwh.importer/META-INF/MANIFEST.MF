@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.gateway.ui.dwh.importer
+Bundle-SymbolicName: bpm.gateway.ui.dwh.importer;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.gateway.ui.dwh.importer.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.model.converter;bundle-version="1.0.0",
+ bpm.gateway.core;bundle-version="3.1.0",
+ bpm.vanilla.platform.core;bundle-version="4.1.0",
+ bpm.dwhdesigner.api;bundle-version="3.4.0",
+ bpm.repository.ui;bundle-version="4.2.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: bpm.gateway.ui

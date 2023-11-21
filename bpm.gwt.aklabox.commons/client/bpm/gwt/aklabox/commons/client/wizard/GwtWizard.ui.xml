@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.aklabox.commons.client.wizard.GwtWizard.MyStyle">
+		.panelWizard {
+
+		}
+		
+		.disabled {
+		    background: #D3D3D3 !important;
+		    border: 0 none !important;
+		    color: #FFFFFF !important;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:SimplePanel ui:field="panelWizard" addStyleNames="{style.panelWizard}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

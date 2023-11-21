@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.variablePanel {
+		    background: none repeat scroll 0 0 #D3D3D3;
+		    border: 1px solid #D3D3D3;
+		    box-shadow: 1px 1px 5px 0 #D3D3D3;
+		    cursor: move;
+		    height: 40px;
+		    line-height: 40px;
+		    margin: 5px;
+		    text-align: center;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="panelVariable" addStyleNames="{style.variablePanel}">
+		<g:Label ui:field="lblVariable" />
+	</g:FocusPanel>
+</ui:UiBinder> 

@@ -1,0 +1,98 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	
+	<ui:style>
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 98%;
+		}
+		
+		.txtArea {
+	        min-width: literal("calc(98% - 50px)");
+			min-width: literal("-moz-calc(98% - 50px)");
+			min-width: literal("-webkit-calc(98% - 50px)");
+			min-width: literal("-o-calc(98% - 50px)");
+	        max-width: literal("calc(98% - 50px)");
+			max-width: literal("-moz-calc(98% - 50px)");
+			max-width: literal("-webkit-calc(98% - 50px)");
+			max-width: literal("-o-calc(98% - 50px)");
+		}
+		
+		.txt:FOCUS, txtArea:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 60%;
+			
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+			width: 98%;
+		}
+
+		.btnPanel {
+			width: 98%;
+			text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	    <my:TextHolderBox ui:field="txtUrl" placeHolder="{labels.Url}" addStyleNames="{style.txt}"/>
+	    <my:TextHolderBox ui:field="txtOrg" placeHolder="{labels.Org}" addStyleNames="{style.txt}"/>
+	    <my:TextHolderBox ui:field="txtApiKey" placeHolder="{labels.ApiKey}" addStyleNames="{style.txt}"/>
+	    <g:SimplePanel ui:field="panelBtn" addStyleNames="{style.btnPanel}">
+	    	<g:Button ui:field="btnLoad" text="{labels.LoadPackages}" addStyleNames="{style.btn}"/>
+	    </g:SimplePanel>
+	    <my:TextHolderBox ui:field="txtSelectedDataset" placeHolder="{labels.SelectedDataset}" enabled="false" addStyleNames="{style.txt}"/>
+	    <my:TextHolderBox ui:field="txtSelectedResource" placeHolder="{labels.SelectedResource}" enabled="false" addStyleNames="{style.txt}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

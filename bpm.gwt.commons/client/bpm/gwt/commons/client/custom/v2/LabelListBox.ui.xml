@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:style type="bpm.gwt.commons.client.custom.v2.LabelListBox.MyStyle">
+		.label {
+	    	margin-top: 10px;
+		}
+		
+		.panelText {
+			margin-left: 10px;
+		}
+		
+		.required {
+			color: red;
+		}
+		
+		.text {
+			width: 100%;
+			padding: 3px 4px;
+		}
+		
+		.help {
+			margin-left: 10px;
+		    margin-top: 1px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="flex">
+		<g:HTMLPanel ui:field="panelLabel" addStyleNames="flex">
+			<g:Label ui:field="label" addStyleNames="{style.label}"/>
+			<g:Label ui:field="required" text="*" visible="false" addStyleNames="{style.required}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelText" addStyleNames="{style.panelText}, flexOne">
+			<c:CustomListBox ui:field="listBox" addStyleNames="{style.text}"/>
+		</g:SimplePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

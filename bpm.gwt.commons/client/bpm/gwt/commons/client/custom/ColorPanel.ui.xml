@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.commons.client.custom.ColorPanel.MyStyle">
+		.lbl {
+		    display: inline-block;
+		    margin: 15px 10px;
+		    vertical-align: top;
+		}
+		
+		.panelColor {
+		    border: 1px solid #000000;
+		    cursor: pointer;
+		    display: inline-block;
+		    height: 20px;
+		    margin-top: 15px;
+		    width: 20px;
+		}
+		
+		.alignRight {
+	        float: right;
+			margin-right: 40px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lbl" addStyleNames="{style.lbl}"/>
+		<g:FocusPanel ui:field="panelColor" addStyleNames="{style.panelColor}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

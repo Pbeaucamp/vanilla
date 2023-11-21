@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.aklabox.commons.client.customs">
+	
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='res' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.title{
+			font-size: 12px;
+			margin-top: 15px;
+			color: #000;
+			font-weight: bold;
+		}
+		
+		.panel{
+			background: #dbf3ff;
+			padding: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+		<g:HTMLPanel ui:field="panelOptions">
+			<g:Label text="{i18n.ChooseAFile}: " styleName="{style.title}" />
+			<my:CustomButton ui:field="btnChooseFile" text="{i18n.FileSelection}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelUpload"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

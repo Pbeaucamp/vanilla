@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sharedResources>
+  <vanillaServer>
+    <name>vanillaPlatform</name>
+    <description></description>
+    <vanillaConnection>
+      <url>http://localhost:8080/vanilla</url>
+      <login>system</login>
+      <password>system</password>
+    </vanillaConnection>
+  </vanillaServer>
+ 
+  <repositoryServer>
+    <name>repository</name>
+    <description></description>
+    <repositoryConnection>
+      <url>http://localhost:8080/BIRepository</url>
+      <login>system</login>
+      <password>system</password>
+      <groupId>-1</groupId>
+    </repositoryConnection>
+  </repositoryServer>
+  <gatewayServer>
+    <name>VanillaGatewayRuntime</name>
+    <description></description>
+    <gatewayConnection>
+      <url>http://localhost:7171/VanillaRuntime</url>
+      <login>system</login>
+      <password>system</password>
+    </gatewayConnection>
+  </gatewayServer>
+ 
+  <variable>
+    <name>PREFERENCES_SERVER</name>
+    <value>http://localhost:8080/vanilla</value>
+    <dataType>0</dataType>
+    <scope>0</scope>
+  </variable>
+  <variable>
+    <name>BIGATEWAY_HOME</name>
+    <value>/C:/developpement/export/BiGateway/BiGateway//</value>
+    <dataType>0</dataType>
+    <scope>0</scope>
+  </variable>
+  <variable>
+    <name>GATEWAY_TEMP</name>
+    <value>/C:/developpement/export/BiGateway/BiGateway//temp/</value>
+    <dataType>0</dataType>
+    <scope>0</scope>
+  </variable>
+</sharedResources>

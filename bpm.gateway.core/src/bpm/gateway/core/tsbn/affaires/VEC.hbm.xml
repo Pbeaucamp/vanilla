@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.VEC" table="AFF_VEC">
+        <id name="idVec" type="java.lang.String" access="field">
+            <column name="IDVEC" />
+            <generator class="assigned" />
+        </id>
+        <property name="libvec" type="java.lang.String" access="field">
+            <column name="LIBVEC" />
+        </property>
+        <property name="typmob" type="java.lang.String" access="field">
+            <column name="TYPMOB" />
+        </property>
+        <property name="typvec" type="java.lang.String" access="field">
+            <column name="TYPVEC" />
+        </property>
+        <property name="secinterv" type="java.lang.String" access="field">
+            <column name="SECINTERV" />
+        </property>
+    </class>
+</hibernate-mapping>

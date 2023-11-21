@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.ACT" table="AFF_ACT">
+        <id name="idAct" type="java.lang.String" access="field">
+            <column name="IDACT" />
+            <generator class="assigned" />
+        </id>
+        <list name="epiobs" inverse="false" table="EPIOBS" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDACT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.EPIOBS" />
+        </list>
+        <list name="pecobs" inverse="false" table="PECOBS" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDACT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.PECOBS" />
+        </list>
+        <list name="decref" inverse="false" table="DECREF" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDACT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.DECREF" />
+        </list>
+        <list name="moyref" inverse="false" table="MOYREF" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDACT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.MOYREF" />
+        </list>
+        <list name="etabref" inverse="false" table="ETABREF" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDACT" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.ETABREF" />
+        </list>
+        <property name="datdebact" type="java.util.Date">
+            <column name="DATDEBACT" />
+        </property>
+        <property name="datfinact" type="java.util.Date">
+            <column name="DATFINACT" />
+        </property>
+        <property name="typact" type="java.lang.String" access="field">
+            <column name="TYPACT" />
+        </property>
+        <property name="tpstelin" type="java.math.BigDecimal" access="field">
+            <column name="TPSTELIN" />
+        </property>
+        <property name="tpstelout" type="java.math.BigDecimal" access="field">
+            <column name="TPSTELOUT" />
+        </property>
+        <property name="tpsradin" type="java.math.BigDecimal" access="field">
+            <column name="TPSRADIN" />
+        </property>
+        <property name="tpsradout" type="java.math.BigDecimal" access="field">
+            <column name="TPSRADOUT" />
+        </property>
+    </class>
+</hibernate-mapping>

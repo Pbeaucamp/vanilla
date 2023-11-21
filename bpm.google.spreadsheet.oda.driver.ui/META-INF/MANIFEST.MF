@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.google.spreadsheet.oda.driver.ui
+Bundle-SymbolicName: bpm.google.spreadsheet.oda.driver.ui; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.google.spreadsheet.oda.driver.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui,
+ bpm.google.spreadsheet.oda.driver.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: jars/activation.jar,
+ jars/gdata-client-1.0.jar,
+ jars/gdata-client-meta-1.0.jar,
+ jars/gdata-core-1.0.jar,
+ jars/gdata-media-1.0.jar,
+ jars/mail.jar,
+ jars/servlet-api.jar,
+ jars/gdata-spreadsheet-3.0.jar,
+ jars/gdata-spreadsheet-meta-3.0.jar,
+ .,
+ jars/google-collect-1.0.jar,
+ jars/org.eclipse.nebula.widgets.pgroup_1.0.0.HEAD.jar
+Bundle-Vendor: BPM-Conseil

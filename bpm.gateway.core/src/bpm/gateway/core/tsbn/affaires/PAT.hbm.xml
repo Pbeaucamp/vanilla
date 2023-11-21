@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.PAT" table="AFF_PAT">
+        <id name="idPat" type="java.lang.String" access="field">
+            <column name="IDPAT" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="java.lang.String" access="field">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String" access="field">
+            <column name="PRENOM" />
+        </property>
+        <property name="numpat" type="java.lang.String" access="field">
+            <column name="NUMPAT" />
+        </property>
+        <property name="sexe" type="java.lang.String" access="field">
+            <column name="SEXE" />
+        </property>
+        <property name="datnaiss" type="java.util.Date">
+            <column name="DATNAISS" />
+        </property>
+        <property name="orgref" type="java.lang.String" access="field">
+            <column name="ORGREF" />
+        </property>
+        <property name="medtrait" type="java.lang.String" access="field">
+            <column name="MEDTRAIT" />
+        </property>
+        <property name="medtrtkey" type="java.lang.String" access="field">
+            <column name="MEDTRTKEY" />
+        </property>
+        <property name="age" type="java.lang.String" access="field">
+            <column name="AGE" />
+        </property>
+        <property name="uag" type="java.lang.String" access="field">
+            <column name="UAG" />
+        </property>
+    </class>
+</hibernate-mapping>

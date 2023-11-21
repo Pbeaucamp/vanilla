@@ -1,0 +1,49 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.lblFormat {
+    		float: left;
+    		margin-top: 2px;
+		}
+
+		.lstFormat {
+			margin-left: 10px;
+    		width: 280px;
+		}
+		
+		.line {
+			margin: 7.5px;
+		}
+
+		.panelCheckboxs {
+			background: none repeat scroll 0 0 #D3D3D3;
+			border: 1px solid #808080;
+			height: 180px;
+			margin: 10px;
+			overflow: auto;
+		}
+
+		.lblTips {
+    		font-size: 10px;
+    		margin: 5px;
+		}
+		
+		.check {
+	    	margin-left: 20px;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HTMLPanel styleName="{style.line}">
+			<g:Label addStyleNames="{style.lblFormat}">Format</g:Label>
+			<g:ListBox ui:field="lstFormat"  addStyleNames="{style.lstFormat}" />
+		</g:HTMLPanel>
+		<g:CheckBox ui:field="checkLandscape" text="{label.Landscape}" addStyleNames="{style.check}"/>
+		<g:HTMLPanel ui:field="panelCheckboxs" styleName="{style.panelCheckboxs}" />
+		<g:Label ui:field="lblTips" text="{label.TipsDashboard}" addStyleNames="{style.lblTips}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

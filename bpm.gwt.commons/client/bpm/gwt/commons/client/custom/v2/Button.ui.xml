@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.button {
+			display: flex;
+			justify-content: center;
+			align-items: center; 
+		}
+		
+		.inner {
+			align-self: center;
+		}
+		
+		.imagePanel {
+			height: 100%;
+			white-space: nowrap;
+		}
+
+		.helper {
+		    display: inline-block;
+		    height: 100%;
+		    vertical-align: middle;
+		}
+		
+		.img {
+			width: 32px;
+			height: 32px;
+			
+		    vertical-align: middle;
+		    max-height: 32px;
+		    max-width: 32px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="button" addStyleNames="{style.button}, inline">
+		<g:HTMLPanel addStyleNames="{style.inner}">
+			<g:HTMLPanel addStyleNames="{style.imagePanel}, inline, vertical">
+    			<span class="helper"/>
+				<g:Image ui:field="image" visible="false" addStyleNames="{style.img}"/>
+			</g:HTMLPanel>
+			<g:Label ui:field="label" addStyleNames="inline, vertical"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

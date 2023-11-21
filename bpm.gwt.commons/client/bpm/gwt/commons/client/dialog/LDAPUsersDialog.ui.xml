@@ -1,0 +1,106 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style type="bpm.gwt.commons.client.dialog.LDAPUsersDialog.MyStyle">
+	.important {
+		width: 800px;
+		height: 450px;
+	}
+	
+	.panel {
+		width: 100px;
+		height: 100px;
+	}
+	
+	.scrollPanel {
+		width: 800px;
+		height: 400px;
+	}
+	
+	.capPanel {
+		width: 700px;
+		height: 1370px;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+	
+	.baseStyle {
+		width: 700px;
+	}
+	
+	.panelButton {
+		height: 50px;
+		width: 200px;
+	}
+	
+	.btn {
+		background: none repeat scroll 0 0 #444444 !important;
+		border: 1px solid #555555 !important;
+		color: #FFFFFF;
+		cursor: pointer;
+		height: 40px;
+		margin-top: 28px;
+		width: 150px;
+		-webkit-transition: all 1s;
+		-moz-transition: all 1s;
+		transition: all 1s;
+		float: right;
+		margin-left: 0;
+		margin-right: 20px;
+	}
+	
+	.btn:HOVER {
+		background: none repeat scroll 0 0 #EAEAEA !important;
+		color: #000000;
+	}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.important}">
+		<g:ScrollPanel ui:field="scrollPanel" addStyleNames="{style.scrollPanel}">
+			<g:CaptionPanel ui:field="captionPanel" captionText="Authentication"
+				addStyleNames="{style.capPanel}">
+				<g:HTMLPanel>
+					<c:LabelTextBox ui:field="txtUrl" placeHolder="Url" />
+					<c:LabelTextBox ui:field="txtUser" placeHolder="User" />
+					<c:LabelTextBox ui:field="txtPass" placeHolder="Password" />
+
+
+					<g:VerticalPanel>
+						<g:HorizontalPanel>
+							<c:LabelTextBox ui:field="txtBase" placeHolder="Base" />
+							<g:HTMLPanel ui:field="addPanelButton" />
+							<g:HTMLPanel ui:field="removePanelButton" />
+						</g:HorizontalPanel>
+
+						<g:ListBox ui:field="lstBases" addStyleNames="{style.baseStyle}"/>
+
+					</g:VerticalPanel>
+
+					<c:LabelTextBox ui:field="txtClass" placeHolder="Class" />
+					<c:LabelTextBox ui:field="txtFilter" placeHolder="Filter" />
+					<c:LabelTextBox ui:field="txtGrp" placeHolder="Group" />
+
+					<g:HTMLPanel ui:field="radioButtons" />
+
+					<c:LabelTextBox ui:field="chkUrl" placeHolder="Url" />
+					<c:LabelTextBox ui:field="chkUser" placeHolder="User" />
+					<c:LabelTextBox ui:field="chkPass" placeHolder="Password" />
+
+					<g:CaptionPanel captionText="LDAP User">
+						<g:HTMLPanel>
+							<c:LabelTextBox ui:field="txtID" placeHolder="ID" />
+							<c:LabelTextBox ui:field="txtEmail" placeHolder="Email" />
+							<c:LabelTextBox ui:field="txtName" placeHolder="Name" />
+							<c:LabelTextBox ui:field="txtFirstName"
+								placeHolder="FirstName" />
+							<c:LabelTextBox ui:field="txtAdr" placeHolder="Address" />
+							<c:LabelTextBox ui:field="txtPhone" placeHolder="Phone" />
+						</g:HTMLPanel>
+					</g:CaptionPanel>
+				</g:HTMLPanel>
+			</g:CaptionPanel>
+		</g:ScrollPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

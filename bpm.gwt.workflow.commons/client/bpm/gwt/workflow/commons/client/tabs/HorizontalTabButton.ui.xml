@@ -1,0 +1,85 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+		
+	<ui:style type="bpm.gwt.workflow.commons.client.tabs.HorizontalTabButton.MyStyle">
+		.btnExpand {
+	       background: none repeat scroll 0 0 #444444;
+		    border: 1px solid #555555;
+		    border-radius: 3px 3px 3px 3px;
+		    color: #FFFFFF;
+		    height: 40px;
+		    margin: 0 0 5px;
+		    cursor: pointer;
+		}
+		
+		.btnExpand:HOVER {
+		    background: none repeat scroll 0 0 #EAEAEA;
+		    border: 1px solid #555555;
+		    color: #000000;
+		    height: 40px;
+		    margin: 0 0 5px;
+		}
+		
+		.btnExpandSelected {
+		    background: none repeat scroll 0 0 #EAEAEA;
+		    border: 1px solid #555555;
+		    color: #000000;
+		    height: 40px;
+		    margin: 0 0 5px;
+		}
+		
+		.btnCollapse {
+		    color: #FFFFFF;
+		    cursor: pointer;
+		    height: 40px;
+		    padding: 4px 0;
+		    vertical-align: top;
+		    width: 100%;
+		}
+		
+		.btnCollapse:HOVER {
+			background-color: white !important;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnCollapseSelected {
+			background-color: white !important;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.text {
+	        display: inline-block;
+		    line-height: normal;
+		    vertical-align: top;
+		    margin-top: 11px;
+	        width: literal("calc(100% - 30px)");
+			width: literal("-moz-calc(100% - 30px)");
+			width: literal("-webkit-calc(100% - 30px)");
+			width: literal("-o-calc(100% - 30px)");
+			white-space: nowrap;
+    		overflow:hidden !important;
+    		text-overflow: ellipsis;
+		}
+		
+		.icon {
+	
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focusPanel" addStyleNames="{style.btnExpand}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblTitle" addStyleNames="{style.text}"/>
+			<g:Image ui:field="icon" addStyleNames="{style.icon}"/>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

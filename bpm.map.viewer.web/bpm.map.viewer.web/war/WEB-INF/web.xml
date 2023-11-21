@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+ 
+  
+  <!-- Default page to serve -->
+  	<welcome-file-list>
+  	  <welcome-file>Bpm_map_viewer_web.html</welcome-file>
+  	</welcome-file-list>
+  
+  	<servlet>
+		<servlet-name>ConnectionServices</servlet-name>
+		<servlet-class>bpm.map.viewer.web.server.ConnectionServicesImpl</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ConnectionServices</servlet-name>
+		<url-pattern>/bpm_map_viewer_web/ConnectionServices</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>cssHelper</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cssHelper</servlet-name>
+		<url-pattern>/cssHelper</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/bpm_map_viewer_web/loginService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>commonService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commonService</servlet-name>
+		<url-pattern>/bpm_map_viewer_web/commonService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UploadFileServlet</servlet-name>
+		<servlet-class>bpm.map.viewer.web.server.UploadIcon</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadFileServlet</servlet-name>
+		<url-pattern>/bpm_map_viewer_web/UploadFileServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MapViewerService</servlet-name>
+		<servlet-class>bpm.map.viewer.web.server.MapViewerServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MapViewerService</servlet-name>
+		<url-pattern>/bpm_map_viewer_web/MapViewerService</url-pattern>
+	</servlet-mapping>
+
+</web-app>

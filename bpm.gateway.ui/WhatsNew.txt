@@ -1,0 +1,290 @@
+*********************************
+* BiGateway v. 3.2.0
+*********************************
+new features : 
+ - a driver ODA to read the Datas defining zones within a vanilla FusionMapObject registered from Norparena
+ - a new XLS output allowing to build multiple folder in one step on the same XLS file output
+ - The GID step is back, it can contains SqlInput, Selection, Order, SimpleMapper steps
+ - the rebuilding Model have been improved to avoid issues on the mapping disappearences on some models
+ - The DataBase migration wizard allow to use XLS Files as output
+ - We can use DataWareHouse designer views stored on the Repository as DataBase server
+
+bug fixed: 
+ - loading model issues has been fixed
+ - ODA SpreadSheet driver cache issues have been solved
+
+
+*********************************
+* BiGateway v. 3.1.0.4
+*********************************
+new features: 
+ - Validation  Regex transformation
+ - FileFolderReader to read multiples files from the same folder in one step
+ - for BIrepository Axis version
+
+bug fixed : 
+ - lookup mappings
+ - SQLLookup non mtahcoing rows handler
+ - surrogate Key step locking when the Row chunk size have been fixed
+
+
+
+
+*********************************
+* BiGateway v. 3.0.1
+*********************************
+bug fixed : 
+ - InsertOrUpdate rnutimes issues have been fixed
+
+
+******************************************
+* Bi Gateway V.2.2.3
+*******************************************
+new features: 
+ - When creating a calculation a Button to check the formula's Syntax have 
+
+been added
+ - SQLInsert, SCD, FileInputCSV can have an error output to store the rows 
+
+that cannot be perfomed
+ - SCD output stream contains the datas that have been created or updated
+ - FileInputVCL/FileOutputVCL to use file with fixed length columns(all 
+
+columns can have a different length)
+ - File steps can now set the used charset
+ - Dimension step to create a hierarchy from a stream
+ - VanillaCreateUser allow to perform an Updae on an exising user
+ - FilerDimension sep  allow to separate Rows maching to Dimension from one 
+
+Sream
+ - Comments can now be edied from he Properties Folder
+
+
+bug fixed:
+ - SCD runtime have been fixed
+ - OLAPCube design have been fixed
+ - XLSOutput browsing have been fixed, the datas are no more cached
+ - Calculation boxes error because of the string encoding have been fixed
+ - error on Calc ultion now dump the formula generating the error to allow
+a better way to fix the 
+ - FMDT Input runtime and design has been fixed
+ - 
+******************************************
+* Bi Gateway V.2.2.2.2
+*******************************************
+new features :
+
+bug fixed:
+ - SQLScript is fixed, this step is now blocked until its ended
+ - OLAPCube dimension extraction is fixed in the designer(no more error and 
+
+empty Level values)
+ - 
+******************************************
+* Bi Gateway V.2.2.1.2
+*******************************************
+new features :
+ - DataBrowser available on OlapDimension
+ - DataBrowser available on OdaInput
+ - XMLOutput distinctValues browser implemented
+ - new OutputStep SimpleOUtput : only return datas from incoming stream 
+
+(used by SubtRansformation steps to define the step that will provide datas 
+
+in the main stream)
+ - OdaInput Wizard have been simplified if the ODA Driver support only one 
+
+DataSet type
+ 
+
+bug fixed:
+ - OdaInput : on th e Driver type selection Page, changing type will change 
+
+the Defintion Page
+ - SubTransformation : works now without incoming stream
+
+
+******************************************
+* Bi Gateway V.2.2.1.1
+*******************************************
+new features:
+ - SQLLookup
+ - SurrogateKey
+ - Subtransformation DataStream inserted in main stream
+ - TopX
+ - OlapDimensionExtractor
+ - OdaInput (Freemetada, GoogleSpreadsheet, Google Table, InlineDatas)
+ - LDAP Input support parameters from InputSTream
+ - LDapMultipleMember
+ - VanillaCreateUser : create a Vanilla User
+
+
+
+bug fixed:
+ - Denormalization : no more error at runtime
+ - select distinct : fixed
+ - Calculation : parsing error when new Column of type String the column 
+
+name was not replaced by its value
+
+
+******************************************
+* Bi Gateway V.2.2.1
+*******************************************
+new features : 
+ - distinct Values on each fields on SQL Input/Output transformation
+
+bug fixed:
+ - using SQLScript do not give a blank workspace when loading a Gateway 
+
+Model
+ - InsertOrUpdate check the batch content if you have more than one row 
+
+with the same key in the incoming Stream
+ - Lookup : secondary stream datas are put in the output
+ - SimpleMapper : naming problem are solved
+
+******************************************
+* Bi Gateway V.2.2.0.12
+*******************************************
+bug fixed : 
+ - renaming when loading BIG model
+ - InsertOrUpdate when the input contains one more than one row with the 
+
+same Keys Fields values
+
+******************************************
+* Bi Gateway V.2.2.0.11
+*******************************************
+new feature : 
+ - DataBAse connection can have an empty port -required for teradata)
+
+bug fixed : 
+ - QueryDesigner keep table shcema names in the query
+ - QueryDesigner load columns only when using a table in a query, this save 
+
+some loading time on huge databases
+
+
+******************************************
+* Bi Gateway V.2.2.0.10
+******************************************
+bug fixed : 
+ - include the db2_licence_cc.jar to enable the DB2 access from JDBC
+ - FMDT Input : ui do not open error message anymore when going on the 
+
+OutputFields Tab
+
+know liitations : 
+ - SCD has not been writing for the new Engine architecture(do not use it)
+ - VanillaLDapSyncrho  has not been writing for the new Engine 
+
+architecture(do not use it)
+
+******************************************
+* Bi Gateway V.2.2.0.5
+******************************************
+bug fixed: 
+ - Mapping/Lookup : mixed some mappings datas
+ - CartesianProduct : in tsome cas, it did not perform any row
+
+
+******************************************
+* Bi Gateway V.2.2.0.4
+******************************************
+bug fixed : 
+ - Calculation box is fixed
+ - Stream element java classe are set to the right value on calculation 
+
+transformation instead of the generic java.lang.Object
+ - using Date fields (ie. class name = java.lang.Date) in calculation box 
+
+do not replace
+the Date by its String representation in the javascript script, it allow to 
+
+create columns using 
+JS Date function  (ex: assuming the Field currentDate is a java.lang.Date, 
+
+we can use,
+{$currentDate}.getUTCMonth() in the script definition)
+
+
+******************************************
+* Bi Gateway V.2.2.0.3
+******************************************
+new feature: 
+ - runtime Engine has been improved a lot, transformation are running 
+
+faster
+
+bug fixed : 
+ - Sort after Fiter have been fixed
+ - KPIOutput perform update button is checked if the property is set
+
+
+******************************************
+* Bi Gateway V.2.1.3
+******************************************
+new feature : 
+ - Olap Input : extract datas from a FASD cube in a RepositoryServer with 
+
+filter on a dimension
+ - Olap Output: insert datas into a FASD fact table
+
+bug fixed :
+ - SQLoutput : insertion problem when transtyping Float in Double have been 
+
+solved and Integer in Long
+
+******************************************
+* Bi Gateway V.2.1.2.1
+******************************************
+new feature : 
+ - KPI OUtput support to identify Association from their id
+ - KPI Output can now perform only insertion and/or updates
+ - KPI List load data's only the first time to improve the refresh, a 
+
+button have been added
+to reload the data's on demand
+ 
+
+bug fixed : 
+ - when Transformation use Buffer Files, the last pass is completed, no 
+
+more missins datas
+ - SimpleMapping Transformation support now the null values
+ - KPI output Update datas property is relaoded from model definition 
+ - KPI LIst CheckAll/uncheckAll is fixed
+
+
+
+
+******************************************
+* Bi Gateway V.2.1.1.1
+******************************************
+new features : 
+ - Migration Database XML support the tag <precision>false</precision> 
+to specify that the type do not need precision in SQL script
+ - KPIList have checkAll/uncheckAll buttons
+ - Vanilla user/group transfo that create a user and a group with the 
+
+specified name and put the user in the group (one group/user)
+ - Vanilla Ldap Synchro tranfo that import USer groups and link them 
+
+together from an LDAP server (the Vanilla's Preferences.war must be updated 
+
+to the 2.1.0 version oterwise, the users wont be affected to their groups)
+
+
+******************************************
+* Bi Gateway V.2.1.0
+******************************************
+new features : 
+ - DataBase Migration Wizard
+ - Helper for creating table using database conversion files
+ - a set of filter tools have been created in the KPIList properties View
+ - Freemetrics Server have their FreeMetrics password hidden
+
+******************************************
+* Bi Gateway V.2.0.2
+******************************************

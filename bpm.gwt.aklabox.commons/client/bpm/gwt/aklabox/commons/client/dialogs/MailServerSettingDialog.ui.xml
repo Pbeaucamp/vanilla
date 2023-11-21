@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 55px;
+		}
+		
+		.btnToolbar {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 41px !important;
+		    padding: 7px;
+		    width: 41px !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.gridPanel {
+			width: 900px;
+			height: 300px;
+		    position: relative;
+		}
+		.mainPanel {
+			height: 100%;
+			width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+	
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnAddServer" resource="{resources.ic_add_black_24dp}" title="Add Mail Server" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		
+		<g:SimplePanel ui:field="gridPanel" addStyleNames="{style.gridPanel}"/>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,61 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>		
+		.lstBox {
+			width: 245px;
+		}
+		
+		.marginBottom {
+			margin-bottom: 10px;
+		}
+		
+		.marginTop {
+			margin-top: 10px;
+		}
+		
+		.marginLeft {
+			margin-left: 10px;
+		}
+		
+		.margin {
+			margin: 10px;
+		}
+		
+		.docCss {
+			display: block;
+			margin-bottom: 10px;
+			margin-top: 3px;
+		}
+		
+		.txt {
+			width: 240px;
+		}
+		
+		.checkContrib {
+			display: block;
+		}
+		
+		.panelDate {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HTMLPanel addStyleNames="{style.margin}">
+			<g:RadioButton ui:field="newDocument" ui:name="radioVersion" text="{label.NewDocument}"/>
+			<g:TextBox ui:field="txtNewDocument" addStyleNames="{style.docCss}, {style.txt}"/>
+			<g:RadioButton ui:field="addVersion" ui:name="radioVersion" text="{label.AddVersion}" addStyleNames="{style.marginTop}"/>
+			<g:ListBox ui:field="lstDocuments" addStyleNames="{style.lstBox}, {style.docCss}"/>
+			<g:CheckBox ui:field="checkBoxContribution" text="{label.AllowContribution}" addStyleNames="{style.marginTop}, {style.checkContrib}"/>
+			<g:HTMLPanel addStyleNames="{style.panelDate}">
+				<g:CheckBox ui:field="checkUsePeremptionDate" text="{label.UsePeremptionDate}" />
+				<g:SimplePanel ui:field="datePanel"/>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelGridGroup" addStyleNames="{style.marginBottom}"/>
+			<g:ListBox ui:field="lstFormat" addStyleNames="{style.lstBox}, {style.marginTop}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

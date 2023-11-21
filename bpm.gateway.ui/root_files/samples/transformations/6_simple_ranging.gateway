@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>46</positionX>
+    <positionY>46</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output Customers Ranging Credit</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>630</positionX>
+    <positionY>47</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\6_simple_ranging\customer_ranging_credit_limit.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+      <fieldName>credit-type</fieldName>
+    </fields>
+  </fileOutputXML>
+  <rangingTransformation>
+    <name>new RangingTransformation</name>
+    <description></description>
+    <positionX>318</positionX>
+    <positionY>48</positionY>
+    <type>0</type>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new RangingTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <outputFieldName>credit-type</outputFieldName>
+    <targetIndex>12</targetIndex>
+    <range>
+      <firstValue>0</firstValue>
+      <secondValue>50000</secondValue>
+      <intervalType>0</intervalType>
+      <output>level_1</output>
+    </range>
+    <range>
+      <firstValue>50001</firstValue>
+      <secondValue>75000</secondValue>
+      <intervalType>0</intervalType>
+      <output>level_2</output>
+    </range>
+    <range>
+      <firstValue>75001</firstValue>
+      <secondValue>100000</secondValue>
+      <intervalType>0</intervalType>
+      <output>level_3</output>
+    </range>
+    <range>
+      <firstValue>x</firstValue>
+      <secondValue>x</secondValue>
+      <intervalType>4</intervalType>
+      <output>X</output>
+    </range>
+  </rangingTransformation>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>new RangingTransformation</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>new RangingTransformation</from>
+    <to>XML Output Customers Ranging Credit</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

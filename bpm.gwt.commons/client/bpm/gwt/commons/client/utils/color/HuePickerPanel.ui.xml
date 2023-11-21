@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:com.google.gwt.canvas.client">
+	
+	<ui:style>
+		.mainPanel {
+		    display: inline-block;
+		    height: 150px;
+		    overflow: hidden;
+		    width: 30px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<c:Canvas ui:field="canvas"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

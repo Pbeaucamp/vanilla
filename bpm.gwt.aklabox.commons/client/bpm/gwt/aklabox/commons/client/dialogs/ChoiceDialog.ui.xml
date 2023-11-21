@@ -1,0 +1,138 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.aklabox.commons.client.dialogs.ChoiceDialog.MyStyle">
+		
+		.panel{
+			font-size: 1em;
+			width: 600px;
+			height: 160px;
+		}
+		
+		.img{
+			width: 60px;
+			height: 60px;
+			padding: 10px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		
+		.img:HOVER{
+			background-color: #ddd;
+			border-radius: 3px;
+		}
+		
+		.lblTitle{
+			font-size: 14px;
+			text-align: center;
+			display: block;
+			vertical-align: middle;
+		}
+		
+		.lblChoice{
+			font-size: 14px;
+			text-align: center;
+			display: inline-block;
+			line-height: normal;
+			vertical-align: middle;
+		}
+		
+		.col6{
+			width: 48%;
+			display: inline-block;
+			position: relative;
+			height: 100%;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		.col4{
+			width: 32%;
+			display: inline-block;
+			position: relative;
+			height: 100%;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		.col3{
+			width: 24%;
+			display: inline-block;
+			position: relative;
+			height: 100%;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		.choicePanel{
+			display: block;
+			width: 100%;
+			height: literal("calc(100% - 40px)");
+		}
+		
+		.optionPanel{
+			display: block;
+			text-align: center;
+			width: 100%;
+			height: 40px;
+		}	
+		
+		.regularTextBox {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			width: 90%;
+			padding: 5px !important;
+			border-radius: 0px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+		}
+		
+		.lst{
+			width: 200px;
+			margin-left: 20px;
+		}
+		
+		.lblPanel{
+			height: 50px;
+		    line-height: 50px;
+		    padding: 0 10px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="main" addStyleNames="{style.panel}">
+		<g:HTMLPanel addStyleNames="{style.choicePanel}">
+			<g:Label ui:field="lblTitle" addStyleNames="{style.lblTitle}"/>
+			<g:HTMLPanel ui:field="panelChoice1">
+				<g:Image ui:field="imgChoice1" addStyleNames="{style.img}"/>
+		   		<g:SimplePanel addStyleNames="{style.lblPanel}">
+					<g:Label ui:field="lblChoice1" addStyleNames="{style.lblChoice}"/>
+				</g:SimplePanel>
+			</g:HTMLPanel>
+		    <g:HTMLPanel ui:field="panelChoice2">
+				<g:Image ui:field="imgChoice2" addStyleNames="{style.img}"/>
+				<g:SimplePanel addStyleNames="{style.lblPanel}">
+					<g:Label ui:field="lblChoice2" addStyleNames="{style.lblChoice}"/>
+				</g:SimplePanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelChoice3">
+				<g:Image ui:field="imgChoice3" addStyleNames="{style.img}"/>
+		   			<g:SimplePanel addStyleNames="{style.lblPanel}">
+					<g:Label ui:field="lblChoice3" addStyleNames="{style.lblChoice}"/>
+				</g:SimplePanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelChoice4">
+				<g:Image ui:field="imgChoice4" addStyleNames="{style.img}"/>
+		   			<g:SimplePanel addStyleNames="{style.lblPanel}">
+					<g:Label ui:field="lblChoice4" addStyleNames="{style.lblChoice}"/>
+				</g:SimplePanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelOption" addStyleNames="{style.optionPanel}">
+			<g:ListBox ui:field="lstOption" addStyleNames="{style.lst} {style.regularTextBox}"/>
+		</g:HTMLPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

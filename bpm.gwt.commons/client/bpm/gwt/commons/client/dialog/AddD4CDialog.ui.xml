@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:p="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.gwt.commons.client.dialog.AddD4CDialog.MyStyle">
+		.mainPanel {
+			width: 600px;
+		}
+		
+		.overflow {
+			overflow: auto;
+		}
+		
+		.grid {
+			height: 250px;
+		}
+		
+		.maxHeight {
+			height: 525px;
+		}
+		
+		.panelBtn {
+			text-align: center;
+		}
+		
+		.btn {
+			margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<my:LabelTextBox ui:field="txtName" label="{labels.ServerName}"/>
+		<my:LabelTextBox ui:field="txtUrl" label="{labels.Url}"/>
+		<my:LabelTextBox ui:field="txtLogin" label="{labels.Login}" visible="false"/>
+		<my:LabelTextBox ui:field="txtPassword" label="{labels.Password}" password="true" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

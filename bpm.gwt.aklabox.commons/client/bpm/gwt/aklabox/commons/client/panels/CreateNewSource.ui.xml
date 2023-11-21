@@ -1,0 +1,116 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style type='bpm.gwt.aklabox.commons.client.panels.CreateNewSource.MyStyle'>
+		.fieldTitle{
+			color: #3b99cb;
+			font-weight: bold;
+		}
+		.content{			
+			margin-left:20px;
+		}
+		
+		.fields{
+			display: inline-block;
+		}
+		
+		.lbl{
+			display: inline-block;
+			width: 180px;
+			margin-lef:20px;
+		}
+		
+		.lst{
+			background-color: #f7f8f8;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			color: #888;
+			-webkit-box-shadow: inset 0 0 20px -3px rgba(0, 0, 0, 0.2);
+			box-shadow: inset 0 0 20px -3px rgba(0, 0, 0, 0.2);
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;		
+			width: 200px !important;
+			padding:2px !important;
+			font-size: 15px;
+			transition: all 0.5s;
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			outline: 0;
+			display: inline-block;
+		}
+		
+		.lstPanel{
+			margin: 10px !important;
+			display: inline-block;
+		}
+		
+		.btnSave{
+			background: none repeat scroll 0 0 #444444;
+    		border: 1px solid #555555;
+    		color: #FFFFFF;
+    		height: 40px;
+    		margin: 20px 9% 20px 9%;
+    		width: 30%;
+		}
+		
+		.btnSave:hover {
+			background: none repeat scroll 0 0 #fff;
+			color: #888;
+		}	
+		
+		.btn{
+    		border: 1px solid #555555;
+    		height: 30px;
+    		margin: 20px;
+    		display: block;
+		}
+		
+		.btnSave:hover {
+			background: none repeat scroll 0 0 #fff;
+			color: #888;
+		}	
+		
+		.filterImage {
+			cursor: pointer;
+		}
+		
+		.bt{
+			width: 30px;
+			height: 30px;
+		}
+		.panel{
+			max-height: 600px;
+			overflow-y: auto; 
+		}
+		
+	</ui:style>
+	
+	<g:HTMLPanel addStyleNames="{style.panel}">
+			<g:HTMLPanel addStyleNames="{style.content}">
+				<g:Label text="{label.Name}" addStyleNames="{style.lbl}"/>
+				<g:TextBox ui:field="txtName" addStyleNames="{style.lst} {style.lstPanel}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.content}">
+				<g:Label text="{label.Drivers}" addStyleNames="{style.lbl}"/>
+				<g:SimplePanel ui:field="listDrivers" addStyleNames="{style.lstPanel}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.content}">
+				<g:Label text="URL" addStyleNames="{style.lbl}"/>
+				<g:TextBox ui:field="txtUrl" addStyleNames="{style.lst} {style.lstPanel}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.content}">
+				<g:Label text="{label.Login}" addStyleNames="{style.lbl}"/>
+				<g:PasswordTextBox ui:field="txtUser" addStyleNames="{style.lst} {style.lstPanel}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.content}">
+				<g:Label text="{label.Password}" addStyleNames="{style.lbl}"/>
+				<g:PasswordTextBox ui:field="txtPassword" addStyleNames="{style.lst} {style.lstPanel}"/>
+			</g:HTMLPanel>
+			
+		<g:Button text="{label.TestConnection}" ui:field="btnConnection" styleName="{style.btn}"/>
+		<g:Button text="{label.Save}" ui:field="btnSave" styleName="{style.btnSave}"/>
+		<g:Button text="{label.Cancel}" ui:field="btnCancel" styleName="{style.btnSave}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

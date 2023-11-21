@@ -1,0 +1,172 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		@external ascending, descending;
+		.commentField{
+			position: relative;
+			width: 90%;
+			min-height: 100px;
+			margin: 10px auto;
+		}
+
+		.imgProfilePic, .lblName, .lblDate{
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.imgProfilePic{
+			height: 50px;
+    		width: 50px;
+			-moz-border-radius: 50px;
+    		-webkit-border-radius: 50px;
+    		border-radius: 50px;
+			border: 5px solid #d8f3fe;
+			background: #fff;
+		}
+
+		.lblName{
+			color: #3b99cb;
+			font-size: 1.2em;
+		}
+
+		.lblDate{
+			color:  #b4b4b4;
+		}
+
+		.panel{
+			margin-top: 30px;
+		}
+		
+		.textArea{
+			width: 100%;
+			font-family: "Tahoma";
+			min-height: 50px;
+		}
+
+		.saveComment{
+			width: 100px;
+			background: #3b99cb;
+			margin-bottom: 10px;
+			height: 30px;
+			border: none;
+			color: #d8f3fe;
+			margin-right: 0px;
+			float: right;
+		}
+		
+		.saveComment:hover{
+			color: #444 !important;
+			border: 1px solid #e7e7e7 !important;
+		}
+	
+		.placeComment{
+			width: 100px;
+			background: #555555;
+			margin-bottom: 10px;
+			height: 40px;
+			border: none;
+			color: #d8f3fe;
+			margin-right: 0px;
+			float: left;
+		}
+		
+		.reference{
+			width: 100px;
+			background: #555555;
+			margin-bottom: 10px;
+			height: 40px;
+			border: none;
+			color: #d8f3fe;
+			margin-left: 10px;
+		}
+		
+		.placeComment:hover{
+			color: #444 !important;
+			border: 1px solid #e7e7e7 !important;
+		}
+	
+		.newCommentPanel {
+			transition: all 1s;
+			overflow-y: auto;
+			width: 90%;
+			margin-left:5%;
+			height: 250px;
+		}
+		.sortPanel {
+			-webkit-border-radius: 3px 3px 0 0;
+			-moz-border-radius: 3px 3px 0 0;
+			border-radius: 3px 3px 0 0;
+			box-shadow: 0 1px 0 #fff;
+			-webkit-box-shadow: 0 1px 0 #fff;
+			-moz-box-shadow: 0 1px 0 #fff;
+			background: #f5f5f5;
+			background: -moz-linear-gradient(top, #fcfcfc 0, #ececec 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(100%, #ececec));
+			background: -webkit-linear-gradient(top, #fcfcfc 0, #ececec 100%);
+			background: -o-linear-gradient(top, #fcfcfc 0, #ececec 100%);
+			background: -ms-linear-gradient(top, #fcfcfc 0, #ececec 100%);
+			background: linear-gradient(to bottom, #fcfcfc 0, #ececec 100%);
+			border-bottom: 1px solid #c1c1c1;
+			width: 90%;
+			margin-left: 5%;
+			text-align:center;
+			font-size: 14px;
+		}
+		.inline{
+			display: inline-block;
+			vertical-align: top;
+		}
+		.messageListHeader{
+			cursor: pointer;
+		}
+		.btnUserSort{
+			width: 18%;
+		}
+
+		.btnDateSort{
+			width: 18%;
+		}
+
+		.btnCommentSort{
+			width: 30%;
+		}
+		.btnPosition{
+			width: 11%;
+		}
+		.colImage{
+			width: 4%;
+		}
+		.colAction{
+			width: 8%;
+		}
+		.ascending:after{
+			content: "\25BC";
+		}
+		.descending:after{
+			content: "\25B2" !important;
+		}
+		.refDoc{
+			display:inline;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+	    <div class="{style.sortPanel}">
+	        <g:Label text="" addStyleNames="{style.messageListHeader} {style.inline} {style.colImage}"/>
+	        <g:Label ui:field="btnUserSort" text="{i18n.Email}" addStyleNames="{style.messageListHeader} {style.inline} {style.btnUserSort}"/>
+	        <g:Label ui:field="btnDateSort" text="{i18n.Date}" addStyleNames="{style.messageListHeader} {style.inline} {style.btnDateSort}"/>
+	        <g:Label ui:field="btnCommentSort" text="{i18n.Comment}" addStyleNames="{style.messageListHeader} {style.inline} {style.btnCommentSort}"/>
+	        <g:Label text="Position" addStyleNames="{style.messageListHeader} {style.inline} {style.btnPosition}"/>
+	        <g:Label text="" addStyleNames="{style.messageListHeader} {style.inline} {style.colAction}"/>
+	    </div>
+	    <g:HTMLPanel ui:field="newCommentPanel" styleName="{style.newCommentPanel}"/>
+		<g:HTMLPanel styleName="{style.commentField}">
+			 <g:TextArea ui:field="textArea" styleName="{style.textArea} {style.inline}"/>
+			 <g:Button text="{i18n.ToPosition}" ui:field="placeComment" styleName="{style.placeComment} {style.inline}"/>
+			 <!-- <g:Button text="{i18n.ReferenceDocuments}" ui:field="reference" styleName="{style.reference} {style.inline}"/> -->
+			 <g:Label ui:field="refDoc" addStyleNames="{style.refDoc}"/>
+			 <g:Button text="{i18n.Save}" ui:field="saveComment" styleName="{style.saveComment} {style.inline}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

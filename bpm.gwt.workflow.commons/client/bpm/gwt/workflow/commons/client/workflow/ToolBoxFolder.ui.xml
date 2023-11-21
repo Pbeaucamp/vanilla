@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resource' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style>
+		.panelTool {
+			border-bottom: 1px solid lightgray;
+			height: 45px;
+			cursor: pointer;
+		}
+	
+		.imgOpen {
+		    display: inline-block;
+	    	vertical-align: top;
+	    	margin-top: 10px;
+		}
+	
+		.logo {
+		    display: inline-block;
+	    	vertical-align: top;
+    	    margin-top: 3px;
+		}
+		
+		.lbl {
+		    display: inline-block;
+	    	vertical-align: top;
+    	    line-height: 45px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:FocusPanel ui:field="focus">
+			<g:HTMLPanel ui:field="panelTool" addStyleNames="{style.panelTool}">
+				<g:Image ui:field="imgOpen" resource="{resource.ic_add_black_24dp}" addStyleNames="{style.imgOpen}"/>
+				<g:Image resource="{resource.ic_folder_open_black_18dp}" addStyleNames="{style.logo}"/>
+				<g:Label ui:field="lblName" addStyleNames="{style.lbl}"/>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+		<g:HTMLPanel ui:field="panelContent"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

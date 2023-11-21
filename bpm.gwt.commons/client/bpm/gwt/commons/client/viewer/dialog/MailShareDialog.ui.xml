@@ -1,0 +1,271 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.commons.client.viewer.dialog.MailShareDialog.MyStyle">
+		.mainPanel {
+			width: 585px;
+		}
+		
+		.panelReportDefinition {
+	
+		}
+		
+		.txtName {
+	    	width: 90% !important;
+		}
+		
+		.txtDescription {
+    		max-width: 90% !important;
+    		width: 90% !important;
+    		height: 70px;
+		}
+	
+		.panelGroupFormat {
+		    border-top: 2px solid #628CD5;
+		    width: 100%;
+		}
+		
+		.panelToolbar {
+			background: #D0E4F6;
+			height: 40px;
+		}
+		
+		.txt {
+	 		-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.65em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 3px 5px 5px 8px;
+	        width: 62%;
+	        vertical-align: top;
+		}
+		
+		.txt:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 40px !important;
+			width: 40px !important;
+			background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 30px;
+			margin-top: 5px;
+			width: 115px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.panelFormat {
+		    border-top: 2px solid #628CD5;
+		}
+		
+		.lblFormat {
+		    display: inline-block;
+	    	width: 70px;
+	    	margin: 10px;
+		}
+		
+		.lstFormat {
+		    width: 78%;
+		}
+		
+		.panelCheckboxs {
+			background: none repeat scroll 0 0 #D3D3D3;
+			border: 1px solid #808080;
+			height: 180px;
+			margin: 10px;
+			overflow: auto;
+		}
+
+		.lblTips {
+    		font-size: 10px;
+    		margin: 5px;
+		}
+
+		.btnDefine {
+		    background: none repeat scroll 0 0 #444444 !important;
+		    border: 1px solid #555555 !important;
+		    border-radius: 10px;
+		    color: white;
+		    cursor: pointer;
+		    display: block;
+		    height: 40px;
+		    margin-left: 25%;
+		    margin-top: 15px;
+		    margin-bottom: 20px;
+		    transition: all 1s ease 0s;
+		    width: 50%;
+		    display: inline-block;
+		}
+		
+		.btnDefine:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.checkChart {
+	    	margin-left: 20px;
+		}
+		
+		.checkChart input {
+		    margin-right: 8px;
+		    margin-top: 2px !important;
+		}
+		
+		.panelOrientation {
+		    display: inline-block;
+	    	width: 50%;
+		}
+		
+		.panelMargins {
+		    display: inline-block;
+		    vertical-align: top;
+		    width: 49%;
+		}
+		
+		.btnOrientation {
+		    margin: 5px;
+		    cursor: pointer;
+		}
+		
+		.btnOrientation:HOVER {
+			-webkit-box-shadow: 1px 1px 4px -2px black inset;
+			-moz-box-shadow: 1px 1px 4px -2px black inset;
+			-oz-box-shadow: 1px 1px 4px -2px black inset;
+			-o-box-shadow: 1px 1px 4px -2px black inset;
+			box-shadow: 1px 1px 4px -2px black inset;
+		}
+		
+		.btnLandscape {
+			width: 128px !important;
+			height: 128px !important;
+			background-position: center !important;
+		}
+		
+		.selected {
+		    border: 1px solid #628CD5;
+		    border-radius: 10px 10px 10px 10px;
+			-webkit-box-shadow: 1px 1px 4px -2px black inset;
+			-moz-box-shadow: 1px 1px 4px -2px black inset;
+			-oz-box-shadow: 1px 1px 4px -2px black inset;
+			-o-box-shadow: 1px 1px 4px -2px black inset;
+			box-shadow: 1px 1px 4px -2px black inset;
+		}
+		
+		.lblMargins {
+		    font-size: 13px;
+		    margin-bottom: 10px;
+		    margin-top: 5px;
+		}
+		
+		.txtMargin {
+			width: 100px !important;
+		}
+		
+		.lbl {
+		    display: inline-block;
+		    margin: 10px;
+		    width: 70px;
+		}
+		
+		.txtSeparator {
+		    width: 80% !important;
+		}
+		
+		.disabled {
+			background: lightgray;
+		}
+		
+		.panelTemplate {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelReportDescription" addStyleNames="{style.panelReportDefinition}">
+			<my:TextHolderBox ui:field="txtTitle" placeHolder="{label.Name}" addStyleNames="{style.txt},{style.txtName}"/>
+			<g:HTMLPanel ui:field="panelSeparator">
+				<g:Label text="{label.Separator}" addStyleNames="{style.lbl}" />
+				<g:TextBox ui:field="txtSeparator" addStyleNames="{style.txt},{style.txtSeparator}">;</g:TextBox>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelReportOptions">
+				<my:TextAreaHolderBox  ui:field="txtDescription" placeHolder="{label.Description}" addStyleNames="{style.txt},{style.txtDescription}"/>
+				<g:HTMLPanel addStyleNames="{style.panelOrientation}">
+					<g:Image ui:field="btnPortrait" resource="{resources.portrait}" title="{label.Portrait}" addStyleNames="{style.selected},{style.btnOrientation}"/>
+					<g:Image ui:field="btnLandscape" resource="{resources.landscape}" title="{label.Landscape}" addStyleNames="{style.btnLandscape},{style.btnOrientation}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel addStyleNames="{style.panelMargins}">
+					<g:Label text="{label.Margins}" addStyleNames="{style.lblMargins}"/>
+					<my:TextHolderBox ui:field="txtLeft" placeHolder="{label.Left}" addStyleNames="{style.txt},{style.txtMargin}"/>
+					<my:TextHolderBox ui:field="txtTop" placeHolder="{label.Top}" addStyleNames="{style.txt},{style.txtMargin}"/>
+					<my:TextHolderBox ui:field="txtRight" placeHolder="{label.Right}" addStyleNames="{style.txt},{style.txtMargin}"/>
+					<my:TextHolderBox ui:field="txtBottom" placeHolder="{label.Bottom}" addStyleNames="{style.txt},{style.txtMargin}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelDefineMail" addStyleNames="{style.panelGroupFormat}">
+			<g:Button ui:field="btnDefineEmail" text="{label.DefineEmailText}" styleName="{style.btnDefine}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelRecipient" addStyleNames="{style.panelGroupFormat}">
+			<g:HTMLPanel addStyleNames="{style.panelToolbar}">
+				<my:TextHolderBox ui:field="txtEmail" placeHolder="{label.EmailsSeparateWithComma}" addStyleNames="{style.txt}"/>
+				<g:Button ui:field="btnConfirmAdd" text="{label.Add}" addStyleNames="{style.btn}"/>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelGrid"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelFormat}">
+			<g:Label text="{label.Format}" addStyleNames="{style.lblFormat}"/>
+			<g:ListBox ui:field="lstFormat" addStyleNames="{style.lstFormat}"/>
+			<!-- <g:HTMLPanel ui:field="panelTemplate" addStyleNames="{style.panelTemplate}">
+				<g:Label text="Template" addStyleNames="{style.lblFormat}"/>
+				<g:ListBox ui:field="lstTemplate" addStyleNames="{style.lstFormat}"/>
+			</g:HTMLPanel> -->
+			<g:CheckBox ui:field="checkLandscape" text="{label.Landscape}" addStyleNames="{style.checkChart}"/>
+			<g:CheckBox ui:field="checkExportChart" text="{label.ExportChart}" addStyleNames="{style.checkChart}"/>
+			<g:CheckBox ui:field="checkExportGed" text="{label.ExportGed}" addStyleNames="{style.checkChart}"/>
+			<g:HTMLPanel ui:field="panelCheckboxs" styleName="{style.panelCheckboxs}" />
+			<g:Label ui:field="lblTips" text="{label.TipsDashboard}" addStyleNames="{style.lblTips}" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:17 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.Appel" table="APP_APPEL">
+        <!-- <id name="idAppel" type="java.lang.String">
+            <column name="IDAPPEL" />
+            <generator class="assigned" />
+        </id> -->
+        
+		<composite-id>
+			<key-property name="idAppel" type="java.lang.String">
+				<column name="IDAPPEL" />
+			</key-property>
+			<key-property name="ctxExt" type="java.lang.String">
+				<column name="CTXEXT" />
+			</key-property>
+		</composite-id>
+		
+        <many-to-one name="appEntrant" class="bpm.gateway.core.tsbn.appels.AppEntrant" fetch="join" cascade="all">
+            <column name="APPENTRANT" />
+        </many-to-one>
+        <many-to-one name="appSortant" class="bpm.gateway.core.tsbn.appels.AppSortant" fetch="join" cascade="all">
+            <column name="APPSORTANT" />
+        </many-to-one>
+        <many-to-one name="appTrsf" class="bpm.gateway.core.tsbn.appels.AppTrsf" fetch="join" cascade="all">
+            <column name="APPTRSF" />
+        </many-to-one>
+        <many-to-one name="appInt" class="bpm.gateway.core.tsbn.appels.AppInt" fetch="join" cascade="all">
+            <column name="APPINT" />
+        </many-to-one>
+        <property name="idStruct" type="java.lang.String">
+            <column name="IDSTRUCT" />
+        </property>
+        <property name="dateAppel" type="java.util.Date">
+            <column name="DATEAPPEL" />
+        </property>
+        <property name="datePremierDecroche" type="java.util.Date">
+            <column name="DATEPREMIERDECROCHE" />
+        </property>
+        <property name="dateRaccroche" type="java.util.Date">
+            <column name="DATERACCROCHE" />
+        </property>
+        <property name="statutAppel" type="java.lang.String">
+            <column name="STATUTAPPEL" />
+        </property>
+        <property name="appZabpq" type="java.lang.String">
+            <column name="APPZABPQ" />
+        </property>
+        <property name="appTap" type="java.lang.String">
+            <column name="APPTAP" />
+        </property>
+        <property name="appInitiateurRacc" type="java.lang.String">
+            <column name="APPINITIATEURRACC" />
+        </property>
+        <property name="appIo" type="java.lang.String">
+            <column name="APPIO" />
+        </property>
+        <property name="appPpe" type="java.lang.String">
+            <column name="APPPPE" />
+        </property>
+        <!-- <property name="ctxExt" type="java.lang.String">
+            <column name="CTXEXT" />
+        </property> -->
+        <property name="fctExt" type="java.lang.String">
+            <column name="FCTEXT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,94 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.gwt.commons.client.charts.FusionChartsPanel.MyStyle">
+		.headerPanel {
+		    background-color: #D5D5D5;
+		   
+		    float: left;
+		 /*  height: 100%; */
+		    width: 40px;
+		}
+		.btnImg {
+			height: 40px !important;
+			width: 40px !important;
+			display: block;
+			cursor: pointer;
+			background-position: center !important;
+		}
+		.btnImg:hover {
+			background-color: #444444 !important;
+		}
+		.btnImgSelected {
+			background-color: #444444 !important;
+		}
+		
+		.headerPanelstyle {
+		    background-color: #D5D5D5;
+		    overflow: auto;
+		    float: left;
+		    height: 100%;
+		    width: 60px;
+		}
+		
+		.mainPanel {
+			height: 100%;
+			width: 100%;
+			position: relative;
+			overflow: hidden;
+		}
+		.containerStyle {
+			position: absolute;
+			left: 60px;
+			right: 0;
+			height: 99%;
+			display: inline-block;
+			text-align: center; 
+			overflow: hidden;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+	
+	<g:HTMLPanel ui:field="headerPanel" addStyleNames="{style.headerPanelstyle}" >
+	
+		<g:HTMLPanel ui:field="headerPanelSimple" addStyleNames="{style.headerPanel}">
+			<g:Image resource="{resources.pie}" ui:field="imgPie" addStyleNames="{style.btnImg}" title="{label.pieChart}"/>
+			<g:Image resource="{resources.donut}" ui:field="imgDoughnut" addStyleNames="{style.btnImg}" title="{label.donutChart}"/>
+			<g:Image resource="{resources.bar}" ui:field="imgBar" addStyleNames="{style.btnImg}" title="{label.barChart}"/>
+			<g:Image resource="{resources.column}" ui:field="imgColumn" addStyleNames="{style.btnImg}" title="{label.columnChart}"/>
+			<g:Image resource="{resources.line}" ui:field="imgLine" addStyleNames="{style.btnImg}" title="{label.lineChart}"/>
+			<g:Image resource="{resources.ic_area}" ui:field="imgArea" addStyleNames="{style.btnImg}" title="{label.areaChart}"/>
+			<g:Image resource="{resources.ic_spline}" ui:field="imgSpline" addStyleNames="{style.btnImg}" title="{label.spline}"/>
+			<g:Image resource="{resources.pareto_chart}" ui:field="imgpareto" addStyleNames="{style.btnImg}" title="{label.pareto}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="headerPanelMulti" addStyleNames="{style.headerPanel}">
+			<g:Image resource="{resources.bar}" ui:field="imgMultiBars" addStyleNames="{style.btnImg}" title="{label.barChart}"/>
+			<g:Image resource="{resources.column}" ui:field="imgMultiColumns" addStyleNames="{style.btnImg}" title="{label.columnChart}"/>
+			<g:Image resource="{resources.line}" ui:field="imgMultiLines" addStyleNames="{style.btnImg}" title="{label.lineChart}"/>
+			<g:Image resource="{resources.ic_area}" ui:field="imgMultiArea" addStyleNames="{style.btnImg}" title="{label.areaChart}"/>
+			<g:Image resource="{resources.ic_stacked}" ui:field="imgStackedColumns" addStyleNames="{style.btnImg}" title="{label.stackedColumns}"/>
+			<g:Image resource="{resources.ic_stacked_area}" ui:field="imgStackedArea" addStyleNames="{style.btnImg}" title="{label.stackedArea}"/>
+			<g:Image resource="{resources.ic_stepped_area}" ui:field="imgSteppedLine" addStyleNames="{style.btnImg}" title="{label.steppedLine}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="headerPanelGauge" addStyleNames="{style.headerPanel}">
+			<g:Image resource="{resources.gaugeangular}" ui:field="imgAngGauge" addStyleNames="{style.btnImg}" title="{label.angularGauge}"/>
+			<g:Image resource="{resources.gaugelinear}" ui:field="imgLinGauge" addStyleNames="{style.btnImg}" title="{label.linearGauge}"/>
+		</g:HTMLPanel>
+	
+	<!-- 	
+		<g:HTMLPanel ui:field="headerPanelOnlyMulti" addStyleNames="{style.headerPanel}">
+			<g:Image resource="{resources.ic_stacked}" ui:field="imgStackedColumns" addStyleNames="{style.btnImg}" title="{label.stackedColumns}"/>
+			<g:Image resource="{resources.ic_stacked_area}" ui:field="imgStackedArea" addStyleNames="{style.btnImg}" title="{label.stackedArea}"/>
+			<g:Image resource="{resources.ic_stepped_area}" ui:field="imgSteppedLine" addStyleNames="{style.btnImg}" title="{label.steppedLine}"/>
+		</g:HTMLPanel>
+		 -->
+	
+	</g:HTMLPanel>
+		<g:HTMLPanel ui:field="fusionChartsContainer" addStyleNames="{style.containerStyle}"></g:HTMLPanel>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

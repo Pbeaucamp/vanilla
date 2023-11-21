@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style type="bpm.gwt.commons.client.viewer.fmdtdriller.ColumnDraggable.MyStyle">
+		.lbl {
+			font-size: 12px;
+			display: inline-block;
+		}
+		
+		.dragColumn {
+			margin: 2px;
+			padding: 1px;
+		}
+		
+		.colimg {
+			display: inline-block;
+			vertical-align: bottom;
+		}
+		
+		.colUndefined {
+	
+		}
+		
+		.colDimension {
+			color: green;
+		}
+		
+		.colMeasure {
+			color: blue;
+		}
+		
+		.colProperty {
+	
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="dragColumn" addStyleNames="{style.dragColumn}">
+		<g:HTMLPanel>
+			<g:Image ui:field="imgColumn" resource="{resources.cube_mesure}"
+				addStyleNames="{style.colimg}" />
+			<g:Label ui:field="lblcolumn" addStyleNames="{style.lbl}" />
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

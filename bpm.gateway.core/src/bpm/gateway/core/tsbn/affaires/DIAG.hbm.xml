@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.DIAG" table="AFF_DIAG">
+		<id type="java.lang.Integer">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <property name="flgdiagcomorbidite" type="java.lang.String" access="field">
+            <column name="FLGDIAGCOMORBIDITE" />
+        </property>
+        <property name="idobs" type="java.lang.String">
+            <column name="IDOBS" />
+        </property>
+        <property name="idcim10" type="java.lang.String">
+            <column name="IDCIM10" />
+        </property>
+        <property name="idagent" type="java.lang.String">
+            <column name="IDAGENT" />
+        </property>
+        <property name="datdiag" type="java.util.Date">
+            <column name="DATDIAG" />
+        </property>
+        <property name="diag" type="java.lang.String" access="field">
+            <column name="DIAG" />
+        </property>
+        <property name="flgdiagprincipal" type="java.lang.String" access="field">
+            <column name="FLGDIAGPRINCIPAL" />
+        </property>
+    </class>
+</hibernate-mapping>

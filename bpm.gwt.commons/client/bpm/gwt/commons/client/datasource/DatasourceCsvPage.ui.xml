@@ -1,0 +1,137 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+	
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 10px;
+		    color: rgba(0, 0, 0, 0.7);
+		}
+	
+		.marginTop {
+			margin-top: 10px;
+			width: 240px;
+		}
+		.marginTopLst {
+			margin-top: 7px;
+			width: 246px;
+		}
+		.contentPanel {
+			width: 700px;
+			height: 420px;
+		}
+		
+		.btnImport {
+			height: 30px;
+		    left: 10px;
+		    position: relative;
+		    top: 10px;
+		    width: 150px;
+		    z-index: 10;
+		    display: inline;
+		}
+		
+		.btnImportHdfs {
+			height: 30px;
+		    margin-left: 10px;
+		    position: relative;
+		    display: inline;
+		    width: 150px;
+		    z-index: 10;
+		}
+		
+		.lblFileName {
+			display: inline;
+		    height: 30px;
+		    left: 20px;
+		    line-height: 30px;
+		    position: relative;
+		    top: 10px;
+		    z-index: 10;
+		    color: rgba(0, 0, 0, 0.7);
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #4471C4;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-weight: 400;
+		    border: medium none;
+		}
+		
+		.upload {
+		    line-height: 30px;
+   			margin-left: 0px;
+   			width: 300px;
+   			margin-left: 75px;
+			margin-top: 10px;
+		}
+		
+		.checkBox {
+		  	display: block;
+		    margin-left: 6px;
+		    margin-top: 10px;
+		    width: 500px;
+		}
+		
+		.formPanel {
+		  	display: none;
+		}
+		
+		.panelDisk {
+		  	height: 40px;
+		}
+		
+		.txtWidth {
+			width: 98%;
+		}
+		.btnWidth {
+
+		}
+		
+		.box{
+			color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 5px 1%;
+		    width: 98%;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<!-- <g:Label ui:field="lblType" addStyleNames="{style.lbl}" text="{label.Type}"/> -->
+			<g:ListBox ui:field="lstType" addStyleNames="{style.txtWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelDisk" addStyleNames="{style.panelDisk}">
+			<!-- <g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.Filename}"/> -->
+			<!-- <g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}"/> -->
+			<g:FormPanel ui:field="formCode" addStyleNames="{style.formPanel}"/>
+			<g:SimplePanel ui:field="panelUpload" addStyleNames="{style.upload}"/>
+			
+			<g:Button ui:field="btnImport" text="{label.UploadFile}" addStyleNames="{style.btnImport},{style.btnWidth}"></g:Button>
+			<g:Label ui:field="lblFileName" addStyleNames="{style.lblFileName}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelHdfs">
+			<!-- <g:Label ui:field="lblHdfs" addStyleNames="{style.lbl}" text="{label.Name}"/>
+			<g:TextBox ui:field="txtHdfs" addStyleNames="{style.marginTop}"/> -->
+			<c:TextHolderBox ui:field="txtHdfs" placeHolder="{label.Name}" addStyleNames="{style.txtWidth}"/>
+			<g:Button ui:field="btnImportHdfs" text="{label.UploadFile}" addStyleNames="{style.btnImportHdfs},{style.btnWidth}"></g:Button>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<!-- <g:Label ui:field="lblSeparator" addStyleNames="{style.lbl}" text="{label.Separator}"/>
+			<g:TextBox ui:field="txtSeparator" addStyleNames="{style.marginTop}"/> -->
+			<c:TextHolderBox ui:field="txtSeparator" placeHolder="{label.Separator}" addStyleNames="{style.txtWidth}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<!-- <g:Label ui:field="lblHasHeader" addStyleNames="{style.lbl}" text="{label.NotConsiderFirstRow}"/> -->
+			<g:CheckBox ui:field="chkHasHeader" addStyleNames="{style.box}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:46 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.referentiels.CATEGORIELIEUX" table="REF_CATEGORIELIEUX">
+    	<id type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment"/>
+        </id>
+        <list name="categorielieu" inverse="false" table="CATEGORIELIEU" lazy="false" cascade="save-update">
+            <key>
+            	<column name="CATLIEUX_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.referentiels.CATEGORIELIEU" />
+        </list>
+    </class>
+</hibernate-mapping>

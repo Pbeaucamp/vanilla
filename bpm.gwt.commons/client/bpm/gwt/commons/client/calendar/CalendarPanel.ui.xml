@@ -1,0 +1,93 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:w="urn:import:bpm.gwt.commons.client.custom.v2">
+	
+	<ui:with field="labels" type="bpm.gwt.commons.client.I18N.LabelsConstants"/>
+	
+	<ui:style>
+		.mainPanel {
+			overflow: auto;
+		}
+		
+		.lstMonths {
+			
+		}
+		
+		.panelMonth {
+			width: 100%;
+		}
+		
+		.padding {
+			padding-left: 15px;
+		}
+		
+		.btnMonth {
+		    font-size: 24px;
+		    font-weight: 400;
+		    opacity: .54;
+		    white-space: nowrap;
+		    line-height: 15px;
+		    padding: 10px 7px;
+		    cursor: pointer;
+		    border-radius: 20px;
+		}
+		
+		.btnMonth:HOVER {
+		    opacity: 1;
+		    background-color: rgba(0, 0, 0, 0.1) !important;
+		}
+		
+		.lblMonth {
+		    font-size: 14px;
+		    font-weight: 400;
+		    opacity: .54;
+		    white-space: nowrap;
+		    line-height: 23px;
+		    padding: 3px;
+		}
+	
+		.day {
+			background: #779999;
+			color: white;
+			padding: 6px;
+			margin-right: 3px;
+			box-sizing: border-box;
+		}
+		
+		.width {
+			width: 14%;
+		}
+		
+		.panelLegend{
+			width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}, full">
+		<g:HTMLPanel ui:field="panelMonthSelection" addStyleNames="{style.panelMonth}, inline">
+			<div class="{style.padding}">
+				<div class="inline">
+					<w:MonthYearListBox ui:field="lstMonths" label="{labels.MonthSelection}" labelWidth="100" listWidth="200" addStyleNames="inline"/>
+				</div>
+				<g:Label ui:field="btnBefore" text="{labels.Inferior}" addStyleNames="{style.btnMonth}, inline"/>
+				<g:Label ui:field="btnAfter" text="{labels.Superior}" addStyleNames="{style.btnMonth}, inline"/>
+			</div>
+		</g:HTMLPanel>
+		<div class="{style.width} inline padding">
+			<g:Label text="{labels.Monday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Tuesday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Wenesday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Thursday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Friday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Saturday}" addStyleNames="{style.day}"/>
+		</div><div class="{style.width} inline">
+			<g:Label text="{labels.Sunday}" addStyleNames="{style.day}"/>
+		</div>
+		<g:HTMLPanel ui:field="panelContent" addStyleNames="flexColumn, flexOne"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

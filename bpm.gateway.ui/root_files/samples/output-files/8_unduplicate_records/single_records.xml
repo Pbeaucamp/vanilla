@@ -1,0 +1,477 @@
+<Root>
+    <Row>
+        <CITY>Nantes</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Las Vegas</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Melbourne</CITY>
+        <COUNTRY>Australia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Stavern</CITY>
+        <COUNTRY>Norway</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>San Rafael</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Warszawa</CITY>
+        <COUNTRY>Poland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Frankfurt</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>San Francisco</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>NYC</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Madrid</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Luleu00e5</CITY>
+        <COUNTRY>Sweden</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Kobenhavn</CITY>
+        <COUNTRY>Denmark</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Lyon</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Singapore</CITY>
+        <COUNTRY>Singapore</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Allentown</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Burlingame</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bergen</CITY>
+        <COUNTRY>Norway</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>New Haven</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Lisboa</CITY>
+        <COUNTRY>Portugal</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Lille</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Paris</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Cambridge</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bridgewater</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Osaka</CITY>
+        <COUNTRY>Japan</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Helsinki</CITY>
+        <COUNTRY>Finland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Manchester</CITY>
+        <COUNTRY>UK</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Dublin</CITY>
+        <COUNTRY>Ireland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Brickhaven</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Liverpool</CITY>
+        <COUNTRY>UK</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Vancouver</CITY>
+        <COUNTRY>Canada</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Pasadena</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Strasbourg</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Central Hong Kong</CITY>
+        <COUNTRY>Hong Kong</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Barcelona</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Glendale</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Cunewalde</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>u00c5rhus</CITY>
+        <COUNTRY>Denmark</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Montru00e9al</CITY>
+        <COUNTRY>Canada</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>San Diego</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Cowes</CITY>
+        <COUNTRY>UK</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Toulouse</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Torino</CITY>
+        <COUNTRY>Italy</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Versailles</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Ku00f6ln</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Tsawassen</CITY>
+        <COUNTRY>Canada</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Mu00fcnchen</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>North Sydney</CITY>
+        <COUNTRY>Australia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bergamo</CITY>
+        <COUNTRY>Italy</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Chatswood</CITY>
+        <COUNTRY>Australia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Fribourg</CITY>
+        <COUNTRY>Switzerland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Genu00e8ve</CITY>
+        <COUNTRY>Switzerland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Oslo</CITY>
+        <COUNTRY>Norway</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Amsterdam</CITY>
+        <COUNTRY>Netherlands</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Berlin</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Oulu</CITY>
+        <COUNTRY>Finland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bruxelles</CITY>
+        <COUNTRY>Belgium</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>White Plains</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>New Bedford</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Auckland</CITY>
+        <COUNTRY>New Zealand</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>London</CITY>
+        <COUNTRY>UK</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Newark</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>South Brisbane</CITY>
+        <COUNTRY>Australia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Espoo</CITY>
+        <COUNTRY>Finland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Brandenburg</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Philadelphia</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Los Angeles</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Cork</CITY>
+        <COUNTRY>Ireland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Marseille</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Reims</CITY>
+        <COUNTRY>France</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Chempet</CITY>
+        <COUNTRY>South Africa</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Mu00fcnster</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Boston</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Nashua</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bern</CITY>
+        <COUNTRY>Switzerland</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Charleroi</CITY>
+        <COUNTRY>Belgium</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Salzburg</CITY>
+        <COUNTRY>Austria</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Makati City</CITY>
+        <COUNTRY>Philippines</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Reggio Emilia</CITY>
+        <COUNTRY>Italy</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Minato-ku</CITY>
+        <COUNTRY>Japan</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Stuttgart</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Wellington</CITY>
+        <COUNTRY>New Zealand</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Munich</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Leipzig</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Bru00e4cke</CITY>
+        <COUNTRY>Sweden</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>San Jose</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Graz</CITY>
+        <COUNTRY>Austria</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Aachen</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Glen Waverly</CITY>
+        <COUNTRY>Australia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Milan</CITY>
+        <COUNTRY>Italy</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Burbank</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Mannheim</CITY>
+        <COUNTRY>Germany</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Saint Petersburg</CITY>
+        <COUNTRY>Russia</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Herzlia</CITY>
+        <COUNTRY>Israel</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Sevilla</CITY>
+        <COUNTRY>Spain</COUNTRY>
+    </Row>
+
+    <Row>
+        <CITY>Brisbane</CITY>
+        <COUNTRY>USA</COUNTRY>
+    </Row>
+
+</Root>

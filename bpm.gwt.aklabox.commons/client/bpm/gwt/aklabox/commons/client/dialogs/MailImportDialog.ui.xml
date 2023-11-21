@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.aklabox.commons.client.customs">
+	<ui:style>
+		.mainPanel {
+			height: 550px;
+			width: 1200px;
+		}
+		
+		.filterPanel {
+			width: 100%;
+			height: 70px;
+			margin-bottom: 15px;
+		}
+		
+		.filterBox {
+			width: 22%;
+			display: inline-block;
+			margin: 10px;
+		}
+		
+		.gridPanel {
+			height: 350px;
+			width: 100%
+		}
+		
+		.pagerPanel {
+			height: 40px;
+			text-align: center;
+			display: block;
+			margin: auto;
+			width: 170px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.filterPanel}">
+			<p:LabelTextBox ui:field="txtSubject" addStyleNames="{style.filterBox}" placeHolder="Objet"/>
+			<p:LabelTextBox ui:field="txtFrom" addStyleNames="{style.filterBox}" placeHolder="Expéditeur"/>
+			<p:LabelDateBox ui:field="txtDateStart" addStyleNames="{style.filterBox}" label="Date début"/>
+			<p:LabelDateBox ui:field="txtDateEnd" addStyleNames="{style.filterBox}" label="Date fin"/>
+		</g:HTMLPanel>
+		<p:ListBoxWithButton ui:field="lstMailServer" label="Serveur mail"/>
+		<g:SimplePanel ui:field="gridPanel" addStyleNames="{style.gridPanel}"/>
+		<g:SimplePanel ui:field="pagerPanel" addStyleNames="{style.pagerPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

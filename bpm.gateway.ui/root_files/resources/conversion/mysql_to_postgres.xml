@@ -1,0 +1,137 @@
+<conversionMapping>
+	<name>MySQL_to_Postgres</name>
+	<type>
+		<name>TINYINT</name>
+		<macthing>smallint</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>BIT</name>
+		<macthing>smallint</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>SMALLINT</name>
+		<macthing>smallint</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>MEDIUMINT</name>
+		<macthing>integer</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>INT</name>
+		<macthing>integer</macthing>
+		<precision>false</precision>
+	</type>
+	<type>
+		<name>INT UNSIGNED</name>
+		<macthing>integer</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>INTEGER</name>
+		<macthing>integer</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>BIGINT</name>
+		<macthing>bigint</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>DECIMAL</name>
+		<macthing>decimal</macthing>
+	</type>
+	
+	<type>
+		<name>NUMERIC</name>
+		<macthing>numeric</macthing>
+	</type>
+	
+	<type>
+		<name>FLOAT</name>
+		<macthing>real</macthing>
+	</type>
+	
+	
+	<type>
+		<name>DOUBLE PRECISION</name>
+		<macthing>double precision</macthing>
+		<precision>false</precision>
+	</type>
+	
+	<type>
+		<name>DOUBLE</name>
+		<macthing>double precision</macthing>
+		<precision>false</precision>
+	</type>
+	
+	
+	
+	<type>
+		<name>DATETIME</name>
+		<macthing>time</macthing>
+	</type>
+	
+	<type>
+		<name>DATE</name>
+		<macthing>date</macthing>
+	</type>
+	
+	<type>
+		<name>TIMESTAMP</name>
+		<macthing>timestamp</macthing>
+	</type>
+	
+	<type>
+		<name>TIME</name>
+		<macthing>time</macthing>
+	</type>
+	
+	<type>
+		<name>YEAR</name>
+		<macthing>smallint</macthing>
+	</type>
+	
+	<type>
+		<name>CHAR</name>
+		<macthing>char</macthing>
+	</type>
+	
+	<type>
+		<name>VARCHAR</name>
+		<macthing>varchar</macthing>
+	</type>
+	
+	<type>
+		<name>TEXT</name>
+		<macthing>text</macthing>
+	</type>
+	
+	<type>
+		<name>TINYTEXT</name>
+		<macthing>text</macthing>
+	</type>
+	
+	<type>
+		<name>MEDIUMTEXT</name>
+		<macthing>text</macthing>
+	</type>
+	
+	<type>
+		<name>LONGTEXT</name>
+		<macthing>text</macthing>
+	</type>
+	
+	
+
+</conversionMapping>

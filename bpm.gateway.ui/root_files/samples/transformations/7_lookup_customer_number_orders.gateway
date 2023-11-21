@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gatewayDocument>
+  <name>1_datatype_conversion.gateway</name>
+  <description></description>
+  <author></author>
+  <creationDate>2019-03-12</creationDate>
+  <lastModificationDate>2019-03-12</lastModificationDate>
+  <version></version>
+  <icon></icon>
+  <flyover></flyover>
+  <projectName>1_datatype_conversion</projectName>
+  <projectVersion></projectVersion>
+  <mode>0</mode>
+  <servers>
+    <fileSystemServer>
+      <name>File System</name>
+    </fileSystemServer>
+  </servers>
+  <parameters/>
+  <localVariables/>
+  <forms/>
+  <fileInputXLS>
+    <name>XLS Input Customers</name>
+    <description></description>
+    <positionX>38</positionX>
+    <positionY>337</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\customers.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileInputXLS</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <fileOutputXML>
+    <name>XML Output Customers Ranging Credit</name>
+    <description></description>
+    <encoding>UTF-8</encoding>
+    <positionX>610</positionX>
+    <positionY>336</positionY>
+    <delete>false</delete>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\output-files\7_lookup_customer_number_orders\customer_with_numer_orders.xml</definition>
+    <rootTag>Root</rootTag>
+    <rowTag>Row</rowTag>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new FileOutputXML</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <encrypting>false</encrypting>
+    <publicKeyPath></publicKeyPath>
+    <fromXSD>false</fromXSD>
+    <xsdFilePath></xsdFilePath>
+    <rootElement></rootElement>
+    <fields>
+      <fieldName>ORDERDATE</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+  </fileOutputXML>
+  <fileInputXLS>
+    <name>XLS Input Orders</name>
+    <description></description>
+    <positionX>52</positionX>
+    <positionY>41</positionY>
+    <sheetName>sheet</sheetName>
+    <skipFirstRow>true</skipFirstRow>
+    <serverRef>File System</serverRef>
+    <definition>{$ENV_BIGATEWAY_HOME}\samples\input-files\sampledata\orders.xls</definition>
+    <encoding>UTF-8</encoding>
+    <temporaryFileName>_1</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+  </fileInputXLS>
+  <aggregation>
+    <name>Aggregate Customer Orders</name>
+    <description></description>
+    <positionX>313</positionX>
+    <positionY>40</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new AggregateTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <nullMode>1</nullMode>
+    <groupByNames>XLS Input Orders::CUSTOMERNUMBER</groupByNames>
+    <aggregateNew>
+      <columnName>XLS Input Orders::ORDERDATE</columnName>
+      <function>4</function>
+    </aggregateNew>
+    <fields>
+      <fieldName>ORDERNUMBER</fieldName>
+      <fieldName>ORDERDATE</fieldName>
+      <fieldName>REQUIREDDATE</fieldName>
+      <fieldName>SHIPPEDDATE</fieldName>
+      <fieldName>STATUS</fieldName>
+      <fieldName>COMMENTS</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+    </fields>
+  </aggregation>
+  <lookup>
+    <name>new Lookup</name>
+    <description></description>
+    <positionX>367</positionX>
+    <positionY>337</positionY>
+    <inputOrdered>false</inputOrdered>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new Lookup</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <inputMappingName>
+      <inputName>CUSTOMERNUMBER</inputName>
+      <outputName>CUSTOMERNUMBER</outputName>
+    </inputMappingName>
+    <firstInput>XLS Input Customers</firstInput>
+    <masterName>Selection</masterName>
+    <fields>
+      <fieldName>ORDERDATE</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+      <fieldName>CUSTOMERNAME</fieldName>
+      <fieldName>CONTACTLASTNAME</fieldName>
+      <fieldName>CONTACTFIRSTNAME</fieldName>
+      <fieldName>PHONE</fieldName>
+      <fieldName>ADDRESSLINE1</fieldName>
+      <fieldName>ADDRESSLINE2</fieldName>
+      <fieldName>CITY</fieldName>
+      <fieldName>STATE</fieldName>
+      <fieldName>POSTALCODE</fieldName>
+      <fieldName>COUNTRY</fieldName>
+      <fieldName>SALESREPEMPLOYEENUMBER</fieldName>
+      <fieldName>CREDITLIMIT</fieldName>
+    </fields>
+    <removeRowsWithoutMatch>true</removeRowsWithoutMatch>
+    <trashRowsWithoutMatch>false</trashRowsWithoutMatch>
+  </lookup>
+  <selectionTransformation>
+    <name>Selection</name>
+    <description></description>
+    <positionX>374</positionX>
+    <positionY>196</positionY>
+    <temporaryFileName>{$ENV_GATEWAY_TEMP}new SelectionTransformation</temporaryFileName>
+    <temporarySeparator>;</temporarySeparator>
+    <selectedNames>XLS Input Orders::ORDERDATE</selectedNames>
+    <selectedNames>XLS Input Orders::CUSTOMERNUMBER</selectedNames>
+    <fields>
+      <fieldName>ORDERDATE</fieldName>
+      <fieldName>CUSTOMERNUMBER</fieldName>
+    </fields>
+  </selectionTransformation>
+  <link>
+    <from>XLS Input Customers</from>
+    <to>new Lookup</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>XLS Input Orders</from>
+    <to>Aggregate Customer Orders</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Aggregate Customer Orders</from>
+    <to>Selection</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>new Lookup</from>
+    <to>XML Output Customers Ranging Credit</to>
+    <bendPoints/>
+  </link>
+  <link>
+    <from>Selection</from>
+    <to>new Lookup</to>
+    <bendPoints/>
+  </link>
+</gatewayDocument>

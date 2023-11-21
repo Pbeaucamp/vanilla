@@ -1,0 +1,147 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:bpm.gwt.aklabox.commons.client.customs"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:with field='img' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	<ui:with field='lbl' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.CocktailValidationContent.MyStyle">
+		.mainPanel {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			overflow: auto;
+		}
+		.dateBox {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 5px 1%;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    width: 98%;
+		}
+
+		.captionStyle {
+			margin: 5px;
+		}
+		.validated {
+			background-color: #389AEE;
+    		opacity: 0.8;
+		}
+		.validated div {
+			color: white;
+		}
+		
+		.boxItem {
+			margin-top: 5px;
+			border-radius: 5px;
+			padding: 5px;
+			width: 97%;
+			position: relative;
+		}
+		
+		.boxItem input, .boxItem select {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			//width: 90%!important;
+			padding: 5px !important;
+			border-radius: 1px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			vertical-align: middle;
+		}
+		
+		.boxItem div:first-child {
+		    margin-left: 15px;
+		    margin-top: 0;
+		    color: black;
+		}
+		
+		.panelTvas {
+			display: none;
+		}
+		
+		.tvaList {
+			max-height: 300px;
+			overflow: auto;
+		}
+		
+		.btnAdd {
+			position: absolute;
+			left: 15px;
+			bottom: 12px;
+			opacity: 0.2;
+		}
+		
+		.btnAdd:HOVER {
+			opacity: 1;
+		}
+		
+		.panelListTVA {
+			min-height: 40px;
+			margin-left: 70px;
+		}
+		
+		.panelTVA {
+			margin-top: 5px;
+			border-radius: 5px;
+			padding: 5px;
+			width: 97%;
+			position: relative;
+		}
+		
+		.panelTVA input, .panelTVA select {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			//width: 90%!important;
+			padding: 5px !important;
+			border-radius: 1px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			vertical-align: middle;
+		}
+		
+		.lbltva {
+			width: 12%;
+			padding: 0px 14px;
+			font-size: 10px;
+			display: inline-block;
+		}
+		
+		.inline {
+			display: inline-block;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+	
+		<!-- <g:CaptionPanel captionText="{i18n.BtnOtherMetadata}" addStyleNames="{style.captionStyle}"> -->
+			<g:HTMLPanel ui:field="panelDataCocktail">
+				
+
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelTvas" addStyleNames="{style.panelTVA}">
+				<g:Label text="{lbl.TVADetails}" addStyleNames="{style.inline}"/>
+				<g:Label text="{lbl.Rate}" addStyleNames="{style.lbltva}"/>
+				<g:Label text="{lbl.HTAmount}" addStyleNames="{style.lbltva}"/>
+				<g:Label text="{lbl.TVAAmount}" addStyleNames="{style.lbltva}"/>
+				<g:Label text="{lbl.TTCAmount}" addStyleNames="{style.lbltva}"/>
+				<g:HTMLPanel ui:field="tvaList" addStyleNames="{style.panelListTVA}">
+				
+				</g:HTMLPanel>
+				<g:Image ui:field="btnAddTva" resource="{img.ic_add_circle_outline_black_24dp}" addStyleNames="{style.btnAdd}"/>
+			</g:HTMLPanel>
+		<!-- </g:CaptionPanel> -->
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

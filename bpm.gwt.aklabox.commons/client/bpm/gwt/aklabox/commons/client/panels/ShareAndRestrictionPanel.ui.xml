@@ -1,0 +1,198 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.aklabox.commons.client.customs">
+	
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.panels.ShareAndRestrictionPanel.MyStyle">
+		.grid {
+		    margin: auto;
+		    overflow: hidden;
+		    position: relative;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+		    background-position: center !important
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.imgGrid:ACTIVE {
+		    background-color: rgba(0, 0, 0, 0.2) !important;
+		}
+		
+		.title {
+		    color: #3B99CB;
+		    margin-left: 5px;
+		    margin-top: 5px;
+		    font-weight: bold;
+		}
+		
+		.panelContent {
+			padding: 10px;
+	    	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+			-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+			box-sizing: border-box;
+		}
+		
+		.lstRights {
+		    margin-left: 20px;
+		    margin-top: 10px;
+		    width: 130px;
+		}
+		
+		.gridUsers {
+			width: 98%;
+			height: 200px;
+		    position: relative;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 8px;
+			width: 200px;
+			margin-left: 5px;
+			margin-right: 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.toolbarPanel {
+		    box-shadow: 0 0 1px #696969 inset;
+		    border-bottom: 1px solid black;
+		    height: 55px;
+		}
+		
+		.btnToolbar {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 41px !important;
+		    padding: 7px;
+		    width: 41px !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.panelUserRights {
+		    display: inline-block;
+		    float: right;
+		    height: 50px;
+		    overflow: hidden;
+		}
+		
+		.lstUserRights {
+		    display: inline-block;
+		    vertical-align: top;
+		    width: 130px;
+		}
+		
+		.panelDisabled {
+		    background-color: #000000;
+	    	opacity: 0.3;
+		    height: 100%;
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		}
+		
+		.panelUsers {
+			position: relative;
+		}
+		
+		.chk {
+		    display: inline-block;
+	    	margin-left: 20px;
+		}
+		
+		.chkShare {
+   	    	display: inline-block;
+    		width: 80%;
+		}
+		
+		.db {
+		    display: inline-block;
+	    	width: 200px;
+		}
+		
+		.lblPublic {
+		    margin-left: 30px;
+	    	width: 600px;
+		}
+		
+		.lblPassword {
+			display: inline-block;
+		    margin-left: 5px;
+	    	width: 250px;
+		}
+		
+		.btnCopy {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelPublic">
+			<g:Label text="{i18n.ShareOptions}" addStyleNames="{style.title}"/>
+			<g:HTMLPanel addStyleNames="{style.panelContent}">
+				<my:CustomCheckbox ui:field="chkPublic" text="{i18n.SharePublic}" addStyleNames="{style.chkShare}"/>
+				<g:HTMLPanel ui:field="panelPublicOptions">
+					<my:LabelTextBox ui:field="txtPublicLink" label="{i18n.PublicLink}" readOnly="true" addStyleNames="{style.lblPublic}"/>
+					<g:HTMLPanel>
+						<my:CustomCheckbox ui:field="chkPublicPassword" addStyleNames="{style.chk}"/>
+						<my:LabelTextBox ui:field="txtPublicPassword" label="{i18n.DefinePasswordForThePublicLink}" password="true" addStyleNames="{style.lblPassword}"/>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+				<my:CustomCheckbox ui:field="chkShareUsers" text="{i18n.ShareByUsers}" addStyleNames="{style.chkShare}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelEnterprise">
+			<g:Label text="{i18n.RestrictionOptions}" addStyleNames="{style.title}"/>
+			<g:HTMLPanel addStyleNames="{style.panelContent}">
+				<g:RadioButton ui:field="btnAll" name="restrictionRadio" text="{i18n.EveryoneHasAccess}"/>
+				<my:ListBoxWithButton ui:field="lstGlobalRights" label="{i18n.GlobalRights}" addStyleNames="{style.lstRights}"/>
+				<g:RadioButton ui:field="btnByUsers" name="restrictionRadio" text="{i18n.RestrictionByUsers}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelUsers" addStyleNames="{style.panelUsers}">
+			<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+				<g:Image ui:field="btnAddUsers" resource="{resources.ic_add_black_24dp}" title="{i18n.SelectUsers}" addStyleNames="{style.btnToolbar}"/>
+				<g:HTMLPanel addStyleNames="{style.panelUserRights}">
+					<my:ListBoxWithButton ui:field="lstAllUserRights" addStyleNames="{style.lstUserRights}"/>
+					<my:CustomButton ui:field="btnChangeAllUserRights" text="{i18n.ApplyRightToAllUsers}" addStyleNames="{style.btn}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelGridUsers" addStyleNames="{style.gridUsers}"/>
+			<g:SimplePanel ui:field="panelDisabled" visible="true" addStyleNames="{style.panelDisabled}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelPeremption">
+			<my:CustomCheckbox ui:field="chkSharePeremption" addStyleNames="{style.chk}"/>
+			<my:LabelDateBox ui:field="dbSharePeremption" label="{i18n.DefineDateEndShare}" enabled="false" addStyleNames="{style.db}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

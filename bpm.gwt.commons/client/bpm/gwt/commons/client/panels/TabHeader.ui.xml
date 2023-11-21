@@ -1,0 +1,68 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+		
+	<ui:style type="bpm.gwt.commons.client.panels.TabHeader.MyStyle">
+		.btn {
+		    display: inline-block;
+		    height: 36px !important;
+		    line-height: 36px;
+		    text-align: center;
+			cursor: pointer;
+			vertical-align: top;
+			border-radius: 5px;
+			border: 1px solid lightgray;
+			background-color: lightgray;
+			width: 99%;
+			overflow: hidden;
+		    margin-right: 3px;
+		    max-width: 200px;
+		}
+		
+		/*.btn:HOVER {
+			background-color: #D0E4F6 !important;
+		}*/
+		
+		.btnSelected {
+			height: 40px !important;
+		    min-width: 30px;
+		}
+		
+		.text {
+	        display: inline-block;
+		    line-height: normal;
+		    vertical-align: top;
+		    margin-top: 11px;
+		    margin-left: 5px;
+	        width: literal("calc(100% - 35px)");
+			width: literal("-moz-calc(100% - 35px)");
+			width: literal("-webkit-calc(100% - 35px)");
+			white-space: nowrap;
+    		overflow:hidden !important;
+    		text-overflow: ellipsis;
+		}
+		
+		.panelClose {
+			display: inline-block;
+		    height: 40px !important;
+		    width: 30px !important;
+		}
+		
+		.close {
+			margin-top: 11px;
+		}
+		
+		.close:HOVER {
+			background-color: #DA3535 !important;
+			border-radius: 15px;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focusPanel" addStyleNames="{style.btn}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblTitle" addStyleNames="{style.text}"/><g:HTMLPanel addStyleNames="{style.panelClose}"><g:Image ui:field="btnClose" title="{label.Close}" resource="{resources.close_tab}" addStyleNames="{style.close}"/></g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:style type="bpm.gwt.commons.client.utils.alert.AlertParameterItem.MyStyle">
+		
+		.contentPanel {
+		    
+		}
+		
+		.lbl{
+			font-size: 14px;
+		    text-overflow: ellipsis;
+		    display: inline-block;
+	    	width: 30%;
+	    	vertical-align: middle;
+		}
+		
+		.txt{
+			width: 45%;
+			vertical-align: middle;
+			padding: 0.4em!important;
+			margin-top: 3px;
+			margin-bottom: 3px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:Label ui:field="lblItem" addStyleNames="{style.lbl}"/>
+		<my:LabelTextBox ui:field="txtItem" addStyleNames="{style.txt}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

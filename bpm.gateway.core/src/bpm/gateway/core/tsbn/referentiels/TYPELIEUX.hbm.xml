@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:46 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.referentiels.TYPELIEUX" table="REF_TYPELIEUX">
+    	<id type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment"/>
+        </id>
+        <list name="typelieu" inverse="false" table="TYPELIEU" lazy="false" cascade="save-update">
+            <key>
+            	<column name="TYPELIEU_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.referentiels.TYPELIEU" />
+        </list>
+    </class>
+</hibernate-mapping>

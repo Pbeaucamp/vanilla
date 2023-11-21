@@ -1,0 +1,279 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:f="urn:import:bpm.gwt.commons.shared.fmdt">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style
+		type="bpm.gwt.commons.client.viewer.fmdtdriller.AnalysisDesignerPanel.MyStyle">
+		.txt {
+			margin-left: 5px;
+			width: 300px;
+			padding: 0px;
+			display: inline-block;
+		}
+		
+		.dockPanel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.value {
+			display: inline-block;
+			width: 16%;
+			height: 98%;
+			border: 1px solid gray;
+			vertical-align: top;
+		}
+		
+		.method {
+			width: 100%;
+			height: 40%;
+			vertical-align: top;
+			overflow-y: auto;
+		}
+		
+		.algos {
+			width: 100%;
+			height: 60%;
+			border-top: 1px solid gray;
+			vertical-align: top;
+			overflow-y: auto;
+		}
+		
+		.var {
+			display: inline-block;
+			width: 20%;
+			height: 98%;
+			vertical-align: top;
+			border: 1px solid gray;
+		}
+		
+		.panelChart {
+			display: inline-block;
+			width: 60%;
+			height: 98%;
+			border: 1px solid gray;
+			vertical-align: top;
+		}
+		
+		.chart {
+			width: 98%;
+			height: 98%;
+			vertical-align: middle;
+			text-align: center;
+			margin: 2%;
+		}
+		
+		.valueWidth {
+			width: 35%;
+		}
+		
+		.datas {
+			margin: 5px;
+			height: 98%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.lst {
+			margin-left: 20px;
+			width: 200px;
+			margin-top: 5px;
+			display: inline-block;
+		}
+		
+		.lstVal {
+			width: 200px;
+			padding: 2px;
+		}
+		
+		.lblTitle {
+			font-size: 16px;
+			text-decoration: underline;
+			margin-top: 15px;
+			margin-bottom: 10px;
+			margin-left: 20px;
+		}
+		
+		.lblValue {
+			margin-top: 15px;
+			margin-left: 20px;
+		}
+		
+		.sub {
+			padding: 5px;
+		}
+		
+		.lbl {
+			margin-left: 5px;
+			font-size: 13px;
+			color: gray;
+		}
+		
+		.txtbox {
+			margin-left: 20px;
+			width: 150px;
+			margin-top: 5px;
+		}
+		
+		.txtbox1 {
+			margin-left: 20px;
+			width: 150px;
+			margin-top: 5px;
+			border: 1px solid gray;
+			height: 20px;
+		}
+		
+		.txtArea1 {
+			margin-left: 25px;
+			width: 100px;
+			margin-top: 5px;
+			height: 150px;
+			vertical-align: middle;
+		}
+		
+		.txtArea {
+			margin-left: 20px;
+			width: 100px;
+			margin-top: 5px;
+			height: 150px;
+			border: 1px solid gray;
+		}
+		
+		.green {
+			color: #33CC33;
+		}
+		
+		.blue {
+			color: #0000FF;
+		}
+		
+		.red {
+			color: #CC0033;
+		}
+		
+		.cellEmpty {
+			background-color: white !important;
+			color: white !important;
+			border: 1px solid white !important;
+		}
+		
+		.cellNoEmpty {
+			border: 1px solid black !important;
+		}
+		
+		.datagrid {
+			text-align: center;
+			position: relative;
+			top: 10%;
+			right: 2%;
+			left: 2%;
+		}
+		
+		.btnLaunch:hover {
+			background: none repeat scroll 0 0 #EAEAEA;
+			color: #000000
+		}
+		
+		.btnLaunch {
+			background: none repeat scroll 0 0 #628CD5;
+			border: 1px solid #555555;
+			color: #FFFFFF;
+			cursor: pointer;
+			display: inline-block;
+			height: 40px;
+			margin-top: 30px;
+			margin-left: 20%;
+			transition: all 1s ease 0s;
+			width: 60%;
+		}
+		
+		.node circle {
+			fill: #fff;
+			stroke: steelblue;
+			stroke-width: 1.5px;
+		}
+		
+		.node {
+			font: 10px sans-serif;
+		}
+		
+		.link {
+			fill: none;
+			stroke: #ccc;
+			stroke-width: 1.5px;
+		}
+		.container{
+			width:100%;
+			height: 100%;
+		}
+		.chartfd span>svg>text>tspan{
+		    display:none;
+		}
+		</ui:style>
+	<f:HtmlFocusPanel ui:field="dockPanel" addStyleNames="{style.dockPanel}">
+
+		<g:HTMLPanel addStyleNames="{style.value}">
+			<g:HTMLPanel ui:field="panelColumns" addStyleNames="{style.datas}">
+				<g:Label text="{label.RequestFields}" addStyleNames="{style.lbl}" />
+				<g:HTMLPanel ui:field="pColumns" addStyleNames="{style.sub}" />
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel addStyleNames="{style.var}">
+			<g:HTMLPanel addStyleNames="{style.method}">
+				<g:Label text="{label.Method}" addStyleNames="{style.lblTitle}" />
+				<g:SimplePanel ui:field="lstMethod" addStyleNames="{style.lst}" />
+				<g:Label text="{label.Algorithm}" addStyleNames="{style.lblTitle}" />
+				<g:SimplePanel ui:field="lstAlgos" addStyleNames="{style.lst}" />
+			</g:HTMLPanel>
+
+			<g:HTMLPanel ui:field="panelParameters" addStyleNames="{style.algos}">
+				<g:HTMLPanel ui:field="panelContentParameter">
+					<g:Label text="{label.Parameters}" addStyleNames="{style.lblTitle}" />
+					<g:HTMLPanel ui:field="panelVariables">
+						<g:HTMLPanel ui:field="panelX">
+							<g:Label text="{label.Variablex}" addStyleNames="{style.lblValue}" />
+							<f:HtmlFocusPanel ui:field="panelVariablex">
+								<f:HtmlFocusPanel ui:field="txtVariablex"
+									addStyleNames="{style.txtbox1}" />
+							</f:HtmlFocusPanel>
+						</g:HTMLPanel>
+						<g:HTMLPanel ui:field="panelCorrelation">
+							<g:Label text="{label.Variablex}" addStyleNames="{style.lblValue}" />
+							<f:HtmlFocusPanel ui:field="panelCorreX">
+								<f:HtmlFocusPanel ui:field="txtCorreX"
+									addStyleNames="{style.txtArea}" />
+							</f:HtmlFocusPanel>
+						</g:HTMLPanel>
+						<g:HTMLPanel ui:field="panelY">
+							<g:Label text="Variable Y" addStyleNames="{style.lblValue}" />
+							<f:HtmlFocusPanel ui:field="panelVariabley">
+								<f:HtmlFocusPanel ui:field="txtVariabley"
+									addStyleNames="{style.txtbox1}" />
+							</f:HtmlFocusPanel>
+						</g:HTMLPanel>
+						<g:HTMLPanel ui:field="panelClass">
+							<g:Label text="{label.NbClass}" addStyleNames="{style.lblValue}" />
+							<g:TextBox ui:field="nbClass" addStyleNames="{style.txtbox}" />
+						</g:HTMLPanel>
+						<g:HTMLPanel ui:field="panelTrain">
+							<g:Label text="{label.NbTrain}" addStyleNames="{style.lblValue}" />
+							<g:TextBox ui:field="percTrain" addStyleNames="{style.txtbox}" />
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					<g:Button ui:field="btnLaunch" text="{label.Validate}"
+						addStyleNames="{style.btnLaunch}" />
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="panelChart" addStyleNames="{style.panelChart}">
+			<g:HTMLPanel ui:field="chart" addStyleNames="{style.chart}" />
+		</g:HTMLPanel>
+
+
+	</f:HtmlFocusPanel>
+</ui:UiBinder> 

@@ -1,0 +1,151 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='i18n' type='bpm.gwt.aklabox.commons.client.I18N.LabelsConstants' />
+	<ui:with field='res' type='bpm.gwt.aklabox.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.panel {
+		    height: 470px;
+    		width: 650px;
+    		position: relative;
+		}
+		
+		.lbl {
+			margin-bottom: 2%;
+			color: #000;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.tree {
+			overflow: scroll;
+		}
+		
+		.leftPanel {
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    bottom: 0;
+		    width: 50%
+		}
+		.rightPanel {
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    bottom: 0;
+		    width: 50%
+		}
+		.infosPanel {
+		    height: 50px;
+		    background-color: #333;
+		   padding: 10px;
+		}
+		.treePanel {
+		    position: absolute;
+		    top: 70px;
+		    width: 100%;
+		    bottom: 0;
+		}
+		.delegatePanel {
+		    margin-top: 15px;
+		}
+		.lblInfo {
+		    color: white;
+		    margin-bottom: 2%;
+		    font-size: 14px;
+		}
+		.relativePanel {
+		    position: relative;
+		    width: 100%;
+		    height: 100%;
+		}
+		.imgDoc {
+		    left: 50%;
+		    max-width: 80%;
+		    position: relative;
+		    text-align: center;
+		    top: 50%;
+		    transform: translate(-50%, -50%);
+		}
+		
+		.lst{
+			width: 200px;
+			margin-left: 10px;
+			display: block;
+		}
+		
+		.regularTextBox {
+			background: #fff !important;
+			border: 1px solid #e7e7e7 !important;
+			width: 90%;
+			padding: 5px !important;
+			border-radius: 0px !important;
+			-webkit-border-radius: 0px !important;
+			-moz-border-radius: 0px !important;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+		}
+		
+		.inline{
+			vertical-align: middle;
+			display: inline-block;
+		}
+		
+		.icCalendar{
+			padding: 10px;
+			width: 30px;
+			height: 30px;
+			transition: 1s all;
+			-webkit-transition: 1s all;
+			-moz-transition: 1s all;
+			cursor: pointer;
+			
+		}
+		
+		.icCalendar:hover{
+			opacity: 0.5;
+		}
+		
+		.lblDate{
+			line-height:30px;
+			margin: 10px 20px 10px 0px;
+			color: #399d93;
+		}
+		.lblDueDate{
+			margin: 10px;
+			display: inline;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+		<g:HTMLPanel addStyleNames="{style.leftPanel}">
+			<g:HTMLPanel addStyleNames="{style.relativePanel}">
+				<g:HTMLPanel addStyleNames="{style.infosPanel}">
+					<g:Label ui:field="lblName" styleName="{style.lblInfo}" />
+					<g:Label ui:field="lblType" styleName="{style.lblInfo}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel addStyleNames="{style.treePanel}">
+					<g:Label styleName="{style.lbl}" text="{i18n.SelectADestinationFolder}" />
+					<g:Tree ui:field="destinationTree" />
+					<g:HTMLPanel ui:field="delegatePanel" addStyleNames="{style.delegatePanel}">
+						<g:ListBox ui:field="listUser" addStyleNames="{style.lst} {style.regularTextBox}"/>
+				
+						<g:Label text="{i18n.DueDate}" addStyleNames="{style.lblDueDate}"/>
+						<!-- <dp:DateBox ui:field="dbDueDate" addStyleNames="{style.db}"/> -->
+						<g:Image ui:field="imgDatePicker" addStyleNames="{style.inline} {style.icCalendar}" title="{i18n.dateSelection}" resource="{res.calendar}"/>
+				    	<g:Label ui:field="lblDateTitle" text="Date" addStyleNames="{style.inline} {style.lblDate}"/>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+				
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.rightPanel}">
+			<g:HTMLPanel addStyleNames="{style.relativePanel}">
+				<g:Image ui:field="imgDoc" addStyleNames="{style.imgDoc}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

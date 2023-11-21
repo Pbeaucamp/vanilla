@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:46 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.FilesAppels" table="APP_FILESAPPELS">
+        <id name="codeFile" type="java.lang.String">
+            <column name="CODEFILE" />
+            <generator class="assigned" />
+        </id>
+        <property name="libFile" type="java.lang.String">
+            <column name="LIBFILE" />
+        </property>
+        <property name="codeFileUnifie" type="java.lang.String">
+            <column name="CODEFILEUNIFIE" />
+        </property>
+        <property name="libFileUnifie" type="java.lang.String">
+            <column name="LIBFILEUNIFIE" />
+        </property>
+        <property name="ctxExt" type="java.lang.String">
+            <column name="CTXEXT" />
+        </property>
+        <property name="fctExt" type="java.lang.String">
+            <column name="FCTEXT" />
+        </property>
+        <property name="typAppelant" type="java.lang.String">
+            <column name="TYPAPPELANT" />
+        </property>
+    </class>
+</hibernate-mapping>

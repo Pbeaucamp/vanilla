@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:35:36 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.affaires.AFF" table="AFF">
+        <!-- <id name="idAff" type="java.lang.String" access="field">
+            <column name="IDAFF" />
+            <generator class="assigned" />
+        </id> -->
+        
+		<composite-id>
+			<key-property name="idAff" type="java.lang.String" access="field">
+				<column name="IDAFF" />
+			</key-property>
+			<key-property name="ctxini" type="java.lang.String" access="field">
+				<column name="CTXINI" />
+			</key-property>
+		</composite-id>
+        
+        <list name="epi" inverse="false" table="EPI" lazy="false" cascade="save-update">
+            <key>
+                <column name="IDAFF" />
+				<column name="CTXINI" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="bpm.gateway.core.tsbn.affaires.EPI" />
+        </list>
+        <property name="numaff" type="java.lang.String" access="field">
+            <column name="NUMAFF" />
+        </property>
+        <property name="datcre" type="java.lang.String" access="field">
+            <column name="DATCRE" />
+        </property>
+        <property name="typaffini" type="java.lang.String" access="field">
+            <column name="TYPAFFINI" />
+        </property>
+        <property name="typaff" type="java.lang.String" access="field">
+            <column name="TYPAFF" />
+        </property>
+        <property name="cataff" type="java.lang.String" access="field">
+            <column name="CATAFF" />
+        </property>
+        <property name="regraff" type="java.lang.String" access="field">
+            <column name="REGRAFF" />
+        </property>
+        <!-- <property name="ctxini" type="java.lang.String" access="field">
+            <column name="CTXINI" />
+        </property> -->
+    </class>
+</hibernate-mapping>

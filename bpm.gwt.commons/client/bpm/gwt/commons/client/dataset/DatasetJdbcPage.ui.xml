@@ -1,0 +1,69 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style>
+		.lbl {
+			font-size: 1.1em;
+		    margin-left: 12px;
+		    margin-right: 10px;
+		    margin-top: 10px;
+		}
+		
+		.lst, .txt {
+			display: block;
+		    margin-left: 120px;
+		    margin-top: 10px;
+		    width: 300px;
+		}	
+		
+		.textReq {
+			margin: 5px;
+		    max-width: 620px;
+		    min-height: 50px;
+		    max-height: 70px;
+		    width: 94%;
+		}
+	
+		.contentPanel {
+			width: 640px;
+			height: 450px;
+			overflow: auto;
+		}
+		
+		.btnRun {
+			display: block;
+		    margin: 5px auto auto;
+		    width: 150px;
+		}
+		
+		.panelPager {
+			height: 30px;
+			width: 100%;
+			text-align: center;
+			text-align: -moz-center;
+		}
+		
+		.panelGrid {
+			height: 250px;
+			width: 100%;
+		}
+
+		.lblPrompt {
+		    color: #4F86BF;
+	    	margin-left: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblReq" addStyleNames="{style.lbl}" text="{label.DatasetRequest}"/>
+			<g:TextArea ui:field="txtReq" addStyleNames="{style.textReq}"/>
+			<g:Label text="{label.QueryPromptMessage}" addStyleNames="{style.lblPrompt}"/>
+			<g:Button  ui:field="btnRun" text="{label.Run}" addStyleNames="{style.btnRun}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.panelGrid}"/>
+			<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

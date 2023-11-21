@@ -1,0 +1,429 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.map.viewer.web.client.I18N.LabelsConstants' />
+	<ui:with field='labelCommons' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.map.viewer.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.map.viewer.web.client.panel.viewer.MapViewer.MyStyle">
+	
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		.toolbar {
+			height: 50px;
+			left: 0;
+			overflow: hidden;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: #5C584C;
+			color: white;
+		}
+		
+		.buttonTool {
+			height: 50px;
+			width: 150px;
+			text-align: center;
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+   			border: medium none;
+   			color: white;
+   			padding-top: 1px;
+		}
+		
+		.btn {
+			height: 40px;
+			width: 40px;
+			text-align: center;
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+   			border: medium none;
+   			color: white;
+   			padding: 5px;
+		}
+		
+		.buttonTool:HOVER, .btn:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.centerPanel {
+			bottom: 0;
+		    left: 0;
+		    overflow: hidden;
+		    position: absolute;
+		    right: 0;
+		    top: 50px;
+		}
+		
+		.floatPanel {
+			position: relative;
+			-moz-box-shadow: 0 0 7px #9B9B9B;
+			-webkit-box-shadow: 0 0 7px #9B9B9B;
+			-o-box-shadow: 0 0 7px #9B9B9B;
+			box-shadow: 0 0 7px #9B9B9B;
+			height: literal("calc(50% - 37px)");
+			opacity: 0.5;
+			background : #fff;
+			overflow: auto;
+			z-index: 2;
+			border-radius: 3px;
+		}
+		.floatPanel:hover {
+			opacity: 1;
+			transition : all 1s ease;
+		}
+		
+		.axisPanel {
+			
+		}
+		.metricsPanel {
+			
+		}
+		
+		.filtersPanel {
+			position: absolute;
+			left: 40px;
+			width: 30%;
+			top: 0px;
+			bottom: 0px;
+			overflow: visible;
+			z-index: 2;
+			max-width: 400px;
+			padding: 10px;
+			transition: all ease 1s;
+		}
+		
+		
+		.filtersContent {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.separator {
+			border: 1px solid gray;
+		    display: inline-block;
+		    height: 50px;
+		    vertical-align: top;
+		    width: 0;
+		    margin-left: 10px;
+		}
+		
+		.pullRight {
+			float: right;
+		}
+		.pullLeft {
+			float: left;
+		}
+		
+		.lstMaps {
+			width: 150px;
+			height:30px;
+			margin: 10px;
+			margin-right : 20px;
+			padding: 5px;
+		}
+		
+		.lblMaps {
+			float: left;
+		    line-height: 30px;
+		    padding: 10px;
+		}
+		
+		.lblFloat {
+			width: 100%;
+			padding: 10px 0;
+   			position: relative;
+			text-align : center;
+			background-color: #fff;
+		}
+		
+		.lblFilters {
+			width: 100%;
+			padding: 10px 0;
+   			position: relative;
+			text-align : center;
+			background-color: #fff;
+			opacity: 0.5;
+			border-radius: 3px;
+		}
+		
+		.lblFilters:HOVER {
+			opacity: 1;
+		}
+		
+		.inline{
+			vertical-align: middle;
+			display: inline-block;
+		}
+		
+		.icCalendar{
+			background: url("webapps/freematrix_files/images/calendar.png") no-repeat center;
+			background-size: 30px;
+			width: 50px;
+			height: 50px;
+			transition: 1s all;
+			-webkit-transition: 1s all;
+			-moz-transition: 1s all;
+			cursor: pointer;
+		}
+		
+		.icCalendar:hover{
+			opacity: 0.5;
+		}
+		
+		.lblDate{
+			line-height:30px;
+			margin: 10px 20px 10px 0px;
+			color: #399d93;
+		}
+		
+		.mapPanel{
+			height: 100%;
+			width: 100%;
+			position : absolute;
+			z-index: 0;
+		}
+		
+		.datagrid{
+			bottom: 0;
+		    overflow: auto;
+		    position: absolute;
+		    top: 40px;
+		    left: 0;
+		    right: 0;
+		}
+		
+		.btnBackground{
+		    border-radius: 2px;
+		    background-color: rgba(0, 60, 136, 0.5);
+		    border: medium none;
+		    color: #FFFFFF;
+		    display: block;
+		    height: 32px;
+		    margin: 1px;
+		    padding: 0;
+		    text-align: center;
+		    text-decoration: none;
+		    width: 32px;
+		}
+		.bckPanel{
+		    background-color: rgba(255, 255, 255, 0.4);
+		    border-radius: 4px 4px 4px 4px;
+		    padding: 2px;
+		    position: absolute;
+		    top: 35px;
+		    right: 5px;
+		}
+		
+		.btnBackground:hover{
+		    background-color: rgba(0, 60, 136, 0.7);
+		}
+		
+		.layersMenu{
+			background-color: rgba(0, 60, 136, 0.5);
+		    box-shadow: 0 0 10px 1px #656565;
+		    color: #FFFFFF;
+		    font-family: Verdana;
+		    font-weight: bold;
+		    padding: 2px;
+		    position: absolute;
+		    right: 7px;
+		    text-align: center;
+		    top: 70px;
+		    z-index: 2;
+		}		
+		
+		.calendarPanel{
+		    background-color: #FFFFFF;
+		    border-radius: 4px 4px 4px 4px;
+		    margin-top: 10px;
+		    margin-bottom: 10px;
+		    opacity: 0.5;
+		    position: relative;
+		    height: 54px;
+		    -moz-box-shadow: 0 0 7px #9B9B9B;
+			-webkit-box-shadow: 0 0 7px #9B9B9B;
+			-o-box-shadow: 0 0 7px #9B9B9B;
+			box-shadow: 0 0 7px #9B9B9B;
+		}
+		.calendarPanel:hover {
+			opacity: 1;
+			transition : opacity 1s ease;
+		}
+		
+		.radioPanel{
+		    display: inline-block;
+		    height: 50px;
+		    vertical-align: middle;
+		    background-color: #5C584C;
+		    border-radius: 4px 0 0 4px;
+		    padding: 2px 10px 2px 2px;
+		}
+		
+		.radioItem{
+		    display: block;
+		    height: 25px;
+		    line-height: 25px;
+		}
+		
+		.calendarInline{
+		    display: inline-block;
+		}
+		
+		.lbl{
+			line-height:30px;
+			margin: 10px;
+			margin-left: 20px;
+		}
+		
+		.btnLoad{
+		    border-radius: 2px;
+		    background-color: rgba(0, 60, 136, 0.5);
+		    border: medium none;
+		    color: #FFFFFF;
+		    display: inline-block;
+		    height: 32px;
+		    margin: 1px;
+		    padding: 0;
+		    text-align: center;
+		    text-decoration: none;
+		    width: 32px;
+		    vertical-align: middle;
+		}
+		.btnLoad:hover{
+		    background-color: rgba(0, 60, 136, 0.7);
+		}
+		
+		.btnDesc{
+		    margin-right: 20px;
+		}
+		
+		.imgCollapse {
+			height: 20px !important;
+			width: 20px !important;
+			padding: 8px;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 3;
+		}
+		
+		.imgExpand {
+			height: 20px !important;
+			width: 20px !important;
+			padding: 8px;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 3;
+		}
+		
+		.imgCollapse:hover, .imgExpand:hover {
+			opacity: 0.4;
+		}
+		
+		.btnLayers {
+			padding: 16px;
+			border-left: 1px solid black;
+		}
+		
+		.btnLayers:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+			cursor: pointer;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbarMap" addStyleNames="{style.toolbar}">
+			<g:HTMLPanel addStyleNames="{style.pullLeft}">
+		    	<g:Button ui:field="filterButton" text="{label.AxeFilterEdit}" title="{label.AxeFilterEdit}" addStyleNames="{style.inline} {style.buttonTool}"/>
+		    </g:HTMLPanel>
+			
+			<g:FocusPanel ui:field="btnLayers" addStyleNames="{style.pullRight}">
+				<g:Label text="{labelCommons.Layers}" addStyleNames="{style.btnLayers}" />
+			</g:FocusPanel>
+		   
+			<!-- <g:HTMLPanel ui:field="separator" addStyleNames="{style.separator}, {style.pullRight}"/> -->
+			<g:HTMLPanel addStyleNames="{style.pullRight}">
+				<g:Label ui:field="lblMaps" addStyleNames="{style.lblMaps}"/>
+				<g:ListBox ui:field="lstMaps" addStyleNames="{style.lstMaps}"/>
+			</g:HTMLPanel>
+			
+			 <!-- <g:HTMLPanel addStyleNames="{style.pullRight}">
+				<g:Button ui:field="fileButton" text="{label.MapDescription}" title="{label.MapDescription}" addStyleNames="{style.inline} {style.buttonTool} {style.btnDesc}"/>
+		    </g:HTMLPanel> -->
+		    <g:HTMLPanel addStyleNames="{style.pullRight}">
+				<g:Image ui:field="btnMapExport" resource="{resources.ic_export}" title="{labelCommons.Export}" addStyleNames="{style.inline} {style.btn} {style.btnDesc}"/>
+				<g:Image ui:field="btnRepExport" resource="{resources.save}" title="{labelCommons.Export}" addStyleNames="{style.inline} {style.btn} {style.btnDesc}"/>
+		    </g:HTMLPanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="centerPanel" addStyleNames="{style.centerPanel}">
+			<g:HTMLPanel ui:field="mapPanel" addStyleNames="{style.mapPanel}"/>
+			<g:HTMLPanel ui:field="filtersPanel" addStyleNames="{style.filtersPanel}">
+				<g:Image ui:field="imgFilterCollapse" title="{label.reduce}" resource="{resources.ic_right_expand}" addStyleNames="{style.imgExpand}"/>
+				<g:Image ui:field="imgFilterExpand" title="{label.restore}" resource="{resources.ic_right_collapse}" addStyleNames="{style.imgCollapse}"/>
+				<g:Label ui:field="lblfilterPanel" addStyleNames="{style.lblFilters}"/>
+				<g:HTMLPanel ui:field="filtersContent"  addStyleNames="{style.filtersContent}">
+					<g:HTMLPanel ui:field="axisPanel" addStyleNames="{style.axisPanel}, {style.floatPanel}">
+						<g:Label ui:field="lblaxisPanel" addStyleNames="{style.lblFloat}"/>
+						<g:Tree ui:field="treeAxis"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="calendarPanel" addStyleNames="{style.calendarPanel}">
+						<g:HTMLPanel addStyleNames="{style.radioPanel}">
+							<g:RadioButton ui:field="rdCalendarValeur" text="{label.ValueDay}" name="valeur" addStyleNames="{style.radioItem}"/>
+							<g:RadioButton ui:field="rdCalendarEvolution" text="{label.Evolution}" name="evolution" addStyleNames="{style.radioItem}"/>
+						</g:HTMLPanel>
+						<g:HTMLPanel ui:field="valeurPanel" addStyleNames="{style.calendarInline}">
+							<g:Label ui:field="lblDatePicker" addStyleNames="{style.inline} {style.icCalendar}" title="{label.changeDate}"/>
+					    	<g:Label ui:field="lblDateTitle" text="Date" addStyleNames="{style.inline} {style.lblDate}"/>
+					    </g:HTMLPanel>
+					    <g:HTMLPanel ui:field="evolutionPanel" addStyleNames="{style.calendarInline}">
+							<g:Label ui:field="lblDateStartPicker" addStyleNames="{style.inline} {style.icCalendar}" title="{label.changeDate}"/>
+					    	<g:Label ui:field="lblDateStartTitle" text="Date" addStyleNames="{style.inline} {style.lblDate}"/>
+					    	<g:Label text="{label.FromTo}" addStyleNames="{style.inline} {style.lbl}"/>
+					    	<g:Label ui:field="lblDateEndPicker" addStyleNames="{style.inline} {style.icCalendar}" title="{label.changeDate}"/>
+					    	<g:Label ui:field="lblDateEndTitle" text="Date" addStyleNames="{style.inline} {style.lblDate}"/>
+					    	<g:Image ui:field="btnLoad" addStyleNames="{style.btnLoad}" resource="{resources.ic_autorenew_white_24dp}" title="{label.Refresh}" />
+				    	</g:HTMLPanel>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="metricsPanel" addStyleNames="{style.metricsPanel}, {style.floatPanel}">
+						<g:Label ui:field="lblmetricsPanel" addStyleNames="{style.lblFloat}"/>
+						<g:SimplePanel ui:field="metricsDataGrid" addStyleNames="{style.datagrid}"/>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+			
+				
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel addStyleNames="{style.bckPanel}">
+				<g:Image ui:field="btnBackground" addStyleNames="{style.btnBackground}" resource="{resources.ic_map_layers_64}" title="{label.Layers}" />
+			</g:HTMLPanel>
+			
+		</g:HTMLPanel>
+			
+	</g:HTMLPanel>
+</ui:UiBinder> 

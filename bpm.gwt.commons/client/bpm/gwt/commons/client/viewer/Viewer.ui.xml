@@ -1,0 +1,184 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:my='urn:import:bpm.gwt.commons.client.custom'>
+
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+
+	<ui:style type="bpm.gwt.commons.client.viewer.Viewer.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: absolute;
+		}
+		
+		.toolbarPanel {
+			width: 100%;
+			height: 40px;
+		}
+		
+		.paramPanel {
+			
+		}
+		
+		.reportPanel {
+			position: absolute;
+			right: 0px;
+			top: 45px;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.frame {
+			
+		}
+		
+		.btnFloatRight {
+			float: right;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+		}
+		
+		.lblPreview {
+			background: none repeat scroll 0 0 #D3D3D3;
+			color: #808080;
+			display: inline-block;
+			float: right;
+			font-weight: bold;
+			margin-top: 5px;
+			padding: 8px;
+			vertical-align: top;
+			cursor: pointer;
+		}
+		
+		.lblPreview {
+			background: none repeat scroll 0 0 #D3D3D3;
+			color: #808080;
+			display: inline-block;
+			float: right;
+			font-weight: bold;
+			margin-top: 5px;
+			padding: 8px;
+			vertical-align: top;
+			cursor: pointer;
+		}
+		
+		.lblGraphe {
+			border-left: 2px solid white;
+			background: none repeat scroll 0 0 #D3D3D3;
+			border-radius: 0 15px 15px 0;
+			color: #808080;
+			display: inline-block;
+			float: right;
+			font-weight: bold;
+			margin-right: 10px;
+			margin-top: 5px;
+			padding: 8px;
+			vertical-align: top;
+			cursor: pointer;
+		}
+		
+		.lblDesigner {
+			border-right: 2px solid white;
+			background: none repeat scroll 0 0 #D3D3D3;
+			border-radius: 15px 0 0 15px;
+			color: #808080;
+			display: inline-block;
+			float: right;
+			font-weight: bold;
+			margin-top: 5px;
+			padding: 8px;
+			vertical-align: top;
+			cursor: pointer;
+		}
+		
+		.focus {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnchart {
+			float: right;
+			margin-right: 10px;
+		}
+		
+		.lblReloadReport {
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 80px;
+			text-align: center;
+		}
+		
+		.borderleft {
+			border-left: 2px solid white;
+		}
+		
+		.btnRight {
+			float: right;
+			margin-right: 10px;
+		}
+	
+		.lblToolbar {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<!-- <g:Image ui:field="btnExpand" resource="{resources.ic_btn_sidebar_right_expand}" 
+				addStyleNames="{style.btnToolbar}"/> -->
+			<g:Image ui:field="btnRun" resource="{resources.viewer_report_run}" title="{label.Run}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnSave" resource="{resources.viewer_report_history}" title="{label.ButtonSave}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnExport" resource="{resources.viewer_report_export}" title="{label.Export}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnPrint" resource="{resources.viewer_report_print}" title="{label.PrintReport}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnHistorize" resource="{resources.viewer_report_history}" title="{label.Historize}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnOpenDashInNewTab" resource="{resources.tab_new}" title="{label.OpenNewTab}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnBurst" resource="{resources.viewer_burst}" title="{label.BurstReport}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnShare" resource="{resources.share_24_black}" title="{label.Share}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnUpdate" resource="{resources.ic_content_restore}" title="{label.Update}" addStyleNames="{style.btnToolbar}" />
+
+			<g:Image ui:field="btnAdd" resource="{resources.add_16}" title="{label.AddRequest}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnDelete" resource="{resources.delete_24}" title="{label.DeleteRequest}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnReport" resource="{resources.metadataexplorer_fwr}" title="{label.Report}" addStyleNames="{style.btnToolbar}" />
+			<g:Image ui:field="btnCubefaweb" resource="{resources.metadataexplorer_vanillaanalysisweb}" title="{label.Report}" addStyleNames="{style.btnToolbar}" />
+
+			<my:ImageButton ui:field="btnReports" />
+			<my:ImageButton ui:field="btnGroups" />
+			<my:ImageButton ui:field="btnFormats" />
+			<g:Image ui:field="btnComment" resource="{resources.viewer_comment}" title="{label.Comments}" addStyleNames="{style.btnToolbar},{style.btnFloatRight}" />
+
+			<g:Image ui:field="btnAnalysis" resource="{resources.ic_analysis_gray}" title="{label.DataAnalysis}" addStyleNames="{style.btnToolbar}, {style.btnRight}" />
+			<g:Image ui:field="btnGraphe" resource="{resources.metadataexplorer_chart_clair}" title="{label.Graphe}" addStyleNames="{style.btnToolbar}, {style.btnRight}" />
+			<g:Image ui:field="btnCube" resource="{resources.metadataexplorer_cube_clair}" title="{label.Cube}" addStyleNames="{style.btnToolbar}, {style.btnRight}" />
+			<g:Image ui:field="btnPreview" resource="{resources.metadataexplorer_results_clair}" title="{label.Display}" addStyleNames="{style.btnToolbar}, {style.btnRight}" />
+			<g:Image ui:field="btnDesigner" resource="{resources.metadataexplorer_conception_clair}" title="{label.Builder}" addStyleNames="{style.btnToolbar}, {style.btnRight}" />
+
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="paramPanel" addStyleNames="{style.paramPanel}" />
+		<g:HTMLPanel ui:field="reportPanel" addStyleNames="{style.reportPanel}">
+			<g:Label ui:field="lblReloadReport" text="{label.ReloadReport}"
+				visible="false" addStyleNames="{style.lblReloadReport}" />
+			<g:Frame ui:field="reportFrame" />
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="commentPanel" addStyleNames="{style.paramPanel}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

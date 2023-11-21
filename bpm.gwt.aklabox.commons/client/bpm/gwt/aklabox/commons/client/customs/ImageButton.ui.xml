@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.gwt.aklabox.commons.client.customs.ImageButton.MyStyle">
+		.btnDisabled {
+		    background: none repeat scroll 0 0 #D3D3D3;
+		    color: #808080;
+			box-shadow: 0 0 0 rgba(0, 0, 0, .6);
+		    cursor: default;
+		}
+		
+		.btnDisabled:hover {
+		    background: none repeat scroll 0 0 #D3D3D3;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focus" addStyleNames="btn">
+		<g:Image ui:field="img"/>
+	</g:FocusPanel>
+</ui:UiBinder> 

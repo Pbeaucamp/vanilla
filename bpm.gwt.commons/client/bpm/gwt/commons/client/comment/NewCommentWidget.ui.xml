@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.gwt.commons.client.comment.NewCommentWidget.MyStyle">
+
+		.commentTxt {
+		    height: 50px;
+		    margin-bottom: 10px;
+		    margin-top: 10px;
+			margin-right: 10px;
+		    width: 285px;
+		    resize: none;
+		}
+
+		.rButtonComments {
+			margin-bottom: 5px;
+		}
+
+		.gridGroupCommentsPanel {
+		    margin-bottom: 15px;	
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444;
+			border: 1px solid #555555;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			width: 145px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			padding: 0 !important;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA;
+			color: #000000;
+		}
+		
+		.btnValid {
+		    margin-right: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:TextArea ui:field="txtComment" addStyleNames="{style.commentTxt}"/>
+<!--		<g:HorizontalPanel addStyleNames="{style.rButtonComments}">-->
+<!--			<g:RadioButton ui:field="checkGroup" ui:name="available"></g:RadioButton>-->
+<!--			<g:RadioButton ui:field="checkGroup" ui:name="available"></g:RadioButton>-->
+<!--		</g:HorizontalPanel>-->
+		<g:SimplePanel ui:field="panelGroup"/>
+		<g:HorizontalPanel>
+			<g:Button ui:field="btnNewCom" addStyleNames="{style.btn},{style.btnValid}"/>
+			<g:Button ui:field="btnCancel" addStyleNames="{style.btn}"/>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

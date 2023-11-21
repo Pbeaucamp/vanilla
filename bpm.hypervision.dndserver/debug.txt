@@ -1,0 +1,7 @@
+10 janvier 2010
+1/
+mantis :
+desc :	lors de replication complete (avec fmdt), les users/url etaient inversés
+	
+2/
+desc: mauvais remappage d'id lors d'une replication avec changement de fmdt

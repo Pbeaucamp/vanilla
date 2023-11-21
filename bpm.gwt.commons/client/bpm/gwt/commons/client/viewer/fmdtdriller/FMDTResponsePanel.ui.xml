@@ -1,0 +1,245 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style
+		type="bpm.gwt.commons.client.viewer.fmdtdriller.FMDTResponsePanel.MyStyle">
+		.top {
+			border: 1px solid black;
+		}
+		
+		.panelContent1 {
+			position: absolute;
+			right: 0px;
+			left: 0px;
+			top: 45px;
+			bottom: 40px;
+			width: 100%;
+			margin-top: 5px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.panelContent {
+			position: absolute;
+			right: 0px;
+			left: 0px;
+			top: 5px;
+			bottom: 80px;
+			width: 100%;
+			margin-top: 5px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.panelContent2 {
+			position: absolute;
+			right: 0px;
+			left: 210px;
+			top: 45px;
+			bottom: 40px;
+			margin-top: 5px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.leftPanel {
+			position: absolute;
+			left: 0px;
+			top: 45px;
+			bottom: 5px;
+			width: 200px;
+			margin-top: 5px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		
+		.panelToolbar {
+			height: 35px;
+			width: 100%;
+		}
+		
+		.panelPager {
+			position: absolute;
+			bottom: 47px;
+			height: 30px;
+			margin-top: 7px;
+			margin-bottom: 7px;
+			width: 100%;
+		}
+		
+		.panelPager1 {
+			position: absolute;
+			bottom: 0px;
+			left: 16%;
+			height: 30px;
+			margin-top: 7px;
+			margin-bottom: 7px;
+			width: 84%;
+		}
+		
+		.pager {
+			margin: auto;
+		}
+		
+		.panelQuery {
+			position: absolute;
+			height: 45px;
+			bottom: 0px;
+			overflow: auto;
+		}
+		
+		.panelQuery1 {
+			position: absolute;
+			bottom: 15px;
+			left: 5px;
+			right: 5px;
+			top: 160px;
+			overflow: auto;
+			vertical-align: baseline;
+			text-align: -webkit-center;
+			padding: 2px;
+		}
+		
+		.lstTables {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.labelRowDocument {
+			border-bottom: 1px solid gray;
+			height: 45px;
+			position: relative;
+		}
+		
+		.textDocument {
+			left: 30px;
+			position: absolute;
+			top: 15px;
+			width: 195px;
+		}
+		
+		.imgArrowDocument {
+			height: 15px;
+			position: absolute;
+			right: 5px;
+			top: 15px;
+			width: 15px;
+		}
+		
+		.documentList {
+			border-right: 1px solid gray;
+			bottom: 0;
+			position: absolute;
+			top: 28px;
+			width: 250px;
+			overflow: auto;
+		}
+		
+		.lblQuery {
+			margin: 1px;
+		}
+		
+		.lblQuerytitle {
+			margin: 5px;
+			margin-top: 25px;
+			margin-left: 15px;
+			font-size: 14px;
+		}
+		
+		.btnToolbar {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 30px;
+			margin-top: 5px;
+			margin-left: 15px;
+			width: 135px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.btn {
+			cursor: pointer;
+			background-position: center !important;
+		}
+		
+		.btn:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.hover {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnReply {
+			position: absolute;
+			top: 5px;
+			left: 7px;
+			height: 40px !important;
+			width: 40px !important;
+		}
+		
+		.btnFomatS {
+			position: relative;
+			margin: 5px;
+			margin-left: 15px;
+		}
+		
+		.btnFomatA {
+			position: relative;
+			display: inline-block;
+			margin: 5px;
+		}
+		
+		.lblResults {
+			margin: 5px;
+			font-size: 14px;
+		}
+		
+		.dockPanel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.rowLabel {
+			font-weight: bold;
+			background-color: rgb(150, 150, 150);
+		}
+		</ui:style>
+	<g:HTMLPanel ui:field="dockPanel" addStyleNames="{style.dockPanel}">
+		<g:Image ui:field="btnReply" resource="{resources.ic_reply_black_24dp}"
+			title="{label.Back}" addStyleNames="{style.btnReply}, {style.btn}" />
+		<g:SimplePanel ui:field="tableContentPanel"
+			addStyleNames="{style.panelContent2}" />
+		<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager1}" />
+		<g:HTMLPanel ui:field="leftPanel" addStyleNames="{style.leftPanel}">
+			<g:Label text="{label.ShowResults}" addStyleNames="{style.lblResults}" />
+			<g:Image ui:field="btnFormatSimple" resource="{resources.metadataexplorer_format}"
+				title="{label.FlatFormat}" addStyleNames="{style.btnFomatS}, {style.btn}" />
+			<g:Image ui:field="btnFormatAgg" resource="{resources.metadataexplorer_format_agg}"
+				title="{label.FormattedFormat}" addStyleNames="{style.btnFomatA}, {style.btn}" />
+			<g:Label text="{label.Query}" addStyleNames="{style.lblQuerytitle}" />
+			<g:SimplePanel ui:field="queryPanel" addStyleNames="{style.panelQuery1}">
+				<g:Label ui:field="lblQuery" addStyleNames="{style.lblQuery}" />
+			</g:SimplePanel>
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

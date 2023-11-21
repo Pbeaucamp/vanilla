@@ -1,0 +1,95 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages'/>
+	
+	<ui:style type="bpm.gwt.commons.client.utils.alert.AlertConditionItem.MyStyle">
+		
+		.block {
+		 	display: block;
+		}
+		
+		.inline {
+		  	display: inline-block;
+		}
+		
+		.lst{
+			vertical-align: middle;
+			padding: 0.4em!important;
+			margin-top: 3px;
+			margin-bottom: 3px;
+			margin-right: 3px;
+		}
+		
+		.full{
+			width: 90%;
+		}
+		
+		.tiers{
+			width: 30%;
+		}
+		
+		.txt input{
+			margin: 3px 1%!important;
+			padding: 0.50em 1em!important;
+		}
+		.txt div{
+			margin: 0;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+    	    vertical-align: middle;
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.radio{
+			margin-top: -50px;
+			margin-right: 10px;
+		}
+		
+		.panelRight{
+			margin-left: 5px;
+		}
+		
+		.panel{
+			display: inline-block;
+			width: 92%;
+			margin-bottom: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<g:HTMLPanel ui:field="panelRepo" addStyleNames="{style.panel}">
+			<g:ListBox ui:field="lstRepoColumns1" addStyleNames="{style.lst} {style.tiers} {style.inline}"/>
+			<g:ListBox ui:field="lstRepoFilters" addStyleNames="{style.lst} {style.tiers} {style.inline}"/>		
+			<g:HTMLPanel addStyleNames="{style.tiers} {style.inline} {style.panelRight}">
+				<g:RadioButton ui:field="selCol" name="selCol" text="{label.Field}" addStyleNames="{style.radio} {style.inline}"/>
+				<g:RadioButton ui:field="selVal" name="selVal" text="{label.Value}" addStyleNames="{style.radio} {style.inline}"/>
+				<g:ListBox ui:field="lstRepoColumns2" addStyleNames="{style.lst} {style.inline} {style.full}"/>
+				<my:LabelTextBox ui:field="txtRepoValue2" addStyleNames="{style.txt} {style.inline} {style.full}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="panelKpi" addStyleNames="{style.panel}">
+			<g:ListBox ui:field="lstKpiType" addStyleNames="{style.lst} {style.tiers} {style.block}"/>
+			
+			<g:ListBox ui:field="lstKpiField1" addStyleNames="{style.lst} {style.tiers} {style.inline}"/>
+			<g:ListBox ui:field="lstKpiFilters" addStyleNames="{style.lst} {style.tiers} {style.inline}"/>		
+			<g:ListBox ui:field="lstKpiField2" addStyleNames="{style.lst} {style.tiers} {style.inline}"/>
+		</g:HTMLPanel>
+		
+		<g:Image ui:field="btnDel" resource="{resources.delete_gray_24}" addStyleNames="{style.imgGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

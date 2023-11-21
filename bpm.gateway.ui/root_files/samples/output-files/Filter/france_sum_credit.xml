@@ -1,0 +1,47 @@
+<Root>
+    <Row>
+        <CITY>Marseille</CITY>
+        <CREDITLIMIT>65000.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Strasbourg</CITY>
+        <CREDITLIMIT>53800.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Toulouse</CITY>
+        <CREDITLIMIT>61100.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Lille</CITY>
+        <CREDITLIMIT>82900.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Paris</CITY>
+        <CREDITLIMIT>247400.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Lyon</CITY>
+        <CREDITLIMIT>123900.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Nantes</CITY>
+        <CREDITLIMIT>139200.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Reims</CITY>
+        <CREDITLIMIT>81100.0</CREDITLIMIT>
+    </Row>
+
+    <Row>
+        <CITY>Versailles</CITY>
+        <CREDITLIMIT>77900.0</CREDITLIMIT>
+    </Row>
+
+</Root>

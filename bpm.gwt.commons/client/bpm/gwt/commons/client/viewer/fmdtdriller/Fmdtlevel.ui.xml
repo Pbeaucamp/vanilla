@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+
+	<ui:style>
+	.lvl {
+		margin: 4px;
+		padding: 2px;
+	}
+	
+	.lbl {
+		display: inline-block;
+		cursor: default;
+		font-size: 12px;
+		padding: 2px;
+		margin-left: 8px;
+		vertical-align: super;
+	}
+	
+	.lst {
+		margin-left: 3px;
+		width: 80px;
+		vertical-align: super;
+		display: inline-block;
+	}
+	
+	.image {
+		background-position: center !important;
+		vertical-align: top;
+		display: inline-block;
+	}
+	</ui:style>
+	<g:FocusPanel ui:field="dragLevel" addStyleNames="{style.lvl}">
+		<g:HTMLPanel>
+			<g:Image ui:field="imgLevel" resource="{resources.cube_niveau}"
+				addStyleNames="{style.image}" />
+			<g:Label ui:field="labelLevel" addStyleNames="{style.lbl}" />
+			<g:SimplePanel ui:field="txtOperation" addStyleNames="{style.lst}" />
+		</g:HTMLPanel>
+	</g:FocusPanel>
+
+</ui:UiBinder> 

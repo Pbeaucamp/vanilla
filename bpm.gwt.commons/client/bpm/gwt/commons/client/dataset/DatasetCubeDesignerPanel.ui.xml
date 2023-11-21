@@ -1,0 +1,183 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:f="urn:import:bpm.gwt.commons.shared.fmdt">
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+
+	<ui:style type='bpm.gwt.commons.client.dataset.DatasetCubeDesignerPanel.MyStyle'>
+	.txt {
+		font-size: 1.1em;
+	    height: 20px;
+	    max-width: 300px;
+	    padding: 3px;
+	    width: 100%;
+	}
+	
+	.lst {
+		font-size: 1.1em;
+	    height: 30px;
+	    max-width: 300px;
+	    width: 100%;
+	}
+	
+	.btn {
+		cursor: pointer;
+		height: 40px !important;
+		width: 40px !important;
+		background-position: center !important;
+	}
+	
+	.btn:HOVER {
+		background-color: white !important;
+		-webkit-box-shadow: 1px 1px 6px -2px black inset;
+		-moz-box-shadow: 1px 1px 6px -2px black inset;
+		-oz-box-shadow: 1px 1px 6px -2px black inset;
+		-o-box-shadow: 1px 1px 6px -2px black inset;
+		box-shadow: 1px 1px 6px -2px black inset;
+	}
+	
+	.dockPanel {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+
+	
+	.content {
+		position: absolute;
+		right: 0px;
+		left: 0px;
+		bottom: 100px;
+		top: 165px;
+	}
+	
+	.value {
+		display: inline-block;
+		width: 20%;
+		height: 100%;
+		position: relative;
+	}
+	
+	.valueWidth {
+		width: 40%;
+	}
+	
+	.datas {
+		height: 100%;
+	    left: 2px;
+	    overflow-x: hidden;
+	    overflow-y: auto;
+	    position: absolute;
+	    right: 2px;
+	}
+	
+	.sub {
+		padding: 5px;
+	}
+	
+	.title {
+		width: 100%;
+		display: inline-block;
+	}
+	
+	.panelTitle {
+		display: inline-block;
+		width: 40%;
+		vertical-align: middle;
+	}
+	
+	.marge {
+		margin-left: 5px;
+		margin-bottom: 2px;
+	}
+	
+	.txtarea {
+		min-height: 100px;
+   		width: 100%;
+	}
+	
+	.lbl {
+		font-size: 13px;
+		color: #fff;
+	}
+	
+	.btnPreview {
+		cursor: pointer;
+		height: 40px !important;
+		width: 40px !important;
+		background-position: center !important;
+		bottom: 50px;
+		right: 50px;
+		position: absolute;
+	}
+	
+	.btnLaunch {
+		cursor: pointer;
+		height: 48px !important;
+		width: 48px !important;
+		background-position: center !important;
+		bottom: 20px;
+		position: absolute;
+	}
+	
+	.frame {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.popup {
+		width: 1200px;
+		height: 800px;
+		box-shadow : 0px 0 12px 1px #696969;
+		overflow: auto!important;
+	}
+	
+	.row{
+		margin: 0 30px;
+	}
+	
+	.block{
+		background: none repeat scroll 0 0 #777777;
+	    border-radius: 5px 5px 5px 5px;
+	    padding: 10px;
+	    color: #fff;
+	}
+	
+	</ui:style>
+	<f:HtmlFocusPanel ui:field="dockPanel" addStyleNames="{style.dockPanel}">
+		<g:HTMLPanel addStyleNames="{style.row}, {style.block}">
+			<g:HTMLPanel addStyleNames="{style.panelTitle}">
+				<g:Label text="{label.CubeName}" addStyleNames="{style.title}" />
+				<g:TextBox ui:field="txtTitle" addStyleNames="{style.txt}" />
+				<g:Label text="{label.OrExisting}" addStyleNames="{style.title}" />
+				<g:ListBox ui:field="lstOld" addStyleNames="{style.lst}" />
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.panelTitle}">
+				<g:Label text="{label.AddInformation}" addStyleNames="{style.title}" />
+				<g:TextArea ui:field="areaInfo" addStyleNames="{style.txtarea}" />
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.row}, {style.content}">
+			<g:HTMLPanel addStyleNames="{style.value}">
+				<g:HTMLPanel ui:field="panelColumns" addStyleNames="{style.datas}, {style.block}">
+					<g:Label text="{label.RequestFields}" addStyleNames="{style.lbl}" />
+					<g:HTMLPanel ui:field="pColumns" addStyleNames="{style.sub}" />
+				</g:HTMLPanel>
+			</g:HTMLPanel><!--
+			--><g:HTMLPanel addStyleNames="{style.value}, {style.valueWidth}">
+				<f:HtmlFocusPanel ui:field="panelDimensions" addStyleNames="{style.datas}, {style.block}">
+					<g:Label text="{label.Dimensions}" addStyleNames="{style.lbl}" />
+					<f:HtmlFocusPanel ui:field="pDimensions" addStyleNames="{style.sub}" />
+				</f:HtmlFocusPanel>
+			</g:HTMLPanel><!--
+			--><g:HTMLPanel addStyleNames="{style.value}, {style.valueWidth}">
+				<f:HtmlFocusPanel ui:field="panelMeasures" addStyleNames="{style.datas}, {style.block}">
+					<g:Label text="{label.Measures}" addStyleNames="{style.lbl}" />
+					<f:HtmlFocusPanel ui:field="pMeasures" addStyleNames="{style.sub}" />
+				</f:HtmlFocusPanel>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:Image ui:field="btnlaunch" resource="{resources.launch}"	title="{label.Run}" addStyleNames="{style.btnLaunch}" />
+		
+	</f:HtmlFocusPanel>
+</ui:UiBinder> 

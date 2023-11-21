@@ -1,0 +1,69 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.panelContent {
+			height: 350px;
+			width: 690px;
+		}
+		
+		.panelRepository {
+			border: 1px solid gray;
+		    height: 250px;
+		    margin: 10px;
+		    min-width: 450px;
+		    background: lightgray;
+		}
+		
+		.panelFormat {
+		    border-top: 2px solid #628CD5;
+		    width: 98%;
+		}
+		
+		.lblFormat {
+		    display: inline-block;
+	    	width: 70px;
+	    	margin: 10px;
+		}
+		
+		.lstFormat {
+		    width: 78%;
+		}
+		
+		.panelCheckboxs {
+			background: none repeat scroll 0 0 #D3D3D3;
+			border: 1px solid #808080;
+			height: 180px;
+			margin: 10px;
+			overflow: auto;
+		}
+
+		.lblTips {
+    		font-size: 10px;
+    		margin: 5px;
+		}
+		
+		.checkChart {
+	    	margin-left: 20px;
+		}
+		
+		.checkChart input {
+		    margin-right: 8px;
+		    margin-top: 2px !important;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:SimplePanel ui:field="mainPanel" addStyleNames="{style.panelRepository}"/>
+		<g:HTMLPanel addStyleNames="{style.panelFormat}">
+			<g:Label text="{labels.Format}" addStyleNames="{style.lblFormat}"/>
+			<g:ListBox ui:field="lstFormat" addStyleNames="{style.lstFormat}"/>
+			<g:CheckBox ui:field="checkLandscape" text="{labels.Landscape}" addStyleNames="{style.checkChart}"/>
+			<g:CheckBox ui:field="checkExportChart" text="{labels.ExportChart}" addStyleNames="{style.checkChart}"/>
+			<g:HTMLPanel ui:field="panelCheckboxs" styleName="{style.panelCheckboxs}" />
+			<g:Label ui:field="lblTips" text="{labels.TipsDashboard}" addStyleNames="{style.lblTips}" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

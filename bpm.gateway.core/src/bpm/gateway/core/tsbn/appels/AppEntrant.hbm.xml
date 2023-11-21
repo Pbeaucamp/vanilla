@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2014 2:11:17 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="bpm.gateway.core.tsbn.appels.AppEntrant" table="APP_APPENTRANT">
+    	<id name="id" type="int">
+            <column name="GR_ID" />
+            <generator class="increment"/>
+        </id>
+        <property name="codeFile" type="java.lang.String">
+            <column name="CODEFILE" />
+        </property>
+        <property name="appType" type="java.lang.String">
+            <column name="APPTYPE" />
+        </property>
+        <property name="idStruct" type="java.lang.String">
+            <column name="IDSTRUCT" />
+        </property>
+        <property name="idAgent" type="java.lang.String">
+            <column name="IDAGENT" />
+        </property>
+        <property name="tba" type="float">
+            <column name="TBA" />
+        </property>
+        <property name="tid" type="java.lang.Float">
+            <column name="TID" />
+        </property>
+        <property name="tna" type="java.lang.Float">
+            <column name="TNA" />
+        </property>
+        <property name="tia" type="java.lang.Float">
+            <column name="TIA" />
+        </property>
+        <property name="tta" type="java.lang.Float">
+            <column name="TTA" />
+        </property>
+        <property name="nbPres" type="java.lang.Float">
+            <column name="NBPRES" />
+        </property>
+        <property name="durApp" type="java.lang.Float">
+            <column name="DURAPP" />
+        </property>
+        <property name="durApd" type="java.lang.Float">
+            <column name="DURAPD" />
+        </property>
+        <property name="flgDistr1" type="java.lang.String">
+            <column name="FLGDISTR1" />
+        </property>
+        <property name="flgDistr2" type="java.lang.String">
+            <column name="FLGDISTR2" />
+        </property>
+        <property name="flgDebord" type="java.lang.String">
+            <column name="FLGDEBORD" />
+        </property>
+        <property name="lnk" type="java.lang.String">
+            <column name="LNK" />
+        </property>
+        <property name="org" type="java.lang.String">
+            <column name="ORG" />
+        </property>
+    </class>
+</hibernate-mapping>
