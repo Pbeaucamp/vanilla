@@ -1,0 +1,25 @@
+body {
+	background-color:#797D88;
+}
+
+tr, td {
+	background-color:#eaeef7;
+	padding: 5px;
+	margin: 2px;
+}
+
+.categorie {
+	padding: 10px;
+	margin: 10px;
+	background-color:#eaeef7;
+	width: 200px;
+}
+
+.lang {
+	padding: 10px;
+	margin: 10px;
+	border:	1px solid #797D88;
+	background-color:#eaeef7;
+	width: 200px;
+	font-size: 14pt;
+}

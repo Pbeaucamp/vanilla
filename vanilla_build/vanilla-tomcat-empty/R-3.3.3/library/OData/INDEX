@@ -1,0 +1,8 @@
+OData                   OData: A helper package to access data from a
+                        web service based on OData Protocol.
+downloadResourceCsv     Download a CSV file from an URL
+entitySets              Get a list of EntitySets for a web service base
+                        on OData
+metadata                Get the metadata for a specific web service
+                        based on OData Protocol
+retrieveData            Retrieve data as list from a dataset

@@ -1,0 +1,22 @@
+#! /bin/sh
+VANILLA_HOME="/home/user-client/vanilla-d4c/"
+cd $VANILLA_HOME
+
+case $1 in
+	start)
+		./bin-runtime/jetty.sh start
+		./bin/jetty.sh start
+		;;
+	stop)
+		./bin-runtime/jetty.sh stop
+		./bin/jetty.sh stop
+		;;
+	restart)
+		./bin-runtime/jetty.sh stop
+		./bin/jetty.sh stop
+		
+		./bin-runtime/jetty.sh start
+		./bin/jetty.sh start
+		;;
+esac
+

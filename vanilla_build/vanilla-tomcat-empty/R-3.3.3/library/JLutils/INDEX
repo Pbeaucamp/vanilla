@@ -1,0 +1,20 @@
+%p%                     Concatenate operator
+A2Rplot                 Colored dendrogram
+JLutils-package         JLutils
+best.cutree             Optimal partition based on the higher relative
+                        loss of inertia
+cutree.order            Cut a tree into groups of data in the order of
+                        the tree
+en                      English formatter
+fr                      French formatter
+int                     International formatter
+multiplot               Multiple plot
+percent                 Percent formatter (English)
+pourcent                Percent formatter (French)
+prop.ci                 Proportion confidence interval
+s.freq                  Plot of factorial maps with frequency of each
+                        point
+seq_heatmap             Index plot of sequences orderred according to a
+                        dendrogram
+seq_makeRiver           Create a riverplot from a sequence object
+who.format              Formatting numbers like in WHO publications

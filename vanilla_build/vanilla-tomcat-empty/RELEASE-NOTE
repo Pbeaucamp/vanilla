@@ -1,0 +1,118 @@
+-------------------------------------------- Vanilla RELEASES NOTES ------------------------------------------------
+--------------------------------------------      02/04/2019        ------------------------------------------------
+
+NOTES PARTICULIERES
+===================
+
+FONCTIONS APPLICATION
+=====================
+WebDashboard - Possibilité de D&D d'un graphique sauvegardé depuis le Metadata Explorer
+BiGateway - Possibilité d'ajouter une source BDD dans un GID depuis l'exploration des tables (il faut sélectionner le GID avant d'explorer les tables)
+BiGateway - Changement des exemples dans le packaging
+Vanilla Hub - Migration de l'API Youtube
+Vanilla Hub - Migration de l'API Facebook (Peu de fonction disponible)
+Vanilla Hub - Ajout de la fonction de Décryption
+DataPreparation - Typage des colonnes (Demande pas mal de test)
+Data Preparation - Ouverture avec Lool (A tester en déployé)
+Portail - Ouverture d'un document depuis l'interface Base Documentaire avec Lool (A tester en deployé)
+BiGateway - Ajout des relations dans la boîte de création Metadata
+
+
+DEBUGS
+=====================
+Metadata Explorer - Correctiond de l'interface de création de cube
+Metadata Explorer - Les boutons sont cachés lors de l'ouverture d'un DataViz sauvegardé
+Metadata Explorer - Correction lors de l'export de certains DataViz
+Metadata - Perspective Dim/Mesure - Ajout des couleurs
+Data Preparation - Correction de la popup de détails
+BiGateway - Correction de la sauvegarde des infos de la boîte Agregations
+BiGateway - Correction de la lecture des fichiers ShapeFile
+Vanilla Hub - Seulement les worklows et ETls sont maintenant affichés dans la fenêtre de sélection
+Vanilla Hub / Vanilla Air - Correction d'un problème de conflit
+
+--------------------------------------------      21/03/2019        ------------------------------------------------
+
+NOTES PARTICULIERES
+===================
+
+FONCTIONS APPLICATION
+=====================
+Vanilla Hub - Source D4C
+Metadata Explorer - Sauvegarde DataViz
+Architect - Support des workflows associés
+Architect - Icônes DataPreparation
+Datasource/Dataset - Possibilité d'agrandir la fenêtre
+WebDashboard - Ajout du composant Carte de Data Preparation (à tester)
+
+DEBUGS
+=====================
+
+Vanilla Hub - Recharger la sélection des Packages/Ressources D4C dans Cibles et Sources
+Vanilla Hub - Cacher la partie utilisateur quand Vanilla Hub utilise la sécurité de Vanilla
+Vanilla Hub - Cacher la ListeBox Scanner dans source qui ne sert a rien
+Vanilla Hub - Amélioration de la fenêtre de sélection des packages / ressources
+Data Preparation - Permettre la sélection multiple d’item (comme ANFR)
+Data Preparation - Faire que le clic sur un membre active directement le filtre sur ce membre (comme ANFR)
+Data Preparation - Amélioration de la Popup
+Data Preparation - Correction du bug lors de l'affichage de la popup (elle disparaissait)
+Data Preparation - Amélioration de la taille des bulles
+Data Preparation - Création d'une base de données
+Data Preparation - Export Lool (à tester)
+Metadata Explorer - R - Correction de l'onglet R avec R 3.3.3
+Metadata Explorer - Push WebReport - Ajout du support des graphiques multi-séries avec une agregations différentes
+Metadata Explorer - Quand on ouvre un query, on ne pouvais pas aller sur l’onglet Cube
+Metadata Explorer - Correction de la création du cube
+FWR - Ajout du support des graphiques multi-séries avec une agregations différentes
+BIG - Visualisation des données pour une source Architect
+BIG - Correction de la boîte d'agrégat
+BIG - Création d'une base de données
+Portail - Ajout de la possibilité de modifier une planification
+Portail - Ouvrir des documents normalement lorsque Lool n'est pas paramétré
+Metadata - Affichage des dimensions Geo et Date + Changement couleur rouge en vert
+
+PROBLEMES CONNUS
+================
+
+--------------------------------------------      24/01/2019        ------------------------------------------------
+
+NOTES PARTICULIERES
+===================
+
+Les datasources Architect ont changé de structures et les anciennes ne sont plus supportées, il faudra les recréer
+
+FONCTIONS APPLICATION
+=====================
+- Metadata Explorer - Push vers DataPreparation
+- BiGateway - Source D4C
+- Portail - Exécution d'un workflow Hub depuis le portail (paramètres OK également)
+- DataPreparation - Exécution d'un ETL source de Datasource Architect depuis DataPreparation (Boutons disponibles à 3 endroits)
+- Portail - Affichage des requêtes sauvegardées sur l'arbre du référentiel
+- BiGateway - Boite PDF Formulaire *
+
+DEBUGS
+=====================
+
+Datasource - Taille de fenêtre - Source de fichiers
+Datasource - Validation impossible sans valeur dans le nom
+Datasource - Source de fichier Metadata - Problème de packaging
+Datasource - Metadata - Agrandissement de la fenêtre
+Datasource - Multiples Sources pr 1 metadata - Il faut pouvoir créer plusieurs sources avec le même Métadata, sinon, l'utilisation de la même source pour plusieurs VanillaDashboard va être ingérable
+VanillaReport - Alignement du texte lors de la création d'une liste
+VanillaDashboard - Graphe combination - Le css et les tailles de charts sont ok (Attention Graph comb non ok)
+VanillaDashboard - Options sur les graphes - Ca prend la taille de la zone désormais. Par contre ça s'adapte à la hauteur largeur, ce qui peut faire petit dans certains cas
+VanillaDashboard - Supprimer label "FusionChart" - Ajouté au css par défaut dans le build
+VanillaHub - Problème de packaging
+Softs - Ajout splashscreen en version 6.4
+Portail - Icone carte
+DataPreparation - Legère amélioration graphique
+
+DataPreparation - Voir DataPrepLivraison20190124_v2.docx
+
+PROBLEMES CONNUS
+================
+
+Portail - Tailles des icones des viewers (Metadata Explorer, Rapports, etc...)
+BDD - Base H2 à nettoyer dans le build
+Softs - Exporter tout les softs avec l'icone 6.4 (OK pour le BiGateway)
+Metadata Explorer - Message de confirmation absent lors de l'export vers DataPreparation
+Metadata Explorer - Affichage du bouton save et share alors qu'il n'y a rien a share / save

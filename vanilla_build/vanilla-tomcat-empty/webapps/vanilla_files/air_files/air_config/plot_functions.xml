@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<function>matplot</function>
+	<function>monthplot</function>
+	<function>qplot</function>
+	<function>ggplot</function>
+	<function>barchart</function>
+	<function>bwplot</function>
+	<function>cloud</function>
+	<function>contourplot</function>
+	<function>densityplot</function>
+	<function>dotplot</function>
+	<function>histogram</function>
+	<function>levelplot</function>
+	<function>splom</function>
+	<function>stripplot</function>
+	<function>xyplot</function>
+	<function>wireframe</function>
+	<function>mosaic</function>
+	<function>assoc</function>
+	<function>corrgram</function>
+	<function>grid.arrange</function>
+	<function>clusplot</function>
+	<function>tableplot</function>
+	<function>stat_smooth</function>
+	<function>ggtitle</function>
+	<function>ggdendrogram</function>
+	<function>HCPC</function>
+	<function>lag.plot</function>
+	<function>prp</function>
+	<function>plot</function>
+</doc>

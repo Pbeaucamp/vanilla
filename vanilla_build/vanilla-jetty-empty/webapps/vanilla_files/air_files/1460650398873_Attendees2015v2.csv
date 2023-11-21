@@ -1,0 +1,97 @@
+Company;Country;CompanyType;Position;BirthDate;Gender;YearExperience;YearExpPosition;TravelMode
+ABBYY;Russia;Private;Research;23/04/1973;M;15;10;Flight
+ABBYY;Russia;Private;Pharmacy;05/07/1954;M;12;3;Car
+AbbVie;Germany;Private;Management;13/01/1957;M;32;31;Car
+AkzoNobel;Netherlands;Private;IT;12/08/1959;F;27;23;Car
+AstraZeneca;Sweden;Private;IT;11/10/1964;F;25;18;Flight
+Averbis;Germany;Private;IT;16/10/1964;M;27;17;Flight
+Averbis;Germany;Private;Research;11/11/1964;F;15;14;Boat
+Bayer Pharma;Germany;Private;Pharmacy;07/12/1964;M;25;17;Train
+Bayer CropScience;Germany;Private;Management;15/04/1965;F;18;12;Train
+bioMérieux;France;Private;IT;29/09/1965;M;19;12;Flight
+Boehringer Ingelheim;Germany;Private;IT;01/04/1968;M;5;3;Flight
+Boehringer Ingelheim;Germany;Private;Data Science;20/06/1969;M;25;20;Flight
+Boehringer Ingelheim;Germany;Private;IT;21/01/1975;F;30;26;Car
+Bpm-Conseil, France;France;Private;Research;19/06/1975;F;7;1;Car
+CAS;USA;Private;Pharmacy;06/05/1978;M;27;20;Car
+Centredoc;Switzerland;Private;Management;15/05/1978;F;8;3;Flight
+Centredoc;Switzerland;Private;Data Science;21/05/1978;M;18;14;Flight
+ChemAxon;Hungary;Private;IT;13/10/1979;F;26;23;Boat
+Chemcal Abstracts;USA;Private;Data Science;29/07/1982;M;7;1;Train
+Copyright Clearance Center;USA;Private;IT;21/11/1983;M;6;5;Train
+black swan ;Germany;Private;Research;20/06/1986;M;25;18;Flight
+black swan ;Germany;Private;Pharmacy;12/08/1986;F;33;28;Flight
+Dennemeyer;Luxembourg;Private;Management;08/05/1987;F;24;20;Flight
+Dr. Haxel CEM;Germay;Education;Pharmacy;10/11/1987;M;13;11;Car
+Dr. Haxel CEM;Germany;Education;Management;17/08/1991;F;20;11;Car
+DSM;Switzerland;Private;Data Science;06/10/1993;M;20;10;Car
+Elsevier;Netherlands;Private;IT;04/05/1953;F;21;13;Flight
+Elsevier;Netherlands;Private;Data Science;02/01/1954;M;23;20;Flight
+European Patent Office;Netherlands;Private;Data Science;12/02/1956;M;31;24;Boat
+European Commission;Spain;Public;Research;22/05/1958;M;20;15;Train
+European Commission;Spain;Public;Pharmacy;03/05/1961;F;13;12;Train
+Evaluserve;India;Private;Management;15/09/1962;F;18;11;Flight
+Extract Info;UK;Private;IT;23/02/1966;M;26;25;Flight
+Fairview Research Barcelona;Spain;Private;IT;14/01/1968;F;10;1;Flight
+FIZ Karlsruhe;Germany;Private;IT;10/05/1968;M;9;1;Car
+FIZ Karlsruhe;Germany;Private;Data Science;30/06/1968;F;18;16;Car
+FORAL Patent Law Offices;Latvia;Private;Data Science;27/08/1968;M;6;1;Car
+FrieslandCampina;Netherlands;Private;Data Science;10/06/1971;M;8;5;Flight
+GenomeQuest;USA;Private;Management;22/12/1973;M;6;1;Flight
+GenomeQuest;USA;Private;Management;03/08/1974;F;24;19;Boat
+GenomeQuest;USA;Private;Data Science;27/02/1975;F;7;5;Train
+Gridlogics Technologies;India;Private;Data Science;21/02/1982;M;27;21;Train
+Gridlogics Technologies;India;Private;Research;07/01/1983;F;27;21;Flight
+IAEA;Austria;Private;Pharmacy;25/04/1985;M;26;19;Flight
+InfoChem;Germany;Private;Management;29/08/1985;F;26;16;Flight
+InfoChem;Germany;Private;IT;04/01/1990;M;18;9;Car
+Infonortics;France;Private;Management;18/03/1990;M;17;9;Car
+Infonortics;UK;Private;Management;24/10/1990;M;27;20;Car
+INPI;France;Private;IT;05/05/1991;F;32;24;Flight
+Intellixir;France;Private;Research;07/05/1992;F;16;6;Flight
+Intellixir;France;Private;Research;27/11/1992;M;13;12;Boat
+International Atomic Energy Agency;Austria;Private;IT;09/01/1953;F;29;21;Train
+Ipsen;UK;Private;Management;25/03/1953;M;17;11;Train
+KISTI;Republic of Korea;Private;Management;28/08/1953;F;24;15;Flight
+KISTI;Republic of Korea;Private;Data Science;29/11/1953;M;10;3;Flight
+Lafarge;France;Private;Data Science;27/04/1954;M;7;1;Flight
+LexisNexis;Netherlands;Private;Research;02/03/1956;M;23;20;Car
+LexisNexis;Netherlands;Private;Pharmacy;21/06/1957;F;22;18;Car
+LexisNexis;Netherlands;Private;Management;23/05/1959;F;10;3;Car
+Lighthouse IP;Germany;Private;IT;17/07/1961;M;10;4;Flight
+Linguamatics;UK;Private;IT;28/01/1962;F;23;21;Flight
+Linguamatics;UK;Private;Data Science;05/06/1971;M;15;5;Boat
+Linguamatics;UK;Private;Data Science;20/03/1974;F;29;22;Train
+Logomachy;UK;Private;Research;24/06/1974;M;32;24;Train
+Lonza;USA;Private;Pharmacy;17/11/1974;M;28;23;Flight
+Merck Group;Germany;Private;Management;23/11/1975;M;21;11;Flight
+Minesoft;UK;Private;IT;13/03/1976;F;18;10;Flight
+Minesoft;UK;Private;IT;04/03/1978;F;35;25;Car
+Minesoft;UK;Private;Research;04/08/1979;M;31;22;Car
+Moving Targets Consulting;Germany;Private;Data Science;15/09/1979;F;6;1;Car
+Moving Targets Consulting;Germany;Private;Data Science;05/07/1980;M;14;9;Flight
+Nokia;Finnland;Private;Research;18/09/1981;F;7;1;Flight
+NovoNordisk;Denmark;Private;Pharmacy;16/12/1983;M;11;2;Boat
+NovoNordisk;Denmark;Private;Management;09/08/1986;M;13;6;Train
+Lonza;USA;Private;IT;10/05/1989;M;8;1;Train
+OntoChem;Germany;Private;IT;29/10/1990;F;31;25;Flight
+Patent Agency KDK;Latvia;Private;Data Science;21/05/1953;F;14;11;Flight
+Picarre;Belgium;Private;Data Science;03/08/1957;M;28;23;Flight
+PRV InterPat;Sweden;Private;Research;15/12/1957;F;27;26;Car
+Questel;France;Private;Pharmacy;23/05/1958;M;32;31;Car
+Questel;France;Private;Management;15/06/1958;F;17;12;Car
+RightsDirect;Netherlands;Private;IT;08/12/1960;M;22;18;Flight
+Searchtechnology/VantagePoint;USA;Private;IT;04/03/1961;M;5;2;Flight
+Searchtechnology/VantagePoint;USA;Private;Data Science;22/04/1961;M;22;13;Boat
+Search Technologies;USA;Private;Data Science;27/09/1962;F;7;2;Train
+SearchTechnologies;Germany;Private;Management;15/03/1963;F;17;11;Train
+SearchTechnologies;Germany;Private;Research;11/04/1965;M;27;17;Flight
+Shell;Poland;Private;Research;05/03/1967;F;20;15;Flight
+Slalom Consulting;USA;Private;Data Science;24/07/1975;M;24;19;Flight
+Transgene;France;Private;Data Science;21/08/1981;F;35;27;Car
+TU Ilmenau;Germany;Private;Research;27/07/1982;M;31;27;Car
+Université de Bordeaux;France;Private;Pharmacy;01/05/1983;M;25;17;Car
+Université de Bordeaux;France;Private;Management;26/04/1986;M;20;13;Flight
+Volvo Group Trucks Technology;Sweden;Private;IT;29/07/1989;M;25;16;Flight
+Volvo Group Trucks Technology;Sweden;Private;IT;24/01/1990;M;20;11;Boat
+WIPO;Switzerland;Private;IT;30/06/1994;M;29;25;Train

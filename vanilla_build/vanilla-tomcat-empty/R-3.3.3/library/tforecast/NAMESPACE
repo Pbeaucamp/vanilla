@@ -1,0 +1,4 @@
+useDynLib(tforecast)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
+import(Rcpp)

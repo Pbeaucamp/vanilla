@@ -1,0 +1,1 @@
+java -Dlog4j.debug=true -Dbpm.vanilla.configurationFile=vanilla/vanilla-conf/vanilla.properties -Dlogback.configurationFile=vanilla/vanilla-conf/logback.xml -jar start.jar

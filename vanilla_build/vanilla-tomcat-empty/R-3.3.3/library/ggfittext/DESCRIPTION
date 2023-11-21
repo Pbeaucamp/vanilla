@@ -1,0 +1,23 @@
+Package: ggfittext
+Version: 0.4
+Authors@R: person("David", "Wilkins", email = "david@wilkox.org",
+  role = c("aut", "cre"))
+Description: ggplot2 geoms to fit text into bounding boxes.
+Depends: R (>= 3.3.2), ggplot2 (>= 2.2.1)
+License: GPL-2
+LazyData: true
+Imports: grid, stringi (>= 1.1.2)
+RoxygenNote: 5.0.1
+Author: David Wilkins [aut, cre]
+Maintainer: David Wilkins <david@wilkox.org>
+Built: R 3.3.3; ; 2017-04-25 15:07:20 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: ggfittext
+RemoteUsername: wilkox
+RemoteRef: master
+RemoteSha: d3646e4442499a7078b9813190f56c33c898af75
+GithubRepo: ggfittext
+GithubUsername: wilkox
+GithubRef: master
+GithubSHA1: d3646e4442499a7078b9813190f56c33c898af75

@@ -1,0 +1,5 @@
+useDynLib(var)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
+import(methods)
+import(Rcpp)

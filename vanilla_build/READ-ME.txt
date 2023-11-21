@@ -1,0 +1,49 @@
+Pour un nouvel Eclipse
+
+Il faut build le deltapack. Il est possible de build le deltapack avec le script disponible à l'adresse https://git.eclipse.org/c/platform/eclipse.platform.releng.aggregator.git/plain/scripts/createdeltapack.xml
+Ou dans vanilla_build si il n'est plus disponible.
+
+Il faut changer l'url http://download.eclipse.org/eclipse/updates/4.10 avec la version d'eclipse correspondante (dispo dans Help -> install new software)
+
+
+### Webapps
+---------
+
+Dans customAssembly, je supprime le dossier lib et libs pour gagner de la place dans les webapps
+
+
+### Build from command line
+-----------------
+
+java -jar C:/BPM/eclipse/eclipse-rcp-2018-12-R-win32-x86_64/eclipse/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar -application org.eclipse.ant.core.antRunner -buildfile vanilla_build/buildVanillaPlatform.xml [TARGET]
+
+
+### Build BIRT
+-----------------
+
+Git URL -> https://github.com/eclipse/birt
+
+Choisir Tag -> Ex : https://github.com/eclipse/birt/tree/BIRT_4_7_0_Release_201706222054
+
+git clone https://github.com/eclipse/birt/tree/BIRT_4_7_0_Release_201706222054
+
+
+### Docker
+
+docker build -t bpmconseil/v1_vanilla-webapps -f docker/build/webapps/Dockerfile .
+docker build -t bpmconseil/v1_vanilla-runtime -f docker/build/runtime/Dockerfile .
+
+docker push bpmconseil/v1_vanilla-webapps
+docker push bpmconseil/v1_vanilla-runtime
+
+Run
+
+Pour réinitialiser les bases
+docker compose down -v
+
+docker-compose up vanilla-mysql
+docker compose up vanilla-mysql --force-recreate
+
+docker-compose up -d
+
+### Docker push

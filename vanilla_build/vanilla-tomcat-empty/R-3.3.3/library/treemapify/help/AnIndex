@@ -1,0 +1,10 @@
+GeomTreemap	ggplot2-ggproto
+GeomTreemapSubgroupBorder	ggplot2-ggproto
+GeomTreemapSubgroupText	ggplot2-ggproto
+GeomTreemapText	ggplot2-ggproto
+geom_treemap	geom_treemap
+geom_treemap_subgroup_border	geom_treemap_subgroup_border
+geom_treemap_subgroup_text	geom_treemap_subgroup_text
+geom_treemap_text	geom_treemap_text
+ggplotify	ggplotify
+treemapify	treemapify

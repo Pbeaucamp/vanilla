@@ -1,0 +1,4 @@
+GeomFitText	ggplot2-ggproto
+geom_fit_text	geom_fit_text
+geom_grow_text	geom_fit_text
+geom_shrink_text	geom_fit_text

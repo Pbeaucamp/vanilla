@@ -1,0 +1,1223 @@
+<project default="platform">
+
+	<property name="nameJetty" value="vanilla-jetty" />
+	<property name="nameTomcat" value="vanilla-tomcat-h2" />
+	
+	<property name="version" value="8.0_GA" />
+	
+	<property environment="env"/>
+	
+	<!-- extension contrib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="../webapps_build/lib/ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
+
+	<!-- Don't forget to set Environnement Variable -->
+	<property name="base" location="${env.BASE_ECLIPSE}" />
+	<property name="baseLocation" location="${base}/eclipse" />
+	<property name="myworkspace" value="${env.WORKSPACE}" />
+	<property name="destinationDirectory" value="${env.BUILD_DIRECTORY}"></property>
+	<property name="softBuildDirectory" location="${env.BUILD_DIRECTORY}/Softs"></property>
+	<property name="gwtsdknew" value="${env.GWT_SDK}" />
+	<property name="tempBuildDirectory" value="${env.BUILD_DIRECTORY}/Temp"></property>
+	<property name="webappBuildName" value="webapps_build"></property>
+	<!--<property name="envGwtCommonDirectory" value="${env.BUILD_GWT_COMMON_DIRECTORY}"></property>-->
+	<!--<property name="gwtCommonDirectory" value="${envGwtCommonDirectory}/${version}"></property>-->
+	<property name="dockerDestinationDirectory" value="${myworkspace}/vanilla_build/docker/build/compilation"></property>
+	
+	<property name="tomcatEmpty" value="${myworkspace}/vanilla_build/vanilla-tomcat-empty"></property>
+	<property name="tomcatName" value="${nameTomcat}-${version}"></property>
+	
+	<property name="jettyEmpty" value="${myworkspace}/vanilla_build/vanilla-jetty-empty"></property>
+	<property name="jettyName" value="${nameJetty}-${version}"></property>
+
+	<property name="eclipse.pdebuild.templates" location="${baseLocation}/plugins/org.eclipse.pde.build_3.10.200.v20181008-0641/templates" />
+	<property name="eclipse.pdebuild.scripts" location="${baseLocation}/plugins/org.eclipse.pde.build_3.10.200.v20181008-0641/scripts" />
+
+	<property name="genericTargets" location="${eclipse.pdebuild.scripts}/genericTargets.xml" />
+	
+	<!-- Mail property -->
+	<property name="mailHost" value="${env.BUILD_HOST}" />
+	<property name="mailPort" value="${env.BUILD_PORT}" />
+	<property name="mailUser" value="${env.BUILD_USER}" />
+	<property name="mailPassword" value="${env.BUILD_PASSWORD}" />
+	<property name="mailDestination" value="${env.BUILD_MAIL_DESTINATION}" />
+
+	<!-- Don't forget to add the jar javax.mail present dans libs dans le classpath du Run Ant Build... -->
+	<target name="send_mail">
+	    <mail
+	            ssl="false"
+	    		enableStartTLS="true"
+	            mailhost="${mailHost}"
+	            mailport="${mailPort}"
+	            user="${mailUser}"
+	            password="${mailPassword}"
+	            subject="Build Vanilla"
+	            >
+		  <from address="vanilla@bpm-conseil.com"/>
+		  <to address="${mailDestination}"/>
+		  <message>The build has ${buildResult}</message>
+		</mail>
+	</target>
+	
+	<target name="check_env">
+		<trycatch property="failure">
+			<try>
+				<fail message="The env variable &quot;env.BASE_ECLIPSE&quot; is not defined">
+				     <condition>
+			             <contains string="${base}" substring="env.BASE_ECLIPSE"/>
+				     </condition>
+				</fail>
+				
+				<fail message="The env variable &quot;WORKSPACE&quot; is not defined">
+				     <condition>
+			             <contains string="${myworkspace}" substring="env.WORKSPACE"/>
+				     </condition>
+				</fail>
+				
+				<fail message="The env variable &quot;BUILD_DIRECTORY&quot; is not defined">
+				     <condition>
+			             <contains string="${destinationDirectory}" substring="env.BUILD_DIRECTORY"/>
+				     </condition>
+				</fail>
+
+				<fail message="The env variable &quot;GWT_SDK&quot; is not defined">
+				     <condition>
+			             <contains string="${gwtsdknew}" substring="env.GWT_SDK"/>
+				     </condition>
+				</fail>
+				
+				<!--<fail message="The env variable &quot;BUILD_GWT_COMMON_DIRECTORY&quot; is not defined">
+				     <condition>
+			             <contains string="${envGwtCommonDirectory}" substring="env.BUILD_GWT_COMMON_DIRECTORY"/>
+				     </condition>
+				</fail>-->
+
+				
+				<!-- Mail property -->
+				<fail message="The env variable &quot;BUILD_HOST&quot; is not defined">
+				     <condition>
+			             <contains string="${mailHost}" substring="env.BUILD_HOST"/>
+				     </condition>
+				</fail>
+
+				<fail message="The env variable &quot;BUILD_PORT&quot; is not defined">
+				     <condition>
+			             <contains string="${mailPort}" substring="env.BUILD_PORT"/>
+				     </condition>
+				</fail>
+
+				<fail message="The env variable &quot;BUILD_USER&quot; is not defined">
+				     <condition>
+			             <contains string="${mailUser}" substring="env.BUILD_USER"/>
+				     </condition>
+				</fail>
+
+				<fail message="The env variable &quot;BUILD_PASSWORD&quot; is not defined">
+				     <condition>
+			             <contains string="${mailPassword}" substring="env.BUILD_PASSWORD"/>
+				     </condition>
+				</fail>
+			</try>
+			<catch>
+		    	<echo message="${failure}"/>
+				<fail message="${failure}"/>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="copy_common_files_for_docker">
+		<mkdir dir="${dockerDestinationDirectory}/temp"/>
+		
+    	<echo message="Copy licenses to ${dockerDestinationDirectory}/licenses"/>
+		
+		<mkdir dir="${dockerDestinationDirectory}/licenses"/>
+		<copy todir="${dockerDestinationDirectory}/licenses"> 
+			<fileset dir="${jettyEmpty}/licenses" includes="**"/> 
+		</copy>
+
+    	<echo message="Copy and tar vanilla_files to ${dockerDestinationDirectory}"/>
+		<mkdir dir="${dockerDestinationDirectory}/temp/vanilla_files"/>
+		<copy todir="${dockerDestinationDirectory}/temp/vanilla_files"> 
+			<fileset dir="${jettyEmpty}/webapps/vanilla_files" includes="**"/> 
+		</copy>
+		<tar destfile="${dockerDestinationDirectory}/vanilla_files.tar.gz" basedir="${dockerDestinationDirectory}/temp" includes="vanilla_files,vanilla_files/**" compression="gzip"/>
+
+		<echo message="Copy and tar resources to ${dockerDestinationDirectory}"/>
+		<mkdir dir="${dockerDestinationDirectory}/temp/resources"/>
+		<copy todir="${dockerDestinationDirectory}/temp/resources"> 
+			<fileset dir="${jettyEmpty}/vanilla/resources" includes="**"/> 
+		</copy>
+		<tar destfile="${dockerDestinationDirectory}/vanilla/resources.tar.gz" basedir="${dockerDestinationDirectory}/temp" includes="resources,resources/**" compression="gzip"/>
+
+    	<echo message="Copy vanilla-conf to ${dockerDestinationDirectory}"/>
+		<mkdir dir="${dockerDestinationDirectory}/vanilla/vanilla-conf"/>
+		<copy todir="${dockerDestinationDirectory}/vanilla/vanilla-conf"> 
+			<fileset dir="${jettyEmpty}/vanilla/vanilla-conf" includes="**" excludes="vanilla.properties,repositoryone.properties"/> 
+		</copy>
+		<copy file="${jettyEmpty}/vanilla/vanilla-conf/templates/repositoryone.docker.properties" tofile="${dockerDestinationDirectory}/vanilla/vanilla-conf/repositoryone.properties" />
+		<copy file="${jettyEmpty}/vanilla/vanilla-conf/templates/vanilla.air.docker.properties" tofile="${dockerDestinationDirectory}/vanilla/vanilla-conf/vanilla.properties" />
+		
+		<delete dir="${dockerDestinationDirectory}/temp"/>
+	</target>
+	
+	<target name="platform_old">
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		
+		<mkdir dir="${tempBuildDirectory}/${tomcatName}"/>
+		<mkdir dir="${tempBuildDirectory}/features"/>
+		<mkdir dir="${tempBuildDirectory}/Temp"/>
+		
+		<copy todir="${tempBuildDirectory}/${tomcatName}"> 
+			<fileset dir="${tomcatEmpty}" includes="**"/> 
+		</copy>
+
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="runtime"></ant>
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+ 		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps"></ant>
+
+		<zip destfile="${destinationDirectory}/${tomcatName}.zip">
+			<zipfileset dir="${tempBuildDirectory}">
+				<include name="${tomcatName}/**/**" />
+			</zipfileset>
+		</zip>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="platform">
+		<trycatch>
+			<try>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="check_env"></ant>
+				
+				<delete includeEmptyDirs="true">
+					<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+				
+				<mkdir dir="${tempBuildDirectory}/${jettyName}"/>
+				<mkdir dir="${tempBuildDirectory}/features"/>
+				<mkdir dir="${tempBuildDirectory}/Temp"/>
+				
+				<copy todir="${tempBuildDirectory}/${jettyName}"> 
+					<fileset dir="${jettyEmpty}" includes="**"/> 
+				</copy>
+	
+				<property name="compileJetty" value="jetty" />
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="runtime"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+		 		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps"></ant>
+	
+				<zip destfile="${destinationDirectory}/${jettyName}.zip">
+					<zipfileset dir="${tempBuildDirectory}">
+						<include name="${jettyName}/**/**" />
+					</zipfileset>
+				</zip>
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+
+				<property name="buildResult" value="succeed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</try>
+
+			<catch>
+				<property name="buildResult" value="failed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</catch>
+
+			<!-- Not used, keep it for reminder that this exist -->
+			<!--<finally>
+				<echo>In &lt;finally&gt;.</echo>
+			</finally>-->
+		</trycatch>
+	</target>
+	
+<!-- This target is when you have PermGemSpace errors. It does not build the webapps and does not zip the platform -->
+	<target name="platform_without_webapps">
+		<trycatch>
+			<try>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="check_env"></ant>
+
+				<delete includeEmptyDirs="true">
+					<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+				
+				<mkdir dir="${tempBuildDirectory}/${tomcatName}"/>
+				
+				<copy todir="${tempBuildDirectory}/${tomcatName}"> 
+					<fileset dir="${tomcatEmpty}" includes="**"/> 
+				</copy>
+		
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="PortalOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FAWebOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FWROnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMDesignerOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMUserOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMLoaderOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="KpiMapOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaMetadataOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="UpdateManagerOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDashboardOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaArchitectOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaAirOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDataPreparationOnly"></ant>
+				<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaHubOnly"></ant>
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+			</try>
+
+			<catch>
+				<property name="buildResult" value="failed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="platform_docker">
+		<trycatch property="failure">
+			<try>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="check_env"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="copy_common_files_for_docker"></ant>
+				
+				<delete includeEmptyDirs="true">
+					<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+				
+				<mkdir dir="${dockerDestinationDirectory}"/>
+				<mkdir dir="${tempBuildDirectory}/features"/>
+				<mkdir dir="${tempBuildDirectory}/Temp"/>
+	
+				<property name="compileJetty" value="docker" />
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="runtime"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+		 		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps"></ant>
+	
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="docker_image_runtime"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="docker_image_webapps"></ant>
+
+				<property name="buildResult" value="succeed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</try>
+
+			<catch>
+		    	<echo message="${failure}"/>
+				<property name="buildResult" value="failed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</catch>
+
+			<!-- Not used, keep it for reminder that this exist -->
+			<!--<finally>
+				<echo>In &lt;finally&gt;.</echo>
+			</finally>-->
+		</trycatch>
+	</target>
+	
+	<target name="platform_docker_runtime">
+		<trycatch property="failure">
+			<try>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="check_env"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="copy_common_files_for_docker"></ant>
+				
+				<delete includeEmptyDirs="true">
+					<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+				
+				<mkdir dir="${dockerDestinationDirectory}"/>
+				<mkdir dir="${tempBuildDirectory}/features"/>
+				<mkdir dir="${tempBuildDirectory}/Temp"/>
+	
+				<property name="compileJetty" value="docker" />
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="runtime"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="VanillaAPI"></ant>
+	
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="docker_image_runtime"></ant>
+
+				<property name="buildResult" value="succeed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</try>
+
+			<catch>
+		    	<echo message="${failure}"/>
+				<property name="buildResult" value="failed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</catch>
+
+			<!-- Not used, keep it for reminder that this exist -->
+			<!--<finally>
+				<echo>In &lt;finally&gt;.</echo>
+			</finally>-->
+		</trycatch>
+	</target>
+	
+	<target name="platform_docker_webapps">
+		<trycatch property="failure">
+			<try>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="check_env"></ant>
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="copy_common_files_for_docker"></ant>
+				
+				<delete includeEmptyDirs="true">
+					<fileset dir="${tempBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+				
+				<mkdir dir="${dockerDestinationDirectory}"/>
+				<mkdir dir="${tempBuildDirectory}/features"/>
+				<mkdir dir="${tempBuildDirectory}/Temp"/>
+	
+				<property name="compileJetty" value="docker" />
+
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+		 		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps"></ant>
+	
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+				
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="docker_image_webapps"></ant>
+
+				<property name="buildResult" value="succeed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</try>
+
+			<catch>
+		    	<echo message="${failure}"/>
+				<property name="buildResult" value="failed" />
+				<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="send_mail"></ant>
+			</catch>
+
+			<!-- Not used, keep it for reminder that this exist -->
+			<!--<finally>
+				<echo>In &lt;finally&gt;.</echo>
+			</finally>-->
+		</trycatch>
+	</target>
+	
+	<target name="docker_image_runtime">
+	    <exec executable="docker">
+	        <arg value="build" />
+	        <arg value="-t" />
+	    	<arg value="bpmconseil/vanilla-runtime:latest" />
+	        <arg value="-f" />
+	        <arg value="docker/build/runtime/Dockerfile" />
+	        <arg value="." />
+	    </exec>
+	</target>
+	
+	<target name="docker_image_webapps">
+	    <exec executable="docker">
+	        <arg value="build" />
+	        <arg value="-t" />
+	    	<arg value="bpmconseil/vanilla-webapps:latest" />
+	        <arg value="-f" />
+	        <arg value="docker/build/webapps/Dockerfile" />
+	        <arg value="." />
+	    </exec>
+	</target>
+	
+	<target name="VanillaAPI">
+	    <exec dir="../bpm.vanilla.api" executable="cmd">
+	        <arg line="/c mvn clean install" />
+	    </exec>
+		
+		<copy todir="${dockerDestinationDirectory}/vanilla" includeemptydirs="false">
+		    <fileset dir="../bpm.vanilla.api/target/deploy" includes="**/*.jar" />
+		</copy>
+	</target>
+
+	<target name="webapps">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build"></ant>
+	</target>
+
+	<target name="FMLoader">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMLoaderOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMUser">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMUserOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMUserDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMUser"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FMDesigner">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FMDesignerOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FWR">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+			
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FWROnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FWRDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FWR"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="KpiMap">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="KpiMapOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FAWeb">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="FAWebOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="Portal">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="PortalOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="PortalDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="Portal"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaHub">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaHubOnly"></ant>
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaHubDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaHub"></ant>
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="UpdateManager">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="UpdateManagerOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaMetadata">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaMetadataOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaMetadataDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaMetadata"></ant>
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaDashboard">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDashboardOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaDashboardDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDashboard"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaArchitect">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaArchitectOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaArchitectDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaArchitect"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaDataPreparation">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDataPreparationOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaDataPreparationDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaDataPreparation"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaAir">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaAirOnly"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="VanillaAirDocker">
+
+		<property name="builddirectory" value="${tempBuildDirectory}" />
+		<property name="myWorkspace" value="${myworkspace}" />
+		<property name="eclipseParentFolder" value="${base}" />
+		<property name="eclipseFolder" value="${baseLocation}" />
+		
+		
+		<property name="compileJetty" value="docker" />
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="webapps_plugins"></ant>
+
+		<ant antfile="buildAllWebapps.xml" dir="../webapps_build" target="VanillaAir"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="softs">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIG">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIG"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIGAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIG"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIGLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIG"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIGWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIG"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIGLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIG"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FASD">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FASD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FASDAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FASD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FASDLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FASD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FASDWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FASD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FASDLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FASD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMDT">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FMDT"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMDTAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FMDT"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMDTLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FMDT"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMDTWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FMDT"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="FMDTLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FMDT"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="ES">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="ES"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="ESAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="ES"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="ESLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="ES"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="ESWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="ES"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="ESLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="ES"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIW">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIW"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIWAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIW"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIWLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIW"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIWWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIW"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="BIWLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="BIW"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="MDM">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="MDM"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="MDMAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="MDM"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="MDMLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="MDM"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="MDMWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="MDM"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="MDMLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="MDM"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FD">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FDAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FDLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FDWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="FDLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="FD"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="Norparena">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Norparena"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="NorparenaAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Norparena"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="NorparenaLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Norparena"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="NorparenaWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Norparena"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="NorparenaLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Norparena"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="Hypervision">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Hypervision"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="HypervisionAllOS">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Hypervision"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="HypervisionLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Hypervision"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="HypervisionWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Hypervision"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="HypervisionLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build" target="Hypervision"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="softsAllOs">
+		<property name="configs" value="win32,win32,x86 &amp; linux, gtk, x86 &amp; macosx, cocoa, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="softsWin">
+		<property name="configs" value="win32,win32,x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="softsLinux64">
+		<property name="configs" value="linux, gtk, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="softsLinux">
+		<property name="configs" value="linux, gtk, x86"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="softsWin64">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		<ant antfile="buildRcp.xml" dir="../vanilla_build"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="runtime">
+
+		<property name="buildArea" location="${tempBuildDirectory}" />
+		<property name="builder" location="${myworkspace}/vanilla_build/VanillaRuntime/build.properties" />
+		<property name="elementPath" location="${myworkspace}/bpm.vanilla.runtime.feature" />
+		<property name="builderDirectory" location="${myworkspace}/vanilla_build/VanillaRuntime" />
+		<property name="buildDirectory"	location="${tempBuildDirectory}" />
+		<property name="buildProperties" location="${myworkspace}/vanilla_build/VanillaRuntime/build.properties" />
+		<property file="${buildProperties}" />
+		<available property="customTargets" file="${builderDirectory}/customTargets.xml" value="${builderDirectory}/customTargets.xml" />
+		<property name="customTargets" location="${eclipse.pdebuild.templates}/headless-build/customTargets.xml" />
+		<property name="pluginPath" location="${myworkspace}" />
+
+		<ant antfile="build.xml" dir="${myworkspace}/vanilla_build/VanillaRuntime"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="birt">
+		<property name="configs" value="win32, win32, x86_64"></property>
+		
+		<property name="buildArea" location="${tempBuildDirectory}" />
+		<property name="builder" location="${myworkspace}/vanilla_build/Birt-plugins/build.properties" />
+		<property name="elementPath" location="${myworkspace}/bpm.birt47.vanilla.feature" />
+		<property name="builderDirectory" location="${myworkspace}/vanilla_build/Birt-plugins" />
+		<property name="buildDirectory"	location="${tempBuildDirectory}" />
+		<property name="buildProperties" location="${myworkspace}/vanilla_build/Birt-plugins/build.properties" />
+		<property file="${buildProperties}" />
+		<available property="customTargets" file="${builderDirectory}/customTargets.xml" value="${builderDirectory}/customTargets.xml" />
+		<property name="customTargets" location="${eclipse.pdebuild.templates}/headless-build/customTargets.xml" />
+		<property name="pluginPath" location="${myworkspace}" />
+		
+		<ant antfile="build.xml" dir="${myworkspace}/vanilla_build/Birt-plugins"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+
+	<target name="webapps_plugins">
+		<property name="buildArea" location="${tempBuildDirectory}" />
+		<property name="builder" location="${myworkspace}/vanilla_build/Webapps/build.properties" />
+		<property name="elementPath" location="${myworkspace}/bpm.feature.webapps" />
+		<property name="builderDirectory" location="${myworkspace}/vanilla_build/Webapps" />
+		<property name="buildDirectory"	location="${tempBuildDirectory}" />
+		<property name="buildProperties" location="${myworkspace}/vanilla_build/Webapps/build.properties" />
+		<property file="${buildProperties}" />
+		<available property="customTargets" file="${builderDirectory}/customTargets.xml" value="${builderDirectory}/customTargets.xml" />
+		<property name="customTargets" location="${eclipse.pdebuild.templates}/headless-build/customTargets.xml" />
+		<available property="customAssembly" file="${builderDirectory}/customAssembly.xml" value="${builderDirectory}/customAssembly.xml" />
+		<property name="customAssembly" location="${eclipse.pdebuild.templates}/headless-build/customAssembly.xml" />
+		<property name="pluginPath" location="${myworkspace}" />
+
+		<ant antfile="build.xml" dir="${myworkspace}/vanilla_build/Webapps"></ant>
+		
+		<ant antfile="buildVanillaPlatform.xml" dir="../vanilla_build" target="clean"></ant>
+	</target>
+	
+	<target name="clean">
+		<property name="myWorkspace" value="${myworkspace}" />
+		
+		<ant antfile="buildClean.xml" dir="../vanilla_build_cleaner" target="clean"></ant>
+	</target>
+</project>

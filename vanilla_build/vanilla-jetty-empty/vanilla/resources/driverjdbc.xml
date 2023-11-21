@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drivers>
+  <driver name="MySQL" className="com.mysql.jdbc.Driver" file="mysql-connector-java-5.1.7-bin.jar" prefix="jdbc:mysql://"/>
+  <driver name="MySQL8" className="com.mysql.cj.jdbc.Driver" file="mysql-connector-j-8.1.0.jar" prefix="jdbc:mysql://"/>
+  <driver name="PostgreSql" className="org.postgresql.Driver" file="postgresql-42.6.0.jar" prefix="jdbc:postgresql://"/>
+  <driver name="H2" className="org.h2.Driver" file="h2-1.4.182.jar" prefix="jdbc:h2://"/>
+  <driver name="Ingres" className="com.ingres.jdbc.IngresDriver" file="iijdbc-10.2-4.1.10.jar" prefix="jdbc:ingres://"/>
+  <driver name="Teradata" className="com.teradata.jdbc.TeraDriver" file="terajdbc-20.00.00.11.jar" prefix="jdbc:teradata://"/>
+  <driver name="Oracle" className="oracle.jdbc.driver.OracleDriver" file="ojdbc8.jar" prefix="jdbc:oracle:thin:@"/>
+  <driver name="Derby" className="org.apache.derby.jdbc.ClientDriver" file="derbyclient.jar" prefix="jdbc:derby://"/>
+  <driver name="SqlServer" className="com.microsoft.sqlserver.jdbc.SQLServerDriver" file="mssql-jdbc-12.4.1.jre8.jar" prefix="jdbc:sqlserver://"/>
+  <driver name="Vertica" className="com.vertica.jdbc.Driver" file="vertica-jdbc-23.3.0-0.jar" prefix="jdbc:vertica://"/>
+  <driver name="MariaDb" className="org.mariadb.jdbc.Driver" file="mariadb-java-client-3.2.0.jar" prefix="jdbc:mariadb://"/>
+  <driver name="Snowflake" className="net.snowflake.client.jdbc.SnowflakeDriver" file="snowflake-jdbc-3.14.1.jar" prefix="jdbc:snowflake://"/>
+  <driver name="GoogleBigQuery" className="com.simba.googlebigquery.jdbc.Driver" file="GoogleBigQueryJDBC42.jar" prefix="jdbc:bigquery://"/>
+  <driver name="AmazonRedshift" className="com.amazon.redshift.jdbc.Driver" file="redshift-jdbc42-2.1.0.18.jar" prefix="jdbc:redshift://"/>
+  <driver name="AmazonAthena" className="com.simba.athena.jdbc.Driver" file="AthenaJDBC42-2.1.1.1000.jar" prefix="jdbc:awsathena://"/>
+  <driver name="Databriks" className="com.databricks.client.jdbc.Driver" file="DatabricksJDBC42.jar" prefix="jdbc:databricks://"/>
+  <driver name="Athena" className="com.simba.athena.jdbc.Driver" file="AthenaJDBC42-2.1.1.1000.jar" prefix="jdbc:avatica:remote:url="/>
+  <driver name="Dremio" className="com.dremio.jdbc.Driver" file="dremio-jdbc-driver-4.9.1-202010230218060541-2e764ed0.jar" prefix="jdbc:dremio:direct="/>
+  <driver name="Trino" className="io.trino.jdbc.TrinoDriver" file="trino-jdbc-425.jar" prefix="jdbc:trino://"/>
+  <driver name="Presto" className="com.facebook.presto.jdbc.PrestoDriver" file="presto-jdbc-0.283.jar" prefix="jdbc:presto://"/>
+</drivers>

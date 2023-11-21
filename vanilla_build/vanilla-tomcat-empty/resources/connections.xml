@@ -1,0 +1,9 @@
+<RepositoryConnections>    <Connection>
+        <name>repository</name>
+        <description></description>
+        <host>http://localhost:8080/BIRepository</host>
+        <port>0</port>
+        <username>system</username>
+        <password>system</password>
+    </Connection>
+</RepositoryConnections>

@@ -1,0 +1,56 @@
+age_calc                unction to calculate age from date of birth.
+autoplot.lm             A function to replicate the basic plot function
+                        for linear models in ggplot2
+cleanTex                Remove Unwanted LaTeX files after building
+                        document
+crosstabplot            Draw a visual crosstab (mosaid plot) with
+                        shading for correlations and labels in each
+                        cell.
+crosstabs               Build a list of crosstabulations from a dataset
+cutoff                  A function to calculate thresholds of
+                        cumulative sums in a vector.
+decomma                 Remove commas from numeric fields and return
+                        them as numerics
+defac                   Convert a factor to a character string safely
+eeptools                Evaluation of educational policy tools
+gelmansim               Generate prediction intervals for model
+                        functions
+ggmapmerge              Fortify a SpatialPolygonsDataFrame
+lag_data                Create a lag
+leading_zero            Function to add leading zeroes to maintain
+                        fixed width.
+makenum                 a function to convert numeric factors into
+                        numeric class objects
+mapmerge                Combine an S4 polygon object with a dataframe
+max_mis                 A function to safely take the maximum of a
+                        vector that could include only NAs.
+midsch                  A dataframe of aggregate test scores for
+                        schools in a Midwest state.
+moves_calc              Function to calculate the number of times a
+                        student has changed schools.
+nth_max                 Find the nth maximum value
+profpoly                Creates a proficiency polygon in ggplot2 for
+                        showing assessment categories
+profpoly.data           Creates a data frame suitable for building
+                        custom polygon layers in ggplot2 objects
+remove_char             A function to replace an arbitrary character
+                        like a "*" in redacted data with an NA in R
+retained_calc           Function to calculate whether a student has
+                        repeated a grade.
+statamode               A function to mimic the mode function in Stata.
+stuatt                  Student Attributes from the Strategic Data
+                        Project Toolkit
+stulevel                A synthetic data set of K-12 student
+                        attributes.
+theme_dpi               a deprecated ggplot2 theme developed for PDF
+                        and PNG for use at the Wisconsin Department of
+                        Public Instruction
+theme_dpi_map           a deprecated ggplot2 theme developed for PDF or
+                        SVG maps
+theme_dpi_map2          an alternate deprecated ggplot2 theme developed
+                        for PDF or SVG maps
+theme_dpi_mapPNG        an deprecated ggplot2 theme developed for PNG
+                        or JPG maps
+thresh                  A function to return the maximum percentage of
+                        the cumulative sum represented by a subset of
+                        the vector

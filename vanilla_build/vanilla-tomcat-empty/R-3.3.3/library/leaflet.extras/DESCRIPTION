@@ -1,0 +1,38 @@
+Package: leaflet.extras
+Type: Package
+Title: Extra Functionality for Leaflet Package
+Version: 0.1.9009
+Authors@R: c(
+    person("Bhaskar", "Karambelkar", email = "bhaskarvk@gmail.com", role = c("aut", "cre")),
+    person("Bangyou", "Zheng", email= "Bangyou.Zheng@csiro.au", role = c("ctb"),
+      comment = "Leaflet-search and Leaflet-GPS plugin integration")
+    )
+Description: Leaflet Javascript library provides many plugins some of which
+    are available in the core leaflet package, but there are many more. It is not
+    possible to support them all in the core leaflet package. This package serves
+    as an addon to the leaflet pacakge by providing extra functionality via leaflet
+    plugins.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.1.0), leaflet (>= 1.0.2.9008),
+Imports: shiny, htmlwidgets, htmltools, magrittr
+Suggests: V8, dplyr, geojsonio, purrr, readr, stringr, rmapshaper,
+        htmlTable, memoise
+URL: https://github.com/bhaskarvk/leaflet.extras
+BugReports: https://github.com/bhaskarvk/leaflet.extras/issues
+RoxygenNote: 6.0.0
+Author: Bhaskar Karambelkar [aut, cre],
+  Bangyou Zheng [ctb] (Leaflet-search and Leaflet-GPS plugin integration)
+Maintainer: Bhaskar Karambelkar <bhaskarvk@gmail.com>
+Built: R 3.3.3; ; 2017-04-24 08:36:58 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: leaflet.extras
+RemoteUsername: bhaskarvk
+RemoteRef: master
+RemoteSha: d377e540614b83f06b1316e135cfb4cf583e23af
+GithubRepo: leaflet.extras
+GithubUsername: bhaskarvk
+GithubRef: master
+GithubSHA1: d377e540614b83f06b1316e135cfb4cf583e23af

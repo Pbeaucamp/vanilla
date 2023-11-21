@@ -1,0 +1,16 @@
+{
+  "$schema":"https://frictionlessdata.io/schemas/table-schema.json",
+  "title":"rgpd_schema",
+  "description":"Schémas de validation pour connaitre le statut RGPD",
+  "keywords":[
+    "rgpd"
+  ],
+  "countryCode":"FR",
+  "created":"2021-12-13",
+  "lastModified":"2022-01-12",
+  "version":"0.0.1",
+  "author":"bpm-conseil.com",
+  "contact":"contact@bpm-conseil.com",
+  "fields":[
+  ],
+}

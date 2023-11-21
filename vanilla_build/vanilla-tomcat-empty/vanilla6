@@ -1,0 +1,157 @@
+#!/bin/sh  
+#
+# vanilla - this script starts and stops the vanilla daemon
+#
+# chkconfig:   - 85 15
+# description: Vanilla daemon
+
+
+#-----------------CONFIGURATION VANILLA -----------------#
+#Prog name showed in logs
+prog="Vanilla6"
+
+#Vanilla path
+vanillaPath="/vanilla/vanilla6"
+
+#Path and file name for PID
+CATALINA_PID="/var/run/vanilla/vanilla6.pid"
+CATALINA_FOLDER="/var/run/vanilla/"
+
+#User which launch Vanilla
+USER=root
+
+#Time limit to start in seconds
+limit=300
+
+#--------------------------------------------------------#
+
+RETVAL=0
+
+start() {
+	# Check if atd is already running
+	if [ ! -f $CATALINA_PID ]; then
+		echo -n $"Starting $prog : "
+		
+		# Suppression du fichier Catalina.out
+		echo
+		echo "Deleting catalina.out"
+		cp $vanillaPath/logs/catalina.out $vanillaPath/logs/catalina.out.$(date +"%Y_%m_%d_%H_%M_%S").log
+		rm -rf $vanillaPath/logs/catalina.out
+		
+		# La suppression du répertoire Work n'est pas nécessaire dans un usage normal.
+		#Supprimer le répertoire en cas de problème au démarrage du serveur.
+		rm -rf $vanillaPath/work
+		
+		# Create pid folder if not exist
+		if [ ! -d "$CATALINA_FOLDER" ]; then
+			echo
+			echo "Create Vanilla PID folder"
+			mkdir $CATALINA_FOLDER
+		fi
+		
+		if [ "$USER" = "root" ]; then
+			cd $vanillaPath
+			./start-vanilla.sh start '' $CATALINA_PID
+		else
+			sudo -u $USER -H sh -c "cd $vanillaPath; ./start-vanilla.sh start '' $CATALINA_PID"
+		fi
+		
+		RETVAL=$?
+		
+		echo
+		echo  -n $"Please wait few seconds to let $prog tomcat start correctly"
+		echo
+		
+		export SEC=$limit
+		Started="KO"
+		WellStarted="KO"
+		while (true); do
+			if [ -n "`cat ${vanillaPath}/logs/catalina.out | grep "^INFO: Server startup in"`" ]; then
+				WellStarted="ok"
+			fi
+			echo -n "."
+			sleep 1
+			SEC="`expr $SEC - 1`"
+			if [ "$WellStarted" = "ok" ]; then
+				Started="ok"
+				break
+			fi
+			if [ "$SEC" = "0" ]; then
+				echo 
+				echo -n $" Time limit to start excedeed"
+				echo 
+				echo ""
+				
+				stop
+				
+				exit $RETVAL
+			fi
+		done
+	
+		if [ "$Started" = "KO" ]; then
+			echo -n $" Failed to start"
+			echo 
+			echo ""
+			exit $RETVAL
+		fi
+		echo
+		echo ""
+	else 
+		echo
+	    echo  $"$prog is already running..."
+    fi
+	
+	echo
+	echo "$prog started."
+	
+	return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog : "
+	if [ ! -f $CATALINA_PID ]; then
+		echo
+		echo $"$prog is already stopped..."
+	else
+		if [ "$USER" = "root" ]; then
+			cd $vanillaPath
+			./stop-vanilla.sh $CATALINA_PID
+			RETVAL=$?
+		else
+			sudo -u $USER -H sh -c "cd $vanillaPath; ./stop-vanilla.sh $CATALINA_PID"	
+			RETVAL=$?
+		fi
+		
+		if [ $RETVAL -eq 0 ] ; then
+			rm -f $CATALINA_PID
+			echo
+			echo $"$prog is now stopped ..."
+		else
+			echo
+			echo $"A problem occured when stopping $prog ..."
+		fi
+	fi
+	return $RETVAL
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+start)
+        start
+        ;;
+stop)
+        stop
+        ;;
+reload|restart)
+        restart
+        ;;
+*)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+exit $?
+

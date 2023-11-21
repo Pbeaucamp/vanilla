@@ -1,0 +1,271 @@
+<xmlDefinition>
+	<tab title="Databases">
+		<section title="Vanilla">
+			<prop name="bpm.vanilla.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Architect">
+			<prop name="bpm.mdm.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.mdm.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.mdm.database.userName" title="Login" type="0"/>
+			<prop name="bpm.mdm.database.password" title="Password" type="0"/>
+			<prop name="bpm.mdm.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="KPI">
+			<prop name="bpm.vanilla.freemetrics.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.freemetrics.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.freemetrics.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.freemetrics.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.freemetrics.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Norparena">
+			<prop name="bpm.vanilla.norparena.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.norparena.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.norparena.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.norparena.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.norparena.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Forms">
+			<prop name="bpm.vanilla.forms.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.forms.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.forms.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.forms.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.forms.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Profiling">
+			<prop name="bpm.vanilla.profiling.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.profiling.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.profiling.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.profiling.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.profiling.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Agila">
+			<prop name="bpm.vanilla.vanilladata.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.vanilladata.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.vanilladata.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.vanilladata.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.vanilladata.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+	</tab>
+	<tab title="Resources Path">
+		<prop name="bpm.vanilla.platform.jdbcDriverXmlFile" title="Drivers File" description="The vanilla xml file containing JDBC drivers that will be used for SQL Connection" type="0"/>
+		<prop name="bpm.vanilla.platform.jdbcDriverFolder" title="JDBC Drivers Folder" description="The folder containing JDBC JAR drivers that will be used for SQL Connection" type="0"/>
+		<prop name="bpm.vanilla.platform.resourcesFolder" title="Resources Folder" type="0"/>
+	</tab>
+	<tab title="Repository">
+		<prop name="bpm.vanilla.repository.limit.version.model" title="Limit model version" description="Limit number of version for a model (0 = no limit)" type="0"/>
+		<prop name="bpm.public.group.id" title="Public Group" description="Group for public publication (Agila)" type="0"/>
+		<prop name="bpm.public.repository.id" title="Public Repository" description="Repository for public publication (Agila)" type="0"/>
+	</tab>
+	<tab title="Runtime Components">
+		<section title="URLs">
+			<prop name="bpm.vanilla.server.url" title="Server URL" type="0"/>
+			<prop name="bpm.vanilla.server.root.login" title="Root Login" type="0"/>
+			<prop name="bpm.vanilla.server.root.password" title="Root Password" type="0"/>
+		</section>
+		<section title="Cluster">
+			<prop name="bpm.vanilla.server.local.protocole" title="Local Protocole" type="0"/>
+			<prop name="bpm.vanilla.server.local.ip" title="Local IP" type="0"/>
+			<prop name="bpm.vanilla.server.local.port" title="Local Port" type="0"/>
+			<prop name="bpm.vanilla.server.local.context" title="Local Context" type="0"/>
+			<prop name="bpm.vanilla.cluster.registration.delay" title="Registration Delay" type="0"/>
+		</section>
+		<section title="Authentication">
+			<prop name="bpm.vanilla.authentication.timeOut" title="Time out" description="Time out (in millisecond) to test the connection when you open a soft" type="0"/>
+			<prop name="bpm.vanilla.authentication.maxTry" title="Maximum Try" description="Max connection try allowed before block" type="0"/>
+			<prop name="bpm.vanilla.authentication.maxTry.blockTime" title="Block Time" description="Block time after max try connection reached (in millisecond : 1800000 = 30 min). The system check every 3 min." type="0"/>
+			<prop name="bpm.vanilla.authentication.sortGroup" title="Sort Groups" description="True if you want the groups to be sort alphabetically in all connection parts (false otherwise)" type="2"/>
+		</section>
+		<section title="Various">
+			<prop name="bpm.log4j.configurationFile" title="Log4j configuration File" description="Log4j configuration File, if not present the System property log4j.configuration will be used" type="0"/>
+			<prop name="bpm.vanilla.log.level" title="Vanilla Log Level" type="1">
+				<value>INFO</value>
+				<value>DEBUG</value>
+				<value>WARN</value>
+				<value>ERROR</value>
+			</prop>
+			<prop name="bpm.metadata.connection.pool.size" title="Metadata Pool Size" type="0"/>
+			<prop name="bpm.connection.manager.jdbc.pools.size" title="JDBC Pool Size" type="0"/>
+			<prop name="bpm.vanilla.server.historizationfolder" title="Historization Folder" description="Location to backup server activity" type="0"/>
+			<prop name="bpm.vanillafiles.path" title="Vanilla Files Path" type="0"/>
+			<prop name="bpm.vanilla.alertEnabled" title="Enable Alerts" type="2"/>
+			<prop name="bpm.web.service.url" title="Web Service URL" description="Url to connect to the web service (leave empty to disable web service or it can be http://localhost:8081/vanillaService)" type="0"/>
+		</section>
+		<section title="Document Management">
+			<prop name="bpm.ged.api.IndexDirectory" title="Document Management Index Directory" type="0"/>
+			<prop name="bpm.solr.usesolr" title="Use Solr" type="2"/>
+			<prop name="bpm.solr.embedded" title="Solr Embedded" type="2"/>
+			<prop name="bpm.solr.configpath" title="Config Path" type="0"/>
+			<prop name="bpm.solr.url" title="URL" type="0"/>
+		</section>
+		<section title="Scheduler">
+			<prop name="bpm.scheduler.start.time" title="Start Time" description="In millisecond - The check of jobs will start after that time" type="0"/>
+			<prop name="bpm.scheduler.check.time" title="Check Time" description="In millisecond - It will check every define time the job to execute" type="0"/>
+			<prop name="bpm.scheduler.relaunch.time" title="Relaunch Time" description="In millisecond - It will execute the job that should happen in the timelapse define on a restart server" type="0"/>
+			<prop name="bpm.scheduler.use.utc.time" title="Use UTC Time" description="If true, it use UTC time and server time if false" type="2"/>
+		</section>
+		<section title="LDAP">
+			<prop name="bpm.ldap.authentication.use" title="Use LDAP Authentication" type="2"/>
+			<prop name="bpm.ldap.authentication.type" title="LDAP Type" type="0"/>
+			<prop name="bpm.ldap.authentication.url" title="Authentication URL" type="0"/>
+			<prop name="bpm.ldap.authentication.user.container" title="User Container" type="0"/>
+		</section>
+		<section title="Package Folder">
+			<prop name="bpm.vanilla.disco.package.folder" title="Disco Package Folder" type="0"/>
+		</section>
+		<section title="Dashboard Export">
+			<prop name="bpm.dashboard.export.delay" title="Export Delay" description="This delay is the time let by the program to load javascript (if your dashboard seems incomplete, put a longer delay)" type="0"/>
+			<prop name="bpm.dashboard.export.wkhtmltopdf.path" title="WkHtmlToPdf Path" type="0"/>
+			<prop name="bpm.dashboard.export.wkhtmltoimage.path" title="WkHtmlToImage Path" type="0"/>
+			<prop name="bpm.dashboard.export.onLinux" title="On Linux" type="2"/>
+		</section>
+		<section title="JMX">
+			<prop name="bpm.vanilla.jmx.use" title="Use JMX" type="2"/>
+			<prop name="bpm.vanilla.jmx.host" title="JMX Host" type="0"/>
+			<prop name="bpm.vanilla.jmx.port" title="JMX Port" type="0"/>
+			<prop name="bpm.vanilla.jmx.rmi.security.use" title="Use Security" type="2"/>
+			<prop name="bpm.vanilla.jmx.rmi.security.config" title="Security Config" type="0"/>
+		</section>
+	</tab>
+	<tab title="Servers Configuration">
+		<section title="Commons">
+			<prop name="bpm.vanilla.server.commons.server.maximumRunningTasks" title="Maximum Running Tasks" type="0"/>
+		</section>
+		<section title="Reporting">
+			<prop name="bpm.vanilla.server.reporting.server.repositoryPoolSize" title="Repository Pool Size" description="Maximum stored connection on Repository (with different context)" type="0"/>
+			<prop name="bpm.vanilla.server.reporting.server.reportPoolSize" title="Report Pool Size" description="Number of ReportModel that will be cached in the server" type="0"/>
+			<prop name="bpm.vanilla.server.reporting.server.generationFolder" title="Generation Folder" description="Folder where the generated report will be stored" type="0"/>
+			<prop name="bpm.vanilla.server.reporting.server.birtReportEngineLogs" title="Log Path" description="Path for the log generated by the BirtPlatform" type="0"/>
+			<prop name="bpm.vanilla.server.reporting.server.imagesUri" title="JasperReports Images" description="Folder used for JasperReports Images" type="0"/>
+			<prop name="bpm.vanilla.reporting.birt.logLevel" title="BIRT Log Level" type="1">
+				<value>INFO</value>
+				<value>WARNING</value>
+				<value>OFF</value>
+				<value>SEVERE</value>
+				<value>ALL</value>
+			</prop>
+		</section>
+		<section title="Gateway">
+			<prop name="bpm.vanilla.server.gateway.server.repositoryPoolSize" title="Repository Pool Size" description="Maximum stored connection on Repository (with different context)" type="0"/>
+			<prop name="bpm.vanilla.server.gateway.server.reportPoolSize" title="Gateway Pool Size" description="Number of GatewayModel that will be cached in the server" type="0"/>
+			<prop name="bpm.vanilla.server.gateway.server.maxrows" title="Gateway Buffer" description="Number of lines in each batch for the gateway" type="0"/>
+			<prop name="bpm.vanilla.server.gateway.server.homeFolder" title="Home Folder" type="0"/>
+			<prop name="bpm.vanilla.server.gateway.server.tempFolder" title="Temp Folder" type="0"/>
+		</section>
+		<section title="Workflow">
+			<prop name="bpm.vanilla.server.workflow.server.home" title="Home folder" type="0"/>
+			<prop name="bpm.vanilla.server.workflow.server.historicTaskFolder" title="Historic Task Folder" type="0"/>
+			<prop name="bpm.vanilla.server.workflow.server.generatedReportHome" title="Generated report folder" type="0"/>
+			<prop name="bpm.vanilla.server.workflow.server.files" title="Files folder" type="0"/>
+			<prop name="bpm.vanilla.server.workflow.server.temporaryFiles" title="Temporary files folder" type="0"/>
+		</section>
+		<section title="United Olap">
+			<prop name="bpm.memcached.server.useMemcached" title="Use Memcached" type="2"/>
+			<prop name="bpm.memcached.server.host" title="Memcached Host" type="0"/>
+			<prop name="bpm.memcached.server.port" title="Memcached Port" type="0"/>
+			<prop name="bpm.united.olap.runtime.data.cache.disk.disabled" title="Enable cach disck" type="2"/>
+			<prop name="bpm.united.olap.runtime.data.cache.disk.fileLocation" title="Cach File Location" type="0"/>
+			<prop name="bpm.united.olap.runtime.projection.fileLocation" title="Projection File Location" type="0"/>
+			<prop name="bpm.united.olap.runtime.projection.file.bufferSize" title="Projection Buffer Size" type="0"/>
+		</section>
+	</tab>
+	<tab title="Emailing">
+		<prop name="bpm.vanilla.mailer.smtp.host" title="SMTP Host" type="0"/>
+		<prop name="bpm.vanilla.mailer.smtp.port" title="SMTP Port" type="0"/>
+		<prop name="bpm.vanilla.mailer.smtp.from" title="From" type="0"/>
+		<prop name="bpm.vanilla.mailer.smtp.user" title="User" type="0"/>
+		<prop name="bpm.vanilla.mailer.smtp.password" title="Password" type="0"/>
+		<prop name="bpm.vanilla.mailer.smtp.auth" title="Enable Auth" type="2"/>
+		<prop name="bpm.vanilla.mailer.smtp.starttls.enable" title="Enable TLS" type="2"/>
+	</tab>
+	<tab title="Portal Look">
+		<section title="URLs">
+			<prop name="bpm.vanilla.webapps.url.faweb" title="Vanilla Analysis" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fwr" title="Vanilla Report" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.metadataweb" title="Vanilla Metadata" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fdweb" title="Vanilla Dashboard" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fmloaderweb" title="Kpi Loader" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fmdesignerweb" title="Kpi Designer" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fmuserweb" title="Kpi User" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.fmkpimapweb" title="Kpi Map" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.air" title="Vanilla Air" type="0"/>
+			<prop name="bpm.vanilla.webapps.url.deconnect" title="Deconnect URL" description="Redirection URL when you click on disconnect in the portal" type="0"/>
+		</section>
+		<section title="Various">
+			<prop name="bpm.vanilla.user.image.folder" title="Users Image Folder" description="Folder that will contains user's personal images" type="0"/>
+			<prop name="bpm.vanilla.login.css.path" title="CSS Folder" description="Path to the CSS file which define the css for the login page of the webapps" type="0"/>
+			<prop name="bpm.vanilla.help.url" title="Help Folder" description="Path to the folder Help for the portal" type="0"/>
+			<prop name="bpm.custom.properties.path" title="Custom Properties Path" description="Custom properties file path" type="0"/>
+			<prop name="bpm.vanilla.default.theme" title="Default Theme" description="Theme to be used for the Portal css : it must be the CSS file within [VANILLA]/webapps/vanilla/css" type="0"/>
+			<prop name="bpm.vanilla.server.useBirtViewer" title="Enable BirtViewer" description="BirtViewer webapp URL used is the one stored in the VanillaSetup (you can set it with EntrepriseServices but you will need to restart Vanilla)" type="2"/>
+		</section>
+		<section title="Feedback">
+			<prop name="bpm.vanilla.feedback.allowed" title="Feedback Allowed" type="2"/>
+			<prop name="bpm.vanilla.feedback.url" title="Vanilla Feedback URL" type="0"/>
+		</section>
+		<section title="Update Manager">
+			<prop name="bpm.update.manager.url" title="Update Manager URL" type="0"/>
+		</section>
+		<section title="Aklabox">
+			<prop name="bpm.aklabox.runtime.url" title="Aklabox Runtime URL" type="0"/>
+			<prop name="bpm.aklabox.webapp.url" title="Aklabox Webapp URL" type="0"/>
+		</section>
+	</tab>
+	<tab title="Vanilla Air">
+		<section title="Databases">
+			<prop name="bpm.vanilla.smart.database.driverClassName" title="Driver" type="1">
+				<value>com.mysql.jdbc.Driver</value>
+				<value>org.postgresql.Driver</value>
+				<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+				<value>org.h2.Driver</value>
+			</prop>
+			<prop name="bpm.vanilla.smart.database.jdbcUrl" title="Url database" type="0"/>
+			<prop name="bpm.vanilla.smart.database.userName" title="Login" type="0"/>
+			<prop name="bpm.vanilla.smart.database.password" title="Password" type="0"/>
+			<prop name="bpm.vanilla.smart.database.dialect" title="Hibernate Dialect" type="0"/>
+		</section>
+		<section title="Various">
+			<prop name="bpm.smart.runtime.url" title="Smart Runtime URL" type="0"/>
+			<prop name="bpm.vanilla.R.libraries.path" title="R Libraries Path" type="0"/>
+			<prop name="bpm.vanilla.R.graphics.config.path" title="R Graphics Path" type="0"/>
+		</section>
+	</tab>
+</xmlDefinition>

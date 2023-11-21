@@ -1,0 +1,181 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+#Login {
+	height: 100%;
+    min-height: 550px;
+    width: 100%;
+}
+
+.welcome {
+	position: absolute;
+	border: 1px solid grey;
+	border-radius: 50px;
+	margin: 15px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background: white;
+}
+
+.top {
+    height: 95px;
+}
+
+.textTopLeft {
+    font-size: 31px;
+    left: 30px;
+    position: absolute;
+    top: 50px;
+}
+
+.customLogo {
+    display: block;
+    margin: 15px auto auto;
+}
+
+.imgTopRight {
+	position: absolute;
+    right: 30px;
+    top: 15px;
+    width: 135px;
+}
+
+.separatorLogin {
+    border-bottom: 1px solid black;
+    height: 1px;
+    left: 30px;
+    position: absolute;
+    right: 30px;
+    top: 90px;
+}
+
+.imgWebapp {
+	display: block;
+    margin: auto;
+}
+
+.connectPanel {
+    margin-top: 0px;
+}
+
+.flexConnect {
+	margin: auto;
+}
+
+.labelLogin {
+	font-size: 15px;
+}
+
+.labelPassword {
+	font-size: 15px;
+}
+
+.labelLanguage {
+	font-size: 15px;
+}
+
+.textLogin {
+    width: 150px;
+}
+
+.textPassword {
+    width: 150px;
+}
+
+.listLanguage {
+    width: 156px;
+}
+
+.btnConfirm {
+    display: block;
+    margin: 15px auto 0 !important;
+    width: 185px;
+}
+
+.fastConnectPanel {
+    background: none repeat scroll 0 0 white;
+    border: 0.5px solid lightslategrey;
+    border-radius: 15px 15px 15px 15px;
+    bottom: 140px;
+    padding: 15px;
+    position: absolute;
+    right: 15px;
+    width: 150px;
+}
+
+.imgConnectOne {
+	float: left;
+}
+
+.imgConnectTwo {
+	float: left;
+}
+
+.imgConnectThree {
+	float: left;
+}
+
+.labelConnectOne {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 2px 5px 10px 25px;
+}
+
+.labelConnectOne:HOVER {
+	text-decoration:underline;
+}
+
+.labelConnectTwo {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 2px 5px 10px 25px;
+}
+
+.labelConnectTwo:HOVER {
+	text-decoration:underline;
+}
+
+.labelConnectThree {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 2px 5px 10px 25px;
+}
+
+.labelConnectThree:HOVER {
+	text-decoration:underline;
+}
+
+.imgHelp {
+    bottom: 60px;
+    padding: 15px;
+    position: absolute;
+    right: 65px;
+}
+
+.about {
+    background: none repeat scroll 0 0 white;
+    bottom: 5px;
+    left: 18%;
+    right: 18%;
+    position: absolute;
+}
+
+.labelForgotPassword {
+	cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.labelForgotPassword:HOVER {
+    text-decoration: none;
+    font-weight: bold;
+}

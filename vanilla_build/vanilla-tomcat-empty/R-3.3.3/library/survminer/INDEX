@@ -1,0 +1,26 @@
+BMT                     Bone Marrow Transplant
+BRCAOV.survInfo         Breast and Ovarian Cancers Survival Information
+add_ggsurvplot          Add Components to a ggsurvplot
+arrange_ggsurvplots     Arranging Multiple ggsurvplots
+ggcompetingrisks        Cumulative Incidence Curves for Competing Risks
+ggcoxadjustedcurves     Adjusted Survival Curves for Cox Proportional
+                        Hazards Model
+ggcoxdiagnostics        Diagnostic Plots for Cox Proportional Hazards
+                        Model with ggplot2
+ggcoxfunctional         Functional Form of Continuous Variable in Cox
+                        Proportional Hazards Model
+ggcoxzph                Graphical Test of Proportional Hazards with
+                        ggplot2
+ggcumcensor             Cumulative Number of Censored Subjects
+ggcumevents             Cumulative Number of Events Table
+ggforest                Drawing Forest Plot for CoxPH model
+ggrisktable             Number at Risk Table
+ggsurvevents            Distribution of Event's Times
+ggsurvplot              Drawing Survival Curves Using ggplot2
+myeloma                 Multiple Myeloma Data
+pairwise_survdiff       Multiple Comparisons of Survival Curves
+surv_cutpoint           Determine the Optimal Cutpoint for Continuous
+                        Variables
+surv_summary            Nice Summary of a Survival Curve
+theme_classic2          ggplot2 classic theme with axis lines
+theme_survminer         Theme for Survminer Plots

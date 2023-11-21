@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.SimpleLayout"/>
+	</appender>
+	
+	
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+
+      <param name="File" value="../logs/birepository.log"/>
+      <param name="Append" value="true"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+         <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+      </layout>
+   </appender>
+	
+ 
+   <category name="org.hibernate">
+     <priority value="ERROR" />
+     <appender-ref ref="console"/>
+      <appender-ref ref="file"/>
+   </category>
+
+  
+   <category name="org.springframework">
+     <priority value="ERROR"/>
+     <appender-ref ref="console"/>
+      <appender-ref ref="file"/>
+   </category>
+
+  
+
+   <!-- ======================= -->
+   <!-- Setup the Root category -->
+   <!-- ======================= -->
+
+   <root>
+      <priority value="INFO" />
+      <appender-ref ref="console"/>
+      <appender-ref ref="file"/>
+   </root>
+
+
+<!-- Vanilla OSGI Loggers -->
+	<logger name="bpm.vanilla.server.ged.wrapper">
+	     <level value="INFO"/>
+	</logger>
+	
+	<logger name="bpm.forms.dao">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+		 
+	<logger name="bpm.forms.instanciator">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>	 
+	 <logger name="bpm.forms.runtime">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 
+	 
+	 <logger name="bpm.vanilla.map.dao">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 <logger name="bpm.vanilla.map.model">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 <logger name="bpm.vanilla.map.wrapper">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+		 
+	 <logger name="bpm.dataprovider.odainput.wrapper">
+	     <level value="INFO"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 
+	 <logger name="bpm.dataprovider.odainput.service.runtime">
+	     <level value="DEBUG"/>
+	     <appender-ref ref="console"/>
+	 </logger>
+	 
+	
+
+</log4j:configuration>

@@ -1,0 +1,27 @@
+Package: bubbles
+Title: d3 Bubble Chart htmlwidget
+Version: 0.2
+Authors@R: c(person("Joe", "Cheng", role = c("cre", "aut"), email = "joe@rstudio.com"),
+    person("Mike", "Bostock", role = "aut"),
+    person("Jeff", "Heer", role = "aut"))
+Description: htmlwidget package for d3 Bubble Chart as seen at
+    http://bl.ocks.org/mbostock/4063269.
+Depends: R (>= 3.0)
+Imports: htmlwidgets
+License: file LICENSE
+LazyData: true
+Author: Joe Cheng [cre, aut],
+  Mike Bostock [aut],
+  Jeff Heer [aut]
+Maintainer: Joe Cheng <joe@rstudio.com>
+Built: R 3.3.3; ; 2017-04-21 14:01:15 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: bubbles
+RemoteUsername: jcheng5
+RemoteRef: master
+RemoteSha: 6724e43f5efdab14752b3dc31ae2e731db3aa51f
+GithubRepo: bubbles
+GithubUsername: jcheng5
+GithubRef: master
+GithubSHA1: 6724e43f5efdab14752b3dc31ae2e731db3aa51f

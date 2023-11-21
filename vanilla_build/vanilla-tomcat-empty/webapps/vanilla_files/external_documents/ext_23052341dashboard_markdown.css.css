@@ -1,0 +1,149 @@
+.menu {  
+	list-style-type: none; 
+} 
+ul.menu {
+    font: bold 11px verdana, arial, sans-serif;
+    list-style-type: none;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #1b5ab8;
+    margin: 0;
+}
+
+ul.menu li {
+    float: left;
+    height: 21px;
+    background-color: #fff;
+    margin: 2px 2px 0 2px;
+    border: 1px solid #1b5ab8;
+}
+
+.menu li:active {
+    border-bottom: 1px solid #fff;
+    background-color: #1b5ab8;
+} 
+
+.menu a:active{
+    color: #000;
+}
+
+.active a{
+    color: #fff !important;
+    background: #1b5ab8;
+    font-family:calibri;
+    font-size:12px;
+}
+
+.active li{
+    border-bottom: 1px solid #fff;
+    background-color: #1b5ab8;
+    background: #1b5ab8;
+}
+
+.menu a {
+    float: left;
+    display: block;
+    color: #1b5ab8;
+    text-decoration: none;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 3px;
+    font-family:calibri;
+    font-size:12px;
+}
+
+.menu a:hover {
+    background: #1b5ab8;
+}
+.title p{
+	padding:0px;
+	margin:0px;
+	color:#1b5ab8;
+	text-align:center;
+	font-family:calibri;
+	font-weight:bold;
+	font-size:22px;
+}
+.sstitle p{
+	padding:0px;
+	margin:0px;
+	color:#1b5ab8;
+	text-align:center;
+	font-family:calibri;
+	font-weight:bold;
+	font-size:20px;
+}
+
+._loading {
+	background-color: black;
+	opacity: 0.2;
+	filter: literal(\"alpha(opacity=20)\");
+	z-index: 4;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+._loading div {
+	background:url(../../freedashboardRuntime/js/wait/loadingBig.gif) no-repeat center center;
+	width: 32px;
+	height: 32px;
+	margin: auto;
+	position: relative;
+	top:50%;
+}
+.cell{overflow:auto;}
+
+.filtrelabel{
+	color:#1b5ab8;
+	font-weight:bold;
+	font-size:12px;
+	font-family:calibri;
+}
+
+.labelchart{
+
+	color:#555555;
+	font-weight:bold;
+	font-size:10px;
+	text-align:center;
+	font-family:Verdana;
+	
+}
+
+.cadre_filtres{
+	border: 1px solid #1b5ab8;
+	z-index:-1;
+}
+
+.cell span > svg > text > tspan {
+    display:none;
+}
+
+.chartfd span>svg>text>tspan{
+    display:none;
+}
+.chartfd span>svg>g>text>tspan{
+    font-size:10px;
+}
+.chartfd span>svg>g>a>text>tspan{
+    font-size:10px;
+}
+
+.gaugefd span{
+	border-image-width:0px !important;
+}
+.gaugefd tspan{
+	display:none;
+}
+.gaugefd span>svg>text>tspan{
+    display:none;
+}
+.gaugefd span>svg>g>rect{
+    stroke-width:0px !important;
+}
+.gaugefd span>svg>g>text>tspan{
+    font-size:10px;
+}

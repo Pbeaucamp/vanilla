@@ -1,0 +1,17 @@
+Package: tforecast
+Type: Package
+Title: Time series prediction
+Version: 1.1
+Date: 2016-2-02
+Author: Youssef Hmamouche
+Maintainer: <youssef.hmamouche@lif.univ-mrs.fr>
+Description: The package provides a multivariate analysis for time series.
+License: GNU General Public License
+Imports: Rcpp (>= 0.11.6)
+LinkingTo: Rcpp
+SystemRequirements: C++11
+NeedsCompilation: yes
+RoxygenNote: 5.0.1
+Packaged: 2016-02-24 10:01:11 UTC; youssef
+Built: R 3.2.2; i386-w64-mingw32; 2016-06-09 09:42:06 UTC; windows
+Archs: i386

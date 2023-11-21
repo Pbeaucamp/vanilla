@@ -1,0 +1,12 @@
+dendroextras-package	dendroextras-package
+color_clusters	colour_clusters
+colour_clusters	colour_clusters
+dendroextras	dendroextras-package
+labels.hclust	labels.hclust
+labels<-	labels-assign
+labels<-.dendrogram	labels-assign
+leaf_colors	leaf_colours
+leaf_colours	leaf_colours
+set_leaf_colors	set_leaf_colours
+set_leaf_colours	set_leaf_colours
+slice	slice

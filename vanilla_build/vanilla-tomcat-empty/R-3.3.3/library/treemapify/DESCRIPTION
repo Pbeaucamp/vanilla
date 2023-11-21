@@ -1,0 +1,26 @@
+Package: treemapify
+Title: Draw treemaps easily
+Version: 2.2.3
+Author: David Wilkins <contact@wilkox.org>
+Maintainer: David Wilkins <contact@wilkox.org>
+URL: https://github.com/wilkox/treemapify
+BugReports: https://github.com/wilkox/treemapify/issues
+Description: Functions to create treemaps with maximum automation and minimum
+    effort.
+Imports: plyr (>= 1.3), reshape2
+Depends: ggplot2, ggfittext (>= 0.4)
+License: GPL (>=3)
+LazyData: true
+Suggests: testthat, grid
+RoxygenNote: 5.0.1
+Built: R 3.3.3; ; 2017-04-25 15:07:34 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: treemapify
+RemoteUsername: wilkox
+RemoteRef: master
+RemoteSha: 9c1ae0d95e4b2798683af558fbb941fb12dfe9c0
+GithubRepo: treemapify
+GithubUsername: wilkox
+GithubRef: master
+GithubSHA1: 9c1ae0d95e4b2798683af558fbb941fb12dfe9c0

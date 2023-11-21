@@ -1,0 +1,27 @@
+desc_statby             Descriptive statistics by groups
+diff_express            Differential gene expression analysis results
+geom_exec               Execute ggplot2 functions
+get_palette             Generate Color Palettes
+ggbarplot               Bar plot
+ggboxplot               Box plot
+ggdensity               Density plot
+ggdotchart              Cleveland's Dot Plots
+ggdotplot               Dot plot
+ggecdf                  Empirical cumulative density function
+ggerrorplot             Visualizing Error
+gghistogram             Histogram plot
+ggline                  Line plot
+ggmaplot                MA-plot from means and log fold changes
+ggpar                   Graphical parameters
+ggpie                   Pie chart
+ggqqplot                QQ Plots
+ggscatter               Scatter plot
+ggstripchart            Stripcharts
+ggtext                  Text
+ggviolin                Violin plot
+show_line_types         Line types available in R
+show_point_shapes       Point shapes available in R
+stat_chull              Plot convex hull of a set of points
+stat_conf_ellipse       Plot confidence ellipses.
+stat_mean               Draw group mean points
+theme_pubr              Publication ready theme

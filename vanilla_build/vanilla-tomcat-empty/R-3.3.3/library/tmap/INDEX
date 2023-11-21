@@ -1,0 +1,37 @@
++.tmap                  Stacking of tmap elements
+World                   World, Europe, and Netherlands map
+animation_tmap          Create animation
+land                    Spatial data of global land cover
+last_map                Retrieve the last map to be modified or created
+metro                   Spatial data of metropolitan areas
+print.tmap              Draw thematic map
+qtm                     Quick thematic map plot
+rivers                  Spatial data of rivers
+save_tmap               Save tmap
+style_catalogue         Create a style catalogue
+theme_ps                ggplot2 theme for proportional symbols
+tm_add_legend           Add manual legend
+tm_compass              Map compass
+tm_credits              Credits text
+tm_facets               Small multiples
+tm_fill                 Draw polygons
+tm_grid                 Coordinate grid lines
+tm_iso                  Draw iso (contour) lines with labels
+tm_layout               Layout of cartographic maps
+tm_lines                Draw spatial lines
+tm_logo                 Logo
+tm_raster               Draw a raster
+tm_scale_bar            Scale bar
+tm_shape                Specify the shape object
+tm_symbols              Draw symbols
+tm_text                 Add text labels
+tm_view                 Options for the interactive tmap viewer
+tm_xlab                 Axis labels
+tmap-element            tmap element
+tmap-package            Thematic Map Visualization
+tmap_arrange            Arrange small multiples in grid layout
+tmap_icons              Specify icons
+tmap_leaflet            Create a leaflet widget from a tmap object
+tmap_mode               Set tmap mode to static plotting or interactive
+                        viewing
+tmap_style              Set the default tmap style

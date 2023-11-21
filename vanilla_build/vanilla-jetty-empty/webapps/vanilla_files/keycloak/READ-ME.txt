@@ -1,0 +1,11 @@
+Pour rendre compatible Keycloak.
+
+
+1/ Créer un client dans Keycloak
+2/ Récupérer le fichier JSON dans l'onglet "Installation"
+3/ Copier le fichier dans [Platform]/webapps/vanilla_files/keycloak/keycloak-portail-gwt.json
+4/ Changer les propriétés suivantes dans vanilla.properties
+
+bpm.vanilla.keycloak.enabled=true
+bpm.vanilla.keycloak.key=Vanilla7
+bpm.vanilla.keycloak.configUrl=https://XXXXXX-vanilla.data4citizen.com/vanilla_files/keycloak/keycloak-portail-gwt.json

@@ -1,0 +1,22 @@
+-.tabplot               Compare two tableplots (experimental)
+bin_data                Bin data
+bin_hcc_data            Bin high cardinality data
+datetime2fac            Transform a date-time vector to a factor
+itableplot              Graphical User Interface to create tableplots
+loadPrepare             Loads a prepared object
+num2fac                 Transform a numerical vector to a factor
+plot.tabplot            Plot a tabplot-object
+print.tabplot           Print a tabplot-object
+savePrepare             Saves a prepared object
+summary.tabplot         Summarize a tabplot-object
+tableChange             Change a tabplot-object
+tablePalettes           Show / get all palettes of the tabplot package
+tablePrepare            Prepares a dataset for tableplotting
+tableSave               Save a tableplot
+tableplot               Create a tableplot
+tabplot-object          Object that contains the information to plot a
+                        tableplot
+tabplot-package         Tableplot, a visualization of large datasets
+tabplot_compare-object
+                        Object that contains the information to plot
+                        the difference of two tableplots (experimental)

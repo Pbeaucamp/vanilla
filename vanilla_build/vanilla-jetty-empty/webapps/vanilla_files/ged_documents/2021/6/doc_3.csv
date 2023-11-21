@@ -1,0 +1,434 @@
+timeline_year_nb;timeline_month_nb;timeline_month_name;adresse_client;customers_city;customers_country;customers_creditlimit;customers_map_reference;nom_client;customers_phone;customers_postalcode;customers_number;products_line;orderfact_quantityordered;orderfact_totalprice
+2017;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;145;17994,340000
+2017;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trucks and Buses;206;20223,070000
+2017;5;May;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;479;49356,480000
+2017;5;May;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;66;3125,360000
+2017;5;May;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;156;16560,300000
+2017;5;May;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Motorcycles;185;18971,960000
+2017;7;July;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;102;17251,080000
+2017;7;July;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Motorcycles;227;25624,880000
+2017;7;July;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;138;15146,320000
+2017;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;24;3492,480000
+2017;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;218;19072,640000
+2017;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Ships;75;6643,760000
+2017;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;96;8889,360000
+2017;11;November;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;72;7557,040000
+2017;11;November;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Motorcycles;386;41317,240000
+2017;11;November;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;94;13868,360000
+2017;11;November;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Trucks and Buses;261;25830,770000
+2017;11;November;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;41;1835,980000
+2018;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;92;14859,680000
+2018;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;271;23734,200000
+2018;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Trains;78;7582,860000
+2018;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;89;8360,130000
+2018;1;January;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;243;26618,280000
+2018;1;January;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;287;24554,370000
+2018;2;February;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Motorcycles;241;20178,130000
+2018;2;February;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Trucks and Buses;43;5759,420000
+2018;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;157;13803,880000
+2018;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;345;32998,390000
+2018;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;266;25558,500000
+2018;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;116;13782,730000
+2018;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;125;15154,810000
+2018;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;187;12776,400000
+2018;6;June;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;61;5416,900000
+2018;7;July;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Motorcycles;214;22774,000000
+2018;7;July;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Planes;321;29712,920000
+2018;7;July;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;66;3515,980000
+2018;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Motorcycles;38;2173,600000
+2018;9;September;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Motorcycles;71;5307,980000
+2018;10;October;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;87;14380,700000
+2018;10;October;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Trucks and Buses;121;13533,440000
+2018;10;October;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;386;31160,760000
+2018;10;October;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Ships;184;15035,990000
+2018;10;October;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;60;5683,920000
+2018;11;November;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;55;3375,550000
+2018;11;November;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Vintage Cars;156;16761,310000
+2018;11;November;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;286;36663,840000
+2018;11;November;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trains;52;4856,420000
+2018;11;November;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trucks and Buses;61;9514,170000
+2018;11;November;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Vintage Cars;48;5778,240000
+2018;11;November;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Vintage Cars;43;2311,680000
+2018;11;November;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;162;14968,010000
+2018;11;November;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Motorcycles;29;3713,160000
+2018;12;December;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;70;5943,430000
+2018;12;December;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Motorcycles;26;3937,700000
+2018;12;December;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;205;22742,800000
+2018;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;161;13034,570000
+2018;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trains;47;5924,470000
+2018;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trucks and Buses;82;11255,380000
+2019;1;January;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;48;2317,440000
+2019;2;February;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Classic Cars;45;3420,000000
+2019;2;February;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Motorcycles;240;25551,290000
+2019;2;February;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Planes;182;23802,470000
+2019;2;February;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;93;6843,640000
+2019;3;March;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Ships;172;15139,120000
+2019;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;65;5651,520000
+2019;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Trains;45;8977,050000
+2019;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Trucks and Buses;46;5692,960000
+2019;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Planes;415;35567,480000
+2019;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Ships;64;5933,600000
+2019;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;150;10527,990000
+2019;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;336;35680,350000
+2019;4;April;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;159;14066,800000
+2019;5;May;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;52;2375,880000
+2019;5;May;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Classic Cars;180;18611,680000
+2019;5;May;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Trucks and Buses;247;25173,010000
+2019;6;June;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;66;3690,060000
+2019;6;June;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;32;1776,000000
+2019;7;July;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;67;6381,750000
+2019;7;July;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;23;1988,350000
+2019;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;72;5726,160000
+2019;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Ships;87;2489,940000
+2019;7;July;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trains;37;3137,600000
+2019;8;August;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;180;14634,000000
+2019;8;August;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;11;335,060000
+2019;8;August;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Motorcycles;76;6289,000000
+2019;8;August;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;148;7653,080000
+2019;8;August;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;76;5028,160000
+2019;9;September;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;106;9588,620000
+2019;9;September;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;194;10027,860000
+2019;9;September;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Planes;132;12452,880000
+2019;9;September;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;63;4547,340000
+2019;10;Octobre;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;36;3413,520000
+2019;10;Octobre;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;69;2739,300000
+2019;10;Octobre;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Trucks and Buses;9;262,800000
+2019;10;Octobre;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;60;4237,200000
+2019;10;Octobre;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Vintage Cars;14;900,060000
+2019;10;Octobre;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;64;5465,600000
+2019;11;November;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;79;6129,610000
+2019;11;November;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Trucks and Buses;255;14994,000000
+2019;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Trucks and Buses;188;15904,800000
+2019;11;November;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Vintage Cars;45;3904,200000
+2019;11;November;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Planes;11;906,730000
+2019;11;November;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trains;89;4693,860000
+2019;11;November;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Classic Cars;453;32374,950000
+2019;11;November;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Motorcycles;33;2052,270000
+2019;12;December;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;67;5662,840000
+2019;12;December;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;56;4654,160000
+2019;12;December;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;134;8421,900000
+2019;12;December;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Planes;31;1222,640000
+2019;12;December;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;51;1572,330000
+2020;1;January;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;85;5029,450000
+2020;1;January;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;95;4835,500000
+2020;2;February;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Planes;97;4946,030000
+2020;2;February;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;76;6121,040000
+2020;2;February;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;91;6020,560000
+2020;3;March;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;36;3352,680000
+2020;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;82;4827,340000
+2020;3;March;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;77;6218,520000
+2020;3;March;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;140;6889,400000
+2020;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Planes;41;3802,750000
+2020;3;March;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Trucks and Buses;82;8099,960000
+2020;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;90;6604,200000
+2020;4;April;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;26;2241,980000
+2020;4;April;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;76;3055,960000
+2020;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;39;2749,500000
+2020;4;April;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Ships;64;4376,960000
+2020;4;April;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;89;6688,350000
+2020;4;April;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;33;2605,350000
+2020;4;April;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Trucks and Buses;93;8438,820000
+2020;5;May;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trains;40;1492,800000
+2020;6;June;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Trains;32;3145,280000
+2020;6;June;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Motorcycles;31;980,220000
+2020;6;June;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;82;7015,920000
+2020;6;June;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;28;2500,400000
+2020;6;June;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Trucks and Buses;14;1171,520000
+2020;6;June;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Ships;152;9952,960000
+2020;6;June;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Trucks and Buses;194;15473,440000
+2020;6;June;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;21;2023,770000
+2020;7;July;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;21;1704,570000
+2020;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;34;1873,740000
+2020;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Trucks and Buses;7;455,840000
+2020;8;August;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;28;2723,840000
+2020;8;August;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trucks and Buses;44;1575,200000
+2020;8;August;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;64;5898,880000
+2020;8;August;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;9;562,590000
+2020;8;August;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;45;4414,500000
+2020;8;August;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;50;4864,000000
+2020;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Ships;59;2318,700000
+2020;8;August;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;70;6192,200000
+2020;8;August;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;102;9834,840000
+2020;8;August;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Classic Cars;43;1256,030000
+2020;9;September;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Trains;34;2906,320000
+2020;9;September;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;14;1244,880000
+2020;9;September;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;90;6569,100000
+2020;9;September;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Ships;7;654,430000
+2020;10;Octobre;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Trucks and Buses;78;3719,040000
+2020;10;Octobre;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;9;627,840000
+2020;10;Octobre;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;16;730,400000
+2020;10;Octobre;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;51;3098,190000
+2020;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Motorcycles;65;1742,000000
+2020;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Ships;91;6521,970000
+2020;11;November;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;53;3615,660000
+2020;11;November;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Motorcycles;94;6321,500000
+2020;11;November;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Planes;6;381,120000
+2020;11;November;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;50;2430,500000
+2020;11;November;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;69;3027,720000
+2020;12;December;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Planes;30;1399,800000
+2021;1;January;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Vintage Cars;36;2482,560000
+2021;1;January;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;60;3046,800000
+2021;1;January;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Ships;68;1806,080000
+2021;1;January;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Planes;79;6252,850000
+2021;1;January;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Motorcycles;6;425,880000
+2021;2;February;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;54;3816,720000
+2021;3;March;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;69;1816,770000
+2021;3;March;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;49;3330,040000
+2021;3;March;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;44;2900,040000
+2021;3;March;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;25;1553,250000
+2021;4;April;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Vintage Cars;96;3834,240000
+2021;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Motorcycles;120;11198,400000
+2021;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Planes;35;1878,450000
+2021;4;April;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;14;636,860000
+2021;4;April;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;48;2551,200000
+2021;5;May;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Motorcycles;38;2666,840000
+2021;5;May;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Ships;156;8530,080000
+2021;5;May;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;9;520,110000
+2021;5;May;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;80;2192,000000
+2021;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;11;1046,540000
+2021;5;May;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;119;8551,860000
+2021;5;May;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;49;2515,170000
+2021;6;June;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;47;4147,750000
+2021;6;June;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;89;8629,440000
+2021;6;June;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;81;5305,500000
+2021;6;June;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Motorcycles;46;2126,580000
+2021;7;July;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;87;4930,290000
+2021;7;July;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Planes;37;1626,890000
+2021;7;July;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;70;3488,800000
+2021;7;July;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;117;9853,110000
+2021;7;July;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Motorcycles;71;7019,770000
+2021;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Ships;84;4664,520000
+2021;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;28;1801,800000
+2021;7;July;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;176;15132,480000
+2021;8;August;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;76;6301,920000
+2021;8;August;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trucks and Buses;94;4910,560000
+2021;8;August;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Trucks and Buses;174;10311,240000
+2021;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;47;2606,620000
+2021;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Vintage Cars;93;7148,910000
+2021;8;August;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;50;3607,460000
+2021;9;September;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;63;3965,850000
+2021;9;September;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;43;1729,460000
+2021;9;September;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Motorcycles;62;2548,200000
+2021;10;Octobre;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;65;4058,600000
+2021;10;Octobre;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Trucks and Buses;32;1882,880000
+2021;10;Octobre;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Motorcycles;34;1126,420000
+2021;10;Octobre;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;148;12423,120000
+2021;10;Octobre;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;162;13956,300000
+2021;10;Octobre;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Ships;31;2231,690000
+2021;10;Octobre;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;194;10916,380000
+2021;11;November;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;15;680,700000
+2021;11;November;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;66;3694,020000
+2021;11;November;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;58;4192,820000
+2021;12;December;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Planes;71;3997,300000
+2021;12;December;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Ships;29;821,570000
+2021;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;50;2035,000000
+2021;12;December;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;65;3023,800000
+2022;1;January;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Motorcycles;13;1174,940000
+2022;1;January;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;10;513,900000
+2022;1;January;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trucks and Buses;54;3919,860000
+2022;1;January;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;10;289,500000
+2022;2;February;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;40;2819,600000
+2022;2;February;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;36;1072,800000
+2022;2;February;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;152;13161,680000
+2022;2;February;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Planes;52;4416,880000
+2022;2;February;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;64;5624,320000
+2022;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;65;3413,150000
+2022;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;78;4473,300000
+2022;3;March;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;42;1793,400000
+2022;3;March;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Planes;142;4056,940000
+2022;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;92;7495,240000
+2022;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trains;95;7991,400000
+2022;3;March;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Trucks and Buses;108;3700,080000
+2022;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;11;360,800000
+2022;4;April;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Ships;40;1296,000000
+2022;4;April;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Motorcycles;31;1883,870000
+2022;5;May;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;45;2480,400000
+2022;5;May;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;43;3935,790000
+2022;5;May;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;126;11156,040000
+2022;5;May;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Motorcycles;42;3438,960000
+2022;5;May;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;23;1830,800000
+2022;5;May;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;142;3949,020000
+2022;5;May;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Motorcycles;35;1240,400000
+2022;5;May;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;62;2690,180000
+2022;5;May;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;18;940,140000
+2022;6;June;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;69;1967,880000
+2022;6;June;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;51;5063,790000
+2022;6;June;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;6;520,440000
+2022;6;June;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Motorcycles;95;7110,750000
+2022;6;June;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;29;1676,490000
+2022;6;June;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Motorcycles;40;3870,800000
+2022;6;June;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;68;1885,640000
+2022;7;July;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;67;3492,040000
+2022;7;July;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Ships;9;834,570000
+2022;7;July;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;91;2743,650000
+2022;7;July;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;16;904,160000
+2022;7;July;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Motorcycles;104;7686,640000
+2022;7;July;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;21;1606,290000
+2022;8;August;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;132;12848,880000
+2022;8;August;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;194;7507,800000
+2022;8;August;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;35;2843,400000
+2022;9;September;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;79;2870,860000
+2022;9;September;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;80;2114,400000
+2022;9;September;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;76;2384,880000
+2022;9;September;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Classic Cars;94;5293,140000
+2022;10;Octobre;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;61;4803,140000
+2022;10;Octobre;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;6;481,380000
+2022;10;Octobre;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Motorcycles;49;1574,360000
+2022;11;November;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Motorcycles;84;7198,800000
+2022;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Trucks and Buses;162;6295,320000
+2022;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;23;1043,510000
+2022;11;November;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Trucks and Buses;168;8935,920000
+2022;11;November;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Ships;85;5646,550000
+2022;12;December;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trucks and Buses;57;3508,920000
+2023;1;January;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Planes;25;1639,000000
+2023;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;80;3252,800000
+2023;1;January;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Ships;65;6024,200000
+2023;1;January;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Trucks and Buses;52;2593,760000
+2023;1;January;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Ships;37;2279,200000
+2023;2;February;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Trucks and Buses;140;7582,400000
+2023;2;February;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Motorcycles;46;2792,200000
+2023;2;February;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Trucks and Buses;67;5714,430000
+2023;3;March;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;164;9215,160000
+2023;3;March;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Planes;61;6083,530000
+2023;3;March;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;180;9766,800000
+2023;3;March;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;96;5385,600000
+2023;3;March;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;55;1966,250000
+2023;3;March;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;69;3770,160000
+2023;3;March;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;16;483,040000
+2023;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Ships;134;11195,700000
+2023;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;48;2746,080000
+2023;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trucks and Buses;96;8491,200000
+2023;4;April;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Trucks and Buses;17;932,280000
+2023;4;April;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;95;8129,150000
+2023;4;April;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Vintage Cars;91;2467,010000
+2023;4;April;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;132;9009,000000
+2023;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;90;4464,900000
+2023;4;April;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Planes;184;7871,520000
+2023;4;April;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;86;4798,800000
+2023;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Motorcycles;31;2888,890000
+2023;4;April;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;66;4517,700000
+2023;4;April;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Motorcycles;91;9081,800000
+2023;5;May;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Ships;128;7262,720000
+2023;5;May;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;236;9864,800000
+2023;5;May;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Trucks and Buses;34;1228,420000
+2023;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;20;709,800000
+2023;5;May;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trucks and Buses;97;4347,540000
+2023;5;May;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;79;6359,500000
+2023;5;May;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Vintage Cars;388;23260,600000
+2023;5;May;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;53;3312,500000
+2023;6;June;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Vintage Cars;32;3113,600000
+2023;6;June;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Planes;10;284,100000
+2023;7;July;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;84;6960,240000
+2023;7;July;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;54;4856,760000
+2023;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;168;15220,800000
+2023;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;15;482,550000
+2023;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;90;3045,600000
+2023;7;July;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Ships;18;840,420000
+2023;7;July;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Planes;194;17609,380000
+2023;7;July;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;52;1548,560000
+2023;8;August;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Ships;190;17592,100000
+2023;8;August;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Ships;91;4307,940000
+2023;8;August;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Trains;231;6444,900000
+2023;8;August;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Ships;48;1570,080000
+2023;8;August;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Planes;74;7077,360000
+2023;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;183;10560,930000
+2023;8;August;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Ships;118;11004,680000
+2023;8;August;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Ships;28;1699,040000
+2023;9;September;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;49;1823,290000
+2023;9;September;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Motorcycles;267;10781,460000
+2023;9;September;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;37;3025,120000
+2023;9;September;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;70;5614,000000
+2023;9;September;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Motorcycles;85;4284,000000
+2023;9;September;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;67;5319,800000
+2023;9;September;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Ships;75;3991,500000
+2023;9;September;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Planes;118;7030,440000
+2023;11;November;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;83;2748,960000
+2023;11;November;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;45;3996,000000
+2023;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;13;493,610000
+2023;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;70;2090,900000
+2023;11;November;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;49;4816,700000
+2023;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trucks and Buses;94;8641,420000
+2023;12;December;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Ships;94;7200,400000
+2024;1;January;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;39;2822,820000
+2024;2;February;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Motorcycles;21;2025,660000
+2024;2;February;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;29;917,560000
+2024;2;February;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;46;3204,360000
+2024;3;March;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;34;1873,740000
+2024;3;March;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;52;2726,880000
+2024;3;March;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Trucks and Buses;54;2072,520000
+2024;3;March;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;130;4566,900000
+2024;3;March;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Motorcycles;8;311,200000
+2024;4;April;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;92;7569,760000
+2024;4;April;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;38;2162,580000
+2024;4;April;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;92;2474,800000
+2024;4;April;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trucks and Buses;47;2589,700000
+2024;5;May;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Planes;63;3601,080000
+2024;5;May;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Planes;182;14998,620000
+2024;5;May;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Motorcycles;98;8638,700000
+2024;5;May;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Trains;114;9607,920000
+2024;5;May;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Vintage Cars;28;1158,080000
+2024;5;May;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;69;2272,170000
+2024;5;May;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;60;4164,600000
+2024;5;May;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Ships;61;3180,540000
+2024;6;June;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Vintage Cars;79;4228,870000
+2024;7;July;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Vintage Cars;150;7264,500000
+2024;7;July;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;34;2859,740000
+2024;7;July;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Planes;37;2634,400000
+2024;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;47;3780,210000
+2024;7;July;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;90;4858,760000
+2024;7;July;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;63;4336,920000
+2024;7;July;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;42;1987,860000
+2024;8;August;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Planes;37;1929,180000
+2024;8;August;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Classic Cars;71;4799,600000
+2024;9;September;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Ships;60;1705,200000
+2024;10;Octobre;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Motorcycles;42;1945,860000
+2024;10;Octobre;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trucks and Buses;72;4183,920000
+2024;10;Octobre;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;61;1673,840000
+2024;11;November;54, rue Royale;Nantes;France;21000,000000;141;Atelier graphique;40.32.2555;44000;103;Classic Cars;128;6255,360000
+2024;12;December;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Classic Cars;9;716,490000
+2024;12;December;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Ships;71;3329,190000
+2024;12;December;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;79;3663,230000
+2024;12;December;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;60;2709,600000
+2024;12;December;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Classic Cars;156;10377,120000
+2024;12;December;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Trucks and Buses;122;3346,460000
+2025;1;January;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Classic Cars;61;5074,590000
+2025;1;January;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Planes;58;3968,940000
+2025;1;January;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;46;2023,080000
+2025;1;January;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;82;4296,800000
+2025;2;February;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;89;7186,750000
+2025;2;February;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Trucks and Buses;116;6591,120000
+2025;2;February;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Vintage Cars;60;4255,200000
+2025;2;February;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Ships;58;3550,180000
+2025;3;March;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Planes;50;4962,500000
+2025;3;March;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;91;5524,610000
+2025;3;March;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Vintage Cars;15;1054,800000
+2025;3;March;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;212;14234,600000
+2025;3;March;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;58;4095,960000
+2025;4;April;1 rue Alsace-Lorraine;Toulouse;France;61100,000000;141;Alpha Cognac;61.77.6555;31000;242;Classic Cars;279;20579,040000
+2025;4;April;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Classic Cars;69;1940,970000
+2025;4;April;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Trucks and Buses;96;7848,000000
+2025;5;May;184, chaussee de Tournai;Lille;France;82900,000000;141;Daedalus Designs Imports;20.16.1555;59000;171;Ships;93;5835,750000
+2025;5;May;2, rue du Commerce;Lyon;France;123900,000000;141;Saveley & Henriot, Co.;78.32.5555;69004;146;Vintage Cars;44;1223,640000
+2025;5;May;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Planes;6;289,920000
+2025;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;22;1199,000000
+2025;5;May;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Motorcycles;83;4291,100000
+2025;5;May;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Trucks and Buses;50;4156,000000
+2025;6;June;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;84;2583,000000
+2025;6;June;67, avenue de l'Europe;Versailles;France;77900,000000;141;Auto Associes & Cie.;30.59.8555;78000;256;Vintage Cars;52;2523,040000
+2025;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Motorcycles;96;9360,000000
+2025;7;July;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Vintage Cars;70;2529,800000
+2025;7;July;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Vintage Cars;87;3604,410000
+2025;7;July;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;158;14046,200000
+2025;7;July;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Vintage Cars;178;13236,080000
+2025;8;August;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Motorcycles;168;10338,720000
+2025;8;August;67, rue des Cinquante Otages;Nantes;France;118200,000000;141;La Rochelle Gifts;40.67.8555;44000;119;Vintage Cars;66;2801,040000
+2025;9;September;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Motorcycles;57;2826,630000
+2025;9;September;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Motorcycles;23;1337,450000
+2025;9;September;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Vintage Cars;56;1598,800000
+2025;10;Octobre;24, place Kleber;Strasbourg;France;53800,000000;141;Mini Caravy;88.60.1555;67000;209;Classic Cars;29;2845,190000
+2025;10;Octobre;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Classic Cars;52;4249,960000
+2025;10;Octobre;25, rue Lauriston;Paris;France;95000,000000;141;Auto Canal+ Petit;(1) 47.55.6555;75016;406;Planes;60;5994,600000
+2025;10;Octobre;27 rue du Colonel Pierre Avia;Paris;France;68100,000000;141;Lyon Souveniers;+33 1 46 62 7555;75508;250;Classic Cars;57;2146,620000
+2025;11;November;12, rue des Bouchers;Marseille;France;65000,000000;141;Marseille Mini Autos;91.24.4555;13008;350;Ships;20;1232,400000
+2025;12;December;265, boulevard Charonne;Paris;France;84300,000000;141;La Corne D'abondance, Co.;(1) 42.34.2555;75012;172;Ships;80;5105,600000
+2025;12;December;59 rue de l'Abbaye;Reims;France;81100,000000;141;Reims Collectables;26.47.1555;51100;353;Classic Cars;49;3702,930000

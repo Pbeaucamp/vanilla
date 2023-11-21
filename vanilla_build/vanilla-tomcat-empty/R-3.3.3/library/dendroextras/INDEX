@@ -1,0 +1,11 @@
+colour_clusters         Colour sub-clusters of a tree
+                        (dendrogram/hclust) object
+dendroextras-package    Extra functions to cut, label and colour
+                        dendrogram clusters
+labels.hclust           Find labels of hclust object (in dendrogram
+                        order)
+labels<-                Set the labels of an object
+leaf_colours            Return the leaf colours of a dendrogram
+set_leaf_colours        Set the leaf colours of a dendrogram
+slice                   Cut a tree-like object into groups numbered in
+                        tree order

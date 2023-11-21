@@ -1,0 +1,134 @@
+<project default="main">
+
+	<target name="main">
+
+		<property name="eclipse.pdebuild.scripts" value="C:/BPM/eclipse/plugins/org.eclipse.pde.build_3.5.0.v20090527-1800/scripts"/>
+		
+		<property name="buildDirectory" value="C:/BPM/eclipse.build"/>
+		<!--<property name="buildDirectory" value="C:/developpement/workspaces/nemesis/vanilla_build/Birt-plugins/build"/>-->
+	
+	
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+<!--			<ant antfile="FreeDashboard/build.xml" >
+			<property file="FreeDashboard/build.properties"/>
+		</ant>
+	-->	
+		<ant antfile="FreeMetaData/build.xml" >
+					<property file="FreeMetaData/build.properties"/>
+				</ant>
+		
+				<delete includeEmptyDirs="true">
+					<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+		
+		
+	<!--	<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		
+		<ant antfile="BiWorkflow/build.xml" >
+			<property file="BiWorkflow/build.properties"/>
+		</ant>
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+	
+		<delete includeEmptyDirs="true">
+				<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>
+
+		<ant antfile="EntrepriseServices/build.xml" >
+			<property file="EntrepriseServices/build.properties"/>
+		</ant>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		<ant antfile="FreeAnalysisSchemaDesigner/build.xml" >
+			<property file="FreeAnalysisSchemaDesigner/build.properties"/>
+		</ant>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+		<ant antfile="BiProcessManager/build.xml" >
+			<property file="BiProcessManager/build.properties"/>
+		</ant>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+
+
+
+
+		<ant antfile="BiProfiler/build.xml" >
+			<property file="BiProfiler/build.properties"/>
+		</ant>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+	
+
+	
+		<ant antfile="Norparena/build.xml" >
+			<property file="Norparena/build.properties"/>
+		</ant>
+	
+		<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		
+		<ant antfile="BiGateway/build.xml" >
+			<property file="BiGateway/build.properties"/>
+		</ant>
+				<delete includeEmptyDirs="true">
+			<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+
+		<ant antfile="Hypervision/build.xml" >
+					<property file="Hypervision/build.properties"/>
+				</ant>
+
+				<delete includeEmptyDirs="true">
+					<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+
+
+		<ant antfile="BiDwhDesigner/build.xml">
+					<property file="BiDwhDesigner/build.properties"/>
+				</ant>
+
+				<delete includeEmptyDirs="true">
+					<fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+				</delete>
+	-->
+		<!--
+		<ant antfile="OdaReader/build.xml" >
+			<property file="OdaReader/build.properties"/>
+		</ant>
+
+
+		<delete includeEmptyDirs="true">
+		  <fileset dir="${buildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>
+		-->
+	</target>
+</project>

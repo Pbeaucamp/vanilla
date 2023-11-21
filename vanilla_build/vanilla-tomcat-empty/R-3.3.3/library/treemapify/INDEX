@@ -1,0 +1,10 @@
+GeomTreemap             GeomTreemap
+geom_treemap            A treemap
+geom_treemap_subgroup_border
+                        Draw a border around a subgroup of treemap
+                        tiles.
+geom_treemap_subgroup_text
+                        Text labels for treemap subgroups.
+geom_treemap_text       Add text labels to treemap tiles.
+ggplotify               Draw an exploratory treemap
+treemapify              Generate coordinates for a treemap

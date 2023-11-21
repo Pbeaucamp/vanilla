@@ -1,0 +1,25 @@
+Repository: CRAN_ggtech
+Package: ggtech
+Type: Package
+Title: ggplot2 tech themes and scales
+Version: 0.1
+Date: 2016-02-06
+Author: Ricardo Bion
+Maintainer: Ricardo Bion <ricardo.bion@airbnb.com>
+Description: ggplot2 tech themes and scales
+License: GPL
+LazyData: true
+Imports: dplyr, ggplot2, magrittr, scales, tidyr, extrafont,
+        extrafontdb
+RoxygenNote: 5.0.1
+Built: R 3.3.3; ; 2017-05-05 09:13:35 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: ggtech
+RemoteUsername: ricardo-bion
+RemoteRef: master
+RemoteSha: 55c4b5b8fc17c6b8744a8de62ab295f990033fad
+GithubRepo: ggtech
+GithubUsername: ricardo-bion
+GithubRef: master
+GithubSHA1: 55c4b5b8fc17c6b8744a8de62ab295f990033fad

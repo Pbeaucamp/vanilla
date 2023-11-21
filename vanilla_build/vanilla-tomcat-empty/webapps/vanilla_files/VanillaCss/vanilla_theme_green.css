@@ -1,0 +1,723 @@
+/**
+ * This CSS File represent the Green Theme for Vanilla
+ * You can modify it, however you need to respect the name for each class
+ *
+ * To add a logo for your theme, you need to create a folder in the css folder which has
+ * the same name as your theme css file and put it your logo with the name logo.png
+ */
+
+/*
+ *
+ * General properties
+ *
+ *
+ */
+input {
+	box-sizing: border-box;
+}
+
+textarea {
+	box-sizing: border-box;
+}
+
+/*
+ * All the body
+ * (use it especially for background)
+ */
+.bodyBackground {
+	background: white;
+}
+
+/*
+ * Head menu
+ * (use it especially for background)
+ */
+.headMenu {
+	background: #D2F3C7;
+}
+
+/*
+ * Head of a non selected Tab
+ * (use it especially for background and border left, top and right)
+ */
+.headTabNoSelected {
+	background: #BCF5A9 ! important;
+	border-left-color: #04B431 ! important;
+	border-right-color: #04B431 ! important;
+	border-top-color: #04B431 ! important;
+}
+
+/*
+ * Head of a selected Tab
+ * (use it especially for background and border left, top and right)
+ */
+.headTabSelected {
+	background: #04B431 ! important;
+}
+
+/*
+ * Button that represent a tab
+ * (use it especially for background color in hover)
+ */
+.btnTab:Hover {
+    background-color: #04B431;
+}
+	
+/*
+ * Button that represent a selected tab
+ * (use it especially for background color)
+ */
+.btnSelectedTab {
+    background-color: #D2F3C7 !important;
+}
+
+/*
+ * Content of a tab with the toolbar included
+ * (use it especially for border color)
+ */
+.panelContentContainer {
+	border-color: #04B431 ! important;
+}
+
+/*
+ * Content of a tab with the toolbar included, at a lower level of class panelContentContainer above
+ * (use it especially for border color)
+ */
+.tab {
+	border-color: #04B431 ! important;
+}
+
+/*
+ * Toolbar of a tab
+ * (use it especially for background color)
+ */
+.tabToolbar {
+	background: #D2F3C7 !important;
+}
+
+/*
+ * Content of a tab without the toolbar
+ * (use it especially for background)
+ */
+.tabContent {
+	background: white;
+}
+
+/*
+ * Non selected row for a DataGrid
+ * (use it especially for background)
+ */
+.dataGridOddRow {
+	background: #E0F8E0;
+}
+
+/*
+ * Non selected row cell for a DataGrid
+ * (use it especially for border)
+ */
+.dataGridOddRowCell {
+	border: 2px solid #E0F8E0;
+}
+
+/*
+ * Selected row for a DataGrid
+ * (use it especially for background and text color)
+ */
+.dataGridSelectedRow {
+	background: #04B431 ! important;
+	color: white ! important;
+	height: auto ! important;
+	overflow: auto ! important;
+}
+
+/*
+ * Selected row cell for a DataGrid
+ * (use it especially for border. for more consistency use the same color as dataGridSelectedRow)
+ */
+.dataGridSelectedRowCell {
+	border: 2px solid #04B431 ! important;
+}
+
+/*
+ * Datagrid header
+ * (used for white-space to put header on multiple lines)
+ */
+.dataGridHeader {
+	border-bottom: 2px solid #6f7277;
+	padding: 3px 15px;
+	text-align: left;
+	color: #4b4a4a;
+	text-shadow: #ddf 1px 1px 0;
+	overflow: hidden;
+	white-space: normal;
+}
+
+/*
+ * Selected item for Table
+ * (use it especially for background color)
+ */
+.focusItemTableBackground {
+	background-color: #04B431;
+}
+
+/*
+ * StackPanel (which is on the left) header
+ * (use it especially for background with a gradient for a better look)
+ */
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader {
+	/* Navigateurs récents */
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#D2F3C7),
+		to(#FFFFFF)
+	) ! important;
+	
+	background: -webkit-linear-gradient(
+		top,
+		#D2F3C7,
+		#FFFFFF
+	) ! important;
+	
+	background: -moz-linear-gradient(
+		top,
+		#D2F3C7,
+		#FFFFFF
+	) ! important;
+	
+	background: -o-linear-gradient(
+		top,
+		#D2F3C7,
+		#FFFFFF
+	) ! important;
+	
+	background: linear-gradient(
+		top,
+		#D2F3C7,
+		#FFFFFF
+	) ! importanté;
+}
+
+/*
+ * StackPanel (which is on the left) header: HOVER
+ * (use it especially for background with a gradient for a better look)
+ */
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader-hovering {
+		/* Navigateurs récents */
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#04B431),
+		to(#FFFFFF)
+	) ! important;
+	
+	background: -webkit-linear-gradient(
+		top,
+		#04B431,
+		#FFFFFF
+	) ! important;
+	
+	background: -moz-linear-gradient(
+		top,
+		#04B431,
+		#FFFFFF
+	) ! important;
+	
+	background: -o-linear-gradient(
+		top,
+		#04B431,
+		#FFFFFF
+	) ! important;
+	
+	background: linear-gradient(
+		top,
+		#04B431,
+		#FFFFFF
+	) ! importanté;
+}
+
+/*
+ * Selected tree item
+ * (use it especially for background color)
+ */
+.treeItemSelected {
+	background-color: #D2F3C7;
+}
+
+/*
+ * Dialog text border used in the About and the Thanks Dialog
+ * (use it especially for border color for the text)
+ */
+.aboutDialogTextBorder {
+	border-color: #04B431 ! important;
+}
+
+/*
+ * Common for Dialog Top Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogTopLeft {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Caption (title)
+ * (use it especially for border color)
+ */
+.gwt-DialogBox .Caption {
+	border-color: #04B431 ! important;
+}
+
+/*
+ * Common for Dialog Top Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogTopRight {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Middle Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogMiddleLeft {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Middle Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogMiddleRight {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Left
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomLeft {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Center
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomCenter {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Dialog Bottom Right
+ * (use it especially for background color)
+ */
+.gwt-DialogBox .dialogBottomRight {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Popup Panel
+ * (use it especially for border color)
+ */
+.gwt-PopupPanel {
+	border-color: #D2F3C7 ! important;
+}
+
+/*
+ * Common for Popup Panel Selected Item
+ * (use it especially for background color)
+ */
+.gwt-MenuBar .gwt-MenuItem-selected {
+	background: #D2F3C7 ! important;
+}
+
+.welcomeTitle {
+    font-size: 30px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/*
+ * Right toolbar
+ * (use it especially for background)
+ */
+.rightToolbar {
+	background: #D2F3C7;
+}
+
+/*
+ * Icon Toolbar
+ * (use it especially for managing cursor type)
+ */
+.iconCursor {
+	cursor: pointer;
+}
+
+/*
+ * Bottom Panel
+ * (use it especially for managing background color)
+ */
+.bottom {
+	background: #D2F3C7;
+}
+
+/*
+ * Popup Panel
+ * (use it especially for managing background color)
+ */
+.popupPanel {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Navigation Panel
+ * (use it especially for managing background color)
+ */
+.navigationToolbar {
+	background: #D2F3C7 ! important;
+}
+
+/*
+ * Panel User
+ * (use it especially for managing text color)
+ */
+.panelUser {
+	color: #04B431;
+}
+
+/*
+ * Panel User Bottom
+ * (use it especially for managing background color)
+ */
+.panelUserBottom {
+	background-color: #04B431;
+}
+
+/*
+ * Comment Border
+ * (use it especially for managing border color)
+ */
+.commentBorder {
+	border-color: #D2F3C7 ! important;
+}
+
+/*
+ * Button selected
+ * (use it especially for managing bouton selected background color)
+ */
+.btnSelectedBackground {
+	background-color: #04B431 !important;
+}
+
+/*
+ * Button that represent a tab
+ * (use it especially for background color in hover)
+ */
+.btnTabMain:HOVER {
+    background-color: #BCF5A9 !important;
+}
+
+/*
+ * Dialog
+ * (use it especially for border)
+ */
+.customDialog {
+    border: 5px solid #04B431 !important;
+}
+	
+/*
+ * Dialog
+ * (use it especially for top background)
+ */
+.customDialogTop {
+    background: #04B431 !important;
+}
+	
+/*
+ * Dialog
+ * (use it especially for button hover)
+ */
+.customDialogTopButton:HOVER {
+	background-color: #006F1D !important;
+}
+
+/*
+ * Properties for drag and drop (Parameters and Variables)
+ */	
+.tabSelected {
+	border-bottom: 4px solid #04B431;
+}
+
+/*
+ * Properties for toolbar with a light background
+ */
+.toolbarLight {
+	background: #D2F3C7;
+}
+
+.commons-textbox {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1em;
+    margin: 0;
+    outline: 0 none;
+    padding: 0.85em 1em !important;
+    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    margin: 5px 1%;
+}
+
+.commons-textbox:disabled {
+    background: #E6E6E6;
+    border: 1px solid #E6E6E6;
+    color: #333333;
+}
+
+.commons-txtArea {
+	min-width: literal("calc(98% - 50px)");
+	min-width: literal("-moz-calc(98% - 50px)");
+	min-width: literal("-webkit-calc(98% - 50px)");
+	min-width: literal("-o-calc(98% - 50px)");
+	max-width: literal("calc(98% - 50px)");
+	max-width: literal("-moz-calc(98% - 50px)");
+	max-width: literal("-webkit-calc(98% - 50px)");
+	max-width: literal("-o-calc(98% - 50px)");
+}
+
+.commons-textbox:FOCUS, commons-txtArea:FOCUS {
+	border-bottom-left-radius: 0;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 0;
+	box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+	color: rgba(0, 0, 0, 0.85);
+}
+
+.commons-listbox {
+	-moz-box-sizing: border-box;
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+	box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 1em;
+	margin: 0;
+	outline: 0 none;
+	padding: 0.85em 1em;
+	transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	margin: 5px 0 5px 1%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.commons-button {
+	background: none repeat scroll 0 0 #444444 !important;
+	border: 1px solid #555555 !important;
+	color: #FFFFFF;
+	cursor: pointer;
+	height: 40px;
+	margin-top: 5px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+}
+
+.commons-button:disabled {
+    background: none repeat scroll 0 0 #E6E6E6 !important;
+    border: 1px solid #CCCCCC !important;
+}
+
+.commons-button:HOVER {
+	background: none repeat scroll 0 0 #EAEAEA !important;
+	color: #000000;
+}
+
+.levelOne {
+	background: #04B431;
+}
+
+.levelTwo {
+	background: #D2F3C7;
+}
+
+.levelThree {
+	background: #B1E7A0;
+}
+
+.levelFour {
+	background: #8AD473;
+}
+	
+.imgButtonGrid {
+	opacity: 0.4;
+    filter: literal("alpha(opacity=40)");
+    cursor: pointer;
+    padding: 3px;
+    background-position: center !important;
+}
+
+.imgButtonGrid:HOVER {
+	opacity: 1.0;
+    filter: literal("alpha(opacity=100)");
+}
+
+.relative {
+	position: relative;
+}
+
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.flex {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexOne {
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexOneTwo {
+	-webkit-box-flex: 2;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 2;         /* OLD - Firefox 19- */
+	-webkit-flex: 2;          /* Chrome */
+	-ms-flex: 2;              /* IE 10 */
+	flex: 2;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexColumn {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	flex-flow: column;
+	flex-direction: column;
+}
+
+.btn {
+  position: relative;
+
+  padding: 0px 5px;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  cursor: pointer;
+  
+  transition: background-color .3s;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btnFlat {
+	position: relative;
+
+	padding: 0px 5px;
+	margin: 3px;
+
+	overflow: hidden;
+  
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.87);
+	outline: none;
+	border-radius: 2px;
+    
+    cursor: pointer;
+  
+	transition: background-color .3s;
+}
+
+.btnFlat > * {
+  position: relative;
+}
+
+.btnFlat:hover, .btnFlat:active, .btnFlat:focus {
+	background-color: #FAFAFA;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+/*.btn span, .btnFlat span {
+  display: block;
+  padding: 12px 24px;
+}*/
+
+.btn:before, .btnFlat:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before, .btnFlat:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn:disabled, .btnFlat:disabled {
+	box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.btnDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.btnFlatDisabled {
+	box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.full {
+	height: 100%;
+	width: 100%;
+}
+		
+.fullHeight {
+	height: 100%;
+}
+
+.fullWidth {
+	width: 100%;
+}

@@ -1,0 +1,8 @@
+{
+  "realm": "Vanilla7",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "portail",
+  "public-client": true,
+  "confidential-port": 0
+}

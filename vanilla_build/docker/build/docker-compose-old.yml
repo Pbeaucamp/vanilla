@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  vanilla-runtime:
+    build:
+      context: ./
+      dockerfile: ./docker/runtime/Dockerfile
+    environment:
+        JAVA_OPTIONS: "-Xms256m -Xmx1024m -Dosgi.compatibility.bootdelegation=true -Declipse.ignoreApp=true -Dosgi.noShutdown=true -Dlog4j.debug=true -Dorg.eclipse.equinox.http.jetty.http.port=7171 -Dorg.eclipse.equinox.http.jetty.context.path=/VanillaRuntime -Dbpm.vanilla.configurationFile=/usr/local/vanilla/vanilla-conf/vanilla.properties -Dlogback.configurationFile=/usr/local/vanilla/vanilla-conf/logback.xml"
+    networks:
+      - proxynet
+    ports:
+      - 7171:7171
+  vanilla-webapps:
+    build: 
+      context: ./
+      dockerfile: ./docker/webapps/Dockerfile
+    environment:
+        JAVA_OPTIONS: "-Xms256m -Xmx4096m -Dlog4j.debug=true -Dbpm.vanilla.configurationFile=/usr/local/jetty/vanilla/vanilla-conf/vanilla.properties -Dlogback.configurationFile=/usr/local/jetty/vanilla/vanilla-conf/logback.xml"
+    networks:
+      - proxynet
+    ports:
+      - 8080:8080
+  vanilla-mysql:
+    image: mysql:5.7.36  
+    volumes:
+      - ~/volumes/vanilla/mysql57/:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root' # TODO: Change this
+      MYSQL_USER: 'biplatform'
+      MYSQL_PASS: 'biplatform'
+    networks:
+      - proxynet
+    ports:
+      - 3307:3306
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp --sql-mode="ansi"
+  vanilla-solr:
+    image: solr:5.5.0
+    volumes:
+      - ~/volumes/vanilla/solr/:/var/solr/
+    networks:
+      - proxynet
+    ports:
+      - 8983:8983
+
+    
+networks:
+  proxynet:
+    name: custom_network

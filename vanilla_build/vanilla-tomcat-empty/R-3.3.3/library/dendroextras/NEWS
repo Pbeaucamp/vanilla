@@ -1,0 +1,24 @@
+dendroextras 0.2.1
+==================
+* fix bug in setting node colours
+
+dendroextras 0.2
+==================
+* fix bug in setting cluster colours when labels are non-unique
+  (thanks to K. Naxerova for the report)
+* doc: improve package overview docs
+* dev: upgrade to roxygen2 v4
+
+dendroextras 0.1-4
+==================
+* fix failure to export set_leaf_colors and color_clusters
+
+dendroextras 0.1-3
+==================
+* Add set_leaf_colours function
+* dev: add rstudio project, travis build and switch to roxygen2 v3
+
+dendroextras 0.1-2
+==================
+* First submission to CRAN of functions to cut/colour/label dendrograms
+* ?dendroextras for details and examples

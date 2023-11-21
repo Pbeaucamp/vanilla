@@ -1,0 +1,171 @@
+<project default="main">
+	
+	
+	
+	
+	<target name="FMDT">
+	
+		<tstamp>
+		  <format property="DATE-HOUR"
+		          pattern="dd-MM-yyyy"
+		          />
+		</tstamp>
+		
+		<ant antfile="FreeMetaData/build.xml" >
+			<property file="FreeMetaData/build.properties"/>
+		</ant>		
+		
+		<delete includeEmptyDirs="true">
+			<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>	
+		
+	</target>
+	
+	<target name="ES">
+		
+		<tstamp>
+		  <format property="DATE-HOUR"
+		          pattern="dd-MM-yyyy"
+		          />
+		</tstamp>
+		
+		<ant antfile="EntrepriseServices/build.xml" >
+			<property file="EntrepriseServices/build.properties"/>
+		</ant>
+		
+		<delete includeEmptyDirs="true">
+			<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>	
+		
+	</target>
+	
+	<target name="BIW">
+		
+		<tstamp>
+		  <format property="DATE-HOUR"
+		          pattern="dd-MM-yyyy"
+		          />
+		</tstamp>
+		
+		<ant antfile="BiWorkflow/build.xml" >
+			<property file="BiWorkflow/build.properties"/>
+		</ant>
+		
+		<delete includeEmptyDirs="true">
+			<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>	
+		
+	</target>
+	
+	<target name="FASD">
+		
+		<tstamp>
+		  <format property="DATE-HOUR"
+		          pattern="dd-MM-yyyy"
+		          />
+		</tstamp>
+		
+		<ant antfile="FreeAnalysisSchemaDesigner/build.xml" >
+			<property file="FreeAnalysisSchemaDesigner/build.properties"/>
+		</ant>
+		
+		<delete includeEmptyDirs="true">
+			<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+		</delete>	
+		
+
+		
+		</target>
+		
+		<target name="FD">
+			
+			<tstamp>
+			  <format property="DATE-HOUR"
+			          pattern="dd-MM-yyyy"
+			          />
+			</tstamp>
+			
+			<ant antfile="FreeDashboard/build.xml" >
+				<property file="FreeDashboard/build.properties"/>
+			</ant>
+			
+			<delete includeEmptyDirs="true">
+				<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>	
+			
+		</target>
+	
+		<target name="Norparena">
+			
+			<tstamp>
+			  <format property="DATE-HOUR"
+			          pattern="dd-MM-yyyy"
+			          />
+			</tstamp>
+			
+			<ant antfile="Norparena/build.xml" >
+				<property file="Norparena/build.properties"/>
+			</ant>
+			<delete includeEmptyDirs="true">
+				<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>	
+			
+		</target>
+		
+		<target name="BIG">
+			
+			<tstamp>
+			  <format property="DATE-HOUR"
+			          pattern="dd-MM-yyyy"
+			          />
+			</tstamp>
+			
+			<ant antfile="BiGateway/build.xml" >
+				<property file="BiGateway/build.properties"/>
+			</ant>
+			
+			<delete includeEmptyDirs="true">
+				<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>	
+			
+		</target>
+		
+		<target name="Hypervision">
+			
+			<tstamp>
+			  <format property="DATE-HOUR"
+			          pattern="dd-MM-yyyy"
+			          />
+			</tstamp>
+			
+			<ant antfile="Hypervision/build.xml" >
+				<property file="Hypervision/build.properties"/>
+			</ant>
+			<delete includeEmptyDirs="true">
+				<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>	
+			
+		</target>
+	
+		<target name="MDM">
+			
+			<tstamp>
+			  <format property="DATE-HOUR"
+			          pattern="dd-MM-yyyy"
+			          />
+			</tstamp>
+			
+			<ant antfile="MDM/build.xml" >
+				<property file="MDM/build.properties"/>
+			</ant>
+			<delete includeEmptyDirs="true">
+				<fileset dir="${softBuildDirectory}" includes="**/*" defaultexcludes="no"/>
+			</delete>	
+			
+		</target>
+		
+	
+	<!--<target name="main" depends="BiDwhDesigner,BIG,Norparena,BiProfiler,BiProcessManager,FMDT,">-->
+		<target name="main" depends="BIG,FMDT,FASD,ES,FD,BIW,Hypervision,MDM">
+			</target>
+</project>
