@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Vanilla Hub Core
+Bundle-SymbolicName: bpm.vanillahub.core
+Bundle-Version: 2.0.2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.vanillahub.core,
+ bpm.vanillahub.core.beans.activities,
+ bpm.vanillahub.core.beans.activities.attributes,
+ bpm.vanillahub.core.beans.managers,
+ bpm.vanillahub.core.beans.resources,
+ bpm.vanillahub.core.beans.resources.attributes,
+ bpm.vanillahub.core.exception,
+ bpm.vanillahub.core.utils,
+ bpm.vanillahub.remote
+Require-Bundle: bpm.vanilla.platform.xstream,
+ bpm.vanilla.platform.hibernate,
+ bpm.vanilla.external.jars,
+ bpm.update.manager.api,
+ bpm.workflow.commons,
+ bpm.vanilla.platform.core
+Bundle-ClassPath: libs/log4j-1.2.17.jar,
+ libs/json-20080701.jar,
+ .

@@ -1,0 +1,66 @@
+2011-11-28 13:59:07,336 38023 INFO  [bpm.vanilla.workplace.server.config.WorkplaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-11-28 13:59:07,339 38026 INFO  [bpm.vanilla.workplace.server.config.WorkplaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-11-28 13:59:07,447 38134 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-11-28 13:59:07,509 38196 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-11-28 13:59:07,548 38235 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-11-28 13:59:08,689 39376 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-11-28 13:59:09,574 40261 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-11-28 13:59:11,069 41756 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-11-28 13:59:11,267 41954 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8j1szxl4v5zw6lx|a3a17c, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8j1szxl4v5zw6lx|a3a17c, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-11-28 13:59:12,758 43445 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-11-28 13:59:12,780 43467 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-11-28 13:59:12,794 43481 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-11-28 13:59:12,806 43493 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-11-28 13:59:12,832 43519 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-11-28 13:59:13,356 44043 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id dc31494e-0e66-4858-b3e9-be36254f35bd for user user
+2011-11-28 13:59:13,359 44046 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-11-28 13:59:13,359 44046 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : dc31494e-0e66-4858-b3e9-be36254f35bd
+2011-11-28 14:02:02,187 212874 INFO  [bpm.vanilla.workplace.server.servlets.ConnectionServlet] (btpool0-2:) Initializing ExternalAccessibilityServlet...
+2011-11-28 14:02:02,343 213030 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 355f2cd9-a222-4b9d-bead-77030a591db3 for user system
+2011-11-28 14:02:02,343 213030 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:02:02,343 213030 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 355f2cd9-a222-4b9d-bead-77030a591db3
+2011-11-28 14:03:49,505 320192 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id fc00ddbd-a88f-4a91-8b1b-698b8bdb7a46 for user system
+2011-11-28 14:03:49,505 320192 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:03:49,506 320193 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : fc00ddbd-a88f-4a91-8b1b-698b8bdb7a46
+2011-11-28 14:03:49,590 320277 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 53b0f1d8-b09d-4af2-8fa9-bd8090211100 for user system
+2011-11-28 14:03:49,590 320277 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:03:49,590 320277 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 53b0f1d8-b09d-4af2-8fa9-bd8090211100
+2011-11-28 14:04:22,146 352833 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id c97fc6af-b2ef-494e-b452-21a3af0b562d for user system
+2011-11-28 14:04:22,146 352833 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:04:22,146 352833 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : c97fc6af-b2ef-494e-b452-21a3af0b562d
+2011-11-28 14:07:59,813 570500 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 1cec0f0c-fa0d-4cf1-af2f-0279c619482c for user system
+2011-11-28 14:07:59,813 570500 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:07:59,813 570500 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 1cec0f0c-fa0d-4cf1-af2f-0279c619482c
+2011-11-28 14:12:43,799 854486 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 41b5a9d7-0c4a-44f2-8718-dc4f256f40d0 for user system
+2011-11-28 14:12:43,799 854486 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:12:43,799 854486 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 41b5a9d7-0c4a-44f2-8718-dc4f256f40d0
+2011-11-28 14:41:18,781 2569468 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 81dd2c1a-d87a-4906-a578-808938803af4 for user system
+2011-11-28 14:41:18,782 2569469 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 14:41:18,782 2569469 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 81dd2c1a-d87a-4906-a578-808938803af4
+2011-11-28 15:49:21,310 6651997 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id db9db0d7-0832-474b-9778-af00442ff1a6 for user system
+2011-11-28 15:49:21,310 6651997 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 15:49:21,310 6651997 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : db9db0d7-0832-474b-9778-af00442ff1a6
+2011-11-28 17:06:01,050 11251737 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id e8a101d8-14a4-4249-9460-fab5257ef597 for user system
+2011-11-28 17:06:01,050 11251737 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:06:01,051 11251738 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : e8a101d8-14a4-4249-9460-fab5257ef597
+2011-11-28 17:07:32,371 11343058 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id e2616eea-d813-4d25-b1c8-3da6c042771a for user system
+2011-11-28 17:07:32,371 11343058 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:07:32,372 11343059 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : e2616eea-d813-4d25-b1c8-3da6c042771a
+2011-11-28 17:08:16,270 11386957 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id c588cfda-4ea4-4371-a341-b5817c25c677 for user system
+2011-11-28 17:08:16,270 11386957 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:08:16,271 11386958 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : c588cfda-4ea4-4371-a341-b5817c25c677
+2011-11-28 17:11:08,160 11558847 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id c9ff5ae2-55f0-431d-bf7d-b28b05d4e00a for user system
+2011-11-28 17:11:08,160 11558847 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:11:08,160 11558847 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : c9ff5ae2-55f0-431d-bf7d-b28b05d4e00a
+2011-11-28 17:15:53,104 11843791 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id f0b52e9d-d8a7-4c9e-a392-fa8dc045daa4 for user system
+2011-11-28 17:15:53,105 11843792 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:15:53,105 11843792 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : f0b52e9d-d8a7-4c9e-a392-fa8dc045daa4
+2011-11-28 17:22:00,199 12210886 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 8441a6a9-7598-48b5-a665-a596c9cc843e for user system
+2011-11-28 17:22:00,199 12210886 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:22:00,199 12210886 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 8441a6a9-7598-48b5-a665-a596c9cc843e
+2011-11-28 17:24:27,043 12357730 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id b7b25fa8-dc3d-415f-92fa-3a1949d40b0e for user system
+2011-11-28 17:24:27,044 12357731 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:24:27,044 12357731 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : b7b25fa8-dc3d-415f-92fa-3a1949d40b0e
+2011-11-28 17:24:55,656 12386343 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-2:) Creating session with id 0db84e04-09da-4327-969e-f9dde48b1176 for user system
+2011-11-28 17:24:55,656 12386343 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-2:) Workplace Session created.
+2011-11-28 17:24:55,656 12386343 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-2:) Setting current sessionId : 0db84e04-09da-4327-969e-f9dde48b1176

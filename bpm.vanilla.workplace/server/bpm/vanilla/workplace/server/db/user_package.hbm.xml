@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.workplace.shared.model.PlaceWebUserPackage" table="WK_USER_PACKAGES">
+            <id name="id" type="int">
+                <column name="ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="userId" type="int">
+                <column name="USER_ID"/>
+            </property>
+
+            <property name="packageId" type="int">
+                <column name="PACKAGE_ID"/>
+            </property>
+    </class>
+</hibernate-mapping>

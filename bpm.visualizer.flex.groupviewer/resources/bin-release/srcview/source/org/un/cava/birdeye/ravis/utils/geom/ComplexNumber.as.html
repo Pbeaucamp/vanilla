@@ -1,0 +1,334 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ComplexNumber.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">geom</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptASDoc">/**
+     * Implements a complex number as a point and certain common
+     * methods for complex geometry.
+     * 
+   * &lt;hr&gt;
+     * The implementation is a rewrite of Jens Kanschik&apos;s Hypergraph
+     * implementation in Java. However, apart from the general idea 
+     * and some variable names, this code improves on hypergraph 
+     * and also implements additional functionality.
+     * 
+     * Copyright (C) 2003  Jens Kanschik,
+     * mail : jensKanschik@users.sourceforge.net
+     * 
+     * Copyright of this reimplementation in Flex:
+     * (c) Nitin Lamba, 2007.
+     * 
+     * @author Nitin Lamba
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IPoint</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/** The real part of the complex number. */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_real</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        <span class="ActionScriptASDoc">/** The imaginary part of the complex number. */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_imag</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+      <span class="ActionScriptASDoc">/** A small number used while comparing two complex numbers */</span>
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_EPSILON</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 1<span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">-</span>10;
+
+        <span class="ActionScriptASDoc">/**
+         * Returns &lt;code&gt;exp(it)&lt;/code&gt;.
+         * 
+         * @param t The angle
+         * @return The complex number &lt;code&gt;exp(it)&lt;/code&gt;
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getRotation</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptBracket/Brace">{</span>
+          <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">cos</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t</span><span class="ActionScriptBracket/Brace">)</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sin</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t</span><span class="ActionScriptBracket/Brace">))</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Creates a complex number with the given real and imaginary part.
+         * 
+     * @param r The real part of the complex number.
+     * @param i The imaginary part of the complex number.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0, <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">r</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">i</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">setTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">p</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IPoint</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">p</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">p</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">real</span>;
+        <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">p</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">equals</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">z</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_real</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">_EPSILON</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&amp;&amp;</span>
+                     <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">z</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">imag</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_imag</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">_EPSILON</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+
+    <span class="ActionScriptASDoc">/**
+     * Returns an array of to doubles,
+     * the first is the real part, the second the imaginary part.
+         * 
+     * @return The complex number as array.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">toArray</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">array</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">_real</span>, <span class="ActionScriptDefault_Text">_imag</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">array</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Sets the real part of the complex number.
+         * 
+     * @param r The new real part.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">r</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Returns the real part of the complex number.
+         * 
+     * @return The real part of the complex number. 
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+          <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_real</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Sets the imaginary part of the complex number.
+         * 
+         * @param i The new imaginary part.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">i</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Returns the imaginary part of the complex number.
+         * 
+       * @return The imaginary part of the complex number. 
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Returns the radiant of a complex number.
+         * 
+     * @return The radiant of the complex number.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getRad</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">acos</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">norm</span><span class="ActionScriptBracket/Brace">())</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">&lt;</span> 0<span class="ActionScriptBracket/Brace">)</span>
+                    <span class="ActionScriptDefault_Text">r</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">r</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">r</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Adds a real number to the complex number.
+         * 
+     * @param x The real number to be added.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addR</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">x</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">x</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Adds a complex number to this complex number.
+         * 
+         * @param v The complex number to be added.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addC</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">real</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Subtracts a complex number from this complex number.
+         * 
+         * @param v The complex number to be subtracted.
+         */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">subtractC</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">-=</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">real</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">-=</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Multiplies a real number with this complex number.
+         * 
+         * @param r The real factor.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">multiplyF</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*=</span> <span class="ActionScriptDefault_Text">r</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*=</span> <span class="ActionScriptDefault_Text">r</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Multiplies a complex number with this complex number.
+         * 
+         * @param v The complex factor.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">multiplyC</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">imag</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">imag</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">v</span>.<span class="ActionScriptDefault_Text">real</span>;
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">r</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Sets this complex number to its reciprocal. 
+         * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">reciprocal</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_imag</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">norm2</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">divideF</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Returns the reciprocal of &lt;code&gt;this&lt;/code&gt;.
+         * 
+     * @return A new complex that is the reciprocal of &lt;code&gt;this&lt;/code&gt;.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getReciprocal</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">reciprocal</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">z</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Divides the complex number by a real number.
+         * 
+     * @param r The divisor.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">divideF</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">/=</span> <span class="ActionScriptDefault_Text">r</span>;
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">/=</span> <span class="ActionScriptDefault_Text">r</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Divides the complex number by another complex number.
+         * 
+         * @param z The divisor.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">divideC</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">conjugate</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">multiplyC</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">conjugate</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">divideF</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">norm2</span><span class="ActionScriptBracket/Brace">())</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Conjugates the complex number (negates the imaginary part.)
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">conjugate</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Normalizes the complex number so that it&apos;s length is 1.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">normalize</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">multiplyF</span><span class="ActionScriptBracket/Brace">(</span>1 <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">norm</span><span class="ActionScriptBracket/Brace">())</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Return the distance from &lt;code&gt;this&lt;/code&gt; to 
+         * a complex number &lt;code&gt;z&lt;/code&gt;.
+         * 
+     * @param z Another complex number.
+     * @return The distance from this complex number to &lt;code&gt;z&lt;/code&gt;.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dist</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;ComplexNumber: Attempted to find distance from a null point&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">Number</span>.<span class="ActionScriptDefault_Text">NaN</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">))</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptASDoc">/** 
+         * Return the squared distance from &lt;code&gt;this&lt;/code&gt; to 
+         * a complex number &lt;code&gt;z&lt;/code&gt;.
+         * 
+     * @param z Another complex number.
+     * @return The squared distance from this complex number to &lt;code&gt;z&lt;/code&gt;.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dist2</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;ComplexNumber: Attempted to find squared distance from a null point&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">Number</span>.<span class="ActionScriptDefault_Text">NaN</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">real</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">imag</span><span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Return the squared norm of the complex number.
+         * 
+         * @return The squared norm of the complex number.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">norm2</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Return the norm of the complex number.
+         * 
+         * @return The norm of the complex number.
+         */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">norm</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_imag</span><span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** 
+         * Return the euclidian scalar product of the complex number and another complex number.
+         * 
+         * @param z Another complex number.
+         * @return The euclidian scalar product of the two complex numbers.
+         */</span>
+    <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">scalarProduct</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">z</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_imag</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">z</span>.<span class="ActionScriptDefault_Text">imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_real</span>, <span class="ActionScriptDefault_Text">_imag</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_real</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot; + i*&quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_imag</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

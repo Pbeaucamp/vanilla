@@ -1,0 +1,633 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Graph.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">EventDispatcher</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Graph implements a graph datastructure G(V,E)
+     * with vertices V and edges E, except that we call the
+     * vertices nodes, which is here more in line with similar
+     * implementations. A graph may be associated with a 
+     * VisualGraph object, which can visualize graph components
+     * in Flash.
+     * @see VisualGraph
+     * @see Node
+     * @see Edge
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">Graph</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">EventDispatcher</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IGraph</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * The default XML tagname of an XML item that defines a node.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_NODE</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;Node&quot;</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * The default XML tagname of an XML item that defines an edge.
+         * */</span>        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_EDGE</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;Edge&quot;</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * The default XML attribute of an XML edge item that describes the from node.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_FROMID</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;fromID&quot;</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * The default XML attribute of an XML edge item that describes the to node.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_TOID</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;toID&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * If building a spanning tree, walk only forward.
+         * (This is the default)
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">WALK_FORWARD</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 0;
+        
+        <span class="ActionScriptASDoc">/**
+         * If building a spanning tree, walk only backwards.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">WALK_BACKWARDS</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 1;
+        
+        <span class="ActionScriptASDoc">/**
+         * If building a spanning tree, walk only both
+         * directions
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">WALK_BOTH</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 2;
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;graphLayout.data.Graph&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * attributes of a graph
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_xmlData</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>;
+
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_nodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_edges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+
+
+
+        <span class="ActionScriptComment">/* lookup by string id and by id */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_nodesByStringId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span>;
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_nodesById</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span>;
+        
+        <span class="ActionScriptComment">/* indicator if the graph is directional or not */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_directional</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        <span class="ActionScriptComment">/* if directional we could have a walking direction for the
+         * spanning tree */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_walkingDirection</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">WALK_FORWARD</span>;
+
+        
+        <span class="ActionScriptASDoc">/** 
+         * @internal
+         * these two serve as id for nodes and
+         * and edges the id&apos;s will start from 1 (not 0) !!
+         * and are always increased.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_currentNodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_currentEdgeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * these two serve as count for nodes and edges
+         * and are also decreased if nodes or edges
+         * are removed
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_numberOfNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_numberOfEdges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * for several algorithms we might need
+         * BFS and DFS implementations, all related
+         * to a specific root node.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_treeMap</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Provide a function to be used for sorting the
+         * graph items. This is used by GTree.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_nodeSortFunction</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Function</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Constructor method that creates the graph and can
+         * initialise it directly from an XML object, if one is specified.
+         * 
+         * @param id The id (or rather name) of the graph. Every graph has to have one.
+         * @param directional Indicator if the graph is directional or not. Directional graphs have not been tested so far.
+         * @param xmlsource an XML object that contains node and edge items that define the graph.
+         * @param xmlnames an optional Array that contains XML tag and attribute names that define the graph. 
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">Graph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>, <span class="ActionScriptDefault_Text">directional</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>, <span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;id string must not be null&quot;</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>.<span class="ActionScriptDefault_Text">length</span> <span class="ActionScriptOperator">==</span> 0<span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;id string must not be empty&quot;</span><span class="ActionScriptBracket/Brace">)</span>
+            
+            <span class="ActionScriptDefault_Text">_id</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">id</span>
+            
+            <span class="ActionScriptDefault_Text">_xmlData</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">xmlsource</span>;
+            
+            <span class="ActionScriptDefault_Text">_nodes</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptDefault_Text">_edges</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptDefault_Text">_treeMap</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Dictionary</span>;
+            
+            <span class="ActionScriptDefault_Text">_nodesByStringId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Object</span>;
+            <span class="ActionScriptDefault_Text">_nodesById</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Object</span>;
+            
+            <span class="ActionScriptDefault_Text">_directional</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">directional</span>;
+            <span class="ActionScriptDefault_Text">_currentNodeId</span> <span class="ActionScriptOperator">=</span> 0;
+            <span class="ActionScriptDefault_Text">_currentEdgeId</span> <span class="ActionScriptOperator">=</span> 0;
+            <span class="ActionScriptDefault_Text">_numberOfNodes</span> <span class="ActionScriptOperator">=</span> 0;
+            <span class="ActionScriptDefault_Text">_numberOfEdges</span> <span class="ActionScriptOperator">=</span> 0;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xmlsource</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Graph detected XML source:&quot;+xmlsource.name().toString());
+</span>                <span class="ActionScriptDefault_Text">initFromXML</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>            
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * A static factory method to create new graphs, but requires an xmlsource to be specified.
+         * 
+         * @param id The id (or rather name) of the graph. Every graph has to have one.
+         * @param directional Indicator if the graph is directional or not. Directional graphs have not been tested so far.
+         * @param xmlsource an XML object that contains node and edge items that define the graph.
+         * @param xmlnames an optional Array that contains XML tag and attribute names that define the graph. 
+         * @return the created Graph object (i.e. an object that implements the IGraph interface.
+         * @throws Error of the xmlsource is null.
+         **/</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">createGraph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>, <span class="ActionScriptDefault_Text">directional</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>, <span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGraph</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xmlsource</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;the xmlsource must not be null if creating a new Graph&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Graph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>, <span class="ActionScriptDefault_Text">directional</span>, <span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">id</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_id</span>;
+        <span class="ActionScriptBracket/Brace">}</span>        
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">xmlData</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_xmlData</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">nodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_nodes</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">edges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_edges</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">isDirectional</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_directional</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">noNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_numberOfNodes</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">noEdges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_numberOfEdges</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">nodeSortFunction</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">f</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Function</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_nodeSortFunction</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">f</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">nodeSortFunction</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Function</span>    <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_nodeSortFunction</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">walkingDirection</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">d</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_walkingDirection</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">d</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">walkingDirection</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_walkingDirection</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodesByStringId</span>.<span class="ActionScriptDefault_Text">hasOwnProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_nodesByStringId</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nodeById</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodesById</span>.<span class="ActionScriptDefault_Text">hasOwnProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_nodesById</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>,<span class="ActionScriptDefault_Text">restr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>, <span class="ActionScriptDefault_Text">nocache</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGTree</span><span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* If nocache is set, we just return a new tree */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nocache</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">GTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span>,<span class="ActionScriptReserved">this</span>,<span class="ActionScriptDefault_Text">restr</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_treeMap</span>.<span class="ActionScriptDefault_Text">hasOwnProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_treeMap</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">GTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span>,<span class="ActionScriptReserved">this</span>,<span class="ActionScriptDefault_Text">restr</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptComment">/* do the init now, not lazy */</span>
+                <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_treeMap</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">IGTree</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">initTree</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_treeMap</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">IGTree</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_treeMap</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Dictionary</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initFromXML</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xml</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodeName</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_NODE</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edgeName</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_EDGE</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromIDName</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_FROMID</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toIDName</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_TOID</span>;
+
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">xnode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">xedge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+    
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;initFromXML called&quot;);
+</span>            
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xnode</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">xml</span>.<span class="ActionScriptDefault_Text">descendants</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nodeName</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* we add the xml node id as string id and the xml
+                 * node data as data object */</span>
+                <span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">createNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xnode</span>.@<span class="ActionScriptDefault_Text">id</span>, <span class="ActionScriptDefault_Text">xnode</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Node:&quot;+fromNode.stringid+&quot; created, total:&quot;+_nodes.length);
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xedge</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">xml</span>.<span class="ActionScriptDefault_Text">descendants</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edgeName</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">fromNodeId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">xedge</span>.<span class="ActionScriptDefault_Text">attribute</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromIDName</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">toNodeId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">xedge</span>.<span class="ActionScriptDefault_Text">attribute</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toIDName</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">toNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* we do not throw an error here, because the data
+                 * is often inconsistent. In this case we just ignore
+                 * the edge */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Node id: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; not found, link not done&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">continue</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toNode</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Node id: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; not found, link not done&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">continue</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptDefault_Text">link</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNode</span>,<span class="ActionScriptDefault_Text">toNode</span>,<span class="ActionScriptDefault_Text">xedge</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptComment">//LogUtil.warn(_LOG, &quot;Current nr of edges:&quot;+_edges.length);
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">createNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;&quot;</span>, <span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* we allow to pass a string id, e.g. it can originate
+             * from the XML file.*/</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">myid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">_currentNodeId</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">mysid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">sid</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">myNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Node</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">myaltid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">myid</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">mysid</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptString">&quot;&quot;</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">mysid</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">myid</span>.<span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* avoid using a duplicate string id */</span>
+            <span class="ActionScriptReserved">while</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodesByStringId</span>.<span class="ActionScriptDefault_Text">hasOwnProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">mysid</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;sid: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">mysid</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; already in use, trying alternative&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">mysid</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">myaltid</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* 
+             * see below when we link nodes, we cannot yet 
+             * set the visual counterpart, but we have setter/getters
+             * for the attribute, have to consider which
+             * component must be created first
+             * consider also to just pass it to the abstract graph
+             * but more likely, we initialise the abstract graph
+             * from a graphML XML file, when it is there, then we build
+             * all the visual objects 
+             */</span>
+            
+            <span class="ActionScriptDefault_Text">myNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Node</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">myid</span>,<span class="ActionScriptDefault_Text">mysid</span>,<span class="ActionScriptReserved">null</span>,<span class="ActionScriptDefault_Text">o</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptDefault_Text">_nodes</span>.<span class="ActionScriptDefault_Text">unshift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">myNode</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_nodesByStringId</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">mysid</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">myNode</span>;
+            <span class="ActionScriptDefault_Text">_nodesById</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">myid</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">myNode</span>;
+            <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">_numberOfNodes</span>;
+            
+            <span class="ActionScriptComment">/* a new node means all potentially existing
+             * trees in the treemap need to be invalidated */</span>
+            <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>
+            
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">myNode</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* we check if inEdges or outEdges
+             * are not empty. This also works for
+             * non directional graphs, even though one
+             * comparison would be sufficient */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">inEdges</span>.<span class="ActionScriptDefault_Text">length</span> <span class="ActionScriptOperator">!=</span> 0 <span class="ActionScriptOperator">||</span> <span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">outEdges</span>.<span class="ActionScriptDefault_Text">length</span> <span class="ActionScriptOperator">!=</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                   <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Attempted to remove Node: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; but it still has Edges&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* XXXX searching like this through arrays takes
+                 * LINEAR time, so at one point we might want to add
+                 * associative arrays (possibly Dictionaries) to map
+                 * the objects back to their index... */</span>
+                <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">myindex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_nodes</span>.<span class="ActionScriptDefault_Text">indexOf</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* check if node was not found */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">myindex</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; was not found in the graph&apos;s&quot;</span> <span class="ActionScriptOperator">+</span>
+                    <span class="ActionScriptString">&quot;node table while trying to delete it&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">// HMMM we assume that the throw will abort the script
+</span>                <span class="ActionScriptComment">// but I am not sure, we&apos;ll see
+</span>                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;PASSED Check for node in _node list&quot;);
+</span>                
+                <span class="ActionScriptComment">/* remove node from list */</span>
+                <span class="ActionScriptDefault_Text">_nodes</span>.<span class="ActionScriptDefault_Text">splice</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">myindex</span>,1<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptOperator">--</span><span class="ActionScriptDefault_Text">_numberOfNodes</span>;
+                
+                
+                <span class="ActionScriptReserved">delete</span> <span class="ActionScriptDefault_Text">_nodesByStringId</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">stringid</span><span class="ActionScriptBracket/Brace">]</span>;
+                <span class="ActionScriptReserved">delete</span> <span class="ActionScriptDefault_Text">_nodesById</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptBracket/Brace">]</span>;
+                
+                <span class="ActionScriptComment">/* we need to do something about vnodes */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">vnode</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node is still associated with its vnode, this leaves a dangling reference and a potential memory leak&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* node should have no longer a reference now
+                 * so the GarbageCollector will get it */</span>
+                
+                <span class="ActionScriptComment">/* invalidate trees */</span>
+                <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">link</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">retEdge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;link: node1 was null&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node2</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;link: node2 was null&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* check if a link already exists */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">successors</span>.<span class="ActionScriptDefault_Text">indexOf</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* we should give an error message, but
+                 * there is no need to abort the script
+                 * we should just do nothing */</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Link between nodes:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; and &quot;</span><span class="ActionScriptOperator">+</span>
+                <span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; already exists, returning existing edge&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* oh in fact, we should return the edge that was found 
+                 * this was more complicated than I thought and I am
+                 * not tooo happy with this way...
+                 * also it might not always find the edge if graph is non-directional
+                 * as most graphs are. The edge found could be the other way round.
+                 * Have to use the &quot;othernode()&quot; method here.
+                 */</span>
+                <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">outedges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">outEdges</span>;
+                <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Edge</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">outedges</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">othernode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">retEdge</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edge</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">retEdge</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;We did not find the edge although it should be there&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">// link does not exist, so we can create it
+</span>                <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">newEid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">_currentEdgeId</span>;
+                <span class="ActionScriptComment">/* not sure where we will be able to set the visual edge
+                 * as it must exist first, for now we pass null 
+                 * since the attribute has also a setter */</span>
+                <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Edge</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Edge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>,<span class="ActionScriptReserved">null</span>,<span class="ActionScriptDefault_Text">newEid</span>,<span class="ActionScriptDefault_Text">node1</span>,<span class="ActionScriptDefault_Text">node2</span>,<span class="ActionScriptDefault_Text">o</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">_edges</span>.<span class="ActionScriptDefault_Text">unshift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">_numberOfEdges</span>;
+                
+                <span class="ActionScriptComment">/* now register the edge with its nodes */</span>
+                <span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">addOutEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">addInEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* if we are a NON directional graph we would have
+                 * to add another edge also vice versa (in the other
+                 * direction), but that leaves us with the question
+                 * which of the edges to return.... maybe it can be
+                 * handled using the same edge, if the in the directional
+                 * case, the edge returns always the other node */</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Graph is directional? &quot;+_directional.toString());
+</span>                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_directional</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">addInEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">addOutEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">newEdge</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;graph is not directional adding same edge:&quot;+newEdge.id+
+</span>                    <span class="ActionScriptComment">//&quot; the other way round&quot;);
+</span>                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptDefault_Text">retEdge</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">newEdge</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+                            
+            <span class="ActionScriptComment">/* invalidate trees */</span>
+            <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">retEdge</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">unlink</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptComment">/* find the corresponding edge first */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span>;
+            
+            <span class="ActionScriptDefault_Text">e</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">getEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span>,<span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Could not find edge, Nodes: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; and &quot;</span>
+                <span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; may not be linked.&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">removeEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">n2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">outedges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">n1</span>.<span class="ActionScriptDefault_Text">outEdges</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Edge</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">outedges</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">othernode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n1</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">n2</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">e</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edge</span>;
+                    <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">e</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">null</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">e</span>.<span class="ActionScriptDefault_Text">node1</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">e</span>.<span class="ActionScriptDefault_Text">node2</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edgeIndex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_edges</span>.<span class="ActionScriptDefault_Text">indexOf</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edgeIndex</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Edge: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">e</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; does not seem to exist in graph &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">_id</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptComment">// here we would need to abort the script
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptDefault_Text">n1</span>.<span class="ActionScriptDefault_Text">removeOutEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">n2</span>.<span class="ActionScriptDefault_Text">removeInEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* if we are NOT directed, we also 
+             * have to remove the other way round */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_directional</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">n1</span>.<span class="ActionScriptDefault_Text">removeInEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">n2</span>.<span class="ActionScriptDefault_Text">removeOutEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* now remove from the list of edges */</span>
+            <span class="ActionScriptDefault_Text">_edges</span>.<span class="ActionScriptDefault_Text">splice</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edgeIndex</span>,1<span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptOperator">--</span><span class="ActionScriptDefault_Text">_numberOfEdges</span>;
+            
+            <span class="ActionScriptComment">/* invalidate trees */</span>
+            <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">purgeGraph</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptReserved">while</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_edges</span>.<span class="ActionScriptDefault_Text">length</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">removeEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_edges</span><span class="ActionScriptBracket/Brace">[</span>0<span class="ActionScriptBracket/Brace">])</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">while</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodes</span>.<span class="ActionScriptDefault_Text">length</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">removeNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodes</span><span class="ActionScriptBracket/Brace">[</span>0<span class="ActionScriptBracket/Brace">])</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>                        
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

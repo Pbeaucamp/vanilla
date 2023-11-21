@@ -1,0 +1,111 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>RendererEffects.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/*
+ * The MIT License
+ *
+ * Copyright (c) 2008
+ * United Nations Office at Geneva
+ * Center for Advanced Visual Analytics
+ * http://cava.unog.ch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">MouseEvent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">filters</span>.<span class="ActionScriptDefault_Text">DropShadowFilter</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">UIComponent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">effects</span>.<span class="ActionScriptDefault_Text">Effect</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">effects</span>.<span class="ActionScriptDefault_Text">Zoom</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This class provides a set of effects to
+     * a renderer.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">RendererEffects</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptComment">/* the effect to be used, default is zoom */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">effect</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Effect</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Default constructor, inits the zoom effect */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">RendererEffects</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* init the zoom effect */</span>
+            <span class="ActionScriptDefault_Text">initEffect</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * add a simple filter to the component. Obviously this
+         * is hardcoding the filter, so it is really here for
+         * demo purposes right now.
+         * @param c The UIComponent to filter.
+         * */</span> 
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addDSFilters</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">c</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">UIComponent</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ndsf</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">DropShadowFilter</span> <span class="ActionScriptOperator">=</span> 
+                <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">DropShadowFilter</span><span class="ActionScriptBracket/Brace">(</span>4, 45, 0<span class="ActionScriptDefault_Text">x666666</span>, 0.8, 8, 8, 0.65, 1, <span class="ActionScriptReserved">false</span>, <span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* add the filter. Note that the &quot;filters&quot; property expects an Array
+             * so multiple filters could be applied, hence the [] */</span>    
+            <span class="ActionScriptDefault_Text">c</span>.<span class="ActionScriptDefault_Text">filters</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">ndsf</span><span class="ActionScriptBracket/Brace">]</span>;
+         <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * execute the zoom effect, this is an event handler.
+         * @param event The Mouse event received (rollOver or rollOut)
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">doZoom</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* if we are already playing reverse the effect
+             * If this is a ROLL_OUT event, play the effect backwards
+             * If this is a ROLL_OVER event, play the effect forwards.
+             * */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">effect</span>.<span class="ActionScriptDefault_Text">isPlaying</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">effect</span>.<span class="ActionScriptDefault_Text">reverse</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* event.target should be &quot;this&quot; */</span>
+                <span class="ActionScriptDefault_Text">effect</span>.<span class="ActionScriptDefault_Text">play</span><span class="ActionScriptBracket/Brace">([</span><span class="ActionScriptDefault_Text">event</span>.<span class="ActionScriptDefault_Text">target</span><span class="ActionScriptBracket/Brace">]</span>, 
+                    <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span>.<span class="ActionScriptDefault_Text">type</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">MouseEvent</span>.<span class="ActionScriptDefault_Text">ROLL_OUT</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">?</span> <span class="ActionScriptReserved">true</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">false</span>
+                <span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * initialize the zoom effect
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initEffect</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ef</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Zoom</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Zoom</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">ef</span>.<span class="ActionScriptDefault_Text">zoomWidthFrom</span> <span class="ActionScriptOperator">=</span> 1;
+            <span class="ActionScriptDefault_Text">ef</span>.<span class="ActionScriptDefault_Text">zoomHeightFrom</span> <span class="ActionScriptOperator">=</span> 1;
+            <span class="ActionScriptDefault_Text">ef</span>.<span class="ActionScriptDefault_Text">zoomWidthTo</span> <span class="ActionScriptOperator">=</span> 2;
+            <span class="ActionScriptDefault_Text">ef</span>.<span class="ActionScriptDefault_Text">zoomHeightTo</span> <span class="ActionScriptOperator">=</span> 2;
+            
+            <span class="ActionScriptDefault_Text">effect</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ef</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

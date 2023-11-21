@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+
+	<ui:with field='labelCommon' type='bpm.gwt.commons.client.I18N.LabelsConstants' />	
+	<ui:with field='labels' type='bpm.vanillahub.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.mainPanel {
+			width: 450px;
+		}
+	
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 98%;
+		}
+		
+		.txt:FOCUS, txtArea:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.browsePanel {
+			width: 100%;
+			display: inline-block;
+		}
+		
+		.browseTextBox {
+			width: 385px !important;
+			display: inline-block;
+		}
+		
+		.browseButton {
+			margin-left: 10px;
+			display: inline-block;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+	    <my:TextHolderBox ui:field="txtPattern" placeHolder="{labels.Pattern}" addStyleNames="{style.txt}"/>
+	    <div class="{style.browsePanel}">
+		    <my:TextHolderBox ui:field="txtFolderDestination" placeHolder="{labels.DestinationFolder}" enabled="false" addStyleNames="{style.txt}, {style.browseTextBox}"/>
+		    <g:Button ui:field="btnBrowse" text="..." addStyleNames="{style.browseButton}"/>
+	    </div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

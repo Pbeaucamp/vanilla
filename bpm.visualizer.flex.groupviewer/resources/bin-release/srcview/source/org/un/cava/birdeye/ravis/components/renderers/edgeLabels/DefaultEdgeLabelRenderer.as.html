@@ -1,0 +1,158 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>DefaultEdgeLabelRenderer.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/*
+ * The MIT License
+ *
+ * Copyright (c) 2008
+ * United Nations Office at Geneva
+ * Center for Advanced Visual Analytics
+ * http://cava.unog.ch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span>.<span class="ActionScriptDefault_Text">edgeLabels</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptComment">// Flash classes
+</span>    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">Event</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">MouseEvent</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">binding</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">BindingUtils</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Image</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">LinkButton</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">UIComponent</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span>.<span class="ActionScriptDefault_Text">RendererIconFactory</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span>.<span class="ActionScriptDefault_Text">nodes</span>.<span class="ActionScriptDefault_Text">BaseNodeRenderer</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This renderer displays the graph nodes as
+     * primitive icon or as embedded image or URL
+     * depending on the XML specification
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">DefaultEdgeLabelRenderer</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">BaseNodeRenderer</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * Base Constructor
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">DefaultEdgeLabelRenderer</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptComment">//this.addEventListener(FlexEvent.CREATION_COMPLETE,initComponent);
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Full initialisation of the renderer component, triggered
+         * after reception of the creation complete event.
+         * @param e the creation complete event (unused).
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initComponent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">img</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">UIComponent</span>;
+            
+            <span class="ActionScriptComment">/* initialize the upper part of the renderer */</span>
+            <span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* set the tool tip */</span>
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">toolTip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            
+            <span class="ActionScriptComment">/* add the image */</span>
+            <span class="ActionScriptDefault_Text">img</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">initIcon</span><span class="ActionScriptBracket/Brace">()</span>;
+             
+            <span class="ActionScriptComment">/* now the link button */</span>
+            <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">LinkButton</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* initialise the original link button */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* now override some specs */</span>
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">label</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">=</span> 65;
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">=</span> 15;
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">visible</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">toolTip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeDescription</span>;
+            
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">lb</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * initialise the icon of this renderer 
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initIcon</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">UIComponent</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">img</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">UIComponent</span>;
+            <span class="ActionScriptComment">/* AGAIN ALL XML VALUES SHOULD BE VERIFIED */</span>
+            
+            <span class="ActionScriptComment">/* this renderer does more sophisticated stuff, e.g.
+             * a primitive should be smaller than an icon (10 instead of 25)
+             */</span>
+            <span class="ActionScriptDefault_Text">img</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">RendererIconFactory</span>.<span class="ActionScriptDefault_Text">createIcon</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeClass</span>,25<span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* primitive nodes are currently no Images, so we can use
+             * this to test for them, not ideal, but will do for now
+             * primtives have smaller size
+             */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!(</span><span class="ActionScriptDefault_Text">img</span> <span class="ActionScriptReserved">is</span> <span class="ActionScriptDefault_Text">Image</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">=</span> 10;
+                <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">=</span> 10;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            
+            <span class="ActionScriptComment">//img.setStyle(&quot;backgroundColor&quot;, &quot;0x8b008b&quot;);
+</span>            <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;backgroundColor&quot;</span>, <span class="ActionScriptString">&quot;0xcccccc&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">toolTip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+        
+            <span class="ActionScriptComment">//BindingUtils.bindProperty(img,&quot;scaleX&quot;,this.parent,&quot;scaleX&quot;);
+</span>            <span class="ActionScriptComment">//BindingUtils.bindProperty(img,&quot;scaleY&quot;,this.parent,&quot;scaleY&quot;);
+</span>        
+            <span class="ActionScriptComment">//img.scaleX = GlobalParams.scaleFactor;
+</span>            <span class="ActionScriptComment">//img.scaleY = GlobalParams.scaleFactor;
+</span>            <span class="ActionScriptComment">//XXXX
+</span>            <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">addEventListener</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">MouseEvent</span>.<span class="ActionScriptDefault_Text">CLICK</span>, <span class="ActionScriptDefault_Text">toggleLabel</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">addChild</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">img</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">img</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * toggle the visibility of the label button
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">toggleLabel</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">visible</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">!</span><span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">visible</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+</pre></body>
+</html>

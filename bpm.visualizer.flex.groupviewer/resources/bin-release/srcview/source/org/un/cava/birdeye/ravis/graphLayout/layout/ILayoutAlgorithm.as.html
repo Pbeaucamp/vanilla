@@ -1,0 +1,205 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ILayoutAlgorithm.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span> <span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">IEventDispatcher</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">MouseEvent</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">IGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    
+    
+    <span class="ActionScriptASDoc">/**
+     * this interface defines all function calls
+     * that are needed to rearrange/layout a visualised
+     * graph.
+     * It also handles mouse interaction for moving objects
+     * (not for other stuff)
+     * */</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * The interface to all layout algorithms that should work
+     * with VisualGraph components and underlying Graph data
+     * structures. This interface defines all the methods required
+     * to control the aspects of a layouter.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">ILayoutAlgorithm</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">IEventDispatcher</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Assign a VisualGraph object to the layouter,
+         * every layouter will need one to work, some may
+         * also offer to set it in their constructor.
+         * The layouter may choose to implicitly also set the
+         * graph object if it is found within the VisualGraph object.
+         * @param vg The VisualGraph object to assign.
+         * @see org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph#graph
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">vgraph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualGraph</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Assign a Graph datastructure object to the
+         * layouter, every layouter will need one to work
+         * and some may allow to set it in their constructor
+         * @param g The Graph object to assign.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">graph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">g</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGraph</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Access to a value that controls the length
+         * of links (or rather edges). It is up to the
+         * layouter what to do with it, and some may ignore
+         * this value under certain circumstances (like autoFit).
+         * The interface requires the value to be between 0 and 100;
+         * @default 10
+         * @param r The value to set.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Flag to indicate whether the Layouter should attempt
+         * to automatically fit the layout to the screen.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">autoFitEnabled</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">af</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">autoFitEnabled</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Indicator if the layout has changed or not. This
+         * can be used to notify the layouter, that some external
+         * means (like dragging &amp; dropping a node) has changed the
+         * layout, and it will also be set by the layouter itself
+         * when the layouter updated the layout. This is used by
+         * the VisualGraphs &quot;updateDisplayList()&quot; method, to see
+         * whether to redraw all edges using the EdgeRenderer.
+         * @see org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph#updateDisplayList()
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">layoutChanged</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lc</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">layoutChanged</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Indicator if currently an animation sequence is still
+         * in progress. During certain animation sequences, drag&amp;drop
+         * might be disabled
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">animInProgress</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * If set to true, animation is disabled and direct
+         * node location setting occurs (instantaneously).
+         * @default false
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">disableAnimation</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">d</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">disableAnimation</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * This should reset all parameters of the layouter,
+         * which might not be needed for all layouters, and it is
+         * up to each layouter to do something with it.
+         * It would also stop any existing layouting loops/timers.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This is the main method of the layouter, that actually
+         * implements the calculation of the layout. It will be called
+         * by the VisualGraph on any significant change that will
+         * require a layout to be recomputed.
+         * @return true if something was done successfully, false otherwise.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This is an initialisation method to do any kind
+         * of initialisation before a layout pass. Not all 
+         * layouters may require this and thus implement it
+         * meaningfully.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">refreshInit</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a node drag event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dragEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a node dragging-in-process event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dragContinue</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a node drop event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dropEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a backgroung drag event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">bgDragEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a background drag-in-process event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">bgDragContinue</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Notifies the layouter of a background drop event, in case
+         * it wants to react to that in special way.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">bgDropEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

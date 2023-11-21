@@ -1,0 +1,237 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>BaseRenderer.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/*
+ * The MIT License
+ *
+ * Copyright (c) 2008
+ * United Nations Office at Geneva
+ * Center for Advanced Visual Analytics
+ * http://cava.unog.ch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptComment">// Flash classes
+</span>    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">Event</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">MouseEvent</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">binding</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">BindingUtils</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">containers</span>.<span class="ActionScriptDefault_Text">VBox</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Image</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Label</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">LinkButton</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Spacer</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">ContainerCreationPolicy</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">IDataRenderer</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">FlexEvent</span>;
+
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This is the basic renderer class that more
+     * specific renderers (nodes or edgeLabels)
+     * can be derived from
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">BaseRenderer</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">VBox</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;components.renderers.BaseRenderer&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * spacer component of this renderer
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Spacer</span>;
+    
+        <span class="ActionScriptASDoc">/**
+         * potentical icon component
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">rendIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Image</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * link button component
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">lb</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">LinkButton</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * label component
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ll</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Label</span>;
+    
+    
+        <span class="ActionScriptASDoc">/**
+         * Base Constructor
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">BaseRenderer</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">//super();
+</span>            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">creationPolicy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ContainerCreationPolicy</span>.<span class="ActionScriptDefault_Text">ALL</span>;
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">addEventListener</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">FlexEvent</span>.<span class="ActionScriptDefault_Text">CREATION_COMPLETE</span>,<span class="ActionScriptDefault_Text">initComponent</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptComment">//this.addEventListener(FlexEvent.INIT_COMPLETE,adjustCoordinates);
+</span>            
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+            
+        <span class="ActionScriptASDoc">/**
+         * Sets various values in the GlobalParams class
+         * to make them available for detail display in a separate
+         * area. Basically this gets executed when a node is selected
+         * This requires this item (being an IDataRenderer) to have meaningful
+         * data in its &apos;data&apos; field. Specifically it requires that the object
+         * in data is a VisualNode, which in turn has a data property which
+         * then must contain the corresponding XML object from the Node
+         * definition.
+         * 
+         * However in this base class we only check the basics, no node
+         * or edge XML specifics.
+         * @param e The event that this handler was triggered from. Unused.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDetails</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">// LogUtil.debug(_LOG, &quot;Show Details&quot;);
+</span>            
+            <span class="ActionScriptComment">/* check if we have a data object */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Data object of this Renderer is null. This should not happen, probably wrong usage&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* if yes, it should be an IVisualNode, but actually we don&apos;t care
+             * we just need to make sure it also has a data object */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptReserved">is</span> <span class="ActionScriptDefault_Text">IDataRenderer</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Data object is no IDataRenderer&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* and it should not be null */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Data object of data object is null&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span> 
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Full initialisation of the renderer component, triggered
+         * after reception of the creation complete event.
+         * This method should be overriden by NodeRenderers
+         * which are more specific.
+         * @param e the creation complete event (unused).
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initComponent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* initialize the upper part of the renderer */</span>
+            <span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* in between could be other components added
+             * like images */</span>
+             
+            <span class="ActionScriptComment">/* now the link button */</span>
+            <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* or the label both would be overkill */</span>
+            <span class="ActionScriptComment">//initLabel();
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This method initialises the &quot;upper&quot; part of
+         * the renderer and the general parts, spacer 
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* set styles */</span>
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;horizontalAlign&quot;</span>,<span class="ActionScriptString">&quot;center&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* create and add a spacer */</span>
+            <span class="ActionScriptDefault_Text">sp</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Spacer</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">sp</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">=</span> 18;
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">addChild</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sp</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This method is required to readjust the coordinates
+         * after initialised if we have a centered renderer
+         * parent object.
+         * This should only be called through the initComponent
+         * event handler.
+         * */</span>
+        <span class="ActionScriptComment">/*
+        protected function adjustCoordinates(e:Event):void {
+            if(this.data is IVisualItem) {
+                if((this.data as IVisualItem).centered) {
+                    this.x -= (this.width / 2.0);
+                    this.y -= (this.height / 2.0);
+                }
+            }
+        }
+        */</span>
+
+        <span class="ActionScriptASDoc">/**
+         * this methods initialises and adds a 
+         * link button to the renderer
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">LinkButton</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptDefault_Text">lb</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">LinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">=</span> 100;
+
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">toolTip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;Click to View Details&quot;</span>;
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;fontWeight&quot;</span>,<span class="ActionScriptString">&quot;normal&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;rollOverColor&quot;</span>,0<span class="ActionScriptDefault_Text">xcccccc</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">addEventListener</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">MouseEvent</span>.<span class="ActionScriptDefault_Text">CLICK</span>, <span class="ActionScriptDefault_Text">getDetails</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">addChild</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lb</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">lb</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * this methods initialises and adds a label
+         * with visible text, if the node is selected
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initLabel</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Label</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptDefault_Text">ll</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Label</span><span class="ActionScriptBracket/Brace">()</span>;
+
+            <span class="ActionScriptComment">/* some hardcoded values for now */</span>
+            <span class="ActionScriptDefault_Text">ll</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">=</span> 75;
+            <span class="ActionScriptDefault_Text">ll</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">=</span> 11;
+            <span class="ActionScriptDefault_Text">ll</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;textAlign&quot;</span>,<span class="ActionScriptString">&quot;center&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">ll</span>.<span class="ActionScriptDefault_Text">setStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;fontSize&quot;</span>,10<span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">addChild</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ll</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* not sure yet how to incoroporate this
+            if (GlobalParams.visualNodeLabel.selected==true){
+                nodeText.visible=true
+            } else {
+                nodeText.visible=false
+            }
+            */</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">ll</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+</pre></body>
+</html>

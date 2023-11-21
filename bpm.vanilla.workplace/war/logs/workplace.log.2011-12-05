@@ -1,0 +1,333 @@
+2011-12-05 09:32:42,554 232997 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 09:32:42,556 232999 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 09:32:42,749 233192 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 09:32:42,793 233236 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 09:32:42,830 233273 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 09:32:43,246 233689 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 09:32:43,570 234013 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 09:32:44,475 234918 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 09:32:44,583 235026 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3pdvdb176thsq|78eb54, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3pdvdb176thsq|78eb54, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 09:32:45,563 236006 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 09:32:45,567 236010 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 09:32:45,574 236017 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 09:32:45,603 236046 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 09:32:45,629 236072 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 09:32:46,336 236779 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 55c57239-a71f-443a-afa6-6a45785e3ca0 for user user
+2011-12-05 09:32:46,341 236784 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 09:32:46,342 236785 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 55c57239-a71f-443a-afa6-6a45785e3ca0
+2011-12-05 09:51:12,984 1343427 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id ced7b10a-9911-4bfc-8edc-e24f074633e7 for user user
+2011-12-05 09:51:12,984 1343427 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 09:51:12,985 1343428 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : ced7b10a-9911-4bfc-8edc-e24f074633e7
+2011-12-05 10:18:55,853 1963  INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 10:18:55,854 1964  INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 10:18:55,877 1987  INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 10:18:55,883 1993  INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 10:18:55,913 2023  INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 10:18:56,023 2133  INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 10:18:56,079 2189  INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 10:18:56,409 2519  INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 10:18:56,491 2601  INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3r1auj1et86sv|6bf0d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3r1auj1et86sv|6bf0d, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 10:18:57,032 3142  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 10:18:57,036 3146  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 10:18:57,042 3152  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 10:18:57,047 3157  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 10:18:57,052 3162  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 10:18:57,311 3421  INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 7d9fe624-a6cc-43f3-9b91-62b9f31edcd4 for user user
+2011-12-05 10:18:57,312 3422  INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 10:18:57,312 3422  INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 7d9fe624-a6cc-43f3-9b91-62b9f31edcd4
+2011-12-05 10:47:32,665 1718775 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 3d4b2b97-a203-428c-9b08-76e196e8f397 for user user
+2011-12-05 10:47:32,666 1718776 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 10:47:32,667 1718777 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 3d4b2b97-a203-428c-9b08-76e196e8f397
+2011-12-05 11:09:16,521 25308 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 11:09:16,522 25309 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 11:09:16,546 25333 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 11:09:16,552 25339 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 11:09:16,570 25357 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 11:09:16,688 25475 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 11:09:16,742 25529 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 11:09:17,070 25857 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 11:09:17,181 25968 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3su1lvh4ytgv|1352ff7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3su1lvh4ytgv|1352ff7, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 11:09:17,637 26424 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 11:09:17,642 26429 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 11:09:17,658 26445 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 11:09:17,663 26450 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 11:09:17,668 26455 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 11:09:18,018 26805 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 45814df4-8fab-490f-a21c-2d6bb626592f for user user
+2011-12-05 11:09:18,019 26806 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:09:18,019 26806 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 45814df4-8fab-490f-a21c-2d6bb626592f
+2011-12-05 11:09:18,440 27227 ERROR [org.apache.commons.digester.Digester] (btpool0-0:) Parse Fatal Error at line 35 column 7: The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+org.xml.sax.SAXParseException: The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.commons.digester.Digester.parse(Digester.java:1765)
+	at bpm.vanilla.workplace.server.helper.ExportDescriptorDigester.<init>(ExportDescriptorDigester.java:38)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.readDescriptor(PlaceProjectRuntime.java:129)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.getProjectForUser(PlaceProjectRuntime.java:83)
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:124)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:637)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:487)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:362)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:729)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:405)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.handler.RequestLogHandler.handle(RequestLogHandler.java:49)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:324)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:505)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.content(HttpConnection.java:843)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:647)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:211)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:380)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:395)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:488)
+2011-12-05 11:09:18,442 27229 ERROR [bpm.vanilla.workplace.server.servlets.ConnectionServlet] (btpool0-0:) org.xml.sax.SAXParseException: The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+2011-12-05 11:09:18,442 27229 ERROR [bpm.vanilla.workplace.server.servlets.ConnectionServlet] (btpool0-0:) Operation GET_PACKAGES failed - The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+java.lang.Exception: Operation GET_PACKAGES failed - The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:637)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:487)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:362)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:729)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:405)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.handler.RequestLogHandler.handle(RequestLogHandler.java:49)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:324)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:505)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.content(HttpConnection.java:843)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:647)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:211)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:380)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:395)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:488)
+Caused by: org.xml.sax.SAXParseException: The element type "subtype" must be terminated by the matching end-tag "</subtype>".
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.commons.digester.Digester.parse(Digester.java:1765)
+	at bpm.vanilla.workplace.server.helper.ExportDescriptorDigester.<init>(ExportDescriptorDigester.java:38)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.readDescriptor(PlaceProjectRuntime.java:129)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.getProjectForUser(PlaceProjectRuntime.java:83)
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:124)
+	... 19 more
+2011-12-05 11:13:40,516 18341 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 11:13:40,517 18342 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 11:13:40,542 18367 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 11:13:40,548 18373 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 11:13:40,583 18408 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 11:13:40,696 18521 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 11:13:40,753 18578 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 11:13:41,073 18898 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 11:13:41,176 19001 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3szpbfytqqgk|199e79, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3szpbfytqqgk|199e79, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 11:13:41,629 19454 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 11:13:41,633 19458 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 11:13:41,638 19463 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 11:13:41,643 19468 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 11:13:41,660 19485 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 11:13:42,011 19836 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 554b4c16-db51-4857-87a9-ae662359165a for user user
+2011-12-05 11:13:42,012 19837 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:13:42,012 19837 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 554b4c16-db51-4857-87a9-ae662359165a
+2011-12-05 11:13:42,404 20229 ERROR [org.apache.commons.digester.Digester] (btpool0-0:) End event threw exception
+java.lang.NoSuchMethodException: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+	at org.apache.commons.beanutils.MethodUtils.invokeMethod(MethodUtils.java:214)
+	at org.apache.commons.digester.CallMethodRule.end(CallMethodRule.java:626)
+	at org.apache.commons.digester.Rule.end(Rule.java:253)
+	at org.apache.commons.digester.Digester.endElement(Digester.java:1222)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.endElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.commons.digester.Digester.parse(Digester.java:1765)
+	at bpm.vanilla.workplace.server.helper.ExportDescriptorDigester.<init>(ExportDescriptorDigester.java:38)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.readDescriptor(PlaceProjectRuntime.java:129)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.getProjectForUser(PlaceProjectRuntime.java:83)
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:124)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:637)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:487)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:362)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:729)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:405)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.handler.RequestLogHandler.handle(RequestLogHandler.java:49)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:324)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:505)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.content(HttpConnection.java:843)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:647)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:211)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:380)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:395)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:488)
+2011-12-05 11:13:42,406 20231 ERROR [bpm.vanilla.workplace.server.servlets.ConnectionServlet] (btpool0-0:) java.lang.NoSuchMethodException: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+2011-12-05 11:13:42,407 20232 ERROR [bpm.vanilla.workplace.server.servlets.ConnectionServlet] (btpool0-0:) Operation GET_PACKAGES failed - Error at line 32 char 23: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+java.lang.Exception: Operation GET_PACKAGES failed - Error at line 32 char 23: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:637)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:487)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:362)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:729)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:405)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.handler.RequestLogHandler.handle(RequestLogHandler.java:49)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:324)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:505)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.content(HttpConnection.java:843)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:647)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:211)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:380)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:395)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:488)
+Caused by: java.lang.NoSuchMethodException: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+	at org.apache.commons.digester.Digester.createSAXException(Digester.java:3181)
+	at org.apache.commons.digester.Digester.createSAXException(Digester.java:3207)
+	at org.apache.commons.digester.Digester.endElement(Digester.java:1225)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.endElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.commons.digester.Digester.parse(Digester.java:1765)
+	at bpm.vanilla.workplace.server.helper.ExportDescriptorDigester.<init>(ExportDescriptorDigester.java:38)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.readDescriptor(PlaceProjectRuntime.java:129)
+	at bpm.vanilla.workplace.server.runtime.PlaceProjectRuntime.getProjectForUser(PlaceProjectRuntime.java:83)
+	at bpm.vanilla.workplace.server.servlets.ConnectionServlet.doPost(ConnectionServlet.java:124)
+	... 19 more
+Caused by: java.lang.NoSuchMethodException: No such accessible method: setSubtype() on object: bpm.vanilla.workplace.core.model.PlaceImportItem
+	at org.apache.commons.beanutils.MethodUtils.invokeMethod(MethodUtils.java:214)
+	at org.apache.commons.digester.CallMethodRule.end(CallMethodRule.java:626)
+	at org.apache.commons.digester.Rule.end(Rule.java:253)
+	at org.apache.commons.digester.Digester.endElement(Digester.java:1222)
+	... 34 more
+2011-12-05 11:14:48,303 8758  INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 11:14:48,304 8759  INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 11:14:48,340 8795  INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 11:14:48,347 8802  INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 11:14:48,370 8825  INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 11:14:48,487 8942  INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 11:14:48,545 9000  INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 11:14:48,905 9360  INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 11:14:48,991 9446  INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3t15mjblmgjl|4cf82d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3t15mjblmgjl|4cf82d, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 11:14:49,401 9856  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 11:14:49,405 9860  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 11:14:49,411 9866  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 11:14:49,426 9881  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 11:14:49,431 9886  INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 11:14:49,815 10270 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 4427323d-8d63-4411-aae5-c9e40575c269 for user user
+2011-12-05 11:14:49,816 10271 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:14:49,816 10271 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 4427323d-8d63-4411-aae5-c9e40575c269
+2011-12-05 11:16:52,021 132476 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 3af6d8b1-160f-47b2-b428-f8ed56118e37 for user user
+2011-12-05 11:16:52,021 132476 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:16:52,021 132476 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 3af6d8b1-160f-47b2-b428-f8ed56118e37
+2011-12-05 11:19:02,204 262659 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id e1a29298-2996-4cc0-a75a-f2bc385698f8 for user user
+2011-12-05 11:19:02,204 262659 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:19:02,205 262660 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : e1a29298-2996-4cc0-a75a-f2bc385698f8
+2011-12-05 11:25:51,885 672340 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 50a7de3a-a64d-44a2-87d0-27c77470320c for user user
+2011-12-05 11:25:51,885 672340 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:25:51,886 672341 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 50a7de3a-a64d-44a2-87d0-27c77470320c
+2011-12-05 11:30:29,166 949621 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id fec1a621-c996-409f-b48a-210abc957855 for user user
+2011-12-05 11:30:29,166 949621 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:30:29,167 949622 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : fec1a621-c996-409f-b48a-210abc957855
+2011-12-05 11:32:31,697 1072152 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 5ba03aa6-4ede-4bf4-99b7-e98a54fc0876 for user user
+2011-12-05 11:32:31,697 1072152 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:32:31,698 1072153 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 5ba03aa6-4ede-4bf4-99b7-e98a54fc0876
+2011-12-05 11:35:58,006 1278461 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id f7d09863-8ab9-449f-8bcd-b98c00938353 for user user
+2011-12-05 11:35:58,007 1278462 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:35:58,007 1278462 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : f7d09863-8ab9-449f-8bcd-b98c00938353
+2011-12-05 11:54:57,635 2418090 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 116a7708-a92a-448d-b8b2-ccabee411a7e for user user
+2011-12-05 11:54:57,635 2418090 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 11:54:57,636 2418091 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 116a7708-a92a-448d-b8b2-ccabee411a7e
+2011-12-05 13:28:58,721 19916 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-05 13:28:58,722 19917 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-05 13:28:58,891 20086 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-05 13:28:58,901 20096 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-05 13:28:58,931 20126 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-05 13:28:59,187 20382 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-05 13:28:59,452 20647 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-05 13:29:00,305 21500 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-05 13:29:00,450 21645 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8k3xtpldtssro1|cf44e, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8k3xtpldtssro1|cf44e, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-05 13:29:01,557 22752 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-05 13:29:01,564 22759 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-05 13:29:01,573 22768 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-05 13:29:01,601 22796 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-05 13:29:01,629 22824 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-05 13:29:02,151 23346 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id b27749d5-d81f-4c60-bb85-b0164d0c59b5 for user user
+2011-12-05 13:29:02,153 23348 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 13:29:02,153 23348 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : b27749d5-d81f-4c60-bb85-b0164d0c59b5
+2011-12-05 13:36:50,667 491862 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 229aa4fd-50a9-4200-81d2-dcd3c7a93590 for user user
+2011-12-05 13:36:50,667 491862 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 13:36:50,668 491863 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 229aa4fd-50a9-4200-81d2-dcd3c7a93590
+2011-12-05 13:53:17,398 1478593 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id d02f56a1-03b5-486a-9a18-37b43a738483 for user user
+2011-12-05 13:53:17,398 1478593 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 13:53:17,398 1478593 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : d02f56a1-03b5-486a-9a18-37b43a738483
+2011-12-05 14:40:39,926 4321121 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 07ed26b8-eb44-4aa7-acd5-7ebb2a9d15e5 for user user
+2011-12-05 14:40:39,927 4321122 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 14:40:39,927 4321122 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 07ed26b8-eb44-4aa7-acd5-7ebb2a9d15e5
+2011-12-05 14:41:27,907 4369102 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id c23b0f53-aed9-4edc-b14a-152415f5bb0b for user user
+2011-12-05 14:41:27,907 4369102 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 14:41:27,907 4369102 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : c23b0f53-aed9-4edc-b14a-152415f5bb0b
+2011-12-05 14:46:47,424 4688619 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id c36adc7c-06c9-426a-ac87-08d3df939ca3 for user user
+2011-12-05 14:46:47,424 4688619 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 14:46:47,425 4688620 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : c36adc7c-06c9-426a-ac87-08d3df939ca3
+2011-12-05 15:08:30,153 5991348 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id e1a11ffe-84b7-4ac4-b8d6-01c7eac2141f for user user
+2011-12-05 15:08:30,154 5991349 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:08:30,154 5991349 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : e1a11ffe-84b7-4ac4-b8d6-01c7eac2141f
+2011-12-05 15:10:34,108 6115303 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 72fde1d3-f45e-4a9c-ae7e-0be5137e938e for user user
+2011-12-05 15:10:34,109 6115304 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:10:34,109 6115304 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 72fde1d3-f45e-4a9c-ae7e-0be5137e938e
+2011-12-05 15:11:04,269 6145464 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 63417d51-4fe4-4b25-b003-429119d3ed1d for user user
+2011-12-05 15:11:04,269 6145464 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:11:04,269 6145464 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 63417d51-4fe4-4b25-b003-429119d3ed1d
+2011-12-05 15:11:47,949 6189144 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 3f66f241-f604-4918-9b3f-c57075c28915 for user user
+2011-12-05 15:11:47,949 6189144 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:11:47,950 6189145 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 3f66f241-f604-4918-9b3f-c57075c28915
+2011-12-05 15:24:30,474 6951669 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 01affcd5-a9c0-443c-b6b6-42ae7a347504 for user user
+2011-12-05 15:24:30,474 6951669 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:24:30,475 6951670 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 01affcd5-a9c0-443c-b6b6-42ae7a347504
+2011-12-05 15:25:11,348 6992543 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 571b3cc1-487f-41ae-8ce8-9672ba5729a9 for user user
+2011-12-05 15:25:11,349 6992544 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-05 15:25:11,349 6992544 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 571b3cc1-487f-41ae-8ce8-9672ba5729a9

@@ -1,0 +1,78 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.vanilla.workplace.client.admin.panel.user.PanelUserInformation.MyStyle">
+		.titleInfos {
+		    border-bottom: 1px solid black;
+		    font-size: 25px;
+		    padding: 5px;
+		}
+		
+		.txt {
+		    width: 180px;
+		}
+		
+		.username {
+			position: absolute;
+			top: 50px;
+		}
+		
+		.password {
+			position: absolute;
+			top: 85px;
+		}
+		
+		.mail {
+			position: absolute;
+			top: 120px;
+		}
+		
+		.creaDate {
+			position: absolute;
+			top: 155px;
+		}
+		
+		.left {    
+			font-size: 18px;
+			left: 40px;
+		}
+		
+		.right {
+			font-size: 18px;
+    		left: 170px;
+		}
+		
+		.btnEdit {
+			left: 10px;
+		}
+		
+		.btnValid {
+    		left: 370px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblInfos" addStyleNames="{style.titleInfos}">Informations</g:Label>
+		<g:Label addStyleNames="{style.username}, {style.left}">Username: </g:Label>
+		<g:Label addStyleNames="{style.password}, {style.left}">Password: </g:Label>
+		<g:Label addStyleNames="{style.mail}, {style.left}">Email: </g:Label>
+		<g:Label ui:field="creaDate" addStyleNames="{style.creaDate}, {style.left}">Creation Date: </g:Label>
+		
+		<g:TextBox ui:field="txtUsername" addStyleNames="{style.username}, {style.right}, {style.txt}"/>
+		<g:Label ui:field="lblUsername" addStyleNames="{style.username}, {style.right}"/>
+		<g:Image ui:field="btnEditUsername" addStyleNames="{style.username}, {style.btnEdit}"/>
+		<g:Image ui:field="btnValidUsername" addStyleNames="{style.username}, {style.btnValid}"/>
+		
+		<g:PasswordTextBox ui:field="txtPassword" addStyleNames="{style.password}, {style.right}, {style.txt}"/>
+		<g:Label ui:field="lblPassword" addStyleNames="{style.password}, {style.right}"/>
+		<g:Image ui:field="btnEditPassword" addStyleNames="{style.password}, {style.btnEdit}"/>
+		<g:Image ui:field="btnValidPassword" addStyleNames="{style.username}, {style.btnValid}"/>
+		
+		<g:TextBox ui:field="txtMail" addStyleNames="{style.mail}, {style.right}, {style.txt}"/>
+		<g:Label ui:field="lblMail" addStyleNames="{style.mail}, {style.right}"/>
+		<g:Image ui:field="btnEditMail" addStyleNames="{style.mail}, {style.btnEdit}"/>
+		<g:Image ui:field="btnValidMail" addStyleNames="{style.username}, {style.btnValid}"/>
+		
+		<g:Label ui:field="lblCreaDate" addStyleNames="{style.creaDate}, {style.right}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

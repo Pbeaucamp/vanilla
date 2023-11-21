@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph>
+    <Application orientation="0" title="dsdq"/>
+    <Node desc="The root system" iconSize="35" id="0" name="Vanilla" nodeIcon="system"/>
+    <Node desc="" iconSize="35" id="1" name="System" nodeIcon="group"/>
+    <Node desc="To browse repository" iconSize="35" id="2"
+        name="Default" nodeIcon="group"/>
+    <Node desc="for design" iconSize="35" id="3" name="Designer" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="4" name="Grand Lyon" nodeIcon="group"/>
+    <Node bMail="null" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="5" login="" name="system"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="null" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="6" login="" name="user"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="null" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="7" login="" name="designer"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="8" login="" name="CUS"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="9" login="" name="parkeon"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="10" login="" name="cpage"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="11" login="" name="jean claude"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular="wxvc"
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc="xcvw"
+        fonction="dsqd" iconSize="25" id="12" login="xwcvwxv" name="qsd"
+        nodeIcon="user" pMail="xcvwx" phone="" sName="xcvw"
+        sNumber="xwvv" surname="xwcvwxcvxcvwx"/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="13" login="" name="dora"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="14" login="" name="cyrille"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Edge fromID="0" toID="0"/>
+    <Edge fromID="0" toID="1"/>
+    <Edge fromID="0" toID="2"/>
+    <Edge fromID="0" toID="3"/>
+    <Edge fromID="0" toID="4"/>
+    <Edge fromID="1" toID="5"/>
+    <Edge fromID="2" toID="5"/>
+    <Edge fromID="3" toID="5"/>
+    <Edge fromID="2" toID="6"/>
+    <Edge fromID="3" toID="7"/>
+    <Edge fromID="2" toID="8"/>
+    <Edge fromID="2" toID="9"/>
+    <Edge fromID="2" toID="10"/>
+    <Edge fromID="4" toID="11"/>
+    <Edge fromID="4" toID="12"/>
+    <Edge fromID="4" toID="13"/>
+    <Edge fromID="4" toID="14"/>
+</Graph>

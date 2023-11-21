@@ -1,0 +1,1 @@
+If VanillaHub has a performance problem, try to index endDate and workflowId in DB

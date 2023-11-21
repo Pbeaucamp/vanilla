@@ -1,0 +1,169 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>BaseEdgeLabelRenderer.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/*
+ * The MIT License
+ *
+ * Copyright (c) 2008
+ * United Nations Office at Geneva
+ * Center for Advanced Visual Analytics
+ * http://cava.unog.ch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span>.<span class="ActionScriptDefault_Text">edgeLabels</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptComment">// Flash classes
+</span>    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">Event</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Label</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">LinkButton</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">components</span>.<span class="ActionScriptDefault_Text">renderers</span>.<span class="ActionScriptDefault_Text">BaseRenderer</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">VGraphRendererEvent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This is an extension to the base renderer
+     * specific to Nodes, i.e. it populates various
+     * label fields and icons with node XML data.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">BaseEdgeLabelRenderer</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">BaseRenderer</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;components.renderers.edgeLabels.BaseEdgeLabelRenderer&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Base Constructor
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">BaseEdgeLabelRenderer</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+            
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDetails</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptComment">// LogUtil.debug(_LOG, &quot;Show Details&quot;);
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vgre</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">VGraphRendererEvent</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">VGraphRendererEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">VGraphRendererEvent</span>.<span class="ActionScriptDefault_Text">VG_RENDERER_SELECTED</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* do the checks in the super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">getDetails</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* prepare the event */</span>
+            
+            <span class="ActionScriptComment">/* make sure we have the XML attribute */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">vgre</span>.<span class="ActionScriptDefault_Text">rname</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">info</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;XML data object has no &apos;edgeLabel&apos; attribute&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* now the description */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeDescription</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">vgre</span>.<span class="ActionScriptDefault_Text">rdesc</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeDescription</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">info</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;XML data object has no &apos;edgeDescription&apos; attribute&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">dispatchEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vgre</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * 
+         * Make sure we call the init methods of THIS
+         * class and not the base class.
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initComponent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Event</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* initialize the upper part of the renderer */</span>
+            <span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* in between could be other components added
+             * like images */</span>
+             
+            <span class="ActionScriptComment">/* now the link button */</span>
+            <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* or the label both would be overkill */</span>
+            <span class="ActionScriptComment">//initLabel();
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* create the top part using super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">initTopPart</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* set the tool tip to be the name attribute of the XML object
+             * we should also check here about the correctness of all
+             * the data objects, just as in getDetails(), even more important
+             * since this will be called earlier....
+             * maybe it is all not so critical... anyway, we don&apos;t abort,
+             * so just some diagnostic messages are printed... */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">name</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">toolTip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">info</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;XML data object has no &apos;edgeLabel&apos; attribute&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">LinkButton</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* create the linkbutton using 
+             * the super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">initLinkButton</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* add node specific data;
+             * here no check, but should be done */</span>
+            <span class="ActionScriptDefault_Text">lb</span>.<span class="ActionScriptDefault_Text">label</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">lb</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initLabel</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Label</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* base init */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">initLabel</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* again we should do checks here */</span>
+            <span class="ActionScriptDefault_Text">ll</span>.<span class="ActionScriptDefault_Text">text</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">this</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">data</span>.@<span class="ActionScriptDefault_Text">edgeLabel</span>;
+            
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">ll</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+</pre></body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelUser {
+    		height: 150px;
+    		width: 400px;
+		}
+		
+		.panelBottom {
+		    margin-bottom: 10px;
+		    margin-left: 240px;
+		}
+		
+		.btnCancel {
+			margin-right: 15px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:SimplePanel ui:field="panelUser" addStyleNames="{style.panelUser}"/>
+		<g:SimplePanel>
+			<g:HorizontalPanel addStyleNames="{style.panelBottom}">
+				<g:Button ui:field="btnCancel" addStyleNames="{style.btnCancel}">Cancel</g:Button>
+				<g:Button ui:field="btnConfirm">Confirm</g:Button>
+			</g:HorizontalPanel>
+		</g:SimplePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

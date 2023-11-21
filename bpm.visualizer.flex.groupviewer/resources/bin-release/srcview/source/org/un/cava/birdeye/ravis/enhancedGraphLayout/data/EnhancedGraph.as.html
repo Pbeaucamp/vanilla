@@ -1,0 +1,133 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>EnhancedGraph.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">enhancedGraphLayout</span>.<span class="ActionScriptDefault_Text">data</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">Graph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">IEdge</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">INode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">TypeUtil</span>;
+    
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">EnhancedGraph</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">Graph</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">data</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span>;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">EnhancedGraph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>, <span class="ActionScriptDefault_Text">directional</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>, <span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>, <span class="ActionScriptDefault_Text">directional</span>, <span class="ActionScriptDefault_Text">xmlsource</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initFromVO</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vo</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span><span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vo</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vo</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptReserved">return</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodeProp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_NODE</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edgeProp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_EDGE</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromIDProp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_FROMID</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toIDProp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_TOID</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodeId</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">elements</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vo</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">DEFAULTNAME_NODE</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">arrElements</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">elements</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptDefault_Text">arrElements</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Array</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">elements</span> <span class="ActionScriptReserved">is</span> <span class="ActionScriptDefault_Text">Array</span><span class="ActionScriptBracket/Brace">))</span>
+                <span class="ActionScriptDefault_Text">arrElements</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">elements</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptReserved">else</span>
+                <span class="ActionScriptDefault_Text">arrElements</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">elements</span><span class="ActionScriptBracket/Brace">]</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vo</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">DEFAULTNAME_EDGE</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">arrEdges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">edges</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptDefault_Text">arrEdges</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Array</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">edges</span> <span class="ActionScriptReserved">is</span> <span class="ActionScriptDefault_Text">Array</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptDefault_Text">arrEdges</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edges</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptReserved">else</span>
+                <span class="ActionScriptDefault_Text">arrEdges</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">edges</span><span class="ActionScriptBracket/Brace">]</span>;
+            
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodeVO</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">arrElements</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">nodeId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodeVO</span>.<span class="ActionScriptDefault_Text">id</span>;
+                <span class="ActionScriptComment">/* This is for Sub-Graph 
+                if (nodeVO[UnitGraph.DEFAULTNAME_NODE] &amp;&amp; nodeVO[UnitGraph.DEFAULTNAME_NODE].length &gt; 0)
+                {
+                    var graph:UnitGraph = new UnitGraph(nodeId, true, null);
+                    graph.initFromVO(nodeVO);
+                    fromNode = createNode(nodeId, graph);
+                }
+                else */</span>
+                <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">createNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nodeId</span>, <span class="ActionScriptDefault_Text">nodeVO</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edgeVO</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">arrEdges</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">fromNodeId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edgeVO</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">fromIDProp</span><span class="ActionScriptBracket/Brace">]</span>;
+                <span class="ActionScriptDefault_Text">toNodeId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edgeVO</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">toIDProp</span><span class="ActionScriptBracket/Brace">]</span>;
+                
+                <span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">toNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* we do not throw an error here, because the data
+                 * is often inconsistent. In this case we just ignore
+                 * the edge */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNode</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> 
+                <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScripttrace">trace</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node id: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">fromNodeId</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; not found, link not done&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">continue</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toNode</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> 
+                <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScripttrace">trace</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node id: &quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">toNodeId</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; not found, link not done&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">continue</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptDefault_Text">link</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromNode</span>,<span class="ActionScriptDefault_Text">toNode</span>,<span class="ActionScriptDefault_Text">edgeVO</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptComment">//trace(&quot;Current nr of edges:&quot;+_edges.length);
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">override</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">xmlData</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">data</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">tabStr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&apos;&apos;</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">attrStr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">TypeUtil</span>.<span class="ActionScriptDefault_Text">objectPropertyToXMLAttributeString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">tempStr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&apos;&lt;&apos;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&apos;root&apos;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&apos; &apos;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">attrStr</span> <span class="ActionScriptOperator">+</span><span class="ActionScriptString">&apos; &gt;&apos;</span>;
+            <span class="ActionScriptComment">//var arrNodes:Array = nodes.reverse();
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">arrNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nodes</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">node</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">arrNodes</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">node</span>.<span class="ActionScriptDefault_Text">data</span>;
+                <span class="ActionScriptDefault_Text">attrStr</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">TypeUtil</span>.<span class="ActionScriptDefault_Text">objectPropertyToXMLAttributeString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">data</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">tempStr</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;&lt;&quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_NODE</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot; &quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">attrStr</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot;/&gt;\n&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">//var arrEdges:Array = edges.reverse();
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">arrEdges</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edges</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">arrEdges</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">data</span>;
+                <span class="ActionScriptDefault_Text">attrStr</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">TypeUtil</span>.<span class="ActionScriptDefault_Text">objectPropertyToXMLAttributeString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">data</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">tempStr</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;&lt;&quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">DEFAULTNAME_EDGE</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot; &quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">attrStr</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot;/&gt;\n&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            
+            <span class="ActionScriptDefault_Text">tempStr</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptString">&apos;&lt;/&apos;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&apos;root&apos;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&apos;&gt;&apos;</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">XML</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">tempStr</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

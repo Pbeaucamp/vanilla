@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.vanillahub.web.client.properties.parameters.MetasPanel.MyStyle">
+		.lblParam {
+		    text-align: left;
+		    width: 165px;
+		    margin-top: 6px;
+		}
+		
+		.paramP {
+			width: 100%;
+		}
+		
+		.captionParam {
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			margin: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelMeta"/>
+</ui:UiBinder> 

@@ -1,0 +1,146 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>DirectedBalloonEdgeRenderer.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">edgeRenderers</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">display</span>.<span class="ActionScriptDefault_Text">Graphics</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualEdge</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Geometry</span>;
+
+
+    <span class="ActionScriptASDoc">/**
+     * This is a directed edge renderer, which draws the edges
+     * with slim ballon like curves that indicate a source.
+     * Please note that for undirected graphs, the actual direction
+     * of the edge might be arbitrary.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">DirectedBalloonEdgeRenderer</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">BaseEdgeRenderer</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * Specifies the width or thickness of the balloons.
+         * @default 10
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">balloonWidth</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 10.0;
+        
+        <span class="ActionScriptASDoc">/**
+         * Constructor sets the graphics object (required).
+         * @param g The graphics object to be used.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">DirectedBalloonEdgeRenderer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">g</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Graphics</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">g</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * The draw function, i.e. the main function to be used.
+         * Draws a curved line from one node of the edge to the other.
+         * The colour is determined by the &quot;disting&quot; parameter and
+         * a set of edge parameters, which are stored in an edge object.
+         * 
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">draw</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualEdge</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* first get the corresponding visual object */</span>
+            <span class="ActionScriptASDoc">/**
+             * 
+             */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">vnode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toNode</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">vnode</span>;
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fP</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">fromNode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">tP</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">toNode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>;
+            
+            <span class="ActionScriptComment">/* calculate the midpoint used as curveTo anchor point */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">anchor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">midPointOfLine</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>,<span class="ActionScriptDefault_Text">tP</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* apply the line style */</span>
+            <span class="ActionScriptDefault_Text">applyLineStyle</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* now we actually draw */</span>
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">beginFill</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">lineStyle</span>.<span class="ActionScriptDefault_Text">color</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">moveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;            
+            
+            <span class="ActionScriptComment">/* bezier curve style */</span>
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">curveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">endFill</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">beginFill</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">lineStyle</span>.<span class="ActionScriptDefault_Text">color</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">moveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">curveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">endFill</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">beginFill</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">lineStyle</span>.<span class="ActionScriptDefault_Text">color</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">moveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">curveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">endFill</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">beginFill</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">lineStyle</span>.<span class="ActionScriptDefault_Text">color</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">moveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">curveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">fP</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">balloonWidth</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">endFill</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">beginFill</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">lineStyle</span>.<span class="ActionScriptDefault_Text">color</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">moveTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">anchor</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">lineTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">toNode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">toNode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_g</span>.<span class="ActionScriptDefault_Text">endFill</span><span class="ActionScriptBracket/Brace">()</span>;
+        
+            <span class="ActionScriptComment">/* if the vgraph currently displays edgeLabels, then
+             * we need to update their coordinates */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">vgraph</span>.<span class="ActionScriptDefault_Text">displayEdgeLabels</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">setEdgeLabelCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">labelCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * This method places the label coordinates at the functional midpoint
+         * of the bezier curve using the same anchors as the edge renderer.
+         * 
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">labelCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualEdge</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* first get the corresponding visual object */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fromPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">x</span>,
+                                <span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">toPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">x</span>,
+                                <span class="ActionScriptDefault_Text">vedge</span>.<span class="ActionScriptDefault_Text">edge</span>.<span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">viewCenter</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* calculate the midpoint used as curveTo anchor point */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">anchor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">midPointOfLine</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromPoint</span>,<span class="ActionScriptDefault_Text">toPoint</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* we use t = 0.6 here to a bit more towards the target */</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">bezierPoint</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">fromPoint</span>,<span class="ActionScriptDefault_Text">anchor</span>,<span class="ActionScriptDefault_Text">toPoint</span>,0.6<span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

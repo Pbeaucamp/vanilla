@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.vanillahub.web.client.dialogs.InformationsDialog.MyStyle">
+		.mainPanel {
+    		min-width: 350px;
+		}
+		
+		.disclosurePanel {
+		    margin: 15px 5px 5px;
+		}
+		
+		.lblMessage {
+			margin: 15px;
+			text-align: left;
+		}
+
+		.errorContent {
+
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HTMLPanel addStyleNames="{style.mainPanel}">
+			<g:HTML ui:field="lblMessage" addStyleNames="{style.lblMessage}"/>
+			<g:SimplePanel ui:field="panelError" addStyleNames="{style.disclosurePanel}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

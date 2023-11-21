@@ -1,0 +1,808 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>HierarchicalLayouter.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">INode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">VGraphEvent</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This layouter implements the drawing of generalized trees
+     * in a hierarchical fashion using the algorithm by
+     * Christoph Buchheim, Michael Juenger and Sebastian Leipert
+     * presented in their paper 
+     * &quot;Improving Walker&apos;s Algorithm to run in linear time&quot;
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">HierarchicalLayouter</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">AnimatedBaseLayouter</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">ILayoutAlgorithm</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;graphLayout.layout.HierarchicalLayouter&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Set the orientation to this to result in a
+         * left to right layout.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptOperator">=</span> 0;
+
+        <span class="ActionScriptASDoc">/**
+         * Set the orientation to this to result in a
+         * right to left layout.
+         * */</span>        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptOperator">=</span> 1;
+        
+        <span class="ActionScriptASDoc">/**
+         * Set the orientation to this to result in a
+         * top down layout.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptOperator">=</span> 2;
+        
+        <span class="ActionScriptASDoc">/**
+         * Set the orientation to this to result in a
+         * bottom up layout.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptOperator">=</span> 3;
+        
+        <span class="ActionScriptASDoc">/**
+         * Allows to specify an extra margin if required.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0;
+        
+        <span class="ActionScriptComment">/* this holds the data for the Hierarchical layout drawing */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_currentDrawing</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">HierarchicalLayoutDrawing</span>;
+        
+        <span class="ActionScriptComment">/* this is the distance between nodes within a layer
+         * typically x distance if top-bottom orientation
+         * it may be preset by autofit */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_defaultNodeDistance</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* set to true if you want node sizes to be taken
+         * into account */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_honorNodeSize</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptComment">/* this is the distance between layers, or typically
+         * the y distance if top-bottom orientation.
+         * Again it may be set by autofit */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_layerDistance</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* this holds the actual orientation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_orientation</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+        
+        <span class="ActionScriptComment">/* this enables an additional spread of nodes within the
+         * same layer, but which are all siblings */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptComment">/* the corresponding distance, should be at least */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_siblingSpreadDistance</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* enables interleaved spread of nodes if _siblingSpreadEnabled is true */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_interleaveSiblings</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The constructor only initialises some data structures.
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">HierarchicalLayouter</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualGraph</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">animationType</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ANIM_STRAIGHT</span>; <span class="ActionScriptComment">// inherited
+</span>            <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">_defaultNodeDistance</span> <span class="ActionScriptOperator">=</span> 10;
+            <span class="ActionScriptDefault_Text">_layerDistance</span> <span class="ActionScriptOperator">=</span> 10;
+            <span class="ActionScriptDefault_Text">_orientation</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span>;
+            <span class="ActionScriptComment">//_orientation = ORIENT_BOTTOM_UP;
+</span>            <span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptDefault_Text">_siblingSpreadDistance</span> <span class="ActionScriptOperator">=</span> 10;
+            <span class="ActionScriptDefault_Text">_honorNodeSize</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptDefault_Text">_interleaveSiblings</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>            
+            
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* invalidate all trees in the graph */</span>
+            <span class="ActionScriptDefault_Text">_stree</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This main interface method computes and
+         * and executes the new layout.
+         * @return Currently the return value is not set or used.
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">cindex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nsiblings</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">rv</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.info(_LOG, &quot;layoutPass called&quot;);
+</span>            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_vgraph</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;No Vgraph set in HierarchicalLayouter, aborting&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;This Layouter always requires a root node!&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* nothing to do if we have no nodes */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">noNodes</span> <span class="ActionScriptOperator">&lt;</span> 1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* if there is a timer, we have to stop it to
+             * prevent inconsistencies */</span>
+            <span class="ActionScriptDefault_Text">killTimer</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* establish the current root, if it has 
+             * changed we need to reinit the model */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span>.<span class="ActionScriptDefault_Text">node</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_root</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span>.<span class="ActionScriptDefault_Text">node</span>;
+                <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+                    
+            <span class="ActionScriptComment">/* establish the spanning tree */</span>
+            <span class="ActionScriptComment">//_graph.purgeTrees();
+</span>            <span class="ActionScriptDefault_Text">_stree</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">getTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span>,<span class="ActionScriptReserved">true</span>,<span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span>;
+
+            <span class="ActionScriptComment">/* check if the root is visible, if not
+             * this is an issue */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_root</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Invisible root node, this is probably due to wrong initialisation of nodes or wrong defaults&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            <span class="ActionScriptComment">/* need to see where how we could get a clear
+             * list of situation how to deal with hab
+             * if the layout was changed (or any parameter)
+             * we have to reinit the model */</span>
+            <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+
+            <span class="ActionScriptComment">/* this is complicated. */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_autoFitEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* now we calculate the best spacing */</span>
+                <span class="ActionScriptDefault_Text">calculateAutoFit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            <span class="ActionScriptComment">/* do the first pass */</span>
+            <span class="ActionScriptDefault_Text">firstWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* and now the second */</span>
+            <span class="ActionScriptDefault_Text">secondWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span>, <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span><span class="ActionScriptBracket/Brace">))</span>;
+        
+            <span class="ActionScriptComment">/* reset animation cycle */</span>
+            <span class="ActionScriptDefault_Text">resetAnimation</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* start the animation, does also the commit */</span>
+            <span class="ActionScriptDefault_Text">startAnimation</span><span class="ActionScriptBracket/Brace">()</span>;        
+        
+            <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">rv</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_layerDistance</span> <span class="ActionScriptOperator">/</span> 10;
+        <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">rr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_layerDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">rr</span> <span class="ActionScriptOperator">*</span> 10;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Set the spacing between the nodes within a layer.
+         * Typical range 0 .. 100 should be ok.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">breadth</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">b</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_defaultNodeDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">b</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">breadth</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_defaultNodeDistance</span>;
+        <span class="ActionScriptBracket/Brace">}</span>        
+
+        <span class="ActionScriptASDoc">/**
+         * Enable a spreading out of sibling nodes to
+         * make labels more legible in some cases.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">enableSiblingSpread</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ss</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ss</span>;
+            <span class="ActionScriptComment">/* notify controls (specifically interleaving toggle */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">dispatchEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">VGraphEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">VGraphEvent</span>.<span class="ActionScriptDefault_Text">LAYOUTER_HIER_SIBLINGSPREAD</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">enableSiblingSpread</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Enable a interleaved spreading out of sibling nodes to
+         * make labels more legible in some cases.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">interleaveSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">value</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+             <span class="ActionScriptDefault_Text">_interleaveSiblings</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+         
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">interleaveSiblings</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+             <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_interleaveSiblings</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Allows to specify the fixed distance to spread the
+         * siblings.
+         * @default 10
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">siblingSpreadDistance</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_siblingSpreadDistance</span>;    
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">siblingSpreadDistance</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">distance</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_siblingSpreadDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">distance</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Allow to specify that node size should be honored
+         * when spacing.
+         * @default false
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">honorNodeSize</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_honorNodeSize</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">honorNodeSize</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">honor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_honorNodeSize</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">honor</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Set the orientation for the hierarchical
+         * layouter. Available values are provided through
+         * defined constants. Use one of:
+         * HierarchicalLayouter.ORIENT_TOP_DOWN
+         * HierarchicalLayouter.ORIENT_BOTTOM_UP
+         * HierarchicalLayouter.ORIENT_LEFT_RIGHT
+         * HierarchicalLayouter.ORIENT_RIGHT_LEFT
+         * 
+         * @param o The orientation value, one of the above.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">orientation</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">o</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">_orientation</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">o</span>;
+                    <span class="ActionScriptDefault_Text">adjustCenter</span><span class="ActionScriptBracket/Brace">()</span>;
+                    
+                    <span class="ActionScriptComment">/* do a redraw */</span>
+                    <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;orientation:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; not supported&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">orientation</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_orientation</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptComment">/* private methods */</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This does the first pass over the nodes, recursing
+         * downwards to each leaf and computing the preliminary
+         * x value for each node. It also calls the &quot;apportion()&quot;
+         * function which is the heart of the algorithm.
+         * Then the children are spaced by executeShifts and finally
+         * the node is moved to the center of its children.
+         * @param v The root of the current subtree to work on.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">firstWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nochild</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">child</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sibling</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">midpoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">prelimsib</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vindex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">depthOffset</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">defaultAncestor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ilfactor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 1; <span class="ActionScriptComment">// for interleaving
+</span>            
+            <span class="ActionScriptDefault_Text">nochild</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nochild</span> <span class="ActionScriptOperator">==</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* if v&apos;s childindex is &gt; 0 then there is a 
+                 * node with a smaller one, i.e. one on the left and we need to space it */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptComment">/* get the left sibling by getting the vindex - 1&apos;th child of
+                     * it&apos;s parent */</span>
+                    <span class="ActionScriptDefault_Text">sibling</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">]</span>,<span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* get the prelim value of the sibling */</span>
+                    <span class="ActionScriptDefault_Text">prelimsib</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sibling</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* now set it for this node, but add the spacing */</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">prelimsib</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">spacing</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sibling</span>, <span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* init to the first (0th, leftmost) child of v, 
+                 * may be modified by apportion() */</span>
+                <span class="ActionScriptDefault_Text">defaultAncestor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,0<span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptDefault_Text">depthOffset</span> <span class="ActionScriptOperator">=</span> 0;
+                
+                <span class="ActionScriptReserved">for</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">=</span>0; <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">nochild</span>; <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">child</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,<span class="ActionScriptDefault_Text">i</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">/* recurse */</span>
+                    <span class="ActionScriptDefault_Text">firstWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">child</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">/* and call apportion */</span>
+                    <span class="ActionScriptDefault_Text">defaultAncestor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">apportion</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">child</span>, <span class="ActionScriptDefault_Text">defaultAncestor</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* apply the depth offset for each child */</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setDepthOffset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">child</span>,<span class="ActionScriptDefault_Text">depthOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptComment">// Not so .. Dirty hack for interleaving
+</span>                        <span class="ActionScriptDefault_Text">depthOffset</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">ilfactor</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_siblingSpreadDistance</span>;
+                        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_interleaveSiblings</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                            <span class="ActionScriptDefault_Text">ilfactor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">ilfactor</span>;
+                        <span class="ActionScriptBracket/Brace">}</span>
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* do the shifts */</span>
+                <span class="ActionScriptDefault_Text">executeShifts</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* now center the node above its children */</span>
+                
+                <span class="ActionScriptComment">/* get the prelim value of the leftmost child */</span>
+                <span class="ActionScriptDefault_Text">child</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">midpoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">child</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* now add the prelim of the rightmost child */</span>
+                <span class="ActionScriptDefault_Text">child</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,<span class="ActionScriptDefault_Text">nochild</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">midpoint</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">child</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* now half it to get the center */</span>
+                <span class="ActionScriptDefault_Text">midpoint</span> <span class="ActionScriptOperator">=</span> 0.5 <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">midpoint</span>;
+                
+                <span class="ActionScriptComment">/* if v&apos;s childindex is &gt; 0 then there is a 
+                 * node with a smaller one, i.e. one on the left.
+                 */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptComment">/* get the left sibling by getting the vindex - 1&apos;th child of
+                     * it&apos;s parent */</span>
+                    <span class="ActionScriptDefault_Text">sibling</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">]</span>,<span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* get the prelim value of the sibling */</span>
+                    <span class="ActionScriptDefault_Text">prelimsib</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sibling</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* now set it for this node, but add the spacing */</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">prelimsib</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">spacing</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sibling</span>,<span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">))</span>;
+                    
+                    <span class="ActionScriptComment">/* also set the modifier for v */</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">midpoint</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,<span class="ActionScriptDefault_Text">midpoint</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * This method combines a subtree with other subtrees, traverses
+         * their contours/outlines using &apos;thread&apos; pointers, etc.
+         * @param v The node (root of subtree) to work on.
+         * @param defaultAncestor (self explaining).
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">apportion</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">da</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">voutsideleft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">voutsideright</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sumileft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sumiright</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sumoleft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sumoright</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vindex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">w</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">defaultAncestor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">lgua</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>; <span class="ActionScriptComment">// left greatest uncommon ancestor
+</span>            
+            <span class="ActionScriptDefault_Text">defaultAncestor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">da</span>;
+            
+            <span class="ActionScriptComment">/* if we have a left sibling w */</span>
+            <span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">w</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">]</span>, <span class="ActionScriptDefault_Text">vindex</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptDefault_Text">vinsideright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">v</span>;
+                <span class="ActionScriptDefault_Text">voutsideright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">v</span>;
+                <span class="ActionScriptDefault_Text">vinsideleft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">w</span>;
+                
+                <span class="ActionScriptComment">/* the leftmost sibling of vinsideright which is v */</span>
+                <span class="ActionScriptDefault_Text">voutsideleft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">]</span>,0<span class="ActionScriptBracket/Brace">)</span>;
+            
+                <span class="ActionScriptDefault_Text">sumiright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">sumoright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">sumileft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">sumoleft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptReserved">while</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    
+                    <span class="ActionScriptComment">/* traverse the inside nodes more to the inside
+                     * and the outside nodes further out */</span>
+                    <span class="ActionScriptDefault_Text">vinsideright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">voutsideright</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">vinsideleft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">voutsideleft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptComment">/* adjust the ancestor */</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setAncestor</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span>,<span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sumileft</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptOperator">-</span>
+                        <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sumiright</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptOperator">+</span>
+                        <span class="ActionScriptDefault_Text">spacing</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span>,<span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptComment">/* get the left greatest uncommon ancestor */</span>
+                        <span class="ActionScriptDefault_Text">lgua</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">leftGrUnAncestor</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span>, <span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">defaultAncestor</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptComment">/* now move the subtree by shift */</span>
+                        <span class="ActionScriptDefault_Text">moveSubtree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lgua</span>, <span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptComment">/* adjust sums */</span>
+                        <span class="ActionScriptDefault_Text">sumiright</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">shift</span>;
+                        <span class="ActionScriptDefault_Text">sumoright</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">shift</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                    
+                    <span class="ActionScriptDefault_Text">sumileft</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">sumiright</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">sumoleft</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">sumoright</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptComment">// while
+</span>            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptComment">// if vindex &gt; 0
+</span>            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* set the thread pointer */</span>
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setThread</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span>, <span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideleft</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptComment">/* add to the modifier */</span>
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideright</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sumileft</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">sumoright</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* set the thread pointer */</span>
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setThread</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span>, <span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vinsideright</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptComment">/* add to the modifier */</span>
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">voutsideleft</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sumiright</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">sumoleft</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptComment">/* update the default ancestor */</span>
+                <span class="ActionScriptDefault_Text">defaultAncestor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">v</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">defaultAncestor</span>;
+        <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptComment">// function 
+</span>        
+        
+        <span class="ActionScriptASDoc">/**
+         * returns the next node of the left contour/outline
+         * of the subtree */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nextLeft</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* if the node has children we return the leftmost
+             * child, if not, we return the thread of the node */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,0<span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getThread</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * returns the next node of the right contour/outline
+         * of the subtree */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nextRight</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nochildren</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            
+            <span class="ActionScriptDefault_Text">nochildren</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* if the node has children we return the rightmost
+             * child, if not, we return the thread of the node */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nochildren</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,<span class="ActionScriptDefault_Text">nochildren</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getThread</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Moves the subtree in wright by shift, all other moves
+         * are done later, but we remember their change and shift
+         * values.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">moveSubtree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wleft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">wright</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">subtrees</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            
+            <span class="ActionScriptDefault_Text">subtrees</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wright</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wleft</span><span class="ActionScriptBracket/Brace">)</span>;
+
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToChange</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wright</span>, <span class="ActionScriptOperator">-</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">subtrees</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToChange</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wleft</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">subtrees</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToShift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wright</span>, <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wright</span>, <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">wright</span>, <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Finally execute all shifts that were accumulated
+         * in previous moveSubtree calls
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">executeShifts</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">change</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">w</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nochildren</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            
+            <span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">=</span> 0;
+            <span class="ActionScriptDefault_Text">change</span> <span class="ActionScriptOperator">=</span> 0;
+            
+            <span class="ActionScriptDefault_Text">nochildren</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptComment">/* need to walk from right to left here */</span>
+            <span class="ActionScriptReserved">for</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">=</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">nochildren</span> <span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">)</span>; <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">&gt;=</span> 0; <span class="ActionScriptOperator">--</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">w</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>,<span class="ActionScriptDefault_Text">i</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span>,<span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">addToModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span>,<span class="ActionScriptDefault_Text">shift</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+                <span class="ActionScriptDefault_Text">change</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getChange</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">shift</span> <span class="ActionScriptOperator">+=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getShift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">change</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * Finds and returns the left one of the greatest
+         * uncommon ancestors of vileft and its right neighbour.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">leftGrUnAncestor</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vileft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">da</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">avileft</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            
+            <span class="ActionScriptDefault_Text">avileft</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getAncestor</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vileft</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">areSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">avileft</span>,<span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">avileft</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">da</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Computes the real x values from all the saved parameters
+         * this is not yet subject to orientation, but could be
+         * done here.
+         * @param n The node set its coordinates.
+         * @param m An accumulated modifier.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">secondWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">m</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">breadth</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">depth</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">w</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">result</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            
+            <span class="ActionScriptComment">/* the depth value is the depth from the root times
+             * the layerDistance. */</span>
+            <span class="ActionScriptDefault_Text">depth</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getDistance</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_layerDistance</span>;
+            <span class="ActionScriptDefault_Text">breadth</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPrelim</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">m</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_siblingSpreadEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">depth</span> <span class="ActionScriptOperator">-=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getDepthOffset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_orientation</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">breadth</span>, <span class="ActionScriptDefault_Text">depth</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptComment">//result = new Point(breadth - DEFAULT_MARGIN, _vgraph.height - depth - (2 * DEFAULT_MARGIN));
+</span>                    <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">breadth</span>, <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">depth</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">depth</span>, <span class="ActionScriptDefault_Text">breadth</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">depth</span>, <span class="ActionScriptDefault_Text">breadth</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">break</span>; 
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">setCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span>, <span class="ActionScriptDefault_Text">result</span><span class="ActionScriptBracket/Brace">)</span>; 
+            
+            <span class="ActionScriptComment">/* recurse over the children */</span>
+            <span class="ActionScriptDefault_Text">children</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">secondWalk</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">w</span>, <span class="ActionScriptDefault_Text">m</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getModifier</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+         
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Create a new layout drawing object, which is required
+         * on any root change (and possibly during other occasions)
+         * and intialise various parameters of the drawing.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>        
+            <span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">HierarchicalLayoutDrawing</span>;
+            
+            <span class="ActionScriptComment">/* set in super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>;
+            
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">origin</span>;
+            
+            <span class="ActionScriptDefault_Text">adjustCenter</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method adjusts the reference center depending
+         * on the current orientation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">adjustCenter</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_orientation</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span>, <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span> <span class="ActionScriptOperator">=</span>
+                        <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptBracket/Brace">))</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(D</span><span class="ActionScriptDefault_Text">EFAULT_MARGIN</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">layerMargin</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span> <span class="ActionScriptOperator">=</span>
+                        <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptBracket/Brace">)</span>, <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Invalid orientation value found in internal variable&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Returns a calculated spacing, that can take node size
+         * into account.
+         * @param l The left node.
+         * @param r The right node.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">spacing</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">l</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">result</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_defaultNodeDistance</span>;
+            
+            <span class="ActionScriptComment">/* we assume that both INodes, l and r have a vnode and a view */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_honorNodeSize</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_orientation</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">+=</span> 0.5 <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">l</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">r</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">height</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">result</span> <span class="ActionScriptOperator">+=</span> 0.5 <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">l</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">r</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">width</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Invalid orientation value found in internal variable&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">result</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * do autofitting the layer distance. The node distance cannot
+         * be pre-computed, so we leave it alone.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calculateAutoFit</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">maxDepth</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_orientation</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_LEFT_RIGHT</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_RIGHT_LEFT</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">_layerDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">-</span> 2 <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(D</span><span class="ActionScriptDefault_Text">EFAULT_MARGIN</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptBracket/Brace">))</span>  <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">maxDepth</span>;
+                        <span class="ActionScriptDefault_Text">_defaultNodeDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">-</span> 2 <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">maxNumberPerLayer</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_TOP_DOWN</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ORIENT_BOTTOM_UP</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">_layerDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">-</span> 2 <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(D</span><span class="ActionScriptDefault_Text">EFAULT_MARGIN</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">layerMargin</span><span class="ActionScriptBracket/Brace">))</span>  <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">maxDepth</span>;
+                        <span class="ActionScriptDefault_Text">_defaultNodeDistance</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">-</span> 2 <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">maxNumberPerLayer</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Invalid orientation value found in internal variable&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptComment">/*
+                LogUtil.debug(_LOG, &quot;h:&quot;+_vgraph.height+&quot; w:&quot;+_vgraph.width+&quot; md:&quot;+_stree.maxDepth+
+                    &quot; mnpl:&quot;+_stree.maxNumberPerLayer+&quot; ld:&quot;+_layerDistance+&quot; nd:&quot;+_defaultNodeDistance);
+                */</span>
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;TreeMaxDepth:&quot;+_stree.maxDepth+&quot; is 0&quot;);
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

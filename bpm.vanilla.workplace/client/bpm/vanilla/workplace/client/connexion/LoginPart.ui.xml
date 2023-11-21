@@ -1,0 +1,65 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:gwt="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type='bpm.vanilla.workplace.client.connexion.LoginPart.StyleLogin'>
+		/*---Login part---*/
+		.loginPanel {
+			margin:0 auto;
+			margin-top: 150px;
+			width: 500px;
+			height: 300px;
+			padding: 20px;
+			border: 5px groove;
+		}
+		
+		.loginPanel-title {
+			text-align: center;
+			font-size: 15px;	
+			margin: 12px auto 12px auto;
+			font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		}
+		
+		.loginPanel-label {
+			font-size: 13px;
+			width: 120px;
+			margin: auto;
+			font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		}
+		
+		.loginPanel-textbox {
+			width: 150px;
+			margin: auto;
+		}
+		
+		.loginPanel-formline {
+			margin: auto;
+		}
+		
+		.imageButton {
+			display: block;
+			margin: auto;	
+			cursor: pointer;
+		}
+	</ui:style>
+	
+	<gwt:VerticalPanel stylePrimaryName="{style.loginPanel}">
+		<gwt:Label ui:field="lblTitle" stylePrimaryName="{style.loginPanel-title}" />
+		
+		<gwt:HorizontalPanel stylePrimaryName="{style.loginPanel-formline}">
+			<gwt:Label ui:field="lblLogin" stylePrimaryName="{style.loginPanel-label}"/>
+			<gwt:TextBox ui:field="txtUsername" stylePrimaryName="{style.loginPanel-textbox}"></gwt:TextBox>
+		</gwt:HorizontalPanel>
+		
+		<gwt:HorizontalPanel stylePrimaryName="{style.loginPanel-formline}">
+			<gwt:Label ui:field="lblPassword" stylePrimaryName="{style.loginPanel-label}"/>
+			<gwt:PasswordTextBox ui:field="txtPassword" stylePrimaryName="{style.loginPanel-textbox}"></gwt:PasswordTextBox>
+		</gwt:HorizontalPanel>
+		
+		<gwt:HorizontalPanel stylePrimaryName="{style.loginPanel-formline}">
+			<gwt:Button ui:field="btnCancel"/>
+			<gwt:Button ui:field="btnOk"/>
+		</gwt:HorizontalPanel>
+		
+	</gwt:VerticalPanel>
+</ui:UiBinder> 

@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.weka.oda.ui
+Bundle-SymbolicName: bpm.weka.oda.ui;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui,
+ bpm.weka.oda.runtime,
+ bpm.vanilla.platform.core,
+ bpm.vanilla.platform.core.remote,
+ bpm.vanilla.platform.xstream,
+ bpm.vanilla.oda.commons;bundle-version="4.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

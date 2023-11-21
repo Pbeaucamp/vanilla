@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>AdminService</servlet-name>
+    <servlet-class>bpm.vanilla.workplace.server.AdminServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdminService</servlet-name>
+    <url-pattern>/bpm_vanilla_workplace/AdminService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ConnectionServlet</servlet-name>
+    <servlet-class>bpm.vanilla.workplace.server.servlets.ConnectionServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>IndexPackageServlet</servlet-name>
+    <servlet-class>bpm.vanilla.workplace.server.servlets.IndexPackageServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConnectionServlet</servlet-name>
+    <url-pattern>/bpm_vanilla_workplace/ConnectionServlet</url-pattern>
+  </servlet-mapping>
+  
+	<servlet-mapping>
+		<servlet-name>IndexPackageServlet</servlet-name>
+		<url-pattern>/bpm_vanilla_workplace/IndexPackageServlet</url-pattern>
+	</servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Bpm_vanilla_workplace.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

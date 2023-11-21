@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+  <listServer>
+    <mailServer>
+      <id>mailing</id>
+      <name>mailing</name>
+      <url>smtp.orange.fr</url>
+      <login></login>
+      <password></password>
+    </mailServer>
+    <vanillaRepositoryServer>
+      <id>repository</id>
+      <name>repository</name>
+      <url>http://localhost:8080/BIRepository</url>
+      <login>system</login>
+      <password>system</password>
+      <groupid>-1</groupid>
+    </vanillaRepositoryServer>
+    <runtimeServer>
+      <id>runtime</id>
+      <name>runtime</name>
+      <url>http://localhost:7171/VanillaRuntime</url>
+      <login>system</login>
+      <password>system</password>
+    </runtimeServer>
+    <runtimeServer>
+      <id>VanillaRuntime</id>
+      <name>VanillaRuntime</name>
+      <url>http://localhost:7171/VanillaRuntime</url>
+      <login>system</login>
+      <password>system</password>
+    </runtimeServer>
+    <securityServer>
+      <id>VanillaSecurity</id>
+      <name>VanillaSecurity</name>
+      <url>http://localhost:8080/vanilla</url>
+      <login>system</login>
+      <password>system</password>
+    </securityServer>
+    <fileserver>
+      <id>VanillaFilesIn</id>
+      <name>VanillaFilesIn</name>
+      <url>{$VANILLA_FILES}</url>
+      <login></login>
+      <password></password>
+      <typeserver>Hard Drive</typeserver>
+      <repertoiredef>In</repertoiredef>
+      <port>25</port>
+    </fileserver>
+    <fileserver>
+      <id>VanillaHome</id>
+      <name>VanillaHome</name>
+      <url>{$VANILLA_HOME}</url>
+      <login></login>
+      <password></password>
+      <typeserver>Hard Drive</typeserver>
+      <repertoiredef></repertoiredef>
+      <port></port>
+    </fileserver>
+    <dataBaseServer>
+      <id>sampledata</id>
+      <name>sampledata</name>
+      <url>localhost</url>
+      <login>biplatform</login>
+      <password>biplatform</password>
+      <dataBaseName>sampledata</dataBaseName>
+      <jdbcDriver>MySQL</jdbcDriver>
+      <port>3306</port>
+    </dataBaseServer>
+  </listServer>
+</resources>

@@ -1,0 +1,61 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.vanillahub.web.client.utils">
+	
+	<ui:with field='label' type='bpm.vanillahub.web.client.I18N.Labels' />
+	
+	<ui:style type="bpm.vanillahub.web.client.properties.creation.attribute.YahooWeatherProperties.MyStyle">
+	
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 98%;
+		}
+		
+		.txt:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+			width: 98%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:ListBox ui:field="lstType" addStyleNames="{style.lst}"/>
+		<g:HTMLPanel ui:field="panelTexts"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

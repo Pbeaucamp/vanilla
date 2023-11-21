@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module rename-to="Bpm">
+	
+	<inherits name="com.google.gwt.user.User"/>
+  	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name="com.google.gwt.core.Core"/>
+  	
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+	<inherits name='bpm.workflow.commons.Workflow'/>
+	<inherits name="bpm.gwt.commons.Commons" />
+	<inherits name="bpm.gwt.workflow.commons.Commons" />
+    <inherits name="bpm.vanillahub.core.VanillaHub" />
+    <inherits name="bpm.update.manager.api.Commons" />
+    <inherits name="bpm.mdm.model.Architect"/>
+	<inherits name="bpm.document.management.core.VDMCore" />
+	
+	<inherits name="bpm.gwt.aklabox.commons.Commons" />
+  	<inherits name="com.kiouri.sliderbar.SliderBarMVP" />
+  	<inherits name="com.bramosystems.oss.player.core.CorePlayerProvider" />
+	
+  	<inherits name='com.orange.links.Links' />
+	<inherits name='org.moxieapps.gwt.uploader.Uploader'/>
+	<inherits name="bpm.vanilla.map.VanillaMap" />
+  	 
+	<stylesheet src="Bpm.css"/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+	
+	<!-- Specify the app entry point class. -->
+	<entry-point class="bpm.vanillahub.web.client.Bpm"/>
+
+	<source path='client'/>
+	<source path='shared'/>
+	<public path='pub'/>
+</module>

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.workplace.api
+Bundle-SymbolicName: bpm.vanilla.workplace.api
+Bundle-Version: 5.0.0.1
+Bundle-Vendor: BPM-Conseil
+Export-Package: bpm.vanilla.workplace.api.datasource.disco,
+ bpm.vanilla.workplace.api.datasource.extractor,
+ bpm.vanilla.workplace.api.datasource.replacement
+Bundle-ClassPath: .
+Require-Bundle: bpm.vanilla.workplace.core,
+ bpm.vanilla.external.jars;bundle-version="1.0.0",
+ bpm.fwr.api,
+ bpm.vanilla.platform.xstream,
+ bpm.vanilla.platform.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

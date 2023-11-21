@@ -1,0 +1,184 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IGTree.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">IEventDispatcher</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * interface to the GTree data structure that
+     * holds a spanning tree of the graph
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IGTree</span>    <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">IEventDispatcher</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Indicating flag if the returned tree is restricted to currently invisible nodes.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">restricted</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The map (Dictionary) that contains the parents for each node (keys are node
+         * objects, with their parent node objects as values).
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/** 
+         * The map that contains the distance for each node (keys are node objects,
+         * values are integers that indicate the distance (in hops) from the root node
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">distances</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * access to the current root node of the tree. If a new root
+         * node is set, this means the tree has to be recalculated.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">root</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">root</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The maximum depth of the tree, which is the maximum distance
+         * of any node from the root 
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">maxDepth</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+    
+        <span class="ActionScriptASDoc">/**
+         * Returns a nested XML representation of the tree.
+         * It will only contain &lt;Node&gt; tags with all the attributes
+         * of the source GraphML data, nothing else.
+         * Beware, if the created tree is restriced to visible nodes,
+         * you will only get those.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">XMLtree</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Get the distance of a particular node from the root.
+         * @param n The node object for which the distance is requested.
+         * @return The distance from the root in hops.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDistance</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Each node is also the i&apos;th child of it&apos;s parent. This index
+         * is called the child index. The child index of each node is stored
+         * and can be looked up by this method.
+         * @param n The node lookup its child index.
+         * @return The child index of this node.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The number of children of any node in the tree.
+         * @param The parent node.
+         * @return The number of its children.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getNoChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Returns the number of siblings of a node, including the node itself
+         * so basically this is the number of the children of the node&apos;s parents.
+         * If the node has no parent, it is the root node and therefore
+         * the number of its sibling including itself is 1.
+         * @param n The node for which its number of siblings is required.
+         * @return The number of of siblings plus the node itself.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getNoSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Checks if two nodes are siblings or not.
+         * @param n First node to check.
+         * @param m Potential sibling of n.
+         * @return True if the nodes are siblings, false otherwise.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">areSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">m</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * An array that contains all children of this node
+         * in the tree in the order of each child&apos;s child index.
+         * @param n The parent node.
+         * @return The array of children of the given node.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This method returns the node, which is the i&apos;th child
+         * of a given (parent) node. Note that &apos;i&apos; starts with 0,
+         * i.e. the frist child is actually the 0th child.
+         * @param n The parent node.
+         * @param i The child index of the desired child.
+         * @return The node which is it the i&apos;th child of node n.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>,<span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This initialiases the (spanning) tree
+         * using BFS (Breadth first search).
+         * @param walkingDirection The direction in which to walk the graph.
+         *           The proper value is GraphWalkingDirectionsEnum.BOTH.
+         *           The value for the old functionality is GraphWalkingDirectionsEnum.FORWARD.
+         * @return The map that contains each node&apos;s parent node.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initTree</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This method returns a map (Object) containing only 
+         * the nodes which are within a certain distance of the
+         * root node.
+         * @param limit The distance limit.
+         * @return An object containing a map of node id&apos;s which are within the distance limit.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getLimitedNodes</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">limit</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This returns the number of nodes that have exactly
+         * the specified distance.
+         * @param d The distance from the root.
+         * @return The number of nodes in the tree with distance d.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getNumberNodesWithDistance</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">d</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * This is the maximum number of nodes at any
+         * distance, i.e. the maximum over all distances
+         * of getNumberNodesWithDistance().
+         * @see getNumberNodesWithDistance
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">maxNumberPerLayer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

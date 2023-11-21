@@ -1,0 +1,84 @@
+/** Add css rules here for your application. */
+
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+#root {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;	
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+.gwt-TabLayoutPanelContentContainerBottom {
+	border-top: 1px solid #92C1F0;
+	border-right: 1px solid #92C1F0;
+	border-bottom: 1px solid #92C1F0;
+	border-radius: 0 15px 15px 15px;
+}
+
+.gwt-TabLayoutPanel {
+	width: 100%;
+	height: 100%;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContentBottom {
+	padding: 20px;
+}
+
+.gwt-TabLayoutPanelTabBottom {
+	background: none repeat scroll 0 0 #D0E4F6;
+    border-left: 1px solid #92C1F0;
+    border-radius: 5px 0 0 5px;
+    border-top: 1px solid #92C1F0;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 7px;
+    text-align: center;
+    width: 130px;
+    margin-bottom: 2px;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabBottom-selected {
+    background: none repeat scroll 0 0 #FFFFFF;
+    cursor: default;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabs {
+	padding-top: 0px;
+}
+
+.gwt-Tree .gwt-TreeItem-selected {
+    background: none repeat scroll 0 0 #58ACFA;
+}

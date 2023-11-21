@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<versionning>
+  <checkout>
+    <fileName>C:\Users\vanilla\Desktop\tmp\checkout_1.biw</fileName>
+    <serverUrl>http://localhost:8080/BIRepository</serverUrl>
+    <username>system</username>
+    <password>system</password>
+    <groupId>1</groupId>
+    <directoryItemId>47</directoryItemId>
+  </checkout>
+</versionning>

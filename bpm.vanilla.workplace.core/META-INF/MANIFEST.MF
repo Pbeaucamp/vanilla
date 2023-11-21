@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.workplace.core
+Bundle-SymbolicName: bpm.vanilla.workplace.core
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.vanilla.workplace.core,
+ bpm.vanilla.workplace.core.datasource,
+ bpm.vanilla.workplace.core.disco,
+ bpm.vanilla.workplace.core.model,
+ bpm.vanilla.workplace.core.services,
+ bpm.vanilla.workplace.core.xstream
+Require-Bundle: bpm.vanilla.platform.core;bundle-version="4.2.0",
+ bpm.vanilla.external.jars;bundle-version="1.0.0",
+ bpm.vanilla.platform.hibernate;bundle-version="4.2.2"

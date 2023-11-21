@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	
+	<servlet>    
+		<servlet-name>adminService</servlet-name>    
+		<servlet-class>bpm.vanillahub.web.server.AdminServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>adminService</servlet-name>    
+		<url-pattern>/Bpm/adminService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>resourcesService</servlet-name>    
+		<servlet-class>bpm.vanillahub.web.server.ResourcesServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>resourcesService</servlet-name>    
+		<url-pattern>/Bpm/resourcesService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>workflowsService</servlet-name>    
+		<servlet-class>bpm.gwt.workflow.commons.server.WorkflowsServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>workflowsService</servlet-name>    
+		<url-pattern>/Bpm/workflowsService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.vanillahub.web.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>remoteLoggingServiceImpl</servlet-name>
+		<servlet-class>com.google.gwt.libideas.logging.server.RemoteLoggingServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>remoteLoggingServiceImpl</servlet-name>
+		<url-pattern>/Bpm/logging</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>bpm.vanillahub.web.server.servlets.UploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>HubUploadServlet.gupld</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.DownloadStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<url-pattern>/DownloadStreamServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateService</servlet-name>
+		<servlet-class>bpm.gwt.workflow.commons.server.UpdateServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateService</servlet-name>
+		<url-pattern>/Bpm/updateService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/Bpm/loginService</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/Bpm/commonService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AklaCommonService</servlet-name>
+		<servlet-class>bpm.gwt.aklabox.commons.server.AklaCommonServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AklaCommonService</servlet-name>
+		<url-pattern>/Bpm/aklaCommonService</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<!-- max size of the upload request -->
+		<param-name>maxSize</param-name>
+		<param-value>3145728</param-value>
+	</context-param>
+	<context-param>
+		<!-- Useful in development mode to slow down the uploads in fast networks.
+			Put the number of milliseconds to sleep in each block received in the server.
+			false or 0, means don't use slow uploads  -->
+		<param-name>slowUploads</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,81 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+          "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/vanilla_workplace" />
+		<property name="user" value="biplatform" />
+		<property name="password" value="biplatform" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/vanilla/workplace/server/db/user.hbm.xml</value>
+				<value>bpm/vanilla/workplace/server/db/log.hbm.xml</value>
+				<value>bpm/vanilla/workplace/server/db/user_package.hbm.xml</value>
+				<value>bpm/vanilla/workplace/server/db/project.hbm.xml</value>
+				<value>bpm/vanilla/workplace/server/db/package.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop> -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+				<prop key="hibernate.c3p0.minPoolSize">2</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">50</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop>
+				<prop key="hibernate.c3p0.max_statement">0</prop>  
+				<prop key="hibernate.c3p0.idle_test_period">30</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  User -->
+	<bean id="userDAO" class="bpm.vanilla.workplace.server.db.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  Package -->
+	<bean id="packageDAO" class="bpm.vanilla.workplace.server.db.PackageDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  Assoc User Package -->
+	<bean id="userPackageDAO" class="bpm.vanilla.workplace.server.db.UserPackageDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  Project -->
+	<bean id="projectDAO" class="bpm.vanilla.workplace.server.db.ProjectDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--  Log -->
+	<bean id="logDAO" class="bpm.vanilla.workplace.server.db.LogDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

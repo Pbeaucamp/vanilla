@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.vanilla.workplace.shared.model.PlaceWebUser" table="WK_USERS">
+            <id name="id" type="int">
+                <column name="ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="java.lang.String">
+                <column name="NAME"/>
+            </property>
+
+            <property name="password" type="java.lang.String">
+                <column name="PASSWORD"/>
+            </property>
+
+            <property name="mail" type="java.lang.String">
+                <column name="MAIL"/>
+            </property>
+
+            <property name="isAdmin" type="boolean">
+                <column name="ADMIN"/>
+            </property>
+
+            <property name="hashCode" type="java.lang.String">
+                <column name="HASHCODE"/>
+            </property>
+
+            <property name="valid" type="boolean">
+                <column name="VALID"/>
+            </property>
+
+            <property name="creationDate" type="java.util.Date">
+                <column name="CREATION_DATE"/>
+            </property>
+    </class>
+</hibernate-mapping>

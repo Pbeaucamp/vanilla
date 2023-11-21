@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.vanilla.workplace.remote
+Bundle-SymbolicName: bpm.vanilla.workplace.remote
+Bundle-Version: 5.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: bpm.vanilla.external.jars;bundle-version="1.0.0",
+ bpm.vanilla.workplace.core;bundle-version="4.4.0",
+ bpm.vanilla.platform.xstream;bundle-version="4.2.0"
+Import-Package: org.apache.log4j
+Export-Package: bpm.vanilla.workplace.remote.impl,
+ bpm.vanilla.workplace.remote.internal
+Bundle-ClassPath: .
+Bundle-Vendor: BPM-Conseil

@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.title {
+			font-size: 55px;
+    		margin: 30px auto auto;
+    		width: 650px;
+		}
+		
+		.table {
+			margin: auto;
+			margin-top: 50px;
+		}
+		
+		.panelTxt {
+			margin-left: 15px;
+		}
+		
+		.btn {
+			margin: 15px auto auto;
+    		width: 90px;
+		}
+		
+		.lblUser {
+			margin-top: 10px;
+		}
+			
+		.lblPass {
+			margin-top: 17px;
+		}
+		
+		.txtPass {
+			width: 150px;
+			margin-top: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label addStyleNames="{style.title}">Welcome to Vanilla Place</g:Label>
+		<g:HorizontalPanel addStyleNames="{style.table}">
+			<g:VerticalPanel>
+				<g:Label addStyleNames="{style.lblUser}">Username: </g:Label>
+				<g:Label addStyleNames="{style.lblPass}">Password: </g:Label>
+			</g:VerticalPanel>
+			<g:VerticalPanel addStyleNames="{style.panelTxt}">
+				<g:TextBox ui:field="txtUser" addStyleNames="{style.txtPass}"/>
+				<g:PasswordTextBox ui:field="txtPassword" addStyleNames="{style.txtPass}"/>
+			</g:VerticalPanel>
+		</g:HorizontalPanel>
+		<g:HTMLPanel addStyleNames="{style.btn}">
+			<g:Button ui:field="btnConnect">Connection</g:Button>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

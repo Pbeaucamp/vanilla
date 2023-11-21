@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ktable
+Bundle-SymbolicName: de.kupzog.ktable
+Bundle-Version: 5.0.0
+Bundle-ClassPath: KTable-2.2.0.jar
+Export-Package: de.kupzog.ktable,
+ de.kupzog.ktable.editors,
+ de.kupzog.ktable.renderers
+ 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui

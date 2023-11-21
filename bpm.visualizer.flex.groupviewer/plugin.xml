@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Group Viewer"
+            id="GroupViewer">
+      </category>
+      <view
+            name="Groups Viewer"
+            icon="icons/sample.gif"
+            category="GroupViewer"
+            class="groupviewer.views.GroupViewerView"
+            id="groupviewer.views.GroupViewerView">
+      </view>
+      <view
+            class="groupviewer.views.StructureView"
+            icon="icons/sample.gif"
+            id="groupviewer.views.StructureView"
+            name="Structure view">
+      </view>
+      <view
+            category="CrossRef"
+            class="groupviewer.views.CrossRefView"
+            id="groupviewer.views.CrossRefView"
+            name="Relationnal Graph">
+      </view>
+      <category
+            id="CrossRef"
+            name="Cross Reference">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="adminBIRep.perspective.crossing">
+         <view
+               closeable="false"
+               id="groupviewer.views.CrossRefView"
+               relationship="stack"
+               relative="viewCrossing"
+               showTitle="true"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="groupviewer.factory.GroupViewPerspectiveFactory"
+            id="GroupViewer.perspectiveGroup"
+            name="Groups Viewer">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="groupviewer.views.ExportWizard"
+            icon="icons/sample.gif"
+            id="GroupViewer.flexWizard"
+            name="Export to flex">
+      </wizard>
+   </extension>
+
+</plugin>

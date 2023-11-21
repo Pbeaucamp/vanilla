@@ -1,0 +1,72 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.vanilla.workplace.client.admin.panel.project.PanelProject.MyStyle">
+		.titleInfos {
+		    border-bottom: 1px solid black;
+		    font-size: 25px;
+		    padding: 5px;
+		}
+		
+		.btnTop {
+			margin-right: 15px;
+		}
+				
+		.panelPackage {
+			padding: 20px;
+		}
+		
+		.panelProject {
+			background: none repeat scroll 0 0 #E6E6E6;
+		    border: 1px solid #BDBDBD;
+		    bottom: 10px;
+		    overflow: auto;
+		    position: absolute;
+		    top: 80px;
+		    width: 250px;
+		}
+		
+		.panelUsers {
+			bottom: 10px;
+    		left: 290px;
+		    position: absolute;
+		    right: 10px;
+		    top: 80px;
+			border: 1px solid black;
+			border-radius: 15px;
+		}
+		
+		.lstUsers {
+			bottom: 5px;
+		    left: 20px;
+		    position: absolute;
+		    top: 45px;
+		    width: 250px;
+		}
+		
+		.btnAddUser {
+			left: 280px;
+		    position: absolute;
+		    top: 50px;
+		}
+		
+		.btnRemoveUser {
+			left: 280px;
+		    position: absolute;
+		    top: 110px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelPackage}">
+		<g:Image ui:field="btnAddProject"/>
+		<g:Image ui:field="btnDeleteProject"/>
+		<g:Image ui:field="btnAddPackage"/>
+		<g:Image ui:field="btnDeletePackage"/>
+		<g:SimplePanel ui:field="panelProject" addStyleNames="{style.panelProject}"/>
+		<g:HTMLPanel ui:field="panelUsers" addStyleNames="{style.panelUsers}">
+			<g:Label ui:field="lblInfos" addStyleNames="{style.titleInfos}">Users on this package</g:Label>
+			<g:ListBox ui:field="lstUsers" addStyleNames="{style.lstUsers}" visibleItemCount="20"/>
+			<g:Image ui:field="btnAddUsers"/>
+			<g:Image ui:field="btnRemoveUser"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

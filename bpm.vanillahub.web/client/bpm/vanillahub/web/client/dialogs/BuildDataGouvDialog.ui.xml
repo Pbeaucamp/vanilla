@@ -1,0 +1,102 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+
+	<ui:with field='labelCommon' type='bpm.gwt.commons.client.I18N.LabelsConstants' />	
+	<ui:with field='labels' type='bpm.vanillahub.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.panelDetail {
+			text-align: center;
+		}
+		
+		.txtStep {
+			width: 800px;
+			height: 450px;
+			margin: 10px;
+			background-color: #E6E6E6;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 94%;
+		}
+		
+		.btnTop {
+			margin: auto;
+			width: 200px;
+			width: 350px;
+		}
+		
+		.btnBottom {
+			display: inline-block;
+			width: 150px;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.lbl {
+			margin-left: 5px;
+			margin-right: 5px;
+			display: inline-block;
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+			width: 94%;
+		}
+		
+		.panelDatasets {
+		    margin: 10px;
+	    	width: 650px;
+	    }
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelDetail}">
+		<g:Label ui:field="lblUrl"/>
+	    <my:TextHolderBox ui:field="txtQuery" placeHolder="{labels.Query}" addStyleNames="{style.txt}"/>
+	    <my:TextHolderBox ui:field="txtFormat" placeHolder="{labelCommon.Format}" addStyleNames="{style.txt}"/>
+	    <my:TextHolderBox ui:field="txtPageSize" placeHolder="{labels.PageSize}" addStyleNames="{style.txt}"/>
+	    <g:ListBox ui:field="lstSort" addStyleNames="{style.lst}"/>
+	    <g:Button ui:field="btnLoadDatasets" text="{labels.LoadDatasets}" addStyleNames="{style.btn}, {style.btnTop}"/>
+	    <g:SimplePanel ui:field="panelDatasets" addStyleNames="{style.panelDatasets}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

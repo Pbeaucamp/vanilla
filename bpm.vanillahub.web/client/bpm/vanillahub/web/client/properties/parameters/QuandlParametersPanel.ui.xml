@@ -1,0 +1,80 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.vanillahub.web.client.I18N.Labels' />
+	<ui:with field='labelCommon' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:with field='resources' type='bpm.gwt.workflow.commons.client.images.Images' />
+	
+	<ui:style type="bpm.vanillahub.web.client.properties.parameters.QuandlParametersPanel.MyStyle">
+		.lblParam {
+		    font-weight: bold;
+	    	margin: 3px;
+		}
+		
+		.panelParam {
+	    	margin-top: 10px;
+		}
+		
+		.txt {
+		    -moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+	        margin: 5px 1%;
+	        width: 450px;
+		}
+		
+		.txt:FOCUS {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+	
+		.checkbox {
+		    display: inline-flex;
+		    height: 20px;
+    		margin: 22px 8px 10px;
+		}
+		
+		.lblHelp {
+			font-size: 10px;
+		}
+		
+		.toolbarPanel {
+		    height: 50px;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height:36px !important;
+			width: 36px !important;
+			background-position: center !important;
+			padding: 7px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel">
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnAdd" resource="{resources.ic_add_circle_outline_black_18dp}" title="{label.AddValue}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>
+		<g:Label text="{labelCommon.Parameters}" addStyleNames="{style.lblParam}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

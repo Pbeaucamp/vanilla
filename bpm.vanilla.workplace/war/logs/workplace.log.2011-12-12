@@ -1,0 +1,178 @@
+2011-12-12 10:11:56,343 18948 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-12 10:11:56,346 18951 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-12 10:11:56,472 19077 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-12 10:11:56,519 19124 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-12 10:11:56,567 19172 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-12 10:11:57,017 19622 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-12 10:11:57,356 19961 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-12 10:11:57,787 20392 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-12 10:11:58,048 20653 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8kdqvaeo14m3n6a|9c4289, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8kdqvaeo14m3n6a|9c4289, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-12 10:11:59,067 21672 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-12 10:11:59,257 21862 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-12 10:11:59,390 21995 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-12 10:11:59,403 22008 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-12 10:11:59,523 22128 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-12 10:12:00,596 23201 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id db3f52bf-a04b-4d5a-85bc-9f229ed386ef for user user
+2011-12-12 10:12:00,598 23203 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 10:12:00,598 23203 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : db3f52bf-a04b-4d5a-85bc-9f229ed386ef
+2011-12-12 10:42:31,744 205477 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-12 10:42:31,745 205478 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-12 10:42:31,769 205502 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-12 10:42:31,776 205509 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-12 10:42:31,793 205526 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-12 10:42:31,912 205645 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-12 10:42:31,983 205716 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-12 10:42:32,318 206051 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-12 10:42:32,425 206158 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8kdrym164bzsd6|195d8b2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8kdrym164bzsd6|195d8b2, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-12 10:42:32,949 206682 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-12 10:42:32,957 206690 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-12 10:42:32,962 206695 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-12 10:42:32,967 206700 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-12 10:42:32,973 206706 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-12 10:42:33,231 206964 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 3d0bca82-3361-48fe-b5c7-4d6075756377 for user user
+2011-12-12 10:42:33,232 206965 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 10:42:33,232 206965 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 3d0bca82-3361-48fe-b5c7-4d6075756377
+2011-12-12 10:46:22,632 436365 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 84b71e1b-343a-4bd6-9307-a56cd1571c93 for user user
+2011-12-12 10:46:22,632 436365 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 10:46:22,632 436365 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 84b71e1b-343a-4bd6-9307-a56cd1571c93
+2011-12-12 10:49:35,801 629534 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 6fdea48a-bdcd-48c0-86f2-2f0ef4890449 for user user
+2011-12-12 10:49:35,801 629534 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 10:49:35,801 629534 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 6fdea48a-bdcd-48c0-86f2-2f0ef4890449
+2011-12-12 11:07:25,043 24453 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-1:) Log4j inited with file conf/log.xml
+2011-12-12 11:07:25,044 24454 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-1:) Logger has finished initalizing.
+2011-12-12 11:07:25,069 24479 INFO  [org.springframework.core.CollectionFactory] (btpool0-1:) JDK 1.4+ collections available
+2011-12-12 11:07:25,075 24485 INFO  [org.springframework.core.CollectionFactory] (btpool0-1:) Commons Collections 3.x available
+2011-12-12 11:07:25,094 24504 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-1:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-12 11:07:25,222 24632 INFO  [com.mchange.v2.log.MLog] (btpool0-1:) MLog clients using log4j logging.
+2011-12-12 11:07:25,283 24693 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-1:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-12 11:07:25,501 24911 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-1:) Building new Hibernate SessionFactory
+2011-12-12 11:07:25,726 25136 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-1:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8kdsum9o1dbdhjl|7d4335, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8kdsum9o1dbdhjl|7d4335, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-12 11:07:26,225 25635 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-1:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-12 11:07:26,230 25640 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-1:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-12 11:07:26,236 25646 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-1:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-12 11:07:26,242 25652 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-1:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-12 11:07:26,247 25657 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-1:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-12 11:07:26,615 26025 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-1:) Creating session with id 3769b1fe-4b3b-4167-befd-91d08a48514f for user user
+2011-12-12 11:07:26,616 26026 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-1:) Workplace Session created.
+2011-12-12 11:07:26,616 26026 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-1:) Setting current sessionId : 3769b1fe-4b3b-4167-befd-91d08a48514f
+2011-12-12 11:12:50,237 349647 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-1:) Creating session with id fb79e41c-a90f-40fb-8338-6226a61b9c7b for user user
+2011-12-12 11:12:50,238 349648 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-1:) Workplace Session created.
+2011-12-12 11:12:50,238 349648 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-1:) Setting current sessionId : fb79e41c-a90f-40fb-8338-6226a61b9c7b
+2011-12-12 11:21:26,920 866330 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-1:) Creating session with id d117ffb4-fb1e-48bc-9d90-19f04367fd03 for user user
+2011-12-12 11:21:26,921 866331 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-1:) Workplace Session created.
+2011-12-12 11:21:26,921 866331 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-1:) Setting current sessionId : d117ffb4-fb1e-48bc-9d90-19f04367fd03
+2011-12-12 11:24:35,043 1054453 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-1:) Creating session with id bdafd9cb-0772-436b-ba33-a30ca112865a for user user
+2011-12-12 11:24:35,043 1054453 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-1:) Workplace Session created.
+2011-12-12 11:24:35,043 1054453 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-1:) Setting current sessionId : bdafd9cb-0772-436b-ba33-a30ca112865a
+2011-12-12 11:49:04,527 13758 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-12 11:49:04,529 13760 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-12 11:49:04,554 13785 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-12 11:49:04,560 13791 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-12 11:49:04,579 13810 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-12 11:49:04,716 13947 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-12 11:49:04,775 14006 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-12 11:49:04,994 14225 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-12 11:49:05,232 14463 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8kduc6w11iuybgt|18563df, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8kduc6w11iuybgt|18563df, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-12 11:49:05,655 14886 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-12 11:49:05,659 14890 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-12 11:49:05,665 14896 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-12 11:49:05,671 14902 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-12 11:49:05,676 14907 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-12 11:49:06,078 15309 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 933eed72-2c1f-4a96-bd43-58f040b52331 for user user
+2011-12-12 11:49:06,079 15310 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 11:49:06,079 15310 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 933eed72-2c1f-4a96-bd43-58f040b52331
+2011-12-12 11:54:46,957 356188 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id a32a8c2e-0c31-45c6-b411-9df83e280d0a for user user
+2011-12-12 11:54:46,958 356189 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 11:54:46,959 356190 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : a32a8c2e-0c31-45c6-b411-9df83e280d0a
+2011-12-12 11:57:25,109 514340 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 38434ac2-1a9a-44b6-bf34-73488a3b5c26 for user user
+2011-12-12 11:57:25,109 514340 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 11:57:25,110 514341 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 38434ac2-1a9a-44b6-bf34-73488a3b5c26
+2011-12-12 11:59:20,255 629486 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id a2a2d99a-93a4-49a4-8013-51dd9152195d for user user
+2011-12-12 11:59:20,255 629486 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 11:59:20,256 629487 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : a2a2d99a-93a4-49a4-8013-51dd9152195d
+2011-12-12 15:14:23,724 20588 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Log4j inited with file conf/log.xml
+2011-12-12 15:14:23,739 20603 INFO  [bpm.vanilla.workplace.server.config.PlaceConfiguration] (btpool0-0:) Logger has finished initalizing.
+2011-12-12 15:14:23,825 20689 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) JDK 1.4+ collections available
+2011-12-12 15:14:23,863 20727 INFO  [org.springframework.core.CollectionFactory] (btpool0-0:) Commons Collections 3.x available
+2011-12-12 15:14:23,887 20751 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (btpool0-0:) Loading XML bean definitions from class path resource [applicationContext.xml]
+2011-12-12 15:14:24,301 21165 INFO  [com.mchange.v2.log.MLog] (btpool0-0:) MLog clients using log4j logging.
+2011-12-12 15:14:24,362 21226 INFO  [com.mchange.v2.c3p0.C3P0Registry] (btpool0-0:) Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2011-12-12 15:14:24,912 21776 INFO  [org.springframework.orm.hibernate3.LocalSessionFactoryBean] (btpool0-0:) Building new Hibernate SessionFactory
+2011-12-12 15:14:25,024 21888 INFO  [com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource] (btpool0-0:) Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 10, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge18c8ke1o8qr1ne2jjq|b7468d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge18c8ke1o8qr1ne2jjq|b7468d, idleConnectionTestPeriod -> 30, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/vanilla_workplace, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 50, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> SELECT 1, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> true, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2011-12-12 15:14:25,947 22811 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userDAO succeed
+2011-12-12 15:14:25,963 22827 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean packageDAO succeed
+2011-12-12 15:14:25,976 22840 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean projectDAO succeed
+2011-12-12 15:14:26,033 22897 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean logDAO succeed
+2011-12-12 15:14:26,064 22928 INFO  [bpm.vanilla.workplace.server.AdminServiceImpl] (btpool0-0:) ServiceChecking Load SpringBean userPackageDAO succeed
+2011-12-12 15:14:26,688 23552 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 643f6257-69a5-46b7-b836-930245dfe460 for user user
+2011-12-12 15:14:26,690 23554 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:14:26,690 23554 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 643f6257-69a5-46b7-b836-930245dfe460
+2011-12-12 15:18:58,180 295044 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 4b0516bb-4530-474b-8eb9-48e90a342db3 for user user
+2011-12-12 15:18:58,181 295045 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:18:58,181 295045 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 4b0516bb-4530-474b-8eb9-48e90a342db3
+2011-12-12 15:21:22,243 439107 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 72f456a9-c957-4bb4-9528-582c54fcf1f2 for user user
+2011-12-12 15:21:22,243 439107 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:21:22,243 439107 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 72f456a9-c957-4bb4-9528-582c54fcf1f2
+2011-12-12 15:28:05,102 841966 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 6da25e75-1f0e-4718-b922-370f6f121443 for user user
+2011-12-12 15:28:05,102 841966 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:28:05,102 841966 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 6da25e75-1f0e-4718-b922-370f6f121443
+2011-12-12 15:28:58,962 895826 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id f77f1c93-5e12-4315-92a6-8594f884913b for user user
+2011-12-12 15:28:58,963 895827 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:28:58,963 895827 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : f77f1c93-5e12-4315-92a6-8594f884913b
+2011-12-12 15:30:31,311 988175 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 4c3fda9d-a677-4704-8ecc-3a4ca44d4ce2 for user user
+2011-12-12 15:30:31,312 988176 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:30:31,312 988176 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 4c3fda9d-a677-4704-8ecc-3a4ca44d4ce2
+2011-12-12 15:38:44,907 1481771 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id b57b6a43-bea7-4d73-b7c5-6084cc6d29af for user user
+2011-12-12 15:38:44,907 1481771 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:38:44,907 1481771 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : b57b6a43-bea7-4d73-b7c5-6084cc6d29af
+2011-12-12 15:43:07,195 1744059 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 618c8324-0cf8-409f-a095-c8584d0cc06f for user user
+2011-12-12 15:43:07,195 1744059 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:43:07,195 1744059 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 618c8324-0cf8-409f-a095-c8584d0cc06f
+2011-12-12 15:45:40,087 1896951 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id cf8041e7-abf5-4521-82b5-530312670a49 for user user
+2011-12-12 15:45:40,088 1896952 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:45:40,088 1896952 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : cf8041e7-abf5-4521-82b5-530312670a49
+2011-12-12 15:47:50,668 2027532 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id b7c4c588-efd5-454e-814a-7b4055cc6c32 for user user
+2011-12-12 15:47:50,668 2027532 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:47:50,669 2027533 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : b7c4c588-efd5-454e-814a-7b4055cc6c32
+2011-12-12 15:49:44,179 2141043 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id d311e924-af34-4aa5-be14-c4c446d7192d for user user
+2011-12-12 15:49:44,180 2141044 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:49:44,180 2141044 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : d311e924-af34-4aa5-be14-c4c446d7192d
+2011-12-12 15:56:56,070 2572934 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id a6d749ea-7c93-401a-8876-cd5d17182003 for user user
+2011-12-12 15:56:56,071 2572935 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 15:56:56,071 2572935 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : a6d749ea-7c93-401a-8876-cd5d17182003
+2011-12-12 16:07:27,477 3204341 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id dc847f0c-d2e7-4fa7-b01d-a5fb1590cf9b for user user
+2011-12-12 16:07:27,477 3204341 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:07:27,477 3204341 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : dc847f0c-d2e7-4fa7-b01d-a5fb1590cf9b
+2011-12-12 16:11:54,999 3471863 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 7b3b4abf-24ab-4d83-9d24-cbec0b4f485c for user user
+2011-12-12 16:11:55,000 3471864 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:11:55,000 3471864 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 7b3b4abf-24ab-4d83-9d24-cbec0b4f485c
+2011-12-12 16:13:25,616 3562480 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 31a72e74-b349-40be-99e1-386ba34a3847 for user user
+2011-12-12 16:13:25,617 3562481 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:13:25,617 3562481 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 31a72e74-b349-40be-99e1-386ba34a3847
+2011-12-12 16:20:56,043 4012907 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 86ddef75-fec6-40e8-a77b-4810a890d69c for user user
+2011-12-12 16:20:56,043 4012907 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:20:56,044 4012908 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 86ddef75-fec6-40e8-a77b-4810a890d69c
+2011-12-12 16:24:12,555 4209419 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 2a70143a-78e9-4a55-958e-85df1c19137f for user user
+2011-12-12 16:24:12,555 4209419 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:24:12,555 4209419 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 2a70143a-78e9-4a55-958e-85df1c19137f
+2011-12-12 16:29:16,005 4512869 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 8921a2e2-4114-4f4e-888a-6fe4f2ffc79f for user user
+2011-12-12 16:29:16,005 4512869 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:29:16,005 4512869 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 8921a2e2-4114-4f4e-888a-6fe4f2ffc79f
+2011-12-12 16:30:18,162 4575026 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 96710a6c-b050-4189-91e8-b59137cf92a6 for user user
+2011-12-12 16:30:18,162 4575026 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:30:18,162 4575026 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 96710a6c-b050-4189-91e8-b59137cf92a6
+2011-12-12 16:36:51,792 4968656 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 2a9c1d03-9fa7-4157-ab0c-5ad432ed84c5 for user user
+2011-12-12 16:36:51,793 4968657 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:36:51,793 4968657 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 2a9c1d03-9fa7-4157-ab0c-5ad432ed84c5
+2011-12-12 16:37:39,706 5016570 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 1e8282fc-e1df-4512-877c-3d7271f9de69 for user user
+2011-12-12 16:37:39,707 5016571 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:37:39,707 5016571 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 1e8282fc-e1df-4512-877c-3d7271f9de69
+2011-12-12 16:38:01,500 5038364 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 3140dcc4-6e00-4de2-8b6c-91b0213b4d07 for user user
+2011-12-12 16:38:01,501 5038365 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 16:38:01,501 5038365 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 3140dcc4-6e00-4de2-8b6c-91b0213b4d07
+2011-12-12 17:04:48,431 6645295 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 1e42c7f8-e252-4b45-92fc-ca84378678c6 for user user
+2011-12-12 17:04:48,432 6645296 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 17:04:48,432 6645296 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 1e42c7f8-e252-4b45-92fc-ca84378678c6
+2011-12-12 17:27:27,432 8004296 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionManager] (btpool0-0:) Creating session with id 95599465-9862-43b2-b071-23d5533cab32 for user user
+2011-12-12 17:27:27,433 8004297 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSession] (btpool0-0:) Workplace Session created.
+2011-12-12 17:27:27,433 8004297 INFO  [bpm.vanilla.workplace.server.security.WorkplaceSessionHelper] (btpool0-0:) Setting current sessionId : 95599465-9862-43b2-b071-23d5533cab32

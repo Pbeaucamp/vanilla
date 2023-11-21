@@ -1,0 +1,328 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IVisualGraph.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span> <span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">display</span>.<span class="ActionScriptDefault_Text">Graphics</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Rectangle</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">IFactory</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">IInvalidating</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">IUIComponent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">UIComponent</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">IGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span>.<span class="ActionScriptDefault_Text">ILayoutAlgorithm</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Interface to the VisualGraph Flex Component,
+     * which also has to implement the IUIComponent
+     * and the IInvalidating interface.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IVisualGraph</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">IUIComponent</span>, <span class="ActionScriptDefault_Text">IInvalidating</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Access to the underlying Graph datastructure object.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">graph</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGraph</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">graph</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">g</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGraph</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * provide access to the graphics object of
+         * the drawing surface for the edge drawing, needed
+         * by edge renderers.
+         * @returns The graphics object of the drawing surface.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">edgeDrawGraphics</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Graphics</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * provide access to the drawing surface.
+         * This is important as it should not be scaled.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">drawingSurface</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">UIComponent</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Allow the provision of an ItemRenderer (which is
+         * more precisely an IFactory). This is important to allow
+         * the Drawing of the items in a customised way.
+         * Note that any ItemRenderer will have to be a UIComponent.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">itemRenderer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ifac</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IFactory</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">itemRenderer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IFactory</span>;
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * Allow the provision of an EdgeRenderer to
+         * allow drawing of edges in a customised way.
+         * The edgeRenderer has to implement the IEdgeRenderer interface.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">edgeRenderer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">er</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdgeRenderer</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">edgeRenderer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdgeRenderer</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Allow to provide an EdgeLabelRenderer in order to
+         * display edge labels. The created instances must be
+         * UIComponents.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">edgeLabelRenderer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">elr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IFactory</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">edgeLabelRenderer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IFactory</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Specify whether to display edge labels or not.
+         * If no edge label renderer is present a default
+         * will be used.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">displayEdgeLabels</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">del</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">displayEdgeLabels</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Access to the layouter to be used for the
+         * layout of the graph.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">layouter</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ILayoutAlgorithm</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>        
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">layouter</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">l</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ILayoutAlgorithm</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Provide access to the current origin of the of the Visual Graph
+         * which is required for proper drawing.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">origin</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Provide access to the center point of the VGraph&apos;s
+         * drawing surface, used by layouters to properly center
+         * their layout.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">center</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Provide access to a list of currently visible VNodes.
+         * This is very important for layouters, if we have many many
+         * nodes, but only a few of them are visible at a time. Layouters
+         * typically will only layout the currently visible nodes.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">visibleVNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Returns the number of currently visible nodes.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">noVisibleVNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Provide access to a list of currently visible edges,
+         * i.e. edges whose both nodes are visible and thus need
+         * to be drawn. Likewise this can save a lot of CPU if
+         * the layouter only needs to consider the currently visible
+         * edges.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">visibleVEdges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * This property controls whether to show the history of
+         * root nodes (or focused nodes) or not. If enabled, these
+         * previous root nodes will be shown even though they are
+         * are now more degrees of separation away from the current
+         * root node than the limit allows. Also any intermediate node
+         * from a previous root node to the current root node will
+         * be shown to have a complete link and not a disconnected graph.
+         * @see maxVisibleDistance
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">showHistory</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">showHistory</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">h</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Set or get the current root node (or focused node). Setting
+         * this property will result in a redraw of the graph to reflect
+         * the change (if it was actually a change).
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">currentRootVNode</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">currentRootVNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Specifies if any visibility limits should be active
+         * or not. If not active, always all nodes are visible.
+         * If you have many nodes, this could have a severe
+         * impact on your performance so handle with care.
+         * @default true
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">visibilityLimitActive</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">visibilityLimitActive</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ac</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Limit the currently visible nodes to those in a limited
+         * distance (in terms of degrees of separation) from the current
+         * root node. If showHistory is enabled, the previous root nodes
+         * will be shown regardless of this limit. 
+         * @see showHistory
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">maxVisibleDistance</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">maxVisibleDistance</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">md</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The scale property of VGraph will affect
+         * the scaleX and scaleY properties and also
+         * will ensure drag&amp;drop works properly.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">scale</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">scale</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">s</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Initializes the VisualGraph from its currently set Graph object,
+         * basically removing all existing VNodes and VEdges and
+         * recreating them based on the information found in the associated
+         * Graph object.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initFromGraph</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Clears the current history of root nodes.
+         * @see showHistory
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">clearHistory</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Create a new Node in this VisualGraph, this automatically
+         * creates an underlying Node in the Graph object. It does not
+         * link the node to any other node, yet and it does not trigger
+         * a layout pass. The reason is that currently all layouters require
+         * a CONNECTED graph, since the new node would create a disconnected
+         * graph (since it is not linked, yet) this would break things.
+         * @param sid The string id of the new node.
+         * @param o The data object of this new node.
+         * @return The created VisualNode object.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">createNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;&quot;</span>, <span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Removes a node from this VisualGraph. This removes any associated
+         * VEdges and Edges with the node and of course the underlying Node from
+         * the Graph datastructure.
+         * @param vn The VisualNode to be removed.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Links two nodes, thus creating an edge. If the underlying Graph
+         * is directional, the order matters, not otherwise. If the nodes are
+         * already linked, simply returns the existing edge between them.
+         * @param v1 The first node (from node) to link.
+         * @param v2 The second node (to node) to link.
+         * @return The created VisualEdge.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">linkNodes</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>, <span class="ActionScriptDefault_Text">v2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualEdge</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Unlinks two nodes, thus removing the edge between them, if it
+         * exists. Does nothing if the nodes were not linked.
+         * Again, order matters of the graph is directional.
+         * @param v1 The first node to unlink.
+         * @param v2 The second node to unlink.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">unlinkNodes</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>, <span class="ActionScriptDefault_Text">v2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+    
+        <span class="ActionScriptASDoc">/**
+         * Calling this results in a redrawing of all edges during the next
+         * update cycle (and only the edges).
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">refresh</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Calling this forces a full calculation and redraw of the layout
+         * including all edges.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">draw</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">flags</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">uint</span> <span class="ActionScriptOperator">=</span> 0<span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * This forces a redraw of all edges */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">redrawEdges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Calculate and return the current bounding box of all visible nodes.
+         * This is required by some layouters.
+         * @return The bounding box rectangle of all visible nodes.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calcNodesBoundingBox</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Rectangle</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Scrolls all objects according to the specified coordinates
+         * (used as an offset).
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">scroll</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sx</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>, <span class="ActionScriptDefault_Text">sy</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

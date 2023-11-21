@@ -1,0 +1,80 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.vanillahub.web.client.utils">
+	
+	<ui:with field='label' type='bpm.vanillahub.web.client.I18N.Labels' />
+	
+	<ui:style>
+		
+		.error {
+		    color: #FF0000;
+	    	margin-left: 20px;
+		}
+		
+		.lst {
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 0;
+		    outline: 0 none;
+		    padding: 0.85em 1em;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+    		margin: 5px 0 5px 1%;
+	        display: inline-block;
+	        vertical-align: top;
+			width: 98%;
+		}
+		
+		.txtDescription {
+		    background-color: #FCF6DB;
+		    margin: 5px 0 5px 1%;
+		    resize: none;
+		    width: 98%;
+		    height: 150px;
+		}
+		
+		.btnTop {
+			margin: auto;
+			width: 200px;
+			width: 350px;
+		}
+		
+		.lbl {
+			margin-left: 5px;
+			margin-right: 5px;
+			display: inline-block;
+		}
+		
+		.lblPage {
+			cursor: pointer;
+		}
+		
+		.lblPage:HOVER {
+			font-weight: bold;
+		}
+		
+		.focus {
+	    	display: inline-block;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+		    <g:FocusPanel ui:field="btnPrevious" addStyleNames="{style.focus}">
+		    	<g:Label text="{label.LowerCharacter}" addStyleNames="{style.lblPage}"/>
+		    </g:FocusPanel>
+			<g:Label ui:field="lblPageNumber" addStyleNames="{style.lbl}"/>
+		    <g:FocusPanel ui:field="btnNext" addStyleNames="{style.focus}">
+		    	<g:Label text="{label.HigherCharacter}" addStyleNames="{style.lblPage}"/>
+		    </g:FocusPanel>
+	    </g:HTMLPanel>
+		<g:ListBox ui:field="lstDatasets" addStyleNames="{style.lst}"/>
+		<g:TextArea ui:field="txtDatasetDescription" enabled="false" addStyleNames="{style.txtDescription}"/>
+		<g:ListBox ui:field="lstResources" addStyleNames="{style.lst}"/>
+		<g:TextArea ui:field="txtResourceDescription" enabled="false" addStyleNames="{style.txtDescription}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

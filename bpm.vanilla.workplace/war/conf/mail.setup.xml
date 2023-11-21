@@ -1,0 +1,19 @@
+<mail>
+	<!-- This is the address of your SMTP email server for sending email. e.g. smtp.bpm-conseil.com -->
+	<smtp>smtp.orange.fr</smtp>
+
+	<!-- This is the default 'from' address that emails from vanilla will appear to come from e.g. vanilla@bpm-conseil.com -->
+	<mailing>vanilla@bpm-conseil.com</mailing>
+	
+	<!-- Set to true if the email server requires the sender to authenticate -->
+	<authentification>false</authentification>
+	
+	<!-- User name -->
+	<user></user>
+	
+	<!-- User password -->
+	<password></password>
+	
+	<!-- Used port -->
+	<port>25</port>
+</mail>

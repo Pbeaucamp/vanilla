@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Specifics
+Bundle-SymbolicName: bpm.vanillahub.runtime.specifics
+Bundle-Version: 1.0.0
+Automatic-Module-Name: bpm.vanillahub.runtime.specifics
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: libs/json-20080701.jar,
+ .,
+ libs/jsoup-1.14.3.jar
