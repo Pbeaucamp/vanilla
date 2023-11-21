@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fwr.client.dialogs.ChooseSaveAsFwrOrBirtDialogBox.MyStyle">
+		.img {
+			margin: 10px 40px;
+			cursor: pointer;
+		}
+		
+		.lblFwr {
+		    margin-left: 30px;
+	    	text-align: center;
+		}
+		
+		.lblBirt {
+	    	margin-left: 40px;
+    		text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel"/>
+</ui:UiBinder> 

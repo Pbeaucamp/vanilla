@@ -1,0 +1,101 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.fd.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.splitPanel {
+		    display: inline-block;
+		    margin-top: 10px;
+		    vertical-align: top;
+		    width: 30%;
+		}
+		
+		.splitPanelBig {
+		    display: inline-block;
+		    margin-top: 10px;
+		    vertical-align: top;
+		    width: 60%;
+		}
+		
+		.check {
+	   		display: inline-block;
+    		width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:SectionPanel ui:field="panelGeneral" text="{labels.GeneralOptions}">
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:CustomCheckbox ui:field="showLabel" text="{labels.ShowLabel}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="multiLineLabels" text="{labels.MultiLineLabels}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:CustomCheckbox ui:field="showValues" text="{labels.ShowValues}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="showBorder" text="{labels.ShowBorder}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:CustomCheckbox ui:field="dynamicLegend" text="{labels.DynamicLegend}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="exportEnable" text="{labels.ExportEnable}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:ColorPanel ui:field="bgColor" text="{labels.BackgroundColor}" alignRight="true"/>
+				<my:ColorPanel ui:field="borderColor" text="{labels.BorderColor}" alignRight="true"/>
+				<my:ColorPanel ui:field="baseFontColor" text="{labels.BaseFontColor}" alignRight="true"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:LabelValueTextBox ui:field="bgAlpha" placeHolder="{labels.BackgroundAlpha}"/>
+				<my:LabelValueTextBox ui:field="bgSWFAlpha" placeHolder="{labels.BackgroundSwAlpha}"/>
+			</g:HTMLPanel>
+		
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:LabelValueTextBox ui:field="borderThickness" placeHolder="{labels.BorderThickness}"/>
+				<my:LabelValueTextBox ui:field="baseFontSize" placeHolder="{labels.BaseFontSize}"/>
+				<my:LabelValueTextBox ui:field="labelSize" placeHolder="{labels.LabelSize}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+		<my:SectionPanel ui:field="panelPie" text="{labels.PieOptions}">
+			<my:LabelValueTextBox ui:field="slicingDistance" placeHolder="{labels.SlicingDistance}" addStyleNames="{style.splitPanel}"/>
+			<my:LabelValueTextBox ui:field="pieSliceDepth" placeHolder="{labels.PieSliceDepth}" addStyleNames="{style.splitPanel}"/>
+			<my:LabelValueTextBox ui:field="pieRadius" placeHolder="{labels.PieRadius}" addStyleNames="{style.splitPanel}"/>
+		</my:SectionPanel>
+		<my:SectionPanel ui:field="panelNoPie" text="{labels.Options}">
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:CustomCheckbox ui:field="rotateLabels" text="{labels.RotateLabels}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="rotateValues" text="{labels.RotateValues}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="rotateYAxisName" text="{labels.RotateYAxisName}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.splitPanelBig}">
+				<my:CustomCheckbox ui:field="slantLabels" text="{labels.SlantLabels}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="placeValuesInside" text="{labels.PlaceValuesInside}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			
+			<my:LabelTextBox ui:field="PYAxisName" placeHolder="{labels.PrincipalYAxisName}" addStyleNames="{style.splitPanel}"/>
+			<my:LabelTextBox ui:field="SYAxisName" placeHolder="{labels.SecondaryYAxisName}" addStyleNames="{style.splitPanel}"/>
+			<my:LabelTextBox ui:field="xAxisName" placeHolder="{labels.XAxisName}" addStyleNames="{style.splitPanel}"/>
+			
+			<my:LabelTextBox ui:field="lineSerieName" placeHolder="{labels.LineSerieName}"/>
+		</my:SectionPanel>
+		<my:SectionPanel ui:field="panelNumberFormat" text="{labels.NumberFormat}">
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:CustomCheckbox ui:field="formatNumber" text="{labels.FormatNumber}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="formatNumberScale" text="{labels.FormatNumberScale}" addStyleNames="{style.check}"/>
+				<my:CustomCheckbox ui:field="forceDecimal" text="{labels.ForceDecimal}" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:LabelTextBox ui:field="decimalSeparator" placeHolder="{labels.DecimalSeparator}"/>
+				<my:LabelTextBox ui:field="thousandSeparator" placeHolder="{labels.ThousandSeparator}"/>
+				<my:LabelValueTextBox ui:field="decimals" placeHolder="{labels.Decimals}"/>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel addStyleNames="{style.splitPanel}">
+				<my:LabelTextBox ui:field="numberPrefix" placeHolder="{labels.NumberPrefix}"/>
+				<my:LabelTextBox ui:field="numberSuffix" placeHolder="{labels.NumberSuffix}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

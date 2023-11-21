@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='i18n' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		.lstLocale {
+			height: 25px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:ListBox ui:field="listLocale" addStyleNames="{style.lstLocale}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

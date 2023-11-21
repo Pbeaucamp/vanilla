@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.forms.design.ui.perspectives.DesignPerspective"
+            icon="src/bpm/forms/design/ui/icons/forms.png"
+            id="bpm.forms.design.ui.perspectives.DesignPerspective"
+            name="%perspective.forms.name">
+            <description>
+               %perspective.forms.description
+            </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="bpm.forms.design.ui.views.ContentView"
+            id="bpm.forms.design.ui.views.ContentView"
+            name="%view.forms.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            class="bpm.forms.design.ui.decorators.DelayPassedDecorator"
+            icon="src/bpm/forms/design/ui/icons/warning.png"
+            id="bpm.forms.design.ui.decorator1"
+            label="label"
+            lightweight="true"
+            location="BOTTOM_LEFT"
+            state="true">
+         <enablement>
+            <objectClass
+                  name="bpm.forms.core.design.IForm">
+            </objectClass>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>

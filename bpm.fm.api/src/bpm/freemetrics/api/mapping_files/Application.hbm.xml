@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.application.Application"
+		table="fm_application">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="AD_ID" />
+			
+				<generator class="increment"/>
+			
+		</id>
+		<property name="adCalendarId" type="java.lang.Integer">
+			<column name="AD_CALENDAR_ID" />
+		</property>
+		<property name="adDsId" type="java.lang.Integer">
+			<column name="AD_DS_ID" />
+		</property>
+		<property name="adAlternateDsId" type="java.lang.Integer">
+			<column name="AD_ALTERNATE_DS_ID" />
+		</property>
+		<property name="adBusinessCode" type="java.lang.String">
+			<column name="AD_BUSINESS_CODE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="AD_BUSINESS_NAME" />
+		</property>
+		<property name="adBusinessDefinition" type="java.lang.String">
+			<column name="AD_BUSINESS_DEFINITION" />
+		</property>
+		<property name="adBusinessComment" type="java.lang.String">
+			<column name="AD_BUSINESS_COMMENT" />
+		</property>
+		<property name="adBusinessTargetUser" type="java.lang.String">
+			<column name="AD_BUSINESS_TARGET_USER" />
+		</property>
+		<property name="adBusinessRequestorId" type="java.lang.Integer">
+			<column name="AD_BUSINESS_REQUESTOR_ID" />
+		</property>
+		<property name="adRequestDate" type="date">
+			<column name="AD_REQUEST_DATE" />
+		</property>
+		<property name="adBusinessCreatorId" type="java.lang.Integer">
+			<column name="AD_BUSINESS_CREATOR_ID" />
+		</property>
+		<property name="adCreationDate" type="date">
+			<column name="AD_CREATION_DATE" />
+		</property>
+		<property name="adStatusId" type="java.lang.Integer">
+			<column name="AD_STATUS_ID" />
+		</property>
+		<property name="adProductionDate" type="date">
+			<column name="AD_PRODUCTION_DATE" />
+		</property>
+		<property name="adWithHistoricalData" type="java.lang.String">
+			<column name="AD_WITH_HISTORICAL_DATA" />
+		</property>
+		<property name="adReleaseNumber" type="java.lang.String">
+			<column name="AD_RELEASE_NUMBER" />
+		</property>
+		<property name="adNumberOfDashboards" type="java.lang.Integer">
+			<column name="AD_NUMBER_OF_DASHBOARDS" />
+		</property>
+		<property name="adNumberOfKeyIndicators" type="java.lang.Integer">
+			<column name="AD_NUMBER_OF_KEY_INDICATORS" />
+		</property>
+		<property name="adImage" type="java.lang.String">
+			<column name="AD_IMAGE" />
+		</property>
+		<property name="adIsVisible" type="java.lang.Boolean">
+			<column name="AD_IS_VISIBLE" />
+		</property>
+		<property name="adCustom1" type="java.lang.String">
+			<column name="AD_CUSTOM_1" />
+		</property>
+		<property name="adTypeTerrID" type="java.lang.Integer">
+			<column name="AD_TYPE_TERRITOIRE_ID" />
+		</property>
+		<property name="adTypeDecompTerrID" type="java.lang.Integer">
+			<column name="AD_TYPE_DEC_TERRITO_ID" />
+		</property>
+
+		<property name="ad_gl_Superficie" type="java.lang.String">
+			<column name="AD_GL_SUPERFICIE" />
+		</property>
+		<property name="ad_gl_Population" type="java.lang.String">
+			<column name="AD_GL_POPULATION" />
+		</property>
+		<property name="ad_gl_CodInsee" type="java.lang.String">
+			<column name="AD_GL_CODEINSEE" />
+		</property>
+		<property name="ad_gl_CodLocalisationX" type="java.lang.String">
+			<column name="AD_GL_CODELOCALISATIONX" />
+		</property>
+		<property name="ad_gl_CodLocalisationY" type="java.lang.String">
+			<column name="AD_GL_CODELOCALISATIONY" />
+		</property>
+		<property name="ad_gl_DecompTerrID" type="java.lang.Integer">
+			<column name="AD_GL_DECOMPO_TERRITOIRE_ID" />
+		</property>
+		<property name="endDate" type="java.util.Date">
+			<column name="AD_GL_ENDDATE" />
+		</property>
+		<property name="dtmAxeTable" type="java.lang.String">
+			<column name="AD_DTM_AXE_TABLE" />
+		</property>
+		<property name="dtmColName" type="java.lang.String">
+			<column name="AD_DTM_COL_NAME" />
+		</property>
+		<property name="dtmColCode" type="java.lang.String">
+			<column name="AD_DTM_COL_CODE" />
+		</property>
+		<property name="dtmColVersion" type="java.lang.String">
+			<column name="AD_DTM_COL_VERSION"></column>
+		</property>
+	</class>
+</hibernate-mapping>

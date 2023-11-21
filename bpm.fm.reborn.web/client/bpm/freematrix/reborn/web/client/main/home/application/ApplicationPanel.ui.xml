@@ -1,0 +1,65 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.freematrix.reborn.web.client.images.Images' />
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	
+	<ui:style>
+		.lblApplications{
+			padding: 9px 14px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #5F5F5F;
+			text-shadow: 0 1px 0 #FFF;
+			border: 1px solid #D4D4D4;
+			-webkit-box-shadow: 0 1px 0 #FFF;
+			-moz-box-shadow: 0 1px 0 #fff;
+			box-shadow: 0 1px 0 #FFF;
+			background-color: f5f5f5;
+			background-image: -moz-linear-gradient(top, white, #f5f5f5);
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
+			background-image: -webkit-linear-gradient(top, #FFF, #F5F5F5);
+			background-image: -o-linear-gradient(top, white, #f5f5f5);
+			background-image: linear-gradient(to bottom, #FFF, #F5F5F5);
+			background-repeat: repeat-x;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
+
+		}
+		
+		.applicationTree{
+			margin: 10px;
+		}
+		
+		.imgCollapse {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		
+		.imgExpand {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.imgCollapse:hover, .imgExpand:hover {
+			opacity: 0.4;
+
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblAxis" text="{label.axis}" addStyleNames="{style.lblApplications}"/>
+		<g:Image ui:field="imgExpand" title="{label.restore}" resource="{resources.ic_right_collapse}" addStyleNames="{style.imgExpand}"/>
+		<g:Image ui:field="imgCollapse" title="{label.reduce}" resource="{resources.ic_right_expand}" addStyleNames="{style.imgCollapse}"/>
+		<g:Tree ui:field="applicationTree" addStyleNames="{style.applicationTree}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

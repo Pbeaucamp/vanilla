@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fwr.client.dialogs.JoinDatasetDialogBox.MyStyle">
+		.lblDataset {
+	    	margin: 10px;
+		}
+		
+		.lstDataset {
+		    margin-left: 30px;
+	    	width: 170px;
+		}
+		
+		.lstColumns {
+		    height: 170px;
+		    margin-left: 30px;
+		    margin-top: 5px;
+		    width: 170px;
+		}
+		
+		.addColumn {
+		    margin-left: 22px;
+			margin-top: 5px;
+		}
+		
+		.lblActualCondition {
+		    margin: 10px;
+		}
+		
+		.lblCondition {
+	    	margin: 10px;
+		}
+		
+		.tblType {
+		    margin-left: 10px;
+	    	margin-top: 3px;
+		}
+		
+		.lstType {
+		    margin-left: 32px;
+	    	width: 100px;
+		}
+		
+		.tblOperator {
+		    margin-left: 10px;
+	    	margin-top: 3px;
+		}
+		
+		.lstOperator {
+		    margin-left: 32px;
+			width: 100px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel"/>
+</ui:UiBinder> 

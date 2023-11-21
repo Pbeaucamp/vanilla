@@ -1,0 +1,76 @@
+._datagrid_add {
+	color: #ffffff; /* same color as the surrounding text */
+	text-decoration: none; /* to remove the underline */
+	background-image: none;
+	background-repeat: no-repeat;
+	text-align: left;
+	
+	opacity : 0.4;
+	filter: alpha(opacity=40);
+}
+._datagrid_add:HOVER{
+	opacity : 0.9;
+	filter: alpha(opacity=100);
+}
+			
+._datagrid_del {
+	color: #ffffff; /* same color as the surrounding text */
+	text-decoration: none; /* to remove the underline */
+	background-image: none;
+	background-repeat: no-repeat;
+	text-align: left;
+	
+	
+	opacity : 0.4;
+	filter: alpha(opacity=40);
+}
+._datagrid_del:HOVER{
+	opacity : 0.9;
+	filter: alpha(opacity=100);
+	
+}
+._datagridMenu{
+	 visibility: hidden;
+	 text-decoration: none;
+	 border-width:0px;
+	 border-spacing: 0px;
+	 float: left;
+}
+._datagridMenuButton{
+ 	text-decoration: none;
+	border-width:0px;
+	 border-spacing: 0px;
+	 
+}
+
+.grid{
+	border-style: solid;
+	border-width:2px;
+	border-color: black;;
+	margin: 0px;
+	padding: 0px;
+	border-collapse: collapse;
+	empty-cells: hide;
+border-spacing: 0px;
+}
+.grid th{
+	border-style: solid;
+	border-width:2px;
+	border-color: black;
+	margin: 0px;
+	padding: 0px;
+	
+}
+.grid td{
+	border-style: solid;
+	border-width:1px;
+	border-color: black;
+	margin: 0px;
+	padding: 0px;
+}
+.grid input{
+	border-width:0px;
+	margin: 0px;
+	padding: 0px;
+	cellspacing: 0px;
+}

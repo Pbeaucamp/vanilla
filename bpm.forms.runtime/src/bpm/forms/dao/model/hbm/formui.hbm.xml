@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.model.impl.FormUIProperty" table="FORM_UI">
+            <id name="id" type="java.lang.Long">
+                <column name="FU_ID" />
+                 <generator class="increment"/>
+            </id>
+            <property name="formDefinitionId" type="java.lang.Long">
+                <column name="FU_FD_ID"/>
+            </property>
+			
+			<property name="formUiName" type="java.lang.String">
+                <column name="FU_UI_NAME"/>
+            </property>
+			
+            <property name="propertyName" type="java.lang.String">
+                <column name="FU_PROPERTY_NAME"/>
+            </property>
+            
+            <property name="propertyValue" type="java.lang.String">
+                <column name="FU_PROPERTY_VALUE"/>
+            </property>
+            
+           
+            
+  
+			
+    </class>
+</hibernate-mapping>

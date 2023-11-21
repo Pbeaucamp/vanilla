@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.favorites.UserPreference"
+		table="fm_user_preferences">
+		<id name="id" type="int">
+			<column name="MP_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="mpApplicationId" type="java.lang.Integer">
+			<column name="MP_APPLICATION_ID" />
+		</property>
+		<property name="mpUserId" type="java.lang.Integer">
+			<column name="MP_USER_ID" />
+		</property>
+		<property name="mpDateFrom" type="date">
+			<column name="MP_BEGIN_DATE" />
+		</property>
+		<property name="mpDateTo" type="date">
+			<column name="MP_END_DATE" />
+		</property>
+		<property name="mpAlertMethod" type="java.lang.String">
+			<column name="MP_ALERT_METHOD" />
+		</property>
+		<property name="mpAlertReference" type="java.lang.String">
+			<column name="MP_ALERT_REFERENCE" />
+		</property>
+		<property name="mpComment" type="java.lang.String">
+			<column name="MP_COMMENT" />
+		</property>
+		<property name="mpCreationDate" type="date">
+			<column name="MP_CREATION_DATE" />
+		</property>
+	</class>
+</hibernate-mapping>

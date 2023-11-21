@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:style>
+		
+		.pie{
+			background: url("webapps/freematrix_files/images/ic_pie.png")no-repeat top;
+		}
+		.bar{
+			background: url("webapps/freematrix_files/images/ic_bar.png")no-repeat top;
+		}
+		.detail{
+			background: url("webapps/freematrix_files/images/ic_info.png")no-repeat top;
+		}
+		.evolution{
+			background: url("webapps/freematrix_files/images/ic_evolution.png")no-repeat top;
+		}
+		.gauge{
+			background: url("webapps/freematrix_files/images/ic_gauge.png")no-repeat top;
+		}
+		.strategy{
+			background: url("webapps/freematrix_files/images/strategy.png")no-repeat top;
+		}
+		.gantt{
+			background: url("webapps/freematrix_files/images/gantt.png")no-repeat top;
+		}
+		.collaboration{
+			background: url("webapps/freematrix_files/images/collaboration.png")no-repeat top;
+		}
+		.map{
+			background: url("webapps/freematrix_files/images/map.png")no-repeat top;
+			padding-top: 30px !important;
+		}
+
+		.tabs{
+			font-size: 10px;
+			height: 40px;
+			background-size: 40px;
+			padding-top: 27px;
+			color: #E2EFFF;
+			border: none;
+			margin-bottom: 30px;
+			width: 80px;
+		}
+		.panel{
+			text-align: center;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Button ui:field="pieChart" text="{label.chart}" addStyleNames="{style.tabs} {style.pie}"/>
+		<g:Button ui:field="details" text="Details" addStyleNames="{style.tabs} {style.detail}"/>
+		<g:Button ui:field="evolution" text="Evolution" addStyleNames="{style.tabs} {style.evolution}"/>
+		<g:Button ui:field="gauge" text="{label.gauge}" addStyleNames="{style.tabs} {style.gauge}" />
+		<g:Button ui:field="map" text="{label.map}" addStyleNames="{style.tabs} {style.map}" />
+		<!-- <g:Button ui:field="strategy" text="Strategy" addStyleNames="{style.tabs} {style.strategy}" /> -->
+		<g:Button ui:field="gantt" text="Gantt" addStyleNames="{style.tabs} {style.gantt}" />
+		<g:Button ui:field="collaboration" text="Collaboration" addStyleNames="{style.tabs} {style.collaboration}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

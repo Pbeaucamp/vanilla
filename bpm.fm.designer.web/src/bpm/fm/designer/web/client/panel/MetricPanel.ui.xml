@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:bpm.fm.designer.web.client.panel">
+	
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel">
+		<b:AxisMetricsToolbar ui:field="toolbar" text="{label.Metrics}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

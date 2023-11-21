@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+
+	<!-- Servlets -->
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>Bpm_freematrix_reborn_web.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>ConnectionServices</servlet-name>
+		<servlet-class>bpm.freematrix.reborn.web.server.ConnectionServicesImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConnectionServices</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/ConnectionServices</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MetricService</servlet-name>
+		<servlet-class>bpm.freematrix.reborn.web.server.MetricServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MetricService</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/MetricService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>cssHelper</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cssHelper</servlet-name>
+		<url-pattern>/cssHelper</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/loginService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>commonService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commonService</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/commonService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>fmdtService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fmdtService</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/fmdtService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>freeMetricService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FreeMetricServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeMetricService</servlet-name>
+		<url-pattern>/bpm_freematrix_reborn_web/freeMetricService</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

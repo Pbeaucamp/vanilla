@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:style>
+		.lst {
+    		width: 100%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:ListBoxWithButton ui:field="lstEvents" width="100%"/>
+		<my:LabelTextArea ui:field="txtEvent" resize="false" width="100%" height="360px"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

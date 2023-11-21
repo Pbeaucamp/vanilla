@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+	</bean> 
+<!-- 
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="META-INF/spring/database.properties"/>
+	</bean>
+ -->
+ <!-- 
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="false">
+		<property name="driverClassName" value="${bpm.vanilla.forms.database.driverClassName}"/>
+		<property name="url" value="${bpm.vanilla.forms.database.jdbcUrl}"/>
+		<property name="username" value="${bpm.vanilla.forms.database.userName}"/>
+		<property name="password" value="${bpm.vanilla.forms.database.password}"/>
+	</bean>
+-->  
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${bpm.vanilla.forms.database.driverClassName}" />
+		<property name="jdbcUrl" value="${bpm.vanilla.forms.database.jdbcUrl}" />
+		<property name="user" value="${bpm.vanilla.forms.database.userName}" />
+		<property name="password" value="${bpm.vanilla.forms.database.password}" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+
+
+        
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+		<list>
+			<value>bpm/forms/dao/model/hbm/form.hbm.xml</value>
+			
+			<value>bpm/forms/dao/model/hbm/formdefinitiontablemapping.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/formfieldmapping.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/forminstance.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/forminstancefieldstate.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/targettable.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/formui.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/groupvalidation.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/groupinstanciation.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/forminstanciationrule.hbm.xml</value>
+			<value>bpm/forms/dao/model/hbm/formdefinition.hbm.xml</value>
+		</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${bpm.vanilla.forms.database.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+		<!-- 
+		<property name="hibernateProperties">
+			<props>
+				 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+				<prop key="hibernate.c3p0.minPoolSize">2</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">50</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop>
+				<prop key="hibernate.c3p0.max_statement">0</prop>  
+				<prop key="hibernate.c3p0.idle_test_period">30</prop>
+			</props>
+		</property>
+		 -->
+	</bean>
+
+
+	<!-- beans, POJO, DAO, Service --> 
+		
+	<bean id="definitionManager" class="bpm.forms.dao.managers.DatabaseDefinitionService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="runtimeManager" class="bpm.forms.dao.managers.DatabaseInstanceService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
+</beans>

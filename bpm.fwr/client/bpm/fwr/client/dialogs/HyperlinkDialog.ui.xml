@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fwr.client.dialogs.HyperlinkDialog.MyStyle">
+		.scrollDatasetTree {
+			border: 1px solid gray;
+    		background-color: #E8EEF7;
+		}
+		
+		.panelDatasetTree {    
+			height: 400px;
+    		width: 275px;
+		}
+		
+		.panelHyperlinkDef {
+		   margin: 30px 20px;
+		}
+		
+		.left {
+			float: left;
+			width: 135px;
+		    margin-left: 15px;
+		}
+		
+		.marginTopLabel {
+			margin-top: 17px;
+		}
+		
+		.txtColumn {
+			margin-top: 15px;
+			width: 315px;
+		}
+		
+		.checkBoxValues {
+			margin-left: 15px;
+			widows: 100%;
+		}
+		
+		.lblInfos {
+		    margin-top: 50px;
+    		width: 470px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:AbsolutePanel ui:field="rootPanel">
+			<g:HorizontalPanel>
+				<g:TabLayoutPanel ui:field="tabPanel" barUnit="PX" barHeight="30" width="300px" height="460px">
+					<g:tab>
+						<g:header>
+							Metadata
+						</g:header>
+						<g:ScrollPanel addStyleNames="{style.scrollDatasetTree}">
+							<g:SimplePanel ui:field="datasetTreePanel" addStyleNames="{style.panelDatasetTree}"/>
+						</g:ScrollPanel>
+					</g:tab>
+					<g:tab>
+						<g:header>
+							Dataset
+						</g:header>
+						<g:ScrollPanel addStyleNames="{style.scrollDatasetTree}">
+							<g:SimplePanel ui:field="datasetPanel" addStyleNames="{style.panelDatasetTree}"/>
+						</g:ScrollPanel>
+					</g:tab>
+				</g:TabLayoutPanel>
+				
+				<g:HTMLPanel addStyleNames="{style.panelHyperlinkDef}">
+					<g:HTMLPanel>
+						<g:Label ui:field="lblLabelUrl" addStyleNames="{style.left},{style.marginTopLabel}"/>
+						<g:TextBox ui:field="txtLabelUrl" addStyleNames="{style.txtColumn}"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel addStyleNames="{style.marginTopLabel}">
+						<g:CheckBox ui:field="checkKeepValues" addStyleNames="{style.checkBoxValues}"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<g:Label ui:field="lblUrl" addStyleNames="{style.left},{style.marginTopLabel}"/>
+						<g:TextBox ui:field="txtUrl" addStyleNames="{style.txtColumn}"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<g:Label ui:field="lblColumnHyperlink" addStyleNames="{style.left},{style.marginTopLabel}"/>
+						<g:SimplePanel ui:field="panelColumnHyperlink"/>
+					</g:HTMLPanel>
+					<g:Label ui:field="lblInformations" addStyleNames="{style.lblInfos}"/>
+				</g:HTMLPanel>
+			</g:HorizontalPanel>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.fwr.oda.ui
+Bundle-SymbolicName: bpm.fwr.oda.ui; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.fwr.oda.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui;bundle-version="[3.2.0,4.0.0)",
+ bpm.fwr.oda.runtime,
+ bpm.vanilla.platform.core;bundle-version="1.0.0",
+ bpm.vanilla.platform.core.remote;bundle-version="1.0.12",
+ bpm.fwr.api;bundle-version="4.0.0",
+ bpm.vanilla.external.jars;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Vendor: BPM-Conseil

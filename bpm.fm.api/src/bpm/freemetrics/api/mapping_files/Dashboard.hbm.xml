@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.dashboards.Dashboard"
+		table="fm_dashboard">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="DD_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="ddApplicationId" type="java.lang.Integer">
+			<column name="DD_APPLICATION_ID" />
+		</property>
+		<property name="ddSecurityId" type="java.lang.Integer">
+			<column name="DD_SECURITY_ID" />
+		</property>
+		<property name="ddBusinessCode" type="java.lang.String">
+			<column name="DD_BUSINESS_CODE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="DD_BUSINESS_NAME" />
+		</property>
+		<property name="ddOwnerId" type="java.lang.Integer">
+			<column name="DD_OWNER_ID" />
+		</property>
+		<property name="ddSortNumber" type="java.lang.Integer">
+			<column name="DD_SORT_NUMBER" />
+		</property>
+		<property name="ddNumberOfIndicators" type="java.lang.Integer">
+			<column name="DD_NUMBER_OF_INDICATORS" />
+		</property>
+		<property name="ddParentId" type="java.lang.Integer">
+			<column name="DD_PARENT_ID" />
+		</property>
+		<property name="ddNumberOfDashboards" type="java.lang.Integer">
+			<column name="DD_NUMBER_OF_DASHBOARDS" />
+		</property>
+		<property name="ddNumberOfDocuments" type="java.lang.Integer">
+			<column name="DD_NUMBER_OF_DOCUMENTS" />
+		</property>
+		<property name="ddComment" type="java.lang.String">
+			<column name="DD_COMMENT" />
+		</property>
+		<property name="ddBusinessComment" type="java.lang.String">
+			<column name="DD_BUSINESS_COMMENT" />
+		</property>
+		<property name="ddCreationDate" type="date">
+			<column name="DD_CREATION_DATE" />
+		</property>
+		<property name="ddImage" type="java.lang.String">
+			<column name="DD_IMAGE" />
+		</property>
+		<property name="ddIsDashTech" type="java.lang.Boolean">
+			<column name="DD_IS_DASHBOARD_TECHNIQUE" />
+		</property>
+	</class>
+</hibernate-mapping>

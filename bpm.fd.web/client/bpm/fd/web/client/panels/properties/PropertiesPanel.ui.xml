@@ -1,0 +1,117 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.fd.web.client.I18N.Labels' />
+	<ui:with field='labelCommon' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.fd.web.client.panels.properties.PropertiesPanel.MyStyle">
+		.minSize {
+			width: 850px !important;
+			height: 550px !important;
+		}
+		
+		.toolbarParent {
+			background: none repeat scroll 0 0 #FFFFFF;
+		    display: inline-block;
+		    overflow: hidden;
+		    position: absolute;
+		    height: 40px;
+		    left: 0px;
+		    right: 0px;
+		    top: 0px;
+		}
+		
+		.panelContent {
+			background: white;
+			position: absolute;
+			top: 45px;
+			left: 5px;
+			right: 5px;
+		    overflow: auto;
+		}
+		
+		.panelWithButtons {
+			bottom: 55px;
+		}
+		
+		.panelWithoutButtons {
+			bottom: 5px;
+		}
+		
+		.btn {
+			width: 120px;
+			height: 40px;
+			line-height: 40px;
+			vertical-align: center;
+			text-align: center;
+			display: inline-block;
+			cursor: pointer;
+		}
+		
+		.btnSelected {
+			background: repeat scroll 0 0 #D0E4F6 !important
+		}
+		
+		.label {
+			
+		}
+		
+		.panelButtons {
+		    bottom: 5px;
+		    height: 50px;
+		    left: 5px;
+		    position: absolute;
+		    right: 5px;
+		    background: white;
+		}
+		
+		.btnBottom {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 150px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btnBottom:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.minSize}">
+		<g:HTMLPanel addStyleNames="{style.toolbarParent}">
+			<g:FocusPanel ui:field="btnGeneral" addStyleNames="{style.btn},{style.btnSelected}">
+				<g:Label text="{label.General}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnChartType" visible="false" addStyleNames="{style.btn}">
+				<g:Label text="{label.ChartType}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnData" visible="false" addStyleNames="{style.btn}">
+				<g:Label text="{label.Data}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnRepository" visible="false" addStyleNames="{style.btn}">
+				<g:Label text="{labelCommon.Repository}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnOptions" visible="false" addStyleNames="{style.btn}">
+				<g:Label text="{label.Options}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+			<g:FocusPanel ui:field="btnParameters" visible="false" addStyleNames="{style.btn}">
+				<g:Label text="{label.Parameters}" addStyleNames="{style.label}"/>
+			</g:FocusPanel>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="contentPanel" addStyleNames="{style.panelContent},{style.panelWithButtons}"/>
+		<g:HTMLPanel ui:field="panelButton" addStyleNames="{style.panelButtons}">
+			<g:Button ui:field="btnCancel" text="{labelCommon.Cancel}" addStyleNames="{style.btnBottom}"/>
+			<g:Button ui:field="btnConfirm" text="{labelCommon.Confirmation}" addStyleNames="{style.btnBottom}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

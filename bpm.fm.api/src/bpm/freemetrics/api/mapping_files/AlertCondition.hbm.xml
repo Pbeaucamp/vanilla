@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.alerts.AlertCondition"
+		table="fm_alertcondition">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="AC_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="acMetricswithalertId" type="java.lang.Integer">
+			<column name="AC_METRICSWITHALERT_ID" />
+		</property>
+		<property name="acDefinition" type="java.lang.String">
+			<column name="AC_DEFINITION" />
+		</property>
+		<property name="acStartDate" type="timestamp">
+			<column name="AC_BEGIN_DATE" />
+		</property>
+		<property name="acEndDate" type="timestamp">
+			<column name="AC_END_DATE" />
+		</property>
+		<property name="acCreationDate" type="timestamp">
+			<column name="AC_CREATION_DATE" />
+		</property>
+	</class>
+</hibernate-mapping>

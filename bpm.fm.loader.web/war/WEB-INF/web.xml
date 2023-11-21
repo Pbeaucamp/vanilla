@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>FMLoaderWeb.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Servlets -->
+  <context-param>
+  <param-name>fmloaderpath</param-name>
+  <param-value>/root/vanilla/vanilla_dev/webapps/FmLoaderWeb</param-value>
+ </context-param>
+  
+  <servlet>
+    <servlet-name>ConnectionServices</servlet-name>
+    <servlet-class>bpm.fmloader.server.ConnectionServicesImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConnectionServices</servlet-name>
+    <url-pattern>/fmloaderweb/ConnectionServices</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DatasServices</servlet-name>
+    <servlet-class>bpm.fmloader.server.DatasServicesImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DatasServices</servlet-name>
+    <url-pattern>/fmloaderweb/DatasServices</url-pattern>
+  </servlet-mapping>
+  
+	<servlet>
+		<servlet-name>cssHelper</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cssHelper</servlet-name>
+		<url-pattern>/cssHelper</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/fmloaderweb/loginService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>commonService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commonService</servlet-name>
+		<url-pattern>/fmloaderweb/commonService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>fmdtService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fmdtService</servlet-name>
+		<url-pattern>/fmloaderweb/fmdtService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>freeMetricService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FreeMetricServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeMetricService</servlet-name>
+		<url-pattern>/fmloaderweb/freeMetricService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReportingService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ReportingServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportingService</servlet-name>
+		<url-pattern>/fmloaderweb/ReportingService</url-pattern>
+	</servlet-mapping>
+
+</web-app>

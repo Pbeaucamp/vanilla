@@ -1,0 +1,162 @@
+<chart formatNumber='0' formatNumberScale='0' numberPrefix=''
+	numberSuffix='' decimalSeparator='.' thousandSeparator=',' decimals='2'
+	forceDecimal='0' cssName='' caption='' subCaption='' showLabel='1'
+	showValues='1' bgColor='FFFFFF' showBorder='1' borderColor='FFFFFF'
+	borderThickness='1' bgAlpha='0' bgSWFAlpha='0' labelSepChar='\n'
+	baseFontColor='' baseFontSize='10' pieRadius='100' slicingDistance='10'
+	pieSliceDepth='20' PYAxisName='Sum'>
+	<set label='South Brisbane' color='FF0000' value='545'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"South Brisbane");' />
+	<set label='Glen Waverly' color='00FF00' value='705'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Glen Waverly");' />
+	<set label='North Sydney' color='0000FF' value='1469'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"North Sydney");' />
+	<set label='Chatswood' color='AA00FF' value='1601'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Chatswood");' />
+	<set label='Melbourne' color='AAAAFF' value='1926'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Melbourne");' />
+	<set label='Graz' color='AA0020' value='532'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Graz");' />
+	<set label='Salzburg' color='AAAA20' value='1442'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Salzburg");' />
+	<set label='Charleroi' value='278'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Charleroi");' />
+	<set label='Bruxelles' value='796'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Bruxelles");' />
+	<set label='Vancouver' value='703'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Vancouver");' />
+	<set label='Montrueal' value='717'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Montrueal");' />
+	<set label='Tsawassen' value='873'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Tsawassen");' />
+	<set label='Ucrhus' value='882'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Ucrhus");' />
+	<set label='Kobenhavn' value='1315'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Kobenhavn");' />
+	<set label='Espoo' value='1031'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Espoo");' />
+	<set label='Helsinki' value='1051'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Helsinki");' />
+	<set label='Oulu' value='1110'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Oulu");' />
+	<set label='Versailles' value='637'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Versailles");' />
+	<set label='Toulouse' value='687'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Toulouse");' />
+	<set label='Lille' value='699'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Lille");' />
+	<set label='Strasbourg' value='779'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Strasbourg");' />
+	<set label='Marseille' value='804'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Marseille");' />
+	<set label='Lyon' value='1428'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Lyon");' />
+	<set label='Reims' value='1433'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Reims");' />
+	<set label='Nantes' value='2102.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Nantes");' />
+	<set label='Paris' value='2521.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Paris");' />
+	<set label='Munich' value='401'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Munich");' />
+	<set label='Frankfurt' value='811'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Frankfurt");' />
+	<set label='Kuln' value='936'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Kuln");' />
+	<set label='Central Hong Kong' value='596'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Central Hong Kong");' />
+	<set label='Dublin' value='490'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Dublin");' />
+	<set label='Milan' value='272'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Milan");' />
+	<set label='Torino' value='843'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Torino");' />
+	<set label='Reggio Emilia' value='1280'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Reggio Emilia");' />
+	<set label='Bergamo' value='1650'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Bergamo");' />
+	<set label='Osaka' value='692'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Osaka");' />
+	<set label='Minato-ku' value='1150'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Minato-ku");' />
+	<set label='Wellington' value='1055'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Wellington");' />
+	<set label='Auckland' value='4341.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Auckland");' />
+	<set label='Oslo' value='787'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Oslo");' />
+	<set label='Bergen' value='973'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Bergen");' />
+	<set label='Stavern' value='1082'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Stavern");' />
+	<set label='Makati City' value='961'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Makati City");' />
+	<set label='Singapore' value='2760.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Singapore");' />
+	<set label='Sevilla' value='589'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Sevilla");' />
+	<set label='Barcelona' value='882'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Barcelona");' />
+	<set label='Madrid' value='10958.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Madrid");' />
+	<set label='Lulee' value='647'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Lulee");' />
+	<set label='Bruecke' value='1359'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Bruecke");' />
+	<set label='Geneve' value='1078'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Geneve");' />
+	<set label='Cowes' value='895'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Cowes");' />
+	<set label='Liverpool' value='1046'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Liverpool");' />
+	<set label='London' value='1294.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"London");' />
+	<set label='Manchester' value='1778'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Manchester");' />
+	<set label='Los Angeles' value='500'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Los Angeles");' />
+	<set label='Burbank' value='511'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Burbank");' />
+	<set label='Brisbane' value='514'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Brisbane");' />
+	<set label='New Haven' value='636'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"New Haven");' />
+	<set label='Glendale' value='768.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Glendale");' />
+	<set label='Bridgewater' value='903'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Bridgewater");' />
+	<set label='Newark' value='906'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Newark");' />
+	<set label='Las Vegas' value='929'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Las Vegas");' />
+	<set label='White Plains' value='929'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"White Plains");' />
+	<set label='San Diego' value='954'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"San Diego");' />
+	<set label='Pasadena' value='1060'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Pasadena");' />
+	<set label='Allentown' value='1111'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Allentown");' />
+	<set label='Burlingame' value='1179'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Burlingame");' />
+	<set label='Nashua' value='1248'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Nashua");' />
+	<set label='Cambridge' value='1333.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Cambridge");' />
+	<set label='Philadelphia' value='1398.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Philadelphia");' />
+	<set label='Boston' value='1628.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Boston");' />
+	<set label='Brickhaven' value='1654.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"Brickhaven");' />
+	<set label='San Jose' value='1656'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"San Jose");' />
+	<set label='New Bedford' value='2043.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"New Bedford");' />
+	<set label='San Francisco' value='2139.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"San Francisco");' />
+	<set label='NYC' value='5294.0'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"NYC");' />
+	<set label='San Rafael' value='6366'
+		link='JavaScript:drillDown(&apos;ComponentChartDefinition_4&apos;,"San Rafael");' />
+</chart>

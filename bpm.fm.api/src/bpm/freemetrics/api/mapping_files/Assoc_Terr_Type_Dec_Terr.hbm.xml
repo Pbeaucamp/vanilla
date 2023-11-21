@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="bpm.freemetrics.api.organisation.relations.appl_typeApp.Assoc_Terr_Type_Dec_Terr"
+		table="fm_assoc_ttdt">
+		<id name="id" type="java.lang.Integer">
+			<column name="TTDT_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="parent_App_ID" type="java.lang.Integer">
+			<column name="TTDT_TERR_ID" />
+		</property>
+
+		<property name="child_TypeDecTerr_ID" type="java.lang.Integer">
+			<column name="TTDT_TYPE_DEC_TERR_ID" />
+		</property>
+	</class>
+</hibernate-mapping>

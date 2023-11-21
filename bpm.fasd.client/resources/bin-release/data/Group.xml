@@ -1,0 +1,90 @@
+
+<Graph>
+	<Application orientation="0" depth="1" title="test"/>
+    <Node desc="The root system" iconSize="35" id="0" name="Vanilla" nodeIcon="system"/>
+    <Node desc="" iconSize="16" id="1" name="Top Selling Products" nodeIcon="birt_run"/>
+    <Node desc="" iconSize="16" id="2" name="components.properties" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="3" name="AvecGroup2" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="4" name="WithCalcul" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="5" name="Products" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="6" name="TestV2_1" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="7" name="grp3" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="8" name="Top 5 Customers" nodeIcon="birt_run"/>
+    <Node desc="" iconSize="16" id="9" name="components.properties" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="10" name="testfwr" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="11" name="Dico" nodeIcon="dico"/>
+    <Node desc="" iconSize="16" id="12" name="ddd" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="13" name="Map" nodeIcon="md"/>
+    <Node desc="" iconSize="16" id="14" name="About" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="15" name="ddd" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="16" name="Cpage" nodeIcon="fmdt_run"/>
+    <Node desc="" iconSize="16" id="17" name="ForMap" nodeIcon="fmdt_run"/>
+    <Node desc="" iconSize="16" id="18" name="VFS" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="19" name="AvecGroup" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="20" name="dash" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="21" name="Sales Invoice" nodeIcon="birt_run"/>
+    <Node desc="" iconSize="16" id="22" name="Dico" nodeIcon="dico"/>
+    <Node desc="" iconSize="16" id="23" name="Dico" nodeIcon="dico"/>
+    <Node desc="" iconSize="16" id="24" name="CountryTest" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="25" name="Productline" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="26" name="components.properties" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="27" name="KpiDashboard" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="28" name="Dico" nodeIcon="dico"/>
+    <Node desc="" iconSize="16" id="29" name="Chart2" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="30" name="SampleData" nodeIcon="fmdt_run"/>
+    <Node desc="" iconSize="16" id="31" name="Dico" nodeIcon="dico"/>
+    <Node desc="" iconSize="16" id="32" name="components.properties" nodeIcon="doc"/>
+    <Node desc="" iconSize="16" id="33" name="Sales Analysis" nodeIcon="fasd_run"/>
+    <Node desc="" iconSize="16" id="34" name="ProductCatalog" nodeIcon="birt_run"/>
+    <Node desc="" iconSize="16" id="35" name="group" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="36" name="dash2" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="37" name="Employ�s" nodeIcon="fd_deployed_run"/>
+    <Node desc="" iconSize="16" id="38" name="QuadrantForRegion" nodeIcon="jasper_run"/>
+    <Node desc="" iconSize="16" id="39" name="Chart" nodeIcon="fwr_run"/>
+    <Node desc="" iconSize="16" id="40" name="zozo" nodeIcon="fd_deployed_run"/>
+    <Edge fromID="0" toID="0"/>
+    <Edge fromID="30" toID="1"/>
+    <Edge fromID="0" toID="2"/>
+    <Edge fromID="30" toID="3"/>
+    <Edge fromID="30" toID="4"/>
+    <Edge fromID="30" toID="5"/>
+    <Edge fromID="22" toID="6"/>
+    <Edge fromID="30" toID="7"/>
+    <Edge fromID="30" toID="8"/>
+    <Edge fromID="0" toID="9"/>
+    <Edge fromID="30" toID="10"/>
+    <Edge fromID="0" toID="11"/>
+    <Edge fromID="9" toID="12"/>
+    <Edge fromID="23" toID="12"/>
+    <Edge fromID="0" toID="13"/>
+    <Edge fromID="0" toID="14"/>
+    <Edge fromID="30" toID="15"/>
+    <Edge fromID="0" toID="16"/>
+    <Edge fromID="0" toID="17"/>
+    <Edge fromID="0" toID="18"/>
+    <Edge fromID="30" toID="19"/>
+    <Edge fromID="2" toID="20"/>
+    <Edge fromID="28" toID="20"/>
+    <Edge fromID="30" toID="21"/>
+    <Edge fromID="0" toID="22"/>
+    <Edge fromID="0" toID="23"/>
+    <Edge fromID="30" toID="24"/>
+    <Edge fromID="30" toID="25"/>
+    <Edge fromID="0" toID="26"/>
+    <Edge fromID="0" toID="27"/>
+    <Edge fromID="0" toID="28"/>
+    <Edge fromID="30" toID="29"/>
+    <Edge fromID="0" toID="30"/>
+    <Edge fromID="0" toID="31"/>
+    <Edge fromID="0" toID="32"/>
+    <Edge fromID="0" toID="33"/>
+    <Edge fromID="30" toID="34"/>
+    <Edge fromID="30" toID="35"/>
+    <Edge fromID="31" toID="36"/>
+    <Edge fromID="32" toID="36"/>
+    <Edge fromID="30" toID="37"/>
+    <Edge fromID="0" toID="38"/>
+    <Edge fromID="30" toID="39"/>
+    <Edge fromID="11" toID="40"/>
+    <Edge fromID="26" toID="40"/>
+</Graph>

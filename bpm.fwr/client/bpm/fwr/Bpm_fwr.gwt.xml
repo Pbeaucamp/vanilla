@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='FWR'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name="com.google.gwt.http.HTTP"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  <inherits name='bpm.gwt.commons.Commons'/>
+  <inherits name="bpm.fwr.api.FwrApi" />
+  <inherits name="bpm.vanilla.map.VanillaMap" />
+  <inherits name="gwtupload.GWTUpload"/>
+
+  <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+
+  <inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+  
+  <!-- This will override the the standard theme defined up there. ere -->
+  <stylesheet src="Bpm_fwr.css"/>
+  <stylesheet src="wysiwyg.css"/>
+
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='bpm.fwr.client.Bpm_fwr'/>
+
+  <!-- French language, independent of country -->
+  <extend-property name="locale" values="fr"/>
+  <!-- Spanish language, independent of country -->
+  <extend-property name="locale" values="es"/>
+		
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+  <public path='pub'/>
+
+</module>

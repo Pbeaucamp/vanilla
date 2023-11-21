@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.fd.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.panelCheck {
+			width: 98%;
+		}
+	
+		.panelSplit {
+		    display: inline-block;
+		    margin-top: 10px;
+		    vertical-align: top;
+		    width: 30%;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.panelCheck}">
+			<my:CustomCheckbox ui:field="showValues" text="{labels.ShowValues}"/>
+			<my:CustomCheckbox ui:field="bulb" text="{labels.Bulb}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.panelSplit}">
+			<my:LabelValueTextBox ui:field="bgAlpha" placeHolder="{labels.BackgroundAlpha}"/>
+			
+			<my:ColorPanel ui:field="bgColor" text="{labels.BackgroundColor}" alignRight="true"/>
+			
+			<my:ColorPanel ui:field="badColor" text="{labels.BadColor}" alignRight="true"/>
+			<my:ColorPanel ui:field="mediumColor" text="{labels.MediumColor}" alignRight="true"/>
+			<my:ColorPanel ui:field="goodColor" text="{labels.GoodColor}" alignRight="true"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.panelSplit}">
+			<my:LabelValueTextBox ui:field="innerRadius" placeHolder="{labels.InnerRadius}"/>
+			<my:LabelValueTextBox ui:field="outerRadius" placeHolder="{labels.OuterRadius}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel addStyleNames="{style.panelSplit}">
+			<my:LabelValueTextBox ui:field="startAngle" placeHolder="{labels.StartAngle}"/>
+			<my:LabelValueTextBox ui:field="stopAngle" placeHolder="{labels.StopAngle}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

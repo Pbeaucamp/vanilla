@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="bpm.feature.webapps"
+      label="Webapps"
+      version="1.0.0">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="bpm.workflow.commons" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.map.remote" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.connectivity.oda"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="4.4.1" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="4.4.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="4.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.connectivity.oda.consumer"/>
+      <import plugin="javax.servlet"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.osgi.services"/>
+      <import plugin="bpm.vanilla.platform.hibernate" version="4.2.2" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="6.0.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.codec" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.xstream" version="4.2.0" match="greaterOrEqual"/>
+      <import plugin="bpm.document.management.core" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.external.jars"/>
+      <import plugin="bpm.united.olap.api" version="4.0.1" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.logging" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="1.0.11" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="4.1.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="4.1.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.external.jars" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fasd.api" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="bpm.studio.expressions.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.studio.jdbc.management" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="bpm.connection.manager" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.logging" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.mdm.model" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.studio.jdbc.management" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.united.olap.api" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="1.0.13" match="greaterOrEqual"/>
+      <import plugin="bpm.united.olap.remote" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.xstream" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fa.api" version="5.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="1.0.11" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.hibernate" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.document.management.core" version="14.9.4" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.xstream" version="4.0.1" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.external.jars" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.birt.report.model"/>
+      <import plugin="org.eclipse.birt.core"/>
+      <import plugin="org.eclipse.birt.report.engine"/>
+      <import plugin="org.eclipse.birt.data"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="4.2.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.config" version="4.1.0" match="greaterOrEqual"/>
+      <import plugin="bpm.connection.manager" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.mdm.remote" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.xstream" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.update.manager.api" version="1.0.2" match="greaterOrEqual"/>
+      <import plugin="bpm.dataprovider.odainput" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.connectivity.oda.design" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.connectivity.oda" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="1.0.2" match="greaterOrEqual"/>
+      <import plugin="bpm.mdm.model" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="1.1.13" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core" version="6.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.map.core" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.w3c.css.sac"/>
+      <import plugin="bpm.metadata.oda.runtime" version="4.4.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="org.apache.commons.lang"/>
+      <import plugin="bpm.fd.api" version="2.6.2" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.map.core" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.platform.core.remote" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.united.olap.api" version="1.0.21" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.sqltools.parsers.sql.query" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.map.remote" version="4.0.1" match="greaterOrEqual"/>
+      <import plugin="bpm.metadata.api" version="4.4.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fm.api" version="4.2.0" match="greaterOrEqual"/>
+      <import plugin="bpm.smart.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fd.api" version="4.1.0" match="greaterOrEqual"/>
+      <import plugin="bpm.vanilla.map.core" version="1.0.2" match="greaterOrEqual"/>
+      <import plugin="bpm.forms.core" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.forms.remote" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fm.api" version="5.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.fd.api" version="5.0.1" match="greaterOrEqual"/>
+      <import plugin="bpm.data.viz.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.document.management.remote" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="bpm.document.management.manager.remote" version="15.2.8" match="greaterOrEqual"/>
+      <import plugin="bpm.document.management.manager.core" version="15.2.8" match="greaterOrEqual"/>
+      <import plugin="bpm.master.core"/>
+      <import plugin="org.apache.commons.codec" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="bpm.aklabox.workflow.core" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="bpm.gwt.workflow.commons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.connection.manager"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.document.management.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.document.management.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fa.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fasd.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fm.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.metadata.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.studio.expressions.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.studio.jdbc.management"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.united.olap.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.united.olap.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.components.impl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.config"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.comment.item.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.xstream"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.map.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.map.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.update.manager.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.smart.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.workflow.commons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.mdm.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.mdm.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanillahub.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.data.viz.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fwr.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.gateway.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fd.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fd.runtime.engine"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fd.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.fusioncharts.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.gwt.aklabox.commons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.aklabox.workflow.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.aklabox.workflow.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.android.vanilla.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.android.vanilla.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.android.vanilla.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.fusionmaps.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.gmaps.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.osm.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.birt.wms.map.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.commons.relations.ui.viewer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.connector.seveneleven"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.csv.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.data.viz.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.database.ui.viewer.relations"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.dataprovider.odainput"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.datasource.vanilla.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.document.management.manager.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.document.management.manager.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.dwhdesigner.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.dwhdesigner.query"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.es.api.datasource.analyzer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.excel.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fd.jsp.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="bpm.fm.oda.driver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fm.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.forms.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.forms.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.forms.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.fwr.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.gateway.server"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.geojson.creator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.geoloc.creator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.google.spreadsheet.oda.driver.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.google.table.oda.driver.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.inlinedatas.oda.driver.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.log4j.fragment"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.master.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.mdm.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.metadata.jdbc.driver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.metadata.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.model.converter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.nosql.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.odata.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.office.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.profiling.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.reporting.server"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.smart.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.swf.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.united.olap.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.united.olap.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.update.manager.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.external.jars"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.listdata.oda.driver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.map.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.map.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.oda.commons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.cluster"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.core.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.hibernate"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.logging.log4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.platform.server.commons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.repository"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.web.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.workplace.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.workplace.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanilla.workplace.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.vanillahub.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.weka.oda.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.workflow.wrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="bpm.worklow.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

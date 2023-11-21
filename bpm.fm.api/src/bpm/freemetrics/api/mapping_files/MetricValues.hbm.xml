@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.metrics.MetricValues"
+		table="fm_metricsvalues">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="MV_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+			<generator class="increment"/>
+		</id>
+		<property name="mvValueDate" type="timestamp">
+			<column name="MV_VALUE_DATE" />
+		</property>
+		<property name="mvValue" type="java.lang.Float">
+			<column name="MV_VALUE" />
+		</property>
+		<property name="mvTrendDate" type="string">
+			<column name="MV_TREND_DATE" />
+		</property>
+		<property name="mvPreviousMetricsValueId"
+			type="java.lang.Integer">
+			<column name="MV_PREVIOUS_METRICS_VALUE_ID" />
+		</property>
+		<property name="mvMinValue" type="java.lang.Float">
+			<column name="MV_MIN_VALUE" />
+		</property>
+		<property name="mvMaxValue" type="java.lang.Float">
+			<column name="MV_MAX_VALUE" />
+		</property>
+		<property name="mvCreationDate" type="timestamp">
+			<column name="MV_CREATION_DATE" />
+		</property>
+		<property name="mvPeriodDate" type="timestamp">
+			<column name="MV_PERIOD_DATE" />
+		</property>
+		<property name="mvPeriodType" type="java.lang.String">
+			<column name="MV_PERIOD_TYPE" />
+		</property>
+		<property name="mvGlAssoc_ID" type="java.lang.Integer">
+			<column name="MV_GL_ASSOC_ID" />
+		</property>
+		<property name="mvGlValeurSeuilMini" type="java.lang.Float">
+			<column name="MV_GL_VALEURSEUILMINI" />
+		</property>
+		<property name="mvGlValeurSeuilMaxi" type="java.lang.Float">
+			<column name="MV_GL_VALEURSEUILMAXI" />
+		</property>
+		<property name="mvGlObjLocalNat" type="java.lang.String">
+			<column name="MV_GL_OBJ_LOCAL_NAT" />
+		</property>
+		<property name="mvGlObjAnMens" type="java.lang.String">
+			<column name="MV_GL_OBJ_AN_MENS" />
+		</property>
+		<property name="mvGlMaxiPoint" type="java.lang.Float">
+			<column name="MV_GL_MAXI_POINT" />
+		</property>
+		<property name="mvGlMiniPoint" type="java.lang.Float">
+			<column name="MV_GL_MINI_POINT" />
+		</property>
+		<property name="mvGlObjectif" type="java.lang.Float">
+			<column name="MV_GL_OBJECTIF" />
+		</property>
+
+		<property name="mvTolerance" type="java.lang.Integer">
+			<column name="MV_TOLERANCE" />
+		</property>
+		<property name="mvTrendOrder" type="java.lang.String">
+			<column name="MV_TREND_ORDER" />
+		</property>
+		<property name="mvTrendDay" type="java.lang.String">
+			<column name="MV_TREND_DAY" />
+		</property>
+		<property name="mvTrendMonth" type="java.lang.String">
+			<column name="MV_TREND_MONTH" />
+		</property>
+		<property name="mvTrendQuarter" type="java.lang.String">
+			<column name="MV_TREND_QUARTER" />
+		</property>
+		<property name="mvTrendWeek" type="java.lang.String">
+			<column name="MV_TREND_WEEK" />
+		</property>
+		<property name="mvTrendYear" type="java.lang.String">
+			<column name="MV_TREND_YEAR" />
+		</property>
+		<property name="mvTrendSemiYear" type="java.lang.String">
+			<column name="MV_TREND_SEMIYEAR" />
+		</property>
+		<property name="mvStatus" type="java.lang.String">
+			<column name="MV_STATUS" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

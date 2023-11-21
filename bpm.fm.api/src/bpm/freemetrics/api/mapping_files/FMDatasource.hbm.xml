@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.infos.FMDatasource"
+		table="fm_datasources">
+		<id name="id" type="java.lang.Integer">
+			<column name="DS_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="name" type="string">
+			<column name="DS_NAME" />
+		</property>
+
+		<property name="driver" type="string">
+			<column name="DS_DRIVER_NAME" />
+		</property>
+
+		<property name="url" type="string">
+			<column name="DS_URL" />
+		</property>
+
+		<property name="user" type="string">
+			<column name="DS_USER" />
+		</property>
+
+		<property name="pass" type="string">
+			<column name="DS_PASSWORD" />
+		</property>
+		
+		<property name="file" type="string">
+			<column name="DS_DRIVER_FILE" />
+		</property>
+		
+		<property name="type" type="string">
+			<column name="DS_TYPE" />
+		</property>
+
+	</class>
+</hibernate-mapping>

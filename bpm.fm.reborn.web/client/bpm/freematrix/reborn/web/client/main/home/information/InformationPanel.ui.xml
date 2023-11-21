@@ -1,0 +1,124 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.freematrix.reborn.web.client.images.Images' />
+	<ui:with field='resourcesCommon' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+
+		.informationTabPanel {
+			display: inline-block;
+			vertical-align: middle;
+			width: 100px;
+			height: 100%;
+			overflow: auto;
+		}
+		.informationViewerPanel{
+		    background: none repeat scroll 0 0 #FFFFFF;
+		    bottom: 0;
+		    display: inline-block;
+		    left: 100px;
+		    overflow: auto;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    vertical-align: middle;
+		}
+		.mainPanel {
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+		.contentPanel {
+			position: absolute;
+		    right: 0;
+		    top: 39px;
+		    bottom: 0;
+		    left: 0;
+		}
+		
+		.imgFull {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			right: 0;
+			opacity: 0.5;
+		}
+		
+		.imgSmall {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			right: 40px;
+			opacity: 0.5;
+			
+		}
+	
+		.toolbarPanel {
+			width: 100%;
+			height: 40px;
+			border: 1px solid #D4D4D4;
+			-webkit-box-shadow: 0 1px 0 #FFF;
+			-moz-box-shadow: 0 1px 0 #fff;
+			box-shadow: 0 1px 0 #FFF;
+			background-color: f5f5f5;
+			background-image: -moz-linear-gradient(top, white, #f5f5f5);
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
+			background-image: -webkit-linear-gradient(top, #FFF, #F5F5F5);
+			background-image: -o-linear-gradient(top, white, #f5f5f5);
+			background-image: linear-gradient(to bottom, #FFF, #F5F5F5);
+			background-repeat: repeat-x;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
+		}
+		
+		.lblHeader{
+			height: 18px;
+			padding: 9px 14px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #5F5F5F;
+			text-shadow: 0 1px 0 #FFF;
+		    display: inline-block;
+			vertical-align: top;
+		}
+	
+		.btnToolbar {
+			cursor: pointer;
+			height: 40px !important;
+			width: 40px !important;
+			background-position: center !important;
+		    display: inline-block;
+		}
+	
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<!-- <g:Image ui:field="btnExpand" resource="{resources.ic_btn_sidebar_right_expand}" 
+				addStyleNames="{style.btnToolbar}"/> -->
+			<g:Image ui:field="btnShare" resource="{resourcesCommon.share_24_black}" title="{label.Share}" visible="false" addStyleNames="{style.btnToolbar}" />
+			<g:Label ui:field="lblTitle" addStyleNames="{style.lblHeader}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		    <g:HTMLPanel ui:field="informationTabPanel" addStyleNames="{style.informationTabPanel}"/>
+		    <g:HTMLPanel ui:field="informationViewerPanel" addStyleNames="{style.informationViewerPanel}"/>    
+		</g:HTMLPanel>
+	<!-- 	<g:Image ui:field="imgSmall" title="Restaurer" resource="{resources.resize_small}" addStyleNames="{style.imgSmall}"/>
+		<g:Image ui:field="imgFull" title="Plein écran" resource="{resources.resize_full}" addStyleNames="{style.imgFull}"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

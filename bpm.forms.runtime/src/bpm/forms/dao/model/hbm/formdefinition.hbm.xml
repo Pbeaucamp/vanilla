@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.model.impl.FormDefinition" table="FORM_DEFINITION">
+            <id name="id" type="java.lang.Long">
+                <column name="FD_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="formId" type="java.lang.Long">
+                <column name="FD_F_ID"/>
+            </property>
+            
+            <property name="fullyDesigned" type="java.lang.Integer">
+                <column name="FD_DEFINED"/>
+            </property>
+            
+            
+            <property name="creationDate" type="java.util.Date">
+                <column name="FD_CREATION_DATE"/>
+            </property>
+            
+            <property name="creatorId" type="java.lang.Integer">
+                <column name="FD_CREATOR_ID"/>
+            </property>
+            
+            <property name="description" type="java.lang.String">
+                <column name="FD_DESCRIPTION"/>
+            </property>
+            
+            <property name="startDate" type="java.util.Date">
+                <column name="FD_START_DATE"/>
+            </property>
+            
+            <property name="stopDate" type="java.util.Date">
+                <column name="FD_STOP_DATE"/>
+            </property>
+            
+            <property name="version" type="java.lang.Integer">
+                <column name="FD_VERSION"/>
+            </property>
+            
+            <property name="active" type="java.lang.Integer">
+                <column name="FD_ACTIVE"/>
+            </property>
+            
+           
+			
+    </class>
+</hibernate-mapping>

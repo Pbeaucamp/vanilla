@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panelExample {
+			width: 350px;
+			height: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:SimplePanel ui:field="panelExample" addStyleNames="{style.panelExample}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

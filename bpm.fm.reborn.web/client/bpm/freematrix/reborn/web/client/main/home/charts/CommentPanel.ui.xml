@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.imgDeleteComment {
+			position: absolute;
+			right: 10px;
+			top: 5px;
+		}
+		.imgResponse {
+			position: absolute;
+			right: 50px;
+			top: 5px;
+		}
+		
+		.imgEdit {
+			position: absolute;
+			right: 30px;
+			top: 5px;
+		}
+
+		.dateGroupComment {
+			margin-top: 10px;
+		    position: absolute;
+		    right: 5px;
+		}
+
+		.commentary {
+			position: relative;
+			padding: 5px 10px 30px;
+			margin-bottom: 1em;
+			border: 1px solid black;
+			color: black;
+			background: white;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			
+			width: 260px;
+		}
+		
+		.txtComment {
+		    margin-right: 65px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.commentary}">
+		<g:HTML ui:field="htmlCom" addStyleNames="{style.txtComment}"/>
+		<g:HTML ui:field="htmlDateGroup" addStyleNames="{style.dateGroupComment}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

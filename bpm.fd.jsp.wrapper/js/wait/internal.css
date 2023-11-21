@@ -1,0 +1,9 @@
+.drillButton{
+	background:url(1leftarrow.png);
+	cursor:pointer;background-color: #EDEDED;	
+	/*opacity: 0.5;filter:alpha(opacity=50);*/
+}
+.drillButton:HOVER{
+	background:url(1leftarrow.png);background-color: #A9A9A9;	
+	opacity: 1.0;filter:alpha(opacity=100);
+}

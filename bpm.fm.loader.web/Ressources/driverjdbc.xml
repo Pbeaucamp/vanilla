@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drivers>
+	<driver 
+		name="org.hsqldb.jdbcDriver"
+		file="hsqldb.jar"/>
+		
+	<driver	
+		name="com.mysql.jdbc.Driver"
+		file ="mysql-connector-java-3.1.14-bin.jar"/>
+		
+	<driver
+		name="org.postgresql.Driver"
+		file ="postgresql-8.1-407.jdbc3.jar"/>
+
+	<driver
+		name="oracle.jdbc.driver.OracleDriver"
+		file ="ojdbc14.jar"/>
+
+	<driver
+		name="net.sourceforge.jtds.jdbc.Driver"
+		file ="jtds-1.2.jar"/>
+		
+	<driver
+		name="org.h2.Driver"
+		file ="h2.jar"/>
+
+</drivers>

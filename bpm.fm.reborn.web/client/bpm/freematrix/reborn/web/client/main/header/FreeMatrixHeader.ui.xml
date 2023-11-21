@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:with field='resources' type='bpm.freematrix.reborn.web.client.images.Images' />
+	
+	<ui:style>
+		.inline {
+			display: inline-block;
+		}
+		
+		.menu {
+			margin: 8px;
+			cursor: pointer;
+			float: left;
+		}
+
+		.locale{
+			width: 10%;
+		}
+		
+		.siteName {
+			background: url("webapps/freematrix_files/images/VanillaKpiUser_LogoLettering_32.png") no-repeat scroll right center / 139px 32px rgba(0, 0, 0, 0);
+			font-size: 22px;
+			color: #FFF;
+			text-align: center;
+			font-weight: bold;
+			text-shadow: 0 3px 0 #4B5B83;
+			height: 40px;
+			float: right;
+			width: 140px;
+		}
+		
+		.btnLogout{
+			height: 32px;
+			margin: 4px;
+			cursor: pointer;
+			float: right;
+			height: 32px !important;
+    		width: 40px !important;
+		}
+		.filter {
+			float: left;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Image resource="{resources.ic_menu}" ui:field="btnMenu" addStyleNames="{style.menu}" title="Menu"/>	
+		<!-- <g:HTMLPanel ui:field="localePanel" addStyleNames="{style.locale} {style.inline}"/> -->
+		<g:HTMLPanel ui:field="panelFilter" addStyleNames="{style.filter}"></g:HTMLPanel>
+		<g:Image resource="{resources.home}" ui:field="btnLogout" addStyleNames="{style.btnLogout}"/>
+		<g:Label addStyleNames="{style.siteName} {style.inline}" />
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

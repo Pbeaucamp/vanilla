@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.fasd.viewer.relation
+Bundle-SymbolicName: bpm.fasd.viewer.relation;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.fasd.viewer.relation.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.fasd.client;bundle-version="4.2.0",
+ bpm.commons.relations.ui.viewer;bundle-version="5.0.0",
+ bpm.fasd.api;bundle-version="5.0.0"
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

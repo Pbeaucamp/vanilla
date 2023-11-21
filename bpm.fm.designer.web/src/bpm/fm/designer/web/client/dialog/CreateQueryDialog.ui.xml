@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fm.designer.web.client.dialog.CreateQueryDialog.MyStyle">
+		.queryNotExists {
+			display: block;
+		    height: 20px;
+		    margin: 50px auto auto;
+		    text-align: center;
+		}
+		.contentPanel {
+			width: 700px;
+			height: 550px;
+		}
+	</ui:style>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			
+		</g:HTMLPanel>
+</ui:UiBinder> 

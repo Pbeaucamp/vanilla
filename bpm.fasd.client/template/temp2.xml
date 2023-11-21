@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<Schema name="MySchema">
+
+        <Dimension name="time" >
+            <Hierarchy hasAll="true" allMemberName="All" primaryKey="TIME_ID">
+                <Table name="TIME_BY_DAY"/>
+                <Level name="THE_YEAR" table="TIME_BY_DAY" column="THE_YEAR" uniqueMembers="false"/>
+                <Level name="THE_MONTH" table="TIME_BY_DAY" column="THE_MONTH" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="store" >
+            <Hierarchy hasAll="true" allMemberName="All" primaryKey="STORE_ID">
+                <Table name="STORE"/>
+                <Level name="STORE_COUNTRY" table="STORE" column="STORE_COUNTRY" uniqueMembers="false"/>
+                <Level name="STORE_STATE" table="STORE" column="STORE_STATE" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+    <Cube name="invent">
+        <Table name="INVENTORY_FACT_1998"/>
+        <DimensionUsage name="time" source="time" foreignKey="TIME_ID"/>
+        <DimensionUsage name="store" source="store" foreignKey="STORE_ID"/>
+        <Measure name="UNITS_ORDERED" column="UNITS_ORDERED" aggregator="sum" formatString="Standard"/>
+    </Cube>
+    <Roles>
+        <Role name="role">
+            <SchemaGrant access="none">
+                <CubeGrant name="invent" access="all">
+                     <HierarchyGrant name="[time]" access="all">
+                         <MemberGrant member="[time].[1997].[April]" access="none"/>
+                     </HierarchyGrant>
+                     <HierarchyGrant name="[store]" access="all">
+                         <MemberGrant member="[store].[Mexico]" access="none"/>
+                     </HierarchyGrant>
+                </CubeGrant>
+            </SchemaGrant>
+        </Role>
+    </Roles>
+</Schema>

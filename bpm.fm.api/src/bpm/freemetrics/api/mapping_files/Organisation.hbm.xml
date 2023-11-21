@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.infos.Organisation"
+		table="gl_organisations">
+		<id name="id" type="java.lang.Integer">
+			<column name="ORG_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="name" type="string">
+			<column name="ORG_NAME" />
+		</property>
+
+
+		<property name="type" type="string">
+			<column name="ORG_TYPE_ORGANISATION_ID" />
+		</property>
+
+		<property name="adresse" type="string">
+			<column name="ORG_ADRESSE" />
+		</property>
+
+		<property name="tel" type="string">
+			<column name="ORG_TEL" />
+		</property>
+
+		<property name="fax" type="string">
+			<column name="ORG_FAX" />
+		</property>
+
+		<property name="siteWeb" type="string">
+			<column name="ORG_SITE_WEB" />
+		</property>
+
+		<property name="comment" type="string">
+			<column name="ORG_COMMENT" />
+		</property>
+
+		<property name="code_insee" type="string">
+			<column name="ORG_CODE_INSEE" />
+		</property>
+		<property name="codelocalisation_x" type="string">
+			<column name="ORG_CODELOCALISATION_X" />
+		</property>
+		<property name="codelocalisation_y" type="string">
+			<column name="ORG_CODELOCALISATION_Y" />
+		</property>
+
+	</class>
+</hibernate-mapping>

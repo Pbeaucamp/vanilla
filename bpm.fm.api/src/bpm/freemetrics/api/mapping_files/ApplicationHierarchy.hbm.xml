@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.application.ApplicationHierarchy"
+		table="fm_applicationhierarchy">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="ah_id" />
+			
+				<generator class="increment"/>
+			
+		</id>
+		<property name="parentId" type="java.lang.Integer">
+			<column name="ah_parentid" />
+		</property>
+		<property name="childId" type="java.lang.Integer">
+			<column name="ah_childid" />
+		</property>
+	</class>
+</hibernate-mapping>

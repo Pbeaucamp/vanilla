@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.dao.internal.GroupValidatorMapping" table="INSTANCE_VALIDATOR">
+            <id name="id" type="long">
+                <column name="IV_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			 <property name="formId" type="long">
+                <column name="IV_FORM_ID"/>
+            </property>
+            
+            
+            <property name="vanillaGroupId" type="int">
+                <column name="IV_GROUP_ID"/>
+            </property>
+            
+           
+            
+         
+			
+    </class>
+</hibernate-mapping>

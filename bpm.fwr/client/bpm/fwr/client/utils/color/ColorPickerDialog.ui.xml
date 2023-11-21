@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fwr.client.utils.color.ColorPickerDialog.MyStyle">
+		.margin {
+			margin: 10px;
+		}
+		
+		.center {
+			margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel"/>
+</ui:UiBinder> 

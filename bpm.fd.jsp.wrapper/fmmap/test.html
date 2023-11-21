@@ -1,0 +1,24 @@
+<html>
+    <head>
+		<script language="Javascript" src="../FusionMaps/FusionMaps.js"></script>
+		
+	</head>
+		
+	<body>
+	
+		<div id="testfm">
+		
+			<script type="text/javascript">
+			
+				var map = new FusionMaps("http://localhost:19190/fusionMap/Maps/FCMap_FranceDepartment.swf", "Map", "600", "500", "0", "0");
+                map.setDataXML("<map numberSuffix='' baseFontSize='9' fillAlpha='70' hoverColor='639ACE'><colorRange></colorRange><data><entity id='FR.MR' value='890.0' /><entity id='FR.MY' value='200.0' /><entity id='FR.YV' value='1002.0' /></data></map>");
+                map.render("testfm");
+				
+			
+			</script>
+		
+		</div>
+	
+	</body>
+	
+</html>

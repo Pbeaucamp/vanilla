@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="bpm.freemetrics.api.organisation.relations.user_group.FmUser_Groups"
+		table="fm_usersgroups">
+		<id name="id" type="int">
+			<column name="UG_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="userId" type="java.lang.Integer">
+			<column name="UG_USER_ID" />
+		</property>
+		<property name="groupId" type="java.lang.Integer">
+			<column name="UG_GROUP_ID" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="UG_CREATION_DATE" />
+		</property>
+		<property name="comment" type="string">
+			<column name="UG_COMMENT" />
+		</property>
+
+	</class>
+</hibernate-mapping>

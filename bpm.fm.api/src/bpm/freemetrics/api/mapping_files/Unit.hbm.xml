@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.infos.Unit" table="fm_units">
+		<id name="id" type="java.lang.Integer">
+			<column name="UN_ID" />
+				<generator class="increment"/>
+		</id>
+		<property name="unUnitCategory" type="string">
+			<column name="UN_UNIT_CATEGORY" />
+		</property>
+		<property name="name" type="string">
+			<column name="UN_UNIT_NAME" />
+		</property>
+		<property name="unUnitFormat" type="string">
+			<column name="UN_UNIT_FORMAT" />
+		</property>
+		<property name="unCreationDate" type="date">
+			<column name="UN_CREATION_DATE" />
+		</property>
+		<property name="unComment" type="string">
+			<column name="UN_COMMENT" />
+		</property>
+	</class>
+</hibernate-mapping>

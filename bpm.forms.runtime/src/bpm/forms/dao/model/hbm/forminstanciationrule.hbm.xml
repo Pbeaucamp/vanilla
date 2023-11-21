@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.model.impl.InstanciationRule" table="INSTANCIATION_RULES">
+            <id name="id" type="long">
+                <column name="IR_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			 <property name="formId" type="long">
+                <column name="IR_FORM_ID"/>
+            </property>
+            
+            
+            <property name="modeInt" type="int">
+                <column name="IR_MODE"/>
+            </property>
+            
+           
+            
+         
+			
+    </class>
+</hibernate-mapping>

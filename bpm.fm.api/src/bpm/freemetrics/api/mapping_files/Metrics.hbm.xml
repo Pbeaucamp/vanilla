@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.metrics.Metric"
+		table="fm_metrics">
+		<id name="id" type="java.lang.Integer">
+			<column name="MD_ID" />
+				<generator class="increment"/>
+		</id>
+		<!--
+			<property name="mdApplicationId" type="java.lang.Integer"> <column
+			name="MD_APPLICATION_ID" /> </property>
+		-->
+		<property name="name" type="java.lang.String">
+			<column name="MD_BUSINESS_NAME" />
+		</property>
+		<property name="mdSecurityId" type="java.lang.Integer">
+			<column name="MD_SECURITY_ID" />
+		</property>
+		<property name="mdGroupId" type="java.lang.Integer">
+			<column name="MD_GROUP_ID" />
+		</property>
+		<property name="mdTypeId" type="java.lang.Integer">
+			<column name="MD_TYPE_ID" />
+		</property>
+		<property name="mdBusinessCode" type="string">
+			<column name="MD_BUSINESS_CODE" length="50" />
+		</property>
+		<property name="mdBusinessDescription" type="string">
+			<column name="MD_BUSINESS_DESCRIPTION" length="100" />
+		</property>
+		<property name="mdOrigin" type="string">
+			<column name="MD_ORIGIN" length="20" />
+		</property>
+		
+		<property name="mdTrendBegin" type="java.lang.Integer">
+			<column name="MD_TREND_BEGIN" />
+		</property>
+		<property name="mdTrendEnd" type="java.lang.Integer">
+			<column name="MD_TREND_END" />
+		</property>
+		
+		<property name="mdToleranceLimit" type="string">
+			<column name="MD_TOLERANCE_LIMIT" length="10" />
+		</property>
+		<property name="mdCalculationType" type="string">
+			<column name="MD_CALCULATION_TYPE" length="20" />
+		</property>
+		<property name="mdDashboardSortNumber" type="java.lang.Integer">
+			<column name="MD_DASHBOARD_SORT_NUMBER" />
+		</property>
+		<property name="mdRepresentation" type="string">
+			<column name="MD_REPRESENTATION" length="20" />
+		</property>
+		<property name="mdCalculationTimeFrame" type="string">
+			<column name="MD_CALCULATION_TIME_FRAME" length="20" />
+		</property>
+		<property name="mdOwnerId" type="java.lang.Integer">
+			<column name="MD_OWNER_ID" />
+		</property>
+		<property name="mdComment" type="string">
+			<column name="MD_COMMENT" length="100" />
+		</property>
+		<property name="mdSourceId" type="java.lang.Integer">
+			<column name="MD_SOURCE_ID" />
+		</property>
+		<property name="mdWidgetSetId" type="java.lang.Integer">
+			<column name="MD_WIDGET_SET_ID" />
+		</property>
+		<property name="mdTrendReportId" type="java.lang.Integer">
+			<column name="MD_TREND_REPORT_ID" />
+		</property>
+		<property name="mdCreationDate" type="date">
+			<column name="MD_CREATION_DATE" length="10" />
+		</property>
+		<property name="mdImage" type="string">
+			<column name="MD_IMAGE" length="200" />
+		</property>
+		<property name="mdIsRealTime" type="boolean">
+			<column name="MD_IS_REALTIME" />
+		</property>
+		<property name="mdIsDimAware" type="boolean">
+			<column name="MD_IS_DIM_AWARE" />
+		</property>
+		<property name="mdIsDimChild" type="boolean">
+			<column name="MD_IS_DIM_CHILD" />
+		</property>
+		<property name="mdFormat" type="java.lang.String">
+			<column name="MD_FORMAT" />
+		</property>
+		<property name="mdCustom1" type="java.lang.String">
+			<column name="MD_CUSTOM_1" />
+		</property>
+		<property name="mdCanChangeGoal" type="boolean">
+			<column name="MD_CAN_CHANGE_GOAL" />
+		</property>
+		<property name="mdGlSubThemeId" type="java.lang.Integer">
+			<column name="MD_GL_SUBTHEME_ID" />
+		</property>
+		<property name="mdGlThemeId" type="java.lang.Integer">
+			<column name="MD_GL_THEME_ID" />
+		</property>
+		<property name="mdUnitId" type="java.lang.Integer">
+			<column name="MD_UNIT_ID" />
+		</property>
+		<property name="mdGlOrganisationId" type="java.lang.Integer">
+			<column name="MD_GL_ORGANISATION_ID" />
+		</property>
+		<property name="mdGlIsCompteur" type="boolean">
+			<column name="MD_GL_ISCOMPTEUR" />
+		</property>
+		<property name="mdGlRespect" type="boolean">
+			<column name="MD_GL_RESPECT" />
+		</property>
+		<property name="mdGlIsModif" type="boolean">
+			<column name="MD_GL_ISMODIF" />
+		</property>
+
+		<property name="mdGlTypeIndicateurId" type="java.lang.Integer">
+			<column name="MD_GL_TYPE_INDICATEUR_ID" />
+		</property>
+		<property name="mdGlUtilite" type="java.lang.String">
+			<column name="MD_GL_UTILITE" />
+		</property>
+		
+		<property name="dtmTable" type="java.lang.String">
+			<column name="MD_GL_DTMTABLE" />
+		</property>
+		<property name="dtmColumnValue" type="java.lang.String">
+			<column name="MD_GL_COLUMNVALUE" /> 
+		</property>
+		<property name="dtmColumnId" type="java.lang.String">
+			<column name="MD_GL_COLUMNID" />
+		</property>
+		<!--
+			<property name="code_insee" type="string"> <column
+			name="MD_CODE_INSEE" /> </property> <property
+			name="codelocalisation_x" type="string"> <column
+			name="MD_CODELOCALISATION_X" /> </property> <property
+			name="codelocalisation_y" type="string"> <column
+			name="MD_CODELOCALISATION_Y" /> </property>
+		-->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+.listcommentpart-maindiv {
+	border: 5px inset black;
+	width: 350px;
+}
+
+.listcommentpart-maindiv infosdiv {
+	
+	
+}
+
+.listcommentpart-maindiv label {
+	margin: 5px;
+}
+
+.listcommentpart-maindiv div {
+	display: block;
+	width: 300px;
+	margin: auto;
+	height: 70px;
+}

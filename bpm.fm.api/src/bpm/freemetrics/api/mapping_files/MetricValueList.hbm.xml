@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.metrics.MetricValueList"
+		table="fm_metrics_values_list">
+		<id name="id" type="java.lang.Integer">
+			<column name="MVL_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="applicationId" type="java.lang.Integer">
+			<column name="MVL_APPLICATION_ID" />
+		</property>
+		<property name="metricId" type="java.lang.Integer">
+			<column name="MVL_METRIC_ID" />
+		</property>
+		<property name="dateFrom" type="timestamp">
+			<column name="MVL_DATE_FROM" />
+		</property>
+		<property name="dateTo" type="timestamp">
+			<column name="MVL_DATE_TO" />
+		</property>
+		<property name="min" type="java.lang.Float">
+			<column name="MVL_MIN" />
+		</property>
+		<property name="target" type="java.lang.Float">
+			<column name="MVL_TARGET" />
+		</property>
+		<property name="max" type="java.lang.Float">
+			<column name="MVL_MAX" />
+		</property>
+		<property name="realValue" type="java.lang.Float">
+			<column name="MVL_REAL_VALUE" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.model.impl.FormInstance" table="FORM_INSTANCE">
+            <id name="id" type="java.lang.Long">
+                <column name="FI_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="formDefinitionId" type="java.lang.Long">
+                <column name="FI_FD_ID"/>
+            </property>
+            
+                      
+            
+            <property name="creationDate" type="java.util.Date">
+                <column name="FI_CREATION_DATE"/>
+            </property>
+            
+            <property name="groupId" type="java.lang.Integer">
+                <column name="FI_GROUP_ID"/>
+            </property>
+            
+          
+          <property name="formSubmited" type="java.lang.Integer">
+                <column name="FI_SUBMITED"/>
+          </property>
+          
+           <property name="formValidated" type="java.lang.Integer">
+                <column name="FI_VALIDATED"/>
+          </property>
+          
+          
+           <property name="lastSubmitionDate" type="java.util.Date">
+                <column name="FI_LAST_SUBMITION_DATE"/>
+          </property>
+          
+           <property name="lastValidationDate" type="java.util.Date">
+                <column name="FI_LAST_VALIDATION_DATE"/>
+          </property>
+          
+           <property name="submiterIp" type="java.lang.String">
+                <column name="FI_SUBMITER_IP_ADR"/>
+          </property>
+          
+           <property name="validatorIp" type="java.lang.String">
+                <column name="FI_VALIDATOR_IP_ADR"/>
+          </property>
+          
+          <property name="validatorUserId" type="java.lang.Integer">
+                <column name="FI_VALIDATOR_USER_ID"/>
+          </property>
+          
+           <property name="submiterUserId" type="java.lang.Integer">
+                <column name="FI_SUBMITER_USER_ID"/>
+          </property>
+          
+          
+           <property name="expirationDate" type="java.util.Date">
+                <column name="FI_EXPIRATION_DATE"/>
+          </property>
+    </class>
+</hibernate-mapping>

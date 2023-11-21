@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="bpm.freemetrics.api.organisation.relations.dash_metric.FmDashboard_Metric"
+		table="fm_metricsdashboards">
+		<id name="id" type="int">
+			<column name="DM_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="dmApplicationId" type="java.lang.Integer">
+			<column name="DM_APPLICATION_ID" />
+		</property>
+		<property name="dmDashboardId" type="java.lang.Integer">
+			<column name="DM_DASHBOARD_ID" />
+		</property>
+		<property name="dmMetricsId" type="java.lang.Integer">
+			<column name="DM_METRICS_ID" />
+		</property>
+		<property name="dmCreationDate" type="date">
+			<column name="DM_CREATION_DATE" length="10" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.security.FmRole" table="fm_roles">
+		<comment></comment>
+		<id name="id" type="int">
+			<column name="RO_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="name" type="string">
+			<column name="RO_NAME" />
+		</property>
+		<property name="comment" type="string">
+			<column name="RO_COMMENT" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="RO_CREATION_DATE" />
+		</property>
+		<property name="type" type="int">
+			<column name="RO_TYPE" />
+		</property>
+		<property name="image" type="string">
+			<column name="RO_IMAGE" />
+		</property>
+		<property name="grants" type="string">
+			<column name="RO_GRANTS" />
+		</property>
+	</class>
+</hibernate-mapping>

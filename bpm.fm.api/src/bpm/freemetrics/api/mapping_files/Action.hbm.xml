@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.actions.Action" table="fm_action">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="AC_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="AC_NAME" />
+		</property>
+		<property name="acType" type="java.lang.Integer">
+			<column name="AC_TYPE" />
+		</property>
+		<property name="acComment" type="java.lang.String">
+			<column name="AC_COMMENT" />
+		</property>
+		<property name="acDefinition" type="java.lang.String">
+			<column name="AC_DEFINITION" />
+		</property>
+		<property name="acCreationDate" type="timestamp">
+			<column name="AC_CREATION_DATE" />
+		</property>
+		<property name="acAssocId" type="java.lang.Integer">
+			<column name="AC_Assoc_ID" />
+		</property>
+	</class>
+</hibernate-mapping>

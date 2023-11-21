@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.security.relations.FmUser_Roles"
+		table="fm_usersroles">
+		<id name="id" type="int">
+			<column name="UR_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="userId" type="java.lang.Integer">
+			<column name="UR_USER_ID" />
+		</property>
+		<property name="roleId" type="java.lang.Integer">
+			<column name="UR_ROLE_ID" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="UR_CREATION_DATE" />
+		</property>
+		<property name="comment" type="string">
+			<column name="UR_COMMENT" />
+		</property>
+	</class>
+</hibernate-mapping>

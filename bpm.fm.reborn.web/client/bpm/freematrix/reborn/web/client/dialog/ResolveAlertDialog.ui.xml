@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:style>
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 85px;
+		    margin-top: 7px;
+		}
+		
+		.txtArea {
+			height: 45px;
+			width: 250px;
+			resize: none;
+			margin-top: 7px;
+		}	
+	</ui:style>
+		<g:HTMLPanel ui:field="dialog">
+			<g:HTMLPanel ui:field="panelTop">
+				<g:SimplePanel/>
+				<g:SimplePanel>
+					<g:Label ui:field="lblTitle"/>
+				</g:SimplePanel>
+				<g:HTMLPanel>
+					<g:Image ui:field="btnReduce"/>
+					<g:Image ui:field="btnMax"/>
+					<g:Image ui:field="btnClose"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="contentPanel">
+				<g:HTMLPanel>
+					<g:Label ui:field="lblComment" addStyleNames="{style.lbl}" text="{label.comment}"/>
+					<g:TextArea ui:field="txtComment" addStyleNames="{style.txtArea}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelButton"/>
+		</g:HTMLPanel>
+</ui:UiBinder> 

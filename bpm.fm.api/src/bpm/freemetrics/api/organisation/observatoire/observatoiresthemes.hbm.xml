@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.observatoire.ObservatoiresThemes"
+		table="fm_observatoire_theme">
+		<id name="assoId" type="java.lang.Integer">
+			<column name="ASSO_ID" />
+			<generator class="increment"/>
+		</id>
+
+		<property name="obsId" type="java.lang.Integer">
+			<column name="OBS_ID" />
+		</property>
+		
+		<property name="themeId" type="java.lang.Integer">
+			<column name="THEME_ID" />
+		</property>
+	
+	</class>
+</hibernate-mapping>

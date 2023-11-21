@@ -1,0 +1,47 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	<ui:style type="bpm.fm.designer.web.client.dialog.ActionDialog.MyStyle">
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+			width: 230px;
+			
+		}
+		.contentPanel {
+			width: 400px;
+			height: 250px;
+		}
+	</ui:style>
+
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.name}"/>
+			<g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label ui:field="lblDesc" addStyleNames="{style.lbl}" text="Description"/>
+			<g:TextArea ui:field="txtDesc" addStyleNames="{style.marginTop}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label ui:field="lblDateStart" addStyleNames="{style.lbl}" text="{label.startDate}"/>
+			<d:DateBox ui:field="txtDateStart" addStyleNames="{style.marginTop}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label ui:field="lblDateEnd" addStyleNames="{style.lbl}" text="{label.endDate}"/>
+			<d:DateBox ui:field="txtDateEnd" addStyleNames="{style.marginTop}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="formulaPanel">
+			<g:Label ui:field="lblFormula" addStyleNames="{style.lbl}" text="{label.objectiveFormula}"/>
+			<g:TextArea ui:field="txtFormula" addStyleNames="{style.marginTop}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

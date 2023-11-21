@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.forum.Forum" table="fm_metrics_forum">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="MF_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="mfApplicationId" type="java.lang.Integer">
+			<column name="MF_APPLICATION_ID" />
+		</property>
+		<property name="mfMetricsId" type="java.lang.Integer">
+			<column name="MF_METRICS_ID" />
+		</property>
+		<property name="mfUserId" type="java.lang.Integer">
+			<column name="MF_USER_ID" />
+		</property>
+		<property name="mfMetricsValueId" type="java.lang.Integer">
+			<column name="MF_METRICS_VALUE_ID" />
+		</property>
+		<property name="mfCommentDate" type="date">
+			<column name="MF_COMMENT_DATE" />
+		</property>
+		<property name="mfComment" type="string">
+			<column name="MF_COMMENT" />
+		</property>
+		<property name="mfLocked" type="java.lang.Integer">
+			<column name="MF_LOCKED" />
+		</property>
+	</class>
+</hibernate-mapping>

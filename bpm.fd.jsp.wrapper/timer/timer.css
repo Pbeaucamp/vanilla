@@ -1,0 +1,23 @@
+._timer{
+	text-align: center;
+	text-decoration: none; /* to remove the underline */
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+}
+_timer_button{
+	background-repeat: no-repeat;
+}
+
+a._timer_button: hover{
+	opacity : 0.9;
+	filter: alpha(opacity=100);
+}
+a._timer_button{
+	opacity : 0.4;
+	filter: alpha(opacity=40);
+
+}
+
+
+

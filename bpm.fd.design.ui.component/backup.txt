@@ -1,0 +1,10 @@
+ section pour la validator
+ > candidats à être rempalcer la gestion des Evnt JS
+ 
+ 
+ <propertySection
+               class="bpm.fd.design.ui.component.filter.sections.validator.ValidatorSection"
+               filter="bpm.fd.design.ui.component.filter.sections.validator.FilterValidatorSection"
+               id="bpm.fd.design.ui.component.filter.sections.validator.ValidatorSection"
+               tab="bpm.fd.design.ui.properties.components.validationtab">
+         </propertySection>

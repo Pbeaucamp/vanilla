@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  When updating your version of GWT, you should also update this DTD reference,
+  so that your app can take advantage of the latest GWT module capabilities.
+-->
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.5.1//EN"
+  "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
+<module rename-to='bpm_freematrix_reborn_web'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+   <inherits name='com.google.gwt.visualization.Visualization'/>
+  <inherits name="bpm.gwt.commons.Commons" />
+  <inherits name='com.google.gwt.user.theme.standard.Standard'/> 
+  <inherits name='bpm.fm.api.freeMetrics'/>
+  <inherits name="org.moxieapps.gwt.highcharts.Highcharts"/>
+  <inherits name="bpm.update.manager.api.Commons"/>
+  <inherits name="gwtupload.GWTUpload"/>
+  <inherits name="bpm.vanilla.map.VanillaMap" />
+  
+  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Other module inherits                                      -->
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+
+ <stylesheet src="../Bpm_freematrix_reborn_web.css"/>
+
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='bpm.freematrix.reborn.web.client.Bpm_freematrix_reborn_web'/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+  
+   <!-- French language -->
+	<extend-property name="locale" values="fr" />
+
+</module>

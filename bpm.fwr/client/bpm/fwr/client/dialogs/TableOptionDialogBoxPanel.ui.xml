@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+    ui:generateKeys="com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator"
+    ui:generateLocales="default">
+    
+	<ui:with field='label' type='bpm.fwr.client.I18N.WysiwygLabelConstants' />
+	
+	<ui:style>
+		.panel {
+			padding: 5px;
+			width: 340px;
+		}
+		
+		.label {
+			margin-top: 18px;
+		}
+		
+		.txtNbCols {
+    		display: block;
+			margin-left: 5px;
+		}
+		
+		.txtNbRows {
+			margin-left: 5px;
+    		margin-top: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HorizontalPanel styleName="{style.panel}">
+			<g:HTMLPanel>
+				<g:Label text="{label.NumberColumns}"/>
+				<g:Label text="{label.NumberRows}" addStyleNames="{style.label}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:TextBox ui:field="txtNbColumns" addStyleNames="{style.txtNbCols}"/>
+				<g:TextBox ui:field="txtNbRows" addStyleNames="{style.txtNbRows}"/>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

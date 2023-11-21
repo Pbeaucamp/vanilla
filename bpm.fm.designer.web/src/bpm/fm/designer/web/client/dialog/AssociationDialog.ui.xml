@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	<ui:style>
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 180px;
+		    margin-top: 7px;
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+		}
+		.lstAxis {
+			width: 142px;
+		}
+		.contentPanel {
+			width: 400px;
+			height: 150px;
+		}
+	</ui:style>
+
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			<g:HTMLPanel>
+				<g:Label ui:field="lblAxis" addStyleNames="{style.lbl}" text="{label.axis}"/>
+				<g:ListBox ui:field="lstAxis" addStyleNames="{style.marginTop},{style.lstAxis}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblColumnMetricId" addStyleNames="{style.lbl}" text="{label.columnMetricAxis}"/>
+				<g:TextBox ui:field="txtColumnMetricId" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnMetricBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblColumnObjId" addStyleNames="{style.lbl}" text="{label.columnObjectiveAxis}"/>
+				<g:TextBox ui:field="txtColumnObjId" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnObjBrowse">...</g:Button>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+</ui:UiBinder> 

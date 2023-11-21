@@ -1,0 +1,189 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my='urn:import:bpm.gwt.commons.client.custom'
+	xmlns:widg="urn:import:bpm.fwr.client.widgets">
+
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='resources' type='bpm.fwr.client.images.WysiwygImage' />
+	<ui:with field='label' type='bpm.fwr.client.I18N.WysiwygLabelConstants' />
+	<ui:with field='commonLabels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.fwr.client.panels.Viewer.MyStyle">
+		.parentPanel {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+		}	
+
+		.toolbarPanel {
+			width: 100%;
+			height: 40px;
+		}
+
+		.paramPanel {
+	
+		}
+		
+		.reportPanel {
+			position: absolute;
+			right: 0px;
+			top: 40px;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.btnFloatRight {
+			float: right;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 24px !important;
+			width: 24px !important;
+			background-position: center !important;
+			padding: 8px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.viewer {
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			top: 0px;
+		}
+		
+		.framePanel {
+			background-color: #C0C0C0;
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			top: 0px;
+			margin: auto;
+		}
+	
+		.frame {
+			background-color: #FFFFFF;
+			border: 1px solid lightgray;
+			height: 96%;
+			margin-top: 10px;
+			position: absolute;
+			left: 50%;
+		}
+	 	
+		.emptyBin {
+		    position: absolute;
+			bottom: 1em;
+		    right: 20px;
+		}
+		
+		.checkboxPanel{
+			margin-top: 10px;
+			margin-right: 70px;
+			display: inline-block;
+			vertical-align: top;
+			float: right;
+		}
+		
+		.checkbox{
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+			height: 22px;
+			width: 65px;
+		}
+		
+		.lblPreview {
+    		background: none repeat scroll 0 0 #D3D3D3;
+		    border-radius: 0 15px 15px 0;
+    		color: #808080;
+		    display: inline-block;
+		    float: right;
+		    font-weight: bold;
+		    margin-right: 10px;
+		    margin-top: 5px;
+		    padding: 8px;
+		    vertical-align: top;
+		    cursor: pointer;
+		}
+		
+		.lblDesigner {
+			border-right: 2px solid white;
+    		background: none repeat scroll 0 0 #D3D3D3;
+		    border-radius: 15px 0 0 15px;
+    		color: #808080;
+		    display: inline-block;
+		    float: right;
+		    font-weight: bold;
+		    margin-top: 5px;
+		    padding: 8px;
+		    vertical-align: top;
+		    cursor: pointer;
+		}
+		
+		.focus {
+			background: none repeat scroll 0 0 #808080;
+   			color: #FFFFFF;
+		}
+		
+		.separator {
+		    border: 1px solid #808080;
+		    display: inline-block;
+		    height: 31px;
+		    margin-top: 4px;
+		    vertical-align: top;
+		    width: 0;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="toolbarPanel" addStyleNames="{style.toolbarPanel}">
+			<g:Image ui:field="btnSave" resource="{commons.viewer_report_history}" title="{label.save}" addStyleNames="{style.btnToolbar}">
+			</g:Image><g:Image ui:field="btnSaveAsTemplate" resource="{resources.template_26}" title="{commonLabels.SaveAsTemplate}" addStyleNames="{style.btnToolbar}">
+			</g:Image><g:Image ui:field="btnDownloadAsBirt" resource="{commons.viewer_report_export}" title="{label.DownloadAsBirt}" addStyleNames="{style.btnToolbar}"/>
+			
+			<g:HTMLPanel addStyleNames="{style.separator}"/>
+		
+			<g:Image ui:field="btnUndo" resource="{commons.undo_24}" title="{label.Undo}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnRedo" resource="{commons.redo_24}" title="{label.Redo}" addStyleNames="{style.btnToolbar}"/>
+			
+			<g:HTMLPanel addStyleNames="{style.separator}"/>
+		
+			<g:Image ui:field="btnPreferences" resource="{commons.viewer_tools}" title="{label.Preferences}" addStyleNames="{style.btnToolbar}"/>
+			
+			<!-- <g:FocusPanel ui:field="checkboxPanel" addStyleNames="{style.checkboxPanel}">
+				<g:HTMLPanel addStyleNames="{style.checkbox}">
+					<g:Label ui:field="on" addStyleNames="{style.ibutton-handle-on}">ON</g:Label>
+					<g:Label ui:field="off" addStyleNames="{style.ibutton-handle-off}">OFF</g:Label>
+				</g:HTMLPanel>
+			</g:FocusPanel> -->
+			<g:Label ui:field="btnPreview" text="{label.Preview}" title="{label.Preview}" addStyleNames="{style.lblPreview}">
+			</g:Label><g:Label ui:field="btnDesigner" text="{label.Designer}" title="{label.Designer}" addStyleNames="{style.lblDesigner}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.reportPanel}">
+			<g:SimplePanel ui:field="reportPanelContent" addStyleNames="{style.viewer}"/>
+			<g:SimplePanel ui:field="framePanel" addStyleNames="{style.framePanel}">
+				<g:Frame ui:field="reportFrame" addStyleNames="{style.frame}"/>
+			</g:SimplePanel>
+			<widg:BinWidget ui:field="imgBin" resource="{resources.empty_bin}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

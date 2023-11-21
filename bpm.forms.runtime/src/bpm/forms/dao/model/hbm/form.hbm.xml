@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.forms.model.impl.Form" table="FORM">
+            <id name="id" type="java.lang.Long">
+                <column name="F_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			
+            
+            
+            <property name="creationDate" type="java.util.Date">
+                <column name="F_CREATION_DATE"/>
+            </property>
+            
+            <property name="creatorId" type="java.lang.Integer">
+                <column name="F_CREATOR_ID"/>
+            </property>
+            
+            <property name="description" type="java.lang.String">
+                <column name="F_DESCRIPTION"/>
+            </property>
+            
+           
+            
+              <property name="name" type="java.lang.String">
+                <column name="F_NAME"/>
+            </property>
+            
+             <property name="lifeExpectancyHours" type="int" >
+                <column name="F_LIFE_EXPECTANCY_HOURS" default="0"/>
+            </property>
+             <property name="lifeExpectancyDays" type="int" >
+                <column name="F_LIFE_EXPECTANCY_DAYS" default="0"/>
+            </property>
+             <property name="lifeExpectancyMonths" type="int" >
+                <column name="F_LIFE_EXPECTANCY_MONTHS" default="0"/>
+            </property>
+             <property name="lifeExpectancyYears" type="int" >
+                <column name="F_LIFE_EXPECTANCY_YEARS" default="0"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

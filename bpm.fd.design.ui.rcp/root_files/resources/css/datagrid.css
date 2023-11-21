@@ -1,0 +1,32 @@
+/*
+	A sample CSS to have a standard Grid render
+*/
+
+.grid{
+	border-style: solid;
+	border-width:2px;
+	border-color: black;;
+	margin: 0px;
+	padding: 0px;
+	border-collapse: collapse;
+}
+.grid th{
+	border-style: solid;
+	border-width:2px;
+	border-color: black;
+	margin: 0px;
+	padding: 0px;
+	
+}
+.grid td{
+	border-style: solid;
+	border-width:1px;
+	border-color: black;
+	margin: 0px;
+	padding: 0px;
+}
+.grid input{
+	border-width:0px;
+	margin: 0px;
+	padding: 0px;
+}

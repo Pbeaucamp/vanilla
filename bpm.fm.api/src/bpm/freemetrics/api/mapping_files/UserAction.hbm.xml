@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.favorites.UserAction"
+		table="fm_metrics_operation">
+
+		<id name="id" type="java.lang.Integer">
+			<column name="MO_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="moApplicationId" type="int">
+			<column name="MO_APPLICATION_ID" not-null="true">
+			</column>
+		</property>
+		<property name="moMetricsId" type="int">
+			<column name="MO_METRICS_ID" not-null="true">
+			</column>
+		</property>
+		<property name="moGroupId" type="java.lang.Integer">
+			<column name="MO_GROUP_ID">
+			</column>
+		</property>
+		<property name="moUserId" type="java.lang.Integer">
+			<column name="MO_USER_ID">
+			</column>
+		</property>
+		<property name="moActionName" type="string">
+			<column name="MO_ACTION_NAME">
+			</column>
+		</property>
+		<property name="moActionType" type="string">
+			<column name="MO_ACTION_TYPE">
+			</column>
+		</property>
+		<property name="moActionEvaluationCalendar" type="timestamp">
+			<column name="MO_ACTION_EVALUATION_CALENDAR">
+			</column>
+		</property>
+		<property name="moActionTargetValue" type="java.lang.Float">
+			<column name="MO_ACTION_TARGET_VALUE">
+			</column>
+		</property>
+		<property name="moActionStartingDate" type="timestamp">
+			<column name="MO_ACTION_STARTING_DATE">
+			</column>
+		</property>
+		<property name="moActionEncodingDate" type="timestamp">
+			<column name="MO_ENCODING_DATE">
+			</column>
+		</property>
+		<property name="moActionComment" type="string">
+			<column name="MO_ACTION_COMMENT">
+			</column>
+		</property>
+		<property name="moActionResult" type="string">
+			<column name="MO_ACTION_RESULT">
+			</column>
+		</property>
+		<property name="moActionCreationDate" type="timestamp">
+			<column name="MO_ACTION_CREATION_DATE">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

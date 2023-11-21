@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.fasd.viewer.relation.views.ViewRelation"
+            id="bpm.fasd.viewer.relation.views.ViewRelation"
+            name="Visual Relation">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.freeolap.perspective">
+         <view
+               closeable="false"
+               id="bpm.fasd.viewer.relation.views.ViewRelation"
+               moveable="true"
+               relationship="stack"
+               relative="org.fasd.views.sqlView"
+               showTitle="true"
+               standalone="false"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

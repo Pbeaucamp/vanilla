@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.dashOrTheme.SubTheme"
+		table="gl_sub_theme">
+		<id name="id" type="java.lang.Integer">
+			<column name="STHM_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="name" type="string">
+			<column name="STHM_NAME" />
+		</property>
+
+		<property name="themeID" type="java.lang.Integer">
+			<column name="STHM_THEME_ID" />
+		</property>
+
+	</class>
+</hibernate-mapping>

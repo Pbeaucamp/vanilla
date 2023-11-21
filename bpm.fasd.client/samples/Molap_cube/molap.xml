@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<Schema name="MySchema">
+
+        <Dimension name="store" >
+            <Hierarchy hasAll="true" allMemberName="All" primaryKey="store_id">
+                <Table name="store"/>
+                <Level name="store_state" table="store" column="store_state" uniqueMembers="false"/>
+                <Level name="store_city" table="store" column="store_city" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="time" >
+            <Hierarchy hasAll="true" allMemberName="All" primaryKey="time_id">
+                <Table name="time_by_day"/>
+                <Level name="the_year" table="time_by_day" column="the_year" uniqueMembers="false"/>
+                <Level name="the_month" table="time_by_day" column="the_month" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="warehouse" >
+            <Hierarchy hasAll="true" allMemberName="All" primaryKey="warehouse_id" primaryKeyTable="warehouse">
+<Join leftKey="warehouse_class_id" rightKey="warehouse_class_id">
+    <Table name="warehouse_class"/>
+    <Table name="warehouse"/>
+</Join>
+                <Level name="warehouse_postal_code" table="warehouse" column="warehouse_postal_code" uniqueMembers="false"/>
+                <Level name="description" table="warehouse_class" column="description" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+    <Cube name="inventory">
+        <Table name="inventory_fact_1997"/>
+        <DimensionUsage name="store" source="store" foreignKey="store_id"/>
+        <DimensionUsage name="time" source="time" foreignKey="time_id"/>
+        <DimensionUsage name="warehouse" source="warehouse" foreignKey="warehouse_id"/>
+        <Measure name="warehouse_sales" column="warehouse_sales" aggregator="sum" formatString="Standard"/>
+        <Measure name="warehouse_cost" column="warehouse_cost" aggregator="sum" formatString="Standard"/>
+        <CalculatedMember name="warehouse margin" dimension="Measures" formula="[Measures].[warehouse_sales]-[Measures].[warehouse_cost]">
+            <CalculatedMemberProperty name="FORMAT_STRING" value="Standard"/>
+       </CalculatedMember>
+    </Cube>
+</Schema>

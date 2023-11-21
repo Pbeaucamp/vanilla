@@ -1,0 +1,73 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+    "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+<!-- Definition de la source de donnees --> 
+  
+ <bean id="dataSource"
+  class="org.apache.commons.dbcp.BasicDataSource">
+  <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+  <property name="url" value="jdbc:mysql://localhost:3306/std_metric"/>
+  <property name="username" value="biplatform"/>
+  <property name="password" value="biplatform"/>
+ </bean>
+ 
+ <!-- Definition des fichiers de mapping O/R Hibernate -->
+ <bean id="sessionFactory"
+  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+  <property name="dataSource" ref="dataSource"/>
+  <property name="mappingResources">
+   <list>
+    <value>bpm/freemetrics/api/organisation/observatoire/Theme.hbm.xml</value>
+    <value>bpm/freemetrics/api/organisation/observatoire/Users.hbm.xml</value>
+    <value>bpm/freemetrics/api/organisation/observatoire/Observatoire.hbm.xml</value>
+   </list>
+  </property>
+  <property name="hibernateProperties">
+   <props>
+     <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+    <!--<prop key="hibernate.dialect">org.hibernate.dialect.IngresDialect</prop>-->
+    <!--  <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+    <!-- <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop> -->
+    <prop key="hibernate.show_sql">false</prop>
+   </props>
+  </property>
+ </bean>
+ 
+ <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+ 
+ <bean id="assoUserDAO" class="bpm.freemetrics.api.organisation.observatoire.UsersDAO">
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
+
+ <bean id="assoThemeDAO" class="bpm.freemetrics.api.organisation.observatoire.ThemeDAO">
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
+ 
+ <bean id="obsDAO" class="bpm.freemetrics.api.organisation.observatoire.ObservatoireDAO">
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
+ 
+<bean id="obsManager" class="bpm.freemetrics.api.organisation.observatoire.ObservatoireManager">
+  <property name="assoUserDAO" ref="assoUserDAO"/>
+  <property name="assoThemeDAO" ref="assoThemeDAO"/>
+  <property name="obsDAO" ref="obsDAO"/>
+ </bean>
+ 
+ <bean id="newsManager"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="directoryManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+ 
+ 
+ 
+</beans>

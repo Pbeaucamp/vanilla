@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.favorites.UserAlertePreference"
+		table="fm_user_alert_preferences">
+		<comment></comment>
+
+		<id name="id" type="java.lang.Integer">
+			<column name="MPA_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="mpaApplicationId" type="int">
+			<column name="MPA_Application_ID" />
+		</property>
+		<property name="mpaUserId" type="int">
+			<column name="MPA_User_ID" />
+		</property>
+		<property name="mpaAlertId" type="java.lang.Integer">
+			<column name="MPA_Alert_ID" />
+		</property>
+		<property name="mpaAlwaysSendAlert" type="java.lang.Boolean">
+			<column name="MPA_Always_Send_Alert" />
+		</property>
+		<property name="mpaDateFrom" type="timestamp">
+			<column name="MPA_Date_From" />
+		</property>
+		<property name="mpaDateTo" type="timestamp">
+			<column name="MPA_Date_To" />
+		</property>
+		<property name="mpaAlertMethod" type="string">
+			<column name="MPA_Alert_Method" />
+		</property>
+		<property name="mpaAlertReference" type="string">
+			<column name="MPA_Alert_Reference" />
+		</property>
+		<property name="mpaAlertMessage" type="string">
+			<column name="MPA_Alert_Message" />
+		</property>
+		<property name="mpaComment" type="string">
+			<column name="MPA_Comment" />
+		</property>
+		<property name="mpaCreationDate" type="timestamp">
+			<column name="MPA_Creation_Date" />
+		</property>
+	</class>
+</hibernate-mapping>
+

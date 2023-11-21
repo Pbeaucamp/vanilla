@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="bpm.freemetrics.api.organisation.relations.appl_group.FmApplication_Groups"
+		table="fm_groupsapplications">
+		<comment></comment>
+		<id name="id" type="int">
+			<column name="GA_Id" />
+			
+				<generator class="increment"/>
+			
+		</id>
+		<property name="groupId" type="java.lang.Integer">
+			<column name="GA_Group_Id" />
+		</property>
+		<property name="applicationId" type="java.lang.Integer">
+			<column name="GA_Application_Id" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="GA_Creation_Date" length="10" />
+		</property>
+		<property name="comment" type="string">
+			<column name="GA_Comment" length="100" />
+		</property>
+
+	</class>
+</hibernate-mapping>

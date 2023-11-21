@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.metrics.MetricInteraction"
+		table="fm_metricsinteractions">
+		<id name="id" type="int">
+			<column name="MI_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="miApplicationId" type="java.lang.Integer">
+			<column name="MI_APPLICATION_ID" />
+		</property>
+		<property name="miMetricTopId" type="java.lang.Integer">
+			<column name="MI_METRIC_TOP_ID" />
+		</property>
+		<property name="miMetricDownId" type="java.lang.Integer">
+			<column name="MI_METRIC_DOWN_ID" />
+		</property>
+		<property name="miCreationDate" type="date">
+			<column name="MI_CREATION_DATE" />
+		</property>
+	</class>
+</hibernate-mapping>

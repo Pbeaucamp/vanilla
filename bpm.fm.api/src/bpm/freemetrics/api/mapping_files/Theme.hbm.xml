@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.dashOrTheme.Theme"
+		table="gl_theme">
+		<id name="id" type="java.lang.Integer">
+			<column name="THM_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="name" type="java.lang.String">
+			<column name="THM_NAME" />
+		</property>
+
+		<property name="code" type="java.lang.String">
+			<column name="THM_CODE" />
+		</property>
+
+		<property name="comment" type="java.lang.String">
+			<column name="THM_COMMENT" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="THM_DESCRIPTION" />
+		</property>
+
+		<property name="ownerId" type="java.lang.Integer">
+			<column name="THM_OWNER_ID" />
+		</property>
+
+		<property name="creationDate" type="date">
+			<column name="THM_CREATION_DATE" />
+		</property>
+		<!--
+			<property name="code_insee" type="java.lang.String"> <column
+			name="THM_CODE_INSEE" /> </property> <property
+			name="codelocalisation_x" type="java.lang.String"> <column
+			name="THM_CODELOCALISATION_X" /> </property> <property
+			name="codelocalisation_y" type="java.lang.String"> <column
+			name="THM_CODELOCALISATION_Y" /> </property>
+		-->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='labels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style>
+		.panelTop {
+		    border: 1px solid #808080;
+		    cursor: pointer;
+		    height: 40px;
+		    line-height: 40px;
+		    text-align: center;
+		    vertical-align: middle;
+		    width: 100%;
+		}
+		
+		.partBtnTop {
+		    border-right: 1px solid #808080;
+		    float: right;
+		    height: 40px;
+		    margin-right: 1px;
+		}
+		
+		.btnTop {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 20px !important;
+		    padding: 10px;
+		    width: 20px !important;
+		}
+	
+		.btnTop:HOVER {
+			background-color: #20709B;
+		}
+		
+		.lblTitle {
+    		display: inline-block;
+		}
+		
+		.panel {
+		    border-bottom: 1px solid #808080;
+		    border-left: 1px solid #808080;
+		    border-right: 1px solid #808080;
+		    color: #484848;
+		    padding: 10px 5px;
+		    position: relative;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="popupProperties">
+		<g:FocusPanel ui:field="panelTop">
+			<g:HTMLPanel addStyleNames="{style.panelTop}">
+				<g:Label ui:field="lblTitle" addStyleNames="{style.lblTitle}"/>
+				<g:HTMLPanel addStyleNames="{style.partBtnTop}">
+					<g:Image ui:field="btnReduce" resource="{resources.ic_dialog_restore}" title="{labels.Reduce}" visible="false" addStyleNames="{style.btnTop}"/>
+					<g:Image ui:field="btnMax" resource="{resources.ic_dialog_maximize}" title="{labels.Maximize}" addStyleNames="{style.btnTop}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+		<g:SimplePanel ui:field="contentPanel" styleName="{style.panel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

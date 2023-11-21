@@ -1,0 +1,112 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:style>
+		@external iconsActive;
+	
+		.home{
+			background: url("webapps/freematrix_files/images/ic_menu_home.png") no-repeat center;
+		}
+		.settings{
+			background: url("webapps/freematrix_files/images/ic_menu_settings.png") no-repeat center;
+		}
+		
+		.search{
+			background: url("webapps/freematrix_files/images/ic_menu_search.png") no-repeat center;
+		}
+		
+		.watchlist{
+			background: url("webapps/freematrix_files/images/ic_menu_watchlist.png") no-repeat center;
+		}
+		
+		.alert{
+			background: url("webapps/freematrix_files/images/ic_menu_alert.png") no-repeat center;
+		}
+		
+		.strategy {
+			background: url("webapps/freematrix_files/images/strategy.png") no-repeat center;
+		}
+		
+		.collaboration {
+			background: url("webapps/freematrix_files/images/ic_menu_collaboration.png") no-repeat center;
+		}
+		
+		.cube {
+			background: url("webapps/freematrix_files/images/ic_menu_cube.png") no-repeat center;
+		}
+		.report {
+			background: url("webapps/freematrix_files/images/ic_my_report.png") no-repeat center;
+		}
+		
+		.icons{
+			transition: 0.5s all;
+			-webkit-transition: 0.5s all;
+			-moz-transition: 0.5s all;
+			width: 100%;
+			height: 50px;
+			margin: auto;
+			margin-top: 50px;
+			background-size: 50px 50px;
+			border: none;
+			filter: grayscale(100%);  
+			-webkit-filter: grayscale(100%);  
+			-moz-filter: grayscale(100%);  
+		}
+		
+		.iconsActive{
+			color: #399d93;
+			filter: none;  
+			-webkit-filter: none;  
+			-moz-filter: none; 
+			border-right: 15px solid #399d93;
+		}
+		
+		.icons:hover{
+			color: #399d93;
+			filter: none;  
+			-webkit-filter: none;  
+			-moz-filter: none; 
+		}
+		
+		.panel{
+			text-align: center;
+		}
+		.text{
+			color: #888;
+			margin-top: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="{style.panel}">
+		<g:Button title="{label.Home}" ui:field="btnHome" addStyleNames="{style.home} {style.icons}"/>
+		<g:Label text="{label.Home}" addStyleNames="{style.text}"/>
+		
+		<g:Button title="{label.Alert}" ui:field="btnAlert" addStyleNames="{style.alert} {style.icons}"/>
+		<g:Label text="{label.Alert}" addStyleNames="{style.text}"/>
+		
+		<g:Button title="Cubes" ui:field="btnCube" addStyleNames="{style.cube} {style.icons}"/>
+		<g:Label text="Analyses" addStyleNames="{style.text}"/>
+		
+		<g:Button title="Rapport" ui:field="btnReport" addStyleNames="{style.report} {style.icons}"/>
+		<g:Label text="Rapports" addStyleNames="{style.text}"/>
+		
+		<g:Button title="DataViz" ui:field="btnDataViz" addStyleNames="{style.watchlist} {style.icons}"/>
+		<g:Label text="DataViz" addStyleNames="{style.text}"/>
+		
+		<!--<g:Button title="Strategy" ui:field="btnStrat" addStyleNames="{style.strategy} {style.icons}"/>
+		<g:Label text="Strategy" addStyleNames="{style.text}"/>
+		
+		<g:Button title="{label.Settings}" ui:field="btnSettings" addStyleNames="{style.settings} {style.icons}"/>
+		<g:Label text="{label.Settings}" addStyleNames="{style.text}"/>
+		
+		<g:Button title="{label.Search}" ui:field="btnSearch" addStyleNames="{style.search} {style.icons}"/>
+		<g:Label text="{label.Search}" addStyleNames="{style.text}"/>
+		
+		<g:Button title="{label.Watchlist}" ui:field="btnWatchList" addStyleNames="{style.watchlist} {style.icons}"/>
+		<g:Label text="{label.Watchlist}" addStyleNames="{style.text}"/>
+		
+		<g:Button title="Collaboration" ui:field="btnCollaboration" addStyleNames="{style.collaboration} {style.icons}"/>
+		<g:Label text="Collaboration" addStyleNames="{style.text}"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

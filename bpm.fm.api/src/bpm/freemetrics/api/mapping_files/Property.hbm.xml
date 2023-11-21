@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.infos.Property" table="fm_properties">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="PROP_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="name" type="string">
+			<column name="PROP_NAME" length="50" not-null="true">
+				<comment>Property name</comment>
+			</column>
+		</property>
+		<property name="propValue" type="string">
+			<column name="PROP_VALUE">
+				<comment>Property value</comment>
+			</column>
+		</property>
+		<property name="propDesc" type="string">
+			<column name="PROP_DESCRIPTION">
+				<comment></comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

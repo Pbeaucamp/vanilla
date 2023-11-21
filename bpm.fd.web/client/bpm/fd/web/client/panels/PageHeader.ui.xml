@@ -1,0 +1,177 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+		
+	<ui:style type="bpm.fd.web.client.panels.PageHeader.MyStyle">
+		.draggableFix {
+			background-position: 0;
+			transform: translate(0, 0);
+		}
+		
+		.btnSmall {
+		    height: 30px !important;
+		    line-height: 30px;
+		    display: inline-block;
+		    text-align: center;
+			cursor: pointer;
+			vertical-align: top;
+			border-radius: 5px;
+			border: 1px solid lightgray;
+			background-color: lightgray;
+			width: 99%;
+		    margin-right: 3px;
+		    max-width: 200px;
+		}
+		
+		.btnSmallSelected {
+			height: 30px !important;
+		    min-width: 30px;
+		}
+		
+		.btnBig {
+		    height: 50px !important;
+		    line-height: 50px;
+		    display: inline-block;
+		    text-align: center;
+			cursor: pointer;
+			vertical-align: top;
+			border-radius: 5px;
+			border: 1px solid lightgray;
+			background-color: lightgray;
+			width: 99%;
+		    margin-right: 3px;
+		    max-width: 200px;
+		}
+		
+		/*.btn:HOVER {
+			background-color: #D0E4F6 !important;
+		}*/
+		
+		.btnBigSelected {
+			height: 50px !important;
+		    min-width: 30px;
+		}
+		
+		.labelSmall {
+		    margin-top: 5px;
+	        display: inline-block;
+		    line-height: normal;
+		    vertical-align: top;
+		    margin-left: 5px;
+	        width: literal("calc(100% - 35px)");
+			width: literal("-moz-calc(100% - 35px)");
+			width: literal("-webkit-calc(100% - 35px)");
+			white-space: nowrap;
+    		overflow:hidden !important;
+    		text-overflow: ellipsis;
+		}
+		
+		.labelBig {
+		    margin-top: 15px;
+	        display: inline-block;
+		    line-height: normal;
+		    vertical-align: top;
+		    margin-left: 5px;
+	        width: literal("calc(100% - 35px)");
+			width: literal("-moz-calc(100% - 35px)");
+			width: literal("-webkit-calc(100% - 35px)");
+			white-space: nowrap;
+    		overflow:hidden !important;
+    		text-overflow: ellipsis;
+		}
+		
+		.textSmall {
+	    	margin-top: 5px;
+		    height: 20px;
+	        display: inline-block;
+		    vertical-align: top;
+		    margin-left: 5px;
+		    padding: 0px 4px;
+		}
+		
+		.textBig {
+	    	margin-top: 12px;
+		    height: 25px;
+	        display: inline-block;
+		    vertical-align: top;
+		    margin-left: 5px;
+		    padding: 0px 4px;
+		}
+		
+		.panelClose {
+			display: inline-block;
+		    height: 30px !important;
+		    width: 30px !important;
+		    position: relative;
+		    z-index: 2;
+		}
+		
+		.close {
+    		margin-top: 6px;
+		}
+		
+		.close:HOVER {
+			background-color: #DA3535 !important;
+			border-radius: 15px;
+		}
+		
+		.mainPanel {
+			position: relative;
+		}
+		
+		.panelLeft {
+			position: absolute;
+			height: 100%;
+			left: 0px;
+			right: 50%;
+			top: 0px;
+			z-index: 1;
+		}
+		
+		.panelRight {
+			position: absolute;
+			height: 100%;
+			left: 50%;
+			right: 0px;
+			top: 0px;
+			z-index: 1;
+		}
+		
+		.arrowLeft:after {
+    		content:"";
+		    position: absolute;
+		    top: -5px;
+		    left: -7px;
+		    width: 0; 
+		    height: 0; 
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+					
+		    border-top: 5px solid black;
+		}
+		
+		.arrowRight:after {
+    		content:"";
+		    position: absolute;
+		    top: -5px;
+		    right: -7px;
+		    width: 0; 
+		    height: 0; 
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+					
+		    border-top: 5px solid black;
+		}
+	</ui:style>
+	<g:FocusPanel ui:field="focusPanel">
+		<g:HTMLPanel addStyleNames="{style.mainPanel}">
+			<g:Label ui:field="lblTitle" addStyleNames="{style.labelSmall}"/><g:TextBox ui:field="txtTitle" visible="false" addStyleNames="{style.textSmall}"/><g:HTMLPanel addStyleNames="{style.panelClose}"><g:Image ui:field="btnClose" title="{label.Close}" resource="{resources.close_tab}" addStyleNames="{style.close}"/></g:HTMLPanel>
+			<g:FocusPanel ui:field="panelLeft" addStyleNames="{style.panelLeft}">
+			</g:FocusPanel><g:FocusPanel ui:field="panelRight" addStyleNames="{style.panelRight}">
+			</g:FocusPanel>
+		</g:HTMLPanel>
+	</g:FocusPanel>
+</ui:UiBinder> 

@@ -1,0 +1,102 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="bpm.fwr.client.wizard.chart.ChartDefinitionPage.MyStyle">
+		.imgChart {
+			width: 400px;
+			height: 300px;
+			margin: 0px 15px 0px 15px;	
+		}
+		
+		.lblSelectChartType {
+		    background: #E6E6E6;
+		    height: 35px;
+		    margin-bottom: 5px;
+		    padding-left: 10px;
+		    padding-top: 10px;
+		}
+		
+		.birtChartDialLabel {
+			margin-top: 15px;
+			margin-bottom: 5px;
+			margin-left: 15px;
+		}
+		
+		.listBoxType {
+			margin: 0px 15px 0px 15px;
+			height: 300px;
+			width: 300px;
+		}
+		
+		.listBoxOperation {    
+			margin-left: 12px;
+		    margin-top: 13px;
+		    width: 210px;
+		}
+		
+		.panelLeft {
+			width: 320px;
+		}
+		
+		.txtChartTitle {
+			width: 200px;    
+			margin-left: 40px;
+    		margin-top: 12px;
+		}
+		
+		.panelFusion {
+		    margin: 10px 30px;	
+		}
+		
+		.dimensionPanel {
+			margin-bottom: 10px;
+    		margin-top: 10px;	
+		}
+		
+		.lstDimension {
+			width: 200px;
+		    margin-left: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblTitle" addStyleNames="{style.lblSelectChartType}"/>
+		
+		<g:HorizontalPanel>
+			<g:HTMLPanel>
+				<g:HorizontalPanel>
+					<g:Label ui:field="lblChartTitle" addStyleNames="{style.birtChartDialLabel}"/>
+					<g:TextBox ui:field="txtChartTitle" addStyleNames="{style.txtChartTitle}"/>
+				</g:HorizontalPanel>
+				
+<!-- 				<g:HorizontalPanel> -->
+<!-- 					<g:RadioButton name="chartType" ui:field="radioBtnClassic"/> -->
+<!-- 					<g:RadioButton name="chartType" ui:field="radioBtnFusion"/> -->
+<!-- 				</g:HorizontalPanel> -->
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelFusionOptions" addStyleNames="{style.panelFusion}">
+				<g:HorizontalPanel>
+					<g:RadioButton ui:field="radioBtnSBS" name="stacked"/>
+					<g:RadioButton ui:field="radioBtnStacked" name="stacked"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel addStyleNames="{style.dimensionPanel}">
+					<g:Label ui:field="lblDimension"/>
+					<g:ListBox ui:field="lstDimension" addStyleNames="{style.lstDimension}"/>
+				</g:HorizontalPanel>
+				
+				<g:CheckBox ui:field="checkGlassEnabled"/>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel>
+			<g:HTMLPanel addStyleNames="{style.panelLeft}">
+				<g:Label ui:field="lblTypes" addStyleNames="{style.birtChartDialLabel}"/>
+				<g:ListBox ui:field="lstTypes" addStyleNames="{style.listBoxType}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblImg" addStyleNames="{style.birtChartDialLabel}"/>
+				<g:Image ui:field="typeImg"/>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

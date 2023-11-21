@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>ConnectionServices</servlet-name>
+    <servlet-class>bpm.fm.designer.web.server.ConnectionServicesImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConnectionServices</servlet-name>
+    <url-pattern>/FMDesignerWeb/ConnectionServices</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MetricService</servlet-name>
+    <servlet-class>bpm.fm.designer.web.server.MetricServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>MetricService</servlet-name>
+    <url-pattern>/FMDesignerWeb/MetricService</url-pattern>
+  </servlet-mapping>
+  
+  	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/FMDesignerWeb/commonService</url-pattern>  
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/FMDesignerWeb/loginService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>fmdtService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fmdtService</servlet-name>
+		<url-pattern>/FMDesignerWeb/fmdtService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>freeMetricService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FreeMetricServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeMetricService</servlet-name>
+		<url-pattern>/FMDesignerWeb/freeMetricService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReportingService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ReportingServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportingService</servlet-name>
+		<url-pattern>/FMDesignerWeb/ReportingService</url-pattern>
+	</servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Bpm_fm_designer_web.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

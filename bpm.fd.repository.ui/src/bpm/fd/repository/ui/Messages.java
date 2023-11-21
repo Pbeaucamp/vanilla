@@ -1,0 +1,128 @@
+package bpm.fd.repository.ui;
+
+import org.eclipse.osgi.util.NLS;
+
+public class Messages extends NLS {
+	private static final String BUNDLE_NAME = "bpm.fd.repository.ui.messages"; //$NON-NLS-1$
+	public static String ActionCheckoutFdProject_0;
+	public static String ActionCheckoutFdProject_1;
+	public static String ActionCheckoutFdProject_11;
+	public static String ActionCheckoutFdProject_14;
+	public static String ActionCheckoutFdProject_3;
+	public static String ActionCheckoutFdProject_4;
+	public static String ActionCheckoutFdProject_5;
+	public static String ActionCheckoutFdProject_6;
+	public static String ActionCheckoutFdProject_8;
+	public static String ActionCreateDirectory_0;
+	public static String ActionCreateDirectory_1;
+	public static String ActionCreateDirectory_2;
+	public static String ActionCreateDirectory_3;
+	public static String ActionCreateFdProject_0;
+	public static String ActionCreateFdProject_1;
+	public static String ActionCreateFdProject_2;
+	public static String ActionCreateFdProject_3;
+	public static String ActionCreateFdProject_4;
+	public static String ActionLoadFdProject_0;
+	public static String ActionLoadFdProject_1;
+	public static String ActionLoadFdProject_10;
+	public static String ActionLoadFdProject_11;
+	public static String ActionLoadFdProject_12;
+	public static String ActionLoadFdProject_13;
+	public static String ActionLoadFdProject_14;
+	public static String ActionLoadFdProject_15;
+	public static String ActionLoadFdProject_16;
+	public static String ActionLoadFdProject_17;
+	public static String ActionLoadFdProject_18;
+	public static String ActionLoadFdProject_19;
+	public static String ActionLoadFdProject_2;
+	public static String ActionLoadFdProject_20;
+	public static String ActionLoadFdProject_23;
+	public static String ActionLoadFdProject_26;
+	public static String ActionLoadFdProject_29;
+	public static String ActionLoadFdProject_4;
+	public static String ActionLoadFdProject_5;
+	public static String ActionLoadFdProject_6;
+	public static String ActionLoadFdProject_7;
+	public static String ActionLoadFdProject_8;
+	public static String ActionLoadFdProject_9;
+	public static String Activator_2;
+	public static String CompositeDirectory_0;
+	public static String CompositeDirectory_1;
+	public static String CompositeDirectory_2;
+	public static String CompositeDirectory_3;
+	public static String CompositeItem_0;
+	public static String CompositeItem_1;
+	public static String CompositeItem_2;
+	public static String CompositeItem_3;
+	public static String CompositeItem_4;
+	public static String CompositeItem_5;
+	public static String CompositeItem_6;
+	public static String CompositeItem_7;
+	public static String CompositeItem_8;
+	public static String CompositeItem_9;
+	public static String ConnectionDigester_0;
+	public static String ConnectionDigester_10;
+	public static String ConnectionDigester_11;
+	public static String ConnectionDigester_12;
+	public static String ConnectionDigester_5;
+	public static String DialogDirectory_0;
+	public static String DialogDirectory_1;
+	public static String DialogItem_0;
+	public static String DialogItem_1;
+	public static String DialogItemSelection_0;
+	public static String DialogUpdate_0;
+	public static String DialogUpdate_1;
+	public static String DialogUpdate_10;
+	public static String DialogUpdate_11;
+	public static String DialogUpdate_12;
+	public static String DialogUpdate_13;
+	public static String DialogUpdate_2;
+	public static String DialogUpdate_3;
+	public static String DialogUpdate_4;
+	public static String DialogUpdate_5;
+	public static String DialogUpdate_7;
+	public static String DialogUpdate_8;
+	public static String DialogUpdate_9;
+	public static String DisconnectAction_0;
+	public static String DisconnectAction_1;
+	public static String FdExportWizard_1;
+	public static String PageConnectionDefinition_0;
+	public static String PageConnectionDefinition_1;
+	public static String PageConnectionDefinition_11;
+	public static String PageConnectionDefinition_12;
+	public static String PageConnectionDefinition_13;
+	public static String PageConnectionDefinition_14;
+	public static String PageConnectionDefinition_15;
+	public static String PageConnectionDefinition_16;
+	public static String PageConnectionDefinition_17;
+	public static String PageConnectionDefinition_18;
+	public static String PageConnectionDefinition_2;
+	public static String PageConnectionDefinition_21;
+	public static String PageConnectionDefinition_23;
+	public static String PageConnectionDefinition_25;
+	public static String PageConnectionDefinition_26;
+	public static String PageConnectionDefinition_3;
+	public static String PageConnectionDefinition_4;
+	public static String PageConnectionDefinition_5;
+	public static String PageConnectionDefinition_6;
+	public static String PageConnectionDefinition_7;
+	public static String PageRepository_0;
+	public static String PageRepository_1;
+	public static String PageRepository_2;
+	public static String PageRepository_3;
+	public static String PageRepository_4;
+	public static String PageRepository_5;
+	public static String PageRepository_6;
+	public static String PageRepository_7;
+	public static String PageRepository_8;
+	public static String RepositoryConnectionLoader_1;
+	public static String RepositoryConnectionLoader_4;
+	public static String RepositoryConnectionLoader_5;
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+	}
+
+	private Messages() {
+	}
+}

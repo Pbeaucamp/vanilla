@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.alerts.Alert" table="fm_alert">
+		<id name="id" type="java.lang.Integer">
+			<column name="AL_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="alUserId" type="java.lang.Integer">
+			<column name="AL_USER_ID" />
+		</property>
+		<property name="alGroupId" type="java.lang.Integer">
+			<column name="AL_GROUP_ID" />
+		</property>
+		<property name="alAlarmId" type="java.lang.Integer">
+			<column name="AL_ALARM_ID">
+			</column>
+		</property>
+		<property name="alActionId" type="java.lang.Integer">
+			<column name="AL_ACTION_ID" />
+		</property>
+		<property name="alIsPublic" type="java.lang.Boolean">
+			<column name="AL_IS_PUBLIC" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="AL_NAME" />
+		</property>
+		<property name="alDescription" type="java.lang.String">
+			<column name="AL_DESCRIPTION" />
+		</property>
+		<property name="alUpdateType" type="java.lang.Integer">
+			<column name="AL_UPDATE_TYPE" />
+		</property>
+		<property name="alStartDate" type="timestamp">
+			<column name="AL_START_DATE" />
+		</property>
+		<property name="alEndDate" type="timestamp">
+			<column name="AL_END_DATE" />
+		</property>
+		<property name="alCreationDate" type="timestamp">
+			<column name="AL_CREATION_DATE" />
+		</property>
+		<property name="alMessage" type="java.lang.String">
+			<column name="AL_MESSAGE" />
+		</property>
+		<property name="alCheckMethod" type="java.lang.String">
+			<column name="AL_CHECK_METHOD" />
+		</property>
+		<property name="alCheckIntervalCode" type="java.lang.String">
+			<column name="AL_CHECK_INTERVAL_CODE" />
+		</property>
+		<property name="alCheckIntervalSecond" type="java.lang.Integer">
+			<column name="AL_CHECK_INTERVAL_SECOND" />
+		</property>
+		<property name="alLastCheckDate" type="timestamp">
+			<column name="AL_LAST_CHECK_DATETIME" />
+		</property>
+		<property name="alNextCheckDate" type="timestamp">
+			<column name="AL_NEXT_CHECK_DATETIME" />
+		</property>
+		<property name="alIsActive" type="java.lang.Boolean">
+			<column name="AL_IS_ACTIVE" />
+		</property>
+	</class>
+</hibernate-mapping>

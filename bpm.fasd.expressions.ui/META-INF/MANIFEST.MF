@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.fasd.expressions.ui
+Bundle-SymbolicName: bpm.fasd.expressions.ui;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.fasd.expressions.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.studio.expressions.core;visibility:=reexport,
+ bpm.studio.expressions.ui,
+ bpm.fasd.api;bundle-version="5.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.fasd.expressions.ui,
+ bpm.fasd.expressions.ui.model,
+ bpm.fasd.expressions.ui.viewer
+Bundle-Vendor: BPM-Conseil

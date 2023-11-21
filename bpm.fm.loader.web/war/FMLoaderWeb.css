@@ -1,0 +1,519 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.gridUpdate {
+	background-color: red;
+}
+.gridAdd {
+	background-color: green;
+}
+
+.pageGrid {
+    margin: auto;
+}
+
+.datasPagePanel {
+	border: 1px solid #399d93;
+	margin: 10px;
+	padding: 10px;
+}
+
+.mainPanelBorder {
+	border: 3px solid #92c1f0;
+}
+
+.backgroundBlue {
+	background-color: #E8EEF7;
+}
+
+.imgMetricMenu {
+	margin-top: 5px;
+	margin-left: 5px;
+	
+}
+
+.rowBanding {
+    background-color: silver;
+}
+
+.metricsTableLabel {
+	font-size: 10px;
+	width: 150px;
+}
+
+.labelTableau {
+	margin: 2px;
+}
+
+.indicatorFields {
+	margin: 1px;
+}
+
+.popupTable {
+  background-color: gray;
+  border-color: gray gray gray gray;
+  border-width: 1px 3px 3px 1px;
+  border-style: solid solid solid solid;
+  z-index: 10001;
+}
+
+.popupTable-item {
+  font-weight: normal;
+  font-size: 90%;
+}
+
+.infoDialog {
+  z-index: 10001;
+}
+
+.infoDialog-lbltitle {
+	font-size: 15px;
+	font-style: italic;
+	margin-bottom: 5px;
+	text-decoration: underline;
+}
+
+.infosDialog-lst {
+	font-size: 12px;
+}
+
+.infosDialog-lstlbl {
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+.infosDialog-lblAppMet {
+	font-size: 15px;
+	margin-bottom: 15px;
+}
+
+.noValuesForMetric {
+	line-height: 260px;
+	vertical-align: center;
+	text-align: center;
+	font-size: 12px;
+	background-color: white;
+	border: inset;
+}
+
+.assocNonCree {
+	height: 100%;
+	width: 100%;
+	background-color: #909090;
+}
+
+.dataTable {
+	/*overflow: auto;*/
+}
+
+.dataTable tbody {
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.mainWizardDialog {
+	height: 100%;
+	width: 100%;
+}
+
+.titleLabel {
+	font-size: 15px;
+	font-style: italic;
+	margin: 10px;
+}
+
+/*----------------- Stack Layout Panel ---------------------*/
+.headerStackFirst { 
+	 border-radius: 15px 15px 0px 0px; 
+	 -webkit-border-radius: 15px 15px 0px 0px;
+	 -moz-border-radius: 15px 15px 0px 0px;
+}
+
+.headerStackEnd {
+	 border-radius: 0px 0px 15px 15px; 
+	 -webkit-border-radius: 0px 0px 15px 15px;
+	 -moz-border-radius: 0px 0px 15px 15px;
+}
+
+.headerStackHide {
+ 	border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+}
+
+.headerStackHideEnd {
+ 	border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.headerStackHideFirst {
+	border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+    border-top: 1px solid #BBBBBB;
+}
+
+.headerStackBorder {
+    border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelContent {
+	overflow: auto;
+ 	padding: 0px;
+    border: 1px solid #BBBBBB;
+    overflow: auto;
+}
+
+.gwt-StackLayoutPanel {
+    border-bottom: 0 none;
+    border-radius: 0 0 15px 15px;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader {
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #399d93;
+    border-color: #BBBBBB #BBBBBB -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px 0;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 3px;
+    color: white;
+}
+
+
+.stackContentPref {     
+	 border-radius: 0 0 15px 15px;
+	 -webkit-border-radius: 0 0 15px 15px;
+	 -moz-border-radius: 0 0 15px 15px;
+}
+
+.gwt-StackPanel {
+	 font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 14px;
+}
+
+.gwt-StackPanel .gwt-StackPanelItem { 
+	 font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 14px; 
+	 font-weight: bold;
+	 font-family: arial; 
+	 /*background-color: #C3D9FF;*/
+	 padding-left: 5px;
+	 cursor: pointer;
+	 border: 1px solid #9fb2cb;
+}
+
+.gwt-StackPanel .gwt-StackPanelItem-selected { 
+	 font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 14px; 
+	 font-weight: bold;
+	 font-family: arial; 
+	 background-color: #9fb2cb; 
+	 padding-left: 5px;
+	 border: 1px solid #9fb2cb;
+ }
+ 
+.gwt-StackPanel .gwt-StackPanelContent {
+	 background: none !important;
+	 border-color:#BBBBBB #BBBBBB -moz-use-text-color;
+	 border-style:solid solid none;
+	 border-width:1px 1px 0;
+	 padding:2px 2px 10px 5px;
+}
+
+.gwt-StackPanel .gwt-StackPanelItem { 
+	 font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 14px; 
+	 font-weight: bold;
+	 font-family: arial; 
+	 /*background-color: #C3D9FF;*/
+	 padding-left: 5px;
+	 cursor: pointer;
+	 border: 1px solid #9fb2cb;
+}
+
+.gwt-StackPanel .gwt-StackPanelItem-selected { 
+	 font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 14px; 
+	 font-weight: bold;
+	 font-family: arial; 
+	 background-color: #9fb2cb; 
+	 padding-left: 5px;
+	 border: 1px solid #9fb2cb;
+}
+
+.gwt-StackPanelItem-first {
+ 	border-radius: 10px 10px 0px 0px; 
+}
+
+.gwt-StackPanelItem-below-selected {
+	border-radius: 0px 0px 10px 10px; 
+}
+
+.stackContent {
+    border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+    padding: 2px 2px 10px 5px;
+}
+
+.stackContentEnd {
+    border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 2px 2px 10px 5px;
+	border-radius: 0 0 15px 15px;
+	-webkit-border-radius: 0 0 15px 15px;
+	-moz-border-radius: 0 0 15px 15px;
+}
+
+.imgReduce {
+	 position: absolute;
+	 right: 10px;
+	 top: 7px;
+}
+
+.imgReduceHide {
+	 position: absolute;
+	 right: 1px;
+	 top: 7px;
+}
+
+.lblStackHeader {
+    left: 6px;
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.btnViewYear {
+    position: absolute;
+    left: 310px;
+    border-radius: 0px 5px 5px 0px;
+ 	-webkit-border-radius: 0px 5px 5px 0px;
+ 	-moz-border-radius: 0px 5px 5px 0px;
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.btnViewSem {
+ 	position: absolute;
+    right: 30px;
+    /*border-radius: 5px 5px 5px 5px;
+ 	-webkit-border-radius: 5px 5px 5px 5px;
+ 	-moz-border-radius: 5px 5px 5px 5px;*/
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.btnViewQuarter {
+    position: absolute;
+    right: 50px;
+    /*border-radius: 5px 5px 5px 5px;
+ 	-webkit-border-radius: 5px 5px 5px 5px;
+ 	-moz-border-radius: 5px 5px 5px 5px;*/
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.btnViewMonth {
+ 	position: absolute;
+    left: 265px;
+    /*border-radius: 5px 5px 5px 5px;
+ 	-webkit-border-radius: 5px 5px 5px 5px;
+ 	-moz-border-radius: 5px 5px 5px 5px;*/
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.btnViewWeek {
+    position: absolute;
+    right: 93px;
+     /*border-radius: 5px 5px 5px 5px;
+ 	-webkit-border-radius: 5px 5px 5px 5px;
+ 	-moz-border-radius: 5px 5px 5px 5px;*/
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.btnViewDay {
+ 	position: absolute;
+    left: 223px;
+    border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+ 	-moz-border-radius: 5px 0px 0px 5px;
+ 	font-size: 13px;
+ 	color: black;
+}
+
+.ckAll {
+	position: absolute;
+    right: 230px;
+}
+
+.unckAll {
+	position: absolute;
+    right: 245px;
+}
+
+.btnSearchStackHeader {
+ 	border-radius: 7px;
+    position: absolute;
+    right: 105px;
+    border-radius: 5px;
+ 	-webkit-border-radius: 5px;
+ 	-moz-border-radius: 5px;
+}
+/*----------------- End Stack Layout Panel ---------------------*/
+
+.FMTabPanel {
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+	margin-right: -4px;
+	margin-left: 0px;     
+	padding: 6px 10px;
+	border-left: 1px solid #399d93;
+	border-right: 1px solid #399d93;
+	border-top: 1px solid #399d93;
+	-webkit-border-radius: 15px 15px 0px 0px;
+	-moz-border-radius: 15px 15px 0px 0px;
+	border-radius: 15px 15px 0px 0px;
+	color: white;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab-selected {
+    background: none repeat scroll 0 0 #399d93;
+    cursor: default;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+    border-color: #399d93;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    padding: 6px;
+}
+
+.gwt-TabLayoutPanelContentContainer {
+    border-color: #399d93;
+    border-style: solid;
+    border-width: 2px 1px 1px;
+}
+
+.gwt-TabLayoutPanelTabBottom {
+	padding: 3px 7px 3px 7px;
+	cursor: pointer;
+	cursor: hand;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	background: #399d93;   
+	 
+	border-left: 1px solid #399d93;
+    border-radius: 0 0 5px 5px;
+    border-right: 1px solid #399d93;
+    border-top: 1px solid #399d93;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabBottom-selected {
+    background: none repeat scroll 0 0 #399d93;
+    cursor: default;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContentBottom {
+	padding: 0px;
+}
+
+.gwt-TabLayoutPanelContentContainerBottom {
+	border-bottom: 1px solid #399d93;
+}
+
+.gwt-TabLayoutPanelContentContainer {
+    border-radius: 0px 10px 10px 10px;
+	-webkit-border-radius: 0px 10px 10px 10px;
+	-moz-border-radius: 0px 10px 10px 10px;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+	border-radius: 0px 10px 10px 10px; 
+	-webkit-border-radius: 0px 10px 10px 10px;
+	-moz-border-radius: 0px 10px 10px 10px;
+	padding: 0px;
+	border-width: 0px;
+}
+
+.metricTableSelectedRow {
+	background-color: #628CD5;
+}
+
+.gwt-DatePicker {
+	border: 1px solid #399d93;
+    cursor: default;
+}
+
+.datePickerMonthSelector {
+	background: none repeat scroll 0 0 #399d93 !important;
+    width: 100%;
+}
+
+.datePickerWeekdayLabel, .datePickerWeekendLabel {
+	background: none repeat scroll 0 0 #399d93 !important;
+    cursor: default;
+    padding: 0 4px 2px;
+    color: white !important;
+}
+
+.datePickerPreviousButton, .datePickerNextButton {
+    color: white !important;
+    cursor: pointer;
+    font-size: 120%;
+    line-height: 1em;
+    padding: 0 4px;
+}
+
+
+td.datePickerMonth {
+    color: white !important;
+    font-size: 70%;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.gwt-Frame {
+    border: 0 none;
+    height: 100%;
+    width: 100%;
+}
+
+.dateBoxPopup {
+	z-index: 2;
+}
+
+
+.gwt-PopupPanel {
+	background: none;
+    border: 0px;
+    padding: 0px;
+    z-index: 2;
+}

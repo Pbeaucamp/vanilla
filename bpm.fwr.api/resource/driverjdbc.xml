@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drivers>
+	<driver 
+		prefix="jdbc:hsqldb:hsql://"
+		name="Hypersonic"
+		className="org.hsqldb.jdbcDriver"
+		file="hsqldb.jar"/>
+
+	<driver
+		prefix="jdbc:mysql://"
+		name="MySQL"	
+		className="com.mysql.jdbc.Driver"
+		file ="mysql-connector-java-3.1.14-bin.jar"/>
+		
+	<driver
+		prefix="jdbc:derby://"
+		name="Derby"	
+		className="org.apache.derby.jdbc.ClientDriver"
+		file ="derbyclient.jar"/>
+		
+	<driver
+		prefix="jdbc:postgresql://"
+		name="PostgreSql"
+		className="org.postgresql.Driver"
+		file ="postgresql-8.1-407.jdbc3.jar"/>
+
+	<driver
+		prefix="jdbc:oracle:thin:@"
+		name="Oracle"
+		className="oracle.jdbc.driver.OracleDriver"
+		file ="ojdbc14.jar"/>
+
+	<driver
+		prefix="jdbc:jtds:sqlserver://"
+		name="SqlServer"
+		className="net.sourceforge.jtds.jdbc.Driver"
+		file ="jtds-1.2.jar"/>
+
+	<driver
+		prefix="jdbc:h2://"
+		name="H2"
+		className="org.h2.Driver"
+		file ="h2.jar"/>
+	<driver
+		prefix=""
+		name="Sybase"
+		className="com.sybase.jdbc2.jdbc.SybDriver"
+		file ="jconn2.jar"/>
+	<driver
+		prefix="jdbc:ingres://"
+		name="Ingres"
+		className="com.ingres.jdbc.IngresDriver"
+		file ="iijdbc.jar"/>
+
+</drivers>

@@ -1,0 +1,629 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+          "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="dataSource"
+		class="bpm.freemetrics.api.manager.routing.DataSourceRouter">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="MySQL" value-ref="dataSourceMySql" />
+				<!-- 
+					<entry key="HSQL" value-ref="dataSourceHSQL"/>
+					<entry key="Derby" value-ref="dataSourceDERBY"/>
+					<entry key="PostgresSQL" value-ref="dataSourcePostgresSQL"/>
+				-->
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceMySql" />
+	</bean>
+	
+	<!--
+		<bean id="dataSourceDERBY"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+		value="org.apache.derby.jdbc.ClientDriver" />
+		<property name="url"
+		value="jdbc:derby://localhost:1527/../databases/FREEMETRICS" />
+		
+		</bean>
+		
+		<bean id="dataSourceHSQL"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url"
+		value="jdbc:hsqldb:hsql://localhost:9001/FREEMETRICS" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		
+		</bean>
+		
+		<bean id="dataSourcePostgresSQL"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url"
+		value="jdbc:postgresql://192.168.1.20:5432/FREEMETRICS" />
+		<property name="username" value="postgres" />
+		<property name="password" value="" />
+		
+		</bean>
+	-->
+
+	<!-- Definition de la source de donnees sous MySQL -->
+	<bean id="dataSourceMySql"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${datasource.driver}" />
+		<property name="url" value="${datasource.url}" />
+		<property name="username" value="${datasource.username}" />
+		<property name="password" value="${datasource.password}" />
+	</bean>
+
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+
+				<!-- Elements -->
+				<value>
+					bpm/freemetrics/api/mapping_files/User.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Group.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Role.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Application.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Theme.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/SubTheme.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/DashboardRelations.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Metrics.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/MetricValues.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/MetricInteraction.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/MetricValueList.hbm.xml
+				</value>
+
+				<!-- Relations -->
+				<value>
+					bpm/freemetrics/api/mapping_files/Assoc_Application_Metric.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/FmUser_Groups.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/FmApplication_Groups.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/FmUser_Roles.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/FmDashboard_Metric.hbm.xml
+				</value>
+
+				<!-- features -->
+				<value>
+					bpm/freemetrics/api/mapping_files/MetricWithAlert.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Alert.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/AlertCondition.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Action.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Property.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Forum.hbm.xml
+				</value>
+
+				<!-- favorites -->
+				<value>
+					bpm/freemetrics/api/mapping_files/WatchList.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/UserPreference.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/UserAlertePreference.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/UserAction.hbm.xml
+				</value>
+
+				<!-- Utils customs -->
+				<value>
+					bpm/freemetrics/api/mapping_files/Unit.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/TypeCollectivite.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Organisation.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/TypeOrganisation.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/TypeMetric.hbm.xml
+				</value>
+
+				<value>
+					bpm/freemetrics/api/mapping_files/TypeTerritoire.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/TypeDecompTerritoire.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Decompo_Territoire.hbm.xml
+				</value>
+				<value>
+					bpm/freemetrics/api/mapping_files/Assoc_Terr_Type_Dec_Terr.hbm.xml
+				</value>
+
+				<value>
+					bpm/freemetrics/api/mapping_files/Assoc_Compteur_Indicateur.hbm.xml
+				</value>
+
+				<value>
+					bpm/freemetrics/api/mapping_files/FMDatasource.hbm.xml
+				</value>
+				
+				<!-- Observatoires -->
+				<value>bpm/freemetrics/api/organisation/observatoire/observatoiresthemes.hbm.xml</value>
+    			<value>bpm/freemetrics/api/organisation/observatoire/observatoiresusers.hbm.xml</value>
+    			<value>bpm/freemetrics/api/organisation/observatoire/Observatoire.hbm.xml</value>
+				
+			</list>
+		</property>
+		<!--   
+			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			</props>
+			<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			</props>
+			<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+		-->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+		transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- datasource -->
+	<bean id="fmDatasourceDAO"
+		class="bpm.freemetrics.api.features.infos.FMDatasourceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmDatasourceManager"
+		class="bpm.freemetrics.api.features.infos.FMDatasourceManager">
+		<property name="dao" ref="fmDatasourceDAO" />
+	</bean>
+
+	<!-- Association indic Metric -->
+	<bean id="assoc_Compteur_IndicateurDAO"
+		class="bpm.freemetrics.api.organisation.metrics.Assoc_Compteur_IndicateurDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="assoc_Compteur_IndicateurManager"
+		class="bpm.freemetrics.api.organisation.metrics.Assoc_Compteur_IndicateurManager">
+		<property name="dao" ref="assoc_Compteur_IndicateurDAO" />
+	</bean>
+
+	<!-- Association Territoire Type decomposition territoire -->
+	<bean id="assoc_Terr_Type_Dec_TerrDAO"
+		class="bpm.freemetrics.api.organisation.relations.appl_typeApp.Assoc_Terr_Type_Dec_TerrDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="assoc_Terr_Type_Dec_TerrManager"
+		class="bpm.freemetrics.api.organisation.relations.appl_typeApp.Assoc_Terr_Type_Dec_TerrManager">
+		<property name="dao" ref="assoc_Terr_Type_Dec_TerrDAO" />
+	</bean>
+
+	<!-- Association Territoire Type decomposition territoire -->
+	<bean id="dashboardRelationDAO"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.DashboardRelationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="dashboardRelationManager"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.DashboardRelationManager">
+		<property name="dao" ref="dashboardRelationDAO" />
+	</bean>
+
+	<!-- Type Territoire -->
+	<bean id="typeTerritoireDAO"
+		class="bpm.freemetrics.api.organisation.application.TypeTerritoireDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeTerritoireManager"
+		class="bpm.freemetrics.api.organisation.application.TypeTerritoireManager">
+		<property name="dao" ref="typeTerritoireDAO" />
+	</bean>
+
+	<!-- Type Decomposition territoriale Territoire -->
+	<bean id="typeDecompTerritoireDAO"
+		class="bpm.freemetrics.api.organisation.application.TypeDecompTerritoireDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeDecompTerritoireManager"
+		class="bpm.freemetrics.api.organisation.application.TypeDecompTerritoireManager">
+		<property name="dao" ref="typeDecompTerritoireDAO" />
+	</bean>
+
+	<!-- Decomposition territoriale Territoire -->
+	<bean id="decompo_TerritoireDAO"
+		class="bpm.freemetrics.api.organisation.application.Decompo_TerritoireDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="decompo_TerritoireManager"
+		class="bpm.freemetrics.api.organisation.application.Decompo_TerritoireManager">
+		<property name="dao" ref="decompo_TerritoireDAO" />
+	</bean>
+
+	<!-- organisation -->
+	<bean id="organisationDAO"
+		class="bpm.freemetrics.api.features.infos.OrganisationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="organisationManager"
+		class="bpm.freemetrics.api.features.infos.OrganisationManager">
+		<property name="dao" ref="organisationDAO" />
+	</bean>
+
+	<!-- Type Organisation -->
+	<bean id="typeOrganisationDAO"
+		class="bpm.freemetrics.api.features.infos.TypeOrganisationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeOrganisationManager"
+		class="bpm.freemetrics.api.features.infos.TypeOrganisationManager">
+		<property name="dao" ref="typeOrganisationDAO" />
+	</bean>
+
+	<!-- Unit -->
+	<bean id="unitDAO"
+		class="bpm.freemetrics.api.features.infos.UnitDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="unitManager"
+		class="bpm.freemetrics.api.features.infos.UnitManager">
+		<property name="dao" ref="unitDAO" />
+	</bean>
+
+	<!-- Metric Type-->
+	<bean id="typeMetricDAO"
+		class="bpm.freemetrics.api.features.infos.TypeMetricDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeMetricManager"
+		class="bpm.freemetrics.api.features.infos.TypeMetricManager">
+		<property name="dao" ref="typeMetricDAO" />
+	</bean>
+
+	<!-- Type Collectivite -->
+	<bean id="typeCollectiviteDAO"
+		class="bpm.freemetrics.api.organisation.group.TypeCollectiviteDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeCollectiviteManager"
+		class="bpm.freemetrics.api.organisation.group.TypeCollectiviteManager">
+		<property name="dao" ref="typeCollectiviteDAO" />
+	</bean>
+
+	<!-- Association Dashboards Metric -->
+	<bean id="fmDashboard_MetricDAO"
+		class="bpm.freemetrics.api.organisation.relations.dash_metric.FmDashboard_MetricDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmDashboard_MetricManager"
+		class="bpm.freemetrics.api.organisation.relations.dash_metric.FmDashboard_MetricManager">
+		<property name="dao" ref="fmDashboard_MetricDAO" />
+	</bean>
+
+	<!-- Association Application Metric -->
+	<bean id="fmApplication_GroupsDAO"
+		class="bpm.freemetrics.api.organisation.relations.appl_group.FmApplication_GroupsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmApplication_GroupsManager"
+		class="bpm.freemetrics.api.organisation.relations.appl_group.FmApplication_GroupsManager">
+		<property name="dao" ref="fmApplication_GroupsDAO" />
+	</bean>
+
+	<!-- Association Application Group -->
+	<bean id="assoc_Application_MetricDAO"
+		class="bpm.freemetrics.api.organisation.relations.appl_metric.Assoc_Application_MetricDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="assoc_Application_MetricManager"
+		class="bpm.freemetrics.api.organisation.relations.appl_metric.Assoc_Application_MetricManager">
+		<property name="dao" ref="assoc_Application_MetricDAO" />
+	</bean>
+
+	<!-- Association Users Groups -->
+	<bean id="fmUsersGroupsDAO"
+		class="bpm.freemetrics.api.organisation.relations.user_group.FmUser_GroupsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmUsersGroupsManager"
+		class="bpm.freemetrics.api.organisation.relations.user_group.FmUser_GroupsManager">
+		<property name="dao" ref="fmUsersGroupsDAO" />
+	</bean>
+
+	<!-- Association Users Roles -->
+	<bean id="fmUsersRolesDAO"
+		class="bpm.freemetrics.api.security.relations.FmUser_RolesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmUsersRolesManager"
+		class="bpm.freemetrics.api.security.relations.FmUser_RolesManager">
+		<property name="dao" ref="fmUsersRolesDAO" />
+	</bean>
+
+	<!--  Properties -->
+	<bean id="propertiesDAO"
+		class="bpm.freemetrics.api.features.infos.PropertiesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="propertiesManager"
+		class="bpm.freemetrics.api.features.infos.PropertiesManager">
+		<property name="dao" ref="propertiesDAO" />
+	</bean>
+
+	<!-- user Action -->
+	<bean id="userActionDAO"
+		class="bpm.freemetrics.api.features.favorites.UserActionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userActionManager"
+		class="bpm.freemetrics.api.features.favorites.UserActionManager">
+		<property name="dao" ref="userActionDAO" />
+	</bean>
+
+	<!-- user watchlist -->
+	<bean id="watchListDAO"
+		class="bpm.freemetrics.api.features.favorites.WatchListDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="watchListManager"
+		class="bpm.freemetrics.api.features.favorites.WatchListManager">
+		<property name="dao" ref="watchListDAO" />
+	</bean>
+
+	<!-- user alerte preference -->
+	<bean id="userAlertePreferenceDAO"
+		class="bpm.freemetrics.api.features.favorites.UserAlertePreferenceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userAlertePreferenceManager"
+		class="bpm.freemetrics.api.features.favorites.UserAlertePreferenceManager">
+		<property name="dao" ref="userAlertePreferenceDAO" />
+	</bean>
+
+	<!-- user preference -->
+	<bean id="userPreferenceDAO"
+		class="bpm.freemetrics.api.features.favorites.UserPreferenceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userPreferenceManager"
+		class="bpm.freemetrics.api.features.favorites.UserPreferenceManager">
+		<property name="dao" ref="userPreferenceDAO" />
+	</bean>
+
+	<!--  Metrics Forum -->
+	<bean id="forumDAO"
+		class="bpm.freemetrics.api.features.forum.ForumDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="forumManager"
+		class="bpm.freemetrics.api.features.forum.ForumManager">
+		<property name="dao" ref="forumDAO" />
+	</bean>
+
+
+	<!--  Alerts -->
+	<bean id="metricWithAlertDAO"
+		class="bpm.freemetrics.api.features.alerts.MetricWithAlertDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="metricWithAlertManager"
+		class="bpm.freemetrics.api.features.alerts.MetricWithAlertManager">
+		<property name="dao" ref="metricWithAlertDAO" />
+	</bean>
+	<bean id="alertConditionDAO"
+		class="bpm.freemetrics.api.features.alerts.AlertConditionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="alertConditionManager"
+		class="bpm.freemetrics.api.features.alerts.AlertConditionManager">
+		<property name="dao" ref="alertConditionDAO" />
+	</bean>
+	<bean id="alertDAO"
+		class="bpm.freemetrics.api.features.alerts.AlertDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="alertManager"
+		class="bpm.freemetrics.api.features.alerts.AlertManager">
+		<property name="dao" ref="alertDAO" />
+	</bean>
+
+	<!--  Action -->
+	<bean id="actionDAO"
+		class="bpm.freemetrics.api.features.actions.ActionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="actionManager"
+		class="bpm.freemetrics.api.features.actions.ActionManager">
+		<property name="dao" ref="actionDAO" />
+	</bean>
+
+	<!--  Application -->
+	<bean id="applicationDAO"
+		class="bpm.freemetrics.api.organisation.application.ApplicationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="applicationManager"
+		class="bpm.freemetrics.api.organisation.application.ApplicationManager">
+		<property name="dao" ref="applicationDAO" />
+	</bean>
+
+	<!--  Metric -->
+	<bean id="metricDAO"
+		class="bpm.freemetrics.api.organisation.metrics.MetricDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="metricManager"
+		class="bpm.freemetrics.api.organisation.metrics.MetricManager">
+		<property name="dao" ref="metricDAO" />
+	</bean>
+
+	<!--  Metric Values -->
+	<bean id="metricValuesDAO"
+		class="bpm.freemetrics.api.organisation.metrics.MetricValuesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="metricValuesManager"
+		class="bpm.freemetrics.api.organisation.metrics.MetricValuesManager">
+		<property name="dao" ref="metricValuesDAO" />
+	</bean>
+
+	<!--  Metric Value List -->
+	<bean id="metricValueListDAO"
+		class="bpm.freemetrics.api.organisation.metrics.MetricValueListDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="metricValueListManager"
+		class="bpm.freemetrics.api.organisation.metrics.MetricValueListManager">
+		<property name="dao" ref="metricValueListDAO" />
+	</bean>
+
+	<!--  Metric Interactions-->
+	<bean id="metricInteractionDAO"
+		class="bpm.freemetrics.api.organisation.metrics.MetricInteractionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="metricInteractionManager"
+		class="bpm.freemetrics.api.organisation.metrics.MetricInteractionManager">
+		<property name="dao" ref="metricInteractionDAO" />
+	</bean>
+
+	<!--  User -->
+	<bean id="fmUserDAO"
+		class="bpm.freemetrics.api.security.FmUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmUserManager"
+		class="bpm.freemetrics.api.security.FmUserManager">
+		<property name="dao" ref="fmUserDAO" />
+	</bean>
+
+	<!-- Role -->
+	<bean id="fmRoleDAO"
+		class="bpm.freemetrics.api.security.FmRoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmRoleManager"
+		class="bpm.freemetrics.api.security.FmRoleManager">
+		<property name="dao" ref="fmRoleDAO" />
+	</bean>
+
+	<!-- Group -->
+	<bean id="fmGroupDAO"
+		class="bpm.freemetrics.api.organisation.group.GroupDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fmGroupManager"
+		class="bpm.freemetrics.api.organisation.group.GroupManager">
+		<property name="dao" ref="fmGroupDAO" />
+	</bean>
+
+	<!-- theme -->
+	<bean id="themeDAO"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.ThemeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="themeManager"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.ThemeManager">
+		<property name="dao" ref="themeDAO" />
+	</bean>
+
+	<!-- SStheme -->
+	<bean id="subThemeDAO"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.SubThemeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="subThemeManager"
+		class="bpm.freemetrics.api.organisation.dashOrTheme.SubThemeManager">
+		<property name="dao" ref="subThemeDAO" />
+	</bean>
+	
+	<!-- Observatoires -->
+	<bean id="assoUserDAO" class="bpm.freemetrics.api.organisation.observatoire.ObservatoiresUsersDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	 <bean id="assoThemeDAO" class="bpm.freemetrics.api.organisation.observatoire.ObservatoiresThemesDAO">
+	 	<property name="sessionFactory" ref="sessionFactory"/>
+	 </bean>
+	 
+	 <bean id="obsDAO" class="bpm.freemetrics.api.organisation.observatoire.ObservatoireDAO">
+	 	<property name="sessionFactory" ref="sessionFactory"/>
+	 </bean>
+	 
+	<bean id="obsManager" class="bpm.freemetrics.api.organisation.observatoire.ObservatoireManager">
+	 	<property name="assoUserDAO" ref="assoUserDAO"/>
+	 	<property name="assoThemeDAO" ref="assoThemeDAO"/>
+	 	<property name="obsDAO" ref="obsDAO"/>
+	 </bean>
+	 
+	<!-- Definition du service avec ses caracteristiques transactionnelles -->
+	<bean id="newsManager"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="directoryManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

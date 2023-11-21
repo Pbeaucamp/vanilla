@@ -1,0 +1,41 @@
+<RepositoryConnections>    <Connection>
+        <name>serverConnection</name>
+        <description></description>
+        <host>http://ns23716.ovh.net:9090/BIRepository</host>
+        <port>8080</port>
+        <username>designer</username>
+        <password>designer</password>
+    </Connection>
+    <Connection>
+        <name>ccc</name>
+        <description></description>
+        <host>http://localhost:8080/BIRepository/BIRepository</host>
+        <port>0</port>
+        <username>v</username>
+        <password></password>
+    </Connection>
+    <Connection>
+        <name>manuConnection</name>
+        <description>connection to Manu computer</description>
+        <host>http://192.168.1.22:8080/repository/BIRepository</host>
+        <port>8080</port>
+        <username>a</username>
+        <password></password>
+    </Connection>
+    <Connection>
+        <name>repository FASD</name>
+        <description></description>
+        <host>http://localhost:9090/BIRepository</host>
+        <port>0</port>
+        <username>system</username>
+        <password>system</password>
+    </Connection>
+    <Connection>
+        <name>dddd</name>
+        <description></description>
+        <host>http://localhost:8080/BIRepository</host>
+        <port>0</port>
+        <username>user</username>
+        <password>user</password>
+    </Connection>
+</RepositoryConnections>

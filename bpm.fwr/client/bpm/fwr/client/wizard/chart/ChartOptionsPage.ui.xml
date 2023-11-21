@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.optionsPanel {
+			border: 1px solid gray;
+		    border-radius: 5px 5px 5px 5px;
+    		height: 155px;
+		    margin-left: 10px;
+		    width: 905px;
+		}
+		
+		.check {
+			display: block;
+		    margin: 5px;
+		}
+		
+		.marginTxt {
+			margin: 5px;	
+		}
+		
+		.lblFontSize {
+		    margin-top: 8px;	
+		}
+		
+		.lblFontColor {
+		    margin-top: 15px;	
+		}
+		
+		.lblBackgroundColor {
+		    margin-top: 16px;	
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:CaptionPanel ui:field="optionsPanel" addStyleNames="{style.optionsPanel}">
+			<g:HTMLPanel>
+				<g:CheckBox ui:field="checkLabels" addStyleNames="{style.check}"/>
+				<g:CheckBox ui:field="checkBorders" addStyleNames="{style.check}"/>
+				<g:CheckBox ui:field="checkValues" addStyleNames="{style.check}"/>
+			</g:HTMLPanel>
+		</g:CaptionPanel>
+		<g:CaptionPanel ui:field="legendPanel" addStyleNames="{style.optionsPanel}">
+			<g:HTMLPanel>
+				<g:CheckBox ui:field="checkLegend" addStyleNames="{style.check}"/>
+				<g:RadioButton ui:field="radioBtnBottom" name="legend"/>
+				<g:RadioButton ui:field="radioBtnRight" name="legend"/>
+			</g:HTMLPanel>
+		</g:CaptionPanel>
+		<g:CaptionPanel ui:field="axisPanel" addStyleNames="{style.optionsPanel}">
+			<g:HorizontalPanel>
+				<g:VerticalPanel>
+					<g:Label ui:field="lblXAxisName" addStyleNames="{style.lblFontSize}"/>
+					<g:Label ui:field="lblYAxisName" addStyleNames="{style.lblFontColor}"/>
+					<g:Label ui:field="lblBackgroundColor" addStyleNames="{style.lblBackgroundColor}"/>
+				</g:VerticalPanel>
+				<g:VerticalPanel>
+					<g:TextBox ui:field="txtXAxisName" addStyleNames="{style.marginTxt}"/>
+					<g:TextBox ui:field="txtYAxisName" addStyleNames="{style.marginTxt}"/>
+					<g:TextBox ui:field="txtBackgroundColor" addStyleNames="{style.marginTxt}"/>
+				</g:VerticalPanel>
+			</g:HorizontalPanel>
+		</g:CaptionPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,23 @@
+library(knitr)
+library(ggplot2)
+library(corrplot)
+library(magrittr)
+library(highcharter)
+library(dplyr)
+library(reshape2)
+library(highcharter) 
+library(tidyverse)
+library(plotly)
+
+Graphes <- function(donnees, type_graphe, axe_X, axe_Y=NULL, dynamique=FALSE, groupe=NULL, titre="Titre", lab_X="Titre axe X", lab_Y="Titre axe Y",legende=TRUE, separation_bar=FALSE, density=FALSE,bins_histo=NULL) 
+{
+  
+  if (type_graphe == "Nuage") 
+  {
+    graphe=ggplot(data = donnees, aes (x=axe_X, y=axe_Y )) + geom_point(aes(color=groupe))     + theme_bw()   + labs(title=titre, x=lab_X, y=lab_Y)
+    if (legende == FALSE)
+    {
+      graphe = graphe  + guides(color=FALSE)
+    }
+  }
+}

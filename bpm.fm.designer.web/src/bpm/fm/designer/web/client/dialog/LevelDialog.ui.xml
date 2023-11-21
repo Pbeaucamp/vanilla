@@ -1,0 +1,69 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	<ui:style>
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+		}
+
+		.lstSize {
+			width: 173px;
+		}
+
+		.txtNameSize {
+			width: 167px;
+		}
+		.contentPanel {
+			width: 400px;
+			height: 250px;
+		}
+	</ui:style>
+
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			<g:HTMLPanel>
+				<g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.name}"/>
+				<g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}, {style.txtNameSize}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblDatasource" addStyleNames="{style.lbl}" text="{label.datasource}"/>
+				<g:ListBox ui:field="lstDatasource" addStyleNames="{style.marginTop}, {style.lstSize}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblTable" addStyleNames="{style.lbl}" text="{label.table}"/>
+				<g:TextBox ui:field="txtTable" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnTableBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblColumnId" addStyleNames="{style.lbl}" text="{label.columnId}"/>
+				<g:TextBox ui:field="txtColumnId" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnIdBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblColumnName" addStyleNames="{style.lbl}" text="{label.columnName}"/>
+				<g:TextBox ui:field="txtColumnName" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnNameBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblParentColumn" addStyleNames="{style.lbl}" text="{label.parentColumnName}"/>
+				<g:TextBox ui:field="txtParentColumn" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnParentBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblGeoColumn" addStyleNames="{style.lbl}" text="{label.geoCol}"/>
+				<g:TextBox ui:field="txtGeoColumn" addStyleNames="{style.marginTop}"/>
+				<g:Button ui:field="btnColumnGeoBrowse">...</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<g:Label ui:field="lblDataset" addStyleNames="{style.lbl}" text="{label.dataset}"/>
+				<g:ListBox ui:field="lstDataset" addStyleNames="{style.marginTop}, {style.lstSize}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+</ui:UiBinder> 

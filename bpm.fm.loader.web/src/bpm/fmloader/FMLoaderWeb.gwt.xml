@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><module rename-to="fmloaderweb">
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+ 
+ 
+ <extend-property name="locale" values="fr"/>
+ <extend-property name="locale" values="es"/>
+ 
+  <inherits name="com.google.gwt.user.theme.standard.Standard"/>
+  <inherits name='bpm.fm.api.freeMetrics'></inherits>
+  <inherits name='bpm.gwt.commons.Commons'></inherits>
+  <inherits name='bpm.update.manager.api.Commons'></inherits>
+  <inherits name='bpm.vanilla.platform.core.VanillaPlatform'></inherits>
+  <inherits name="gwtupload.GWTUpload"/>
+  <inherits name="bpm.vanilla.map.VanillaMap" />
+  <inherits name="bpm.mdm.model.Architect"/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+  
+  <stylesheet src="../FMLoaderWeb.css"/>
+                         
+  <entry-point class="bpm.fmloader.client.FMLoaderWeb"/>
+</module>

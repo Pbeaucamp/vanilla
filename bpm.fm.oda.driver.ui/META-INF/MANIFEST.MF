@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.fm.oda.driver.ui
+Bundle-SymbolicName: bpm.fm.oda.driver.ui; singleton:=true
+Bundle-Version: 5.0.0.1
+Bundle-ClassPath: .,src
+Bundle-Activator: bpm.fm.oda.driver.ui.Activator
+Bundle-Localization: plugin
+Export-Package: bpm.fm.oda.driver.ui,
+ bpm.fm.oda.driver.ui.impl
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda;bundle-version="[3.2.0,4.0.0)",
+ org.eclipse.datatools.connectivity.oda.profile;bundle-version="[3.2.0,4.0.0)",
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui;bundle-version="[3.2.0,4.0.0)",
+ bpm.fm.oda.driver,
+ bpm.fm.api;bundle-version="4.2.0",
+ bpm.vanilla.platform.core;bundle-version="5.0.0",
+ bpm.vanilla.platform.core.config;bundle-version="5.0.0",
+ bpm.vanilla.platform.core.remote;bundle-version="5.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: BPM-Conseil

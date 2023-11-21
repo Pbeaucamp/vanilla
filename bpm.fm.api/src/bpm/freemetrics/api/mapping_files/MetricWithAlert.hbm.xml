@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.alerts.MetricWithAlert"
+		table="fm_metricswithalert">
+		<comment></comment>
+		<id name="id" type="int">
+			<column name="MA_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="maApplicationId" type="java.lang.Integer">
+			<column name="MA_APPLICATION_ID">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maMetricsId" type="java.lang.Integer">
+			<column name="MA_METRICS_ID">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="name" type="string">
+			<column name="MA_NAME">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maDescription" type="string">
+			<column name="MA_DESCRIPTION">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maBeginDate" type="timestamp">
+			<column name="MA_BEGIN_DATE" length="19">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maEndDate" type="timestamp">
+			<column name="MA_END_DATE" length="19">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maCreationDate" type="timestamp">
+			<column name="MA_CREATION_DATE" length="19">
+				<comment></comment>
+			</column>
+		</property>
+		<property name="maAlertId" type="java.lang.Integer">
+			<column name="MA_ALERT_ID">
+				<comment></comment>
+			</column>
+		</property>
+		<set name="fmAlertconditions" inverse="true">
+			<key>
+				<column name="AC_METRICSWITHALERT_ID">
+					<comment></comment>
+				</column>
+			</key>
+			<one-to-many class="bpm.freemetrics.api.features.alerts.AlertCondition" />
+		</set>
+	</class>
+</hibernate-mapping>

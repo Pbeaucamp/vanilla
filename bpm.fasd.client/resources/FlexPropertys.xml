@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+<comment>
+	1 : set the Ressource Path called : "app_root_path".
+	2 : set the Data folder name called : "data_dir" (according to the flex application).
+	3 : set the Data file name called : "data_file" (according to the flex application).
+	4 : set the Htlm Flex application page called : "html_file".
+</comment>
+<entry key="app_root_path">resources\bin-release</entry>
+<entry key="data_dir">\data</entry>
+<entry key="data_file">\Group.xml</entry>
+<entry key="html_file">\GroupView.html</entry>
+<entry key="error_page">\errors.html</entry>
+</properties>

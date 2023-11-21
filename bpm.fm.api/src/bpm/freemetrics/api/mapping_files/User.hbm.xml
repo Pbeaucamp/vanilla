@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.security.FmUser" table="fm_users">
+		<id name="id" type="java.lang.Integer">
+			<column name="US_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+
+		<property name="login" type="string">
+			<column name="US_LOGIN" />
+		</property>
+
+		<property name="name" type="string">
+			<column name="US_NAME" />
+		</property>
+
+		<property name="password" type="string">
+			<column name="US_PASSWORD" />
+		</property>
+
+		<property name="surname" type="string">
+			<column name="US_SURNAME" />
+		</property>
+
+		<property name="function" type="string">
+			<column name="US_FONCTION" />
+		</property>
+
+		<property name="telephone" type="string">
+			<column name="US_TELEPHONE" />
+		</property>
+
+		<property name="cellular" type="string">
+			<column name="US_CELLULAR" />
+		</property>
+
+		<property name="address" type="string">
+			<column name="US_ADDRESS" />
+		</property>
+
+		<property name="skypeName" type="string">
+			<column name="US_SKYPE_NAME" />
+		</property>
+
+		<property name="skypeNumber" type="string">
+			<column name="US_SKYPE_NUMBER" />
+		</property>
+
+		<property name="businessMail" type="string">
+			<column name="US_BUSINESS_MAIL" />
+		</property>
+
+		<property name="privateMail" type="string">
+			<column name="US_PRIVATE_MAIL" />
+		</property>
+
+		<property name="creationDate" type="date">
+			<column name="US_CREATION_DATE" />
+		</property>
+
+		<property name="image" type="string">
+			<column name="US_IMAGE" />
+		</property>
+
+		<property name="custom1" type="string">
+			<column name="US_CUSTOM_1" />
+		</property>
+
+		<property name="comment" type="string">
+			<column name="US_COMMENT" />
+		</property>
+
+		<property name="organisationId" type="java.lang.Integer">
+			<column name="US_ORGANISATION_ID" />
+		</property>
+
+		<property name="typeOrganisation" type="string">
+			<column name="US_TYPE_ORGANISATION" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<Schema name="MySchema">
+
+        <Dimension name="Time Dimension">
+            <Hierarchy hasAll="true" allMemberName="All  Times" primaryKey="TIME_ID">
+                <Table name="time"/>
+                <Level name="Year" table="time" column="YEAR_ID" uniqueMembers="true"/>
+                <Level name="Quarter" ordinalColumn="QTR_ID" table="time" column="QTR_NAME" uniqueMembers="false">
+                    <Property name="QTR_DESC" column="QTR_DESC" type="String"/>
+                   </Level>
+                <Level name="Month" ordinalColumn="MONTH_ID" table="time" column="MONTH_NAME" uniqueMembers="false">
+                    <Property name="MONTH_DESC" column="MONTH_DESC" type="String"/>
+                   </Level>
+                <Level name="Date" table="time" column="TIME_ID" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Customer Dimension">
+            <Hierarchy hasAll="true" allMemberName="All  Customers" primaryKey="CUSTOMERNUMBER">
+                <Table name="customer_w_ter"/>
+                <Level name="Territory" table="customer_w_ter" column="TERRITORY" uniqueMembers="true"/>
+                <Level name="Country" table="customer_w_ter" column="COUNTRY" uniqueMembers="false"/>
+                <Level name="City" table="customer_w_ter" column="CITY" uniqueMembers="false"/>
+                <Level name="Customer" table="customer_w_ter" column="CUSTOMERNAME" uniqueMembers="false">
+                    <Property name="CUSTOMERNUMBER" column="CUSTOMERNUMBER" type="String"/>
+                   </Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Product Dimension">
+            <Hierarchy hasAll="true" allMemberName="All  Products" primaryKey="PRODUCTCODE">
+                <Table name="products"/>
+                <Level name="Vendor" table="products" column="PRODUCTVENDOR" uniqueMembers="true"/>
+                <Level name="Product Line" table="products" column="PRODUCTLINE" uniqueMembers="false"/>
+                <Level name="Product" table="products" column="PRODUCTNAME" uniqueMembers="false">
+                    <Property name="PRODUCTCODE" column="PRODUCTCODE" type="String"/>
+                   </Level>
+            </Hierarchy>
+        </Dimension>
+    <Cube name="Sales">
+        <Table name="orderfact"/>
+        <DimensionUsage name="Time Dimension" source="Time Dimension" foreignKey="TIME_ID"/>
+        <DimensionUsage name="Customer Dimension" source="Customer Dimension" foreignKey="CUSTOMERNUMBER"/>
+        <DimensionUsage name="Product Dimension" source="Product Dimension" foreignKey="PRODUCTCODE"/>
+        <Measure name="Sales" column="TOTALPRICE" aggregator="sum" formatString="Standard"/>
+    </Cube>
+</Schema>

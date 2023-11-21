@@ -1,0 +1,158 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.fwr.client.images.WysiwygImage' />
+	<ui:with field='label' type='bpm.fwr.client.I18N.WysiwygLabelConstants' />
+	
+	<ui:style type="bpm.fwr.client.panels.UserPanel.MyStyle">
+		.mainPanel {
+			width: 500px;
+			background-color: white;
+			-webkit-border-bottom-right-radius: 10px;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+			-moz-border-radius-bottomleft: 10px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		
+		.panelTop {
+			padding: 20px;
+		}
+		
+		.panelBottom {
+			text-align: center;
+			padding: 20px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			-webkit-border-bottom-right-radius: 10px;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+			-moz-border-radius-bottomleft: 10px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		
+		.imgUser {
+			height: 80px !important;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+			border-radius: 50px;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+		}
+		
+		.panelTopUser {
+			margin-left: 20px;
+			display: inline-block;
+			vertical-align: top;"
+		}
+		
+		.lblFullName {
+			font-weight: bold;
+			font-size: 14px;
+			margin-bottom: 5px;
+			margin-top: 10px;
+		}
+		
+		.lblEmail {
+	
+		}
+		
+		.imgAbout {
+			display: inline-block;
+		    height: 50px !important;
+		    margin-left: 10px;
+		    vertical-align: middle;
+		}
+		
+		.panelLblInfo {
+			display: inline-block;
+    		vertical-align: middle;
+    		margin-left: 20px;
+		}
+		
+		.aboutMe {
+			text-align: center;
+			font-size: 18px;
+			color:#fff;
+			margin-bottom:25px;
+		}
+		
+		.maj {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.lblNumMaj {
+			background: none repeat scroll 0 0 #E23923;
+    		border-radius: 5px;
+    		color: #FFFFFF;
+    		font-size: 0.8em;
+    		font-weight: bold;
+    		padding: 3px;
+    		position: absolute;
+    		right: 0;
+    		top: -5px;
+		}
+		
+		.btnBottom {
+			border-radius: 32px;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 32px !important;
+			width: 32px !important;
+			padding: 7px;
+			background-position: center !important;
+			background-color: #9E9393 !important;
+			margin-left: 3px;
+			margin-right: 3px;
+		}
+		
+		.btnBottom:HOVER {
+			background-color: black !important;
+		}
+		
+		.panelInfo {
+			padding: 20px;
+		}
+
+		.glass {
+			background-color: #000000;
+			opacity: 0.3;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="rootPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelTop}">
+			<g:Image ui:field="imgUser" />
+			<g:HTMLPanel addStyleNames="{style.panelTopUser}">
+				<g:Label ui:field="lblFullName" styleName="{style.lblFullName}"/>
+				<g:Label ui:field="lblEmail" styleName="{style.lblEmail}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelUser" addStyleNames="{style.panelInfo}">
+			<g:Image ui:field="imgAbout"/>
+			<g:HTMLPanel addStyleNames="{style.panelLblInfo}">
+		        <g:Label ui:field="lblName"/>
+		        <g:Label ui:field="lblUserEmail"/>
+		        <g:Label ui:field="lblRepository"/>
+		        <g:Label ui:field="lblGroup"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelBottom" addStyleNames="{style.panelBottom}">
+			<g:HTMLPanel addStyleNames="{style.aboutMe}">
+	            <g:Label ui:field="lblAboutMe" text="{label.AboutMe}"/>
+	        </g:HTMLPanel>
+	        <g:Image ui:field="btnTheme" title="{label.SelectTheme}" resource="{resources.css_v2_32}" styleName="{style.btnBottom}"/>
+	        <g:Image ui:field="btnLogout" title="{label.Logout}" resource="{resources.logout_w}" styleName="{style.btnBottom}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

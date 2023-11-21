@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapping>
+    <mapping-item>
+        <dataobject-id>c45</dataobject-id>
+        <molap-dataobject-id>c47</molap-dataobject-id>
+    </mapping-item>
+    <mapping-item>
+        <dataobject-id>c41</dataobject-id>
+        <molap-dataobject-id>c50</molap-dataobject-id>
+    </mapping-item>
+    <mapping-item>
+        <dataobject-id>c44</dataobject-id>
+        <molap-dataobject-id>c48</molap-dataobject-id>
+    </mapping-item>
+    <mapping-item>
+        <dataobject-id>c42</dataobject-id>
+        <molap-dataobject-id>c51</molap-dataobject-id>
+    </mapping-item>
+    <mapping-item>
+        <dataobject-id>c43</dataobject-id>
+        <molap-dataobject-id>c49</molap-dataobject-id>
+    </mapping-item>
+</mapping>

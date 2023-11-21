@@ -1,0 +1,241 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	<ui:with field='resources' type='bpm.fm.designer.web.client.images.Images' />
+	<ui:with field='labelCommons' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.fm.designer.web.client.panel.MetricPropertiesPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			min-width: 600px;
+		}
+	
+		.mainToolbar {
+			height: 70px;
+			width: 100%;
+			background-color: #399d93;
+		}
+		
+		.toolbar {
+			width: 100%;
+			height: 40px;
+		}
+		
+		.title {
+		    border-bottom: 1px solid #000000;
+		    font-size: 20px;
+		    height: 30px;
+		    line-height: 30px;
+		    padding-left: 10px;
+		    color: white;
+		}
+		
+		.btnToolbar {
+			cursor: pointer;
+			height: 32px !important;
+			width: 32px !important;
+			background-position: center !important;
+			margin: 4px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.panelContent {
+			overflow: auto;
+			position: absolute;
+			top: 80px;
+			bottom: 0px;
+			width: 100%;
+			min-width: 600px;
+		}
+		
+		.panelRelative {
+		    height: 100%;
+		    position: relative;
+		    width: 100%;
+		}
+		
+		.captionMetric {
+		    height: 235px;
+		    left: 0;
+		    position: absolute;
+		    right: 49%;
+		    top: 0;
+		}
+		
+		.captionObjective {
+		    height: 235px;
+		    left: 51%;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		}
+		
+		.captionAxis {
+		    bottom: 0;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 255px;
+		}
+
+		.alertPanel {
+		    bottom: 0;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+			top: 0;
+		}
+		
+		.captionContent {
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+		}
+		
+		.label {
+			float: left;
+			width: 150px;	
+		}
+		
+		.txtBox {
+			width: 400px;
+		}
+		
+		.lstBox {
+			width: 213px;
+		}
+		
+		.txtWithBrowse {
+			width: 175px;
+		}
+		
+		.linePanel {
+			margin: 25px;	
+		}
+		
+		.lstAxes {
+			width: 870px;
+			height: 200px;	
+		}
+		
+		.toolbar {
+			width: 100%;
+			height: 40px;
+		}
+		.txtDesc {
+			height: 100px;
+		}
+		.scrolling {
+			overflow: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.mainToolbar}">
+			<g:Label text="{label.Properties}" addStyleNames="{style.title}"/>
+			<g:HTMLPanel addStyleNames="{style.toolbar}">
+				<g:Image ui:field="imgSave" resource="{resources.save}" title="{label.Save}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgInit" resource="{resources.refresh}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgAssos" resource="{resources.assos_add}" title="{label.Assos}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgAssosEdit" resource="{resources.assos_edit}" title="{label.assosEdit}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgAssosDelete" resource="{resources.assos_delete}" title="{label.assosDelete}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgCreate" resource="{resources.database_creation}" title="{label.createTables}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="imgLink" resource="{resources.assos}" title="{labelCommons.LinkETL}" addStyleNames="{style.btnToolbar}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	
+		
+	
+		<g:HTMLPanel addStyleNames="{style.panelContent}">
+		
+			<g:TabLayoutPanel ui:field="tabPanel" addStyleNames="{style.captionContent}" barUnit='PX' barHeight='30'>
+				<g:tab>
+					<g:header><ui:text from="{label.information}" /></g:header>
+					<g:HTMLPanel addStyleNames="{style.panelRelative}, {style.scrolling}">
+						<g:HTMLPanel addStyleNames="{style.linePanel}">
+							<g:Label addStyleNames="{style.label}" text="{label.name}"></g:Label>
+							<g:TextBox ui:field="txtName" addStyleNames="{style.txtBox}"></g:TextBox>
+						</g:HTMLPanel>
+						<g:HTMLPanel addStyleNames="{style.linePanel}">
+							<g:Label addStyleNames="{style.label}" text="{label.description}"></g:Label>
+							<g:TextArea ui:field="txtDescription" addStyleNames="{style.txtBox}, {style.txtDesc}"></g:TextArea>
+						</g:HTMLPanel>
+<!-- 						<g:HTMLPanel addStyleNames="{style.linePanel}"> -->
+<!-- 							<g:Label addStyleNames="{style.label}" text="{label.etl}"></g:Label> -->
+<!-- 							<g:TextBox ui:field="txtEtl" addStyleNames="{style.txtBox}"></g:TextBox> -->
+<!-- 							<g:Button text="..." ui:field="btnEtl"></g:Button> -->
+<!-- 						</g:HTMLPanel> -->
+						<g:HTMLPanel addStyleNames="{style.linePanel}">
+							<g:Label addStyleNames="{style.label}" text="{label.owner}"></g:Label>
+							<g:TextBox ui:field="txtOwner" addStyleNames="{style.txtBox}"></g:TextBox>
+						</g:HTMLPanel>
+						<g:HTMLPanel addStyleNames="{style.linePanel}">
+							<g:Label addStyleNames="{style.label}" text="{label.responsible}"></g:Label>
+							<g:TextBox ui:field="txtResp" addStyleNames="{style.txtBox}"></g:TextBox>
+						</g:HTMLPanel>
+						<g:HTMLPanel addStyleNames="{style.linePanel}">
+							<g:Label addStyleNames="{style.label}" text="Linked objects"></g:Label>
+							<g:ListBox ui:field="lstLinked" addStyleNames="{style.txtBox}"></g:ListBox>
+							<g:Button text="..." ui:field="btnLinked"></g:Button>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+				</g:tab>
+				<g:tab>
+					<g:header><ui:text from="{label.value}" /></g:header>
+					<g:HTMLPanel ui:field="valueContentPanel" addStyleNames="{style.panelRelative}">
+						
+
+					</g:HTMLPanel>
+				</g:tab>
+				<g:tab>
+					<g:header><ui:text from="{label.alert}" /></g:header>
+					<g:HTMLPanel addStyleNames="{style.captionAxis}" ui:field="alertPanel">
+						<g:HTMLPanel addStyleNames="{style.toolbar}">
+							<!-- <g:Image ui:field="imgAdd" resource="{resources.add}" title="{label.Add}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgEdit" resource="{resources.edit}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/> -->
+							<g:Image ui:field="imgDelete" resource="{resources.delete}" title="{label.Delete}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgRefresh" resource="{resources.refresh}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+						</g:HTMLPanel>
+						
+						
+					</g:HTMLPanel>
+				</g:tab>
+				<g:tab>
+					<g:header>Actions</g:header>
+					<g:HTMLPanel addStyleNames="{style.captionAxis}" ui:field="actionPanel">
+						<g:HTMLPanel addStyleNames="{style.toolbar}">
+							<g:Image ui:field="imgAddAction" resource="{resources.add}" title="{label.Add}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgEditAction" resource="{resources.edit}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgDeleteAction" resource="{resources.delete}" title="{label.Delete}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgRefreshAction" resource="{resources.refresh}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+						</g:HTMLPanel>
+						
+					</g:HTMLPanel>
+				</g:tab>
+				<!-- <g:tab>
+					<g:header><ui:text from="{label.maps}" /></g:header>
+					<g:HTMLPanel addStyleNames="{style.captionAxis}" ui:field="mapPanel">
+						<g:HTMLPanel addStyleNames="{style.toolbar}">
+							<g:Image ui:field="imgAddMap" resource="{resources.add}" title="{label.Add}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgEditMap" resource="{resources.edit}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgDeleteMap" resource="{resources.delete}" title="{label.Delete}" addStyleNames="{style.btnToolbar}"/>
+							<g:Image ui:field="imgRefreshMap" resource="{resources.refresh}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+						</g:HTMLPanel>
+						
+					</g:HTMLPanel>
+				</g:tab> -->
+			</g:TabLayoutPanel>
+
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

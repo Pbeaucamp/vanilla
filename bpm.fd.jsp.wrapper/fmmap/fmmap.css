@@ -1,0 +1,49 @@
+.metricDiv {
+	float:left;
+}
+.metricDiv label {
+	display:block;
+	
+}
+.metricDiv select {
+	display:block;
+	margin-left: 40px;
+}
+
+.dateDiv {
+	float:left;
+	margin-left: 30px;
+}
+.dateDiv-label-box {
+	display:block;
+	width:60px;
+	float:left;
+	margin-left: 10px;
+}
+.dateDiv select {
+	width: 80px;
+}
+.metricDate-btn {
+	margin-left: 30px;
+	margin-top: 20px;
+	display: block;
+	float:left;
+}
+
+.diamondShield {
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-bottom: 20px solid red;
+	position: relative;
+	top: -50px;
+}
+.diamondShield:after {
+	content: '';
+	position: absolute;
+	left: -50px; top: 20px;
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-top: 70px solid red;
+}

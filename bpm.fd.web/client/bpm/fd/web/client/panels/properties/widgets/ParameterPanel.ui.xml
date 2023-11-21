@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.fd.web.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.fd.web.client.images.DashboardImage'/>
+	
+	<ui:style type="bpm.fd.web.client.panels.properties.widgets.ParameterPanel.MyStyle">
+		 .focus {
+			border: 1px solid red !important;
+			color: red;
+		}
+		
+		.panel {
+		    display: inline-block;
+	    	width: 45%;
+		}
+		
+		.panelSelection {
+		    border: 1px solid #D3D3D3;
+		    border-radius: 5px 5px 5px 5px;
+		    cursor: pointer;
+		    display: inline-block;
+		    height: 40px;
+		    line-height: 40px;
+		    margin-top: 28px;
+		    padding-left: 20px;
+		    vertical-align: top;
+		    width: 45%;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+    		margin-top: 32px;
+    	    vertical-align: top;
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:SimplePanel addStyleNames="{style.panel}">
+			<my:LabelTextBox ui:field="txtParam" placeHolder="{labels.Parameter}" enabled="false"/>
+		</g:SimplePanel>
+		<g:FocusPanel ui:field="panelSelection" addStyleNames="{style.panelSelection}">
+			<g:Label ui:field="txtComponent" text="{labels.NoSelection}"/>
+		</g:FocusPanel>
+		<g:Image ui:field="btnDel" resource="{resources.ic_delete_black_18dp}" visible="false" addStyleNames="{style.imgGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		@external .lblLabel;
+	
+		.lblLabel{
+			background: url("webapps/freematrix_files/images/level.png") no-repeat left;
+			padding-left: 30px;
+		}
+		.lblAxisName{
+			background: url("webapps/freematrix_files/images/dimension.gif") no-repeat left;
+			padding-left: 30px;
+			color: #399d93;
+			font-weight: bold;
+		}
+		.panel{
+			width: 200px;
+			background: #F5F5F5;
+			margin: 20px;
+			padding: 10px;
+			display: inline-block;
+			vertical-align: top;
+			height: 200px;
+			overflow: auto;
+		}
+		.childPanel{
+			padding: 10px;
+			color: #777;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Label ui:field="lblAxisName" addStyleNames="{style.lblAxisName}"/>
+		<g:HTMLPanel ui:field="childPanel" addStyleNames="{style.childPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

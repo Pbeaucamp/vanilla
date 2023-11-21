@@ -1,0 +1,41 @@
+._stackablecell {
+	
+}
+
+._stackableCell .buttons_horizontal {
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+	margin: 5px;
+}
+.buttons_horizontal {
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+	margin: 5px;
+}
+
+._stackableCell .buttons_vertical {
+	border-left: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9;
+	margin: 5px;
+	display: block;
+}
+.buttons_vertical {
+	border-left: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9;
+	margin: 5px;
+	display: block;
+}
+
+._stackableCell .hide {
+	display: none;
+}
+.hide {
+	display: none;
+}
+
+._stackableCell .selected {
+	background-color: #D9D9D9;
+}
+.selected {
+	background-color: #D9D9D9;
+}

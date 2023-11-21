@@ -1,0 +1,583 @@
+f@CHARSET "UTF-8";
+.popup {
+  background-color: gray;
+  border-color: gray gray gray gray;
+  border-width: 1px 3px 3px 1px;
+  border-style: solid solid solid solid;
+  width: 130px;
+}
+ 
+.popup-item {
+  font-weight: normal;
+  font-size: 80%;
+  width: 100px;
+}
+ 
+.popupMenu {
+  font-weight: normal;
+  font-size: 80%;
+  width: 130px;
+}
+
+.wizardBottom {
+    padding: 5px;
+}
+
+.wizardBottom td {
+    padding: 5px;
+}
+		
+.pagePanel {
+	padding-bottom: 20px;
+	border-bottom: 1px solid black;
+}
+
+.listBox {
+	width: 100%;
+	margin-right: 5px;
+}
+
+.cellTable {
+	border: 1px solid black;
+}
+
+.reportFocus {
+	margin: 10px auto 10px;
+	background-color: #3399CC;
+}
+
+.reportLeave{
+	margin: 10px auto 10px;
+	background-color: white;
+}
+
+.cellFocus {
+	background-color: #3399CC;
+}
+
+.reportWidgetRow{
+	margin: 0 auto;
+	width: 99%;
+	table-layout: fixed;
+}
+	
+.headReportWidget {
+	margin: 10px auto 0;
+}
+		
+.report {
+	margin: 10px auto 10px;
+	background-color: white;
+}
+
+.imgTop {
+	border: 1px solid gray;
+}
+
+.listPanel {
+	margin: 0 auto;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.cellGroup {
+	background-color: #D8D8D8;    
+	border-bottom: 1px solid black;
+}
+
+.cellLeftFocus {
+	border-left: 3px double #01DF01;
+}
+
+.cellRightFocus {
+	border-right: 3px double #01DF01;
+}
+
+.textArea {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.textArea:HOVER {
+	background-color: #D8F6CE;
+	cursor: pointer;
+}
+
+.title {
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 24px;
+}
+
+.defaultHeight {
+	height: 30px;
+}
+	
+.title:HOVER {
+	background-color: #D8F6CE;
+	cursor: pointer;
+}
+
+.subtitle {
+	width: 100%;
+	padding-left: 15px;
+	margin-top: 8px;
+	margin-bottom: 30px;
+	font-size: 18px;
+}
+
+.subtitle:HOVER {
+	background-color: #D8F6CE;
+	cursor: pointer;
+}
+
+.subtitle:FOCUS {
+	background-color: #D8F6CE;
+}
+
+.columnHead {
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #A4A4A4;
+    height: 25px;
+}
+
+.column {
+	border-right: 0px;
+	width: 100%;
+}
+
+.column:HOVER {
+	background-color: #A4A4A4;
+}
+
+.columnBorderRight {
+	border-right: 1px solid black;
+	width: calc(100%-1px);
+}
+
+.columnBorderRight:HOVER {
+	background-color: #A4A4A4;
+}
+	
+.emptyBin {
+    position: absolute;
+	bottom: 1px;
+    right: 20px;
+}
+
+.imgPreferences {
+	position: absolute;
+	top: 35px;
+    right: 25px;
+}
+
+.frame {
+	background-color: #FFFFFF;
+	margin-top: 10px;
+}
+
+.previewPanel {
+	background-color: #C0C0C0;
+	text-align: center;
+}
+
+.tabLayoutPanelContent {
+    border-color: #92C1F0;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+}
+
+.tabLayoutPanel {
+	margin: 6px;
+}
+ 	
+.imgAccueil {
+	padding-bottom: 5px;
+}
+
+.imgSave {
+	margin: 3px 6px 3px 6px;
+}
+
+.imgUndo {
+    margin-bottom: 4px;
+    margin-left: 50px;
+    margin-top: 3px;
+    padding-left: 10px;
+}
+
+.imgRedo {
+    margin-bottom: 4px;
+}
+
+.imgOpen{    
+	margin-left: 6px;
+    padding-bottom: 3px;	
+}
+
+.paletteWidget{
+	padding: 3px;
+}
+
+.htmlWidgetImagePalette {
+	float: left;
+}
+
+.htmlWidgetImageMenuOptions {    
+	cursor: pointer;    
+	float: left;
+    margin-left: 5px;
+}
+
+.htmlWidgetPalette {    
+	font-size: 13px;
+    margin-left: 70px;
+    margin-top: 23px;
+}
+
+.htmlWidgetColumn {
+	margin-left: 25px;
+    position: absolute;
+    width: 96%;
+}
+
+.htmlCrosstabWidgetRows {
+	line-height: 40px;
+    text-align: center;
+    height: 100%;
+}
+
+.lblReportName {
+    float: left;
+}
+
+.closeTabImage {    
+	margin-left: 5px;
+}
+
+.lblNameAddColumn {
+    margin: 15px;
+}
+
+.listAddColumn {
+    margin: 15px;
+    width: 250px;
+    height: 300px;
+    border: 1px solid gray;
+ 	padding: 5px;
+    background-color: #E8EEF7;
+}
+
+.treeAddColumn {
+	width: 100%;
+}
+
+.scrollPanelAddColumn {
+    width: 250px;
+    height: 300px;
+    border: 1px solid gray;
+    margin: 15px;    
+    background-color: #E8EEF7;
+}
+
+.emptyBinAddColumn {    
+	bottom: 45px;
+    position: absolute;
+    right: 10px;
+}
+
+.listBoxDrag {
+	border: 1px solid gray;
+}
+
+.listBoxDragItem {
+    vertical-align: top;
+}
+
+.listBoxFocus {
+	background-color: #CEECF5;
+}
+
+.promptName {
+	margin-left: 5px;
+	margin-top: 23px;
+}
+
+.promptNameFirst {
+	margin-left: 5px;
+	margin-top: 11px;
+}
+
+.responseListBox {
+	margin: 10px;
+	width: 150px;
+}
+
+.lblMetadataLanguage {
+	margin-right: 15px;
+}
+
+.listBoxMetadataLanguage {
+	width: 100px;
+}
+
+.textAreaEngage {
+	background-color: #3399CC;
+}
+
+.textAreaVariable {
+	resize: none;    
+	width: 256px;
+}
+	
+.lblBottomLeft {
+	margin-top: 15px;	
+}
+
+.textBoxWidget {    
+	margin-top: 3px;
+    width: 150px;
+}
+
+.labelArea {
+	margin-top: 5px;
+}
+
+.glassPanel {
+	background-color: #000;
+	opacity: 0.3;
+	filter: literal("alpha(opacity=30)");
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0px;
+	right: 0px;
+	z-index: 6;
+}
+
+.loadingPart {
+	background: white;
+	width: 180px;
+	height: 70px;
+	position: absolute;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid gray;
+	z-index: 7;
+}
+
+.loadingImage {
+	left: 15px;
+    position: absolute;
+    top: 20px;
+}
+
+.loadingLabel {
+	left: 60px;
+	position: absolute;
+    top: 28px;
+    font-size: 15px;
+	font-weight: bold;
+}
+
+.loadingPanel{
+	width: 100%;
+	height: 100%;
+}
+
+.crossTabCols {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	position: absolute;
+	top: 0px;
+	left: 150px;
+}
+
+.crossTabRows {
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	position: absolute;
+	top: 40px;
+	left: 0px;
+}
+
+.crossTabCells {
+	border: 1px solid black;
+	position: absolute;
+	top: 40px;
+	left: 150px;
+}
+
+.crossTabNone {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	background-color: gray;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.crossTabRowNone {
+	border-bottom: 1px solid black;
+	background-color: gray;
+}
+
+.columnCrossTabCol {
+	border-right: 0px;
+}
+
+.columnCrossTabColBorderRight {
+	border-right: 1px solid black;
+}
+
+.colDimension {
+	color: green;
+}
+
+.colMeasure {
+	color: blue;
+}
+
+.columnDimension {
+	border-bottom: 1px solid black;
+}
+	
+.imgFilterPrompt {
+	float:left;
+	margin-top: 2px;
+	margin-left: 3px;
+}
+
+.lblFilterPrompt{    
+    color: #C0C0C0;
+    cursor: pointer;
+	font-size: 18px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.filterPromptEngage {
+	background-color: #3399CC;
+}
+
+.resourceHtml {
+	background-color: #81DAF5;
+    border: 1px solid gray;
+    font-weight: bold;
+    margin-top: 2px;
+    margin-left: 3px;
+    padding: 7px;
+    float: left;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+.crosstabPostion {
+	position: relative;
+}
+
+.lblAggregationDialog {
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.txtAggregationDialog {
+    margin-left: 10px;
+    width: 220px;
+}
+
+.listBoxAggregationDialog {
+    margin-left: 10px;
+    width: 225px;
+}
+
+.addAggPanel {
+    height: 300px;
+    margin-right: -270px;
+    margin-top: 20px;
+}
+
+.btnAddAgg {
+	margin-top: 15px;
+	margin-left: 5px;
+}
+
+.listAggregation {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    width: 250px;
+    height: 300px;
+    border: 1px solid gray;
+ 	padding: 5px;
+    background-color: #E8EEF7;
+}
+
+.btnConfirmAdd {
+    margin-left: 60px;
+    margin-top: 20px;
+}
+
+.aggregationSelected {
+	background-color: #94c0f4;
+}
+
+.waitPanel {
+    height: 80px;
+    width: 250px;
+}
+
+.imgRefreshDataTree {
+	top: 2px;
+	right: 25px;    
+	position: absolute;
+	z-index: 1;
+}
+
+.widgetMargin {
+	margin-left: 15px;
+}
+
+.dialSaveMain {
+	margin: 20px;
+}
+
+.dialSaveBtn {
+	text-align: center;    
+	margin-top: 15px;
+}
+
+.dialSaveImage {
+    margin-left: 50px;
+}
+
+.zIndex {
+	z-index: 3;
+}
+		
+.imageToolbar {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.imageToolbar:HOVER {
+	opacity: 1; 
+}
+
+.styleImgHyperlink {
+
+}
+
+.cursor {
+	cursor: pointer;
+}

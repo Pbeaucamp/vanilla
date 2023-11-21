@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="bpm.fd.design.ui.freedashCategory"
+            class="bpm.fd.repository.ui.wizard.FdExportWizard"
+            id="bpm.fd.repository.ui.wizard.RepositoryExportWizard"
+            name="RepositoryExportWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="bpm.fd.design.ui.freedashCategory"
+            class="bpm.fd.repository.ui.wizard.FdExportWizard"
+            icon="src/bpm/fd/repository/ui/icons/import.png"
+            id="bpm.fd.repository.ui.wizard.RepositoryImportWizard"
+            name="RepositoryImportWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.fd.repository.ui.actionSet"
+            label="Sample Action Set"
+            visible="true">
+         <menu
+               id="repositoryMenu"
+               label="Repositor&amp;y">
+            <separator
+                  name="repositoryGroup">
+            </separator>
+         </menu>
+         <action
+               class="bpm.fd.repository.ui.actions.ConnectAction"
+               icon="src/bpm/fd/repository/ui/icons/repository.gif"
+               id="bpm.fd.repository.ui.actions.ConnectAction"
+               label="&amp;Connect Repository"
+               menubarPath="repositoryMenu/repositoryGroup"
+               toolbarPath="repositoryGroup"
+               tooltip="Connect to Repository">
+         </action>
+         <action
+               class="bpm.fd.repository.ui.actions.DisconnectAction"
+               icon="src/bpm/fd/repository/ui/icons/disconnect.png"
+               id="bpm.fd.repository.ui.actions.DisconnectAction"
+               label="&amp;Disconnect"
+               menubarPath="repositoryMenu/repositoryGroup"
+               toolbarPath="repositoryGroup"
+               tooltip="Disconnect from Repository">
+         </action>
+      </actionSet>
+   </extension>
+	-->
+</plugin>

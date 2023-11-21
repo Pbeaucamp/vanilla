@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.features.favorites.WatchList"
+		table="fm_user_watchlist">
+		<id name="id" type="int">
+			<column name="MW_ID" />
+			<!--
+				<generator class="increment"/>
+			-->
+		</id>
+		<property name="mwApplicationId" type="int">
+			<column name="MW_APPLICATION_ID" />
+		</property>
+		<property name="mwUserId" type="int">
+			<column name="MW_USER_ID" />
+		</property>
+		<property name="mwMetricsId" type="int">
+			<column name="MW_METRICS_ID" />
+		</property>
+		<property name="mwWatchFromDate" type="date">
+			<column name="MW_WATCH_FROM_DATE" />
+		</property>
+		<property name="mwWatchToDate" type="date">
+			<column name="MW_WATCH_TO_DATE" />
+		</property>
+		<property name="mwComment" type="string">
+			<column name="MW_COMMENT" />
+		</property>
+		<property name="mwCreationDate" type="date">
+			<column name="MW_CREATION_DATE" />
+		</property>
+	</class>
+</hibernate-mapping>

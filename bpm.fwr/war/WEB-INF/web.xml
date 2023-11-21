@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>Bpm_fwr.html</welcome-file>
+	</welcome-file-list>
+	
+	 
+  <!-- Servlets -->
+  	<servlet>    
+		<servlet-name>fwrConnection</servlet-name>    
+		<servlet-class>bpm.fwr.server.FwrServiceConnectionImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>fwrConnection</servlet-name>    
+		<url-pattern>/FWR/fwrConnection</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>fwrMetadata</servlet-name>    
+		<servlet-class>bpm.fwr.server.FwrServiceMetadataImpl</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fwrMetadata</servlet-name>    
+		<url-pattern>/FWR/fwrMetadata</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>runServlet</servlet-name>    
+		<servlet-class>bpm.fwr.server.tools.RunServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>runServlet</servlet-name>    
+		<url-pattern>/runServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>previewDatasetServlet</servlet-name>    
+		<servlet-class>bpm.fwr.server.tools.PreviewDatasetServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>previewDatasetServlet</servlet-name>    
+		<url-pattern>/previewDatasetServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>previewComponentServlet</servlet-name>    
+		<servlet-class>bpm.fwr.server.tools.PreviewComponentServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>previewComponentServlet</servlet-name>    
+		<url-pattern>/previewComponentServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>uploadTemplate</servlet-name>    
+		<servlet-class>bpm.fwr.server.tools.UploadTemplate</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadTemplate</servlet-name>    
+		<url-pattern>/FWR/uploadTemplate</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>FmdtServices</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FmdtServices</servlet-name>
+		<url-pattern>/FWR/FmdtServices</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>WysiwygService</servlet-name>
+		<servlet-class>bpm.fwr.server.WysiwygServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WysiwygService</servlet-name>
+		<url-pattern>/FWR/WysiwygService</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>PreviewMapServlet</servlet-name>
+		<servlet-class>bpm.fwr.server.tools.PreviewMapServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PreviewMapServlet</servlet-name>
+		<url-pattern>/PreviewMapServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+  	<servlet>    
+		<servlet-name>loginService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>loginService</servlet-name>    
+		<url-pattern>/FWR/loginService</url-pattern>  
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/FWR/commonService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.DownloadStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<url-pattern>/DownloadStreamServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.servlets.UploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>*.gupld</url-pattern>
+	</servlet-mapping>
+
+</web-app>

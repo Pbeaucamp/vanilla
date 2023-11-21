@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	<ui:style>
+		.txtCom {
+			height: 90px;
+		    resize: none;
+		    width: 80%;
+		    float: left;
+		}
+		.lst {
+			width: 406px;
+		}
+		.btnAdd {
+			background-color: #399D93;
+		    display: block;
+		    float: right;
+		    height: 80px;
+		    margin: 5px 55px 5px 17px;
+		    width: 120px;
+		}
+		.commentPan {
+			margin: 10px;
+		}
+		.gridPan {
+			height: 190px;
+			width: 100%;
+		}
+		.fl {
+			float:left;
+			margin: 5px;
+			clear:both;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="commentPanel"  styleName="{style.gridPan}">
+			
+		</g:HTMLPanel>
+		<g:HTMLPanel  styleName="{style.commentPan}">
+			<!-- <g:Label text="{label.addComment}"></g:Label> -->
+			<!-- <g:HTMLPanel><g:Label text="Observatory" styleName="{style.fl}"></g:Label><g:ListBox ui:field="lstObs" styleName="{style.lst}"></g:ListBox></g:HTMLPanel>
+			<g:HTMLPanel><g:Label text="Theme" styleName="{style.fl}"></g:Label><g:ListBox ui:field="lstTh" styleName="{style.lst}"></g:ListBox></g:HTMLPanel>
+			<g:HTMLPanel><g:Label text="Kpi" styleName="{style.fl}"></g:Label><g:ListBox ui:field="lstKpi" styleName="{style.lst}"></g:ListBox></g:HTMLPanel>
+			<g:HTMLPanel><g:Label text="Type" styleName="{style.fl}"></g:Label><g:ListBox ui:field="lstType" styleName="{style.lst}"></g:ListBox></g:HTMLPanel> -->
+			<g:TextArea ui:field="txtComment" styleName="{style.txtCom}"></g:TextArea>
+			<g:Button ui:field="btnAdd"  text="{label.addComment}" styleName="{style.btnAdd}"></g:Button>
+		</g:HTMLPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

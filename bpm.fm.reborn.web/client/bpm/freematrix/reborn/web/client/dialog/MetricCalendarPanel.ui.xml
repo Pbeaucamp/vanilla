@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='labels' type='bpm.freematrix.reborn.web.client.i18n.LabelConstants' />
+	
+	<ui:style>
+		.lblTitle {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	
+		.bold {
+			font-weight: bold;
+		}
+	
+		.panelValues {
+			margin-left: 5px;
+		}
+		
+		.img {
+		    display: block;
+	    	margin: 5px;
+		}
+		
+		.smallTxt {
+	    	font-size: 12px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="lblMetric" addStyleNames="{style.bold},{style.lblTitle}"/>
+		<div class="flex">
+			<div>
+				<g:Image ui:field="imgTendancy" addStyleNames="{style.img}"/>
+				<g:Image ui:field="imgHealth" addStyleNames="{style.img}"/>
+			</div>
+			<div>
+				<g:Label text="{labels.Value}" addStyleNames="{style.smallTxt}"/>
+				<g:Label text="{labels.Objective}" addStyleNames="{style.smallTxt}"/>
+				<g:Label text="{labels.Minimum}" addStyleNames="{style.smallTxt}"/>
+				<g:Label text="{labels.Maximum}" addStyleNames="{style.smallTxt}"/>
+			</div>
+			<div class="{style.panelValues}">
+				<g:Label ui:field="lblValue" addStyleNames="{style.bold},{style.smallTxt}"/>
+				<g:Label ui:field="lblObjective" addStyleNames="{style.bold},{style.smallTxt}"/>
+				<g:Label ui:field="lblMin" addStyleNames="{style.bold},{style.smallTxt}"/>
+				<g:Label ui:field="lblMax" addStyleNames="{style.bold},{style.smallTxt}"/>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,9 @@
+<RepositoryConnections>    <Connection>
+        <name>repository FASD</name>
+        <description></description>
+        <host>http://localhost:8080/BIRepository/BIRepository</host>
+        <port>0</port>
+        <username>designer</username>
+        <password>designer</password>
+    </Connection>
+</RepositoryConnections>

@@ -1,0 +1,103 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.fm.designer.web.client.Messages' />
+	<ui:with field='resources' type='bpm.fm.designer.web.client.images.Images' />
+	<ui:with field='labelCommons' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.fm.designer.web.client.dialog.AxisDialog.MyStyle">
+		.btnToolbar {
+			cursor: pointer;
+			height: 32px !important;
+			width: 32px !important;
+			background-position: center !important;
+			margin: 4px;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnRight {
+			margin-left: 595px;
+		}	
+
+		.panel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.panelName {
+			height: 35px;
+		}
+		
+		.main {
+			height: 40px;
+			width: 100%;
+			background-color: #c4ece7;
+		}
+		
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 120px;
+		    margin-top: 7px;
+		}
+	
+		.marginTop {
+			margin-top: 7px;
+		}
+
+		.gridPanel {
+			position: absolute;
+			width: 100%;
+			top: 75px;
+			bottom: 0px;
+		}
+
+		.images {
+			margin: 4px;
+		}
+		
+		.grid {
+			width: 100%;
+			height: 100%;
+		}
+		.contentPanel {
+			width: 900px;
+			height: 520px;
+		}
+	</ui:style>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel}">
+			<g:HTMLPanel addStyleNames="{style.panel}">
+				<g:HTMLPanel addStyleNames="{style.panelName}">
+					<g:Label ui:field="lblName" addStyleNames="{style.lbl}" text="{label.name}"/>
+					<g:TextBox ui:field="txtName" addStyleNames="{style.marginTop}"/>
+				</g:HTMLPanel>
+				<!-- <g:HTMLPanel addStyleNames="{style.panelName}">
+					<g:CheckBox ui:field="chkMap" addStyleNames="{style.lbl}" text="Est géolocalisable"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel addStyleNames="{style.panelName}">
+					<g:Label ui:field="lblMap" addStyleNames="{style.lbl}" text="Carte associée"/>
+					<g:ListBox ui:field="lstMap" addStyleNames="{style.marginTop}"/>
+				</g:HTMLPanel> -->
+				<g:HTMLPanel addStyleNames="{style.main}">
+					<g:Image ui:field="imgAdd" resource="{resources.add}" title="{label.Add}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgEdit" resource="{resources.edit}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgDelete" resource="{resources.delete}" title="{label.Delete}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgRefresh" resource="{resources.refresh}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgLink" resource="{resources.assos}" title="{labelCommons.LinkETL}" addStyleNames="{style.btnToolbar}"/>
+					<g:Image ui:field="imgUp" resource="{resources.up}" title="Up" addStyleNames="{style.btnToolbar},{style.btnRight}"/>
+					<g:Image ui:field="imgDown" resource="{resources.down}" title="Down" addStyleNames="{style.btnToolbar}"/>					
+				</g:HTMLPanel>
+				<g:HTMLPanel ui:field="gridPanel" addStyleNames="{style.gridPanel}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+</ui:UiBinder> 

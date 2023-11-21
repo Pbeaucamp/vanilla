@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension
+         point="bpm.model.converter">
+      <bpm.model.converter.impl
+            converterClass="bpm.fasd.client.dwh.importer.converter.DwhFasdConverter"
+            description="Convert a DwhView into an Analysis Model"
+            name="bpm.fasd.client.dwh.importer.DwhDwhFasdConverter"
+            targetModelClass="org.fasd.olap.FAModel">
+      </bpm.model.converter.impl>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="bpm.fasd.client.dwh.importer.wizard.DwwhViewImportWizard"
+            id="bpm.fasd.client.dwh.importer.wizards.DwhToFmdtWizard"
+            name="Create Analysis model From DwhView">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="bpm.fasd.client.dwh.importer.Importers"
+            label="Importer"
+            visible="true">
+         <action
+               class="bpm.fasd.client.dwh.importer.actions.LaunchWizardAction"
+               id="bpm.fasd.client.dwh.importer.action2"
+               label="Create Analysis Model From Dwh View"
+               menubarPath="file/bpm.fasd.client.dwh.importer.menu/conversionMenu"
+               style="push">
+         </action>
+         <menu
+               id="bpm.fasd.client.dwh.importer.menu"
+               label="Conversion From"
+               path="file/importermenu">
+            <separator
+                  name="conversionMenu">
+            </separator>
+         </menu>
+      </actionSet>
+   </extension>
+
+</plugin>

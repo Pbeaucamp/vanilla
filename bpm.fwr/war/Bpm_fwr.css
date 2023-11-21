@@ -1,0 +1,122 @@
+body, table td, select {
+	font-family: Arial;	
+}
+
+body {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	min-width: 1090px;
+}
+
+a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/*New Version*/
+.gwt-PopupPanel {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none !important;
+    border-radius: 10px;
+    padding: 0 !important;
+    z-index: 2 !important;
+}
+
+.gwt-DialogBox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5) !important;
+    min-height: 100% !important;
+    width: 100% !important;
+}
+
+.gwt-DialogBox .dialogTop td, .gwt-DialogBox .dialogMiddle td, .gwt-DialogBox .dialogBottom td {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.gwt-DialogBox .Caption {
+    display: none;
+}
+
+/*CSS Custom Dialog*/
+.custom-dialog-mainPanel {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.custom-dialog-min {
+    top: 100px;
+}
+
+.custom-dialog-max {
+    top: 3px !important;
+    left: 3px !important;
+    width: 99% !important;
+    height: 98% !important;
+}
+
+.custom-dialog-panelButton {
+    position: absolute;
+	right: 10px;
+	bottom: 10px;
+    height: 50px;
+}
+
+.custom-dialog-contentPanel {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+	top: 0px;
+}
+
+.custom-dialog-contentPanel-no-button {
+	bottom: 0px !important;
+}
+
+.custom-dialog-button {
+	background: none repeat scroll 0 0 #444444 !important;
+	border: 1px solid #555555 !important;
+	color: #FFFFFF;
+	cursor: pointer;
+	height: 40px;
+	margin-top: 5px;
+	margin-left: 15px;
+	width: 150px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+}
+
+.custom-dialog-button:HOVER {
+	background: none repeat scroll 0 0 #EAEAEA !important;
+	color: #000000;
+}
+
+.custom-dialog-glass {
+	background-color: #000000;
+	opacity: 0.3;
+	z-index: 1;
+}
+
+.custom-dialog-zIndex {
+	z-index: 2 !important;
+}
+
+.custom-dialog-glass-zIndex {
+	background-color: #000000;
+	opacity: 0.3;
+	z-index: 2;
+}
+
+.gwt-Frame {
+    border: 0 none;
+    height: 100%;
+    width: 100%;
+}
+
+.dateBoxPopup {
+	z-index: 2;
+}

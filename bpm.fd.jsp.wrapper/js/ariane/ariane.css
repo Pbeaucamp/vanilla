@@ -1,0 +1,61 @@
+/* 
+All for Design : Tutoriel : Réalisation d'un breadcrumb avancé en CSS
+http://all-for-design.com
+ */
+
+/*BREADCRUMB GENERAL STYLE*/
+
+/*Styles du div englobant*/
+.breadcrumb{
+font-family:"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
+}
+/*Reset sur la liste*/
+.breadcrumb ul, .breadcrumb li {
+list-style-type:none;	
+padding:0;margin:0;
+}		
+/*Styles sur la liste*/
+.breadcrumb ul{
+height:33px;
+margin-top:0px;
+margin-bottom:0px;
+margin-left:auto;
+margin-right:auto;
+padding-top:0px;
+padding-bottom:0px;
+padding-left:0px;
+padding-right:0px;
+}	
+/*Premier élément de la liste*/
+.breadcrumb li.first {
+background:url(images/first-left.png) 0 0 no-repeat;
+height:33px;
+} 
+/*Tous les éléments de la liste sauf premier et dernier*/
+.breadcrumb li {
+float:left;
+background:url(images/general-left.png) 0 0 no-repeat;
+line-height:33px;
+margin:5px 0 0 0;
+padding-left:13px;
+}
+/*Style sur les éléments a et span*/
+.breadcrumb li a, .breadcrumb li span {
+float:left;
+background:url(images/bg-gradient.jpg) 0 0 repeat-x;
+height:33px;
+margin:0;
+padding:0 0 0 5px;
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:0.02em;
+}	
+/*Style du dernier span de la liste*/
+.breadcrumb li span.end {
+float:left;
+background:url(images/general-right.png) 0 0 no-repeat;
+width:15px;
+height:33px;
+} 					
+
+

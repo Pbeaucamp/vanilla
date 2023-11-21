@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+        <context:component-scan base-package="bpm.fm.api.model"/>
+
+        <!-- Use @Transaction annotations for managing transactions  -->    
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+
+	  	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+		</bean> 
+
+        <!--  DataSource connection -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			destroy-method="close">
+			<property name="driverClass" value="${bpm.vanilla.freemetrics.database.driverClassName}" />
+			<property name="jdbcUrl" value="${bpm.vanilla.freemetrics.database.jdbcUrl}" />
+			<property name="user" value="${bpm.vanilla.freemetrics.database.userName}" />
+			<property name="password" value="${bpm.vanilla.freemetrics.database.password}" />
+			<property name="acquireRetryAttempts" value="10"></property>
+			<property name="preferredTestQuery" value="SELECT 1"></property>
+			<property name="testConnectionOnCheckin" value="true"></property>
+			<property name="testConnectionOnCheckout" value="false"></property>
+			<property name="maxIdleTime" value="50"></property>
+			<property name="idleConnectionTestPeriod" value="30"></property>
+		</bean>
+
+        <!-- Hibernate SessionFactory -->
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="annotatedClasses">
+                <list>
+	                <value>bpm.fm.api.model.Axis</value>
+					<value>bpm.fm.api.model.FactTable</value>
+					<value>bpm.fm.api.model.FactTableAxis</value>
+					<value>bpm.fm.api.model.GroupObservatory</value>
+					<value>bpm.fm.api.model.Metric</value>
+					<value>bpm.fm.api.model.Theme</value>
+					<value>bpm.fm.api.model.ThemeAxis</value>
+					<value>bpm.fm.api.model.ThemeMetric</value>
+					<value>bpm.fm.api.model.Level</value>
+					<value>bpm.fm.api.model.FactTableObjectives</value>
+					<value>bpm.fm.api.model.Observatory</value>
+					<value>bpm.fm.api.model.ObservatoryTheme</value>
+					<value>bpm.fm.api.model.CalculatedFactTable</value>
+					<value>bpm.fm.api.model.CalculatedFactTableMetric</value>
+					<value>bpm.fm.api.model.Comment</value>
+					<value>bpm.fm.api.model.AlertRaised</value>
+					<value>bpm.fm.api.model.CommentAlert</value>
+					<value>bpm.fm.api.model.MetricAction</value>
+					<value>bpm.fm.api.model.MetricMap</value>
+					<value>bpm.fm.api.model.MetricLinkedItem</value>
+					<value>bpm.fm.api.model.ComplexMap</value>
+					<value>bpm.fm.api.model.ComplexMapMetric</value>
+					<value>bpm.fm.api.model.ComplexMapAxis</value>
+					<value>bpm.fm.api.model.ComplexMapLevel</value>
+                </list>
+            </property>
+            <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+					${bpm.vanilla.freemetrics.database.dialect}
+				</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+            </property>
+        </bean>
+
+
+
+        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+
+        <context:annotation-config/>
+
+       	<bean id="freeMetricsDao"
+			class="bpm.fm.runtime.dao.FreeMetricsDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+	</beans>

@@ -1,0 +1,83 @@
+/**************************************************************************************
+  htmlDatePicker CSS file
+  
+  Feel Free to change the fonts, sizes, borders, and colours of any of these elements
+***************************************************************************************/
+/* The containing DIV element for the Calendar */
+.dpCalendar {
+  display: none;          /* Important, do not change */
+  position: relative;        /* Important, do not change */
+  background-color: #eeeeee;
+  color: black;
+  font-size: xx-small;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  width: 160px;
+}
+/* The table of the Calendar */
+.tableCalendar {
+  border: 1px solid black;
+  background-color: #eeeeee;
+  color: black;
+  font-size: xx-small;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+}
+/* The Next/Previous buttons */
+.cellButton {
+  background-color: #ddddff;
+  color: black;
+}
+/* The Month/Year title cell */
+.cellMonth {
+  background-color: #ddddff;
+  color: black;
+  text-align: center;
+}
+/* Any regular day of the month cell */
+.cellDay {
+  background-color: #ddddff;
+  border: 1px solid #ddddff;
+  color: black;
+  text-align: center;
+}
+/* The day of the month cell that is selected */
+.cellSelected {
+  border: 1px solid red;
+  background-color: #ffdddd;
+  color: black;
+  text-align: center;
+}
+/* The day of the month cell that is Today */
+.cellToday {
+  background-color: #ff0000;
+  color: black;
+  text-align: center;
+}
+/* Any cell in a month that is unused (ie: Not a Day in that month) */
+.unused {
+  background-color: transparent;
+  color: black;
+}
+/* To select an whole week */
+.week {
+  background-color: #ffdddd;
+  color: #eeeeee;
+  text-align: center;
+  padding: 1px;
+}
+/* The cancel button */
+.cellCancel {
+  background-color: #cccccc;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+}
+/* The clickable text inside the calendar */
+.calendarItem {
+  text-decoration: none;
+  background-color: transparent;
+  color: blue;
+}
+.selectedDate {
+  border : 1px solid red;
+}  

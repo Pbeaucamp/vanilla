@@ -1,0 +1,95 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.freematrix.reborn.web.client.images.Images' />
+	
+	<ui:style>
+		@external active, oddItem;
+	
+		.item, .itemShort{
+			width: 27%;
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+			margin-left: auto;
+    		margin-right: auto;
+		}
+		.subItem {
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+			margin-left: auto;
+    		margin-right: auto;
+    		height: 100%;
+		}
+		.itemShort{
+			width: 7%;
+		}
+		.itemShortAlert{
+			width: 1%;
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+			margin-left: auto;
+    		margin-right: auto;
+		}
+		.oddItem{
+			border: 1px solid #e7e7e7;
+			border-top: none;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			color: #777;
+			cursor: pointer;
+			background: #c4ece7;
+		}
+		.metricItemPanel{
+			border: 1px solid #e7e7e7;
+			border-top: none;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			color: #777;
+			cursor: pointer;
+		}
+		.metricItemPanel:hover, .active{
+			background: #399d93 !important;
+			color: #fff;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="metricItemPanel" addStyleNames="{style.metricItemPanel}">
+		<g:FocusPanel ui:field="item">
+		    <g:HTMLPanel>
+		    	<g:HTMLPanel ui:field="lblSub" addStyleNames="{style.subItem}">
+		    		<g:Image resource="{resources.sub}"/>
+		    	</g:HTMLPanel>
+			   <g:HTMLPanel ui:field="lblTendUp" addStyleNames="{style.itemShort}">
+			    	<g:Image resource="{resources.tend_up}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblTendDown" addStyleNames="{style.itemShort}">
+			   		<g:Image resource="{resources.tend_down}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblTendEqual" addStyleNames="{style.itemShort}">
+			    	<g:Image resource="{resources.tend_equal}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblHealthUp" addStyleNames="{style.itemShort}">
+			    	<g:Image resource="{resources.thumb_up}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblHealthDown" addStyleNames="{style.itemShort}">
+			   		<g:Image resource="{resources.thumb_down}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblHealthEqual" addStyleNames="{style.itemShort}">
+			    	<g:Image resource="{resources.thumb_equal}"/>
+			    </g:HTMLPanel>
+			    <g:HTMLPanel ui:field="lblAlert" addStyleNames="{style.itemShortAlert}">
+			    	<g:Image resource="{resources.alert_table}"/>
+			    </g:HTMLPanel>
+			    <g:Label ui:field="lblName" addStyleNames="{style.item}"/>
+				<g:Label ui:field="lblDate" addStyleNames="{style.item}"/>
+				<g:Label ui:field="lblMax" addStyleNames="{style.itemShort}"/>
+				<g:Label ui:field="lblMin" addStyleNames="{style.itemShort}"/>
+				<g:Label ui:field="lblObjective" addStyleNames="{style.itemShort}"/>
+				<g:Label ui:field="lblValue" addStyleNames="{style.itemShort}"/>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

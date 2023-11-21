@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bpm.freemetrics.api.organisation.application.AssocApplicationAssocAppMetric"
+		table="fm_assocApplicationAssocAppMetric">
+		<comment></comment>
+		<id name="id" type="java.lang.Integer">
+			<column name="assoaa_id" />
+			
+				<generator class="increment"/>
+			
+		</id>
+		<property name="applicationId" type="java.lang.Integer">
+			<column name="assoaa_appid" />
+		</property>
+		<property name="assocId" type="java.lang.Integer">
+			<column name="assoaa_associd" />
+		</property>
+	</class>
+</hibernate-mapping>
