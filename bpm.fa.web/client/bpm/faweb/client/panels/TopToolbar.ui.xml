@@ -1,0 +1,156 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.faweb.client.panels.TopToolbar.MyStyle">
+
+		.styleImgWebapps {
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 32px !important;
+			width: 32px !important;
+			padding: 11px;
+			background-position: center !important;
+		}
+		
+		.styleImgWebapps:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}	
+
+		.styleImgButton {
+			border-radius: 32px;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+			
+			z-index: 1;
+			cursor: pointer;
+			transition: background-color 0.5s;
+			height: 32px !important;
+			width: 32px !important;
+			padding: 7px;
+			background-position: center !important;
+			margin-top: 7px;
+			margin-left: 5px;
+		}
+
+		.styleImgButton:HOVER {
+			background-color: white !important;
+		}
+		
+		.toolbar {
+			width: 100%;
+			height: 60px;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.panelImgRight {
+			float: right;
+		    margin-right: 15px;
+		}
+		
+		.imgLoggedUser.title {
+			position: absolute;
+			width: 100px;
+			height: 20px;
+			line-height: 20px;
+			padding: 10px;
+			font-size: 14px;
+			text-align: center;
+			color: rgb(113, 157, 171);
+			background: rgb(255, 255, 255);
+			border: 4px solid rgb(255, 255, 255);
+			border-radius: 5px;
+			text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+			box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
+		}
+
+		.imgLoggedUser.tooltip:after {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-width: 10px;
+			border-style: solid;
+			border-color: transparent transparent #FFFFFF transparent;
+			top: 10px;
+			left: 50px;
+		}
+		
+		.lblLoggedAs {
+			margin-top : 2px;
+		}
+
+		.imgLoggedUser {
+			height: 50px !important;
+			cursor: pointer;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-box-shadow: 0 3px 10px -3px black;
+			-moz-box-shadow: 0 3px 10px -3px black;
+			-oz-box-shadow: 0 3px 10px -3px black;
+			-o-box-shadow: 0 3px 10px -3px black;
+			box-shadow: 0 3px 10px -3px black;
+		}
+
+		.imgLoggedUser:hover{
+			border-radius: 50px;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+			opacity: 0.8;
+		}
+		
+		.separator {
+			border: 1px solid #000000;
+		    display: inline-block;
+		    height: 44px;
+		    margin-top: 7px;
+		    vertical-align: top;
+		    width: 0;
+		}
+		
+		.txtTitleWebapp {
+		    display: inline-block;
+		    font-size: x-large;
+		    left: 47%;
+		    position: absolute;
+		    vertical-align: top;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="toolbar" addStyleNames="{style.toolbar}">
+		<g:Image ui:field="imgOpen" resource="{resources.Open}" title="{label.Open}" addStyleNames="{style.styleImgWebapps}"/>
+		<g:Image ui:field="imgOpenView" resource="{resources.open_view}" title="{label.OpenView}" addStyleNames="{style.styleImgWebapps}"/>
+	
+		<g:Image ui:field="imgWebapp" resource="{resources.vanilla_an_lettering_incrust_64}" addStyleNames="{style.txtTitleWebapp}"/>
+		<!-- <g:Label ui:field="txtTitleWebapp" addStyleNames="{style.txtTitleWebapp}">Vanilla Analysis</g:Label> -->
+	
+		<g:HTMLPanel ui:field="panelFullInfo" addStyleNames="{style.panelImgRight}">
+			<g:Image ui:field="imgUser" title="{label.SeeProfile}" addStyleNames="{style.imgLoggedUser}"/>
+			<g:Image ui:field="imgOut" resource="{resources.logout}" title="{label.Logout}" addStyleNames="{style.styleImgButton}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="panelMinimalInfo" addStyleNames="{style.panelImgRight}">
+			<g:HTML ui:field="lblLoggedAs" addStyleNames="{style.lblLoggedAs}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

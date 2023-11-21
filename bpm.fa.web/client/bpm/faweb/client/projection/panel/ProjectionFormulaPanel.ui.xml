@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.txtFormula {
+			height: 80px;
+			width: 280px; 	
+		}
+		
+		.treePanel {
+			height : 280px;
+			width: 279px;
+			overflow: auto;	
+			
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<g:CaptionPanel captionText="Formule actuelle">
+			<g:TextArea ui:field="txtFormula" styleName="{style.txtFormula}"></g:TextArea>
+		</g:CaptionPanel>
+		
+		<g:CaptionPanel captionText="Fonctions disponibles">
+			<g:HTMLPanel ui:field="functionsTreePanel" styleName="{style.treePanel}"></g:HTMLPanel>
+		</g:CaptionPanel>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

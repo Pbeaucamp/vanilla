@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+		.filterPanel {
+			margin-left: 30px;	
+		}
+		
+		.checkBox {
+			display: inline-block;
+			width: 110px;	
+		}
+		
+		.listBox {
+			width: 200px;	
+		}
+		
+		.btnPanel {
+			margin: auto;	
+			margin-top: 15px;
+		}
+		
+		.btnPanel img {
+			margin-left: 10px;
+		}
+		
+		.rbFilter {
+			margin-top: 10px;	
+		}
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:VerticalPanel>
+			<g:RadioButton name="filter" ui:field="rbNone"></g:RadioButton>
+			<g:RadioButton name="filter" ui:field="rbFilter" styleName="{style.rbFilter}"></g:RadioButton>
+		</g:VerticalPanel>
+		
+		<g:HTMLPanel ui:field="filterPanel" styleName="{style.filterPanel}">
+			<g:HorizontalPanel styleName="{style.rbFilter}">
+				<g:CheckBox ui:field="cbStart" styleName="{style.checkBox}"></g:CheckBox>
+				<g:ListBox ui:field="lstStart" styleName="{style.listBox}"></g:ListBox>
+			</g:HorizontalPanel>
+			
+			<g:HorizontalPanel styleName="{style.rbFilter}">
+				<g:CheckBox ui:field="cbEnd" styleName="{style.checkBox}"></g:CheckBox>
+				<g:ListBox ui:field="lstEnd" styleName="{style.listBox}"></g:ListBox>
+			</g:HorizontalPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

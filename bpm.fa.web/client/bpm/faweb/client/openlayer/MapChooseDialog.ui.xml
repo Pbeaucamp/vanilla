@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.inline{
+			vertical-align: middle;
+			display: inline-block;
+		}
+		.cancel{
+			width: 30px;
+			position: absolute;
+			top: 10;
+			right: 15;
+			background: none;
+			text-align: center;
+			color: #FFF;
+		}
+		.container{
+			width: 300px;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			background: #FFF;
+			transition: all 0.3s;
+		}
+		.container:hover{
+			background: aliceblue;
+		}
+		.img{
+			width: 200px;
+			height: 80px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+	    <div class="{style.container} {style.inline}">
+			<g:Image ui:field="imgOpenLayer" url="images/ic_open_layer.png" addStyleNames="{style.img}"/>
+		</div>
+	    <div class="{style.container} {style.inline}">
+			<g:Image ui:field="imgFusionMap" url="images/ic_fusion_map.png" addStyleNames="{style.img}"/>
+		</div>
+		<g:Button text="x" ui:field="btnCancel" addStyleNames="{style.cancel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

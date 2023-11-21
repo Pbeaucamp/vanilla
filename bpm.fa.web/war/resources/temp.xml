@@ -1,0 +1,40 @@
+<Schema name="MySchema">
+
+        <Dimension name="Time">
+            <Hierarchy name="defaultHiera" hasAll="true" allMemberName="All Time" primaryKey="id">
+                <Table name="timeline"/>
+                <Level name="Year" captionColumn="year_nb" ordinalColumn="year_nb" table="timeline" column="year_nb" uniqueMembers="false"/>
+                <Level name="Month" captionColumn="month_name" ordinalColumn="month_nb" table="timeline" column="month_nb" uniqueMembers="false"/>
+                <Level name="Day" captionColumn="day_nb" ordinalColumn="day_nb" table="timeline" column="day_nb" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Customers">
+            <Hierarchy name="defaultHiera" hasAll="true" allMemberName="All Customers" primaryKey="customernumber">
+                <Table name="customers"/>
+                <Level name="Country" table="customers" column="country" uniqueMembers="false">
+                    <Property name="geolocalizableProperty" column="country" type="String"/>
+                   </Level>
+                <Level name="City" table="customers" column="city" uniqueMembers="false">
+                    <Property name="geolocalizableProperty" column="city" type="String"/>
+                   </Level>
+                <Level name="CustomerName" table="customers" column="customername" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Products">
+            <Hierarchy name="defaultHiera" hasAll="true" allMemberName="All Products" primaryKey="productcode">
+                <Table name="products"/>
+                <Level name="Line" table="products" column="productline" uniqueMembers="false"/>
+                <Level name="ProductName" table="products" column="productname" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+    <Cube name="Sales">
+        <Table name="orderfact"/>
+        <DimensionUsage name="Time" source="Time" foreignKey="time_id"/>
+        <DimensionUsage name="Customers" source="Customers" foreignKey="customernumber"/>
+        <DimensionUsage name="Products" source="Products" foreignKey="productcode"/>
+        <Measure name="Price" column="totalprice" aggregator="sum" formatString="Standard"/>
+        <Measure name="Quantity" column="quantityordered" aggregator="sum" formatString="Standard"/>
+        <CalculatedMember name="Rate" dimension="Measures" formula="[Measures].[Price]/[Measures].[Quantity]">
+       </CalculatedMember>
+    </Cube>
+</Schema>

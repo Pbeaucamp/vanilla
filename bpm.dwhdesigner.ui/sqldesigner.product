@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="BiDwhDesigner" id="bpm.sqldesigner.ui.product" application="bpm.sqldesigner.ui.application" useFeatures="false" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/bpm.sqldesigner.ui/icons/Vanilla_Logo_3.4.gif"/>
+      <text>
+         BiDwhDesigner
+
+Version 4.2
+Product of BPM-Conseil
+
+http://www.bpm-conseil.com/
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-vmargs
+-Xms512M
+-Xmx1024M</programArgs>
+      <vmArgs>-Dlog4j.configuration=log.xml -Dbpm.vanilla.configurationFile=./resources/vanilla.properties -Dosgi.user.area=@user.home/.bpmconseil/serie5/sqldesigner/manager -Dosgi.instance.area.default=@user.home/.bpmconseil/serie5/sqldesigner/manager</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/bpm.sqldesigner.ui/icons/database.gif"/>
+
+   <launcher name="BiDwhDesigner">
+      <solaris/>
+      <win useIco="true">
+         <ico path="/bpm.sqldesigner.ui/icons/database.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="bpm.dataprovider.odainput"/>
+      <plugin id="bpm.fa.api"/>
+      <plugin id="bpm.fasd.api"/>
+      <plugin id="bpm.fd.api"/>
+      <plugin id="bpm.gateway.core"/>
+      <plugin id="bpm.gateway.core.infobright" fragment="true"/>
+      <plugin id="bpm.log4j.fragment" fragment="true"/>
+      <plugin id="bpm.mdm.model"/>
+      <plugin id="bpm.mdm.remote"/>
+      <plugin id="bpm.metadata.api"/>
+      <plugin id="bpm.sqldesigner.api"/>
+      <plugin id="bpm.sqldesigner.query"/>
+      <plugin id="bpm.sqldesigner.ui"/>
+      <plugin id="bpm.studio.expressions.core"/>
+      <plugin id="bpm.studio.jdbc.management"/>
+      <plugin id="bpm.united.olap.api"/>
+      <plugin id="bpm.united.olap.remote"/>
+      <plugin id="bpm.vanilla.designer.ui.common"/>
+      <plugin id="bpm.vanilla.map.core"/>
+      <plugin id="bpm.vanilla.map.remote"/>
+      <plugin id="bpm.vanilla.platform.core"/>
+      <plugin id="bpm.vanilla.platform.core.config"/>
+      <plugin id="bpm.vanilla.platform.core.remote"/>
+      <plugin id="bpm.vanilla.platform.hibernate"/>
+      <plugin id="bpm.vanilla.platform.logging"/>
+      <plugin id="bpm.vanilla.platform.xstream"/>
+      <plugin id="bpm.vanilla.repository.ui"/>
+      <plugin id="bpm.vanilla.server.dependencies"/>
+      <plugin id="com.ibm.icu"/>
+      <plugin id="freemetrics_api_STD"/>
+      <plugin id="net.sourceforge.lpg.lpgjavaruntime"/>
+      <plugin id="org.apache.commons.codec"/>
+      <plugin id="org.apache.commons.lang"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.log4j"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.datatools.connectivity.oda"/>
+      <plugin id="org.eclipse.datatools.connectivity.oda.consumer"/>
+      <plugin id="org.eclipse.datatools.connectivity.oda.design"/>
+      <plugin id="org.eclipse.datatools.modelbase.sql"/>
+      <plugin id="org.eclipse.datatools.modelbase.sql.query"/>
+      <plugin id="org.eclipse.datatools.sqltools.parsers.sql"/>
+      <plugin id="org.eclipse.datatools.sqltools.parsers.sql.lexer"/>
+      <plugin id="org.eclipse.datatools.sqltools.parsers.sql.query"/>
+      <plugin id="org.eclipse.draw2d"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.gef"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.jface"/>
+      <plugin id="org.eclipse.jface.databinding"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.carbon.macosx" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.ppc" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.s390" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.s390x" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.solaris.sparc" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.solaris.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.motif.aix.ppc" fragment="true"/>
+      <plugin id="org.eclipse.swt.motif.hpux.PA_RISC" fragment="true"/>
+      <plugin id="org.eclipse.swt.motif.hpux.ia64_32" fragment="true"/>
+      <plugin id="org.eclipse.swt.motif.linux.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.motif.solaris.sparc" fragment="true"/>
+      <plugin id="org.eclipse.swt.photon.qnx.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.wpf.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.ui"/>
+      <plugin id="org.eclipse.ui.carbon" fragment="true"/>
+      <plugin id="org.eclipse.ui.cocoa" fragment="true"/>
+      <plugin id="org.eclipse.ui.forms"/>
+      <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.views.properties.tabbed"/>
+      <plugin id="org.eclipse.ui.workbench"/>
+   </plugins>
+
+
+</product>

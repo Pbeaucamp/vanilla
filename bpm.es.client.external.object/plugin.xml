@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.entrepriseservices.externalobject.views.ExternalCallsView"
+            id="bpm.entrepriseservices.externalobject.ExternalCallsView"
+            name="%view.externalcall.name">
+      </view>
+      <view
+            class="bpm.entrepriseservices.externalobject.views.ExternalObjectGroupManagementView"
+            id="bpm.entrepriseservices.externalobject.GroupManagementView"
+            name="%view.externalgroup.name">
+      </view>
+      <view
+            class="bpm.entrepriseservices.externalobject.views.ExternalCallsUrlManagementView"
+            id="bpm.entrepriseservices.externalobject.views.ExternalCallsUrlManagement"
+            name="%view.externalcall.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+   </extension>
+
+</plugin>

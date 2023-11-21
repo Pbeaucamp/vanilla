@@ -1,0 +1,111 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	
+	<ui:style type="bpm.faweb.client.panels.ContentDisplayPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		
+		.toolbarParent {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 40px;
+			right: 50px;
+			overflow: hidden;
+			display: inline-block;
+		}
+		
+		.contentPanel {
+			position: absolute;
+		    overflow: auto;
+		}
+		
+		.contentPanelPositionNormal {
+			top: 40px;
+			left: 0px;
+			right: 50px;
+			bottom: 10px;
+		    -moz-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			-webkit-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			-o-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			box-shadow: 1px 5px 5px 0px #9b9b9b;
+		    border: 1px solid #D3D3D3;
+		}
+		
+		.contentPanelPositionViewer {
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+		    border-left: 1px solid #D3D3D3;
+		}
+		
+		.displayNone {
+			display: none;
+		}
+		
+		.rightToolbar {
+		    overflow: hidden;
+		    padding-top: 5px;
+		    position: absolute !important;
+		    right: 0px;
+		    width: 45px;
+		    top: 0px;
+		    bottom: 0px;
+		}
+		
+		.shadow {
+			witdh: 100%;
+			top: 0px;
+			bottom: 10px;
+			position: absolute;
+			-moz-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			-webkit-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			-o-box-shadow: 1px 5px 5px 0px #9b9b9b;
+			box-shadow: 1px 5px 5px 0px #9b9b9b;
+		}
+		
+		.btnRightToolbar {
+			margin-top: 0px;
+			width: 32px !important;
+			height: 32px !important;
+			margin: 7px;
+			background-position: center !important;
+			cursor: pointer;
+		}
+		
+		.btnRightToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="tabHeaderPanel" addStyleNames="{style.toolbarParent}"/>
+		<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.contentPanel},{style.contentPanelPositionNormal}"/>
+		<g:SimplePanel ui:field="panelRightToolbar" addStyleNames="{style.rightToolbar}">
+			<g:HTMLPanel ui:field="rightToolbar" addStyleNames="{style.shadow}">
+				<g:Image ui:field="btnGrid" resource="{commons.toolbar_vanilla_analysis_big_black_full_32}" title="{label.cubeViewer}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnDrillThroug" resource="{resources.drilltrough_32}" title="{label.drillThrough}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnChart" resource="{resources.graphique_32}" title="{label.chartsViewer}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnDrill" resource="{resources.drill_24}" title="{label.DrillCubeReport}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnOverview" resource="{resources.overview_32}" title="{label.Overview}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnMultipleAdd" resource="{resources.ajout_multiple_32}" title="{label.MultipleAdding}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnReporter" resource="{resources.reporter_mode_32}" title="{label.ReporterToolBar}" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnProjection" resource="{resources.projection_32}" title="Projections" addStyleNames="{style.btnRightToolbar}"/>
+				<g:Image ui:field="btnMap" resource="{resources.carte_32}" title="Maps" addStyleNames="{style.btnRightToolbar}"/>
+			</g:HTMLPanel>
+		</g:SimplePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

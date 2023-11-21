@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module rename-to="FreeAnalysisWeb">
+
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="com.google.gwt.http.HTTP"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  
+   <inherits name="com.googlecode.gwt.charts.Charts"/> 
+  
+  <inherits name="bpm.gwt.commons.Commons" />
+  <inherits name="bpm.vanilla.map.VanillaMap" />
+  <inherits name="bpm.update.manager.api.Commons" />
+    <inherits name="bpm.data.viz.core.DataViz"/>
+  
+  <inherits name='com.google.gwt.user.theme.standard.Standard'/> 
+  
+  <inherits name="com.yesmail.gwt.rolodex.Rolodex"/>
+  <inherits name="gwtupload.GWTUpload"/>
+
+  <inherits name='com.google.gwt.visualization.Visualization'/>
+  <inherits name="javax.Persistence"/> 
+  
+  <entry-point class="bpm.faweb.client.FreeAnalysisWeb"/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+  
+  <stylesheet src="Freeanalysis.css"/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path="client"/>
+  <source path="shared"/>
+  <public path='pub'/>
+  
+ <!--  <extend-property name="locale" values="us"/>-->
+  <extend-property name="locale" values="es"/>
+  <extend-property name="locale" values="fr"/> 
+
+</module>

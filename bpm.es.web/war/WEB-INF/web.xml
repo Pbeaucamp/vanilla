@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+ 	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/EsWeb/loginService</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/EsWeb/commonService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>adminServlet</servlet-name>
+	    <servlet-class>bpm.es.web.server.AdminServiceImpl</servlet-class>
+	</servlet>
+  
+	<servlet-mapping>
+	    <servlet-name>adminServlet</servlet-name>
+	    <url-pattern>/EsWeb/adminServlet</url-pattern>
+	</servlet-mapping>
+  
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

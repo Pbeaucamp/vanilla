@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.fa.ui.management.views.ViewCache"
+            id="bpm.fa.ui.management.views.ViewCache"
+            name="%view_cache"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.fa.ui.management.views.ViewCacheDisk"
+            id="bpm.fa.ui.management.views.ViewCacheDisk"
+            name="%view_cachesisk"
+            restorable="true">
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="bpm.fa.ui.management.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="bpm.fa.ui.management.commands.category"
+            id="bpm.fa.ui.management.commands.cacheDiskViewCommand"
+            name="%command_cachedisk">
+      </command>
+      <command
+            categoryId="bpm.fa.ui.management.commands.category"
+            id="bpm.fa.ui.management.commands.cacheMemoryViewCommand"
+            name="%command_cachememory">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="bpm.fa.ui.management.handlers.CacheManagementHandler"
+            commandId="bpm.fa.ui.management.commands.cacheMemoryViewCommand">
+      </handler>
+      <handler
+            class="bpm.fa.ui.management.handlers.CacheDiskManagementHandler"
+            commandId="bpm.fa.ui.management.commands.cacheDiskViewCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+         <menu
+               id="bpm.fa.ui.management.menus.unitedOlapMenu"
+               label="United Olap"
+               mnemonic="U">
+
+
+            <command
+                  commandId="bpm.fa.ui.management.commands.cacheMemoryViewCommand"
+                  id="bpm.fa.ui.management.menus.cacheManagementCommand"
+                  mnemonic="C">
+            </command>
+            <command
+                  commandId="bpm.fa.ui.management.commands.cacheDiskViewCommand"
+                  id="bpm.fa.ui.management.menus.cacheDiskManagementCommand">
+            </command>
+         </menu>
+      </menuContribution>
+
+   </extension>
+
+</plugin>

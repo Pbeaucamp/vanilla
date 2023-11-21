@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.faweb.client.wizards.OpenCubeDialog.MyStyle">
+		.img {
+		    margin-left: 140px;
+    		margin-top: 15px;
+		}
+		
+		.lblTitle {
+	        font-size: 14px;
+		    font-weight: bold;
+		    margin-left: 12px;
+		    margin-top: 5px;
+		}
+		
+		.panelBtn {
+		    float: left;
+		    margin-left: 5px;
+    		margin-top: 10px;
+   		    width: 40px;
+		}
+		
+		.btn {
+			cursor: pointer;
+			height: 40px !important;
+			width: 40px !important;
+			background-position: center !important;
+		}
+		
+		.btn:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.background {
+		    background: none repeat scroll 0 0 #D3D3D3;
+		}
+		
+		.tree {
+		    border: 1px solid;
+		    height: 400px;
+		    overflow: auto;
+		    width: 580px;
+	        margin: 10px 10px 10px 50px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+<!-- 		<g:Image resource="{resources.welcome}" addStyleNames="{style.img}"/> -->
+		<g:Label text="{label.BrowseRepository}" addStyleNames="{style.lblTitle}"/>
+		<g:HTMLPanel addStyleNames="{style.panelBtn}">
+<!-- 			<g:Image ui:field="imgTypeViewer" title="{label.ChangeTypeViewer}" resource="{resources.list_32}" addStyleNames="{style.btn}"/> -->
+			<g:Image ui:field="imgRefresh" title="{label.Refresh}" resource="{commons.refresh_24}" addStyleNames="{style.btn}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelContent" addStyleNames="{style.tree}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

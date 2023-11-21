@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.fullWidth {
+			width: 90%;
+		    display: block;
+		}
+		
+		.limitValidity {
+	    	display: inline-block;
+    		width: 130px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<my:LabelTextBox ui:field="txtLogin" placeHolder="{labels.Login}"/>
+		<my:LabelTextBox ui:field="txtName" placeHolder="{labels.Name}"/>
+		<my:LabelTextBox ui:field="txtSurname" placeHolder="{labels.Surname}"/>
+		
+		<my:CustomCheckbox ui:field="checkAdmin" text="{labels.Administrator}" addStyleNames="{style.fullWidth}"/>
+		<my:CustomCheckbox ui:field="checkPasswordValidity" text="{labels.PasswordValidity}"/>
+		<my:LabelValueTextBox ui:field="txtLimitPasswordValidity" addStyleNames="{style.limitValidity}"/>
+		
+		<my:LabelTextBox ui:field="txtFunction" placeHolder="{labels.Function}"/>
+		<my:LabelTextBox ui:field="txtMobilePhone" placeHolder="{labels.MobilePhone}"/>
+		<my:LabelTextBox ui:field="txtPhone" placeHolder="{labels.Phone}"/>
+		<my:LabelTextBox ui:field="txtProMail" placeHolder="{labels.ProMail}"/>
+		<my:LabelTextBox ui:field="txtPersoMail" placeHolder="{labels.PersoMail}"/>
+		<my:LabelTextBox ui:field="txtIdSkype" placeHolder="{labels.IdSkype}"/>
+		<my:LabelTextBox ui:field="txtNumSkype" placeHolder="{labels.NumSkype}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

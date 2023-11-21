@@ -1,0 +1,625 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ParentCenteredRadialLayouter.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">INode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Geometry</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This is an implementation of the 
+     * parent centered radial layouter
+     * as described in the 2006 paper by
+     * Andy Pavlo, Christopher Homan and Jon Schull. It is not
+     * yet working perfectly. 
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">ParentCenteredRadialLayouter</span>
+        <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">AnimatedBaseLayouter</span>
+        <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IAngularLayouter</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;graphLayout.layout.ParentCenteredRadialLayouter&quot;</span>;
+        
+        <span class="ActionScriptComment">/* if we change phi we cannot set it directly
+         * in the drawing mode, because we throw it away
+         * and build a new one, so we need it here */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_phi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 90;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_rootR</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 10;
+        
+        <span class="ActionScriptComment">/* the queue for the BFS style walk through the calculation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_nodequeue</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+        
+        <span class="ActionScriptComment">/* this holds the data for the ParentCentered layout drawing */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_currentDrawing</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ParentCenteredDrawingModel</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The constructor only initialises some data structures.
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">ParentCenteredRadialLayouter</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualGraph</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">animationType</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ANIM_RADIAL</span>; <span class="ActionScriptComment">// inherited
+</span>            <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>            
+            
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">_nodequeue</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptDefault_Text">_stree</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This main interface method computes and
+         * and executes the new layout.
+         * @return Currently the return value is not set or used.
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">cindex</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nsiblings</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">rv</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.info(_LOG, &quot;layoutPass called&quot;);
+</span>            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_vgraph</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;No Vgraph set in PCRLayouter, aborting&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;This Layouter always requires a root node!&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* nothing to do if we have no nodes */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">noNodes</span> <span class="ActionScriptOperator">&lt;</span> 1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* if there is a timer, we have to stop it to
+             * prevent inconsistencies */</span>
+            <span class="ActionScriptDefault_Text">killTimer</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* establish the current root, if it has 
+             * changed we need to reinit the model */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span>.<span class="ActionScriptDefault_Text">node</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_root</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">currentRootVNode</span>.<span class="ActionScriptDefault_Text">node</span>;
+                <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+                    
+            <span class="ActionScriptComment">/* establish the spanning tree, restricted to visible nodes */</span>
+            <span class="ActionScriptDefault_Text">_stree</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_graph</span>.<span class="ActionScriptDefault_Text">getTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span>,<span class="ActionScriptReserved">true</span>,<span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span>;
+
+            <span class="ActionScriptComment">/* check if the root is visible, if not
+             * this is an issue */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_root</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Invisible root node, this is probably due to wrong initialisation of nodes or wrong defaults&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            <span class="ActionScriptComment">/* need to see where how we could get a clear
+             * list of situation how to deal with hab
+             * if the layout was changed (or any parameter)
+             * we have to reinit the model */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_layoutChanged</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            <span class="ActionScriptComment">/* this is complicated. */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_autoFitEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* first we do a regular calculation */</span>
+                <span class="ActionScriptDefault_Text">calculateNodes</span><span class="ActionScriptBracket/Brace">()</span>;
+                
+                <span class="ActionScriptComment">/* now we calculate the best rootR
+                 * from the existing model calculation */</span>
+                <span class="ActionScriptDefault_Text">calculateAutoFit</span><span class="ActionScriptBracket/Brace">()</span>;
+                
+                <span class="ActionScriptComment">/* then we reinit the model to have a clean
+                 * one with new rootR */</span>
+                <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span>;
+                 
+                <span class="ActionScriptComment">/* then outside of this clause we do the real
+                 * calculation */</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            <span class="ActionScriptComment">/* do a calculation pass */</span>
+            <span class="ActionScriptDefault_Text">calculateNodes</span><span class="ActionScriptBracket/Brace">()</span>
+        
+            <span class="ActionScriptComment">/* reset animation cycle */</span>
+            <span class="ActionScriptDefault_Text">resetAnimation</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* start the animation, does also the commit */</span>
+            <span class="ActionScriptDefault_Text">startAnimation</span><span class="ActionScriptBracket/Brace">()</span>;        
+        
+            <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">rv</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_rootR</span> <span class="ActionScriptOperator">/</span> 5;
+        <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">rr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_rootR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">rr</span> <span class="ActionScriptOperator">*</span> 5;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Access to the preset of the starting angle of the layout
+         * */</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">phi</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_phi</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">phi</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">p</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_phi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">p</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptComment">/* private methods */</span>
+         
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Create a new layout drawing object, which is required
+         * on any root change (and possibly during other occasions)
+         * and intialise various parameters of the drawing.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initModel</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>        
+            <span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ParentCenteredDrawingModel</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* set in super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>;
+            
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">origin</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">center</span>;
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ParentCenteredDrawingModel</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">phi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_phi</span>;
+            <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ParentCenteredDrawingModel</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">rootR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_rootR</span>;
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;New Model with phi:&quot;+_phi+&quot; and origin:&quot;+_currentDrawing.originOffset.toString());
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Initialize the node queue and then recurse
+         * the node calculation. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calculateNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* init/reset the node queue */</span>
+            <span class="ActionScriptDefault_Text">_nodequeue</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Array</span><span class="ActionScriptBracket/Brace">()</span>;
+
+            <span class="ActionScriptComment">/* push the root into the array */</span>
+            <span class="ActionScriptDefault_Text">_nodequeue</span>.<span class="ActionScriptDefault_Text">unshift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_root</span><span class="ActionScriptBracket/Brace">)</span>;
+
+            <span class="ActionScriptComment">/* start the calculation */</span>
+            <span class="ActionScriptDefault_Text">calculateNodesRecursion</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Walk the tree again in a BFS manner to process all nodes.
+         * This relys on the nodequeue, which has to at least
+         * be initialised with the root node. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calculateNodesRecursion</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">c</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+            
+            <span class="ActionScriptComment">/* pop the first node from the queue, in
+             * the first iteration this should be the root
+             */</span>
+            <span class="ActionScriptDefault_Text">n</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_nodequeue</span>.<span class="ActionScriptDefault_Text">pop</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* if the queue was empty, we are done */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;popped node:&quot;+n.id+&quot; from queue, working on it&quot;);
+</span>            
+            <span class="ActionScriptComment">/* first process the node */</span>
+            <span class="ActionScriptDefault_Text">processNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* now get the nodes children */</span>
+            <span class="ActionScriptDefault_Text">children</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildren</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* add the children to the end of the _nodequeue
+             * if it is visible */</span>
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">c</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">children</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">c</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_nodequeue</span>.<span class="ActionScriptDefault_Text">unshift</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">c</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;added node:&quot;+c.id+&quot; to nodequeue&quot;);
+</span>                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* recurse, this should to until there are no
+             * more children left */</span>
+            <span class="ActionScriptDefault_Text">calculateNodesRecursion</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * calculate the coordinates of a node, Requires all nodes in the
+         * parental level to be calculated.
+         * @param vi The current node to inspect v_i
+         * @param i the child index of the current node (beware this starts with 0)
+         * @param m the number of all children of the node&apos;s parent
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">processNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;        <span class="ActionScriptComment">// parent node of vi
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vs</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;        <span class="ActionScriptComment">// the next sibling of the parent
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vgp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;       <span class="ActionScriptComment">// grandparent of vi (parent of vp)
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;             <span class="ActionScriptComment">// childindex of vi
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">m</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;             <span class="ActionScriptComment">// number of siblings (including vi) of vi
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">mp</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;          <span class="ActionScriptComment">// the number of siblings (m) of the parent node
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ip</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;          <span class="ActionScriptComment">// child index (i) of parent node
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">delta</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;    <span class="ActionScriptComment">// the angle between two siblings polar coordinates
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">angle1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;      <span class="ActionScriptComment">// angle
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">angle2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;      <span class="ActionScriptComment">// angle
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">lrgangle</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;      <span class="ActionScriptComment">// the larger of two angles
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">smlangle</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;      <span class="ActionScriptComment">// the smaller of two angles
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vpcoords</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;  <span class="ActionScriptComment">// parent point
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vgpcoords</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>; <span class="ActionScriptComment">// grandparent point
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vscoords</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;  <span class="ActionScriptComment">// parent sibling point
+</span>            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">magnitude</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>; <span class="ActionScriptComment">// diameter of a node&apos;s view to measure occupied space.
+</span>            
+            <span class="ActionScriptComment">/* the following are variables to be set in a drawing */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodeOrigin</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">zeroAngleOffset</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodePolarR</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">nodePolarPhi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            
+            <span class="ActionScriptComment">/* needed for the calculation */</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">intersection</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">phi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+
+            <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">m</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span><span class="ActionScriptBracket/Brace">)</span>;
+
+        
+            <span class="ActionScriptComment">/* some sanity checks */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">&lt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;i was &lt; 0&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">m</span> <span class="ActionScriptOperator">&lt;</span> 1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;m was &lt; 1&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node was null&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* all nodes here should be visible, but we check it anyway */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">vi</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;found invisible node in recursion function, which should not happen&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC1: called&quot;);
+</span>            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">_root</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC2: node:&quot;+vi.id+&quot; is root, setting all to 0&quot;);
+</span>                
+                <span class="ActionScriptComment">/* if we are the root node we set the
+                 * static parameters of the root node */</span>
+                <span class="ActionScriptDefault_Text">nodeOrigin</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">zeroAngleOffset</span> <span class="ActionScriptOperator">=</span> 0.0;
+                <span class="ActionScriptDefault_Text">nodePolarR</span> <span class="ActionScriptOperator">=</span> 0.0;
+                <span class="ActionScriptDefault_Text">nodePolarPhi</span> <span class="ActionScriptOperator">=</span> 0.0;
+    
+                <span class="ActionScriptComment">/* set the values, this should apply the origin and zero-angle
+                 * offset to the cartesian coordinates */</span>            
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.
+                    <span class="ActionScriptDefault_Text">setNodeCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span>,<span class="ActionScriptDefault_Text">nodeOrigin</span>,<span class="ActionScriptDefault_Text">zeroAngleOffset</span>,<span class="ActionScriptDefault_Text">nodePolarR</span>,<span class="ActionScriptDefault_Text">nodePolarPhi</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            
+            <span class="ActionScriptComment">/* else the node has a parent */</span>
+            <span class="ActionScriptDefault_Text">vp</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">vi</span><span class="ActionScriptBracket/Brace">]</span>;
+
+            <span class="ActionScriptComment">/* make sure it is the case */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Found non-root node without parent&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC3: node:&quot;+vi.id+&quot; is NOT root, got parent:&quot;+vp.id);
+</span>            
+            <span class="ActionScriptComment">/* we would now check if we already have
+             * the data of the parent node (in this case the root)
+             * and if not, we call this function (i.e. recurse)
+             * the other values on the model are Numbers, so we would
+             * need to check if the map has the key at all ....
+             */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">nodeDataValid</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* RECURSE upward, but should not happen */</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC4: recursing with parent node:&quot;+vp.id+&quot; (current node:&quot;+vi.id+&quot;)&quot;);
+</span>                <span class="ActionScriptComment">//recurseCoordinateCalculation(vp,_stree.getChildIndex(vp),_stree.getNoSiblings(vp));
+</span>                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Parent node data invalid, this should not have happened&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC5: node:&quot;+vi.id+&quot;&apos;s parent:&quot;+vp.id+&quot; has values&quot;);
+</span>            
+            <span class="ActionScriptComment">/* now if the parent (v) is the root, i.e. we have
+             * a tier-1 node we are still in a special case */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">_root</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                                
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC6: node:&quot;+vi.id+&quot;&apos;s parent:&quot;+vp.id+&quot; is ROOT, applying special values&quot;);
+</span>                                
+                <span class="ActionScriptDefault_Text">nodeOrigin</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ParentCenteredDrawingModel</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">getNodeOrigin</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">zeroAngleOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getAngleOffset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptDefault_Text">nodePolarR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">rootR</span> <span class="ActionScriptComment">// this is the initial user defined value
+</span>                
+                <span class="ActionScriptComment">/* remember we use degrees now, not radians */</span>
+                <span class="ActionScriptDefault_Text">nodePolarPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span>360 <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">+</span>1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">m</span><span class="ActionScriptBracket/Brace">)</span>; <span class="ActionScriptComment">// have to adjust for index starting with 0 instead of 1
+</span>                
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC6.1: node:&quot;+vi.id+&quot; gets rootR:&quot;+nodePolarR);
+</span>                
+                <span class="ActionScriptComment">/* set the values */</span>                
+                <span class="ActionScriptDefault_Text">_currentDrawing</span>.
+                    <span class="ActionScriptDefault_Text">setNodeCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span>,<span class="ActionScriptDefault_Text">nodeOrigin</span>,<span class="ActionScriptDefault_Text">zeroAngleOffset</span>,<span class="ActionScriptDefault_Text">nodePolarR</span>,<span class="ActionScriptDefault_Text">nodePolarPhi</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptReserved">return</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC7: node:&quot;+vi.id+&quot;&apos;s parent:&quot;+vp.id+&quot; is NOT root, calculating..&quot;);
+</span>            
+            <span class="ActionScriptComment">/* now we use a regular node, again here we have 
+             * two cases, depending on if the node has 
+             * siblings or not but the origin references
+             * will be the same regardless */</span>
+            
+            <span class="ActionScriptComment">/* origin will be the coordinates of the parent, but
+             * those are relative to the parents origin
+             * so we already need to apply the origin offset
+             * so that we can be sure all the origins are already
+             * absolute */</span>
+             
+            <span class="ActionScriptDefault_Text">nodeOrigin</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">/* first get a grandparent, there should be one
+             * because we are in the case where the parent is not root */</span>
+            <span class="ActionScriptDefault_Text">vgp</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">parents</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">]</span>;
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vgp</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Node vi:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">vi</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; with parent:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; has no grandparent but should have&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptDefault_Text">vgpcoords</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vgp</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">vpcoords</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Node:&quot;+vi.id+&quot; has parent:&quot;+vp.id+&quot; and grandparent:&quot;+vgp.id);
+</span>            
+            <span class="ActionScriptComment">/* big issue here is that the y axis direction is reversed
+             * that means the sign of the y.coordinates is probably
+             * reversed either, we try to compensate by changing the subtrating
+             * order of the y coordinates */</span>
+            <span class="ActionScriptDefault_Text">zeroAngleOffset</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">rad2deg</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">atan2</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vpcoords</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">vgpcoords</span>.<span class="ActionScriptDefault_Text">y</span>, <span class="ActionScriptDefault_Text">vgpcoords</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">vpcoords</span>.<span class="ActionScriptDefault_Text">x</span><span class="ActionScriptBracket/Brace">))</span>;
+            
+            <span class="ActionScriptComment">/* the polar angle is also independent of the 
+             * number of siblings
+             * calculated according to the formula */</span>
+            <span class="ActionScriptDefault_Text">phi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">phi</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC7.1: node:&quot;+vi.id+&quot; gets phi:&quot;+phi);
+</span>            
+            <span class="ActionScriptComment">/* new reasoning */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">m</span> <span class="ActionScriptOperator">==</span> 1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">nodePolarPhi</span> <span class="ActionScriptOperator">=</span> 180;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">nodePolarPhi</span> <span class="ActionScriptOperator">=</span> 180 <span class="ActionScriptOperator">-</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">phi</span> <span class="ActionScriptOperator">/</span> 2.0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">phi</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">m</span><span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">))</span>;
+            <span class="ActionScriptBracket/Brace">}</span> 
+        
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC7.2: node:&quot;+vi.id+&quot; with: i:&quot;+i+&quot; and m:&quot;+m+&quot; gets Polarphi:&quot;+nodePolarPhi);    
+</span>                
+            <span class="ActionScriptComment">/* if the node has no siblings, m must be 1
+             * the magnitude of the parent is what? Maybe
+             * the r of the parent, which is then halved?
+             * XXXX
+             * MAGNITUDE probably refers to the &quot;importance&quot; in terms
+             * of social networking, which is often visualised
+             * by having a direct impact to the node&apos;s size.
+             * we do not use that, all nodes are created equal, so we
+             * could choose this factor to fit our needs
+             * right now we chose the node&apos;s view&apos;s average
+             * size by half, which may in the future also be multiplied by
+             * a certain factor (which could then be used in 
+             * autofitting)
+             */</span>
+            
+            <span class="ActionScriptDefault_Text">mp</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getNoSiblings</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">ip</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getChildIndex</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8: set node:&quot;+vi.id+&quot;&apos;s polarPhi to:&quot;+nodePolarPhi);
+</span>            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">mp</span> <span class="ActionScriptOperator">==</span> 1<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptDefault_Text">magnitude</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">width</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span>
+                    <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">view</span>.<span class="ActionScriptDefault_Text">height</span><span class="ActionScriptBracket/Brace">))</span>;
+                
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.1: parent node:&quot;+vp.id+&quot; has no siblings&quot;);            
+</span>                <span class="ActionScriptComment">/* the diameter might be better here, but anyway */</span>
+                <span class="ActionScriptComment">//nodePolarR = (vp.vnode.view.width + vp.vnode.view.height) / 4;
+</span>                
+                <span class="ActionScriptDefault_Text">nodePolarR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">magnitude</span> <span class="ActionScriptOperator">/</span> 2.0;
+                                
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.2: parent node:&quot;+vp.id+&quot; has &quot;+mp+&quot; siblings&quot;);
+</span>                
+                <span class="ActionScriptComment">/* literally: the radius of the circle centered at vp (parent node)
+                 * and intersecting the midway point between vp and vp&apos;s nearest
+                 * sibling on their shared containment circle */</span>
+                 
+                <span class="ActionScriptComment">/* we need to get a sibling from vp, but first we need to know
+                 * if we need to take the following or preceding sibling,
+                 * (either would do) so we do not overrun */</span>
+
+                <span class="ActionScriptComment">/* check if there is a next sibling, i.e. the index must be less
+                 * than the maximum number -1 (which is the last index) */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ip</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">mp</span> <span class="ActionScriptOperator">-</span> 1<span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.2.0.1: ip:&quot;+ip+&quot; is &lt; mp:&quot;+mp);
+</span>                    <span class="ActionScriptDefault_Text">vs</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vgp</span>,<span class="ActionScriptDefault_Text">ip</span><span class="ActionScriptOperator">+</span>1<span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.2.0.2: sibling node vs:&quot;+vs.id);
+</span>                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptComment">/* no? but if the index is &gt; 0 we have a previous sibling */</span>
+                <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ip</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.2.0.3: ip:&quot;+ip+&quot; is &gt; 1 and mp:&quot;+mp);
+</span>                    <span class="ActionScriptDefault_Text">vs</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_stree</span>.<span class="ActionScriptDefault_Text">getIthChildPerNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vgp</span>,<span class="ActionScriptDefault_Text">ip</span><span class="ActionScriptOperator">-</span>1<span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC8.2.0.4: sibling node vs:&quot;+vs.id);
+</span>                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptComment">/* we have neither? so vp is childindex 1 and mp is 1 
+                 * that means vp was an only child */</span>
+                <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;vp:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">vp</span>.<span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; has no sibling, but mp &gt; 1? this is very wrong&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* since we compute from root down, this should not happen */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">nodeDataValid</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vs</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Parent siblings node data invalid, this should not have happened&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">angle1</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getLocalPolarPhi</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">angle2</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getLocalPolarPhi</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vs</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* *
+                LogUtil.debug(_LOG, &quot;RecurseCC8.3: vi:&quot;+vi.id+&quot; parent:&quot;+vp.id+&quot;&apos;s phi:&quot;+
+                angle1+
+                &quot; sibling:&quot;+vs.id+&quot;&apos;s phi:&quot;+
+                angle2);
+                /* */</span>
+                
+                <span class="ActionScriptComment">/* establish the larger of the two angles */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">angle1</span> <span class="ActionScriptOperator">&gt;</span> <span class="ActionScriptDefault_Text">angle2</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">lrgangle</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">angle1</span>;
+                    <span class="ActionScriptDefault_Text">smlangle</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">angle2</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">lrgangle</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">angle2</span>;
+                    <span class="ActionScriptDefault_Text">smlangle</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">angle1</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* if the difference is larger than 180, we want
+                 * to use the complementary angle */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lrgangle</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">smlangle</span> <span class="ActionScriptOperator">+</span> 180<span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">delta</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">lrgangle</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">smlangle</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">delta</span> <span class="ActionScriptOperator">=</span> 360 <span class="ActionScriptOperator">-</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lrgangle</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">smlangle</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+
+                <span class="ActionScriptComment">/* now half it */</span>
+                <span class="ActionScriptDefault_Text">delta</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">delta</span> <span class="ActionScriptOperator">/</span> 2.0;
+                
+                <span class="ActionScriptComment">/*
+                LogUtil.debug(_LOG, &quot;Half Angular diff between:&quot;+vp.id+&quot; and:&quot;+vs.id+&quot; is:&quot;+delta);
+                LogUtil.debug(_LOG, &quot;Radius of vp:&quot;+_currentDrawing.getLocalPolarR(vp)+&quot; and vs:&quot;+
+                    _currentDrawing.getLocalPolarR(vs));
+                */</span>
+                
+                <span class="ActionScriptComment">/* delta is an angle in degrees now */</span>
+                
+                <span class="ActionScriptComment">/* now multiply with radius to get the segments length */</span>
+                <span class="ActionScriptDefault_Text">nodePolarR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">deg2rad</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">delta</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getLocalPolarR</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vp</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;RecurseCC9: set node:&quot;+vi.id+&quot;&apos;s polarR to:&quot;+nodePolarR);
+</span>            
+            <span class="ActionScriptComment">/* set the values */</span>                
+            <span class="ActionScriptDefault_Text">_currentDrawing</span>.
+                <span class="ActionScriptDefault_Text">setNodeCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vi</span>,<span class="ActionScriptDefault_Text">nodeOrigin</span>,<span class="ActionScriptDefault_Text">zeroAngleOffset</span>,<span class="ActionScriptDefault_Text">nodePolarR</span>,<span class="ActionScriptDefault_Text">nodePolarPhi</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+            <span class="ActionScriptReserved">return</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+            
+
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * do all the calculations required for autoFit
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calculateAutoFit</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">maxlen</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">lenlimit</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">len</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">currentRootR</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            
+            <span class="ActionScriptDefault_Text">maxlen</span> <span class="ActionScriptOperator">=</span> 0;
+            <span class="ActionScriptDefault_Text">currentRootR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">rootR</span>;
+            <span class="ActionScriptDefault_Text">visVNodes</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>    
+                <span class="ActionScriptComment">/* should be visible otherwise somethings wrong */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;received invisible vnode from list of visible vnodes&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptDefault_Text">len</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">node</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">length</span>;
+                <span class="ActionScriptDefault_Text">maxlen</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">maxlen</span>,<span class="ActionScriptDefault_Text">len</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptDefault_Text">lenlimit</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span>,<span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">DEFAULT_MARGIN</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> 2;
+            
+            <span class="ActionScriptDefault_Text">_rootR</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currentRootR</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lenlimit</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">maxlen</span><span class="ActionScriptBracket/Brace">)</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.info(_LOG, &quot;autofitting rootR to:&quot;+_rootR+&quot; with ml:&quot;+maxlen);
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

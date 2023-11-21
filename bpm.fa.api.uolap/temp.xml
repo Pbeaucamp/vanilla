@@ -1,0 +1,44 @@
+<Schema name="MySchema">
+
+        <Dimension name="location">
+            <Hierarchy hasAll="true" allMemberName="All location">
+                <Table name="quadrant_actuals"/>
+                <Level name="REGION" table="quadrant_actuals" column="REGION" uniqueMembers="false"/>
+                <Level name="DEPARTMENT" table="quadrant_actuals" column="DEPARTMENT" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="position">
+            <Hierarchy hasAll="true" allMemberName="All position">
+                <Table name="quadrant_actuals"/>
+                <Level name="POSITIONTITLE" table="quadrant_actuals" column="POSITIONTITLE" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+    <Cube name="cube">
+        <Table name="quadrant_actuals"/>
+        <Dimension name="location">
+            <Hierarchy hasAll="true" allMemberName="All location">
+                <Table name="quadrant_actuals"/>
+                <Level name="REGION" table="quadrant_actuals" column="REGION" uniqueMembers="false"/>
+                <Level name="DEPARTMENT" table="quadrant_actuals" column="DEPARTMENT" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="position">
+            <Hierarchy hasAll="true" allMemberName="All position">
+                <Table name="quadrant_actuals"/>
+                <Level name="POSITIONTITLE" table="quadrant_actuals" column="POSITIONTITLE" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Measure name="ACTUAL" column="ACTUAL" aggregator="sum" formatString="Standard"/>
+        <Measure name="BUDGET" column="BUDGET" aggregator="sum" formatString="Standard"/>
+    </Cube>
+    <Role name="Public">
+        <SchemaGrant access="none">
+           <CubeGrant cube="cube" access="all">
+                 <HierarchyGrant hierarchy="location" access="custom" topLevel="REGION" bottomLevel="DEPARTMENT">
+                     <MemberGrant member="[location].[Central]" access="none"/>
+                     <MemberGrant member="[location].[Eastern]" access="none"/>
+                 </HierarchyGrant>
+           </CubeGrant>
+        </SchemaGrant>
+    </Role>
+</Schema>

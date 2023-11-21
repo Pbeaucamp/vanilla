@@ -1,0 +1,86 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+		.lblMeasure {
+			width: 100px;	
+			margin-top:10px;
+			height: 35px;
+		}
+		
+		.lstType {
+			width: 195px;
+			height: 18px;
+			padding: 0px;
+			margin-top:10px;
+		}
+		
+		.rbButton {
+			font-size: 10px;
+				
+		}
+		
+		.rbButtonpan {
+			margin-top: 7px;
+		}
+		
+		.lbl {
+			font-size: 10px;
+			width: 85px;
+			margin-top:10px;
+		}
+		
+		.marginleft {
+			margin-left: 50px;	
+		}
+		
+		.mainPanel {
+			
+		}
+		
+		.memberBtn {
+			width: 212px;	
+			font-size: 11px;
+			margin-top:10px;
+		}
+		
+		.txt {
+			font-size: 8px;	
+			width: 127px;
+			margin-top:10px;
+		}
+		
+	</ui:style>
+	<g:HorizontalPanel styleName="{style.mainPanel}">
+	
+		<!-- <g:Label ui:field="lblMeasure" styleName="{style.lblMeasure}"></g:Label>		
+		<g:ListBox ui:field="txtExtrapolationType" styleName="{style.lstType}"></g:ListBox>
+		<g:Button ui:field="btnMemberStartEnd"></g:Button>
+		 -->
+		 
+		<g:VerticalPanel>
+			<g:HTMLPanel styleName="{style.rbButtonpan}">
+				<g:RadioButton name="extrtype" ui:field="rbNone" styleName="{style.rbButton}"></g:RadioButton>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="{style.rbButtonpan}">
+				<g:RadioButton name="extrtype" ui:field="rbLinear" styleName="{style.rbButton}"></g:RadioButton>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="{style.rbButtonpan}">
+				<g:RadioButton name="extrtype" ui:field="rbLagrange" styleName="{style.rbButton}"></g:RadioButton>
+			</g:HTMLPanel>	
+		</g:VerticalPanel>
+		 
+		<g:HTMLPanel styleName="{style.marginleft}">
+			<g:Button ui:field="btnMemberStartEnd" styleName="{style.memberBtn}"></g:Button>
+			<g:HorizontalPanel>
+				<g:Label ui:field="lblStart" styleName="{style.lbl}"></g:Label>
+				<g:TextBox ui:field="txtStart" styleName="{style.txt}"></g:TextBox>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:Label ui:field="lblEnd" styleName="{style.lbl}"></g:Label>
+				<g:TextBox ui:field="txtEnd" styleName="{style.txt}"></g:TextBox>
+			</g:HorizontalPanel>
+		</g:HTMLPanel>
+	</g:HorizontalPanel>
+</ui:UiBinder> 

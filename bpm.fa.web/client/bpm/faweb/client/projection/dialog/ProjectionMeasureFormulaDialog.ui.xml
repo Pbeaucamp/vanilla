@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		
+	.buttonPanel {
+		margin-top: 10px;
+		left: 50px;
+	}
+	
+	.buttonPanel img {
+		margin-left: 300px;
+	}
+	
+	.mainPanel {
+		height: 500px;
+		width: 1000px;	
+	}
+	
+	.designPanel {
+		height: 450px;
+		width: 100%;	
+	}
+	
+	.treePanel {
+		width: 300px;
+		height: 430px;
+		overflow: auto;	
+	}
+	
+	.filterPanel {
+		width: 330px;
+		height: 430px;
+		overflow: auto;
+	}
+	
+	.formulaPanel {
+		width: 315px;
+		height: 430px;
+		overflow: auto;		
+	}
+	
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HorizontalPanel styleName="{style.designPanel}">
+			<g:CaptionPanel captionText="{label.Elements}">
+				<g:HTMLPanel ui:field="treePanel" styleName="{style.treePanel}">
+				</g:HTMLPanel>
+			</g:CaptionPanel>
+			
+			<g:CaptionPanel captionText="{label.Conditions}">
+				<g:HTMLPanel ui:field="filterPanel" styleName="{style.filterPanel}">
+				</g:HTMLPanel>
+			</g:CaptionPanel>
+			
+			<g:CaptionPanel captionText="{label.Formula}">
+				<g:HTMLPanel ui:field="formulaPanel" styleName="{style.formulaPanel}">
+				</g:HTMLPanel>
+			</g:CaptionPanel>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

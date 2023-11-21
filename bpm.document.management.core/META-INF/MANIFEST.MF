@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.document.management.core
+Bundle-SymbolicName: bpm.document.management.core
+Bundle-Version: 16.0.0.2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.document.management.core,
+ bpm.document.management.core.model,
+ bpm.document.management.core.model.aklad,
+ bpm.document.management.core.model.aklademat,
+ bpm.document.management.core.utils,
+ bpm.document.management.core.xstream
+Require-Bundle: bpm.vanilla.platform.hibernate;bundle-version="4.2.2",
+ bpm.vanilla.platform.core.config;bundle-version="6.0.0"
+Bundle-ClassPath: .

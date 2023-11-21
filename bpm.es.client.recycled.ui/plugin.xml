@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.recycled.ui.perspectives.RecycledPerspective"
+            icon="src/bpm/es/recycled/ui/icons/kmag.png"
+            id="bpm.es.recycled.ui.recycledPerspective"
+            name="%perspective.name">
+         <description>
+            %perspective.description
+         </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.es.recycled.ui.views.RecycledView"
+            id="bpm.es.recycled.ui.views.RecycledView"
+            name="%view.recycle.name"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

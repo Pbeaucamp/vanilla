@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <newWizard
+            name="%newwizard.name"
+            icon="icons/new_oda_dswiz.ico"
+            profile="%oda.data.source.id"
+            description="%newwizard.description"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="%oda.data.source.id">
+      </newWizard>
+      
+      <newWizard
+            name="Vanilla Excel Local File ODA DataSource"
+            icon="icons/new_oda_dswiz.ico"
+            profile="bpm.excel.oda.runtime.localFile"
+            description="Create a Vanilla Excel ODA LocalFile DataSource connection profile"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            id="bpm.excel.oda.runtime.localFile">
+      </newWizard>
+      
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="bpm.excel.oda.ui.impl.localdatasource.LocalExcelDataSourcePropertiesPage"
+            id="%oda.data.source.id"
+            name="%profile.propertypage.name"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="%oda.data.source.id">
+         </filter>
+      </page>
+      
+      
+      <page
+            class="bpm.excel.oda.ui.impl.localdatasource.LocalExcelDataSourcePropertiesPage"
+            id="bpm.excel.oda.runtime.localFile"
+            name="Vanilla Excel ODA LocalFile DataSource Connection Properties"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="bpm.excel.oda.runtime.localFile">
+         </filter>
+      </page>
+      
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="%oda.data.source.id">
+         <newDataSourceWizard
+               pageClass="bpm.excel.oda.ui.impl.datasource.ExcelDataSourcePage"
+               includesProgressMonitor="false"
+               pageTitle="%wizard.data.source.page.title"
+               windowTitle="%wizard.window.title">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            supportsOutParameters="false"
+            supportsInParameters="true"
+            initialPageId="bpm.excel.oda.dataSet.page1"
+            id="bpm.excel.oda.runtime.dataSet">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="%wizard.data.set.window.title">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="%wizard.data.set.page.title"
+               icon="icons/datasetpage.ico"
+               wizardPageClass="bpm.excel.oda.ui.impl.ExcelDataSetWizardPage"
+               path="/"
+               id="bpm.excel.oda.dataSet.page1">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+
+
+
+
+
+
+	 <extension
+         point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI
+            id="bpm.excel.oda.runtime.localFile">
+         <newDataSourceWizard
+               pageClass="bpm.excel.oda.ui.impl.localdatasource.LocalExcelDataSourcePage"
+               includesProgressMonitor="false"
+               pageTitle="%wizard.data.source.page.title"
+               windowTitle="%wizard.window.title">
+         </newDataSourceWizard>
+      </dataSourceUI>
+      <dataSetUI
+            id="bpm.excel.oda.runtime.localdataSet"
+            initialPageId="bpm.excel.oda.runtime.localdataSet.page1"
+            supportsInParameters="true"
+            supportsOutParameters="false">
+         <dataSetWizard
+               class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+               windowTitle="%wizard.data.set.window.title">
+         </dataSetWizard>
+         <dataSetPage
+               displayName="%wizard.data.set.page.title"
+               icon="icons/datasetpage.ico"
+               id="bpm.excel.oda.runtime.localdataSet.page1"
+               path="/"
+               wizardPageClass="bpm.excel.oda.ui.impl.ExcelDataSetWizardPage">
+         </dataSetPage>
+      </dataSetUI>
+   </extension>
+</plugin>

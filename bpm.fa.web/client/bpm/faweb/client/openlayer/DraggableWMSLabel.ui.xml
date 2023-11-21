@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		@external active, measure, panel;
+		.active{
+			background:  #08C !important;
+			color: #fff !important;
+			border-bottom: 2px solid #C9C9C9;
+		}
+		.inline{
+			vertical-align: middle;
+			display: inline;
+		}
+		.panel{
+			padding: 10px;
+			background: #e7e7e7;
+			border-bottom: 2px solid #C9C9C9;
+			z-index: 2;
+			position: relative;
+		}
+		.measure{
+			background: #FF5F59;
+			color: #fff;
+			border-bottom: 2px solid #C9C9C9;
+		}
+		.lblName{
+			text-overflow: ellipsis !important;
+			width: 83% !important;
+			overflow: hidden !important;
+			display: inline-block !important;
+			color: #000;
+		}
+		.btnActions{
+			cursor: pointer;
+			width: 7%;
+			display: inline-block !important;
+		}
+		.colorPicker{
+			
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	    <g:FocusPanel ui:field="focusPanel">
+	        <g:HTMLPanel>
+				<g:Label ui:field="lblName" addStyleNames="{style.inline} {style.lblName}"/>
+				<g:Image ui:field="btnRemove" url="images/ic_remove.png" addStyleNames="{style.inline} {style.btnActions}"/>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

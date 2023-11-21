@@ -1,0 +1,16 @@
+
+**********************************************************
+* Entreprise services 1.30.51
+**********************************************************
+ - if you have an older version of ES, before launching this one for the firste time, you have to delete the file  : 
+
+[USER]\.bpmconseil\serie1\entrepriseservices\javauser\.metadata\.plugins\org.eclipse.core.runtime\.settings\adminBIRep.prefs
+
+If you dont, it is possible that ES wont start.
+
+**********************************************************
+* Entreprise services XXXXX
+**********************************************************
+
+ - make sure that the database defined in the applicationContext.xml is the same that is used by the birepositoryServer.
+

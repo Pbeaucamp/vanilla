@@ -1,0 +1,242 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IGraph.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">IEventDispatcher</span>;
+    
+    
+    <span class="ActionScriptASDoc">/**
+     * Interface to the Graph datastructure class
+     * that hold the set of nodes
+     * and edges that actually form that graph
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IGraph</span>    <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">IEventDispatcher</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * The id (or name) of the graph
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">id</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Return a reference to the XML graph
+         * structure that was used to initialise the graph.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">xmlData</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * An Array that contains all nodes of the graph.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">nodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * An Array that contains all edges of the graph.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">edges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Array</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The number of nodes in the graph.
+         * */</span> 
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">noNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The number of edges in the graph.
+         * */</span> 
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">noEdges</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+
+        <span class="ActionScriptASDoc">/** 
+         * Indicator if the graph is directional or not.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">isDirectional</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * Provide a method to sort nodes in a graph.
+         * This can be used by GTree when building
+         * a spanning tree.
+         * The function must be compatible with a function
+         * to sort an Array.
+         * @see Array
+         * @param f The function reference to use.
+         * @default null
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">nodeSortFunction</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">f</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Function</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">nodeSortFunction</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Function</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * This determines the walking direction when building
+         * a spanning tree. Possible values are
+         * Graph.WALK_FORWARD
+         * Graph.WALK_BACKWARDS
+         * Graph.WALK_BOTH
+         * All make only sense in a directional graph.
+         * Forward means we follow edges in its regular direction
+         * from the root node.
+         * Backwards means, we follow edges back from the root
+         * node (e.g. the root is a sink with multiple sources)
+         * Both obviously means both.
+         * 
+         * This property will be queried by GTree to determine the
+         * walking direction set.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">walkingDirection</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">d</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">walkingDirection</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * A lookup to find a node by it&apos;s string id.
+         * @param sid The node&apos;s string id.
+         * @return The node if one was found, null otherwise.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nodeByStringId</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * A lookup to find a node by it&apos;s (int) id.
+         * @param id The node&apos;s id.
+         * @return The node if one was found, null otherwise.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">nodeById</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+
+        
+        <span class="ActionScriptASDoc">/**
+         * Creates a graph from XML.
+         * The XML you provide should contain 2 kinds of elements&lt;br&gt;
+         *  &amp;lt;Node id=&quot;xxx&quot; anything-else..../&amp;gt;&lt;br&gt;
+         *  and&lt;br&gt;
+         *  &amp;lt;Edge fromID=&quot;xxx&quot; toID=&quot;yyy&quot;/&amp;gt;&lt;br&gt;&lt;br&gt;
+         * &lt;p&gt;You can have additional tags, and/or nest the tags any way you like; this will not
+         * have any effect. We create a graph where each Item corresponds to a single node. The item&apos;s
+         * id will come from the Node&apos;s id attribute (make sure this is unique). The item&apos;s data will
+         * be the Node, and will be of type XML. The &amp;lt;Edge&amp;gt; elements must come *after* the corresponding
+         * &amp;lt;Node&amp;gt; elements have appeared.
+         * 
+         * @param xml an XML document containing Node and Edge elements.
+         * @return a graph that corresponds to the Node and Edge elements in the input.
+         */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initFromXML</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">xml</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">XML</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Creates a graph node in the graph, optionally takes a string
+         * id for the node and an object to associate the node with.
+         * @param sid A unique string id for the node (if empty the numerical id will be used).
+         * @param o Dataobject to be associated with this node.
+         * @return The created node object.
+         * @throws Error if the string id was already used before (must be unique).
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">createNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">sid</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;&quot;</span>, <span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+        
+        
+        <span class="ActionScriptASDoc">/**
+         * Removes a node from the graph. If the node is part of any edge,
+         * and error is thrown (i.e. edges must be removed/nodes unlinked first).
+         * @param n The node object to be removed.
+         * @throws An error if the node is still part of any edge.
+         * @throws An error if the node to be removed cannot be found in the graph.
+         * @throws An error if there exists still a vnode associated with this node.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeNode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * returns the current BFS tree of the graph, rooted in the given node,
+         * optionally the tree is restricted to only contain currently visible
+         * nodes. 
+         * The trees are cached, that means a tree is only created once and then
+         * stored in a map, unless the &quot;nocache&quot; flag is set! If the flag is set,
+         * then the tree will be created once and returned, the existing cache will
+         * not be touched or overwritten, this is useful if a full tree is needed
+         * for a specific purpose but the cache should not be overwritten or consulted.
+         * @param n The root node of the tree.
+         * @param restr This flag specifies if the resulting tree should be restricted to currently visible nodes.
+         * @param nocache If set, always a new tree will be created and returned and the cache will be untouched.
+         * @param walkingDirection The direction in which the graph must be walked to create the spanning tree.
+         *                            The value of GraphWalkingDirectionsEnum.FORWARD is the default and it represents the old (buggy) functionality.
+         *                            GraphWalkingDirectionsEnum.BOTH is the current (proper) functionality.
+         * @return The a GTree object that contains the tree.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getTree</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>,<span class="ActionScriptDefault_Text">restr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>, <span class="ActionScriptDefault_Text">nocache</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IGTree</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Under certain circumstances all cached trees need
+         * to be purged.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">purgeTrees</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Link two nodes together (i.e. create an edge). If the graph is NOT directional
+         * the same edge will be incoming and outgoing for both nodes. If the nodes are
+         * already linked, it will just return the existing edge between them.
+         * @param node1 First node to be linked.
+         * @param node2 Second node to be linked.
+         * @param o Optional data object to be associated with the resulting edge.
+         * @return The resulting edge.
+         * @throws Errors if any node is null.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">link</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">o</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Unlink two nodes, effectively removing the edge between
+         * them.
+         * @param node1 The first node to be unlinked.
+         * @param node2 The second node to be unlinked.
+         * @throws An error if the nodes were not linked before.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">unlink</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">node1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">node2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Find an edge between two nodes.
+         * @param n1 The first node of the edge.
+         * @param n2 The second node of the edge.
+         * @return The resulting edge or null if the nodes were not linked.
+         * */</span>        
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>, <span class="ActionScriptDefault_Text">n2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Removes an edge between two nodes.
+         * @param e The edge to be removed.
+         * @throws An error if the edge was not part of the graph.
+         * */</span>        
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeEdge</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">e</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;              
+        
+        <span class="ActionScriptASDoc">/**
+         * Remove all edges and nodes from the Graph.
+         * */</span>
+        <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">purgeGraph</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

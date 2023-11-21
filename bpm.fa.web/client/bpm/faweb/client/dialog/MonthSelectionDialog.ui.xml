@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+		.mainPanel {
+			width: 400px;
+			height: 150px;
+		}
+		
+		.lstBox {
+			width: 390px;
+			margin:5px;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+	
+		<g:HTMLPanel>
+			<br/><b><g:Label text="Select a month"></g:Label></b>
+			<g:ListBox ui:field="lstMonth" addStyleNames="{style.lstBox}"></g:ListBox>
+		</g:HTMLPanel>
+	
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

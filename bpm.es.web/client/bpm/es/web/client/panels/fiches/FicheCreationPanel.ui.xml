@@ -1,0 +1,96 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style type="bpm.es.web.client.panels.fiches.FicheCreationPanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+		    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+		    display: -ms-flexbox; /* TWEENER - IE 10 */
+		    display: -webkit-flex; /* NEW - Chrome */
+		    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		    -ms-flex-direction: column;
+		    -moz-flex-direction: column;
+		    -webkit-flex-direction: column;
+		    flex-direction: column;
+		}
+	
+		.tabs {
+			border-bottom: 1px solid #E10203;
+			height: 45px;
+			background: #E10203;
+		}
+		
+		.tab {
+			width: 150px;
+		    display: table-cell;
+		    height: 42px;
+		    line-height: 18px;
+		    color: black;
+		    font-size: 17px;
+		    text-align: center;
+		    vertical-align: middle;
+		    cursor: pointer;
+		}
+		
+		.tab:HOVER {
+		    color: white;
+		    font-weight: bold;
+		}
+		
+		.tabSelected {
+	        border-bottom: 4px solid #000000;
+		    color: white;
+		    font-weight: bold;
+		}
+		
+		.content {
+			-webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+		    -moz-box-flex: 1; /* OLD - Firefox 19- */
+		    -webkit-flex: 1; /* Chrome */
+		    -ms-flex: 1; /* IE 10 */
+		    flex: 1; /* NEW, */
+		    position: relative;
+		}
+		
+		.buttonPanel {
+			height: 60px;
+		}
+		
+		.btnLeft {
+			width: 180px;
+		    margin: 10px;
+		}
+		
+		.btnRight {
+			float: right;
+			width: 120px;
+		    margin: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.tabs}">
+			<g:Label ui:field="tabCivilState" text="{labels.CivilState}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabAdmission" text="{labels.Admission}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabStudy" text="{labels.Study}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabSocial" text="{labels.Social}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabHealth" text="{labels.Health}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabAbsenceAndMovements" text="{labels.AbsenceAndMovements}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabRoute" text="{labels.Route}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabPocketMoney" text="{labels.PocketMoney}" addStyleNames="{style.tab}">
+			</g:Label><g:Label ui:field="tabReportManager" text="{labels.Administrative}" addStyleNames="{style.tab}"/>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="contentPanel" addStyleNames="{style.content}"/>
+		<g:HTMLPanel addStyleNames="{style.buttonPanel}">
+			<my:CustomButton ui:field="backRecords" text="{labels.BackToRecords}" addStyleNames="{style.btnLeft}"/>
+			<my:CustomButton ui:field="btnPrint" text="{labels.PrintRecord}" addStyleNames="{style.btnLeft}"/>
+			<my:CustomButton ui:field="btnSave" text="{labels.Save}" addStyleNames="{style.btnRight}"/>
+			<my:CustomButton ui:field="btnNext" text="{labels.Next}" addStyleNames="{style.btnRight}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

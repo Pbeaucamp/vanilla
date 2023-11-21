@@ -1,0 +1,127 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.faweb.client.panels.center.MapTab.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.panelToolbar {
+			height: 45px;
+			width: 100%;
+			overflow: hidden;
+		}
+	
+		.panelContent {
+			position: absolute;
+			top: 45px;
+			bottom: 0px;
+			width: 100%;
+			overflow: auto;
+		}
+		
+		.rootPanel {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.btnLayers {
+			padding: 16px;
+			border-left: 1px solid black;
+		}
+		
+		.btnLayers:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+			cursor: pointer;
+		}
+		
+		.pullRight {
+			float: right;
+		}
+		
+		.content {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.osmPanel {
+			position: absolute;
+			height: 100%;
+			left: 0px;
+			right: 300px;
+		}
+		
+		.optionPanel {
+			position: absolute;
+			right: 0px;
+		    width: 300px;
+	    	height: 100%;
+		}
+		
+		.optionsPanel {
+	    	width: 100%;
+		    border-bottom: 1px solid #BBBBBB;
+		}
+		
+		.btnPanel {
+			width: 100%;
+			text-align: center;
+			margin-top: 10px;
+		}
+		
+		.padding {
+			padding: 5px;
+		}
+		
+		.btnToolbar {
+		    height: 40px !important;
+		    width: 40px !important;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="imgSave" resource="{commons.viewer_report_history}" title="{label.SaveView}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgUpdate" resource="{commons.update}" title="{label.update}" addStyleNames="{style.btnToolbar}"/>
+			<g:FocusPanel ui:field="btnLayers" addStyleNames="{style.pullRight}">
+				<g:Label text="{label.Layers}" addStyleNames="{style.btnLayers}" />
+			</g:FocusPanel>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="panelContent" addStyleNames="{style.panelContent}">
+			<div addStyleNames="{style.content}">
+				<g:HTMLPanel ui:field="osmPanel" addStyleNames="{style.osmPanel}"/>
+				<g:HTMLPanel addStyleNames="{style.optionPanel}">
+					<g:HTMLPanel ui:field="optionsPanel" addStyleNames="{style.optionsPanel}"/>
+					<g:HTMLPanel ui:field="colorsPanel"/>
+					<div class="{style.btnPanel}">
+						<g:Button ui:field="btnRefresh" text="{label.Refresh}"/>
+					</div>
+				</g:HTMLPanel>
+			</div>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="panelPopup" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

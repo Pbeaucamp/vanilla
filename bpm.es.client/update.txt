@@ -1,0 +1,32 @@
+20-01-09 LCA 
+ - menu contextuel pour generer les JSP sur les documents FD
+ 
+ 
+ 23-01-09 LCA 
+ - menu contextuel pour generer les rpt design sur les documents BIRT
+ - choix entre les generate for all groups ou generate for associated groups
+ - affichage des rï¿½sultats en vas d'erreur
+ 
+ 25-02-09 LCA
+  - correction affichage driverName pour datasource
+  - correction bouton Test pour datasource
+  
+  03-02-09 LCA
+   - remise en ï¿½tat avec la duplication des operation sur la base vanilla
+   - debug du add Role to Group si le group non existant sur vanilla
+   - chekin/checkout ---> unlock, versionning, revert
+   
+ 01-04-09 GCH
+ 	- Migration de la securite, modification de la pop-up d'acceuil
+ 	
+ 14-04-09
+ 	- Possibilite de definir des variables 
+ 	
+ 	
+ 10/06/09 LCA
+    - gestion des historic des rapport(delete d'une entrée, on/off par groupes)
+    
+
+ 	
+ 11-06-09
+ 	-Suppression des accents dans le nom des elements pregeneres.

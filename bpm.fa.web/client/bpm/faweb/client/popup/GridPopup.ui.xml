@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:style>
+		.panel {
+			margin: 5px;
+		    border: 1px solid #778899;
+			color: #484848;
+			padding: 10px 5px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+		}
+		
+		.labelType {
+			border-bottom: 1px solid #484848;
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelTypeEnd {
+			cursor: pointer;
+			padding: 10px;
+    		text-align: center;
+		}
+		
+		.labelType:HOVER, .labelTypeEnd:HOVER {
+			background: #484848;
+			color: #fff;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelMenu" styleName="{style.panel}">
+		<g:Label ui:field="btnRenameElement" text="{label.RenameElement}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnRemovePersonalName" text="{label.RemovePersonal}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnTopX" text="{label.AddTopX}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnModifyTopX" text="{label.ModifyTopX}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnRemoveTopX" text="{label.RemoveTopX}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnCumul" text="Accumulation" styleName="{style.labelType}" />
+		<g:Label ui:field="btnClearDate" text="Clear date calculation" styleName="{style.labelType}" />
+		<g:Label ui:field="btnYearToDate" text="Year to date" styleName="{style.labelType}" />
+		<g:Label ui:field="btnYearToYear" text="Year to year" styleName="{style.labelType}" />
+		<g:Label ui:field="btnYearDifferences" text="Difference between years" styleName="{style.labelType}" />
+		<g:Label ui:field="btnFlash" text="{label.ShowMapMenu}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnDrillDownAll" text="{label.DrillDown}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnDrillUpAll" text="{label.DrillUp}" styleName="{style.labelType}" />
+		<g:Label ui:field="btnRemove" text="{label.Remove}" styleName="{style.labelTypeEnd}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.es.ui.menu.views.WelcomeView"
+            icon="src/bpm/es/ui/menu/icons/Vanillacup.png"
+            id="bpm.es.ui.menu.views.WelcomeView"
+            name="%views.welcome.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.ui.menu.PerspectiveFactory1"
+            icon="src/bpm/es/ui/menu/icons/Vanillacup.png"
+            id="bpm.es.ui.menu.WelcomePerspective"
+            name="%welcomeperspective.name">
+      </perspective>
+   </extension>
+
+</plugin>

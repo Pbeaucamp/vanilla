@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.es.client.fmdturl
+Bundle-SymbolicName: bpm.es.client.fmdturl;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.entrepriseservices.fmdturl.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.metadata.api,
+ bpm.vanilla.platform.core;bundle-version="1.0.0",
+ bpm.vanilla.external.jars;bundle-version="1.0.0",
+ bpm.es.client;bundle-version="4.4.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Bundle-Vendor: BPM-Conseil

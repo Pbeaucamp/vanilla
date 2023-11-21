@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:db="urn:import:com.google.gwt.user.datepicker.client">
+    
+	<ui:with field='resources' type='bpm.es.web.client.images.Images' />
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.label {    
+			color: #3B99CB;
+		    margin-left: 18px;
+	    	margin-top: 5px;
+		}
+		
+		.db {
+	        margin: 2px 0 0 1%;
+    		vertical-align: top;
+		}
+		
+		.img {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="label" addStyleNames="{style.label}"/>
+		<db:DateBox ui:field="dateBox" addStyleNames="{style.db}"/>
+		<g:Image ui:field="btnToday" title="{labels.SetToday}" resource="{resources.ic_event_black_16dp}" addStyleNames="{style.img}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

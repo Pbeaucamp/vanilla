@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.entrepriseservices.fmdturl.views.AvailableFmdtUrl"
+            id="bpm.entrepriseservices.fmdturl.views.AvailableFmdtUrl"
+            name="%view.availablefmdt.name"
+            restorable="true">
+      </view>
+      <view
+            class="bpm.entrepriseservices.fmdturl.views.TreeFmdt"
+            id="bpm.entrepriseservices.fmdturl.views.TreeFmdt"
+            name="%view.treefmdt.name"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

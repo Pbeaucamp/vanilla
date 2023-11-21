@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drivers>
+  <driver name="Hypersonic" className="org.hsqldb.jdbcDriver" file="hsqldb.jar" prefix="jdbc:hsqldb:hsql://"/>
+  <driver name="MySQL" className="com.mysql.jdbc.Driver" file="mysql-connector-java-5.1.7-bin.jar" prefix="jdbc:mysql://"/>
+  <driver name="H2" className="org.h2.Driver" file="h2.jar" prefix="jdbc:h2://"/>
+  <driver name="Ingres" className="com.ingres.jdbc.IngresDriver" file="iijdbc.jar" prefix="jdbc:ingres://"/>
+  <driver name="Teradata" className="com.teradata.jdbc.TeraDriver" file="terajdbc4.jar" prefix="jdbc:teradata://"/>
+  <driver name="Vanilla FreeMetaData" className="bpm.metadata.jdbc.FmdtDriver" file=".bpm.metadata.jdbc_1.1.0.jar" prefix="jdbc:fmdt://"/>
+  <driver name="Oracle" className="oracle.jdbc.driver.OracleDriver" file="ojdbc14.jar" prefix="jdbc:oracle:thin:@"/>
+  <driver name="PostgreSql" className="org.postgresql.Driver" file="postgresql-8.4-701.jdbc4.jar" prefix="jdbc:postgresql://"/>
+  <driver name="Derby" className="org.apache.derby.jdbc.ClientDriver" file="derbyclient.jar" prefix="jdbc:derby://"/>
+  <driver name="SqlServer" className="net.sourceforge.jtds.jdbc.Driver" file="jtds-1.2.jar" prefix="jdbc:jtds:sqlserver://"/>
+</drivers>

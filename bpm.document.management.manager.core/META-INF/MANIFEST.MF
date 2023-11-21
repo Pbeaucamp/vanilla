@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.document.management.manager.core
+Bundle-SymbolicName: bpm.document.management.manager.core
+Bundle-Version: 15.2.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.document.management.manager.core,
+ bpm.document.management.manager.core.model,
+ bpm.document.management.manager.core.xstream
+Require-Bundle: bpm.vanilla.platform.hibernate;bundle-version="4.2.2"

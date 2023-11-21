@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:db="urn:import:bpm.es.web.client.utils"
+	xmlns:fi="urn:import:bpm.es.web.client.panels.fiches">
+	
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.mainPanel {
+			width:100%;
+			height: 100%;
+			overflow: auto; 	
+		}
+		
+		.section {
+		}
+		
+		.sectionContent {
+		    margin-left: 55px;
+		    width: 88%;
+		}
+		
+		.grid {
+			height: 350px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<my:SectionPanel text="{labels.Hospitalisations}" addStyleNames="{style.section}">
+			<g:HTMLPanel addStyleNames="{style.sectionContent}">
+				<fi:NameDateGrid ui:field="gridHospitalisations" addStyleNames="{style.grid}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+		<my:SectionPanel text="{labels.IndividualVacations}" addStyleNames="{style.section}">
+			<g:HTMLPanel addStyleNames="{style.sectionContent}">
+				<fi:NameDateGrid ui:field="gridVacations" addStyleNames="{style.grid}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+		<my:SectionPanel text="{labels.Fugues}" addStyleNames="{style.section}">
+			<g:HTMLPanel addStyleNames="{style.sectionContent}">
+				<fi:NameDateGrid ui:field="gridFugues" addStyleNames="{style.grid}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+		<my:SectionPanel text="{labels.SequentialTime}" addStyleNames="{style.section}">
+			<g:HTMLPanel addStyleNames="{style.sectionContent}">
+				<fi:NameDateGrid ui:field="gridSequentialTime" addStyleNames="{style.grid}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+		<my:SectionPanel text="{labels.DistancingStay}" addStyleNames="{style.section}">
+			<g:HTMLPanel addStyleNames="{style.sectionContent}">
+				<fi:NameDateGrid ui:field="griddDistancingStay" addStyleNames="{style.grid}"/>
+			</g:HTMLPanel>
+		</my:SectionPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

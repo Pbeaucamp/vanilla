@@ -1,0 +1,92 @@
+package adminbirep.icons;
+
+public final class Icons {
+	public static final String TEMPLATE_INDEX1 = "templateindex1"; //$NON-NLS-1$
+	public static final String TEMPLATE_INDEX2 = "templateindex2"; //$NON-NLS-1$
+	public static final String VANILLA_CUP = "Vanillacup"; //$NON-NLS-1$
+	public static final String FOLDER = "folder"; //$NON-NLS-1$
+	public static final String DEFAULT = "object"; //$NON-NLS-1$
+	public static final String XACTION = "xaction"; //$NON-NLS-1$
+	public static final String JASPER_RUN = "jasper_run"; //$NON-NLS-1$
+	public static final String JASPER_STOP = "jasper_stop"; //$NON-NLS-1$
+	public static final String BIRT_RUN = "birt_run"; //$NON-NLS-1$
+	public static final String BIRT_STOP = "birt_stop"; //$NON-NLS-1$
+	public static final String FASD = "fasd"; //$NON-NLS-1$
+	public static final String FASD_RUN = "cube_run"; //$NON-NLS-1$
+	public static final String FASD_STOP = "cube_stop"; //$NON-NLS-1$
+	public static final String FAV = "fav"; //$NON-NLS-1$
+	public static final String FD_DEPLOYED_RUN = "fd_deployed_run"; //$NON-NLS-1$
+	public static final String FD_DEPLOYED_STOP = "fd_deployed_stop"; //$NON-NLS-1$
+	public static final String FMDT_RUN = "fmdt_run"; //$NON-NLS-1$
+	public static final String FMDT_STOP = "fmdt_stop"; //$NON-NLS-1$
+	public static final String FWR_RUN = "fwr_run"; //$NON-NLS-1$
+	public static final String FWR_STOP = "fwr_stop"; //$NON-NLS-1$
+	public static final String DICO = "dico"; //$NON-NLS-1$
+	public static final String BIW = "biw"; //$NON-NLS-1$
+	public static final String MD = "md"; //$NON-NLS-1$
+	public static final String DOC = "doc"; //$NON-NLS-1$
+	public static final String LINK = "link"; //$NON-NLS-1$
+	public static final String PACKAGE = "package"; //$NON-NLS-1$
+	public static final String GTW = "gtw"; //$NON-NLS-1$
+	public static final String GTW_RUN = "gtw_16_start"; //$NON-NLS-1$
+	public static final String GTW_STOP = "gtw_16_stop"; //$NON-NLS-1$
+	public static final String LONG_LOAD = "long_load"; //$NON-NLS-1$
+	public static final String STOP_LONG_LOAD = "stop_long_load"; //$NON-NLS-1$
+	public static final String FILTER = "filter"; //$NON-NLS-1$
+	public static final String ADD = "add"; //$NON-NLS-1$
+	public static final String DEL = "del"; //$NON-NLS-1$
+	public static final String EDIT = "edit"; //$NON-NLS-1$
+	public static final String BROWSE = "browse"; //$NON-NLS-1$
+	public static final String REFRESH = "refresh"; //$NON-NLS-1$
+	public static final String LOCK = "lock"; //$NON-NLS-1$
+	public static final String UNLOCK = "unlock"; //$NON-NLS-1$
+	public static final String DOCUMENTS = "adddoc_16"; //$NON-NLS-1$
+	public static final String ADD_LINK = "link_add"; //$NON-NLS-1$
+	public static final String BIRT = "birt"; //$NON-NLS-1$
+	public static final String JASPER = "jasper"; //$NON-NLS-1$
+	public static final String ORBEON = "orbeon_16"; //$NON-NLS-1$
+	public static final String START = "start"; //$NON-NLS-1$
+	public static final String STOP = "stop"; //$NON-NLS-1$
+	public static final String ADRESSABLE = "AddAdressable.gif"; //$NON-NLS-1$
+	public static final String UNADRESSABLE = "UnAdressable.gif"; //$NON-NLS-1$
+	public static final String ADD_FILTRE = "AddFiltre.gif"; //$NON-NLS-1$
+	public static final String DEL_FILTRE = "DelFiltre.gif"; //$NON-NLS-1$
+	public static final String SEARCH_REPLACE = "text_replace"; //$NON-NLS-1$
+	public static final String USER = "user"; //$NON-NLS-1$
+	public static final String GROUP = "group"; //$NON-NLS-1$
+	public static final String TEMP_GED = "temp_ged"; //$NON-NLS-1$
+	public static final String GED_ENTRY = "ged16"; //$NON-NLS-1$
+	
+	public static final String BIW_STOP = "biw_stop"; //$NON-NLS-1$
+	public static final String BIW_RUN = "biw_run"; //$NON-NLS-1$
+
+	public static final String EXPORT = "export"; //$NON-NLS-1$
+	public static final String IMPORT_VANILLA_PLACE = "importVanillaPlace"; //$NON-NLS-1$
+	public static final String CONNECT = "connect"; //$NON-NLS-1$
+	public static final String FWR = "fwr"; //$NON-NLS-1$
+	public static final String EXT_DOC = "doc"; //$NON-NLS-1$
+	
+	public static final String WAIT = "wait.gif"; //$NON-NLS-1$
+	public static final String CHECK = "check.png"; //$NON-NLS-1$
+	public static final String NO_CHECK = "no_check.png"; //$NON-NLS-1$
+	public static final String WIDGET = "widget"; //$NON-NLS-1$
+	public static final String IGOOGLE = "igoogle"; //$NON-NLS-1$
+	public static final String NETVIBES = "netvibes"; //$NON-NLS-1$
+	public static final String FLUXRSS = "flux_rss"; //$NON-NLS-1$
+	public static final String PICTURE = "picture"; //$NON-NLS-1$
+	public static final String CUBE = "cube"; //$NON-NLS-1$
+	public static final String FD = "fd"; //$NON-NLS-1$
+	public static final String FMDT = "fmdt"; //$NON-NLS-1$
+	public static final String DICTIONNARY = "dictionary"; //$NON-NLS-1$
+	public static final String BIG = "gtw_16"; //$NON-NLS-1$
+	public static final String DIRECTORY = "directory"; //$NON-NLS-1$
+	public static final String REPORTS_GROUP = "reports_group_16"; //$NON-NLS-1$
+	
+	public static final String ARROW_UP = "arrow_up"; //$NON-NLS-1$
+	public static final String ARROW_DOWN = "arrow_down"; //$NON-NLS-1$
+	public static final String WKF = "workflow_16"; //$NON-NLS-1$
+	public static final String MAIL = "email"; //$NON-NLS-1$
+	public static final String TEMPLATE_PREVIEW1 = "Home_preview_1"; //$NON-NLS-1$
+	public static final String TEMPLATE_PREVIEW2 = "Home_preview_2"; //$NON-NLS-1$
+	public static final String KPI_THEME = "kpi_theme_16"; //$NON-NLS-1$
+}

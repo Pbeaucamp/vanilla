@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.inline{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.legendColor{
+			margin-left: 5px;
+			width: 10%;
+			height: 20px;
+		}
+		.lblName{
+			width: 35%;
+			word-wrap: break-word;
+		}
+		.lblMinMax{	
+			width: 35%;
+			word-wrap: break-word;
+		}
+		.btnRemove{
+			width: 10%;
+			color: #FFF;
+			background: none;
+			padding: 2px;
+		}
+		.legendItemPanel{
+			width: 100%;
+			background: #4D4D4D;
+			margin-top: 5px;
+			background: #2B2B2B;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.legendItemPanel}">
+	    <g:HTMLPanel ui:field="legendColor" addStyleNames="{style.legendColor} {style.inline}"/>
+		<g:Label ui:field="lblName" addStyleNames="{style.lblName} {style.inline}"/>
+		<g:Label ui:field="lblMinMax" addStyleNames="{style.lblMinMax} {style.inline}"/>
+		<g:Button text="x" ui:field="btnRemove" addStyleNames="{style.btnRemove} {style.inline}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panel{
+			padding: 20px;	
+			width: 400px;
+			height: 300px;
+		}
+		
+		.txtTitle{
+			width: 85%;
+			padding: 5px;
+			font-size: 1.3em;
+			font-family: tahoma;
+		}
+		
+		.areaDescription{
+			width: 87%;
+			min-height: 50px;
+			font-family: tahoma;
+		}
+		
+		.imgExport{
+			margin: auto;
+		}
+		
+		.lstPageSizes{
+			width: 88%;
+			height: 30px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+	    <div>
+			<g:TextBox ui:field="txtTitle" addStyleNames="{style.txtTitle}" />
+			<g:TextArea ui:field="areaDescription" addStyleNames="{style.areaDescription}" />
+		</div>
+		<div style="padding: 10px;background: #E8F2FF;width: 84%;">
+			<g:RadioButton ui:field="rbPortrait" ui:name="rbname">Portrait</g:RadioButton>
+			<g:RadioButton ui:field="rbLandscape" ui:name="rbname">Landscape</g:RadioButton>
+		</div>
+		<g:ListBox ui:field="lstPageSizes" addStyleNames="{style.lstPageSizes}" />
+		<div style="margin-top: 40px;">
+			<g:Button text="Cancel" ui:field="btnCancel" addStyleNames="custom-dialog-button"/>
+			<g:Button text="Export" ui:field="btnExport" addStyleNames="custom-dialog-button"/>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

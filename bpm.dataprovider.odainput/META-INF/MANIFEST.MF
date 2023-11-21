@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.dataprovider.odainput
+Bundle-SymbolicName: bpm.dataprovider.odainput
+Bundle-Version: 5.0.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.datatools.connectivity.oda,
+ org.eclipse.datatools.connectivity.oda.consumer,
+ org.apache.commons.logging,
+ bpm.vanilla.platform.core,
+ bpm.vanilla.external.jars
+Export-Package: bpm.dataprovider.odainput,
+ bpm.dataprovider.odainput.consumer
+Bundle-ClassPath: .
+Bundle-Vendor: BPM-Conseil

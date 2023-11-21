@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.faweb.client.panels.navigation.StackHeader.MyStyle">
+		.toolbar {
+			height: 40px;
+		    overflow: hidden;
+		    border-top: 1px solid #D3D3D3;
+		}
+		
+		.imgChangeView {
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+			cursor: pointer;
+		}
+		
+		.imgChangeView:HOVER {
+			background-color: white !important;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.lblTypeViewer {
+		    display: inline-block;
+		    font-weight: bold;
+		    height: 40px;
+		    margin-top: 14px;
+		    vertical-align: top;
+		    width: 210px;
+	        overflow: hidden;
+	        white-space: nowrap;
+	        text-overflow: ellipsis;
+		}
+		
+		.alignRight {
+			float: right;
+		}
+		
+		.imgTypeViewer {
+			height: 24px !important;
+			width: 24px !important;
+			padding: 8px;
+			background-position: center !important;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="toolbarNavigation">
+			<g:Image ui:field="imgTypeViewer" resource="{resources.repository_24_b}" addStyleNames="{style.imgTypeViewer}"/>
+			<g:Label ui:field="lblTypeViewer" addStyleNames="{style.lblTypeViewer}"/>
+			<g:Image ui:field="imgCollapse" resource="{commons.ic_btn_sidebar_right_expand}" addStyleNames="{style.imgChangeView},{style.alignRight}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

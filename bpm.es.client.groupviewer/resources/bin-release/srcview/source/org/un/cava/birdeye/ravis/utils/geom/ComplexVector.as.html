@@ -1,0 +1,124 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ComplexVector.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">geom</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptASDoc">/**
+     * This is an implementation of the interface &lt;code&gt;IVector&lt;/code&gt;
+     * for the complex plane, i.e. the base point is a complex number.
+     * Since the set of complex numbers is a real vector space,
+     * the direction is a complex number as well.
+     * 
+     * &lt;hr&gt;
+     * The implementation is a rewrite of Jens Kanschik&apos;s Hypergraph
+     * implementation in Java. However, apart from the general idea 
+     * and some variable names, this code improves on hypergraph 
+     * and also implements additional functionality.
+     * 
+     * Copyright (C) 2003  Jens Kanschik,
+     * mail : jensKanschik@users.sourceforge.net
+     * 
+     * Copyright of this reimplementation in Flex:
+     * (c) Nitin Lamba, 2007.
+     * 
+     * @author Nitin Lamba
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">ComplexVector</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IVector</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/** The base point of the vector. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_base</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span>;
+        
+        <span class="ActionScriptASDoc">/** The direction of the vector. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_dir</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * Constructor of ComplexVector
+         * 
+         * @param base The base of the vector
+         * @param dir The direction of the vector
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">base</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span>, <span class="ActionScriptDefault_Text">dir</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">ComplexNumber</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">base</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span>
+                <span class="ActionScriptDefault_Text">_base</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptReserved">else</span>
+                <span class="ActionScriptDefault_Text">_base</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">base</span>;
+            
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">dir</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span>
+              <span class="ActionScriptDefault_Text">_dir</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptReserved">else</span>
+              <span class="ActionScriptDefault_Text">_dir</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">dir</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">base</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">base</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IPoint</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_base</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">base</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_dir</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">base</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IPoint</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_base</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">dir</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IPoint</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_dir</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">scale</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_dir</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">*=</span> <span class="ActionScriptDefault_Text">r</span>;
+            <span class="ActionScriptDefault_Text">_dir</span>.<span class="ActionScriptDefault_Text">imag</span> <span class="ActionScriptOperator">*=</span> <span class="ActionScriptDefault_Text">r</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">setTo</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">v</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVector</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_base</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">v</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">base</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">real</span>;
+            <span class="ActionScriptDefault_Text">_base</span>.<span class="ActionScriptDefault_Text">imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">v</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">base</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">imag</span>;
+            <span class="ActionScriptDefault_Text">_dir</span>.<span class="ActionScriptDefault_Text">real</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">v</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">dir</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">real</span>;
+            <span class="ActionScriptDefault_Text">_dir</span>.<span class="ActionScriptDefault_Text">imag</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">v</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">dir</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">imag</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ComplexVector</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_base</span>.<span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span>, 
+                                                             <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_dir</span>.<span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">ComplexNumber</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>;
+      <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/** @inheritDoc */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">&quot;(&quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_base</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot;; &quot;</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">_dir</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptString">&quot;)&quot;</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

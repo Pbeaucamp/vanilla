@@ -1,0 +1,72 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:menu="urn:import:bpm.es.web.client.menu">
+	
+	<ui:with field='resources' type='bpm.es.web.client.images.Images' />
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.menu {
+			background: white;
+			width: 256px;
+			-moz-box-sizing: border-box;
+		    height: 100%;
+		    left: 0;
+		    position: absolute;
+		    top: 0;
+		
+			transition: transform 0.3s ease-in-out 0s, width 0.3s ease-in-out 0s, visibility 0.3s ease 0s;
+		}
+		
+		.menuClose {
+			transform: translateX(-100%);
+		}
+		
+		.menuOpen {
+			box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+		}
+		
+		.toolbar {
+			background: #E10203;
+			height: 60px;
+			width: 100%;
+		}
+		
+		.imgMenu {
+	    	margin-top: 5px;
+	    	border-radius: 5px;
+	    	cursor: pointer;
+		}
+
+		.imgMenu:HOVER {
+			background-color: lightgray !important;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="menu" addStyleNames="{style.menu}">
+		<g:HTMLPanel addStyleNames="{style.toolbar}">
+			<g:Image ui:field="btnMenu" resource="{resources.ic_menu_white_24dp}" addStyleNames="{style.imgMenu}"/>
+		</g:HTMLPanel>
+		<menu:MenuItem ui:field="menuSheet" text="{labels.Records}" resource="{resources.ic_folder_shared_black_24dp}"/>
+		<menu:MenuItem ui:field="menuManager" text="{labels.RepositoryManager}" resource="{resources.ic_liste_black_24dp}"/>
+		<menu:MenuItem ui:field="menuDocumentManager" text="{labels.DocumentManager}" resource="{resources.ic_document_manager_black_24dp}">
+			<menu:MenuItem ui:field="menuBills" text="{labels.Bills}"/>
+			<menu:MenuItem ui:field="menuLetters" text="{labels.Letters}"/>
+			<menu:MenuItem ui:field="menuEtiquettes" text="{labels.Etiquettes}"/>
+			<menu:MenuItem ui:field="menuScan" text="{labels.ScanDocuments}"/>
+		</menu:MenuItem>
+		<menu:MenuItem ui:field="menuAlertes" text="{labels.Alerts}" resource="{resources.ic_alert_black_24dp}"/>
+		<menu:MenuItem ui:field="menuStatistics" text="{labels.Statistics}" resource="{resources.ic_statistics_black_24dp}">
+			<menu:MenuItem ui:field="menuReports" text="{labels.Reports}"/>
+			<menu:MenuItem ui:field="menuDashboards" text="{labels.Dashboards}"/>
+			<menu:MenuItem ui:field="menuCubes" text="{labels.Cubes}"/>
+		</menu:MenuItem>
+		<menu:MenuItem ui:field="menuListings" text="{labels.Listings}" resource="{resources.ic_listings_black_24dp}"/>
+		<menu:MenuItem ui:field="menuParentSettings" text="{labels.PlateformManagement}" resource="{resources.ic_settings_black_24dp}">
+			<menu:MenuItem ui:field="menuMySettings" text="{labels.MySettings}"/>
+			<menu:MenuItem ui:field="menuUsers" text="{labels.UsersGestion}" visible="false"/>
+			<menu:MenuItem ui:field="menuLogs" text="{labels.SecurityLogs}" visible="false"/>
+			<menu:MenuItem ui:field="menuSettings" text="{labels.Settings}" visible="false"/>
+		</menu:MenuItem>		
+	</g:HTMLPanel>
+</ui:UiBinder> 

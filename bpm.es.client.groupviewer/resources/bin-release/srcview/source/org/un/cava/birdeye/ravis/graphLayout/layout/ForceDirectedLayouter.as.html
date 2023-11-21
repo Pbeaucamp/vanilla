@@ -1,0 +1,677 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ForceDirectedLayouter.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span> <span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">MouseEvent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Rectangle</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">IEdge</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualEdge</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    <span class="ActionScriptASDoc">/**
+     * This is an implementation of the ForceDirected/SpringGraph
+     * Layouting algorithm. The implementation took the general
+     * idea    from Mark Shepherd&apos;s SpringGraph component implementation
+     * which is itself based on TouchGraph (Java). However, apart from
+     * the general idea and some variable names, the code is a rewrite.
+     * &lt;br&gt;
+     * Here is the copyright information that was part of the code. I add
+     * it just in case someone might feel offended if it is not there:
+     * 
+     * &lt;p&gt;Copyright of the original TouchGraph LLC code:
+     * (c) 2001-2002 Alexander Shapiro. All rights reserved.
+     * Copyright of the adaption to Flex:
+     * (c) Mark Shepherd, Adobe FlexBuilder Engineering, 2006.
+     * Copyright of this reimplementation in Flex:
+     * (c) Daniel Lang, United Nations, 2007.&lt;/p&gt;
+     * 
+     * See license infortmation at the top.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">ForceDirectedLayouter</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">IterativeBaseLayouter</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">ILayoutAlgorithm</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * CONSTANTS
+        * ********************************************/</span>
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;graphLayout.layout.ForceDirectedLayouter&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This controls the amount of adjustement passes during one
+         * layout cycle. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_RELAXPASSES</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 5;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This is a maximum (neutral) length of a hypothetical spring.
+         * For a spring force expression Del_F = k (x - x_0), this corresponds to x_0
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MAX_NODE_SEPARATION</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 500;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This is a minimun (neutral) length of a hypothetical spring.
+         * For a spring force expression Del_F = k (x - x_0), this corresponds to x_0
+         * It also governs the minimum separation during repulsion
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MIN_NODE_SEPARATION</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 5;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The maximum scrolling step in autofit()
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_SCROLL_STEP</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 2;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The rigidity constant of a spring. The actual _rigidity could be 
+         * a function and perhaps use this as a coefficient (LATER)
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_RIGIDITY_CONSTANT</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.0007;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The max repulsion constant of the (electrical) force field.
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MAX_REPULSION</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 100;
+
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The min repulsion constant of the (electrical) force field.
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MIN_REPULSION</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 1;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The maximum distance in pixels, that a node is allowed
+         * to move during one layout cycle */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MOVEPIXELLIMIT</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 100;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The ideal coverage for autofit is 90% 
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_AUTOFITCOVERAGE</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.9;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * There is also a tolerance of 3% to be within
+         * the ideal coverage.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_AUTOFITCOVERTOLERANCE</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.03;
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * Parameters
+        * ********************************************/</span>
+        
+        <span class="ActionScriptComment">/* the damper cools down the movement
+         * it may range be from 0.0 (no movement) to
+         * 1.0 (no damping) */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_damper</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 1.0;
+        
+        <span class="ActionScriptComment">/* cutoff limit for max motion */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_motionLimit</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* a constant with a similar effect as damping
+         * low means things go slow, too high will cause oscillation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_rigidity</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_newRigidity</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* this is a global adjustement factor for the repulsion
+         * it&apos;s access is controlled by the linkLength access
+         * methods. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_repulsionFactor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+
+        <span class="ActionScriptASDoc">/*********************************************
+        * Variables
+        * ********************************************/</span>
+        
+        <span class="ActionScriptComment">/* max motion keeps track of the fastest moving nodes
+         * to see if the graph stabilises */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_maxMotion</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.0;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_lastMaxMotion</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.0;
+        
+        <span class="ActionScriptComment">/* this is used during motion limiting */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_motionRatio</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptComment">/* required for this specific 
+         * autofit implementation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_coverage</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * Temporary Variables - For faster computation
+        * ********************************************/</span>
+        
+        <span class="ActionScriptComment">/* for debugging */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_maxSpringMotion</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.0;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_maxRepulsiveMotion</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 0.0;
+        
+        <span class="ActionScriptComment">/* for iterating/traversing caches */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_edge</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IEdge</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_ve</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualEdge</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+        
+        <span class="ActionScriptComment">/* for calculations */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_dx</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>, <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>, <span class="ActionScriptDefault_Text">t_vx</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>, <span class="ActionScriptDefault_Text">t_vy</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">t_distanceMoved</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+        <span class="ActionScriptASDoc">/*********************************************
+        * Members - Misc
+        * ********************************************/</span>
+        
+        <span class="ActionScriptComment">/* general setting whether to activate damping or not */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_dampingActive</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+        
+        <span class="ActionScriptComment">/* current viewing bounds of the graph */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_viewbounds</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Rectangle</span>;
+
+        <span class="ActionScriptComment">/* for each node we keep a &apos;delta&apos; value for its
+         * coordinates. */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+        <span class="ActionScriptASDoc">/**
+         * The constructor only initialises the data structures and presets
+         * some parameters.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">ForceDirectedLayouter</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualGraph</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">// Initialize Parameters
+</span>            <span class="ActionScriptDefault_Text">_motionLimit</span> <span class="ActionScriptOperator">=</span> 0.01;
+            <span class="ActionScriptDefault_Text">_repulsionFactor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_MAX_REPULSION</span> <span class="ActionScriptOperator">/</span> 10;
+            <span class="ActionScriptDefault_Text">_rigidity</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_RIGIDITY_CONSTANT</span>;
+            <span class="ActionScriptDefault_Text">_newRigidity</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_RIGIDITY_CONSTANT</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Reset all layouting parameters, which may be
+         * required during a significant layout change.
+         * This is particularily important in this layouter,
+         * as it constantly updates the layout (using the timer).
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span>; <span class="ActionScriptComment">// calls refreshInit()
+</span>            <span class="ActionScriptDefault_Text">_deltaPositions</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Dictionary</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * In this implementation, this method resets the damper
+         * value.
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">refreshInit</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">resetDamperValue</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">=</span> 0.0;
+            <span class="ActionScriptDefault_Text">_lastMaxMotion</span> <span class="ActionScriptOperator">=</span> 0.0;
+            <span class="ActionScriptDefault_Text">_motionRatio</span> <span class="ActionScriptOperator">=</span> 0.0;
+            
+            <span class="ActionScriptDefault_Text">_coverage</span> <span class="ActionScriptOperator">=</span> 0;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">f</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/*
+            * Two separate intents govern the value of repulsion factor
+            *  1. Auto-fit - expand/ contract the graph
+            *  2. Setting linkLength to a given value
+            * In force-directed layout, both should not control this simultaneously
+            */</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_autoFitEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_repulsionFactor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_MIN_REPULSION</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">f</span>, <span class="ActionScriptDefault_Text">_MAX_REPULSION</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptDefault_Text">refreshInit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">linkLength</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_repulsionFactor</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+
+        <span class="ActionScriptASDoc">/**
+         * This is a local parameter specific to this layouter, that may
+         * be accessed from outside, if required. It handles how flexible
+         * the springy edges are.
+         * @param r The new rigidity value.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">rigidity</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">r</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_newRigidity</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">r</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This is a specific method for this layouter and
+         * specifies if damping should be used or not.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">dampingActive</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">da</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+            <span class="ActionScriptComment">/* check for a change */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_dampingActive</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">da</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* set the new value */</span>
+                <span class="ActionScriptDefault_Text">_dampingActive</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">da</span>;
+                
+                <span class="ActionScriptComment">/* reset the damper value if disabled */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">da</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">false</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">=</span> 1.0;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @private
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">dampingActive</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_dampingActive</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Reset the damper value but keep damping.
+         * @internal
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetDamperValue</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_dampingActive</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">=</span> 1.0;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * Layout Methods - Computational Methods
+        * ********************************************/</span>
+        
+        <span class="ActionScriptComment">/* Calculation step of the layout */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">calculateLayout</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* Calculate forces and update node positions, which
+             * calls the following four methods to work on the layout:
+             * */</span>
+            <span class="ActionScriptReserved">for</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptOperator">=</span>0; <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">_RELAXPASSES</span>; <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">i</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                 <span class="ActionScriptComment">//1. Apply spring force, which pulls on the edges.
+</span>                <span class="ActionScriptDefault_Text">applySpringForce</span><span class="ActionScriptBracket/Brace">()</span>;
+             
+                <span class="ActionScriptComment">//2. Apply repulsion force, which moves every node away from each other.
+</span>                <span class="ActionScriptDefault_Text">applyRepulsion</span><span class="ActionScriptBracket/Brace">()</span>;
+                
+              <span class="ActionScriptComment">//3. Actually move the nodes respecting some constraints.
+</span>                <span class="ActionScriptDefault_Text">moveNodes</span><span class="ActionScriptBracket/Brace">()</span>;
+              
+                <span class="ActionScriptComment">//4. Adjust node drag settings - not to be confused with UI Drag-Drop
+</span>                <span class="ActionScriptDefault_Text">adjustDrag</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* 5. update rigidity, it may have been set new */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_rigidity</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">_newRigidity</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_rigidity</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_newRigidity</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptComment">/* 6. update repulsion and scroll, if autoFit is enabled */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_autoFitEnabled</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">adjustRepulsion</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptDefault_Text">scrollToFit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptComment">/* Terminating condition for the layout */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">isStable</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">&lt;=</span> 0.1 <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&lt;=</span> <span class="ActionScriptDefault_Text">_motionLimit</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/*********************************************
+        * Layout Methods - Force Computations
+        * ********************************************/</span>
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method tenses up the edges and pulls the nodes
+         * closer. In order to optimize, it should only work on
+         * &quot;visible&quot; edges, i.e. edges for which both nodes
+         * are visible.
+         */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">applySpringForce</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">t_maxSpringMotion</span> <span class="ActionScriptOperator">=</span> 0.0;
+            
+            <span class="ActionScriptComment">/* we need IEdges first */</span>            
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_ve</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVEdges</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* now work on the edge */</span>
+                <span class="ActionScriptDefault_Text">t_edge</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_ve</span>.<span class="ActionScriptDefault_Text">edge</span>;
+                <span class="ActionScriptDefault_Text">t_vn1</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_edge</span>.<span class="ActionScriptDefault_Text">node1</span>.<span class="ActionScriptDefault_Text">vnode</span>;
+                <span class="ActionScriptDefault_Text">t_vn2</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_edge</span>.<span class="ActionScriptDefault_Text">node2</span>.<span class="ActionScriptDefault_Text">vnode</span>;
+
+                <span class="ActionScriptComment">/* all nodes attached to the edge should be visible, 
+                 * so we assert here that it is true */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">isVisible</span> <span class="ActionScriptOperator">||</span> <span class="ActionScriptOperator">!</span><span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;At least one node of the edge is not visible but it should be!&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">x</span>;
+                <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">y</span>;
+                
+                <span class="ActionScriptComment">/* calculate the actual length of the edge */</span>
+                <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">edgelength</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_vx</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">+</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_vy</span><span class="ActionScriptBracket/Brace">))</span>;
+                
+                <span class="ActionScriptComment">/* apply the rigidity to make the edge tighter */</span>
+                <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_rigidity</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">edgelength</span>;
+                <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_rigidity</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">edgelength</span>;
+                
+                <span class="ActionScriptComment">/* update the motion value */</span>
+                <span class="ActionScriptDefault_Text">t_distanceMoved</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span><span class="ActionScriptOperator">*</span><span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptOperator">*</span><span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">t_maxSpringMotion</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_distanceMoved</span>, <span class="ActionScriptDefault_Text">t_maxSpringMotion</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* apply the position offset, add for vnode 1 */</span>
+                <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">offset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* apply the position offset, subtract for vnode 2*/</span>
+                <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">offset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This methods (originally called avoidLabels()) applies
+         * the repulsion to the nodes in order to keep them apart
+         * (and consequently avoid their labels from overlapping).
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">applyRepulsion</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">t_maxRepulsiveMotion</span> <span class="ActionScriptOperator">=</span> 0.0;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vn1</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Received invisible node while working on visible vnodes only&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vn2</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Received invisible node while working on visible vnodes only&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vn1</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> 0;
+                        <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> 0;
+                        <span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">x</span>;
+                        <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">t_vn2</span>.<span class="ActionScriptDefault_Text">y</span>;
+                        <span class="ActionScriptComment">/* spread coincident nodes */</span>
+                        <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">==</span> 0 <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">==</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                            <span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">random</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">*</span> 10 <span class="ActionScriptOperator">-</span> 5;
+                            <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">random</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">*</span> 10 <span class="ActionScriptOperator">-</span> 5;
+                        <span class="ActionScriptBracket/Brace">}</span>
+                        <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">lenSquare</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_vx</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_vy</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">minSquareDistance</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_MIN_NODE_SEPARATION</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_MIN_NODE_SEPARATION</span>;
+                        
+                        <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">lenSquare</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">minSquareDistance</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                            <span class="ActionScriptDefault_Text">lenSquare</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">minSquareDistance</span>;
+                        <span class="ActionScriptBracket/Brace">}</span>
+                        <span class="ActionScriptComment">/* Compute the repulsion force */</span>
+                        <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">repforce</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_repulsionFactor</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">lenSquare</span>;
+                        
+                        <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">repforce</span>;
+                        <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">repforce</span>;
+                        
+                        <span class="ActionScriptDefault_Text">t_distanceMoved</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptDefault_Text">t_maxRepulsiveMotion</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_distanceMoved</span>, <span class="ActionScriptDefault_Text">t_maxRepulsiveMotion</span><span class="ActionScriptBracket/Brace">)</span>;
+                        
+                        <span class="ActionScriptComment">/* init if not existing */</span>
+                        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                            <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptBracket/Brace">}</span>
+                        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                            <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptBracket/Brace">}</span>
+                        
+                        <span class="ActionScriptComment">/* add to vn1 */</span>
+                        <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">offset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                        
+                        <span class="ActionScriptComment">/* subtract from vn2 */</span>
+                        <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn2</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">offset</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * Layout Methods - Actual update
+        * ********************************************/</span>
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method scrolls the view to fit the current
+         * graph view. This should have right behavior until
+         * the view bounds are updated
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">scrollToFit</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptComment">/* the viewbounds describe the current bounding box of
+             * all nodes */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">/* check if we moved nodes out of bounds and 
+                 * do some scrolling */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">left</span> <span class="ActionScriptOperator">&lt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">||</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">top</span> <span class="ActionScriptOperator">&lt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">||</span>
+                   <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">bottom</span> <span class="ActionScriptOperator">&gt;</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">||</span>
+                   <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">right</span> <span class="ActionScriptOperator">&gt;</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    
+                    <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">))</span>;
+                    <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">))</span>;
+                    
+                  <span class="ActionScriptComment">/* limit to _SCROLL_STEP pixels at a time */</span>
+                    <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_SCROLL_STEP</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptDefault_Text">_SCROLL_STEP</span><span class="ActionScriptBracket/Brace">))</span>
+                    <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_SCROLL_STEP</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dy</span>, <span class="ActionScriptDefault_Text">_SCROLL_STEP</span><span class="ActionScriptBracket/Brace">))</span>
+                    
+                    <span class="ActionScriptComment">/* now scroll */</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">!=</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">||</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">!=</span> 0<span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">scroll</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span>, <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method moves each node (i.e. sets the target coordinates)
+         * then it calls the damping function.
+         * There is some potential to eliminate this, particularily
+         * if the motionLimit things are not used....
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">moveNodes</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_lastMaxMotion</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_maxMotion</span>; <span class="ActionScriptComment">// save last maxMotion
+</span>            <span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">=</span> 0.0;
+            
+            <span class="ActionScriptComment">/* again work on all visible nodes */</span>
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vn1</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;Received invisible node while working on visible vnodes only&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptComment">/* work on the target coordinates of the node */</span>
+                <span class="ActionScriptComment">/* this should not really happen */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span>0,0<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">x</span>;
+                <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">y</span>;
+                
+                <span class="ActionScriptComment">/* apply the damper now to slow things down and stabilise
+                 * the movement. The lower the damper the lower the movement
+                 * 0.0 means no movement 1.0 means no damping */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_dampingActive</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_damper</span>;
+                    <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_damper</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                    
+                <span class="ActionScriptComment">/* reapply the value to the node attribite and half the movement
+                 * again.
+                 * This slows things down more, but don&apos;t stop but keep some momentum
+                 * in moving nodes, to avoid a problem if some nodes are
+                 * already very slow */</span>
+                <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">/</span> 2.0;
+                <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_deltaPositions</span><span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptDefault_Text">t_vn1</span><span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_dy</span> <span class="ActionScriptOperator">/</span> 2.0;
+                
+                <span class="ActionScriptComment">/* how far did the node move? */</span>
+                <span class="ActionScriptDefault_Text">t_distanceMoved</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">sqrt</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_dx</span><span class="ActionScriptOperator">*</span><span class="ActionScriptDefault_Text">t_dx</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptOperator">*</span><span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">)</span>;
+                    
+                <span class="ActionScriptComment">/* move the node, but only if it is not currently dragged! */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">moveable</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">t_vn1</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptDefault_Text">_dragNode</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_MOVEPIXELLIMIT</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_MOVEPIXELLIMIT</span>, <span class="ActionScriptDefault_Text">t_dx</span><span class="ActionScriptBracket/Brace">))</span>;
+                    <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">t_vn1</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptOperator">-</span><span class="ActionScriptDefault_Text">_MOVEPIXELLIMIT</span>, <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_MOVEPIXELLIMIT</span>, <span class="ActionScriptDefault_Text">t_dy</span><span class="ActionScriptBracket/Brace">))</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptComment">/* update the max motion value */</span>
+                <span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">t_distanceMoved</span>, <span class="ActionScriptDefault_Text">_maxMotion</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/*********************************************
+        * Layout Methods - Controlling Motion
+        * ********************************************/</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method calculates and adjusts the repulsion
+         * factor, in order for the graph to
+         * fit into ~ 90 % of the available space.
+         **/</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">adjustRepulsion</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">deltaCoverage</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            
+            <span class="ActionScriptComment">// TO-DO: Should it be called here or with actual scrolling? How often?
+</span>            <span class="ActionScriptComment">/* bounding box of nodes */</span>
+            <span class="ActionScriptDefault_Text">_viewbounds</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">calcNodesBoundingBox</span><span class="ActionScriptBracket/Brace">()</span>;
+            
+            <span class="ActionScriptComment">/* the viewbounds describe the current bounding box of
+             * all nodes */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">/* using the viewbounds the current percentage in coverage can be
+                 * calculated */</span>
+                <span class="ActionScriptDefault_Text">_coverage</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">bottom</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">top</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">height</span>,
+                                                         <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">right</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_viewbounds</span>.<span class="ActionScriptDefault_Text">left</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* calculate the delta coverage */</span>
+                <span class="ActionScriptDefault_Text">deltaCoverage</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_AUTOFITCOVERAGE</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">_coverage</span>;
+                
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">deltaCoverage</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&gt;</span> <span class="ActionScriptDefault_Text">_AUTOFITCOVERTOLERANCE</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span><span class="ActionScriptComment">//not within tolerance limit 
+</span>                    <span class="ActionScriptComment">/* compute target change - Similar to proportional gain controller */</span>
+                    <span class="ActionScriptDefault_Text">deltaCoverage</span> <span class="ActionScriptOperator">*=</span> <span class="ActionScriptDefault_Text">_MAX_REPULSION</span> <span class="ActionScriptOperator">*</span> 0.1;
+                    
+                    <span class="ActionScriptComment">/* change only if substantial */</span>
+                    <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">deltaCoverage</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&gt;</span> 1.0<span class="ActionScriptBracket/Brace">)</span>
+                        <span class="ActionScriptDefault_Text">_repulsionFactor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">max</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_MIN_REPULSION</span>, 
+                                                                                <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">min</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_repulsionFactor</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">deltaCoverage</span>, 
+                                                                                                 <span class="ActionScriptDefault_Text">_MAX_REPULSION</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;FD af Coverage:&quot; + _coverage + &quot; repulsionFactor:&quot; + _repulsionFactor);
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This method checks for some motion limit parameters
+         * and to adjust drag parameter.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">adjustDrag</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* calculate the motionRatio, the -1 is subtracted to
+             * make positive values mean things are moving faster
+             */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_motionRatio</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_lastMaxMotion</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_maxMotion</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">-</span> 1;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_motionRatio</span> <span class="ActionScriptOperator">=</span> 0.0;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptComment">/*
+            _LOG.debug(t_maxSpringMotion + &quot;\t&quot;
+                    + t_maxRepulsiveMotion + &quot;\t&quot;
+                    + _maxMotion + &quot;\t&quot;
+                    + _motionRatio + &quot;\t&quot;
+                + _damper);
+                */</span>
+            <span class="ActionScriptComment">/* adjust the value of the damper */</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_dampingActive</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">/* Only damp if the graph starts to move faster.
+                 * If things are slowing down, let them stabilise on their
+                 * own, without damping */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_motionRatio</span> <span class="ActionScriptOperator">&lt;=</span> 0.005<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    
+                    <span class="ActionScriptComment">/* if maxMotion &lt; 0.2 damp! OR
+                     * if the damper has ticked to 0.9 and maxMotion still &gt; 1, damp!
+                     * damper must not be negative though */</span>
+                    <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">((</span><span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&lt;</span> 0.2 <span class="ActionScriptOperator">||</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&gt;</span> 1 <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">&lt;</span> 0.9<span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptOperator">&amp;&amp;</span>
+                        <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">&gt;</span> 0.01<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">-=</span> 0.01;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                    <span class="ActionScriptComment">/* damp a bit less agressively now */</span>
+                    <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&lt;</span> 0.4 <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">&gt;</span> 0.003<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">-=</span> 0.003;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                    <span class="ActionScriptComment">/* damp even less agressively */</span>
+                    <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">&gt;</span> 0.0001<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">-=</span> 0.0001;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* damper 0 means no movement(!) */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_maxMotion</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">_motionLimit</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">_damper</span> <span class="ActionScriptOperator">=</span> 0.0;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/*********************************************
+        * Mouse Event Handling Methods
+        * ********************************************/</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dragContinue</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span><span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">dragContinue</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">refreshInit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">dropEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">MouseEvent</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">dropEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span>, <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">layoutPass</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

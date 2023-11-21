@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.sqldesigner.ui.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="bpm.sqldesigner.ui.Perspective"
+            id="bpm.sqldesigner.ui.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.sqldesigner.ui.view.TreeView"
+            icon="icons/list.png"
+            id="bpm.sqldesigner.ui.treeview"
+            name="Databases">
+      </view>
+      <view
+            class="bpm.sqldesigner.ui.view.RequestsView"
+            id="bpm.sqldesigner.ui.requestsview"
+            name="Requests">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="bpm.sqldesigner.ui.editor.SQLDesignGraphicalEditor"
+            contributorClass="bpm.sqldesigner.ui.editor.SQLDesignBarContributor"
+            default="true"
+            icon="noicon"
+            id="sqldesigner"
+            name="name">
+      </editor>
+      <editor
+            class="bpm.sqldesigner.ui.snapshot.editor.SnapshotEditor"
+            contributorClass="bpm.sqldesigner.ui.editor.SQLDesignBarContributor"
+            default="false"
+            icon="noicon"
+            id="bpm.sqldesigner.ui.snapshot.editor.SnapshotEditor"
+            name="SnapshotEditor">
+      </editor>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="bpm.sqldesigner.ui.application"
+            name="BiDwhDesigner">
+         <property
+               name="appName"
+               value="BiDwhDesigner">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/Vanilla_Logo_3.4.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="BiDwhDesigner&#x0A;&#x0A;Version 4.2 &#x0A;Product of BPM-Conseil&#x0A;&#x0A;http://www.bpm-conseil.com/">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/database.gif">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.sqldesigner.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="bpm.sqldesigner.ui.wizard.StartWizard"
+            icon="icons/database.gif"
+            id="bpm.sqldesigner.ui.wizard.StartWizard"
+            name="New DataWareHouseProject">
+      </wizard>
+   </extension>
+ 
+
+</plugin>

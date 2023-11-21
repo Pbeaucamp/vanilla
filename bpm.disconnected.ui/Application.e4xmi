@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_d-aIgOV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ide.application" bindingContexts="_d-aIieV4EeOPc8VXfHJxGg">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_d-aIgeV4EeOPc8VXfHJxGg" label="bpm.disconnected.ui" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_d-avpOV4EeOPc8VXfHJxGg">
+      <children xsi:type="advanced:Perspective" xmi:id="_d-avpeV4EeOPc8VXfHJxGg">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_d-avpuV4EeOPc8VXfHJxGg">
+          <children xsi:type="basic:PartStack" xmi:id="_d-avp-V4EeOPc8VXfHJxGg">
+            <children xsi:type="basic:Part" xmi:id="_d-avqOV4EeOPc8VXfHJxGg" contributionURI="bundleclass://bpm.disconnected.ui/bpm.disconnected.ui.parts.MainPart" label="Vanilla Disconnected"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_d-avneV4EeOPc8VXfHJxGg" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_d-avnuV4EeOPc8VXfHJxGg" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_d-avoeV4EeOPc8VXfHJxGg" label="Quit" command="_d-avkOV4EeOPc8VXfHJxGg"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_d-avouV4EeOPc8VXfHJxGg" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_d-avo-V4EeOPc8VXfHJxGg" label="About" command="_d-avmuV4EeOPc8VXfHJxGg"/>
+      </children>
+    </mainMenu>
+  </children>
+  <handlers xmi:id="_d-avkeV4EeOPc8VXfHJxGg" elementId="bpm.disconnected.ui.handler.quitCommand" contributionURI="bundleclass://bpm.disconnected.ui/bpm.disconnected.ui.handlers.QuitHandler" command="_d-avkOV4EeOPc8VXfHJxGg"/>
+  <handlers xmi:id="_d-avm-V4EeOPc8VXfHJxGg" elementId="bpm.disconnected.ui.handler.aboutCommand" contributionURI="bundleclass://bpm.disconnected.ui/bpm.disconnected.ui.handlers.AboutHandler" command="_d-avmuV4EeOPc8VXfHJxGg"/>
+  <bindingTables xmi:id="_d-avkuV4EeOPc8VXfHJxGg" bindingContext="_d-aIieV4EeOPc8VXfHJxGg">
+    <bindings xmi:id="_d-avk-V4EeOPc8VXfHJxGg" keySequence="M1+Q" command="_d-avkOV4EeOPc8VXfHJxGg"/>
+    <bindings xmi:id="_d-avnOV4EeOPc8VXfHJxGg" keySequence="M1+A" command="_d-avmuV4EeOPc8VXfHJxGg"/>
+  </bindingTables>
+  <rootContext xmi:id="_d-aIieV4EeOPc8VXfHJxGg" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_d-aIiuV4EeOPc8VXfHJxGg" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_d-aIi-V4EeOPc8VXfHJxGg" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_d-avkOV4EeOPc8VXfHJxGg" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
+  <commands xmi:id="_d-avmuV4EeOPc8VXfHJxGg" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <addons xmi:id="_d-aIguV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_d-aIg-V4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_d-aIhOV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_d-aIheV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_d-aIhuV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_d-aIh-V4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_d-aIiOV4EeOPc8VXfHJxGg" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>

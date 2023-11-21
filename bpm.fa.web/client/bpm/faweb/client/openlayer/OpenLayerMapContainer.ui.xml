@@ -1,0 +1,127 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.inline{
+			vertical-align: middle;
+			display: inline-block;
+		}	
+		.optionPanel{
+			background: #E2E2E2;;
+			width: 25%;
+			float: left;
+			height: 768px;
+		}
+		.mapPanel{
+			float: left;
+			width: 75%;
+			height: 768px;
+		}
+		.headerPanel{
+			border: 1px solid #D4D4D4;
+			-webkit-box-shadow: 0 1px 0 #FFF;
+			-moz-box-shadow: 0 1px 0 #fff;
+			box-shadow: 0 1px 0 #FFF;
+			background-color: f5f5f5;
+			background-image: -moz-linear-gradient(top, white, #f5f5f5);
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
+			background-image: -webkit-linear-gradient(top, #FFF, #F5F5F5);
+			background-image: -o-linear-gradient(top, white, #f5f5f5);
+			background-image: linear-gradient(to bottom, #FFF, #F5F5F5);
+			background-repeat: repeat-x;
+			filter: progid;
+		}
+		.btnPlay{
+			background: url(images/ic_preview.png) no-repeat center !important;
+			border: none;
+			padding: 20px;
+		}
+		.btnPlay:hover{
+			background: url(images/ic_preview.png) no-repeat center !important;
+			border: none;
+		}
+		.title{
+			display: inline-block;
+			vertical-align: middle;
+			padding: 20px;
+			border: none;
+			color: #777;
+			border-right: 1px solid #E7E7E7;
+			background: rgba(0, 0, 0, 0);
+			outline: none;
+		}
+		.dropCategory,.dropMeasure{
+			width: 80%;
+			margin: auto;
+			min-height: 20%;
+			background: #F3F3F3;
+			border: dashed #9DDBFF;
+			margin-top: 20%;	
+			color: #9DDBFF;
+		}
+
+		.dropCategory:before, .dropMeasure:before{
+			content: "Drop Dimensions";
+			position: absolute;
+			left: 50%;
+			top: -3%;
+			font-size: 1.5em;
+			width: 100px;
+			text-align: center;
+			margin-left: -50px;
+			background: url("images/ic_drop.png") no-repeat center;
+			background-size: 50px;
+			padding-top: 100px;
+			z-index: 0;
+		}
+	
+		.dropMeasure:before{
+			content: "Drop Measure";
+		}
+	
+		.btnClear{
+			background: url("images/ic_clear.png") no-repeat center;
+			border: none;
+			padding: 20px;
+
+		}
+	
+		.btnClear:hover{
+			background: url("images/ic_clear.png") no-repeat center !important;
+			border: none;
+			
+		}
+		.btnActions{
+			cursor: pointer;
+			width: 7%;
+			display: inline-block !important;
+		}
+		.legendsPanel{
+			width: 80%;
+			margin: auto;
+			margin-top: 20px;
+			background: #08C;
+			padding: 10px;
+			color: #FFF;	
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	    <g:HTMLPanel addStyleNames="{style.headerPanel}">
+	        <g:Label text="Open Layer Map Preview" addStyleNames="{style.title}"/>
+	        <g:Button ui:field="btnAddStyle" addStyleNames="{style.btnPlay}"/>
+	        <g:Button ui:field="btnClear" addStyleNames="{style.btnClear}"/>
+	    </g:HTMLPanel>
+		<g:HTMLPanel ui:field="optionPanel" addStyleNames="{style.optionPanel}">
+		    <div class="{style.legendsPanel}">
+		       <g:Label text="Map Legends" addStyleNames="{style.inline}"/>
+		       <g:Image ui:field="btnAdd" url="images/ic_add.png" addStyleNames="{style.inline} {style.btnActions}"/>
+		       <g:HTMLPanel ui:field="legendPanel"/>
+		   </div>
+		    <g:AbsolutePanel ui:field="lstCategory" addStyleNames="{style.dropCategory}"/>
+		    <g:AbsolutePanel ui:field="lstMeasure" addStyleNames="{style.dropMeasure}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="mapPanel" addStyleNames="{style.mapPanel}"/>
+		
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph>
+    <Node desc="The root system" iconSize="35" id="0" name="Vanilla" nodeIcon="system"/>
+    <Node desc="" iconSize="35" id="1" name="System" nodeIcon="group"/>
+    <Node desc="To browse repository" iconSize="35" id="2"
+        name="Default" nodeIcon="group"/>
+    <Node desc="for design" iconSize="35" id="3" name="Designer" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="4" name="dddd" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="5" name="d1" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="6" name="d2" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="7" name="D4" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="8" name="DD" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="9" name="D5" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="10" name="D4" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="11" name="D66" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="12" name="D88" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="13" name="D5555" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="14" name="ddd" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="15" name="a" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="16" name="aa" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="17" name="z" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="18" name="ddd" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="19" name="aaa" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="20" name="dddd" nodeIcon="group"/>
+    <Node desc="" iconSize="35" id="21" name="ddd" nodeIcon="group"/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="22" login="" name="system"
+        nodeIcon="user" pMail="null" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="23" login="" name="user"
+        nodeIcon="user" pMail="null" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="24" login="" name="designer"
+        nodeIcon="user" pMail="null" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="25" login=""
+        name="system administrator" nodeIcon="user" pMail="" phone=""
+        sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="26" login="" name="joe"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="27" login="" name="suzy"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="28" login="" name="tiffany"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Node bMail="" cellular=""
+        dataClass="bpm.birep.admin.datas.vanilla.User" desc=""
+        fonction="" iconSize="25" id="29" login="" name="pat"
+        nodeIcon="user" pMail="" phone="" sName="" sNumber="" surname=""/>
+    <Edge fromID="0" toID="0"/>
+    <Edge fromID="0" toID="1"/>
+    <Edge fromID="0" toID="2"/>
+    <Edge fromID="0" toID="3"/>
+    <Edge fromID="0" toID="4"/>
+    <Edge fromID="0" toID="5"/>
+    <Edge fromID="0" toID="6"/>
+    <Edge fromID="0" toID="7"/>
+    <Edge fromID="0" toID="8"/>
+    <Edge fromID="0" toID="9"/>
+    <Edge fromID="0" toID="10"/>
+    <Edge fromID="0" toID="11"/>
+    <Edge fromID="0" toID="12"/>
+    <Edge fromID="0" toID="13"/>
+    <Edge fromID="0" toID="14"/>
+    <Edge fromID="0" toID="15"/>
+    <Edge fromID="0" toID="16"/>
+    <Edge fromID="0" toID="17"/>
+    <Edge fromID="0" toID="18"/>
+    <Edge fromID="0" toID="19"/>
+    <Edge fromID="0" toID="20"/>
+    <Edge fromID="0" toID="21"/>
+    <Edge fromID="1" toID="22"/>
+    <Edge fromID="2" toID="22"/>
+    <Edge fromID="3" toID="22"/>
+    <Edge fromID="2" toID="23"/>
+    <Edge fromID="3" toID="24"/>
+    <Edge fromID="0" toID="25"/>
+    <Edge fromID="0" toID="26"/>
+    <Edge fromID="0" toID="27"/>
+    <Edge fromID="0" toID="28"/>
+    <Edge fromID="0" toID="29"/>
+</Graph>

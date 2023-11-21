@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="%category.name"
+            id="GroupViewer">
+      </category>
+      <view
+            name="%view.groupviewer.name"
+            icon="icons/sample.gif"
+            category="GroupViewer"
+            class="groupviewer.views.GroupViewerView"
+            id="groupviewer.views.GroupViewerView">
+      </view>
+      <view
+            class="groupviewer.views.StructureView"
+            icon="icons/sample.gif"
+            id="groupviewer.views.StructureView"
+            name="%view.structure.name">
+      </view>
+      <view
+            category="CrossRef"
+            class="groupviewer.views.CrossRefView"
+            id="groupviewer.views.CrossRefView"
+            name="%view.crossref.name">
+      </view>
+      <category
+            id="CrossRef"
+            name="Cross Reference">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="adminBIRep.perspective.crossing">
+         <view
+               closeable="false"
+               id="groupviewer.views.CrossRefView"
+               relationship="stack"
+               relative="viewCrossing"
+               showTitle="true"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="groupviewer.factory.GroupViewPerspectiveFactory"
+            icon="src/groupviewer/icons/groupviewer.png"
+            id="GroupViewer.perspectiveGroup"
+            name="%perspective.name">
+         <description>
+            %perspective.description
+         </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="groupviewer.views.ExportWizard"
+            icon="icons/sample.gif"
+            id="GroupViewer.flexWizard"
+            name="%wizard.flexexport.name">
+      </wizard>
+   </extension>
+
+</plugin>

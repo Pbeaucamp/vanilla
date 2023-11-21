@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="Vanilla Disconnected"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/bpm.disconnected.ui/css/default.css">
+         </property>
+         <property
+               name="appName"
+               value="Vanilla Disconnected">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/nano_connect.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Vanilla Disconnected&#x0A;&#x0A;Version 5">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/nano_connect_16.png,icons/nano_connect_32.png">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

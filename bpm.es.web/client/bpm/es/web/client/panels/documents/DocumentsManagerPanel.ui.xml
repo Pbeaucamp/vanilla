@@ -1,0 +1,84 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:fi="urn:import:bpm.es.web.client.panels.documents">
+	
+	<ui:with field='resources' type='bpm.es.web.client.images.Images' />
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+		    background: none repeat scroll 0 0 #FFFFFF;
+			display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+		    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+		    display: -ms-flexbox; /* TWEENER - IE 10 */
+		    display: -webkit-flex; /* NEW - Chrome */
+		    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+		    -ms-flex-direction: column;
+		    -moz-flex-direction: column;
+		    -webkit-flex-direction: column;
+		    flex-direction: column;
+		}
+		
+		.panelSearchParent {
+	    	height: 100px;
+		}
+		
+		.panelSearch {
+	    	margin: auto;
+    		width: 60%;
+		}
+		
+		.lblSearch {
+		    margin-top: 13px;
+		    vertical-align: top;
+		    width: 80%;
+		}
+		
+		.btnSearch {
+	    	margin-top: 10px;
+			cursor: pointer;
+		}
+		
+		.btnSearch:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.advanceSearch {
+			margin-left: 22%;
+			cursor: pointer;
+		}
+		
+		.advanceSearch:HOVER {
+			color: #E10203;
+			text-decoration: underline; 
+		}
+		
+		.gridPanel {
+			width: 100%;
+			 -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+		    -moz-box-flex: 1; /* OLD - Firefox 19- */
+		    -webkit-flex: 1; /* Chrome */
+		    -ms-flex: 1; /* IE 10 */
+		    flex: 1; /* NEW, */
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelSearchParent}">
+			<g:HTMLPanel addStyleNames="{style.panelSearch}">
+				<my:TextHolderBox ui:field="txtSearch" placeHolder="{labels.Search}" addStyleNames="{style.lblSearch}"/>
+				<g:Image ui:field="btnSearch" resource="{resources.search_48}" addStyleNames="{style.btnSearch}"/>
+			</g:HTMLPanel>
+			<g:Label ui:field="btnAdvanceSearch" text="{labels.AdvanceSearch}" addStyleNames="{style.advanceSearch}"/>
+		</g:HTMLPanel>
+		<fi:DocumentsGrid ui:field="documentsGrid" addStyleNames="{style.gridPanel}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

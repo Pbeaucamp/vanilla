@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.datasource.vanilla.oda.ui
+Bundle-SymbolicName: bpm.datasource.vanilla.oda.ui; singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.datasource.vanilla.oda.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui,
+ bpm.vanilla.platform.core,
+ bpm.vanilla.platform.core.remote,
+ bpm.datasource.vanilla.oda.runtime,
+ bpm.vanilla.platform.core.config
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: BPM-Conseil

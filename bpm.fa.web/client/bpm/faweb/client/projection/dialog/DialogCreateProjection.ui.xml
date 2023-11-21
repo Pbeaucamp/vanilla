@@ -1,0 +1,91 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:gw="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+	
+		.panelContent {
+			margin: 5px;
+		}
+		
+		.dialogLabel {
+			width: 130px;
+			margin-top: 10px;	
+		}
+		
+		.dialogText {
+			width: 287px;
+			margin-top: 7px;	
+		}
+		
+		.dialogLst {
+			width: 125px;
+			margin-top: 7px;
+		}
+		
+		.treePanel {
+			margin-top: 5px;
+			width: 300px;
+			height: 150px;
+			overflow: auto;	
+		}
+		
+		.buttonPanel {
+			margin-top: 15px;
+			margin-left: 168px;	
+		}
+		
+		.btnNewType {
+			margin-top: 8px;
+		}
+		
+		.captionMeasures {
+			margin-top: 10px;
+			width: 405px;	
+		}
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.panelContent}">
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblName" styleName="{style.dialogLabel}"></g:Label>
+			<g:TextBox ui:field="txtName" styleName="{style.dialogText}"></g:TextBox>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblComment" styleName="{style.dialogLabel}"></g:Label>
+			<g:TextBox ui:field="txtComment" styleName="{style.dialogText}"></g:TextBox>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblType" styleName="{style.dialogLabel}"></g:Label>
+			<g:ListBox ui:field="lstType" styleName="{style.dialogText}"></g:ListBox>
+		</g:HorizontalPanel>
+		
+				<g:HorizontalPanel>
+			<g:Label ui:field="lblLevel" styleName="{style.dialogLabel}"></g:Label>
+			<g:ListBox ui:field="lstLevel" styleName="{style.dialogText}"></g:ListBox>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblStartDate" styleName="{style.dialogLabel}"></g:Label>
+			<gw:DateBox ui:field="txtStartDate" styleName="{style.dialogText}"></gw:DateBox>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel>
+			<g:Label ui:field="lblDate" styleName="{style.dialogLabel}"></g:Label>
+			<gw:DateBox ui:field="txtDate" styleName="{style.dialogText}"></gw:DateBox>
+		</g:HorizontalPanel>
+		
+		<!-- <g:Label styleName="{style.dialogLabel}">Measure formulas : </g:Label> -->
+		<g:CaptionPanel captionText="{label.MeasureFormulas}" styleName="{style.captionMeasures}">
+			<g:VerticalPanel ui:field="typePanel">
+				<!-- <g:Label ui:field="lblType" styleName="{style.dialogLabel}"></g:Label>
+				<g:ListBox ui:field="lstType" styleName="{style.dialogLst}"></g:ListBox>
+				<g:Button ui:field="btnNewType" styleName="{style.btnNewType}">...</g:Button> -->
+			</g:VerticalPanel>
+		</g:CaptionPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,322 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>EmbeddedIcons.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/*
+ * The MIT License
+ *
+ * Copyright (c) 2008
+ * United Nations Office at Geneva
+ * Center for Advanced Visual Analytics
+ * http://cava.unog.ch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">assets</span>.<span class="ActionScriptDefault_Text">icons</span> <span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">controls</span>.<span class="ActionScriptDefault_Text">Image</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+        
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span> <span class="ActionScriptBracket/Brace">{</span>
+        
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;assets.icons.EmbeddedIcons&quot;</span>;
+        
+        <span class="ActionScriptComment">// UI Icons
+</span>        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/BirdEyeLogoRaVis75.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ravisIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/refresh.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">refreshIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/search.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">searchIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/zoomin.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">zoominIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/zoomout.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">zoomoutIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/reset.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">resetIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/help.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">helpIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/hint.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">hintIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/info.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">infoIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;         
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;ui/idea.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ideaIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;             
+         
+         <span class="ActionScriptComment">// Nodes
+</span>         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/groupe.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">group</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/utilisateur.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">user</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/system.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">system</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;                  
+        
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/xaction.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">xaction</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/jasper_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">jasper_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/jasper_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">jasper_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;     
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/birt_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">birt_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/birt_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">birt_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/orbeon_16.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">orbeon16</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;         
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/cube_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fasd_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/cube_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fasd_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;    
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/view.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fwr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fd_deployed_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fd_deployed_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fd_deployed_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fd_deployed_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;    
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fmdt_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fmdt_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;     
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fmdt_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fmdt_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;    
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fwr_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fwr_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;      
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/fwr_run.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">fwr_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/dictionary.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">dico</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;    
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/biw.gif&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">biw</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>; 
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/md.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">md</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>; 
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/doc.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">doc</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>; 
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/gtw_16_stop.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">gtw_stop</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;     
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;nodes/gtw_16_start.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">gtw_run</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;                                    
+         
+         <span class="ActionScriptComment">// Edges
+</span>         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;edges/Rain.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">rainIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;edges/Sun.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sunIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;edges/Good.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">goodIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;edges/Bad.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">badIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span>
+        <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Embed</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">source</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">&quot;edges/NoChange.png&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+         <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">noChangeIcon</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Class</span>;
+         
+         <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">generateImage</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">type</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span>, <span class="ActionScriptDefault_Text">size</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 32<span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Image</span> <span class="ActionScriptBracket/Brace">{</span>
+             <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">img</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Image</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Image</span><span class="ActionScriptBracket/Brace">()</span>;
+             <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">width</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">size</span>;
+             <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">height</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">size</span>;    
+            <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">type</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;ravis&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">ravisIcon</span>;    
+                    <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;refresh&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">refreshIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;search&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">searchIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;zoomin&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">zoominIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;zoomout&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">zoomoutIcon</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;reset&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">resetIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;help&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">helpIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;hint&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">hintIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;info&quot;</span><span class="ActionScriptOperator">:</span>
+                     <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">infoIcon</span>;
+                     <span class="ActionScriptReserved">break</span>;
+                 <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;idea&quot;</span><span class="ActionScriptOperator">:</span>     
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">ideaIcon</span>;
+                    <span class="ActionScriptReserved">break</span>;                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;user&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">user</span>;
+                    <span class="ActionScriptReserved">break</span>;    
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;group&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">group</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;system&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">system</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;xaction&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">xaction</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;jasper_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">jasper_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;jasper_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">jasper_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;birt_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">birt_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;birt_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">birt_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;orbeon16&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">orbeon16</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fasd_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fasd_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fasd_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fasd_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fwr&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fwr</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fd_deployed_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fd_deployed_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fd_deployed_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fd_deployed_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fmdt_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fmdt_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fmdt_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fmdt_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fwr_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fwr_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;fwr_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">fwr_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;dico&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">dico</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;biw&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">biw</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;md&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">md</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;doc&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">doc</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;gtw_stop&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">gtw_stop</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptString">&quot;gtw_run&quot;</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">gtw_run</span>;
+                    <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                    <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Illegal type for image node:&quot;</span><span class="ActionScriptOperator">+</span><span class="ActionScriptDefault_Text">type</span><span class="ActionScriptOperator">+</span><span class="ActionScriptString">&quot; setting to leaf icon&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                    <span class="ActionScriptDefault_Text">img</span>.<span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">EmbeddedIcons</span>.<span class="ActionScriptDefault_Text">system</span>;
+                    <span class="ActionScriptReserved">break</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">img</span>;
+         <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

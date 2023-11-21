@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.lbl {
+			float: left;
+			margin-left: 10px;
+			width: 100px;
+		    margin-top: 7px;
+		}
+		
+		.lstType {
+			margin-top: 7px;
+			width: 220px;
+		}
+		
+		.lstColumn {
+			margin-top: 7px;
+			width: 220px;
+		}
+		
+		.txtValue {
+			margin-top: 7px;
+			width: 215px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel">
+		<g:HTMLPanel>
+			<g:Label text="{label.Columns}" addStyleNames="{style.lbl}"/>
+			<g:ListBox ui:field="lstColumns" addStyleNames="{style.lstColumn}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label text="{label.Type}" addStyleNames="{style.lbl}"/>
+			<g:ListBox ui:field="lstTypes" addStyleNames="{style.lstType}"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Label text="{label.Value}" addStyleNames="{style.lbl}"/>
+			<g:TextBox ui:field="txtValue" addStyleNames="{style.txtValue}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

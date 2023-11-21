@@ -1,0 +1,8 @@
+<connection>
+	<host>localhost</host>
+	<port>3306</port>
+	<login>root</login>
+	<pass>root</pass>
+	<databaseName>sampledata</databaseName>
+	<driverName>MySQL</driverName>
+</connection>

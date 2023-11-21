@@ -1,0 +1,89 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	
+	<ui:style type="bpm.faweb.client.dialog.OpenViewDialog.MyStyle">
+		.mainPanel {
+		    display: inline-block;
+		    height: 350px;
+		    width: 730px;
+		}
+		
+		.panelList {
+		    display: inline-block;
+		    height: 100%;
+		    vertical-align: top;
+		    width: 50%;
+		    border-right: 1px solid lightgray;
+
+		}
+	
+		.panelSearch {
+			width: 100%;
+			height: 30px;
+			background: #E6E6E6;
+		}
+		
+		.txtSearch {
+		    margin-left: 12px;
+		    margin-top: 4px;
+		    width: 220px;
+		    vertical-align: top;
+		}
+		
+		.btnClear {
+			margin-top: 7px;
+			cursor: pointer;
+		}
+		
+		.btnClear:HOVER {
+			background-color: #444444 !important;
+		}
+		
+		.btnSearch {
+			background: none repeat scroll 0 0 #444444;
+			border: 1px solid #555555;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 20px;
+			width: 100px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			vertical-align: top;
+			margin-top: 5px;
+		}
+		
+		.btnSearch:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA;
+			color: #000000;
+		}
+		
+		.panelImg {
+		    display: inline-block;
+		    height: 100%;
+		    width: 49%;
+		    text-align: center;
+		}
+		
+		.imgView {
+	
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel addStyleNames="{style.panelList}">
+			<g:HTMLPanel addStyleNames="{style.panelSearch}">
+		    	<g:TextBox ui:field="txtSearch" addStyleNames="{style.txtSearch}"/>
+				<g:Image ui:field="btnClear" resource="{resources.ic_dialog_close}" title="{label.Clear}" addStyleNames="{style.btnClear}"/>
+		    	<g:Button ui:field="btnSearch" text="{label.Search}" styleName="{style.btnSearch}"/>
+			</g:HTMLPanel>
+			<g:SimplePanel ui:field="panelGrid"/>
+		</g:HTMLPanel>
+		<g:SimplePanel addStyleNames="{style.panelImg}">
+			<g:Image ui:field="imgView"/>
+		</g:SimplePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

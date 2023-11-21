@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.6.1//EN"
+  "file:///C:/BPM/SDK/gwt-2.6.1/gwt-module.dtd">
+<module rename-to='EsWeb'>
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
+  
+    <inherits name="bpm.vanilla.platform.core.VanillaPlatform" />
+	<inherits name="bpm.gwt.commons.Commons" />
+
+	<entry-point class='bpm.es.web.client.EsWeb'/>
+
+	<stylesheet src="../es_web.css"/>
+
+	<!-- Specify the paths for translatable code                    -->
+	<source path='client'/>
+	<source path='shared'/>
+
+	<!-- allow Super Dev Mode -->
+	<add-linker name="xsiframe"/>
+</module>

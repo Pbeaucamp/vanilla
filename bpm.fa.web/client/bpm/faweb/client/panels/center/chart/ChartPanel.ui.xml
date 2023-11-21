@@ -1,0 +1,170 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:bpm.gwt.commons.client.custom"
+	xmlns:chart="urn:import:bpm.gwt.commons.client.charts">
+	
+	<ui:with field='labels' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:with field='commonLabels' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	
+	<ui:style type="bpm.faweb.client.panels.center.chart.ChartPanel.MyStyle">
+		.rootPanel {
+			height: 100%;
+		}
+	
+		.lstChart {
+			margin-top: 12px;
+		}
+		
+		.panelSeries {
+			width: 100%;
+			height: 200px;
+			overflow: auto;
+			background-color: #f2f2f2;
+		}
+		
+		.panelChart {
+			width: 100%;
+			top: 295px;
+			bottom: 0px;
+			position: absolute;
+		}
+		
+		.lblDrop {
+			margin-left: 5px;
+		    position: absolute;
+		    font-size: 1.5em;
+		    color: #9DDBFF;
+		    font-family: tahoma;
+		}
+		
+		.dropPanel {
+		    border: 2px dashed #80D1FF;
+		    margin: 20px 5px 5px 5px;
+		    background: url(images/ic_drop.png) no-repeat center;
+		    background-size: 50px;
+			height: 170px;
+		}
+		
+		.filterDropPanel {
+			cursor: pointer;
+			background-color: #E6E6E6;
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border: 1px solid black;
+			margin: 10px 65px 10px 45px;
+			padding: 0px 2px 2px 2px;	
+		}
+		
+		.dropPanelHeight {
+			height: 33px;
+			overflow:auto !important;	
+		}
+		
+		.filterMainPanel {
+			position: relative;
+			background-color: white;
+			margin-left: 25px;
+			border-radius: 0px 0px 10px 10px;
+			-webkit-border-radius: 0px px 10px 10px;
+			-moz-border-radius: 0px px 10px 10px;
+			border-bottom: 1px solid gray;
+			border-right: 1px solid gray;
+			border-left: 1px solid gray;
+			padding-top: 10px;
+		}
+		
+		.filterTrash {
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+		}
+		
+		.panelClickFilter {
+			margin: 0px 400px;
+			width: 200px;
+			height: 20px;
+			background: white;
+			border-radius: 0px 0px 5px 5px;
+			-webkit-border-radius: 0px px 5px 5px;
+			-moz-border-radius: 0px px 5px 5px;
+			border-bottom: 1px solid gray;
+			border-left: 1px solid gray;
+			border-right: 1px solid gray;
+		}
+		
+		.imgFilter {
+			float: left;
+		    margin-top: 2px;
+		    margin-left: 3px;
+		}
+		
+		.lblFilter {
+		    float: left;
+		    margin-left: 13px;
+		    margin-top: 2px;
+		}
+		
+		.trash {
+		    position: absolute;
+		    overflow: hidden;
+		    display: block;
+		    right: 10px;
+		    bottom: 10px;
+		}
+		
+		.resourceHtml {
+			background-color: #81DAF5;
+		    border: 1px solid gray;
+		    font-weight: bold;
+		    margin-top: 2px;
+		    margin-bottom: 2px;
+		    margin-left: 3px;
+		    padding: 7px;
+		    float: left;
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+		}
+	</ui:style>
+	<g:AbsolutePanel ui:field="rootPanel" addStyleNames="{style.rootPanel}">
+		<g:AbsolutePanel ui:field="rootFilterPanel">
+			<g:HTMLPanel ui:field="mainDropFilterPanel" addStyleNames="{style.filterMainPanel}">
+				<g:AbsolutePanel ui:field="dropFilterPanel" addStyleNames="{style.filterDropPanel}, {style.dropPanelHeight}"/>
+				<g:Image ui:field="trashFilter" resource="{resources.empty_bin64}" addStyleNames="{style.filterTrash}"/>
+			</g:HTMLPanel>
+			<g:FocusPanel ui:field="btnFilter" addStyleNames="{style.panelClickFilter}">
+				<g:HTMLPanel>
+					<g:Image resource="{resources.filtre_16}" addStyleNames="{style.imgFilter}"/>
+					<g:Label ui:field="lblFilter" text="{labels.ShowFilters}" addStyleNames="{style.lblFilter}"/>
+				</g:HTMLPanel>
+			</g:FocusPanel>
+		</g:AbsolutePanel>
+		<g:HTMLPanel addStyleNames="relative, flex">
+			<div class="flexOne">
+				<div class="flex">
+					<c:LabelTextBox ui:field="txtTitle" placeHolder="{commonLabels.Title}" addStyleNames="flexOne"/>
+					<c:ListBoxWithButton ui:field="lstChartTypes" addStyleNames="{style.lstChart}, flexOne"/>
+				</div>
+				<div class="flex {style.panelSeries}">
+					<div class="flexOne">
+						<g:Label text="{labels.SelectMeasures}" addStyleNames="{style.lblDrop}"/>
+						<g:AbsolutePanel ui:field="panelMeasures" addStyleNames="{style.dropPanel}"/>
+					</div>
+					<div class="flexOne">
+						<g:Label text="{labels.SelectChartGroup}" addStyleNames="{style.lblDrop}"/>
+						<g:AbsolutePanel ui:field="panelGroups" addStyleNames="{style.dropPanel}"/>
+					</div>
+					<div class="flexOne">
+						<g:Label text="{labels.SelectSeries}" addStyleNames="{style.lblDrop}"/>
+						<g:AbsolutePanel ui:field="panelSeries" addStyleNames="{style.dropPanel}"/>
+					</div>
+				</div>
+			</div>
+		</g:HTMLPanel>
+		<chart:ChartRenderPanel ui:field="panelChart" addStyleNames="{style.panelChart}, flexOne"/>
+		<g:Image ui:field="trash" resource="{resources.empty_bin}" addStyleNames="{style.trash}"/>
+	</g:AbsolutePanel>
+</ui:UiBinder> 

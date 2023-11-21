@@ -1,0 +1,11 @@
+<RepositoryConnections>    
+    <Connection>
+        <name>local</name>
+        <description></description>
+        <host>http://localhost:8080/BIRepository</host>
+        <username>system</username>
+        <password>system</password>
+        <groupId>1</groupId>
+    </Connection>
+  
+</RepositoryConnections>

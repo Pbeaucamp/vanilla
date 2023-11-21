@@ -1,0 +1,8 @@
+<graph caption="" xAxisName="" yAxisName="" decimalPrecision="0" formatNumberScale="0">
+<categories font="Arial" fontSize="11" fontColor="000000">
+<category name="All  time"/>
+</categories>
+<dataset seriesname="UNITS_SHIPPED" color="ff0000">
+<set value="365616.0"/>
+</dataset>
+</graph>

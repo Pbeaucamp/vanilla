@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.faweb.client.images.FaWebImage' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:with field='label' type='bpm.faweb.client.I18N.LabelsConstants' />
+	<ui:with field='commonsLabel' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.panelToolbar {
+			height: 43px;
+			width: 100%;
+			overflow: auto;
+		}
+		
+		.btnToolbar {
+		    height: 32px !important;
+		    width: 32px !important;
+		    padding: 4px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.separator {
+			border: 1px solid #000000;
+		    display: inline-block;
+		    height: 30px;
+		    margin-top: 6px;
+		    vertical-align: top;
+		    width: 0;
+		}
+		
+		.btnFloatRight {
+			float: right;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="imgOpenFull" resource="{commons.toolbar_vanilla_analysis_big_black_full_24}" title="{commonsLabel.OpenInAnalysis}" addStyleNames="{style.btnToolbar}"/>
+		<g:HTMLPanel ui:field="separatorOne" addStyleNames="{style.separator}"/>
+			<g:Image ui:field="imgRefresh" resource="{commons.refresh_24}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgSave" resource="{commons.viewer_report_history}" title="{label.SaveView}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgUpdate" resource="{commons.update}" title="{label.update}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgExport" resource="{commons.viewer_report_export}" title="{label.ExportAsDocument}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgShare" resource="{commons.share_24_black}" title="{commonsLabel.Share}" addStyleNames="{style.btnToolbar}"/>
+		<g:HTMLPanel ui:field="separatorTwo" addStyleNames="{style.separator}"/>
+			<g:Image ui:field="imgUndo" resource="{commons.undo_24}" title="{label.Undo}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgRedo" resource="{commons.redo_24}" title="{label.Redo}" addStyleNames="{style.btnToolbar}"/>
+		<g:HTMLPanel ui:field="separatorThree" addStyleNames="{style.separator}"/>
+			<g:Image ui:field="imgProjection" resource="{resources.projection_24}" title="Projection" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgDash" resource="{resources.creer_dashboard_24}" title="{label.CreateDashboard}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgSnapshot" resource="{resources.snapshot_24}" title="{label.CreateSnapshot}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgListSnapshot" resource="{resources.snapshot_sauver_24}" title="{label.ListSnapshot}" addStyleNames="{style.btnToolbar}"/>
+		<g:HTMLPanel ui:field="separatorFour" addStyleNames="{style.separator}"/>
+			<g:Image ui:field="imgSwap" resource="{commons.analysis_swap_24}" title="{label.SwapAxes}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgPercent" resource="{resources.pourcentage_24}" title="{label.PercentToolBar}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgSort" resource="{resources.sort_24}" title="Tri" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgFilters" resource="{resources.filtre_24}" title="{label.addFilter}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgPrompts" resource="{resources.prompt_24}" title="{label.AddPrompt}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgDel" resource="{commons.delete_24}" title="{label.del}" addStyleNames="{style.btnToolbar}"/>
+<!-- 			<g:Image ui:field="imgDrill" resource="{resources.drill_24}" title="{label.DrillCubeReport}" addStyleNames="{style.btnToolbar}"/> -->
+			<g:Image ui:field="imgMdx" resource="{resources.mdx_24}" title="{label.MDX}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgOnOff" resource="{resources.on_24}" title="{label.Off}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgTotal" resource="{resources.totaux_afficher_24}" title="{label.HideTotals}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgNull" resource="{resources.null_afficher_24}" title="{label.HideNull}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgProperties" resource="{resources.proprietes_cacher_24}" title="{label.ShowProperties}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgAddCol" resource="{resources.ajouter_colonne_24}" title="{label.addCol}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgAddRow" resource="{resources.ajouter_ligne_24}" title="{label.addRow}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgSearch" resource="{resources.rechercher_dimension_24}" title="{label.SearchDim}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgCalculator" resource="{resources.calculatrice_desactiver_24}" title="{label.EnableCalculator}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgSum" resource="{resources.plus_24}" title="{label.Sum}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgDiff" resource="{resources.moins_24}" title="{label.Diff}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgDiv" resource="{resources.diviser_24}" title="{label.Div}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgMulti" resource="{resources.multiplier_24}" title="{label.Multi}" addStyleNames="{style.btnToolbar}"/>
+			
+			<g:Image ui:field="btnComment" resource="{commons.viewer_comment}" title="{commonsLabel.Comments}" addStyleNames="{style.btnToolbar},{style.btnFloatRight}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

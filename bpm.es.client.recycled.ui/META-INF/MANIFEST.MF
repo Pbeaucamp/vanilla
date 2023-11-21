@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.es.client.recycled.ui
+Bundle-SymbolicName: bpm.es.client.recycled.ui;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.es.recycled.ui.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.vanilla.platform.core;bundle-version="4.1.0",
+ bpm.vanilla.platform.core.remote;bundle-version="4.1.0",
+ bpm.es.client;bundle-version="4.4.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: BPM-Conseil
+Bundle-ClassPath: .

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Freeanalysis.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Servlets -->
+	<servlet>
+		<servlet-name>faWebService</servlet-name>
+		<servlet-class>bpm.faweb.server.FaWebServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>faWebService</servlet-name>
+		<url-pattern>/FreeAnalysisWeb/faWebService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>exportServlet</servlet-name>    
+		<servlet-class>bpm.faweb.server.tools.ExportServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>exportServlet</servlet-name>    
+		<url-pattern>/exportServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FdGeneratorServlet</servlet-name>
+		<servlet-class>bpm.faweb.server.tools.FdGeneratorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FdGeneratorServlet</servlet-name>
+		<url-pattern>/FdGeneratorServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ReportServlet</servlet-name>
+		<servlet-class>bpm.faweb.server.ReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportServlet</servlet-name>
+		<url-pattern>/ReportServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>  
+		<servlet-name>cssHelper</servlet-name>  
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>  
+		<servlet-name>cssHelper</servlet-name>  
+		<url-pattern>/cssHelper</url-pattern>  
+	</servlet-mapping>
+	
+  	<servlet>    
+		<servlet-name>loginService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>loginService</servlet-name>    
+		<url-pattern>/FreeAnalysisWeb/loginService</url-pattern>  
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>commonService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>commonService</servlet-name>    
+		<url-pattern>/FreeAnalysisWeb/commonService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.DownloadStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<url-pattern>/DownloadStreamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PreviewReport</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.report.PreviewReportServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>PreviewReport</servlet-name>
+		<url-pattern>/FreeAnalysisWeb/PreviewReport</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReportingService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.ReportingServiceImpl</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ReportingService</servlet-name>
+		<url-pattern>/FreeAnalysisWeb/ReportingService</url-pattern>
+	</servlet-mapping>
+
+</web-app>

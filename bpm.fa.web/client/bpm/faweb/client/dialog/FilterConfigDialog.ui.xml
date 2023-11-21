@@ -1,0 +1,89 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.btnPanel {
+			margin: auto;	
+			margin-top: 15px;
+		}
+		
+		.btnPanel img {
+			margin-left: 10px;
+		}
+		
+		.lblInfos {
+			width: 80px;	
+		}
+		
+		.txtInfos {
+			width: 410px;	
+		}
+		
+		.txtSearch {
+			width: 150px;	
+		}
+		
+		.lstBox {
+			width: 245px;
+			height: 110px;
+			margin: 5px;
+			font-size: 8px;	
+		}
+		
+		.panMargins {
+			margin-top: 10px;	
+		}
+		
+		.addDelPanel {
+			margin-top: 40px;
+		}
+		
+		.delButton {
+			margin-top: 5px;	
+		}
+		
+		.imgSearch {
+			margin-left: 5px;	
+			cursor: pointer;
+		}
+		
+		.panelContent {
+			margin: 5px;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="contentPanel" addStyleNames="{style.panelContent}">
+		<g:HorizontalPanel styleName="{style.panMargins}">
+			<g:Label ui:field="lblName" styleName="{style.lblInfos}"></g:Label>
+			<g:TextBox ui:field="txtName" styleName="{style.txtInfos}"></g:TextBox>
+		</g:HorizontalPanel>
+		<g:HorizontalPanel styleName="{style.panMargins}">
+			<g:Label ui:field="lblComment" styleName="{style.lblInfos}"></g:Label>
+			<g:TextBox ui:field="txtComment" styleName="{style.txtInfos}"></g:TextBox>
+		</g:HorizontalPanel>
+		
+		<g:HTMLPanel styleName="{style.panMargins}">
+			<g:Label ui:field="lblSearch"></g:Label>
+			<g:HorizontalPanel styleName="{style.panMargins}">
+				<g:TextBox ui:field="txtSearch" styleName="{style.txtSearch}"></g:TextBox>
+				<g:Image ui:field="btnSearch" styleName="{style.imgSearch}"></g:Image>
+			</g:HorizontalPanel>
+		</g:HTMLPanel>
+	
+		<g:HorizontalPanel styleName="{style.panMargins}">
+			<g:HTMLPanel>
+				<g:Label ui:field="lblSearchResults"></g:Label>
+				<g:ListBox ui:field="lstSearch" styleName="{style.lstBox}" multipleSelect="true"></g:ListBox>
+			</g:HTMLPanel>
+			
+			<g:VerticalPanel styleName="{style.addDelPanel}">
+				<g:Button ui:field="btnAdd" styleName="{style.delButton}"></g:Button>
+				<g:Button ui:field="btnDel" styleName="{style.delButton}"></g:Button>
+			</g:VerticalPanel>
+			
+			<g:HTMLPanel>
+				<g:Label ui:field="lblFilter"></g:Label>
+				<g:ListBox ui:field="lstFilter" styleName="{style.lstBox}" multipleSelect="true"></g:ListBox>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

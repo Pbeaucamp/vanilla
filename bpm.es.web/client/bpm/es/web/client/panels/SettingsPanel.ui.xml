@@ -1,0 +1,91 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='labels' type='bpm.es.web.client.I18N.Labels' />
+	
+	<ui:style>
+		.main {
+			background: white;
+		}
+	
+		.content {
+		    bottom: 60px;
+		    overflow: auto;
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		}
+		
+		.section {
+		}
+		
+		.sectionContent {
+			width: 80%;
+			margin: auto;
+		}
+		
+		.item {
+			margin: 10px;
+			width: 90%;
+		}
+		
+		.buttons {
+		    bottom: 0px;
+		    position: absolute;
+		    width: 100%;
+		}
+		
+		.buttonsContent {
+		    border-top: 1px solid #D3D3D3;
+		}
+		
+		.rightAlign {
+			float: right;
+			margin-right: 50px;
+			margin-bottom: 10px;
+    		margin-top: 10px;
+		}
+		
+		.button {
+			color: #4285f4;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.main}">
+		<div class="{style.content}">
+			<!-- <my:SectionPanel text="{labels.GeneralOptions}" addStyleNames="{style.section}">
+				
+			</my:SectionPanel> -->
+			<my:SectionPanel text="{labels.AccountOptions}" addStyleNames="{style.section}">
+				<g:HTMLPanel addStyleNames="{style.sectionContent}">
+					<my:LabelValueTextBox ui:field="txtMaxInactivityDelay" placeHolder="{labels.MaxInactivityDelay}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtNumberOfTryAllowed" placeHolder="{labels.NumberOfTryAllowed}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtInactivationDelay" placeHolder="{labels.InactivationDelay}" addStyleNames="{style.item}"/>
+					<my:CustomCheckbox ui:field="checkSendEmailIfTooManyTry" text="{labels.SendEmailIfTooManyTry}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtURLFirstLoginValidity" placeHolder="{labels.URLFirstLoginValidity}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtURLChangePasswordValidity" placeHolder="{labels.URLChangePasswordValidity}" addStyleNames="{style.item}"/>
+					<my:CustomCheckbox ui:field="checkNeedAdminValidationToChangePassword" text="{labels.NeedAdminValidationToChangePassword}" addStyleNames="{style.item}"/>
+				</g:HTMLPanel>
+			</my:SectionPanel>
+			<my:SectionPanel text="{labels.PasswordOptions}" addStyleNames="{style.section}">
+				<g:HTMLPanel addStyleNames="{style.sectionContent}">
+					<my:LabelValueTextBox ui:field="txtChangePasswordDelay" placeHolder="{labels.ChangePasswordDelay}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtMinCharPassword" placeHolder="{labels.MinPasswordLenght}" addStyleNames="{style.item}"/>
+					<my:LabelValueTextBox ui:field="txtMinNumberInPassword" placeHolder="{labels.MinNumberOfFigureInPassword}" addStyleNames="{style.item}"/>
+					<my:LabelTextArea ui:field="txtFailedConnection" placeHolder="{labels.FailedConnectionMessage}" addStyleNames="{style.item}"/>
+					<my:CustomCheckbox ui:field="checkWebKeyboard" text="{labels.UseWebKeyboard}" addStyleNames="{style.item}"/>
+					<my:CustomCheckbox ui:field="checkOTP" text="{labels.UseOTP}" addStyleNames="{style.item}"/>
+				</g:HTMLPanel>
+			</my:SectionPanel>
+		</div>
+    	<div class="{style.buttons}">
+    		<div class="{style.buttonsContent}">
+    			<div class="{style.rightAlign}">
+					<my:CustomButton ui:field="btnCancel" text="{labels.Cancel}"/>
+		       		<my:CustomButton ui:field="btnConfirm" text="{labels.SaveSettings}" addStyleNames="{style.button}"/>
+	       		</div>
+    		</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

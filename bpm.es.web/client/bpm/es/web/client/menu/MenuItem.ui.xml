@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style type="bpm.es.web.client.menu.MenuItem.MyStyle">
+		.menuItem {
+		    cursor: pointer;
+		    height: 40px;
+		    line-height: 40px;
+		    width: 100%;
+		    border-bottom: 1px solid lightgrey;
+		}
+		
+		.menuItem:HOVER {
+			color: #E10203;
+		}
+		
+		.menuItemSelected {
+			background: #FD2C2C;
+			color: white;
+		}
+		
+		.menuItemSelected:HOVER {
+			color: black;
+		}
+		
+		.menuSubItemSelected {
+			background: #FF6D6D;
+			color: white;
+		}
+		
+		.menuSubItemSelected:HOVER {
+			color: black;
+		}
+		
+		.img {
+		    display: inline-block;
+		    margin-left: 15px;
+		    margin-top: 8px;
+		    vertical-align: top;
+		}
+	
+		.lbl {
+		    display: inline-block;
+		    margin-left: 15px;
+		    vertical-align: top;
+		}
+		
+		.subLbl {
+		    display: inline-block;
+		    margin-left: 40px;
+		    vertical-align: top;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:FocusPanel ui:field="item" addStyleNames="{style.menuItem}">
+			<g:HTMLPanel>
+				<g:Image ui:field="img" addStyleNames="{style.img}"/>
+				<g:Label ui:field="lbl" addStyleNames="{style.lbl}"/>
+			</g:HTMLPanel>
+		</g:FocusPanel>
+		<g:HTMLPanel ui:field="childsPanel" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		@external legendPanel;
+		.legendPanel{
+			z-index: 2;
+			width: 200px;
+			border: 2px solid #E7E7E7;
+			border-radius: 10px;
+			padding: 20px;
+		}
+		.fields{
+			padding: 5px;
+			width: 100%;
+			margin-top: 10px;
+		}
+		.button{
+			float: right;
+			margin-top: 10px;
+		}
+		.colorPickerPanel{}
+		.txtName{}
+		.txtMin{}
+		.txtMax{}
+		.btnCancel{}
+		.btnSave{}
+		.panel{
+			padding: 35px;
+			background: rgba(255,255,255,0.9);
+			border-radius: 30px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:FocusPanel ui:field="colorPickerPanel" addStyleNames="{style.colorPickerPanel}"/>
+		<g:TextBox ui:field="txtName" addStyleNames="{style.txtName} {style.fields}"/>
+		<g:TextBox ui:field="txtMin" addStyleNames="{style.txtMin} {style.fields}" />
+		<g:TextBox ui:field="txtMax" addStyleNames="{style.txtMax} {style.fields}"/>
+		<g:Button ui:field="btnCancel" text="Cancel" addStyleNames="{style.btnCancel} {style.button}"/>
+		<g:Button ui:field="btnSave" text="Save" addStyleNames="{style.btnSave} {style.button}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

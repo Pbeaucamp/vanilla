@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.es.sessionmanager.views.ActiveSessions"
+            id="bpm.enterpriseservices.sessionmanager.views.ActivesSessions"
+            name="%view.sessionactive.name"
+            restorable="true">
+      </view>         
+      <view
+            class="bpm.es.sessionmanager.views.SessionView"
+            id="bpm.es.sessionmanager.views.SessionView"
+            name="%view.sessionmanager.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.es.sessionmanager.perspectives.SessionPerspective"
+            icon="src/bpm/es/sessionmanager/icons/karm.png"
+            id="bpm.es.sessionmanager.perspectives.SessionPerspective"
+            name="%perspective.name">
+         <description>
+         	%perspective.description
+         </description>
+      </perspective>
+   </extension>
+
+</plugin>

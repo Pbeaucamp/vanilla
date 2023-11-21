@@ -1,0 +1,552 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>AnimatedBaseLayouter.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptComment">/* 
+ * The MIT License
+ *
+ * Copyright (c) 2007 The SixDegrees Project Team
+ * (Jason Bellone, Juan Rodriguez, Segolene de Basquiat, Daniel Lang).
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
+<span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">layout</span> <span class="ActionScriptBracket/Brace">{</span>
+
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">events</span>.<span class="ActionScriptDefault_Text">TimerEvent</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">geom</span>.<span class="ActionScriptDefault_Text">Point</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Dictionary</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Timer</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">data</span>.<span class="ActionScriptDefault_Text">INode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualGraph</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">graphLayout</span>.<span class="ActionScriptDefault_Text">visual</span>.<span class="ActionScriptDefault_Text">IVisualNode</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">Geometry</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">GraphicUtils</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">org</span>.<span class="ActionScriptDefault_Text">un</span>.<span class="ActionScriptDefault_Text">cava</span>.<span class="ActionScriptDefault_Text">birdeye</span>.<span class="ActionScriptDefault_Text">ravis</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">LogUtil</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * This subclass to the BaseLayouter encapsulates the methods
+     * for animation, since they are typically common in layouters.
+     * */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">AnimatedBaseLayouter</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">BaseLayouter</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">ILayoutAlgorithm</span> <span class="ActionScriptBracket/Brace">{</span>
+
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_LOG</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptString">&quot;graphLayout.layout.AnimatedBaseLayouter&quot;</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * constant to define the radial animation type, which
+         * interpolates node&apos;s polar coordinates.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ANIM_RADIAL</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 1;
+        
+        <span class="ActionScriptASDoc">/**
+         * constant to define the radial animation type, which
+         * interpolates node&apos;s polar coordinates.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ANIM_STRAIGHT</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 2;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The amount of interpolation steps for the animation.
+         * 100 seems reasonable. The interpolation will be 
+         * broken into exactly that amount of steps.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 50;
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * The timing of the animation steps is done using the arctan()
+         * function, to achieve a slow-in-slow-out effect. The input to the
+         * arctan() function is a range of the negative of this value
+         * to the positive of this value. The larger the interval, the
+         * longer the slow-in and slow-out part of the animation.
+         * We keep it rather short.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_ANIMATIONTIMINGINTERVALSIZE</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span> <span class="ActionScriptOperator">=</span> 10; <span class="ActionScriptComment">// -4 ; 4
+</span>        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This is the maximum timer delay for each animation step.
+         * The animation steps will be timed between 0 ms
+         * and this value in ms. This value will be multiplied with the
+         * result of the current steps fraction of the timing interval
+         * (see above) to trigger the next animation step
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">_MAXANIMTIMERDELAY</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 100;
+
+        <span class="ActionScriptASDoc">/**
+         * Indicator if there is currently an animation in progress
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_animInProgress</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_animationType</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">ANIM_RADIAL</span>;
+
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * the current step in the animation cycle */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_animStep</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>; 
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * timer object for the animation */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_animTimer</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Timer</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * this holds the data for a layout drawing.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_currentDrawing</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">BaseLayoutDrawing</span>;
+        
+        <span class="ActionScriptASDoc">/**
+         * The constructor initializes the layouter and may assign
+         * already a VisualGraph object, but this can also be set later.
+         * @param vg The VisualGraph object on which this layouter should work on.
+         * */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">AnimatedBaseLayouter</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualGraph</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vg</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptDefault_Text">_animInProgress</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">animInProgress</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_animInProgress</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">resetAll</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptDefault_Text">killTimer</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * @inheritDoc
+         * */</span>
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">currentDrawing</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">dr</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">BaseLayoutDrawing</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">dr</span>;
+            
+            <span class="ActionScriptComment">/* also set in the super class */</span>
+            <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">currentDrawing</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">dr</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+
+        <span class="ActionScriptASDoc">/**
+         * Access to the type of animation, currently supported
+         * type is:
+         * ANIM_RADIAL which does interpolation of polar coordinates and
+         * ANIM_STRAIGHT which interpolates cartesian coordinates.
+         * @param type ANIM RADIAL or ANIM_STRAIGHT
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">animationType</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">type</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">_animationType</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">type</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This method kills any currently running timers
+         * which is needed if some data is going to be
+         * reinitialised. Remaining timer events could trigger
+         * code referring to stale data and crash the program
+         * otherwise.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">killTimer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_animTimer</span> <span class="ActionScriptOperator">!=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;timer killed&quot;);
+</span>                <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">stop</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">reset</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptComment">//_animTimer = null;
+</span>            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Reset/Reinitialise animation related variables.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">resetAnimation</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">/* reset animation cycle */</span>
+            <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">=</span> 0;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * This method starts the animation according
+         * to the preset type in the _animationType
+         * variable. Currently only valid type is
+         * &quot;RADIAL&quot; which animates by interpolating
+         * polar coordinates. Other types like &quot;LINEAR&quot;
+         * (interpolating cartesian coordinates) may be
+         * added.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">startAnimation</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">cyclefinished</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+            
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">_disableAnimation</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+            
+                <span class="ActionScriptComment">/* indicate an animation in progress */</span>
+                <span class="ActionScriptDefault_Text">_animInProgress</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+                 
+                <span class="ActionScriptReserved">switch</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_animationType</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ANIM_RADIAL</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">interpolatePolarCoords</span><span class="ActionScriptBracket/Brace">()</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ANIM_STRAIGHT</span><span class="ActionScriptOperator">:</span>    
+                        <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">interpolateCartCoords</span><span class="ActionScriptBracket/Brace">()</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                    <span class="ActionScriptReserved">default</span><span class="ActionScriptOperator">:</span>
+                        <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">warn</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Illegal animation Type, default to ANIM_RADIAL&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                        <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">interpolatePolarCoords</span><span class="ActionScriptBracket/Brace">()</span>;
+                        <span class="ActionScriptReserved">break</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">setCoords</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+            <span class="ActionScriptComment">/* make sure the edges are redrawn */</span>
+            <span class="ActionScriptDefault_Text">_layoutChanged</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>;
+            <span class="ActionScriptComment">//_vgraph.dispatchEvent(new MouseEvent(&quot;forceRedrawEvent&quot;));
+</span>            <span class="ActionScriptComment">//_vgraph.invalidateDisplayList();
+</span>            <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">redrawEdges</span><span class="ActionScriptBracket/Brace">()</span>;
+
+            <span class="ActionScriptComment">/* check if we ran out of anim cycles, but are not finished */</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">cyclefinished</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Achieved final node positions, terminating animation...&quot;);
+</span>                <span class="ActionScriptDefault_Text">_animInProgress</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">&gt;=</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">LogUtil</span>.<span class="ActionScriptDefault_Text">info</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_LOG</span>, <span class="ActionScriptString">&quot;Exceeded animation steps, setting nodes to final positions...&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">applyTargetToNodes</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">_animInProgress</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptOperator">++</span><span class="ActionScriptDefault_Text">_animStep</span>;
+                <span class="ActionScriptDefault_Text">startAnimTimer</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptASDoc">/**
+         * Interpolates the target Polar coordinates with the current real coordinates
+         * achieving a smooth animation.
+         * 
+         * This method always executes only one step as part of the animation.
+         * For each node, it&apos;s current coordinates are requested (and translated
+         * into the relative polar coordinates. From the drawing object, the target
+         * coordinates are taken and divided by the remaining interpolation steps.
+         * With that the coordinates of the current interpolation step can be
+         * calculated, which are subsequently directly applied to the node.
+         * The method then checks if the animation target coordinates have been
+         * reached. If not, and there are no more animation steps left, the
+         * actual target coordinates are applied.
+         * If there are animation steps left, a timer is started to call
+         * the same function again for the next animation step.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">interpolatePolarCoords</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">currRadius</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">currPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">targetRadius</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">targetPhi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">deltaRadius</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">deltaPhi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">stepRadius</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">stepPhi</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">stepPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">cyclefinished</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+            
+            <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>; <span class="ActionScriptComment">// init to true, if any one node is not target, will be set to false
+</span>            
+            <span class="ActionScriptComment">/* careful for invisible nodes, the values are not
+             * calculated (obviously), so we need to make sure
+             * to exclude them */</span>
+            <span class="ActionScriptDefault_Text">visVNodes</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">/* should be visible otherwise somethings wrong */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;received invisible vnode from list of visible vnodes&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">n</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">node</span>;
+
+                <span class="ActionScriptComment">/* get relative target coordinates in polar form */</span>
+                <span class="ActionScriptDefault_Text">targetRadius</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPolarR</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getPolarPhi</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* when we get the current values, we have to make sure
+                 * that we convert the coordinates into relative ones,
+                 * i.e. we need to subtract the origin */</span>
+                <span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">refresh</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">subtract</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">subtract</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">currRadius</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">polarRadius</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">currPoint</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">currPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">polarAngleDeg</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">currPoint</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* not sure if this really fixes the animation end cycle ... */</span>
+                <span class="ActionScriptDefault_Text">deltaRadius</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetRadius</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currRadius</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span>;
+
+                <span class="ActionScriptComment">/* New logic for interpolating polar angles
+                 * Take the minimum angle to the final position */</span>
+                
+                <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptBracket/Brace">(</span>360 <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">deltaPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span>;
+                <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span> <span class="ActionScriptComment">// difference b/w initial and final angles more than 180 degrees
+</span>                    <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">&lt;</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                        <span class="ActionScriptComment">//crossing over from a very large angle to a very small angle
+</span>                        <span class="ActionScriptDefault_Text">deltaPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span>360 <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPhi</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span>;
+                    <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span> 
+                        <span class="ActionScriptComment">//crossing over from a very small angle to a very large angle
+</span>                        <span class="ActionScriptDefault_Text">deltaPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPhi</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPhi</span> <span class="ActionScriptOperator">-</span> 360<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span>;
+                    <span class="ActionScriptBracket/Brace">}</span>
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* calculate the intermediate coordinates */</span>
+                <span class="ActionScriptDefault_Text">stepRadius</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currRadius</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">deltaRadius</span>;
+                <span class="ActionScriptDefault_Text">stepPhi</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPhi</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">deltaPhi</span>;
+                
+                <span class="ActionScriptComment">/* check if we are already done or not */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">GraphicUtils</span>.<span class="ActionScriptDefault_Text">equal</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">currPoint</span>, <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/* we cannot set the coordinates in the _currentDrawing,
+                 * as we store our target coordinates there,
+                 * we need to set them directly in the vnode */</span>
+                <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Geometry</span>.<span class="ActionScriptDefault_Text">cartFromPolarDeg</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">stepRadius</span>,<span class="ActionScriptDefault_Text">stepPhi</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* adjust the origin */</span>
+                <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* here we may need to add the center offset */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptComment">/*
+                LogUtil.debug(_LOG, &quot;interpolating node:&quot;+n.id+&quot; cP:&quot;+currPoint.toString()+&quot; cr:&quot;+currRadius+&quot; cp:&quot;+currPhi+
+                    &quot; tr:&quot;+targetRadius+&quot; tp:&quot;+targetPhi+&quot; sP:&quot;+stepPoint.toString()+&quot; sr:&quot;+stepRadius+
+                    &quot; sp:&quot;+stepPhi); 
+                */</span>
+                
+                <span class="ActionScriptComment">/* set into the vnode */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">x</span>;
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">y</span>;
+                
+                <span class="ActionScriptComment">/* commit, i.e. move the node */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">commit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">cyclefinished</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Interpolates the target coordinates with the current real coordinates
+         * achieving a smooth animation.
+         * It works in the same way as interpolatePolarCoords() but
+         * uses cartesian coordinates.
+         * @see interpolatePolarCoords()
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">interpolateCartCoords</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">currPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">deltaPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">stepPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">targetPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">cyclefinished</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span>;
+            
+            <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">true</span>; <span class="ActionScriptComment">// init to true, if any one node is not target, will be set to false
+</span>            
+            <span class="ActionScriptComment">/* careful for invisible nodes, the values are not
+             * calculated (obviously), so we need to make sure
+             * to exclude them */</span>
+            <span class="ActionScriptDefault_Text">visVNodes</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">/* should be visible otherwise somethings wrong */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;received invisible vnode from list of visible vnodes&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">n</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">node</span>;
+
+                <span class="ActionScriptComment">/* get relative target coordinates in cartesian form */</span>
+                <span class="ActionScriptDefault_Text">targetPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+
+                <span class="ActionScriptComment">/* when we get the current values, we have to make sure
+                 * that we convert the coordinates into relative ones,
+                 * i.e. we need to subtract the origin */</span>
+                <span class="ActionScriptDefault_Text">n</span>.<span class="ActionScriptDefault_Text">vnode</span>.<span class="ActionScriptDefault_Text">refresh</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">x</span>, <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">subtract</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">currPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">subtract</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+
+                <span class="ActionScriptComment">/* check if we are already done or not */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">GraphicUtils</span>.<span class="ActionScriptDefault_Text">equal</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">currPoint</span>, <span class="ActionScriptDefault_Text">targetPoint</span><span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">cyclefinished</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+
+                <span class="ActionScriptDefault_Text">deltaPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Point</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">x</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span>,
+                    <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">y</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">currPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">deltaPoint</span><span class="ActionScriptBracket/Brace">)</span>;
+                                
+                <span class="ActionScriptComment">/* adjust the origin */</span>
+                <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* here we may need to add the center offset */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">stepPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                                
+                <span class="ActionScriptComment">/* set into the vnode */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">x</span>;
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">stepPoint</span>.<span class="ActionScriptDefault_Text">y</span>;
+                
+                <span class="ActionScriptComment">/* commit, i.e. move the node */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">commit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">cyclefinished</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * Directly sets the target coordinates not animating anything.
+         * Will be used if the disableAnimation flag is set.
+         * */</span>
+        <span class="ActionScriptReserved">protected</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">setCoords</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Dictionary</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">vn</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">IVisualNode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">n</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">INode</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">targetPoint</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Point</span>;
+            
+
+            <span class="ActionScriptComment">/* careful for invisible nodes, the values are not
+             * calculated (obviously), so we need to make sure
+             * to exclude them */</span>
+            <span class="ActionScriptDefault_Text">visVNodes</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_vgraph</span>.<span class="ActionScriptDefault_Text">visibleVNodes</span>;
+            <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">vn</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">visVNodes</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+                <span class="ActionScriptComment">/* should be visible otherwise somethings wrong */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(!</span><span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">isVisible</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptReserved">throw</span> <span class="ActionScriptDefault_Text">Error</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;received invisible vnode from list of visible vnodes&quot;</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                
+                <span class="ActionScriptDefault_Text">n</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">node</span>;
+
+                <span class="ActionScriptComment">/* get relative target coordinates in cartesian form */</span>
+                <span class="ActionScriptDefault_Text">targetPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">getRelCartCoordinates</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">n</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* adjust the origin */</span>
+                <span class="ActionScriptDefault_Text">targetPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">originOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                
+                <span class="ActionScriptComment">/* here we may need to add the center offset */</span>
+                <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centeredLayout</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                    <span class="ActionScriptDefault_Text">targetPoint</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">add</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_currentDrawing</span>.<span class="ActionScriptDefault_Text">centerOffset</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptBracket/Brace">}</span>
+                                
+                <span class="ActionScriptComment">/* set into the vnode */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">x</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">x</span>;
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">y</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">targetPoint</span>.<span class="ActionScriptDefault_Text">y</span>;
+                
+                <span class="ActionScriptComment">/* commit, i.e. move the node */</span>
+                <span class="ActionScriptDefault_Text">vn</span>.<span class="ActionScriptDefault_Text">commit</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">true</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * This calculates the timer delay for a slow-in / slow-out
+         * animation in each animation step.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">startAnimTimer</span><span class="ActionScriptBracket/Brace">()</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">timerdelay</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">factor</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">signedAnimStep</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">int</span>;
+            <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">factorinput</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">Number</span>;
+                
+            <span class="ActionScriptComment">/* modify the current animation step to range from -/+ around 0 */</span>
+            <span class="ActionScriptDefault_Text">signedAnimStep</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_animStep</span> <span class="ActionScriptOperator">-</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">)</span>; <span class="ActionScriptComment">// so we should be at 0 at the middle
+</span>
+            <span class="ActionScriptComment">/* this is the input into into the atan() function, which depends on the
+             * timing interval and the current signed animation step */</span>
+            <span class="ActionScriptDefault_Text">factorinput</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_ANIMATIONTIMINGINTERVALSIZE</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">signedAnimStep</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptDefault_Text">_ANIMATIONSTEPS</span><span class="ActionScriptBracket/Brace">)</span>;            
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;factor input:&quot;+factorinput);
+</span>            
+            <span class="ActionScriptComment">/* calculate the timing factor using the atan() function
+             * since we take the absolute value, 
+             * its range goes from PI / 2 to 0 back to PI / 2 */</span>
+            <span class="ActionScriptDefault_Text">factor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">abs</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">atan</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">factorinput</span><span class="ActionScriptBracket/Brace">))</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;factor fraction of PI:&quot;+(factor / Math.PI));
+</span>            
+            <span class="ActionScriptComment">/* now the delay for our timer is now the factors fraction
+             * of PI/2 times the maximum timer delay, i.e. the full timer
+             * delay if the factor has a value of PI / 2 */</span>
+            <span class="ActionScriptDefault_Text">timerdelay</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">factor</span> <span class="ActionScriptOperator">/</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">Math</span>.<span class="ActionScriptDefault_Text">PI</span> <span class="ActionScriptOperator">/</span> 2<span class="ActionScriptBracket/Brace">))</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptDefault_Text">_MAXANIMTIMERDELAY</span>;
+            
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Setting timerdelay to:&quot;+timerdelay+&quot; milliseconds in step:&quot;+_animStep);
+</span>            
+            <span class="ActionScriptComment">/* now creating the new timer with the specified delay
+             * and ask for one execution, then the event handler will be
+             * called, which does nothing except to call the interpolation
+             * method again */</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_animTimer</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_animTimer</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">Timer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">timerdelay</span>, 1<span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">addEventListener</span><span class="ActionScriptBracket/Brace">(T</span><span class="ActionScriptDefault_Text">imerEvent</span>.<span class="ActionScriptDefault_Text">TIMER_COMPLETE</span>, <span class="ActionScriptDefault_Text">animTimerFired</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span> <span class="ActionScriptReserved">else</span> <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">stop</span><span class="ActionScriptBracket/Brace">()</span>;
+                <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">timerdelay</span> <span class="ActionScriptOperator">&gt;</span> 0<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">delay</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">timerdelay</span>;
+                <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">reset</span><span class="ActionScriptBracket/Brace">()</span>;                
+            <span class="ActionScriptBracket/Brace">}</span>
+            <span class="ActionScriptDefault_Text">_animTimer</span>.<span class="ActionScriptDefault_Text">start</span><span class="ActionScriptBracket/Brace">()</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptASDoc">/**
+         * @internal
+         * Event handler when the timer fired, just calls the
+         * interpolation function again to do another animation
+         * cycle.
+         * @param event The fired timer event, will be ignored anyway.
+         * */</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">animTimerFired</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">event</span><span class="ActionScriptOperator">:</span><span class="ActionScriptDefault_Text">TimerEvent</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">null</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptOperator">:</span><span class="ActionScriptReserved">void</span> <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptComment">//LogUtil.debug(_LOG, &quot;Timer fired!&quot;);
+</span>            <span class="ActionScriptDefault_Text">startAnimation</span><span class="ActionScriptBracket/Brace">()</span>;
+            <span class="ActionScriptComment">//event.updateAfterEvent();
+</span>        <span class="ActionScriptBracket/Brace">}</span>
+        
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

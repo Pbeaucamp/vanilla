@@ -1,0 +1,112 @@
+package bpm.faweb.client.images;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.ImageResource;
+
+public interface FaWebImage extends ClientBundle  {
+	
+	public static final FaWebImage INSTANCE =  GWT.create(FaWebImage.class);
+	
+	ImageResource empty_bin64();
+	ImageResource full_bin();
+	ImageResource full_bin64();
+	ImageResource empty_bin();
+	ImageResource open_view();
+	ImageResource save_failure();
+	ImageResource save_sucess();
+	ImageResource cube();
+	ImageResource projection_16();
+	ImageResource treeitem();
+	ImageResource obj_file();
+	ImageResource SwapAxes();
+	ImageResource div();
+	ImageResource multi();
+	ImageResource rowcalc();
+	ImageResource folder();
+	ImageResource obj_folder();
+	ImageResource obj_measure();
+	ImageResource close();
+	ImageResource user_profile();
+	ImageResource logout();
+	ImageResource about_me();
+	ImageResource logout_w();
+	ImageResource theme_w();
+	ImageResource closeTabHover();
+	ImageResource ic_clear();
+	ImageResource vanilla_an_lettering_incrust_64();
+	ImageResource ic_dialog_close();
+	ImageResource view();
+	ImageResource Refresh_16();
+	ImageResource repository_24_b();
+	ImageResource searchsmall();
+	ImageResource css_v2_32();
+	
+	ImageResource Open();
+	ImageResource ajout_multiple_32();
+	ImageResource ajouter_colonne_24();
+	ImageResource ajouter_ligne_24();
+	ImageResource ajouter_projection_24();
+	ImageResource appliquer_24();
+	ImageResource calculatrice_activer_24();
+	ImageResource calculatrice_desactiver_24();
+	ImageResource carte_32();
+	ImageResource clear_filtre_24();
+	ImageResource creer_dashboard_24();
+	ImageResource diviser_24();
+	ImageResource drill_24();
+	ImageResource drilltrough_24();
+	ImageResource drilltrough_32();
+	ImageResource filtre_16();
+	ImageResource filtre_24();
+	ImageResource graphique_32();
+	ImageResource mdx_24();
+	ImageResource moins_24();
+	ImageResource multiplier_24();
+	ImageResource null_afficher_24();
+	ImageResource null_cacher_24();
+	ImageResource off_24();
+	ImageResource on_24();
+	ImageResource overview_32();
+	ImageResource plus_24();
+	ImageResource pourcentage_24();
+	ImageResource projection_24();
+	ImageResource projection_32();
+	ImageResource projection_comparer_24();
+	ImageResource prompt_24();
+	ImageResource proprietes_afficher_24();
+	ImageResource proprietes_cacher_24();
+	ImageResource rechercher_dimension_24();
+	ImageResource reporter_mode_32();
+	ImageResource snapshot_24();
+	ImageResource snapshot_sauver_24();
+	ImageResource totaux_afficher_24();
+	ImageResource totaux_cacher_24();
+	ImageResource toolbar_vanilla_analysis_gray();
+	
+	//To check
+	ImageResource add();
+	ImageResource del();
+	ImageResource colscalc();
+	ImageResource diff();
+	ImageResource create32();
+	ImageResource delete();
+	ImageResource dimension();
+	ImageResource barchart();
+	ImageResource piechart();
+	ImageResource fd();
+	ImageResource filterconfig();
+	ImageResource export();
+	ImageResource filterconfigadd();
+	ImageResource filterconfigdel();
+	ImageResource ic_preview();
+	ImageResource mdx();
+	ImageResource list_32();
+	ImageResource welcome();
+	ImageResource up();
+	ImageResource down();
+	
+	ImageResource sort_24();
+	ImageResource loading();
+	ImageResource ApplFASDWeb();
+}
