@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project basedir="." default="buildAllAklaboxWebapps" name="webapps_build">
+
+	<!-- Properties needed to build jars -->
+	
+	<property name="individualSourceBundles" value="true"/>
+	<property name="pluginPath" value="${myWorkspace}"/>
+	<property name="buildArea" value="${myWorkspace}/webapps_build/build"/>
+	<property name="topLevelElementType" value="plugin"/>
+	<property name="archivePrefix" value="eclipse"/>
+	<property name="collectingFolder" value="${archivePrefix}"/>
+	<property name="allowBinaryCycles" value="true"/>
+	<property name="buildDirectory" value="${myWorkspace}/webapps_build/build"/>
+	<property name="buildType" value="I"/>
+	<property name="timestamp" value="007"/>
+	<property name="base" value="${eclipseParentFolder}"/>
+	<property name="baseLocation" value="${eclipseFolder}"/>
+	<property name="baseos" value="win32"/>
+	<property name="basews" value="win32"/>
+	<property name="basearch" value="x86"/>
+	<property name="filteredDependencyCheck" value="false"/>
+	<property name="resolution.devMode" value="false"/>
+	<property name="skipBase" value="true"/>
+	<property name="eclipseBaseURL" value="${eclipseURL}/eclipse-platform-${eclipseBuildId}-win32.zip"/>
+	<property name="skipMaps" value="true"/>
+	<property name="skipFetch" value="true"/>
+	<property name="CDC-1.1/Foundation-1.1" value="${java.home}/lib/rt.jar"/>
+	<property name="JavaSE-1.7" value="${java.home}/lib/rt.jar"/>
+	<property name="logExtension" value=".log"/>
+	<property name="javacDebugInfo" value="true"/>
+	<property name="compilerArg" value="-g"/>
+	<property name="javacFailOnError" value="true"/>
+	<property name="javacVerbose" value="true"/>
+	<property name="baseLocation" value="${eclipse.home}"/>
+	<property name="base" value="${basedir}" />
+	<property name="builder" value="${basedir}" />
+	<property name="pluginPath" value="${eclipse.home}" />
+	<property name="buildTempFolder" value="${buildDirectory}" />
+	<property name="eclipseBaseURL" value="file:///${myWorkspace}/webapps_build" />
+	
+	<target name="Aklabox">
+		<ant antfile="build.xml" target="war" dir="../bpm.document.management.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.document.management.web"></ant>
+	</target>
+
+	<target name="AklaboxOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.document.management.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.document.management.web"></ant>
+	</target>
+	
+	<target name="Aklad">
+		<ant antfile="build.xml" target="war" dir="../bpm.aklabox.lad.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.lad.web"></ant>
+	</target>
+
+	<target name="AkladOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.aklabox.lad.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.lad.web"></ant>
+	</target>
+	
+	<target name="Aklademat">
+		<ant antfile="build.xml" target="war" dir="../bpm.aklabox.demat.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.demat.web"></ant>
+	</target>
+
+	<target name="AkladematOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.aklabox.demat.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.demat.web"></ant>
+	</target>
+	
+	<target name="Aklaflow">
+		<ant antfile="build.xml" target="war" dir="../bpm.aklabox.workflow.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.workflow.web"></ant>
+	</target>
+
+	<target name="AklaflowOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.aklabox.workflow.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.aklabox.workflow.web"></ant>
+	</target>
+	
+	<target name="AklaboxManager">
+		<ant antfile="build.xml" target="war" dir="../bpm.document.management.manager.web.shared"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.document.management.manager.web.shared"></ant>
+	</target>
+
+	<target name="AklaboxManagerOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.document.management.manager.web.shared"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.document.management.manager.web.shared"></ant>
+	</target>
+
+	<target name="VanillaHub">
+		<ant antfile="build.xml" target="war" dir="../bpm.vanillahub.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanillahub.web"></ant>
+	</target>
+
+	<target name="VanillaHubOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.vanillahub.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanillahub.web"></ant>
+	</target>
+	
+    <target name="buildAllAklaboxWebapps">
+    	<antcall target="Aklabox"></antcall>
+    	<antcall target="Aklad"></antcall>
+    	<antcall target="Aklademat"></antcall>
+    	<antcall target="Aklaflow"></antcall>
+    	<antcall target="AklaboxManager"></antcall>
+    	<antcall target="VanillaHub"></antcall>
+    </target>
+	
+	<target name="test">
+		<ant antfile="build.xml" target="libs" dir="./"></ant>
+	</target>
+</project>

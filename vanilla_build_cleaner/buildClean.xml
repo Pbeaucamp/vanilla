@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project default="clean">
+	<target name="clean">
+		<java jar="lib/bpm.vanilla.clean.jar"
+				fork="true"
+				failonerror="true"
+				maxmemory="128m">
+			<arg value="${myWorkspace}"/>
+			<classpath>
+				<pathelement location="lib/bpm.vanilla.clean.jar"/>
+				<pathelement path="CleanerVanilla"/>
+			</classpath>
+		</java>
+	</target>
+</project>

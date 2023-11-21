@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project basedir="." default="buildAllWebapps" name="webapps_build">
+
+	<!-- Properties needed to build jars -->
+	
+	<property name="individualSourceBundles" value="true"/>
+	<property name="pluginPath" value="${myWorkspace}"/>
+	<property name="buildArea" value="${myWorkspace}/webapps_build/build"/>
+	<property name="topLevelElementType" value="plugin"/>
+	<property name="archivePrefix" value="eclipse"/>
+	<property name="collectingFolder" value="${archivePrefix}"/>
+	<property name="allowBinaryCycles" value="true"/>
+	<property name="buildDirectory" value="${myWorkspace}/webapps_build/build"/>
+	<property name="buildType" value="I"/>
+	<property name="timestamp" value="007"/>
+	<property name="base" value="${eclipseParentFolder}"/>
+	<property name="baseLocation" value="${eclipseFolder}"/>
+	<property name="baseos" value="win32"/>
+	<property name="basews" value="win32"/>
+	<property name="basearch" value="x86"/>
+	<property name="filteredDependencyCheck" value="false"/>
+	<property name="resolution.devMode" value="false"/>
+	<property name="skipBase" value="true"/>
+	<property name="eclipseBaseURL" value="${eclipseURL}/eclipse-platform-${eclipseBuildId}-win32.zip"/>
+	<property name="skipMaps" value="true"/>
+	<property name="skipFetch" value="true"/>
+	<property name="CDC-1.1/Foundation-1.1" value="${java.home}/lib/rt.jar"/>
+	<property name="JavaSE-1.7" value="${java.home}/lib/rt.jar"/>
+	<property name="JavaSE-1.8" value="${java.home}/lib/rt.jar"/>
+	<property name="logExtension" value=".log"/>
+	<property name="javacDebugInfo" value="true"/>
+	<property name="compilerArg" value="-g"/>
+	<property name="javacFailOnError" value="true"/>
+	<property name="javacVerbose" value="true"/>
+	<property name="baseLocation" value="${eclipse.home}"/>
+	<property name="base" value="${basedir}" />
+	<property name="builder" value="${basedir}" />
+	<property name="pluginPath" value="${eclipse.home}" />
+	<property name="buildTempFolder" value="${buildDirectory}" />
+	<property name="eclipseBaseURL" value="file:///${myWorkspace}/webapps_build" />
+	
+	<target name="FMLoader">
+		<ant antfile="build.xml" target="war" dir="../bpm.fm.loader.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.loader.web"></ant>
+	</target>
+	
+	<target name="FMUser">
+		<ant antfile="build.xml" target="war" dir="../bpm.fm.reborn.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.reborn.web"></ant>
+	</target>
+	
+	<target name="FMDesigner">
+		<ant antfile="build.xml" target="war" dir="../bpm.fm.designer.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.designer.web"></ant>
+	</target>
+
+	<target name="FWR">
+		<ant antfile="build.xml" target="war" dir="../bpm.fwr"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fwr"></ant>
+	</target>
+
+	<target name="FAWeb">
+		<ant antfile="build.xml" target="war" dir="../bpm.fa.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fa.web"></ant>
+	</target>
+
+	<target name="Portal">
+		<ant antfile="build.xml" target="war" dir="../bpm.vanilla.portal"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanilla.portal"></ant>
+	</target>
+
+	<target name="VanillaHub">
+		<ant antfile="build.xml" target="war" dir="../bpm.vanillahub.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanillahub.web"></ant>
+	</target>
+
+	<target name="UpdateManager">
+		<ant antfile="build.xml" target="war" dir="../bpm.update.manager"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.update.manager"></ant>
+	</target>
+	
+	<target name="KpiMap">
+		<ant antfile="build.xml" target="war" dir="../bpm.map.viewer.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.map.viewer.web"></ant>
+	</target>
+	
+	<target name="VanillaMetadata">
+		<ant antfile="build.xml" target="war" dir="../bpm.metadata.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.metadata.web"></ant>
+	</target>
+	
+	<target name="VanillaDashboard">
+		<ant antfile="build.xml" target="war" dir="../bpm.fd.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fd.web"></ant>
+	</target>
+	
+	<target name="VanillaArchitect">
+		<ant antfile="build.xml" target="war" dir="../bpm.architect.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.architect.web"></ant>
+	</target>
+	
+	<target name="VanillaDataPreparation">
+		<ant antfile="build.xml" target="war" dir="../bpm.data.viz.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.data.viz.web"></ant>
+	</target>
+	
+	<target name="VanillaAir">
+		<ant antfile="build.xml" target="war" dir="../bpm.smart.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.smart.web"></ant>
+	</target>
+	
+	
+	<target name="FMLoaderOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fm.loader.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.loader.web"></ant>
+	</target>
+	
+	<target name="KpiMapOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.map.viewer.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.map.viewer.web"></ant>
+	</target>
+	
+	<target name="FMUserOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fm.reborn.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.reborn.web"></ant>
+	</target>
+	
+	<target name="FMDesignerOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fm.designer.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fm.designer.web"></ant>
+	</target>
+
+	<target name="FWROnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fwr"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fwr"></ant>
+	</target>
+
+	<target name="FAWebOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fa.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fa.web"></ant>
+	</target>
+
+	<target name="PortalOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.vanilla.portal"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanilla.portal"></ant>
+	</target>
+
+	<target name="VanillaHubOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.vanillahub.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.vanillahub.web"></ant>
+	</target>
+
+	<target name="UpdateManagerOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.update.manager"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.update.manager"></ant>
+	</target>
+
+	<target name="VanillaMetadataOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.metadata.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.metadata.web"></ant>
+	</target>
+
+	<target name="VanillaDashboardOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.fd.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.fd.web"></ant>
+	</target>
+
+	<target name="VanillaArchitectOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.architect.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.architect.web"></ant>
+	</target>
+
+	<target name="VanillaDataPreparationOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.data.viz.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.data.viz.web"></ant>
+	</target>
+
+	<target name="VanillaAirOnly">
+		<ant antfile="build.xml" target="warOnly" dir="../bpm.smart.web"></ant>
+    	<ant antfile="build.xml" target="clean" dir="../bpm.smart.web"></ant>
+	</target>
+	
+    <target name="buildAllWebapps">
+    	<antcall target="Portal"></antcall>
+    	<antcall target="FAWeb"></antcall>
+		<antcall target="FWR"></antcall>
+		<antcall target="FMDesigner"></antcall>
+		<antcall target="FMUser"></antcall>
+		<antcall target="FMLoader"></antcall>
+		<antcall target="KpiMap"></antcall>
+		<antcall target="VanillaMetadata"></antcall>
+    	<!-- Disable for now as we are not using it -->
+		<!--<antcall target="UpdateManager"></antcall>-->
+		<antcall target="VanillaDashboard"></antcall>
+		<antcall target="VanillaArchitect"></antcall>
+		<antcall target="VanillaAir"></antcall>
+		<antcall target="VanillaDataPreparation"></antcall>
+		<antcall target="VanillaHub"></antcall>
+    </target>
+	
+	<target name="test">
+		<ant antfile="build.xml" target="libs" dir="./"></ant>
+	</target>
+</project>
