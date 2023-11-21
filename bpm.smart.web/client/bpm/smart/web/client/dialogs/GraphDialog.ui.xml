@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.smart.web.client.dialogs.GraphDialog.MyStyle">
+	
+		.panelContent {
+			z-index:20;
+			height: 500px;
+			width: 500px;
+			
+		}
+		.panelContentFull {
+			z-index:20;
+			height: 100%;
+			width: 100%;
+			
+		}
+		
+		.frame {  
+		    bottom: 0;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 30px;
+		    border:none;
+		}
+		
+		.image {  
+		    height : 99%;
+		    width : 100%;
+		    border:none;
+		}
+		
+		
+		.area {  
+		    height : 98%;
+		    width : 99%;
+		    border:none;
+		    resize: none;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="panel" addStyleNames="{style.panelContent}">
+		<g:Frame ui:field="frame" addStyleNames="{style.frame}"></g:Frame>
+	    <g:Image ui:field="image" addStyleNames="{style.image}"/>
+		<g:TextArea ui:field="text" addStyleNames="{style.area}"/>
+		<g:SimplePanel ui:field="svgField" addStyleNames="{style.frame}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

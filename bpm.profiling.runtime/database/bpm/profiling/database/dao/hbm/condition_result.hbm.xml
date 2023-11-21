@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.database.bean.AnalysisConditionResult" table="condition_results">
+            <id name="id" type="int">
+                <column name="CNR_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="conditionId" type="int">
+                <column name="CNR_CONDITION_ID"/>
+            </property>
+
+            <property name="validCount" type="java.lang.Integer">
+                <column name="CNR_VALID_COUNT"/>
+            </property>
+
+            <property name="validCountPercent" type="java.lang.Double">
+                <column name="CNR_VALID_PERCENT"/>
+            </property>
+            
+            <property name="distinctValidCount" type="java.lang.Integer">
+                <column name="CNR_DISTINCT_VALID"/>
+            </property>
+            
+            <property name="dictinctValidPercent" type="java.lang.Double">
+                <column name="CNR_DISTINCT_PERCENT"/>
+            </property>
+            
+             <property name="date" type="java.util.Date">
+                <column name="CNR_DATE"/>
+            </property>
+
+            <property name="ruleSetId" type="java.lang.Integer">
+                <column name="CNR_RULE_SET_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

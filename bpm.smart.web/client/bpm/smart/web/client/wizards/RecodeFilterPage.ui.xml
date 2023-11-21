@@ -1,0 +1,65 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.smart.web.client.wizards.RecodeFilterPage.MyStyle">
+		
+		.contentPanel {
+			width: 640px;
+			height: 500px;
+		}
+		
+		.lblTitle {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    font-size: 18px;
+		}
+		
+		.lbl {
+		    display: inline-block;
+		    font-size: 14px;
+		    margin-left: 30px;
+		    margin-top: 10px;
+		}
+		
+		.btn{
+		    height: 40px;
+		    margin: 5px 5px 5px 60px;
+		    width: 200px;
+		}
+		
+		.panel{
+			margin-left: 20px;
+		}
+		
+		.btnToolbar {
+		    background-position: center center !important;
+		    cursor: pointer;
+		    height: 20px !important;
+		    padding: 5px;
+		    width: 20px !important;
+		    margin-left: 305px;
+		    display: block;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label addStyleNames="{style.lblTitle}" text="{label.Filter}s"/>
+			<g:HTMLPanel ui:field="filtersPanel" addStyleNames="{style.panel}"/>
+			<g:Image ui:field="btnAdd" resource="{commons.add_24}" addStyleNames="{style.btnToolbar}"/>
+		</g:HTMLPanel>	
+	</g:HTMLPanel>
+</ui:UiBinder> 

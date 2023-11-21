@@ -1,0 +1,97 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.smart.web.client.dialogs.ImportCodeDialog.MyStyle">
+	
+		.panelContent {
+			height: 350px;
+			width: 690px;
+			z-index:20;
+		}
+		
+		.lblOver {
+		    width: 300px;
+		    padding: 10px;
+		    text-align: left;
+		    clear: both;
+		}
+		
+		.txtblock {
+		    display: block;
+		    padding: 5px;
+		    margin: 0 10px;
+		    width: 350px;
+		}
+		
+		.panelTextArea{
+		    bottom: 50px;
+		    left: 10px;
+		    position: absolute;
+		    right: 10px;
+		    top: 120px;
+		}
+		
+		.txtArea {
+		    height: 97%;
+		    position: relative;
+		    resize: none;
+		    width: 99%;
+		}
+		
+		.upload {
+		    line-height: 30px;
+   			margin-left: 0px;
+   			width: 300px;
+   			margin-left: 75px;
+			margin-top: 10px;
+		}
+		
+		.btnSelectAll {
+			float: right;
+		    margin-right: 10px;
+		    margin-top: 20px;
+		    position: relative;
+		}
+		.btnImport {
+			height: 30px;
+		    left: 10px;
+		    position: absolute;
+		    top: 40px;
+		    width: 150px;
+		    z-index: 10;
+		}
+		
+		.lblFileName {
+			height: 30px;
+		    left: 170px;
+		    position: absolute;
+		    top: 40px;
+		    width: 300px;
+		    z-index: 10;
+		    line-height: 30px;
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #4471C4;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-weight: 400;
+		    border: medium none;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:FormPanel ui:field="formCode"/>
+		<g:SimplePanel ui:field="panelUpload" addStyleNames="{style.upload}"/>
+		<g:Button ui:field="btnImport" text="{label.ImportRCode}" addStyleNames="{style.btnImport},{style.button}"></g:Button>
+		<g:Label ui:field="lblFileName" addStyleNames="{style.lblFileName}"/>
+		<g:Button ui:field="btnSelectAll" text="{label.SelectAll}" addStyleNames="{style.btnSelectAll},{style.button}"></g:Button>
+		
+		<g:HTMLPanel addStyleNames="{style.panelTextArea}">
+			<g:TextArea ui:field="txtScript" addStyleNames="{style.txtArea}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

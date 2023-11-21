@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Bpm_smart_web.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+		<servlet-name>ConnectionServices</servlet-name>
+		<servlet-class>bpm.smart.web.server.ConnectionServicesImpl</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ConnectionServices</servlet-name>
+		<url-pattern>/bpm_smart_web/ConnectionServices</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>cssHelper</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.servlets.CssHelperServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cssHelper</servlet-name>
+		<url-pattern>/cssHelper</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/bpm_smart_web/loginService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>commonService</servlet-name>
+		<servlet-class>bpm.gwt.commons.server.CommonServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commonService</servlet-name>
+		<url-pattern>/bpm_smart_web/commonService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SmartAirService</servlet-name>
+		<servlet-class>bpm.smart.web.server.SmartAirServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SmartAirService</servlet-name>
+		<url-pattern>/bpm_smart_web/SmartAirService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UploadAvatarServlet</servlet-name>
+		<servlet-class>bpm.smart.web.server.UploadIcon</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadAvatarServlet</servlet-name>
+		<url-pattern>/bpm_smart_web/UploadAvatarServlet</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>    
+		<servlet-name>fmdtService</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.FmdtServicesImpl</servlet-class>  
+	</servlet>    
+	<servlet-mapping>    
+		<servlet-name>fmdtService</servlet-name>    
+		<url-pattern>/bpm_smart_web/fmdtService</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ImportCodeServlet</servlet-name>
+		<servlet-class>bpm.smart.web.server.ImportCode</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImportCodeServlet</servlet-name>
+		<url-pattern>/bpm_smart_web/ImportCodeServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.DownloadStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadStreamServlet</servlet-name>    
+		<url-pattern>/DownloadStreamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>viewStreamServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.ViewStreamServlet</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewStreamServlet</servlet-name>    
+		<url-pattern>/ViewStreamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ImportProjectServlet</servlet-name>
+		<servlet-class>bpm.smart.web.server.ImportProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImportProjectServlet</servlet-name>
+		<url-pattern>/bpm_smart_web/ImportProjectServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateService</servlet-name>
+		<servlet-class>bpm.gwt.workflow.commons.server.UpdateServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateService</servlet-name>
+		<url-pattern>/bpm_smart_web/updateService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>workflowsService</servlet-name>
+		<servlet-class>bpm.gwt.workflow.commons.server.WorkflowsServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>workflowsService</servlet-name>
+		<url-pattern>/bpm_smart_web/workflowsService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UploadFileServlet</servlet-name>    
+		<servlet-class>bpm.gwt.commons.server.servlets.UploadFile</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadFileServlet</servlet-name>    
+		<url-pattern>/UploadFileServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UploadImage</servlet-name>
+		<servlet-class>bpm.smart.web.server.UploadImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadImage</servlet-name>
+		<url-pattern>/bpm_smart_web/UploadImage</url-pattern>
+	</servlet-mapping>
+
+</web-app>

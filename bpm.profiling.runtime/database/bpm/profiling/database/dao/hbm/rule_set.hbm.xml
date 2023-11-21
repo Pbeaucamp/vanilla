@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.database.bean.RuleSetBean" table="rules_set">
+            <id name="id" type="int">
+                <column name="RS_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="analysisContentId" type="int">
+                <column name="RS_ANALYSIS_CONTENT_ID"/>
+            </property>
+
+            <property name="name" type="string">
+                <column name="RS_NAME"/>
+            </property>
+
+            <property name="description" type="string">
+                <column name="RS_DESC"/>
+            </property>
+            
+            <property name="logicalOperator" type="int">
+                <column name="RS_OPERATOR"/>
+            </property>
+
+           
+			
+    </class>
+</hibernate-mapping>

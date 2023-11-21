@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="desactivate" immediate="true" name="bpm.united.olap.runtime.CacheServer">
+   <implementation class="bpm.united.olap.runtime.UnitedOlapCacheService"/>
+   <service>
+      <provide interface="bpm.united.olap.runtime.cache.ICacheServer"/>
+      <provide interface="bpm.united.olap.api.cache.IUnitedOlapCacheManager"/>
+   </service>
+</scr:component>

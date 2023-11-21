@@ -1,0 +1,385 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='cmnlabel' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='labelCommon' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:with field='cmnresources' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.smart.web.client.panels.resources.StatsPanel.MyStyle">
+		.mainPanel, .mainPanelFull{
+			height: 100%;
+			width: 100%;
+			overflow: auto;
+			text-align: center;
+			text-align: -moz-center;
+			text-align: -webkit-center;
+			background-color: #fff;
+			position: absolute;
+		}
+		
+		.mainPanelFull .leftPanel{
+			display: inline-block;
+		    height: 100%;
+		    left: 0;
+		    min-width: 500px;
+		    position: absolute;
+		    text-align: center;
+		    text-align: -moz-center;
+		    text-align: -webkit-center;
+		    width: 50%;
+		}
+		
+		.mainPanelFull .rightPanel{
+			display: inline-block;
+		    top: 40px;
+		    bottom : 0;
+		    min-width: 500px;
+		    position: absolute;
+		    right: 0;
+		    width: 50%;
+			
+		}
+		.mainPanel .leftPanel{
+			height: 500px;
+			min-width: 500px;
+			display: inline-block;
+			text-align: center;
+			text-align: -moz-center;
+			text-align: -webkit-center;
+			width : 100%;
+		}
+		
+		.mainPanel .rightPanel{
+			height: 500px;
+			min-width: 500px;
+			display: inline-block;
+			position: relative;
+		}
+		
+		.mainPanel .midPanel{
+			width: 100%;
+			position: relative;
+			height: 500px;
+    		overflow: auto;
+    		//top: 30px;
+		}
+		
+		.mainPanelFull .midPanel{
+			width: 100%;
+			position: absolute;
+			top : 100px;
+			bottom: 0;
+			overflow: auto;
+		}
+		
+		.mainPanel .fullPanel{
+			position: absolute;
+			top : 100px;
+			bottom: 0;
+			width: 100%;
+			min-width: 750px;
+		}
+		
+		.mainPanelFull .fullPanel{
+			top : 100px;
+			bottom: 0;
+			width: 200%;	
+			position: absolute;
+		}
+		
+		.panelGrid{
+			position: absolute;
+			top:0;
+			bottom: 0;
+			left: 10px;
+			right: 10px;
+		}
+		
+		.panelBrowseGrid{
+			position: absolute;
+			top:40px;
+			bottom: 0;
+			left: 10px;
+			right: 10px;
+		}
+		
+		.panelContent{
+			height: 205px;
+			width: 100%;
+			margin: 15px 0;
+			position: relative;
+		}
+		
+		.ratioBox{
+			position: relative;
+			height: 100%;
+		}
+		
+		.ratioBox:before{
+			content: "";
+			display: block;
+			padding-top: 100%; 	/* initial ratio of 1:1*/
+		}
+		
+		.panelGraph{
+			position:  absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			border: thin;
+		}
+		
+		.lstTypeView{
+			font-size: 1.1em;
+		    height: 30px;
+		    margin: 15px 5px;
+		    padding: 3px;
+			width: 300px;
+		}
+		
+		.lstRowNumber{
+			font-size: 1.1em;
+		    height: 30px;
+		    float: right;
+		    margin: 5px 10px;
+		    padding: 3px;
+			width: 100px;
+		}
+		
+		.imgGraph{
+		    height: 100%;
+			width: 100%;
+		}
+		
+		.btnAbs {
+			position: absolute;
+			top:0;
+			right: 0;
+		    height: 24px !important;
+		    width: 24px !important;
+		    margin: 5px;
+    		padding: 3px;
+		    cursor: pointer;
+		    background-position: center !important;
+		    z-index: 2;
+		}
+		
+		.btnAbs:HOVER {
+			background-color: #F47979 !important;
+    		border-radius: 30px 30px 30px 30px;
+		}
+		
+		.popup {
+			bottom: 60px !important;
+			left: 100px !important;
+			right: 100px !important;
+			top: 20px !important;
+			box-shadow : 0px 0 12px 1px #696969;
+			overflow: auto!important;
+			z-index: 1;
+		}
+		
+		.childCell {
+		  padding-left: 30px !important;
+		  border: 2px solid #EEEEEE !important;
+		  background: #EEEEEE !important;
+		}
+		
+		.styleSummary {
+			font-family: "Lucida Console";
+    		font-size: 1.1em;
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #4471C4;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-weight: 400;
+		    border: medium none;
+		}
+		
+		.btnAlgoLaunch {
+		    display: block;
+		    height: 40px;
+		    margin-top: 10px;
+		    position: relative;
+		    width: 200px;
+		}
+		
+		.panelParam{
+			background: none repeat scroll 0 0 #999999;
+		    border-radius: 5px 5px 5px 5px;
+		    margin: 15px;
+		    position: relative;
+		    top: 10px;
+		    padding: 5px;
+		}
+		
+		.label{
+			font-size: 1.2em;
+		}
+		
+		.chkbox{
+			display: block;
+			margin : 5px;
+			font-size: 1.2em;
+		}
+		
+		.txt{
+			font-size: 1.1em;
+		    height: 30px;
+		    margin: 15px 5px;
+		    padding: 3px;
+			width: 300px;
+		}
+		
+		.btnClose {
+			position: absolute;
+			top:0;
+			right: 0;
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 3px;
+		    margin: 5px;
+		    cursor: pointer;
+		    background-position: center !important;
+		    z-index: 2;
+		}
+		
+		.btnClose:HOVER {
+			background-color: #69CAE8 !important;
+    		border-radius: 30px 30px 30px 30px;
+		}
+		
+		.viewToolbar {
+		    display: block;
+		    position: relative;
+		    top: 15px;
+		    z-index: 1;
+		}
+		
+		.btnViewToolbar {
+		    cursor: pointer;
+		    height: 60px !important;
+		    width: 60px !important;
+		    margin: 5px;
+		    transition: all 0.5s ease;
+		}
+		
+		.btnViewToolbar:HOVER {
+			-ms-transform: scale(1.1);
+   			-webkit-transform: scale(1.1);
+			transform: scale(1.1);
+    		transition: all 0.5s ease;
+    		-webkit-transition: all 0.5s ease;
+		}
+		
+		.algoToolbar {
+		    display: block;
+		    position: relative;
+		    top: 15px;
+		    z-index: 1;
+		}
+		
+		.btnAlgoToolbar {
+		    cursor: pointer;
+		    height: 50px !important;
+		    width: 50px !important;
+		    margin: 5px;
+		    transition: all 0.5s ease;
+		    -webkit-transition: all 0.5s ease;
+		}
+		
+		.btnAlgoToolbar:HOVER {
+			-ms-transform: scale(1.1);
+   			-webkit-transform: scale(1.1);
+			transform: scale(1.1);
+    		transition: all 0.5s ease;
+    		-webkit-transition: all 0.5s ease;
+		}
+		
+		.btnActive{
+			transform: scale(1.3);
+			-ms-transform: scale(1.3);
+   			-webkit-transform: scale(1.3);
+   			transition: all 0.5s ease;
+   			-webkit-transition: all 0.5s ease;
+		}
+		
+		.imgExportCode{
+			cursor: pointer;
+		    height: 50px !important;
+		    position: absolute;
+		    margin-left: 50px;
+		    top: 5px;
+		    right: 10px;
+		    width: 50px !important;
+		    visibility: hidden;
+		    transition: visibility 0.2s ease 0s, transform 0.5s ease 0s;
+		    -webkit-transition: visibility 0.2s ease 0s, transform 0.5s ease 0s;
+		}
+		.imgExportCodeOn{
+		    visibility: visible;
+		    transform: translate(-50px);
+		    -webkit-transform: translate(-50px);
+		    transition: all 0.5s ease;
+		    -webkit-transition: all 0.5s ease;
+		}
+	</ui:style>
+	<g:HTMLPanel ui:field="panelContent" addStyleNames="{style.mainPanel}">
+		<g:Image ui:field="btnFullWindow" resource="{resources.ic_fullscreen_round}" title="{cmnlabel.Expend}" addStyleNames="{style.btnAbs}"/>
+		<g:Image ui:field="btnRestoreWindow" resource="{resources.ic_fullscreen_exit_round}" title="{cmnlabel.Reduce}" addStyleNames="{style.btnAbs}"/>
+		<g:Image ui:field="btnCloseWindow" resource="{cmnresources.close_tab}" title="{cmnlabel.Close}" addStyleNames="{style.btnClose}"/>
+		<g:HTMLPanel ui:field="leftPanel" addStyleNames="{style.leftPanel}">
+			<g:HTMLPanel ui:field="viewToolbar" addStyleNames="{style.viewToolbar}">
+				<g:Image ui:field="btnBrowse" resource="{resources.ic_circle_row100}" title="{label.ViewDataset}" addStyleNames="{style.btnViewToolbar}"/>
+				<g:Image ui:field="btnSummary" resource="{resources.ic_circle_summary100}" title="{label.Summary}" addStyleNames="{style.btnViewToolbar}"/>
+				<g:Image ui:field="btnStats" resource="{resources.ic_circle_plot100}" title="{label.ShowStats}" addStyleNames="{style.btnViewToolbar}"/>
+				<g:Image ui:field="btnAlgo" resource="{resources.ic_circle_tree100}" title="{label.SimpleMethods}" addStyleNames="{style.btnViewToolbar}"/>
+				<g:Image ui:field="btnCube" resource="{resources.ic_circle_cube100}" title="{label.CubeViewer}" addStyleNames="{style.btnViewToolbar}"/>
+			</g:HTMLPanel>
+			<!-- <g:ListBox ui:field="lstTypeView" addStyleNames="{style.lstTypeView}"/> -->
+			<g:HTMLPanel ui:field="browsePanel" addStyleNames="{style.fullPanel}">
+				<g:ListBox ui:field="lstRowNumber" addStyleNames="{style.lstRowNumber}"/>
+				<g:SimplePanel ui:field="grdBrowse" addStyleNames="{style.panelBrowseGrid}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="summaryPanel" addStyleNames="{style.midPanel}">
+				<g:SimplePanel ui:field="framePanel" addStyleNames="{style.panelGrid}, {style.styleSummary}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="statsPanel" addStyleNames="{style.midPanel}">
+				<g:HTMLPanel addStyleNames="{style.panelContent}">
+					<g:SimplePanel ui:field="grd1" addStyleNames="{style.panelGrid}"/>
+				</g:HTMLPanel>
+				<g:HTMLPanel addStyleNames="{style.panelContent}">
+					<g:SimplePanel ui:field="grd2" addStyleNames="{style.panelGrid}"/>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="algoPanel" addStyleNames="{style.midPanel}">
+				<g:HTMLPanel ui:field="algoToolbar" addStyleNames="{style.algoToolbar}">
+					<g:Image ui:field="btnLinReg" resource="{resources.ic_circle_linreg100}" title="{label.ActivitySimpleLinearReg}" addStyleNames="{style.btnAlgoToolbar}"/>
+					<g:Image ui:field="btnMatCor" resource="{resources.ic_circle_matcor100}" title="{label.ActivityCorrelationMatrix}" addStyleNames="{style.btnAlgoToolbar}"/>
+					<g:Image ui:field="btnDecTree" resource="{resources.ic_circle_dectree100}" title="{label.ActivityDecisionTree}" addStyleNames="{style.btnAlgoToolbar}"/>
+					<g:Image ui:field="btnKMeans" resource="{resources.ic_circle_kmeans100}" title="{label.ActivityKMeans}" addStyleNames="{style.btnAlgoToolbar}"/>
+					<g:Image ui:field="btnHAC" resource="{resources.ic_circle_hac100}" title="{label.ActivityHACClustering}" addStyleNames="{style.btnAlgoToolbar}"/>
+				</g:HTMLPanel>
+				<!-- <g:ListBox ui:field="lstTypeAlgo" addStyleNames="{style.lstTypeView}"/> -->
+				<g:HTMLPanel ui:field="paramPanel" addStyleNames="{style.panelParam}"/>
+				<g:Button ui:field="btnAlgoLaunch" text="{label.Launch}" addStyleNames="{style.button}, {style.btnAlgoLaunch}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="cubePanel" addStyleNames="{style.fullPanel}">
+				
+			</g:HTMLPanel>
+			
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="rightPanel" addStyleNames="{style.rightPanel}">
+			<g:SimplePanel ui:field="panelSvg" addStyleNames="{style.imgGraph}"/>
+			<g:Image ui:field="panelGraph" addStyleNames="{style.imgGraph}"></g:Image>
+			<g:Image ui:field="exportCode" addStyleNames="{style.imgExportCode}" resource="{resources.ic_circle_export100}" title="{label.ExportRCode}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.studio.expressions.core
+Bundle-SymbolicName: bpm.studio.expressions.core
+Bundle-Version: 5.0.0
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: bpm.studio.expressions.core.measures,
+ bpm.studio.expressions.core.measures.impl,
+ bpm.studio.expressions.core.model
+Bundle-Vendor: BPM-Conseil

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="bpm.profiling.rcp.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="biprofiler_product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="bpm.profiling.rcp.application"
+            name="Bi Profiler">
+         <property
+               name="appName"
+               value="Bi Profiler">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/Vanilla_Logo_3.4.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="BiProfiler&#x0A;&#x0A;Version 4.4 &#x0A;&#x0A;Product of BPM-Conseil&#x0A;&#x0A;http://www.bpm-conseil.com/">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

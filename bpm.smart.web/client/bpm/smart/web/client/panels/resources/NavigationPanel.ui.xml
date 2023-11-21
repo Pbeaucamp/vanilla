@@ -1,0 +1,169 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='labelCommon' type='bpm.gwt.workflow.commons.client.I18N.LabelsCommon' />
+	<ui:with field='cmnLbl' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.smart.web.client.panels.resources.NavigationPanel.MyStyle">
+		.navigationPanel {
+			width: 100%;
+			height: 100%;
+			    position: relative;
+		}
+		
+		.contentPanel {
+			width: 100%;
+			position: absolute;
+			top: 40px;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.panelToolbar {
+			height: 40px;
+			width: 100%;
+			background-color: #69CAE8;
+			overflow: hidden;
+		}
+		
+		.panelProject {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.panelLogger {
+			position: relative;
+			height: 40%;
+			width: 100%;
+		}
+		
+		.panelContent {
+			position: absolute;
+			top: 40px;
+			width: 100%;
+			bottom: 30px;
+		}
+		
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			bottom: 0px;
+			text-align: center;
+			text-align: -moz-center;
+		}
+		
+		.btnToolbar {
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 8px;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.console {
+			position: absolute;
+		    bottom: 10px;
+		    top: 25px;
+		    font-family: 'Verdana';
+		}
+		.btnClear {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    height: 20px;
+		    width: 20px;
+		    padding: 5px
+		}
+		
+		.toolbarScript{
+			border-left: 1px solid #808080;
+		    float: right;
+		    height: 40px;
+		    padding-left: 2px;
+		    width: 85px;
+		}
+		
+		.childCell {
+		  padding-left: 30px !important;
+		  border: 2px solid #ADE2F2 !important;
+		  background: #ADE2F2 !important;
+		}
+		
+		.selectedchildCell {
+		  padding-left: 30px !important;
+		  border: 2px solid #69CAE8 !important;
+		  background: #69CAE8 !important;
+		}
+		
+		.groupHeaderCell {
+		  padding: 1px 15px;
+		  color: #4b4a4a;
+		  text-shadow: #ddf 1px 1px 0;
+		  font-size: 130%;
+		  background: #eee;
+		}
+		
+		.mainRow {
+		  height: 50px;
+		}
+		.imgExpand {
+			height: 30px !important;
+			width: 30px !important;
+			background-position: center !important;
+			cursor: pointer;
+		}
+		
+		.imgExpand:HOVER, .imgChangeView:HOVER {
+			background-color: white !important;
+			
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.alignRight {
+			float: right;
+		}
+		
+		.alignLeft {
+			float: left;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="navigationPanel" addStyleNames="{style.navigationPanel}">
+		<g:Image ui:field="imgExpand" title="{cmnLbl.Expend}" resource="{commons.ic_btn_sidebar_right_collapse}" addStyleNames="{style.btnToolbar},{style.alignLeft}"/>
+		<g:HTMLPanel ui:field="panelToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="btnRefresh" resource="{commons.refresh_24}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnAddProject" resource="{commons.add_24}" title="{label.AddANewProject}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnEditProject" resource="{commons.edit_24}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnDeleteProject" resource="{commons.delete_24}" title="{label.DeleteProject}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnShareProject" resource="{resources.ic_share_group}" title="{label.ShareProject}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnImportProject" resource="{resources.folder_import_64}" title="{label.ImportProject}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnExportProject" resource="{resources.archive_zip_64}" title="{label.ExportProject}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="imgCollapse" title="{cmnLbl.Collapse}" resource="{commons.ic_btn_sidebar_right_expand}" addStyleNames="{style.btnToolbar},{style.alignRight}"/>		
+			<g:HTMLPanel ui:field="panelToolbarScript" addStyleNames="{style.toolbarScript}">
+				<g:Image ui:field="btnAddScript" resource="{resources.file_add_24}" title="{label.AddScript}" addStyleNames="{style.btnToolbar}"/>
+				<g:Image ui:field="btnDeleteScript" resource="{resources.file_delete_24}" title="{label.DeleteScript}" addStyleNames="{style.btnToolbar}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.panelContent}"/>
+		<g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

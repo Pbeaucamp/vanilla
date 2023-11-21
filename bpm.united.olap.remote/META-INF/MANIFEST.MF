@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.united.olap.remote
+Bundle-SymbolicName: bpm.united.olap.remote
+Bundle-Version: 5.0.0
+Require-Bundle: bpm.united.olap.api,
+ bpm.vanilla.platform.core;bundle-version="1.0.0",
+ bpm.vanilla.platform.core.remote;bundle-version="1.0.11",
+ bpm.vanilla.external.jars;bundle-version="1.0.0",
+ bpm.vanilla.platform.xstream;bundle-version="4.2.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Export-Package: bpm.united.olap.remote.services
+Import-Package: org.apache.log4j
+Bundle-Vendor: BPM-Conseil

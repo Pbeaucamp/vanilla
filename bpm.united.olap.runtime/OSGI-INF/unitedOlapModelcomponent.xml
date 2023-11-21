@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activated" enabled="true" immediate="true" name="bpm.united.olap.runtime.ModelComponent">
+   <implementation class="bpm.united.olap.runtime.UnitedOlapModelComponent"/>
+   <service>
+      <provide interface="bpm.united.olap.api.communication.IModelService"/>
+   </service>
+   <reference bind="bind" cardinality="1..1" interface="bpm.united.olap.runtime.cache.ICacheServer" name="ICacheServer" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="bpm.vanilla.platform.logging.IVanillaLoggerService" name="IVanillaLoggerService" policy="dynamic" unbind="unbind"/>
+</scr:component>

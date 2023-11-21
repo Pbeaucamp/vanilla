@@ -1,0 +1,67 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:style>
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			min-width: 1024px;
+		}
+		
+		.toolbar {
+			z-index: 1;
+		}
+		
+		.panelBottom {
+			text-align: center;
+			padding: 5px;
+		}
+		
+		.copyright {
+			font-weight: bold;
+		}
+		
+		.bottomCollapse {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 20;
+		}
+		
+		.bottomExpand {
+			height: 38px !important;
+			width: 38px !important;
+			background-position: center !important;
+			cursor: pointer;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 20;
+		}
+	</ui:style>
+	<g:DockLayoutPanel unit='PX' ui:field="dockPanel" addStyleNames="{style.mainPanel}">
+		<g:north size='70'>
+			<g:SimplePanel ui:field="toolbarPanel" addStyleNames="{style.toolbar}"/>
+		</g:north>
+		<g:south size="30">
+			<g:SimplePanel ui:field="footerPanel" addStyleNames="{style.panelBottom}">
+				<g:Label text="{label.Copyright}" addStyleNames="{style.copyright}"/>
+			</g:SimplePanel>
+		</g:south>
+		<g:west size="450" >
+				<!-- <g:Image ui:field="navExpand" title="{label.restore}" resource="{resources.ic_right_collapse}" addStyleNames="{style.bottomExpand}"/>
+				<g:Image ui:field="navCollapse" title="{label.reduce}" resource="{resources.ic_right_expand}" addStyleNames="{style.bottomCollapse}"/> -->
+				<g:SimplePanel ui:field="navPanel"/>
+		</g:west>
+		<g:center >
+			<g:SimplePanel ui:field="mainPanel"/>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

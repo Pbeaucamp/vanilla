@@ -1,0 +1,490 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.smart.web.client.panels.ScriptPanel.MyStyle">
+		.contentPanel{
+			height: 100%;
+		}
+	
+		.textarea {
+			resize: none;
+			width: 100%;
+			height: 100%;
+			box-sizing : border-box;
+			-moz-box-sizing : border-box;
+			-webkit-box-sizing : border-box;
+			border-width: 0;
+			z-index: 1;
+			position: relative;
+			display: block;
+		}
+		
+		.textarea body{
+			padding-right: 40px;
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #428BCA;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-size: 14px;
+		    font-weight: 400;
+		}
+		
+		.btnRun {
+			float: left;
+		    height: 50px;
+		    margin: 100px 70px 20px;
+		    width: 200px;
+		}
+		
+		
+		.btnToolbar {
+		    height: 24px !important;
+		    width: 24px !important;
+		    padding: 8px;
+		    cursor: pointer;
+		    background-position: center !important;
+		    vertical-align: middle;
+		}
+		
+		.btnToolbar:HOVER {
+			background-color: white !important;
+			-webkit-box-shadow: 1px 1px 6px -2px black inset;
+			-moz-box-shadow: 1px 1px 6px -2px black inset;
+			-oz-box-shadow: 1px 1px 6px -2px black inset;
+			-o-box-shadow: 1px 1px 6px -2px black inset;
+			box-shadow: 1px 1px 6px -2px black inset;
+		}
+		
+		.btnTextToolbar {
+		    background: none repeat scroll 0 0 rgba(200, 200, 200, 0.9);
+		    border-radius: 30px 30px 30px 30px;
+		    box-shadow: 0 0 3px 0 #656565;
+		    cursor: pointer;
+		    height: 30px !important;
+		    padding: 8px;
+		    width: 30px !important;
+		    margin-bottom: 3px;
+		}
+		
+		.btnTextToolbar:HOVER {
+			background-color: rgba(105, 202, 232, 0.6);
+		}
+		
+		.panelToolbar {
+			min-height: 40px;
+			width: 100%;
+			background-color: #69CAE8;
+			display: block;
+			position: relative;
+		}
+		
+		.textToolbar {
+			bottom: 6px;
+		    display: inline-block;
+		    position: absolute;
+		    right: 25px;
+		    top: 15px;
+		    width: 50px;
+		    z-index: 3;
+		}
+		
+		.panelScripts{
+			float: left;
+			width: 40%;
+			height: 100%;
+		}
+		
+		.panelScript{
+			width: 100%;
+			height: 100%;
+			
+		}
+		
+		.panelGrid {
+			position: absolute;
+			top: 40px;
+			width: 40%;
+			bottom: 30px;
+		}
+		
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			width: 40%;
+			bottom: 0px;
+			text-align: center;
+			text-align: -moz-center;
+		}
+		
+		.panelCode{
+			position: absolute;
+			top: 40px;
+			width: 100%;
+			bottom: 0;
+		}
+		
+		.panelCodeRight{
+			position: absolute;
+			top: 40px;
+			width: 45%;
+			bottom: 5px;
+			right: 0;
+			padding: 10px;
+			overflow: auto;
+		}
+		
+		.labels {
+		    display: inline-block;
+		    font-size: 1.3em;
+		    line-height: 30px;
+		    padding: 10px;
+		    width: 100px;
+		}
+		
+		.txtbox {
+		    display: inline-block;
+		    margin: 0 10px;
+		    padding: 5px;
+		    width: 200px;
+		}
+		
+		.labelToolbar {
+		    display: inline-block;
+		    font-size: 1.1em;
+		    line-height: 40px;
+		    vertical-align: top;
+		}
+		
+		.lstToolbar {
+		   	display: inline-block;
+		    font-size: 1.1em;
+		    height: 30px;
+		    margin: 5px;
+		    width: 150px;
+		    padding: 3px;
+		}
+		
+		
+		
+		.panelSplitter {
+		    height: 2%;
+		    position: relative;
+		    background: #69CAE8;
+		    width: 100%;
+		
+		}
+		
+		.splitter {
+			background: url("images/splitPanelThumb.png") no-repeat scroll center center;
+		    cursor: row-resize;
+	    	height: 100%;
+    		width: 100%;
+		}
+		
+		.panelVersions{
+			display: inline;
+			margin: 0 2px;
+		    margin-left: 20px;
+		    position: relative;
+		    vertical-align: top;
+		    width: 290px;
+		}
+		
+		.panelTypes{
+			display: inline;
+			margin: 0 2px;
+		    margin-left: 20px;
+		    position: relative;
+		    vertical-align: top;
+		    width: 290px;
+		}
+		
+		.panelTextArea{
+			bottom: 0px;
+		    left: 0px;
+		    position: absolute;
+		    top: 0px;
+		    right: 0px;
+		    overflow: hidden;
+		}
+		
+		.panelTextAreaEdit{
+			bottom: 0px;
+		    left: 0px;
+		    position: absolute;
+		    top: 0px;
+		    right: 0px;
+		    overflow: hidden;
+		    padding: 5px;
+		}
+		
+		.panelTextAreaEdit .textarea body{
+			padding: 3px 50px 3px 3px;
+		}
+		
+/*		.panelTextArea:BEFORE{
+			bottom: 0px;
+		    left: 0px;
+		    position: absolute;
+		    top: 0px;
+		    right: 0px;
+    		content: "";
+    		z-index: 2;
+		}*/
+		
+		.panelTextAreaEdit:BEFORE{
+			bottom: 0px;
+		    left: 0px;
+		    position: absolute;
+		    top: 0px;
+		    right: 0px;
+		    box-shadow: 0 0 8px #69CAE8 inset;
+    		content: "";
+    		z-index: 1;
+		}
+		
+		.commandMenu{
+			box-shadow: 0 0 10px 1px #656565;
+		    font-family: Verdana;
+		    padding: 2px;
+		    position: absolute;
+		    right: 60px;
+		    width: 150px;
+		    z-index: 2;
+		}
+		.subMenu{
+			box-shadow: 0 0 10px 1px #656565;
+		    font-family: Verdana;
+		    padding: 2px;
+		    position: absolute;
+		    right: -200px;
+		    width: 150px;
+		    z-index: 2;
+		}
+		
+		.btnGrid {
+		    height: 20px !important;
+		    width: 20px !important;
+		    cursor: pointer;
+		    background-position: center !important;
+		}
+		
+		.btnExportHtml{
+			position: absolute;
+			top: 10px;
+			right: 8px;
+			border-radius: 0 0 0 4px !important;
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #4471C4;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-weight: 400;
+		    border: medium none;
+		}
+		
+		.frameMarkdown{
+			width: 100%;
+			height: 100%;
+			border: 1px solid #B0B0B0;
+		}
+		
+		.frame{
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+		
+		
+		.fullPanel{
+			height: 100%;
+   			width: 100%;
+		}
+		
+		.markdownToolbar{
+		    display: inline-block;
+		    position: absolute;
+		    right: 10px;
+		    top: 10px;
+		    width: 40px;
+		}
+		
+		.btnMarkdownToolbar{
+			height: 40px !important;
+		    width: 40px !important;
+		    cursor: pointer;
+		    vertical-align: top;
+		}
+		
+		.btnMarkdownToolbar:Hover{
+		    opacity: 0.7!important;
+		}
+		
+		.hyperlinkPackage{
+		    color: #000000;
+		    cursor: help;
+		    text-decoration: none;
+		}
+		
+		.txtHelp{
+			height: 25px;
+    		width: 120px;
+    		margin: 5px;
+		}
+		
+		.btnHelp{
+			height: 30px;
+   			width: 60px;
+   			padding: 4px!important;
+   			margin:2px;
+		}
+		
+		.panelInfoToolbar {
+			min-height: 30px;
+			width: 100%;
+			background: linear-gradient(#555555, #2C2C2C);
+			color: white;
+			display: block;
+			position: relative;
+			opacity: 0.8;
+		}
+		
+		.panelName{
+    		width: 30%;
+    		display: inline-block;
+    		position: relative;
+    		height: 30px;
+		}
+		
+		.panelComment{
+    		width: 67%;
+    		display: inline-block;
+    		position: relative;
+    		height: 30px;
+		}
+		
+		.lblInfo{
+    		line-height: 30px;
+    		padding-left: 5px;
+    		position: absolute;
+    		right: 30px;
+    		left: 0;
+    		display: block;
+    		cursor: pointer;
+    		height: 30px;
+    		text-overflow: ellipsis;
+		    white-space: nowrap;
+		    overflow: hidden;
+		}
+		
+		.lblInfoEmpty{
+    		color: #888;
+    		text-shadow: 1px 0px #fff;
+		}
+		
+		/*.lblEdit{
+			border: 1px solid #69CAE8;
+		}*/
+		
+		.lblEdit:BEFORE{
+			border: 2px solid #69CAE8;
+		    bottom: 1px;
+		    content: "";
+		    left: 0;
+		    position: absolute;
+		    right: -30px;
+		    top: 0;
+		    z-index: 1;
+		}
+		
+		.btnInfoValid{
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    border: medium none;
+		    color: #FFFFFF;
+		    float: right;
+		    height: 30px;
+		    width : 30px;
+		    padding: 0;
+		    position: absolute;
+		    right: 0;
+		    z-index: 2;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel ui:field="scriptToolbar" addStyleNames="{style.panelToolbar}">
+			<g:Image ui:field="btnEdit" resource="{commons.edit_24}" title="{label.Edit}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnCheckIn" resource="{resources.ic_checkin_black_24}" title="{label.Checkin}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnCheckOut" resource="{resources.ic_checkout_black_24}" title="{label.Checkout}" addStyleNames="{style.btnToolbar}"/>
+			<!-- <g:Image ui:field="btnRefresh" resource="{commons.refresh_24}" title="{label.Refresh}" addStyleNames="{style.btnToolbar}"/> -->
+			<g:Image ui:field="btnSave" resource="{resources.save}" title="{label.Save}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnSaveAs" resource="{resources.save_plus_24}" title="{label.SaveAsNewScript}" addStyleNames="{style.btnToolbar}"/>
+			<!-- <g:Image ui:field="btnSaveAsNewVersion" resource="{resources.save_version}" title="{label.SaveAsNewVersion}" addStyleNames="{style.btnToolbar}"/> -->
+			<g:Image ui:field="btnRunAll" resource="{resources.run}" title="{label.Run}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnRunSelection" resource="{resources.run_selection}" title="{label.RunSelection}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnImportCode" resource="{resources.ic_Rfile_import_24}" title="{label.ImportRCode}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnExportCode" resource="{resources.ic_Rfile_export_24}" title="{label.ExportRCode}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnRefreshDatasets" resource="{commons.refresh_24}" title="{label.ReloadDatasets}" addStyleNames="{style.btnToolbar}"/>
+			<g:Image ui:field="btnMarkdownRepository" resource="{resources.ic_export_rmd_repo}" title="{label.ExportToRepository}" addStyleNames="{style.btnToolbar}"/>
+			<g:HTMLPanel addStyleNames="{style.panelVersions}">
+				<g:Label ui:field="lblVersions" addStyleNames="{style.labelToolbar}" text="{label.VersionsList}"/>
+				<g:ListBox ui:field="lstVersions" addStyleNames="{style.lstToolbar}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.panelTypes}">
+				<g:Label ui:field="lblType" addStyleNames="{style.labelToolbar}" text="{label.ScriptType}"/>
+				<g:ListBox ui:field="lstType" addStyleNames="{style.lstToolbar}"/>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.panelTypes}">
+				<g:TextBox ui:field="txtHelp" addStyleNames="{style.txtHelp}"/>
+				<g:Button ui:field="btnHelp" text="{label.Help}" addStyleNames="{style.btnHelp}, {style.button}"></g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="panelMarkdownOutputs" addStyleNames="{style.panelTypes}">
+				<g:Label ui:field="lblMarkdownOutput" addStyleNames="{style.labelToolbar}" text="{label.OutputFile}"/>
+				<g:Image ui:field="btnHTML" resource="{resources.ic_social_html}" title="HTML" addStyleNames="{style.btnMarkdownToolbar}"/>
+				<g:Image ui:field="btnPDF" resource="{resources.ic_social_pdf}" title="PDF" addStyleNames="{style.btnMarkdownToolbar}"/>	
+				<g:Image ui:field="btnWORD" resource="{resources.ic_social_word}" title="WORD" addStyleNames="{style.btnMarkdownToolbar}"/>
+			</g:HTMLPanel>
+			<!-- <g:Button ui:field="btnVersions" text="{label.SeeVersions}" addStyleNames="{style.btnVersions}"/> -->
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="scriptInfoToolbar" addStyleNames="{style.panelInfoToolbar}">
+			<g:HTMLPanel addStyleNames="{style.panelName}">
+				<g:Label ui:field="lblName" addStyleNames="{style.lblInfo}"/>
+				<g:Button ui:field="btnName" text="{label.Ok}" addStyleNames="{style.btnInfoValid}"></g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel addStyleNames="{style.panelComment}">
+				<g:Label ui:field="lblComment" addStyleNames="{style.lblInfo}"/>
+				<g:Button ui:field="btnComment" text="{label.Ok}" addStyleNames="{style.btnInfoValid}"></g:Button>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="panelEdit" addStyleNames="{style.panelCode}">
+			<!-- <g:Label ui:field="lblName" addStyleNames="{style.labels}" text="{label.Name}"/> -->
+			<!-- <g:TextBox ui:field="txtName" addStyleNames="{style.txtbox}"/> -->
+			<g:HTMLPanel ui:field="panelTextArea" addStyleNames="{style.panelTextArea}">
+				<g:HTMLPanel ui:field="textToolbar" addStyleNames="{style.textToolbar}">
+					<g:Image ui:field="btnRCodeTools" resource="{resources.ic_tools_64}" title="{label.RCodeTools}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnAddManager" resource="{resources.ic_add_black_18dp}" title="{label.ExecuteCommand}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnChangeStyle" resource="{resources.ic_style_black_36dp}" title="{label.ChangeStyle}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnMarkdownTemplate" resource="{resources.ic_template_36}" title="{label.UseTemplate}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnUndo" resource="{commons.undo_24}" title="{label.Undo}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnRedo" resource="{commons.redo_24}" title="{label.Redo}" addStyleNames="{style.btnTextToolbar}"/>	
+					<g:Image ui:field="btnCopy" resource="{resources.ic_content_copy_black_24dp}" title="{label.Copy}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnPaste" resource="{resources.ic_content_paste_black_24dp}" title="{label.Paste}" addStyleNames="{style.btnTextToolbar}"/>
+					<g:Image ui:field="btnClearText" resource="{resources.ic_delete_black_18dp}" title="{label.Clear}" addStyleNames="{style.btnTextToolbar}"/>
+				</g:HTMLPanel>
+				<g:RichTextArea ui:field="scriptArea" addStyleNames="{style.textarea}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="console" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

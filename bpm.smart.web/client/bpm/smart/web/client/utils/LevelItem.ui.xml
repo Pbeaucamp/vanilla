@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:bpm.gwt.commons.client.custom">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images'/>
+	
+	<ui:style type="bpm.smart.web.client.utils.LevelItem.MyStyle">
+		
+		.contentPanel {
+		   
+		}
+		
+		.panel {
+		    display: inline-block;
+	    	width: 45%;
+		}
+		
+		.imgGrid {
+			opacity: 0.4;
+		    filter: literal("alpha(opacity=40)");
+		    cursor: pointer;
+		    padding: 3px;
+    	    vertical-align: middle;
+		}
+		
+		.imgGrid:HOVER {
+			opacity: 1.0;
+		    filter: literal("alpha(opacity=100)");
+		    border-radius: 20px;
+		}
+		
+		.txt input{
+			margin: 1px 1%!important;
+			padding: 0.65em 1em!important;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:SimplePanel addStyleNames="{style.panel}">
+			<my:LabelTextBox ui:field="txtLevel" addStyleNames="{style.txt}"/>
+		</g:SimplePanel>
+		<g:Image ui:field="btnDel" resource="{resources.ic_delete_black_18dp}" addStyleNames="{style.imgGrid}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

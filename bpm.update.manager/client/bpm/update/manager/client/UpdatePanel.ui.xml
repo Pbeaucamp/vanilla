@@ -1,0 +1,108 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.update.manager.client.I18N.Labels' />
+	
+	<ui:style type="bpm.update.manager.client.UpdatePanel.MyStyle">
+		.imgLoad {
+		    display: inline-block;
+	    	margin: 26px;
+		}
+	
+		.uploadFrame {
+			width: 600px !important;
+			height: 450px !important;
+		}
+		
+		.panelMessage {
+		    display: inline-block;
+		    width: 450px;
+		    height: 200px;
+		}
+		
+		.lblMessage {
+		    margin: 15px;
+		    vertical-align: top;
+		}
+		
+		.progressPanel {
+			
+		}
+		
+		.progressBar {
+		    margin: 5px 10px;
+	    	width: 480px;
+		}
+		
+		.lblDownload {
+		    font-size: 11px;
+	    	margin-left: 15px;
+		}
+		
+		.btn {
+			background: none repeat scroll 0 0 #444444 !important;
+			border: 1px solid #555555 !important;
+			color: #FFFFFF;
+			cursor: pointer;
+			height: 40px;
+			margin-top: 5px;
+			width: 200px;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			transition: all 1s;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.btn:HOVER {
+			background: none repeat scroll 0 0 #EAEAEA !important;
+			color: #000000;
+		}
+		
+		.panelUpdate {
+			text-align: center;
+		}
+		
+		.lblInfo {
+			margin-top: 30px;
+			margin-left: 8px;
+		}
+		
+		.lblWarning {
+		    margin: 10px;
+		    text-align: center;
+		}
+		
+		.lblWarningColor {
+		    color: #FF0000;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="txtUpdateWarning" text="{label.ThisUpdateNeedModification}" addStyleNames="{style.lblWarning},{style.lblWarningColor}"/>
+		
+		<g:HTMLPanel addStyleNames="{style.panelUpdate}">
+			<g:Button ui:field="btnUpdate" text="{label.Update}" addStyleNames="{style.btn}"/>
+			<g:Button ui:field="btnRestart" text="{label.RestartServer}" addStyleNames="{style.btn}"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="panelPatchs">
+			<g:Label text="{label.UpdatesAvailable}" addStyleNames="{style.lblMessage}"/>
+			<g:HTMLPanel ui:field="panelPatchsDescription" addStyleNames="{style.lblMessage}">
+				<g:Label text="{label.NoUpdateAvailable}"/>
+			</g:HTMLPanel>
+			<g:Label text="{label.UpdatesHistory}" addStyleNames="{style.lblMessage}"/>
+			<g:HTMLPanel ui:field="panelPatchsHistoryDescription" addStyleNames="{style.lblMessage}">
+				<g:Label text="{label.NoUpdateHistory}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	
+		<g:HTMLPanel ui:field="panelContentProgress">
+			<g:Label ui:field="lblMessageGlobal" addStyleNames="{style.lblMessage}"/>
+			<g:SimplePanel ui:field="globalProgressPanel"/>
+			<g:Label ui:field="lblMessage" addStyleNames="{style.lblMessage}"/>
+			<g:SimplePanel ui:field="progressPanel"/>
+			<g:Label ui:field="lblDownload" addStyleNames="{style.lblDownload}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

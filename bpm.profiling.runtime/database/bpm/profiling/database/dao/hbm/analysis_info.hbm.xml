@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.database.bean.AnalysisInfoBean" table="analysis_info">
+            <id name="id" type="int">
+                <column name="A_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="name" type="java.lang.String">
+                <column name="A_NAME"/>
+            </property>
+
+            <property name="description" type="java.lang.String">
+                <column name="A_DESC"/>
+            </property>
+
+            <property name="creation" type="java.util.Date">
+                <column name="A_CREATION"/>
+            </property>
+
+            <property name="modification" type="java.util.Date">
+                <column name="A_UPDATE"/>
+            </property>
+            
+            <property name="creator" type="string">
+                <column name="A_CREATOR"/>
+            </property>
+            
+            <property name="connectionId" type="int">
+                <column name="A_CONNECTION_ID"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

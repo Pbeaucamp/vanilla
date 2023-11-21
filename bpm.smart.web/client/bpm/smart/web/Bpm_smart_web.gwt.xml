@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.5.1//EN"
+  "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
+<module rename-to='bpm_smart_web'>
+
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name='com.google.gwt.user.theme.standard.Standard'/> 
+	
+	<inherits name='bpm.smart.core.SmartCore'/>
+	<inherits name='bpm.workflow.commons.Workflow'/>
+	<inherits name="bpm.gwt.commons.Commons" />
+    <inherits name="bpm.update.manager.api.Commons" />
+	<inherits name="bpm.gwt.workflow.commons.Commons" />
+    <inherits name="bpm.vanillahub.core.VanillaHub" />
+	
+  	<inherits name='com.orange.links.Links' />
+	<inherits name='com.google.gwt.widgetideas.WidgetIdeas' />   
+	<inherits name='com.google.gwt.libideas.LibIdeas' />
+	<inherits name="gwtupload.GWTUpload"/>
+	<inherits name="bpm.vanilla.map.VanillaMap" />
+	
+	<entry-point class='bpm.smart.web.client.Bpm_smart_web'/>
+	
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+	
+	<extend-property name="locale" values="fr"/>
+	
+	<source path='client'/>
+	<source path='shared'/>
+
+</module>

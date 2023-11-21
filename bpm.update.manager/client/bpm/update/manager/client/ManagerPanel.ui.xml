@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.update.manager.client.I18N.Labels' />
+	<ui:with field='resources' type='bpm.update.manager.client.images.Images' />
+	
+	<ui:style>
+		.imgLoading {
+			margin-left: 40px;
+		}
+		
+		.lblLoading {
+		    display: inline-block;
+		    margin-left: 5px;
+		    margin-top: 10px;
+		    vertical-align: top;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<h1>Update Manager</h1>
+		<g:HTMLPanel ui:field="panelApplications">
+			<g:Image resource="{resources.loading}" addStyleNames="{style.imgLoading}"/>
+			<g:Label text="{label.Loading}" addStyleNames="{style.lblLoading}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

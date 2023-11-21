@@ -1,0 +1,11 @@
+The Default configuration is ready for a User biplatform/biplatform on a MySQL database named profiling.
+You can restore the database with the provided profiling_XXX.sql.
+
+If you want to change to configuration of the Database, edit the file /resources/vanilla.properties
+and change the following properties: 
+
+bpm.vanilla.profiling.database.driverClassName=com.mysql.jdbc.Driver
+bpm.vanilla.profiling.database.jdbcUrl=jdbc:mysql://localhost:3306/profiling
+bpm.vanilla.profiling.database.userName=biplatform
+bpm.vanilla.profiling.database.password=biplatform
+bpm.vanilla.profiling.database.dialect=org.hibernate.dialect.MySQLDialect

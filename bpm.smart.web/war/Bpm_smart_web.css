@@ -1,0 +1,303 @@
+/** Add css rules here for your application. */
+
+
+
+/*---Login part---*/
+.loginPanel {
+	margin:0 auto;
+	margin-top: 150px;
+	width: 500px;
+	height: 300px;
+	padding: 20px;
+	border: 5px groove;
+}
+
+.loginPanel-title {
+	text-align: center;
+	font-size: 15px;	
+	margin: 12px auto 12px auto;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.loginPanel-label {
+	font-size: 13px;
+	width: 120px;
+	margin: auto;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.loginPanel-textbox {
+	width: 150px;
+	margin: auto;
+}
+
+.loginPanel-formline {
+	margin: auto;
+}
+
+.imageButton {
+	display: block;
+	margin: auto;	
+	cursor: pointer;
+}
+
+body, table td, select {
+	font-family: Arial;	
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #FEFEFE !important;
+}
+
+a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.gwt-PopupPanel {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none !important;
+    border-radius: 10px;
+    padding: 0 !important;
+    z-index: 3 !important;
+}
+
+.gwt-DialogBox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5) !important;
+    min-height: 100% !important;
+    width: 100% !important;
+}
+
+.gwt-DialogBox .dialogTop td, .gwt-DialogBox .dialogMiddle td, .gwt-DialogBox .dialogBottom td {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.gwt-DialogBox .Caption {
+    display: none;
+}
+
+.gwt-SuggestBox { 
+	height: 26px;
+	width: 300px;
+}
+.gwt-SuggestBoxPopup { 
+ 
+}
+.gwt-SuggestBoxPopup .item { 
+   
+}
+.gwt-SuggestBoxPopup .item-selected { 
+   background-color: #69CAE8 !important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopLeft { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopLeftInner { 
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupTopCenter { 
+   background: none!important; 
+}
+.gwt-SuggestBoxPopup .suggestPopupTopCenterInner { 
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupTopRight {
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupTopRightInner {
+    
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleLeft { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleLeftInner { 
+  
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleCenter { 
+   -moz-box-shadow: 0px 0px 10px 1px #656565;
+	-webkit-box-shadow: 0px 0px 10px 1px #656565;
+	-o-box-shadow: 0px 0px 10px 1px #656565;
+	box-shadow: 0px 0px 10px 1px #656565;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleCenterInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleRight { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupMiddleRightInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomLeft {
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomLeftInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomCenter {
+   background: none!important;
+ }
+.gwt-SuggestBoxPopup .suggestPopupBottomCenterInner { 
+   
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomRight { 
+   background: none!important;
+}
+.gwt-SuggestBoxPopup .suggestPopupBottomRightInner { 
+   
+}
+
+/*--- Stacklayout Panel ---*/
+.gwt-stacklayoutpanel {
+	border-bottom: 0px;
+	border-radius: 0px 0px 15px 15px	
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelContent {
+	background: white;
+	border: 0px;
+	padding: 0px;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader {
+	padding: 0px !important;
+	border: 0px none !important;
+	background: white !important;
+}
+
+/******************/
+/* DateBox Styles */
+/******************/
+
+.gwt-DatePicker {
+	border: 1px solid #ccc;
+	border-top:1px solid #999;
+	cursor: default;
+}
+
+.gwt-DatePicker td,
+.datePickerMonthSelector td:focus {
+	outline: none;
+}
+
+.datePickerMonthSelector td:focus {
+	outline: none;
+}
+
+.datePickerDays {
+	width: 100%;
+	background: white;
+}
+
+.datePickerDay,
+.datePickerWeekdayLabel,
+.datePickerWeekendLabel {
+	font-size: 85%;
+	text-align: center;
+	padding: 4px;
+	outline: none;
+	font-weight:bold;
+	color:#333;
+	border-right: 1px solid #EDEDED;
+	border-bottom: 1px solid #EDEDED;
+}
+
+.datePickerWeekdayLabel,
+.datePickerWeekendLabel {
+	background: #fff;
+	padding: 0px 4px 2px;
+	cursor: default;
+	color:#666;
+	font-size:70%;
+	font-weight:normal;
+}
+
+.datePickerDay {
+	padding: 4px 7px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.datePickerDayIsWeekend {
+	background: #f7f7f7;
+}
+
+.datePickerDayIsFiller {
+	color: #999;
+	font-weight:normal;
+}
+
+.datePickerDayIsValue {
+	background: #d7dfe8;
+}
+
+.datePickerDayIsDisabled {
+	color: #AAAAAA;
+	font-style: italic;
+}
+
+.datePickerDayIsHighlighted {
+	background: #F0E68C;
+}
+
+.datePickerDayIsValueAndHighlighted {
+	background: #d7dfe8;
+}
+
+
+
+.datePickerMonthSelector {
+	width: 100%;
+	padding: 1px 0 5px 0;
+	background: #fff;
+}
+
+.datePickerPreviousButton,
+.datePickerNextButton,
+.datePickerPreviousYearButton,
+.datePickerNextYearButton {
+	font-size: 120%;
+	line-height: 1em;
+	color: #3a6aad;
+	cursor: hand;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0px 4px;
+	outline: none;
+}
+
+td.datePickerMonth,
+td.datePickerYear {
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-size: 100%;
+	font-weight: bold;
+	color: #333;
+}
+
+.gwt-DateBox {
+	padding: 5px 4px;
+	border: 1px solid #ccc;
+	border-top: 1px solid #999;
+	font-size: 100%;
+}
+
+.gwt-DateBox input {
+	width: 8em;
+}
+
+.dateBoxFormatError {
+	background: #ffcccc;
+}
+
+.dateBoxPopup {
+	z-index: 3;
+}

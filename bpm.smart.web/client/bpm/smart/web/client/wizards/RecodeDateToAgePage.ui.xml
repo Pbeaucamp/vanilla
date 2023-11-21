@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.smart.web.client.wizards.RecodeDateToAgePage.MyStyle">
+		
+		.contentPanel {
+			width: 640px;
+			height: 300px;
+		}
+		
+		.lblTitle {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    font-size: 18px;
+		}
+		
+		.lblNote {
+			font-style: italic;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    font-size: 13px;
+		}
+		
+		.txt {
+			width: 98%;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label addStyleNames="{style.lblTitle}" text="{label.Options}"/>
+			<g:TextBox ui:field="txtFormat" addStyleNames="{style.txt}"/>
+			<g:Label addStyleNames="{style.lblNote}" text="{commons.Optional} : {label.DateFormatExample}"/>
+		</g:HTMLPanel>	
+	</g:HTMLPanel>
+</ui:UiBinder> 

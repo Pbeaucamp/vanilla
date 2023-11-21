@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+}
+
+.gwt-PopupPanel {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none !important;
+    border-radius: 10px;
+    padding: 0 !important;
+    z-index: 3 !important;
+}
+
+.gwt-DialogBox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5) !important;
+    min-height: 100% !important;
+    width: 100% !important;
+}
+.gwt-DialogBox .dialogTop td, .gwt-DialogBox .dialogMiddle td, .gwt-DialogBox .dialogBottom td {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.gwt-DialogBox .Caption {
+    display: none;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	<ui:style type="bpm.smart.web.client.dialogs.ShareDialog.MyStyle">
+	
+		.panelContent {
+			height: 250px;
+			width: 490px;
+			z-index:20;
+		}
+		
+		.lblName {
+		    width: 100%;
+		    text-align: center;
+		    font-size : 1.4em;
+		    line-height: 50px;
+		}
+		
+		.panelGrid {
+			position: absolute;
+			top: 80px;
+			width: 100%;
+			bottom: 50px;
+		}
+		
+		.panelPager {
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			bottom: 0px;
+			text-align: center;
+			text-align: -moz-center;
+		}
+		
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:Label ui:field="lblName" addStyleNames="{style.lblName}"/>
+		<g:SimplePanel ui:field="panelGrid" addStyleNames="{style.panelGrid}"/>
+		<!-- <g:SimplePanel ui:field="panelPager" addStyleNames="{style.panelPager}"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

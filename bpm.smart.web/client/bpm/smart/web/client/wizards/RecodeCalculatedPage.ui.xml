@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.smart.web.client.wizards.RecodeCalculatedPage.MyStyle">
+		
+		.contentPanel {
+			width: 640px;
+			height: 400px;
+		}
+		
+		.panelTextArea{
+		    height: 100px;
+		    margin: 20px;
+		    position: relative;
+		}
+		
+		.txtArea {
+		    height: 97%;
+		    position: relative;
+		    resize: none;
+		    width: 99%;
+		}
+		
+		.lbl {
+			color: #3B99CB;
+		    margin-left: 18px;
+		    margin-top: 5px;
+		    font-size: 18px;
+		}
+		
+		.btn{
+			border-radius: 3px 3px 3px 3px;
+		    height: 30px;
+		    margin: 5px;
+		}
+		
+		.panel{
+			margin-left: 20px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel>
+			<g:Label addStyleNames="{style.lbl}" text="{label.Column}s"/>
+			<g:HTMLPanel ui:field="columnsPanel" addStyleNames="{style.panel}"/>
+		</g:HTMLPanel>	
+		<g:HTMLPanel>
+			<g:Label addStyleNames="{style.lbl}" text="{label.Formula}"/>
+			<g:HTMLPanel addStyleNames="{style.panelTextArea}">
+				<g:TextArea ui:field="txtFormula" addStyleNames="{style.txtArea}"/>
+			</g:HTMLPanel>
+		</g:HTMLPanel>	
+	</g:HTMLPanel>
+</ui:UiBinder> 

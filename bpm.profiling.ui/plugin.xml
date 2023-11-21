@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="bpm.profiling.ui.connection.wizard.ConnectionWizard"
+            id="bpm.profiling.ui.connection.wizard"
+            name="Connection WIzard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="bpm.profiling.ui.views.ViewConnections"
+            id="bpm.profiling.ui.views.ViewConnections"
+            name="Connections">
+      </view>
+      <view
+            class="bpm.profiling.ui.views.ViewDesign"
+            id="bpm.profiling.ui.view.design"
+            name="Design">
+      </view>
+      <view
+            class="bpm.profiling.ui.views.ViewAnalysis"
+            id="bpm.profiling.ui.view.analysis"
+            name="Analysis">
+      </view>
+      <view
+            class="bpm.profiling.ui.views.ViewResult"
+            id="bpm.profiling.ui.view.result"
+            name="Result">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="bpm.profiling.ui.perspectives.DefaultPerspective"
+            id="bpm.profiling.ui.perspectives.default"
+            name="Profiling">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="bpm.profiling.ui.preferences.AbstractPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="bpm.profiling.ui.view.design.actions"
+            targetID="bpm.profiling.ui.view.design">
+         <action
+               class="bpm.profiling.ui.view.design.actions.ActionInit"
+               id="bpm.profiling.ui.view.design.init"
+               label="Init">
+         </action>
+         <action
+               class="bpm.profiling.ui.view.design.actions.ActionSave"
+               id="bpm.profiling.ui.view.design.save"
+               label="Save">
+         </action>
+      </viewContribution>
+   </extension>
+
+</plugin>

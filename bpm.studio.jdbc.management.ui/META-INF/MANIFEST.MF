@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.studio.jdbc.management.ui
+Bundle-SymbolicName: bpm.studio.jdbc.management.ui;singleton:=true
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.studio.jdbc.management.ui.Activator
+Bundle-Vendor: BPM-Conseil
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.studio.jdbc.management;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

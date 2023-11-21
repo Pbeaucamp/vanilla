@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+        <context:component-scan base-package="bpm.smart.core.model"/>
+
+        <!-- Use @Transaction annotations for managing transactions  -->    
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+
+	  	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="file:///${bpm.vanilla.configurationFile}"/>
+		</bean> 
+
+        <!--  DataSource connection -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			destroy-method="close">
+			<property name="driverClass" value="${bpm.vanilla.smart.database.driverClassName}" />
+			<property name="jdbcUrl" value="${bpm.vanilla.smart.database.jdbcUrl}" />
+			<property name="user" value="${bpm.vanilla.smart.database.userName}" />
+			<property name="password" value="${bpm.vanilla.smart.database.password}" />
+			<property name="acquireRetryAttempts" value="10"></property>
+			<property name="preferredTestQuery" value="SELECT 1"></property>
+			<property name="testConnectionOnCheckin" value="true"></property>
+			<property name="testConnectionOnCheckout" value="false"></property>
+			<property name="maxIdleTime" value="50"></property>
+			<property name="idleConnectionTestPeriod" value="30"></property>
+		</bean>
+
+        <!-- Hibernate SessionFactory -->
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="annotatedClasses">
+                <list>
+	                <value>bpm.smart.core.model.AirProject</value>
+	                <value>bpm.smart.core.model.MirrorCran</value>
+	                <value>bpm.smart.core.model.SmartAdmin</value>
+	                <value>bpm.smart.core.model.RScript</value>
+	                <value>bpm.smart.core.model.RScriptModel</value>
+	                <value>bpm.smart.core.model.UsersProjectsShares</value>
+					<value>bpm.workflow.commons.beans.Schedule</value>
+					<value>bpm.workflow.commons.beans.Workflow</value>
+					<value>bpm.workflow.commons.beans.WorkflowInstance</value>
+					<value>bpm.workflow.commons.beans.ResourceWrapper</value>
+					<value>bpm.smart.core.model.AirCube</value>
+					<value>bpm.smart.core.model.StatDataColumn</value>
+					<value>bpm.workflow.commons.beans.ItemResourceLink</value>
+                </list>
+            </property>
+            <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+					${bpm.vanilla.smart.database.dialect}
+				</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+            </property>
+        </bean>
+
+
+
+        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+
+        <context:annotation-config/>
+
+       	<bean id="smartDao"
+			class="bpm.smart.runtime.dao.SmartDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+	</beans>

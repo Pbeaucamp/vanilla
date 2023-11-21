@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.runtime.core.Condition" table="conditions">
+            <id name="id" type="int">
+                <column name="CND_ID" />
+                 <generator class="increment"/>
+            </id>
+
+			<property name="ruleSetId" type="int">
+                <column name="CND_RULE_SET_ID"/>
+            </property>
+
+           
+            <property name="operator" type="int">
+                <column name="CND_OPERATOR"/>
+            </property>
+
+
+
+			<property name="value1" type="java.lang.String">
+                <column name="CND_VALUE1"/>
+            </property>
+            
+            <property name="value2" type="java.lang.String">
+                <column name="CND_VALUE2"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

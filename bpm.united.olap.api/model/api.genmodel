@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/bpm.united.olap.api/src"
+    editDirectory="/bpm.united.olap.ui/src" editorDirectory="/bpm.united.olap.ui/src"
+    modelPluginID="bpm.united.olap.api" modelName="Api" editPluginClass="bpm.united.olap.ui.ApiEditPlugin"
+    editorPluginClass="bpm.united.olap.ui.ApiEditorPlugin" suppressEMFTypes="true"
+    richClientPlatform="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" editPluginID="bpm.united.olap.ui">
+  <foreignModel>api.ecore</foreignModel>
+  <genPackages prefix="Api" basePackage="bpm.united.olap" disposableProviderFactory="true"
+      ecorePackage="api.ecore#/">
+    <genDataTypes ecoreDataType="api.ecore#//Properties"/>
+    <nestedGenPackages prefix="Datasource" basePackage="bpm.united.olap.api" disposableProviderFactory="true"
+        ecorePackage="api.ecore#//datasource">
+      <genClasses ecoreClass="api.ecore#//datasource/Datasource">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Datasource/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Datasource/id"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Datasource/connections"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Datasource/relations"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Datasource/dataObjects"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Datasource/publicProperties"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Datasource/datasourceExtensionId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Datasource/privateProperties"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//datasource/DataObject">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/DataObject/name"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/DataObject/items"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/DataObject/queryText"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//datasource/DataObjectItem">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/DataObjectItem/name"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//datasource/DataObjectItem/parent"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/DataObjectItem/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/DataObjectItem/isKey"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//datasource/Connection">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Connection/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Connection/id"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//datasource/Relation">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Relation/operator"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Relation/leftItem"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//datasource/Relation/rightItem"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//datasource/Operator">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//datasource/Operator/type"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Model" basePackage="bpm.united.olap.api" disposableProviderFactory="true"
+        ecorePackage="api.ecore#//model">
+      <genClasses ecoreClass="api.ecore#//model/Schema">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Schema/cubes"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Schema/datasources"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/Schema/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Schema/dimensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Schema/measures"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Cube">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Cube/measures"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Cube/dimensions"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/Cube/name"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Dimension">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Dimension/dataObject"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Dimension/hierarchies"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//model/Dimension/parentSchema"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Hierarchy">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Hierarchy/levels"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//model/Hierarchy/parentDimension"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Level">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Level/item"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//model/Level/parentLevel"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//model/Level/subLevel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Level/members"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//model/Level/parentHierarchy"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Member">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//model/Member/parentMember"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Member/subMembers"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//model/Member/parentLevel"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/Member/memberRelationsUname"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/Measure">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference api.ecore#//model/Measure/item"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/Measure/calculationType"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference api.ecore#//model/Measure/parentSchema"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//model/ElementDefinition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/ElementDefinition/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/ElementDefinition/uname"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//model/ElementDefinition/caption"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Runtime" basePackage="bpm.united.olap.api" disposableProviderFactory="true"
+        ecorePackage="api.ecore#//runtime">
+      <genClasses ecoreClass="api.ecore#//runtime/RunResult">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/RunResult/dataStorage"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//runtime/MdxSet">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/MdxSet/elements"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//runtime/DataStorage">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/DataStorage/dataCells"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/DataStorage/sets"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/DataStorage/measures"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/DataStorage/usedDimensions"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//runtime/DataCell">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//runtime/DataCell/identifier"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/DataCell/row"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/DataCell/col"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/DataCell/resultValue"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//runtime/DataCellIdentifier"/>
+      <genClasses ecoreClass="api.ecore#//runtime/NodeId">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/NodeId/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/NodeId/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute api.ecore#//runtime/NodeId/isValue"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Result" basePackage="bpm.united.olap.api" disposableProviderFactory="true"
+        ecorePackage="api.ecore#//result">
+      <genClasses ecoreClass="api.ecore#//result/OlapResult">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//result/OlapResult/lines"/>
+      </genClasses>
+      <genClasses ecoreClass="api.ecore#//result/ResultLine">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference api.ecore#//result/ResultLine/cells"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="api.ecore#//result/ResultCell"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

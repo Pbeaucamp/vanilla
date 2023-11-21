@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.studio.expressions.ui
+Bundle-SymbolicName: bpm.studio.expressions.ui
+Bundle-Version: 5.0.0
+Bundle-Activator: bpm.studio.expressions.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ bpm.studio.expressions.core;bundle-version="1.0.0",
+ org.eclipse.jface.text;visibility:=reexport,
+ bpm.vanilla.external.jars;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Export-Package: bpm.studio.expressions.ui,
+ bpm.studio.expressions.ui.measure
+Bundle-Vendor: BPM-Conseil

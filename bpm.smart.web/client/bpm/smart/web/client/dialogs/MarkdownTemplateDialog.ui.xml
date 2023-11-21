@@ -1,0 +1,101 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:style>
+	
+		.panelContent {
+			height: 400px;
+			width: 700px;
+			z-index:20;
+			overflow-x: hidden;
+		}
+		
+		.lblOver {
+		    width: 300px;
+		    padding: 10px;
+		    text-align: left;
+		    clear: both;
+		}
+		
+		.txtblock {
+		    display: block;
+		    padding: 5px;
+		    margin: 0 10px;
+		    width: 350px;
+		}
+		
+		.panelTextArea{
+		    padding: 10px;
+    		position: relative;
+    		width: 670px;
+		}
+		
+		.txtArea {
+		    height: 97%;
+		    position: relative;
+		    width: 650px;
+		    min-width: 650px;
+		    max-width: 650px;
+		}
+		
+		.upload {
+		    line-height: 30px;
+   			margin-left: 0px;
+   			width: 300px;
+   			margin-left: 75px;
+			margin-top: 10px;
+		}
+		
+		.btnSelectAll {
+			float: right;
+		    margin-right: 10px;
+		    margin-top: 20px;
+		    position: relative;
+		}
+		.btnImport {
+			height: 30px;
+		    left: 10px;
+		    position: relative;
+		    top: 30px;
+		    width: 150px;
+		    z-index: 10;
+		}
+		
+		.lblFileName {
+			height: 30px;
+		    left: 170px;
+		    position: relative;
+		    z-index: 10;
+		    line-height: 30px;
+		}
+		
+		.button{
+			background: none repeat scroll 0 0 #4471C4;
+		    border-radius: 4px 4px 4px 4px;
+		    color: #FFFFFF;
+		    font-weight: 400;
+		    border: medium none;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panelContent}">
+		<g:Label ui:field="lblTitle" addStyleNames="{style.lblOver}"/>
+		<g:TextBox ui:field="txtTitle" addStyleNames="{style.txtblock}"/>
+		<g:Label ui:field="lblAuthor" addStyleNames="{style.lblOver}"/>
+		<g:TextBox ui:field="txtAuthor" addStyleNames="{style.txtblock}"/>
+		<g:FormPanel ui:field="formCode"/>
+		<g:SimplePanel ui:field="panelUpload" addStyleNames="{style.upload}"/>
+		<g:Button ui:field="btnImport" text="{label.ImportImage}" addStyleNames="{style.btnImport},{style.button}"></g:Button>
+		<g:Label ui:field="lblFileName" addStyleNames="{style.lblFileName}"/>
+		
+		<g:Label ui:field="lblDescription" addStyleNames="{style.lblOver}"/>
+		<g:HTMLPanel addStyleNames="{style.panelTextArea}">
+			<g:TextArea ui:field="txtDescription" addStyleNames="{style.txtArea}"/>
+		</g:HTMLPanel>
+		<g:Label ui:field="lblScript" addStyleNames="{style.lblOver}"/>
+		<g:HTMLPanel addStyleNames="{style.panelTextArea}">
+			<g:TextArea ui:field="txtScript" addStyleNames="{style.txtArea}"/>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

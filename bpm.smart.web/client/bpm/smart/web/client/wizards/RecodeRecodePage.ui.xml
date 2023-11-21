@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:style type="bpm.smart.web.client.wizards.RecodeRecodePage.MyStyle">
+		
+		.contentPanel {
+			width: 640px;
+			height: 400px;
+		}
+		
+		.listPanel{
+			margin : 0 50px;
+		}
+		.listPanel table{
+			margin: 5px;
+		}
+		.listPanel td{
+			vertical-align: middle!important;
+		}
+		.listPanel div{
+			font-size: 15px;
+		    text-overflow: ellipsis;
+		    width: 120px;
+		}
+		.listPanel input{
+			-moz-box-sizing: border-box;
+		    background-color: #FFFFFF;
+		    border: 1px solid rgba(0, 0, 0, 0.15);
+		    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+		    box-shadow: 0 0 rgba(0, 0, 0, 0.3) inset;
+		    color: rgba(0, 0, 0, 0.7);
+		    font-size: 1em;
+		    margin: 1px 1%;
+		    outline: 0 none;
+		    padding: 0.65em 1em !important;
+		    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+		}
+		.listPanel input:focus {
+		    border-bottom-left-radius: 0;
+		    border-color: rgba(0, 0, 0, 0.2);
+		    border-top-left-radius: 0;
+		    box-shadow: 0.3em 0 0 0 rgba(0, 0, 0, 0.2) inset;
+		    color: rgba(0, 0, 0, 0.85);
+		}
+		
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:HTMLPanel ui:field="recodePanel"/>
+			
+	</g:HTMLPanel>
+</ui:UiBinder> 

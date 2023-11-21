@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.update.manager.api
+Bundle-SymbolicName: bpm.update.manager.api
+Bundle-Version: 5.2.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: bpm.vanilla.platform.xstream,
+ bpm.vanilla.external.jars
+Bundle-ClassPath: libs/log4j-1.2.17.jar,
+ .
+Export-Package: bpm.update.manager.api,
+ bpm.update.manager.api.beans,
+ bpm.update.manager.api.remote,
+ bpm.update.manager.api.utils,
+ bpm.update.manager.api.xstream

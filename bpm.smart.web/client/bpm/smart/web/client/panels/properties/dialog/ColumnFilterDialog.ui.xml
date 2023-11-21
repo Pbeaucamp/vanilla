@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='resources' type='bpm.gwt.workflow.commons.client.images.Images' />
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	
+	<ui:style>
+		.imgToolbar {
+			width: 36px;
+			height: 36px;
+			cursor: pointer;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<g:HTMLPanel ui:field="toolbarPanel">
+			<g:Image ui:field="btnAdd" resource="{resources.ic_add_circle_outline_black_18dp}" addStyleNames="{style.imgToolbar}"></g:Image>
+			<g:Image ui:field="btnRemove" resource="{resources.stop_24dp}" addStyleNames="{style.imgToolbar}"></g:Image>
+		
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="gridPanel"></g:SimplePanel>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

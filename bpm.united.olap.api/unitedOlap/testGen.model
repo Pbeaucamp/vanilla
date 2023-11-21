@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://api/model/1.0" name="fasdSales">
+  <cubes name="Sales">
+    <measures name="Sales" uname="[Measures].[Sales]" caption="Sales"/>
+    <dimensions name="Time Dimension" uname="[Time Dimension]" caption="Time Dimension">
+      <hierarchies name="time" uname="[Time Dimension].[All]" caption="Time">
+        <levels name="PRODUCTVENDOR" uname="[Product Dimension].[Vendor]" caption="Vendor"/>
+        <levels name="PRODUCTNAME" uname="[Product Dimension].[Name]" caption="Name"/>
+        <levels name="TIME_ID" uname="[Time Dimension].[Day]" caption="Day"/>
+      </hierarchies>
+    </dimensions>
+    <dimensions name="Product Dimension" uname="[Product Dimension]" caption="Product Dimension">
+      <hierarchies name="products" uname="[Product Dimension].[All]" caption="Product">
+        <levels/>
+        <levels/>
+      </hierarchies>
+    </dimensions>
+  </cubes>
+  <datasources name="dds" id="dds" publicProperties="{DIRECTORY_ITEM_ID=129, USER=system, BUSINESS_PACKAGE=pack, CONNECTION_NAME=Default, URL=http://localhost:8080/BIRepository, GROUP_NAME=System, BUSINESS_MODEL=model, IS_ENCRYPTED=false, PASSWORD=system}" datasourceExtensionId="bpm.metadata.birt.oda.runtime" privateProperties="{}">
+    <connections name="cnx" id="cnx"/>
+  </datasources>
+</model:Schema>

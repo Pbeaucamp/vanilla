@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.database.bean.TagBean" table="tags">
+            <id name="id" type="int">
+                <column name="T_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="resultId" type="java.lang.Integer">
+                <column name="T_RESULT_ID"/>
+            </property>
+            
+            <property name="resultConditionId" type="java.lang.Integer">
+                <column name="T_RESULT_CONDITION_ID"/>
+            </property>
+
+            <property name="creation" type="java.util.Date">
+                <column name="T_CREATION_DATE"/>
+            </property>
+
+            <property name="modification" type="java.util.Date">
+                <column name="T_UPDATE_DATE"/>
+            </property>
+            
+            <property name="content" type="java.lang.String">
+                <column name="T_COMMENT"/>
+            </property>
+
+            <property name="creator" type="java.lang.String">
+                <column name="T_CREATOR"/>
+            </property>
+			
+    </class>
+</hibernate-mapping>

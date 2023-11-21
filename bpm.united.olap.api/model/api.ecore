@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="api"
+    nsURI="http://api/1.0" nsPrefix="api">
+  <eClassifiers xsi:type="ecore:EDataType" name="Properties" instanceClassName="java.util.Properties"/>
+  <eSubpackages name="datasource" nsURI="http://api/datasource/1.0" nsPrefix="datasource">
+    <eClassifiers xsi:type="ecore:EClass" name="Datasource">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+          eType="#//datasource/Connection" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+          eType="#//datasource/Relation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataObjects" upperBound="-1"
+          eType="#//datasource/DataObject" containment="true" eOpposite="#//datasource/DataObject/parent"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="publicProperties" eType="#//Properties"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasourceExtensionId"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="privateProperties" eType="#//Properties"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//model/Schema"
+          eOpposite="#//model/Schema/datasources"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+          eType="#//datasource/DataObjectItem" containment="true" eOpposite="#//datasource/DataObjectItem/parent"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//datasource/Datasource"
+          eOpposite="#//datasource/Datasource/dataObjects"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFact" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataObjectItem">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//datasource/DataObject"
+          eOpposite="#//datasource/DataObject/items"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Connection">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Relation">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//datasource/Operator"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="leftItem" eType="#//datasource/DataObjectItem"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rightItem" eType="#//datasource/DataObjectItem"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Operator">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="model" nsURI="http://api/model/1.0" nsPrefix="model">
+    <eClassifiers xsi:type="ecore:EClass" name="Schema">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cubes" upperBound="-1"
+          eType="#//model/Cube" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="datasources" upperBound="-1"
+          eType="#//datasource/Datasource" containment="true" eOpposite="#//datasource/Datasource/parent"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dimensions" upperBound="-1"
+          eType="#//model/Dimension" containment="true" eOpposite="#//model/Dimension/parentSchema"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="measures" upperBound="-1"
+          eType="#//model/Measure" containment="true" eOpposite="#//model/Measure/parentSchema"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModificationDate"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Cube">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="measures" upperBound="-1"
+          eType="#//model/Measure"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dimensions" upperBound="-1"
+          eType="#//model/Dimension"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dimension" eSuperTypes="#//model/ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataObject" eType="#//datasource/DataObject"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="hierarchies" upperBound="-1"
+          eType="#//model/Hierarchy" containment="true" eOpposite="#//model/Hierarchy/parentDimension"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentSchema" eType="#//model/Schema"
+          eOpposite="#//model/Schema/dimensions"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOneColumnDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Hierarchy" eSuperTypes="#//model/ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="levels" upperBound="-1"
+          eType="#//model/Level" containment="true" eOpposite="#//model/Level/parentHierarchy"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentDimension" eType="#//model/Dimension"
+          eOpposite="#//model/Dimension/hierarchies"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isClosureHierarchy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Level" eSuperTypes="#//model/ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//datasource/DataObjectItem"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentLevel" eType="#//model/Level"
+          eOpposite="#//model/Level/subLevel"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subLevel" eType="#//model/Level"
+          eOpposite="#//model/Level/parentLevel"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+          eType="#//model/Member" containment="true" eOpposite="#//model/Member/parentLevel"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentHierarchy" eType="#//model/Hierarchy"
+          eOpposite="#//model/Hierarchy/levels"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="memberProperties" upperBound="-1"
+          eType="#//model/MemberProperty" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="orderItem" eType="#//datasource/DataObjectItem"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Member" eSuperTypes="#//model/ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentMember" eType="#//model/Member"
+          eOpposite="#//model/Member/subMembers"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subMembers" upperBound="-1"
+          eType="#//model/Member" eOpposite="#//model/Member/parentMember"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentLevel" eType="#//model/Level"
+          eOpposite="#//model/Level/members"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="memberRelationsUname"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+          eType="#//model/MemberProperty" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderUname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Measure" eSuperTypes="#//model/ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//datasource/DataObjectItem"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="calculationType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentSchema" eType="#//model/Schema"
+          eOpposite="#//model/Schema/measures"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="calculatdFormula" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementDefinition">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="uname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="caption" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MemberProperty">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="valueItem" eType="#//datasource/DataObjectItem"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="runtime" nsURI="http://api/runtime/1.0" nsPrefix="runtime">
+    <eClassifiers xsi:type="ecore:EClass" name="RunResult">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataStorage" eType="#//runtime/DataStorage"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNonEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MdxSet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+          eType="#//model/ElementDefinition"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataStorage">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataCells" upperBound="-1"
+          eType="#//runtime/DataCell"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sets" upperBound="-1"
+          eType="#//runtime/MdxSet"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="measures" upperBound="-1"
+          eType="#//model/Measure"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="usedDimensions" upperBound="-1"
+          eType="#//model/Dimension"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="asMultipleWhere" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataCell">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="identifier" eType="#//runtime/DataCellIdentifier"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="row" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="col" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataCellIdentifier"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NodeId">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isWhere" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="result" nsURI="http://api/result/1.0" nsPrefix="result">
+    <eClassifiers xsi:type="ecore:EClass" name="OlapResult">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="lines" upperBound="-1"
+          eType="#//result/ResultLine"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ResultLine">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+          eType="#//result/ResultCell"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ResultCell" abstract="true"/>
+  </eSubpackages>
+</ecore:EPackage>

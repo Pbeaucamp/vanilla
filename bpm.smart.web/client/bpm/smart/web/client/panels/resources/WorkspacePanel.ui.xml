@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:with field='label' type='bpm.smart.web.client.I18N.LabelsConstants' />
+	<ui:with field='resources' type='bpm.smart.web.client.images.Images' />
+	<ui:with field='commons' type='bpm.gwt.commons.client.images.CommonImages' />
+	
+	<ui:style type="bpm.smart.web.client.panels.resources.WorkspacePanel.MyStyle">
+		.mainPanel {
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+		}
+		.centerPanel {
+			height: 100%;
+			position: absolute;
+			left : 0;
+			right : 100px;
+		}
+		.navRight {
+			height: 100%;
+			position: absolute;
+			width : 100px;
+			right : 0;
+			background-color: rgba(100, 100, 100, 0.5);
+			margin-right: -20px;
+		    overflow-x: hidden;
+		    padding-right: 20px;
+		}
+		
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="workspaceContent" addStyleNames="{style.mainPanel}">
+		<g:HTMLPanel  ui:field="centerPanel" addStyleNames="{style.centerPanel}">
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="navRight" addStyleNames="{style.navRight}"/>
+					
+	</g:HTMLPanel>
+</ui:UiBinder> 

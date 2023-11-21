@@ -1,0 +1,156 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- use the vanilla configuration from the Systemp property bpm.vanilla.configurationFile -->
+<!-- Definition de la source de donnees sous MySQL -->
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="${bpm.vanilla.configurationFile}"/>
+	</bean> 
+<!-- <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${bpm.vanilla.profiling.database.driverClassName}"/>
+		<property name="url" value="${bpm.vanilla.profiling.database.jdbcUrl}"/>
+		<property name="username" value="${bpm.vanilla.profiling.database.userName}"/>
+		<property name="password" value="${bpm.vanilla.profiling.database.password}"/>
+	</bean>
+ -->	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${bpm.vanilla.profiling.database.driverClassName}" />
+		<property name="jdbcUrl" value="${bpm.vanilla.profiling.database.jdbcUrl}" />
+		<property name="user" value="${bpm.vanilla.profiling.database.userName}" />
+		<property name="password" value="${bpm.vanilla.profiling.database.password}" />
+		<property name="acquireRetryAttempts" value="10"></property>
+		<property name="preferredTestQuery" value="SELECT 1"></property>
+		<property name="testConnectionOnCheckin" value="true"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="maxIdleTime" value="50"></property>
+		<property name="idleConnectionTestPeriod" value="30"></property>
+	</bean>
+	 
+	<!-- Definition des fichiers de mapping O/R Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>bpm/profiling/database/dao/hbm/connection.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/analysis_info.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/analysis_content.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/analysis_result.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/rule_set.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/condition.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/condition_result.hbm.xml</value>
+				<value>bpm/profiling/database/dao/hbm/tag_bean.hbm.xml</value>
+				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${bpm.vanilla.profiling.database.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Definition du transaction manager a utiliser pour rendre les methodes du service
+	transactionnelles -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
+	<!--  connection -->
+	<bean id="connectionDao" class="bpm.profiling.database.dao.ConnectionDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="connectionManager" class="bpm.profiling.database.ConnectionManager">
+		<property name="connectionDao" ref="connectionDao"/>
+	</bean>
+	
+	
+	<!-- analysisInfoBean -->
+	<bean id="analysisInfoDAO" class="bpm.profiling.database.dao.AnalysisInfoDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- analysisContentBean -->
+	<bean id="analysisContentDAO" class="bpm.profiling.database.dao.AnalysisContentDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- analysisResultBean -->
+	<bean id="analysisResultDAO" class="bpm.profiling.database.dao.AnalysisResultDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- ruleSetBean -->
+	<bean id="ruleSetDAO" class="bpm.profiling.database.dao.RuleSetDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- Condition -->
+	<bean id="conditionDAO" class="bpm.profiling.database.dao.ConditionDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- ConditionResult -->
+	<bean id="conditionResultDAO" class="bpm.profiling.database.dao.ConditionResultDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- TagBean -->
+	<bean id="tagBeanDAO" class="bpm.profiling.database.dao.TagDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- analysisManager  --> 
+
+	<bean id="analysisManager" class="bpm.profiling.database.AnalysisManager">
+		<property name="infoDao" ref="analysisInfoDAO"/>
+		<property name="contentDao" ref="analysisContentDAO"/>
+		<property name="resultDao" ref="analysisResultDAO"/>
+		<property name="ruleSetDao" ref="ruleSetDAO"/>
+		<property name="conditionDao" ref="conditionDAO"/>
+		<property name="conditionResultDao" ref="conditionResultDAO"/>
+		<property name="tagDao" ref="tagBeanDAO"/>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+	
+	
+
+	<!-- Definition du service avec ses caracteristiques transactionnelles -->
+	<bean id="newsManager"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="target" ref="directoryManager"/>
+		<property name="transactionAttributes">
+			
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

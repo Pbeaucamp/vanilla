@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bpm.studio.jdbc.management
+Bundle-SymbolicName: bpm.studio.jdbc.management
+Bundle-Version: 5.0.0
+Bundle-Vendor: BPM-Conseil
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j
+Export-Package: bpm.studio.jdbc.management.config,
+ bpm.studio.jdbc.management.model,
+ bpm.studio.jdbc.management.util
+Require-Bundle: bpm.vanilla.external.jars;bundle-version="1.0.0"

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Vanilla API Core
+Bundle-SymbolicName: bpm.vanilla.api.core
+Bundle-Version: 1.0.0
+Automatic-Module-Name: bpm.vanilla.api.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: bpm.vanilla.platform.xstream;bundle-version="5.0.0",
+ bpm.vanilla.platform.core;bundle-version="6.6.0",
+ bpm.vanilla.platform.core.config;bundle-version="6.0.0",
+ bpm.vanilla.external.jars;bundle-version="6.4.0",
+ bpm.workflow.commons;bundle-version="1.0.0"
+Import-Package: org.springframework.http
+Export-Package: bpm.vanilla.api.core,
+ bpm.vanilla.api.core.exception,
+ bpm.vanilla.api.core.model,
+ bpm.vanilla.api.core.remote,
+ bpm.vanilla.api.core.remote.internal

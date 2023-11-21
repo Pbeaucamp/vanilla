@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>bpm.vanilla</groupId>
+	<artifactId>bpm.vanilla.api</artifactId>
+	<version>0.0.1</version>
+	<packaging>bundle</packaging>
+
+	<name>Vanilla API</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.5</version>
+		<relativePath/>
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+        <osgi.version>5.0.0</osgi.version>
+
+        <bundle.plugin.version>5.1.2</bundle.plugin.version>
+        <docker.plugin.version>0.27.2</docker.plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+	            <exclusion>
+	                <groupId>org.springframework.boot</groupId>
+	                <artifactId>spring-boot-starter-tomcat</artifactId>
+	            </exclusion>
+	        </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>${osgi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+	        <groupId>vanilla</groupId>
+	        <artifactId>bpm.vanilla.api.core_1.0.0</artifactId>
+	        <version>1.0.0</version>
+	        <scope>system</scope>
+			<systemPath>${basedir}/lib/bpm.vanilla.api.core_1.0.0.jar</systemPath>
+	    </dependency>
+		
+		<dependency>
+	        <groupId>vanilla</groupId>
+	        <artifactId>bpm.vanilla.platform.core_6.6.0.1</artifactId>
+	        <version>6.6.0.1</version>
+	        <scope>system</scope>
+			<systemPath>${basedir}/lib/bpm.vanilla.platform.core_6.6.0.1.jar</systemPath>
+	    </dependency>
+		
+		<dependency>
+	        <groupId>vanilla</groupId>
+	        <artifactId>bpm.vanilla.platform.core.config_6.0.0</artifactId>
+	        <version>6.0.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/lib/bpm.vanilla.platform.core.config_6.0.0.jar</systemPath>
+	    </dependency>
+		
+		<dependency>
+	        <groupId>vanilla</groupId>
+	        <artifactId>bpm.vanilla.platform.core.remote_6.0.0.1</artifactId>
+	        <version>6.0.0.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/lib/bpm.vanilla.platform.core.remote_6.0.0.1.jar</systemPath>
+	    </dependency>
+		
+		<dependency>
+	        <groupId>vanilla</groupId>
+	        <artifactId>bpm.workflow.commons_1.0.0.1</artifactId>
+	        <version>1.0.0.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/lib/bpm.workflow.commons_1.0.0.1.jar</systemPath>
+	    </dependency>
+		
+<!-- 		<dependency> -->
+<!-- 	        <groupId>vanilla</groupId> -->
+<!-- 	        <artifactId>bpm.fm.api_5.0.0.7</artifactId> -->
+<!-- 	        <version>5.0.0.7</version> -->
+<!-- 	        <scope>system</scope> -->
+<!-- 	        <systemPath>${basedir}/lib/bpm.fm.api_5.0.0.7.jar</systemPath> -->
+<!-- 	    </dependency> -->
+	    
+<!-- 	    <dependency> -->
+<!-- 	        <groupId>vanilla</groupId> -->
+<!-- 	        <artifactId>bpm.fwr.api_5.0.0.25</artifactId> -->
+<!-- 	        <version>5.0.0.25</version> -->
+<!-- 	        <scope>system</scope> -->
+<!-- 	        <systemPath>${basedir}/lib/bpm.fwr.api_5.0.0.25.jar</systemPath> -->
+<!-- 	    </dependency> -->
+	    
+	   <dependency>
+	      <groupId>org.springdoc</groupId>
+	      <artifactId>springdoc-openapi-ui</artifactId>
+	      <version>1.5.8</version>
+	   </dependency>
+	   
+	   <dependency>
+			<groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${bundle.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>
+							${project.groupId}.${project.artifactId}
+						</Bundle-SymbolicName>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-Activator>
+							bpm.vanilla.api.SpringBootBundleActivator
+						</Bundle-Activator>
+						<Export-Package>bpm.vanilla.api</Export-Package>
+						<Private-Package>
+							bpm.vanilla.api.*
+						</Private-Package>
+						<Import-Package>
+							!org.springframework.*,
+							*;resolution:=optional
+						</Import-Package>
+						<Embed-Dependency>
+							*;scope=compile
+						</Embed-Dependency>
+						<Embed-Transitive>
+							true
+						</Embed-Transitive>
+					</instructions>
+					<buildDirectory>target/deploy</buildDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+			</resource>
+		</resources>
+	</build>
+
+</project>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="UpdateManager" default="build" basedir=".">
+
+	<property name="appversion" value="1.0.0" />
+	
+	<!-- extension contrib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="../webapps_build/lib/ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
+
+	<property name="webappName" value="UpdateManager" />
+
+	<!-- Arguments to gwtc and devmode targets -->
+	<property name="gwt.args" value="" />
+
+	<!-- Configure path to GWT SDK -->
+	<property name="gwt.sdk" location="${gwtsdknew}" />
+
+	<property name="jarlist" value="bpm.document.management.core,bpm.document.management.remote,bpm.vanilla.platform.core,bpm.gwt.commons,bpm.vanilla.platform.core.config,bpm.vanilla.platform.core.remote,bpm.update.manager.api,bpm.smart.core,bpm.workflow.commons,bpm.fm.api,bpm.mdm.model,bpm.fwr.api"/>
+
+	<path id="project.class.path">
+		<pathelement location="war/WEB-INF/classes" />
+		<pathelement location="${gwt.sdk}/gwt-user.jar" />
+		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
+		<!-- Add any additional non-server libs (such as JUnit) -->
+		<fileset dir="war/WEB-INF/lib" includes="**/*.jar" />
+	</path>
+	
+	<target name="build.commons" description="Build lib GWT Commons">
+		<property name="gwt.commons" value="bpm.gwt.commons" />
+
+		<!-- Find the jar version -->
+		<loadproperties srcfile="../${gwt.commons}/META-INF/MANIFEST.MF"/>
+	
+		<!-- compile the project -->
+		<property name="elementPath" value="${myWorkspace}/${gwt.commons}" />
+		<property name="topLevelElementId" value="${Bundle-SymbolicName}" />
+		<property name="buildId" value="${Bundle-SymbolicName}" />
+		<property name="buildLabel" value="${buildType}.${buildId}" />
+	
+		<propertyregex property="topLevelElementId" input="${Bundle-SymbolicName}" override="true" regexp=";.*" replace=""/>
+		<propertyregex property="buildId" override="true" input="${Bundle-SymbolicName}" regexp=";.*" replace=""/>
+	
+		<antcall target="compileClass"/>
+
+		<jar destfile="${tempBuildDirectory}/${webappBuildName}/eclipse/plugins/${gwt.commons}_${Bundle-Version}.jar" basedir="../webapps_build/build/plugins/${buildId}_${Bundle-Version}/@dot">
+			<fileset dir="../bpm.gwt.commons/client"></fileset>
+			<fileset dir="../bpm.gwt.commons/shared"></fileset>
+			<fileset dir="../bpm.gwt.commons/server"></fileset>
+		</jar>
+				
+		<var name="elementPath" unset="true" />
+		<var name="buildId" unset="true" />
+		<var name="topLevelElementId" unset="true" />
+		<var name="buildLabel" unset="true" />
+		<var name="Bundle-Version" unset="true" />
+		<var name="Bundle-SymbolicName" unset="true" />
+	</target>
+	
+	<target name="compileClass">
+		<trycatch>
+			<try>
+				<ant antfile="${eclipse.pdebuild.scripts}/build.xml" />
+			</try>
+			<catch>
+				<echo>In &lt;catch&gt;.</echo>
+			</catch>
+			<finally />
+		</trycatch>
+	</target>
+
+	<target name="jar.copy" depends="build.commons" description="Copy needeed jar in this webapps">
+		<!-- copy the needed jar in this webapps -->
+		<for list="${jarlist}" param="jar">
+			<sequential>
+				<copy todir="war/WEB-INF/lib">
+					<fileset dir="${tempBuildDirectory}/${webappBuildName}/eclipse/plugins" includes="@{jar}_*"/>
+				</copy>
+				<condition property="fileExists">
+			        <resourcecount when="greater" count="0">
+			            <fileset file="war/WEB-INF/lib/@{jar}_*"/>
+			        </resourcecount>
+			    </condition>
+				<if>
+				  <istrue value="${fileExists}"/>
+				  <then>
+				    <echo message="File @{jar} is available"/>
+				  </then>
+				  <else>
+				    <echo message="File @{jar} is not available"/>
+				  	<fail message="File @{jar} is not available"/>
+				  </else>
+				</if>
+				<var name="fileExists" unset="true"/>
+            </sequential>
+		</for>
+	</target>
+	
+	<target name="javac" depends="jar.copy" description="Compile java source to bytecode">
+		<mkdir dir="war/WEB-INF/classes" />
+		<javac srcdir="shared;client;server" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes" source="1.8" target="1.8" nowarn="true" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copy todir="war/WEB-INF/classes">
+			<fileset dir="shared" excludes="**/*.java" />
+			<fileset dir="client" excludes="**/*.java" />
+			<fileset dir="server" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="gwtc" depends="javac" description="GWT compile to JavaScript (production mode)">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="client" />
+				<pathelement location="shared" />
+				<path refid="project.class.path" />
+				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
+				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
+			</classpath>
+			<jvmarg value="-Xmx764M" />
+			<arg line="-war" />
+			<arg value="war" />
+			<arg line="-deploy" />
+			<arg value="${tempBuildDirectory}/deploys" />
+			<arg line="-style" />
+			<arg value="OBF" />
+			<arg line="${gwt.args}" />
+			<arg value="bpm.update.manager.UpdateManager" />
+		</java>
+	</target>
+
+	<target name="build" depends="gwtc" description="Build this project" />
+
+	<target name="warOnly" depends="build" description="Create a war file a put in directly in destination directory">
+		<copy todir="${destinationDirectory}/Temp/webapps/${webappName}">
+			<fileset dir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**"></fileset>
+		</copy>
+
+		<zip destfile="${destinationDirectory}/${webappName}.zip" basedir="${destinationDirectory}/Temp/webapps" includes="${webappName},${webappName}/**" />
+	</target>
+
+	<target name="war" depends="build" description="Create a war file">
+		<if>
+		    <equals arg1="${compileJetty}" arg2="jetty"/>
+		    <then>
+				<echo>Compile UpdateManager for jetty</echo>
+				<copy todir="${tempBuildDirectory}/${jettyName}/webapps/${webappName}">
+					<fileset dir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**"></fileset>
+				</copy>
+		    </then>
+			<elseif>
+				<equals arg1="${compileJetty}" arg2="docker" />
+				<then>
+					<echo>Compile UpdateManager for docker</echo>
+					<copy todir="${destinationDirectory}/Temp/webapps/${webappName}">
+						<fileset dir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**"></fileset>
+					</copy>
+
+					<tar destfile="${dockerDestinationDirectory}/${webappName}.tar.gz" basedir="${destinationDirectory}/Temp/webapps" includes="${webappName},${webappName}/**" compression="gzip"/>
+				</then>
+			</elseif>
+		    <else>
+				<echo>Compile UpdateManager for tomcat</echo>
+				<copy todir="${tempBuildDirectory}/${tomcatName}/webapps/${webappName}">
+					<fileset dir="war" excludes="Ressources/**,resources/**,WEB-INF/deploy/**"></fileset>
+				</copy>
+			</else>
+		</if>
+	</target>
+
+	<target name="clean" description="Cleans this project">
+		<delete>
+			<fileset dir="war/WEB-INF/lib" includes="bpm.**" />
+		</delete>
+	</target>
+</project>

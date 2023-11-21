@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.runtime.core.Connection" table="connections">
+            <id name="id" type="int">
+                <column name="C_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="databaseName" type="java.lang.String">
+                <column name="C_DATABASE"/>
+            </property>
+
+            <property name="driverName" type="java.lang.String">
+                <column name="C_DRIVER"/>
+            </property>
+
+            <property name="host" type="java.lang.String">
+                <column name="C_HOST"/>
+            </property>
+
+            <property name="port" type="java.lang.String">
+                <column name="C_PORT"/>
+            </property>
+            
+            <property name="login" type="java.lang.String">
+                <column name="C_LOGIN"/>
+            </property>
+            
+            <property name="name" type="java.lang.String">
+                <column name="C_NAME"/>
+            </property>
+            
+            <property name="password" type="java.lang.String">
+                <column name="C_PASSWORD"/>
+            </property>
+            
+            <property name="schemaName" type="java.lang.String">
+                <column name="C_SCHEMA"/>
+            </property>
+            
+            <property name="isFromRepository" type="java.lang.Boolean">
+                <column name="C_IS_FROM_REPOSITORY"/>
+            </property>
+            
+            <property name="directoryItemId" type="java.lang.Integer">
+                <column name="C_DIRECTORY_ITEM_ID"/>
+            </property>
+            
+			<property name="fmdtDataSourceName" type="java.lang.String">
+                <column name="C_FMDT_DATASOURCE_NAME"/>
+            </property>
+            <property name="fmdtConnectionName" type="java.lang.String">
+                <column name="C_FMDT_CONNECTION_NAME"/>
+            </property>
+            <property name="vanillaGroupId" type="java.lang.Integer">
+                <column name="C_VANILLA_GROUP_ID"/>
+            </property>
+    </class>
+</hibernate-mapping>

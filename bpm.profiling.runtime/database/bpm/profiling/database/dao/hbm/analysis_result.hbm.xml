@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bpm.profiling.database.bean.AnalysisResultBean" table="analysis_results">
+            <id name="id" type="int">
+                <column name="AR_ID" />
+                 <generator class="increment"/>
+            </id>
+
+            <property name="analysisContentId" type="int">
+                <column name="AR_ANALYSIS_CONTENT_ID"/>
+            </property>
+
+            <property name="creation" type="java.util.Date">
+                <column name="AR_DATE"/>
+            </property>
+
+            <property name="dataType" type="java.lang.String">
+                <column name="AR_DATA_TYPE"/>
+            </property>
+
+
+
+
+            <property name="lowValue" type="java.lang.String">
+                <column name="AR_LOW_VALUE"/>
+            </property>
+            
+            <property name="hightValue" type="java.lang.String">
+                <column name="AR_HIGHT_VALUE"/>
+            </property>
+            <property name="lowValueCount" type="java.lang.Integer">
+                <column name="AR_LOW_VALUE_COUNT"/>
+            </property>
+            <property name="hightValueCount" type="java.lang.Integer">
+                <column name="AR_HIGHT_VALUE_COUNT"/>
+            </property>
+            <property name="avgValue" type="java.lang.Double">
+                <column name="AR_AVG_VALUE"/>
+            </property>
+            <property name="distinctCount" type="java.lang.Integer">
+                <column name="AR_DISTINCT_COUNT"/>
+            </property>
+            <property name="nullCount" type="java.lang.Integer">
+                <column name="AR_NULL_COUNT"/>
+            </property>
+            <property name="nullPercent" type="java.lang.Double">
+                <column name="AR_NULL_PERC"/>
+            </property>
+            <property name="zeroCount" type="java.lang.Integer">
+                <column name="AR_ZERO_COUNT"/>
+            </property>
+            <property name="zeroPercent" type="java.lang.Double">
+                <column name="AR_ZERO_PERC"/>
+            </property>
+            <property name="blankCount" type="java.lang.Integer">
+                <column name="AR_BLANK_COUNT"/>
+            </property>
+            <property name="blankPercent" type="java.lang.Double">
+                <column name="AR_BLANK_PERC"/>
+            </property>
+            
+            
+			
+    </class>
+</hibernate-mapping>
